@@ -1,8 +1,10 @@
-## Welcome to GitHub Pages
+## Welcome to KTPC!
 
-You can use the [editor on GitHub](https://github.com/ktpcmember/ktpcmember.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+駒場東邦物理部へようこそ！
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+物理部は、プログラミングや電子工作など、情報工学・機械系の幅広い活動を行う部活です。
+
+現在、休校のため、学校での活動はありませんが、各部員が家で連絡を取り合って活動しています。
 
 ### Markdown
 
