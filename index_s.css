@@ -2,8 +2,7 @@
  body {
   text-align:center;
  }
- div {
-  max-width:100%;
-  min-width:100%;
+ mubr {
+  display:inline;
  }
 
