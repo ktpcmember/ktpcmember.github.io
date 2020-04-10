@@ -1,8 +1,83 @@
 
  body {
+  min-width:512px;
+  max-width:1024px;
+  margin:16px auto;
+  background-color:#FFE0C0;
   text-align:center;
+  font-family:monospace;
  }
- mubr {
-  display:inline;
+ nav.c0 {
+  display:flex;
+  justify-content:center;
+  margin-bottom:16px;
+  font-size:20px;
+  background-color:#FFFFFF;
  }
-
+ div.c1, div.c5 {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:1%;
+  padding:0;
+ }
+ div.c1 {
+  width:20%;
+  flex-shrink:0;
+  margin-right:0;
+ }
+ div.c5 {
+  flex-grow:1;
+ }
+ .c4 {
+  max-width:100%;
+  margin:auto 0;
+ }
+ div.c2 {
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  margin:1%;
+  padding:0;
+ }
+ div.c3 {
+  display:flex;
+  justify-content:left;
+  flex-direction:row;
+  margin:1%;
+  padding:0;
+ }
+ .c6, .c7, .c8, .c9 {
+  text-decoration:none;
+  margin:1%;
+  padding:0.1em 1em;
+  flex-grow:1;
+  color:#000000;
+ }
+ div#c3act {
+  background-color:#C0FFFF;
+ }
+ div#c3event {
+  background-color:#C0FFC0;
+ }
+ div#c3other {
+  background-color:#FFFFC0;
+ }
+ .c6 {
+  font-size:24px;
+ }
+ a.c6:hover, a.c6:active {
+  background-color:#C0C0C0;
+ }
+ a.c7:hover, a.c7:active {
+  background-color:#90C0C0;
+ }
+ a.c8:hover, a.c8:active {
+  background-color:#90C090;
+ }
+ a.c9:hover, a.c9:active {
+  background-color:#C0C090;
+ }
+ 
+ 
+ 
