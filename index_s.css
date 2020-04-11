@@ -2,7 +2,7 @@
  body {
   min-width:512px;
   max-width:1024px;
-  margin:16px auto 0;
+  margin:16px auto;
   background-color:#FFE0C0;
   text-align:center;
   font-family:monospace;
@@ -13,7 +13,47 @@
   font-size:20px;
   background-color:#FFFFFF;
  }
-  
+ div.cb, div.cc, div.ch {
+  margin:1%;
+  padding:0.5% 1% 1%;
+ }
+ div.cb {
+  background-color:#FFF0C0;
+ }
+ div.cc {
+  background-color:#E0F0FF;
+ }
+ div.ch {
+  background-color:#F0FFC0;
+ }
+ div.cd {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:0;
+  padding:0;
+ }
+ a.ce, a.cf {
+  text-decoration:none;
+  padding:1%;
+  margin:1%;
+  flex-basis:26%;
+  flex-grow:1;
+  flex-shrink:0;
+  color:#000000;
+ }
+ a.ce {
+  background-color:#F0F8FF;
+ }
+ a.cf {
+  background-color:#F8FFD8;
+ }
+ a.ce:hover, a.ce:active {
+  background-color:#B4BAC0;
+ }
+ a.cf:hover, a.cf:active {
+  background-color:#BAC0A2;
+ }
  nav.c0 {
   display:flex;
   justify-content:center;
@@ -85,6 +125,8 @@
  a.c9:hover, a.c9:active {
   background-color:#C0C090;
  }
- 
+ footer.cz {
+  font-size:16px;
+ }
  
  
