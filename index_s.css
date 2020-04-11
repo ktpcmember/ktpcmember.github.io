@@ -13,6 +13,11 @@
   font-size:20px;
   background-color:#FFFFFF;
  }
+ header.cy {
+  margin:0;
+  padding:0;
+  width:100%;
+ }
  div.cb, div.cc, div.ch {
   margin:1%;
   padding:0.5% 1% 1%;
