@@ -13,6 +13,10 @@
   font-size:20px;
   background-color:#FFFFFF;
  }
+ img.cx {
+  margin;0;
+  width:100%;
+ }
  header.cy {
   margin:0;
   padding:0;
@@ -42,7 +46,7 @@
   text-decoration:none;
   padding:1%;
   margin:1%;
-  flex-basis:26%;
+  flex-basis:12em;
   flex-grow:1;
   flex-shrink:0;
   color:#000000;
