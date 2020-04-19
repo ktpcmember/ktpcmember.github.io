@@ -59,6 +59,8 @@
   align-items:center;
   margin:0.5%;
   padding:0.5%;
+  text-decoration:none;
+  color:#000000;
  }
  .c32 {
   width:640px;
