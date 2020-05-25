@@ -22,7 +22,7 @@
  .ch01 {
   width:100%;
   position:sticky;
-  top:1px;
+  top:0;
   /*background-color:#183162;*/
   background-color:#183162;
  }
