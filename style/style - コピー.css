@@ -3,19 +3,18 @@
   min-width:512px;
   max-width:1024px;
   margin:16px auto;
-  background-color:#FFFCFC;
+  background-color:#FFE0C0;
   text-align:center;
   font-family:meiryo;
   justify-content:center;
   align-items:center;
   font-size:20px;
-  color:#FFFFFF;
  }
  .c00 {
   margin:0;
   padding:0 0 8px;
   font-size:20px;
-  background-color:#FFFCFC;
+  background-color:#FFFFFF;
  }
  .c10 {
   margin:0;
@@ -100,10 +99,10 @@
   color:#000000;
  }
  .e00 {
-  background-color:#100818;
+  background-color:#FFFFFF;
  }
  .e10 {
-  background-color:#402030;
+  background-color:#FFF0C0;
  }
  .e11 {
   background-color:#FFF8E0;
