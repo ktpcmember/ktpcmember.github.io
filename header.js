@@ -1,5 +1,4 @@
 ﻿
-
 function ck(){
  var a=document.getElementById("hnmu");
  if(a.style.display=="none"){
