@@ -95,7 +95,7 @@
  
  .ch41 {
   margin:1px;
-  padding:0.5%;
+  padding:1%;
   flex-basis:16em;
   flex-grow:1;
   color:#FFFFFF;
@@ -131,7 +131,23 @@
  .cb20 {
   
  }
-
+ 
+ .cb21 {
+  margin:4ex auto;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+ }
+ 
+ .cb30 {
+  heigth:100%;
+ }
+  
+ .cb31 {
+  margin:2ex 2em;
+  text-align:left;
+ }
+ 
  .cf00 {
   width:100%;
   height:6ex;
