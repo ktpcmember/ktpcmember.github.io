@@ -5,7 +5,7 @@
   padding:0;
   text-align:center;
   font-size:16px;
-  background-color:#F4F2F2;
+  background-color:#F8FAFA;
  }
 
  .ch00 {
@@ -126,7 +126,7 @@
   height:100%;
   display:flex;
   flex-direction:column;
-  background-color:#F0F2F2;
+  background-color:#FAF8F8;
  }
  
  .cb20 {
@@ -160,7 +160,8 @@
   flex-basis:690px;
   flex-shrink:1;
   flex-grow:0;
-  text-align:left;
+  display:flex;
+  flex-direction:column;
  }
  
  .cb40 {
@@ -169,6 +170,12 @@
  }
  
  .cb41 {
+  margin:0 auto;
+  padding:0;
+  text-align:left;
+ }
+ 
+ .cb50 {
   width:3em;
   height:1em;
   margin:0;
@@ -177,15 +184,15 @@
   background-color:#1C3870;
  }
  
- .cb42 {
+ .cb51 {
   color:#000000;
  }
  
- .cb42:hover, .cb42:active {
+ .cb51:hover, .cb51:active {
   background-color:#FFFCFC;
  }
  
- .cb50 {
+ .cb60 {
   margin:auto;
   padding:0;
   max-height:0.8em;
