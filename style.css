@@ -149,6 +149,10 @@
   flex-direction:row-reverse;
  }
  
+ .cb2d0 {
+  border-bottom:solid 1px #000000;
+ }
+ 
  .cb30 {
   margin:auto;
   max-height:256px;
