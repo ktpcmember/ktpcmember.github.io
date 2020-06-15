@@ -145,11 +145,11 @@
  }
  
  .cb21 {
-  flex-direction:row;
+  flex-direction:row-reverse;
  }
  
  .cb22 {
-  flex-direction:row-reverse;
+  flex-direction:row;
  }
  
  .cb23 {
