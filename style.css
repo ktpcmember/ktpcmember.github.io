@@ -149,8 +149,12 @@
   flex-direction:row-reverse;
  }
  
- .cb2d0 {
-  border-bottom:solid 1px #000000;
+ .cb23 {
+  margin:2em 1%;
+  padding:0;
+  max-width:100%;
+  display:flex;
+  flex-direction:column;
  }
  
  .cb30 {
@@ -171,6 +175,18 @@
  .cb32 {
   margin:auto;
   max-width:480px;
+ }
+ 
+ .cb33 {
+  padding:0.1em auto;
+  text-align:center;
+  background-color:#D8E0FF;
+ }
+ 
+ .cb34 {
+  margin:0 auto;
+  padding:0;
+  text-align:left;
  }
  
  .cb40 {
