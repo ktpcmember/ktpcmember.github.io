@@ -155,7 +155,7 @@
  
  .cb30 {
   margin:auto;
-  max-height:256px;
+  max-width:256px;
  }
   
  .cb31 {
@@ -168,8 +168,13 @@
   flex-direction:column;
  }
  
+ .cb32 {
+  margin:auto;
+  max-width:480px;
+ }
+ 
  .cb40 {
-  text-decoration:underline;
+  /*text-decoration:underline;*/
   text-align:center;
  }
  
