@@ -174,8 +174,9 @@
  }
  
  .cb40 {
-  /*text-decoration:underline;*/
+  /*text-decoration:overline;*/
   text-align:center;
+  border-bottom:solid 1px #000000;
  }
  
  .cb41 {
