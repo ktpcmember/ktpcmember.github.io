@@ -2,80 +2,121 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <title>無線部門/無線大会</title>
+  <title>無線部門 - 駒場東邦物理部</title>
   <link rel="icon" type="image/jpeg" href="../images/logo.jpg">
-  <link rel="stylesheet" type="text/css" href="../style/style.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script type="text/javascript" src="../header.js"></script>
  </head>
  <body>
-  <div class="c00">
-   <div class="c10">
-    <img class="c10" src="../images/im1.jpg">
+  <header class="ch00">
+   <div class="ch11">
+    <img class="ch20" src="../images/im2.png">
    </div>
-   <article class="c11 e00">
-    <h1>無線部門</h1>
-    無線部門の通常活動は、アマチュア無線試験に合格するために勉強することです。<br>
-    現在、3割ほどの部員が、アマチュア無線技士3級の資格を持っています。<br>
-    実際に無線を使うのは、無線大会の日のみです。
-   </article>
-   <article class="c11 e10">
-    <h2>無線大会</h2>
-    例年4月末に開催される、オールJAコンテストに参加しています。<br>
-    アマチュア無線の運用者同士で、24時間以内にいくつの無線局と交信できたかを競います。<br>
-    中3以上で免許を持っている部員は学校に泊まり込んで交信します。
-    コールサインはJA1YNMです。
-    <img src="ap.jpg">
-   </article>
-   <article class="c11 e30" id="air">
-    <h2>設備</h2>
-    駒東にはアマチュア無線用のアンテナなどの設備があり、物理部ではそれらを借りて運用しています。	
-    <div class="c20">
-     <div class="c30 e31">
-      <h3>ローテーター</h3>
-      無線のアンテナを回転させる指令を出す装置です。
-      駒東のアンテナは指向性があり、電波の来る方向に回転させて聞き取りやすくします。
-      <img src="../images/lo-ra.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../images/menu.png">
+      </button>
      </div>
-     <div class="c30 e31">
-      <h3>アンテナ</h3>
-      <img src="aa.jpg">
-     </div>
-    </div>
-   </article>
-   <nav class="c11 e40">
-    <h2>リンク</h2>
-    <div class="c21">
-     <a class="c31 e41" href="../index.html">
-      <h3 class="c40">駒場東邦物理部</h3>
-      <img class="c41" src="../images/logo.jpg">
-     </a>
-     <div class="c32">
-      <div class="c42 e20">
-       <h3 class="c50">通常活動</h3>
-       <a class="c51 e21" href="../pr/pr.html">プログラミング班</a>
-       <a class="c51 e21" href="../el/el.html">電子工作・マイコン班</a>
-       <a class="c51 e21" href="../pt/pt.html">ピタゴラ班</a>
-       <a class="c51 e21" href="../et/et.html">実験部門</a>
-       <a class="c51 e21" href="../de/de.html">装飾部門</a>
-       <a class="c51 e21" href="ra.html">無線部門</a>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">駒場東邦物理部</span>
+       <a class="ch41" href="../index.html">トップページ</a>
       </div>
-      <div class="c42 e30">
-       <h3 class="c50">イベント</h3>
-       <a class="c51 e31" href="https://twitter.com/KT_Physics">文化祭</a>
-       <a class="c51 e31" href="https://twitter.com/KT_Physics">合宿</a>
-       <a class="c51 e31" href="ra.html">無線大会</a>
-       <a class="c51 e31" href="https://twitter.com/KT_Physics">その他</a>
+      <div class="ch32">
+       <span class="ch40">通常活動</span>
+       <a class="ch41" href="../pr/pr.html">プログラミング班</a>
+       <a class="ch41" href="../el/el.html">電子工作・マイコン班</a>
+       <a class="ch41" href="../pt/pt.html">ピタゴラ装置製作班</a>
+       <a class="ch41" href="../de/de.html">装飾部門</a>
+       <a class="ch41" href="../et/et.html">実験部門</a>
+       <a class="ch41" href="ra.html">無線部門</a>
       </div>
-      <div class="c42 e10">
-       <h3 class="c50">その他</h3>
-       <a class="c51 e11" href="mailto:contact@ktpc.tokyo">Eメール:contact@ktpc.tokyo</a>
-       <a class="c51 e11" href="https://twitter.com/KT_Physics">Twitter</a>
-       <a class="c51 e11" href="https://www.komabajh.toho-u.ac.jp/">駒東HP</a>
+      <div class="ch32">
+       <span class="ch40">イベント</span>
+       <a class="ch41" href="../cfl/cfl.html">文化祭</a>
+       <a class="ch41" href="../tcp/tcp.html">合宿</a>
+       <a class="ch41" href="../edp/edp.html">エッグドロップ</a>
+       <a class="ch41" href="../oet/oet.html">その他</a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">その他</span>
+       <a class="ch41" href="mailto:contact@ktpc.tokyo">Eメール:contact@ktpc.tokyo</a>
+       <a class="ch41" href="https://twitter.com/KT_Physics">Twitter</a>
+       <a class="ch41" href="https://www.komabajh.toho-u.ac.jp/">駒東HP</a>
       </div>
      </div>
     </div>
-   </nav>
-   <footer class="c12">
-    &copy;2018-2020 駒場東邦物理部 [KTPC]
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>無線部門</h1>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">部門概要</h3>
+       <span class="cb41">
+        無線部門の通常活動は、アマチュア無線試験に合格するために勉強することです。<br>
+        現在、3割ほどの部員が、アマチュア無線技士3級の資格を持っています。
+       </span>
+      </div>
+      <img class="cb30" src="../images/lo-ra.jpg">
+     </article>
+     <article class="cb23">
+      <h2 class="cb33">無線大会</h2>
+      <span class="cb34">
+       現在、無線を使っている日は、無線大会の日のみとなっています。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">オールJAコンテスト</h3>
+       <span class="cb41">
+        例年4月末に開催される、オールJAコンテストに参加しています。<br>
+        アマチュア無線の運用者同士で、24時間以内にいくつの無線局と交信できたかを競います。<br>
+        中3以上で免許を持っている部員は学校に泊まり込んで交信します。<br>
+        コールサインは<a class="cb51" href="https://www.tele.soumu.go.jp/musen/SearchServlet?pageID=4&IT=A&DFCD=0003826668&DD=1&styleNumber=50">JA1YNM</a>です。
+       </span>
+      </div>
+      <img class="cb30" src="ap.jpg">
+     </article>
+     <article class="cb23">
+      <h2 class="cb33">設備</h2>
+      <span class="cb34">
+       駒東にはアマチュア無線用のアンテナなどの設備があり、物理部ではそれらを借りて運用しています。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">ローテーター</h3>
+       <span class="cb41">
+        無線のアンテナを回転させる指令を出す装置です。<br>>
+        多くのアンテナには指向性があり、電波の来る方向に回転させて聞き取りやすくします。
+       </span>
+      </div>
+      <img class="cb30" src="../images/lo-ra.jpg">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">アンテナ</h3>
+       <span class="cb41">
+        現在修理中です。
+       </span>
+      </div>
+      <img class="cb30" src="aa.jpg">
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <span class="cf20">
+      &copy; 2018-2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
    </footer>
   </div>
  </body>
