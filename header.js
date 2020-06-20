@@ -21,5 +21,6 @@ function ck(){
   a.style.display="none";
   a.style.pointerEvents="none";
  }
+ fsticky();
  return;
 }
