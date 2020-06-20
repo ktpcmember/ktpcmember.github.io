@@ -23,8 +23,8 @@
  
  .ch01 {
   width:100%;
-  position:sticky;
   top:0;
+  position:sticky;
   /*background-color:#183162;*/
   background-color:#1B366C;
   z-index:6;
@@ -105,7 +105,7 @@
  .ch41 {
   margin:1px;
   padding:1%;
-  flex-basis:16em;
+  flex-basis:15em;
   flex-grow:1;
   color:#FFFFFF;
   text-decoration:none;
