@@ -92,6 +92,12 @@
   background-color:#3060C0;
  }
  
+ .ch40, .ch41 {
+  height:2em;
+  display:flex;
+  flex-direction:column;
+ }
+ 
  .ch40 {
   width:100%;
  }
@@ -110,15 +116,14 @@
   background-color:#204080;
  }
  
- .ch50 {
-  margin:auto;
-  height:4ex;
- }
- 
  .ch42 {
   max-height:64px;
   margin:0 auto;
   padding:0;
+ }
+ 
+ .ch50 {
+  margin:auto;
  }
  
  .cb00 {
