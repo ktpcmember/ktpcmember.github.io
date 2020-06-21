@@ -2,3 +2,7 @@
  .ch01 {
   position:static;
  }
+ 
+ .cf21 {
+  display:flex;
+ }

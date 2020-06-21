@@ -17,3 +17,8 @@ function ck(){
  }
  return;
 }
+
+function tp(){
+ window.scroll(0,0);
+ return;
+}
