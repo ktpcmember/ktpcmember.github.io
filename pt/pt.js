@@ -5,11 +5,15 @@ function ck(){
  if(a.style.display=="none"){
   a.style.display="flex";
   a.style.pointerEvents="auto";
-  b.controls=false;
+  if(a.style.position="sticky"){
+   b.controls=false;
+  }
  }else{
   a.style.display="none";
   a.style.pointerEvents="none";
-  b.controls=true;
+  if(a.style.position="sticky"){
+   b.controls=true;
+  }
  }
  return;
 }
