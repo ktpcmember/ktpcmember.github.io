@@ -9,11 +9,10 @@
  }
 
  .ch00 {
-  width:100%;
+  max-width:100%;
   margin:0;
   padding:0;
   display:flex;
-  justify-content:stretch;
   background-color:#C0BEBE;
  }
  
@@ -46,7 +45,7 @@
   margin:0 auto;
   padding:0;
   max-width:100%;
-  min-height:auto;
+  min-height:0;
   height:auto;
   background-color:#FFE0F0;
  }
