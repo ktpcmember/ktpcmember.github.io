@@ -47,6 +47,7 @@
   max-width:100%;
   min-height:0;
   height:auto;
+  max-height:25vw;
   background-color:#FFE0F0;
  }
  
