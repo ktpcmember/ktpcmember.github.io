@@ -1,3 +1,188 @@
-<!doctype html>
+﻿<!DOCTYPE html>
 <html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,電子工作,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けの講習資料の一覧です。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>講習資料 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../static.css">
+  <script type="text/javascript" src="../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../images/im2.png">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">プログラミング講習</span>
+       </span>
+       <a class="ch41" href="cp/cp.html">
+        <span class="ch50">C++</span>
+       </a>
+       <a class="ch41" href="uy/uy.html">
+        <span class="ch50">Unity</span>
+       </a>
+       <a class="ch41" href="../pt/pt.html">
+        <span class="ch50">HSP</span>
+       </a>
+       <a class="ch41" href="../de/de.html">
+        <span class="ch50">装飾部門</span>
+       </a>
+       <a class="ch41" href="../et/et.html">
+        <span class="ch50">実験部門</span>
+       </a>
+       <a class="ch41" href="../ra/ra.html">
+        <span class="ch50">無線部門</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">イベント</span>
+       </span>
+       <a class="ch41" href="../cfl/cfl.html">
+        <span class="ch50">文化祭</span>
+       </a>
+       <a class="ch41" href="../tcp/tcp.html">
+        <span class="ch50">合宿</span>
+       </a>
+       <a class="ch41" href="../edp/edp.html">
+        <span class="ch50">エッグドロップ</span>
+       </a>
+       <a class="ch41" href="../oet/oet.html">
+        <span class="ch50">コンテスト</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">その他</span>
+       </span>
+       <a class="ch41" href="mailto:contact@ktpc.tokyo">
+        <span class="ch50">Eメール:contact@ktpc.tokyo</span>
+       </a>
+       <a class="ch41" href="https://docs.google.com/forms/d/e/1FAIpQLSfzlamhKVhUQ-M7zmtVSQhJkRd3p4W5Y5iKYpa51wEZTnLzSQ/viewform">
+        <span class="ch50">問い合わせフォーム</span>
+       </a>
+       <a class="ch41" href="https://twitter.com/KT_Physics">
+        <span class="ch50">Twitter</span>
+       </a>
+       <a class="ch41" href="https://www.komabajh.toho-u.ac.jp/">
+        <span class="ch50">駒東HP</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>講習資料</h1>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">班概要</h3>
+       <span class="cb41">
+        ツールやゲームの開発、言語やアルゴリズムの研究などをしています。<br>
+        製作物は、文化祭で展示したり、部活動のちょっとした手間を軽減するのに使っています。<br>
+        また、競技プログラミングなどのコンテストにも積極的に参加しています。
+       </span>
+      </div>
+      <img class="cb30" src="../images/lo-pr.jpg">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">使用言語・環境</h3>
+       <span class="cb41">
+        C, C++, C#, Python, HSP, javascript, アセンブリ(x64)などの言語を使っています。<br>
+        開発環境には、Visual StudioやUnityを使う部員が多いです。<br>
+       </span>
+      </div>
+      <img class="cb30" src="u4.png">
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">C言語</h3>
+       <span class="cb41">
+        主にツールを開発しています。<br>
+        特に、WindowsのAPIを使うにはC言語は必須といえます。
+       </span>
+      </div>
+      <img class="cb30" src="c.png">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">HSP</h3>
+       <span class="cb41">
+        インタプリタからできた言語であるため、手軽に扱えます。<br>
+        少し計算をさせたい、あるいは小さなゲームを作りたいときなどに便利です。
+       </span>
+      </div>
+      <img class="cb30" src="hsp.png">
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">アセンブリ</h3>
+       <span class="cb41">
+        CPUの仕組みをきちんと理解するため、機械語やアセンブリ言語を学ぶこともできます。<br>
+        バイナリエディタからの本格的なコンパイラの作成を目指しています。
+       </span>
+      </div>
+      <img class="cb30" src="asm.png">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">Unity</h3>
+       <span class="cb41">
+        UnityとC#言語を使い、ゲームも制作しています。<br>
+        なお、Unityはゲーム開発環境の一種です。<br>
+        複数人でチームを組んで大きなゲームを完成させることを目指しています。<br>
+        これまでに、2D・3D双方で、アクションゲームやシューティングゲームを作りました。
+       </span>
+      </div>
+      <img class="cb30" src="unity.png">
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
 </html>
