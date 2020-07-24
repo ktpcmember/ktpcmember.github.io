@@ -273,3 +273,31 @@
   padding:0;
   height:3em;
  }
+ 
+ .debr {
+  background-color:#FFFEFE;
+  border:solid 1px #000000;
+  padding:4px;
+ }
+ 
+ .lepy_a, .lepy_b, .lepy_c {
+  padding:0 0.3em;
+  border-radius:40% 60%;
+  color:#FFFFFF;
+  font-weight:bold;
+ }
+ 
+ .lepy_a {
+  background-color:#FF0804;
+ }
+ 
+ .lepy_b {
+  background-color:#FFC040;
+ }
+ 
+ .lepy_c {
+  background-color:#80FF10;
+ }
+ 
+ 
+ 
