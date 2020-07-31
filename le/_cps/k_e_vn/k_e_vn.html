@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。開発環境の構築を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>環境構築 - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">プログラミング班</span>
+       </span>
+       <a class="ch41" href="../../_p_cba/_p_cba.html">
+        <span class="ch50">PC基礎</span>
+       </a>
+       <a class="ch41" href="../../_cps/_cps.html">
+        <span class="ch50">C++</span>
+       </a>
+       <a class="ch41" href="../../y_wwai/y_wwai.html">
+        <span class="ch50">WinAPI</span>
+       </a>
+       <a class="ch41" href="../../uy/uy.html">
+        <span class="ch50">Unity</span>
+       </a>
+       <a class="ch41" href="../../q_c_pubc/q_c_pubc.html">
+        <span class="ch50">コンピュータ基礎</span>
+       </a>
+       <a class="ch41" href="../../k_c_pej_p_gm/k_c_pej_p_gm.html">
+        <span class="ch50">競技プログラミング</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">電子工作・マイコン班</span>
+       </span>
+       <a class="ch41" href="../../k_elba/k_elba.html">
+        <span class="ch50">電工基礎</span>
+       </a>
+       <a class="ch41" href="../../_pic/_pic.html">
+        <span class="ch50">PICマイコン</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../howd/howd.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++講習/環境構築</h1>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">概要</h3>
+      <span class="cb34">
+       多くのPCでは、プログラミングのための環境が整っていません。<br>
+       今回は、Visual Studioという開発環境を用意します。<br>
+       物理部のPCを使う場合は、すでに用意されているので、インストールはしなくて構いません。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb30 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        Visual Studio
+       </h4>
+       <span class="cb41">
+        今回利用する開発環境
+       </span>
+       <h4 class="cb45">
+        プロジェクト
+       </h4>
+       <span class="cb41">
+        プログラムをまとめるための箱
+       </span>
+      </div>
+      <div class="cb30 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">
+        今回の必要語はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">Visual Studio</h3>
+      <span class="cb34">
+       開発環境とは、プログラムを書くのに必要なツールがまとめられた大きなアプリのことです。<br>
+       Visual Studioは、Microsoftが提供している開発環境です。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">ダウンロード</h3>
+       <span class="cb41">
+        Microsoftのサイトから、Visual Studioをダウンロードしましょう。<br>
+        <a class="cb51" href="https://www.google.com/search?q=Visual+studio">Visual Studioと検索</a>し、コミュニティ版をダウンロードしてください。<br>
+       </span>
+      </div>
+      <img class="cb30" src="../../../images/rray.jpg">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">Visual Studioのインストール</h3>
+       <span class="cb41">
+        ダウンロードされたファイルを起動します。<br>
+        このとき、ユーザーアカウント制御が表示されたら、はいを押してください。<br>
+        ライセンス条項とプライバシーに関する声明を読み、続行すると、インストールが始まります。
+       </span>
+      </div>
+      <img class="cb30" src="../../../images/rray.jpg">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">C++用機能のインストール</h3>
+       <span class="cb41">
+        Visual Studio Installerが自動的に起動するので、ワークロード欄の「C++によるデスクトップ開発」を選択してインストールしましょう。<br>
+        インストールするフォルダを変えることもできますが、PC本体に入ってさえいればあまり気にしなくてもよいです。<br>
+        インストール後、指示に従って再起動すると、インストールが完了します。
+       </span>
+      </div>
+      <img class="cb30" src="../../../images/rray.jpg">
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

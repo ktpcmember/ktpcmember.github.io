@@ -205,8 +205,7 @@
   flex-direction:row;
  }
  
- .cb40 {
-  /*text-decoration:overline;*/
+ .cb40, cb44, .cb45 {
   text-align:center;
   border-bottom:solid 1px #000000;
  }
@@ -237,6 +236,15 @@
  
  .cb42:hover + .cb43 , .cb42:active + .cb43 {
   text-decoration-line:underline;
+ }
+ 
+ .cb44 {
+  margin-top:0.2em;
+  border-bottom-style:dashed;
+ }
+ 
+ .cb45 {
+  margin:0.5em auto 0.1em;
  }
  
  .cb50 {
