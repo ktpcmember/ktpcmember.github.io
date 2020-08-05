@@ -165,10 +165,11 @@
   flex-direction:column;
  }
  
- .cb30, .cb36 {
+ .cb30 {
   margin:auto;
+  max-width:256px;
  }
-  
+ 
  .cb31 {
   margin:0.5em auto auto;
   padding:0.5em;
@@ -205,7 +206,7 @@
  }
  
  .cb36 {
-  max-width:256px;
+  margin:auto;
  }
  
  .cb40, cb44, .cb45 {
