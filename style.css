@@ -165,9 +165,8 @@
   flex-direction:column;
  }
  
- .cb30 {
+ .cb30, .cb36 {
   margin:auto;
-  max-width:256px;
  }
   
  .cb31 {
@@ -203,6 +202,10 @@
   width:100%;
   display:flex;
   flex-direction:row;
+ }
+ 
+ .cb36 {
+  max-width:256px;
  }
  
  .cb40, cb44, .cb45 {
@@ -262,6 +265,13 @@
  
  .cb51:hover, .cb51:active {
   background-color:#FFFCFC;
+ }
+ 
+ .cb52 {
+  padding:0 0.2em;
+  border-radius:20%;
+  font-family:monospace;
+  background-color:#E0E0E4;
  }
  
  .cb60 {
