@@ -15,3 +15,8 @@ function tp(){
  window.scroll(0,0);
  return;
 }
+
+function copy(s){
+ navigator.clipboard.writeText(document.getElementById(s).textContent);
+ return;
+}

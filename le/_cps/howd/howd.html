@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。Hello, worldの表示を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Hello, world - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../howd/howd.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++講習/Hello, world</h1>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">概要</h3>
+      <span class="cb34">
+       プログラミングの世界では、新しい環境を使うとき、簡単なコードを書いてみることが習慣になっています。<br>
+       この目的は、動作させるまでの手順と、きちんとプログラムが動作するかを確かめることです。<br>
+       この講習では、すでに前章で、動作することを確認できていると思います。<br>
+       しかし、あのコードは説明も理解もたいへん長くなりますから、より簡単なコードで始めてみましょう。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        コード
+       </h4>
+       <span class="cb41">
+        人が書いた、プログラミング言語の文章
+       </span>
+       <h4 class="cb45">
+        関数
+       </h4>
+       <span class="cb41">
+        結果を返す、動作のまとまり
+       </span>
+       <h4 class="cb45">
+        引数
+       </h4>
+       <span class="cb41">
+        
+       </span>
+       <h4 class="cb45">
+        定数
+       </h4>
+       <span class="cb41">
+        
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">
+        今回の必要語はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">コードとプログラム</h3>
+      <span class="cb34">
+       この講習では、私たちが書くプログラミング言語による文章を、コードと呼びます。<br>
+       コンピュータが実行するものは、プログラムと呼びます。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">コンパイル</h3>
+       <span class="cb41">
+        実は、コンピュータはC++で書かれたコードを実行できません。<br>
+        実行できるのは、機械語という言語のみです。<br>
+        そこで、私たちが書くコードを、機械語に翻訳してもらわなくてはいけません。<br>
+        この作業を、コンパイルといいます。
+       </span>
+      </div>
+      <img class="cb30" src="../../../images/rray.jpg">
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">Hello, world</h3>
+      <span class="cb34">
+       まずは、プログラムを実行してみましょう。<br>
+       なお、「Hello, world」には特に意味はありません。<br>
+       しかし、確認などに用いられる簡単なコード例の代表ということができます。<br>
+       今回の講習でも、わかりやすいコードとして採用しました。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コードの実行</h3>
+       <span class="cb41">
+        前回のコードをCtrl+Aで全選択し、back spaceキーで消してください。<br>
+        そして、以下のコードを、COPYを押してコピーし、空いたファイルに貼り付けてください。<br>
+        ここで、上書き保存しておきます。<br>
+        そして、F5キー、環境によってはFn+F5キーを押して、実行してみましょう。<br>
+        通知などで見かけるウィンドウが現れたと思いますが、これをメッセージボックスといいます。
+       </span>
+      </div>
+      <img class="cb30" src="howd.jpg">
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">Hello, world</span>
+        <button type="button" class="cb53" onclick="copy('howd_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="howd_0">
+//Windowsプログラムを作るのに必要です
+#include &lt;Windows.h&gt;
+
+//エントリーポイント
+int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
+    //メッセージボックスを表示します。
+    MessageBoxW(NULL, L"Hello, world!", L"MessageBoxW", MB_OK);
+    return 0;
+}
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">コードを読む</h3>
+      <span class="cb34">
+       <br>
+       それでは、コードを読み、意味を知っていきましょう。<br>
+       コードは、プログラムとして実行される順序で読むのが原則です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">Visual Studioの起動</h3>
+       <span class="cb41">
+        スタートメニューを開き、Visual Studioを起動します。<br>
+        ライセンス認証を要求されるので、マイクロソフトのアカウントで認証します。<br>
+        物理部のPCなら物理部の、個人のPCなら個人のアカウントを使ってください。
+       </span>
+      </div>
+      <img class="cb30" src="stmu.jpg">
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プロジェクトテンプレート</h3>
+       <span class="cb41">
+        認証後、「新しいプロジェクトの作成」を押します。<br>
+        ただし、以前に作ったプロジェクトを引き続き使う場合には、「プロジェクトやソリューションを開く」を選択します。<br>
+        次の画面では、プロジェクトテンプレートを選択します。<br>
+        これは、プロジェクトによく使われるファイルをまとめたものです。<br>
+        プロジェクトに必要なファイルをコピーする手間が軽減されます。<br>
+        ここでは、「Windows デスクトップ アプリケーション」を選択して「次へ」を押しましょう。
+       </span>
+      </div>
+      <img class="cb30 debr" src="p_jtte.jpg">
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プロジェクトの作成</h3>
+       <span class="cb41">
+        この画面では、プロジェクトの名前などを設定します。<br>
+        プロジェクト名と場所は変えなくてもよいですが、変える場合はわかりやすくしましょう。<br>
+        なお、場所にはプロジェクトが保存されるフォルダを指定します。<br>
+        また、ソリューションは、プロジェクトをまとめるさらに大きな箱のことです。<br>
+        ここでは変更しなくてもよいです。<br>
+        それでは、「作成」を押しましょう。
+       </span>
+      </div>
+      <img class="cb30 debr" src="nwp_jt.jpg">
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">プロジェクトの編集</h3>
+      <span class="cb34">
+       プロジェクトは、プログラムを書き足して完成させます。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">ファイル操作</h3>
+       <span class="cb41">
+        プログラムはファイルに書き込んで保存します。<br>
+        プログラムを書き込むファイルを追加したいなら、左上の「ファイル」から「新規作成」「ファイル」を選んでください。<br>
+        また、プログラムを編集した後には、同じく「ファイル」から「すべて保存」してください。<br>
+        なお、プロジェクトに含まれるファイルは右側に表示されており、ダブルクリックで開くことができます。
+       </span>
+      </div>
+      <img class="cb30" src="fi.jpg">
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">プログラム実行</h3>
+       <span class="cb41">
+        さて、最後に、プログラムを実行してみましょう。<br>
+        プロジェクトの作成時に、長いコードが自動生成されているはずです。<br>
+        F5キーを押すことで、プログラムを実行できます。<br>
+        環境によっては、Fn+F5かもしれません。
+       </span>
+      </div>
+      <img class="cb30" src="k_x_cu.jpg">
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
