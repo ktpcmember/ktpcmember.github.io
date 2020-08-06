@@ -98,13 +98,13 @@
         引数
        </h4>
        <span class="cb41">
-        
+        関数に渡す値
        </span>
        <h4 class="cb45">
         定数
        </h4>
        <span class="cb41">
-        
+        実行中に変化しない値
        </span>
       </div>
       <div class="cb36 debr">
@@ -133,7 +133,6 @@
         この作業を、コンパイルといいます。
        </span>
       </div>
-      <img class="cb30" src="../../../images/rray.jpg">
      </article>
      <article class="cb23">
       <h3 class="cb33">Hello, world</h3>
@@ -151,8 +150,7 @@
         前回のコードをCtrl+Aで全選択し、back spaceキーで消してください。<br>
         そして、以下のコードを、COPYを押してコピーし、空いたファイルに貼り付けてください。<br>
         ここで、上書き保存しておきます。<br>
-        そして、F5キー、環境によってはFn+F5キーを押して、実行してみましょう。<br>
-        通知などで見かけるウィンドウが現れたと思いますが、これをメッセージボックスといいます。
+        そして、F5キー、環境によってはFn+F5キーを押して、実行してみましょう。
        </span>
       </div>
       <img class="cb30" src="howd.jpg">
@@ -183,79 +181,249 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
      <article class="cb23">
       <h3 class="cb33">コードを読む</h3>
       <span class="cb34">
-       <br>
        それでは、コードを読み、意味を知っていきましょう。<br>
        コードは、プログラムとして実行される順序で読むのが原則です。
       </span>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">Visual Studioの起動</h3>
+       <h3 class="cb40">関数/エントリーポイント</h3>
        <span class="cb41">
-        スタートメニューを開き、Visual Studioを起動します。<br>
-        ライセンス認証を要求されるので、マイクロソフトのアカウントで認証します。<br>
-        物理部のPCなら物理部の、個人のPCなら個人のアカウントを使ってください。
+        まず、関数とは、動作のまとまりで、結果を返すものです。<br>
+        また、プログラムの中で、最初に実行される点を、エントリーポイントといいます。<br>
+        Windows APIを用いたプログラムでは、<span class="cb52">wWinMain</span>関数がエントリーポイントとなります。<br>
+        ここでは説明しませんが、この行は、<span class="cb52">wWinMain</span>関数の定義をしています。<br>
+        複雑なので、しばらくは写しておけばよいでしょう。<br>
+        今回は、<span class="cb52">int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)</span>から実行が始まることを覚えてください。
        </span>
       </div>
-      <img class="cb30" src="stmu.jpg">
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">プロジェクトテンプレート</h3>
+       <h3 class="cb40">コメント</h3>
        <span class="cb41">
-        認証後、「新しいプロジェクトの作成」を押します。<br>
-        ただし、以前に作ったプロジェクトを引き続き使う場合には、「プロジェクトやソリューションを開く」を選択します。<br>
-        次の画面では、プロジェクトテンプレートを選択します。<br>
-        これは、プロジェクトによく使われるファイルをまとめたものです。<br>
-        プロジェクトに必要なファイルをコピーする手間が軽減されます。<br>
-        ここでは、「Windows デスクトップ アプリケーション」を選択して「次へ」を押しましょう。
+        <span class="cb52">//</span>から行の終わりまでは、コメントになります。<br>
+        この範囲に書いた文字は、プログラムの実行には影響しません。<br>
+        コメントには、コードの概要や、説明を書きます。<br>
+        後で読んだときや、他の人が読んだときでも、動作を把握しやすくなります。<br>
+        例文では、コメントを使って注釈をつけています。<br>
+        読み進める時の参考にしてください。
        </span>
       </div>
-      <img class="cb30 debr" src="p_jtte.jpg">
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">プロジェクトの作成</h3>
+       <h3 class="cb40">引数</h3>
        <span class="cb41">
-        この画面では、プロジェクトの名前などを設定します。<br>
-        プロジェクト名と場所は変えなくてもよいですが、変える場合はわかりやすくしましょう。<br>
-        なお、場所にはプロジェクトが保存されるフォルダを指定します。<br>
-        また、ソリューションは、プロジェクトをまとめるさらに大きな箱のことです。<br>
-        ここでは変更しなくてもよいです。<br>
-        それでは、「作成」を押しましょう。
+        関数は、動作のまとまりで、結果を返すものだと書きました。<br>
+        これに加え、多くの関数は、動作の内容を細かく指定できるようになっています。<br>
+        呼び出し時に、指定するための値を渡すことができます。<br>
+        この値を引数といい、<span class="cb52">関数名(引数)</span>と書きます。<br>
+        複数の引数があるときは、<span class="cb52">,</span>で区切ります。<br>
+        また、左のものから順に、<span class="cb52">(第1引数, 第2引数, 第3引数, ... )</span>と呼びます。
        </span>
       </div>
-      <img class="cb30 debr" src="nwp_jt.jpg">
      </article>
      <article class="cb23">
-      <h3 class="cb33">プロジェクトの編集</h3>
+      <h3 class="cb33">メッセージボックス</h3>
       <span class="cb34">
-       プロジェクトは、プログラムを書き足して完成させます。
+       先ほどの実行時に、通知などでよく見る、小さなウィンドウが現れました。<br>
+       Windowsでは、これをメッセージボックスと呼んでいます。<br>
+       これを表示させたのは<span class="cb52">MessageBoxW</span>関数です。<br>
+       この関数は、Windowsに用意されている関数で、私たちユーザーが呼び出して使っています。<br>
+       なお、Windowsの関数を使うために、コードの先頭に<span class="cb52">#include &lt;Windows.h&gt;</span>と書いています。<br>
       </span>
      </article>
      <article class="cb22">
       <div class="cb31">
-       <h3 class="cb40">ファイル操作</h3>
+       <h3 class="cb40"><span class="cb52">MessageBoxW</span>関数の引数</h3>
        <span class="cb41">
-        プログラムはファイルに書き込んで保存します。<br>
-        プログラムを書き込むファイルを追加したいなら、左上の「ファイル」から「新規作成」「ファイル」を選んでください。<br>
-        また、プログラムを編集した後には、同じく「ファイル」から「すべて保存」してください。<br>
-        なお、プロジェクトに含まれるファイルは右側に表示されており、ダブルクリックで開くことができます。
+        この関数は、引数を4つ受け取ります。<br>
+        具体的に今回渡した引数は、表のとおりです。<br>
+        第1引数については、現段階ではまだ解説できません。<br>
+        本講習が終わり、次の講習に入った段階で解説します。<br>
+        一旦、このまま<span class="cb52">NULL</span>を指定しておきましょう。<br>
+        第2/第3引数にはそれぞれ、本文/タイトルとして表示される文字列を指定します。<br>
+        第4引数は、メッセージボックスのアイコンや選択肢などのスタイルを指定します。
        </span>
       </div>
-      <img class="cb30" src="fi.jpg">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        今回指定した引数
+       </h4>
+       <h4 class="cb45">
+        第1引数
+       </h4>
+       <span class="cb41">
+        <span class="cb52">NULL</span>
+       </span>
+       <h4 class="cb45">
+        第2引数
+       </h4>
+       <span class="cb41">
+        <span class="cb52">L"Hello, world!"</span>
+       </span>
+       <h4 class="cb45">
+        第3引数
+       </h4>
+       <span class="cb41">
+        <span class="cb52">L"MessageBoxW"</span>
+       </span>
+       <h4 class="cb45">
+        第4引数
+       </h4>
+       <span class="cb41">
+        <span class="cb52">MB_OK</span>
+       </span>
+      </div>
      </article>
      <article class="cb22">
       <div class="cb31">
-       <h3 class="cb40">プログラム実行</h3>
+       <h3 class="cb40">文字列</h3>
        <span class="cb41">
-        さて、最後に、プログラムを実行してみましょう。<br>
-        プロジェクトの作成時に、長いコードが自動生成されているはずです。<br>
-        F5キーを押すことで、プログラムを実行できます。<br>
-        環境によっては、Fn+F5かもしれません。
+        第2/第3引数では、文字列を引数としています。<br>
+        ここで重要なのが、文字の符号化方式、つまり文字コードです。<br>
+        コンピュータは、文字を番号にして保管し、表示するときに番号から戻しています。<br>
+        つまり、2回の変換時の変換方式に違いがあってはいけないのです。<br>
+        今回、私たちはUTF-16LEという方式を使うことにしました。<br>
+        これは、現在のWindowsが標準で採用しているものです。<br>
+        <span class="cb52">MessageBoxW</span>はUTF-16LE用の関数です。<br>
+        ですから、引数もUTF-16LEにしてやらなければなりません。<br>
+        UTF-16LEの文字列を書くには、<span class="cb52">L"文字列"</span>と書きます。
        </span>
       </div>
-      <img class="cb30" src="k_x_cu.jpg">
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト文字コード</h3>
+       <span class="cb41">
+        個々の関数だけでなく、コード全体にわたって影響するのが、デフォルト文字コードです。<br>
+        Visual Studioでは、UTF-16LEになっています。<br>
+        Visual Studioを使わない場合、コンパイラの実行時にUTF-16LEと指定できます。<br>
+        あるいは、コードの一番上に<span class="cb52">#define UNICODE</span>と書いてもよいです。<br>
+        これらの方法で指定しなければ、ASCIIとして処理される可能性が高いです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">定数</h3>
+       <span class="cb41">
+        第4引数には、スタイルを表す、Windowsが決めた整数値を指定する必要があります。<br>
+        しかし、数値を覚えるのは難しいですし、後で読んだときの可読性も低いです。<br>
+        そこで、数値にアルファベットの名前を付け、定数と呼んでいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スタイル</h3>
+       <span class="cb41">
+        <span class="cb52">MessageBoxW</span>関数に指定できるスタイルは、表の通りです。<br>
+        この中から複数のスタイルを指定することもでき、に<span class="cb52">定数A | 定数B | 定数C ...</span>と書きます。
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        スタイル
+       </h4>
+       <h4 class="cb45">
+        MB_OK
+       </h4>
+       <span class="cb41">
+        OKのボタンを表示します。標準のボタンです。
+       </span>
+       <h4 class="cb45">
+        MB_OKCANCEL
+       </h4>
+       <span class="cb41">
+        OK、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ABORTRETRYIGNORE
+       </h4>
+       <span class="cb41">
+        中止、再試行、無視のボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_YESNOCANCEL
+       </h4>
+       <span class="cb41">
+        はい、いいえ、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_RETRYCANCEL
+       </h4>
+       <span class="cb41">
+        再試行、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_CANCELTRYCONTINUE
+       </h4>
+       <span class="cb41">
+        キャンセル、再試行、続行のボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONERROR
+       </h4>
+       <span class="cb41">
+        一時停止の標識アイコンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONWARNING
+       </h4>
+       <span class="cb41">
+        感嘆符のアイコンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONINFORMATION
+       </h4>
+       <span class="cb41">
+        小文字のiを丸で囲んだアイコンを表示します。<br>
+        インフォメーションマークともいいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実行結果</h3>
+       <span class="cb41">
+        今回、<span class="cb52">MessageBoxW</span>関数の実行結果は利用していません。<br>
+        しかし、<span class="cb52">return 0;</span>の文で、<span class="cb52">wWinMain</span>関数が正常に終了したことを知らせています。
+       </span>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">練習問題</h3>
+      <span class="cb34">
+       理解できたか確認するために、練習問題を解いてもらいます。<br>
+       メッセージボックスに表示する文字列を変更してみましょう。<br>
+       また、「はい、いいえ」のボタンと、「インフォメーションマーク」を表示させてください。
+      </span>
+     </article>
+     <article class="cb22">
+      <details class="cb38">
+       <summary>解答</summary>
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">練習問題解答</span>
+         <button type="button" class="cb53" onclick="copy('howd_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="howd_1">
+
+#include &lt;Windows.h&gt;
+
+int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
+    MessageBoxW(NULL, L"Are you a student?", L"Choose", MB_YESNO | MB_ICONINFORMATION);
+    return 0;
+}
+</pre>
+        </code>
+       </div>
+      </details>
      </article>
     </div>
    </div>
