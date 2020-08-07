@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。変数と文字列を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>変数と文字列 - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../howd/howd.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../iraddo/iraddo.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++講習/変数と文字列</h1>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">概要</h3>
+      <span class="cb34">
+       今回は、プログラムの中でも非常に重要な要素である変数の解説をします。<br>
+       また、前章で扱った文字列についても補足します。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        変数
+       </h4>
+       <span class="cb41">
+        実行中に値を保存しているもの
+       </span>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        変数の型と名前を定義すること
+       </span>
+       <h4 class="cb45">
+        初期化
+       </h4>
+       <span class="cb41">
+        変数が最初に持つ値の定義
+       </span>
+       <h4 class="cb45">
+        代入
+       </h4>
+       <span class="cb41">
+        変数の持つ値を変えること
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">
+        今回の必要語はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">場の繋ぎ</h3>
+      <span class="cb34">
+       とりあえずプログラムだけ配信します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">Hello, world</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0">
+
+#include <Windows.h>
+//std::wstringとstd::to_wstringを使うために必要です。
+#include <string>
+
+int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
+    //宣言、初期化
+    std::wstring str1 = L"Hello, ";
+    //連結、代入
+    str1 = str1 + L"world!";
+    //メッセージボックスに渡す
+    MessageBoxW(NULL, str1.c_str(), L"MessageBoxW1", MB_OK);
+
+    //初期化2
+    std::wstring str2 { str1 };
+    MessageBoxW(NULL, str2.c_str(), L"MessageBoxW2", MB_OK);
+    return 0;
+}
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
