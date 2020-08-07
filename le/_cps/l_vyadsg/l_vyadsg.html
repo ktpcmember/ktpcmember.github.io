@@ -178,22 +178,22 @@
       </div>
      </article>
      <article class="cb23">
-      <h3 class="cb33">場の繋ぎ</h3>
+      <h3 class="cb33">変数の例文</h3>
       <span class="cb34">
-       とりあえずプログラムだけ配信します。
+       目を通したら実行してみましょう。<br>
+       メッセージボックスが2つ出てくるはずです。
       </span>
      </article>
      <article class="cb21">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">Hello, world</span>
+        <span class="cb54">変数の宣言/初期化/代入</span>
         <button type="button" class="cb53" onclick="copy('saco_0')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
 <pre id="saco_0">
-
 #include &lt;Windows.h&gt;
 //std::wstringとstd::to_wstringを使うために必要です。
 #include &lt;string&gt;
@@ -213,6 +213,26 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 }
 </pre>
        </code>
+      </div>
+     </article>
+     <article class="cb23">
+      <h3 class="cb33">変数の宣言/初期化/代入</h3>
+      <span class="cb34">
+       さて、動作の内容を読んでいきましょう。<br>
+       なお、このコードに出てきた変数は<span class="cb52">str1</span>と<span class="cb52">str2</span>の2つです。
+      </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">宣言</h3>
+       <span class="cb41">
+        変数は、使う前に、その名前が変数であることを宣言しなければなりません。<br>
+        これは、使われることの多い型や関数の定義をまとめたものです。<br>
+        この定義を使うことで、簡単かつ安全なプログラムを書くことができます。<br>
+        ライブラリを使うには、定義のファイルを<span class="cb52">#include &lt;ファイル名&gt;</span>で読み込みます。<br>
+        今回の講習では、UTF-16という文字コードを使っているので、<span class="cb52">std::wstring</span>型を使います。<br>
+        このために、stringというライブラリを読み込んでいます。
+       </span>
       </div>
      </article>
     </div>
