@@ -223,7 +223,7 @@
   margin:0.5em auto auto;
  }
  
- .cb40, cb44, .cb45 {
+ .cb40, .cb45 {
   text-align:center;
   border-bottom:solid 1px #000000;
  }
@@ -257,8 +257,9 @@
  }
  
  .cb44 {
+  text-align:center;
   margin-top:0.2em;
-  border-bottom-style:dashed;
+  border-bottom:dashed 1px #000000;
  }
  
  .cb45 {
