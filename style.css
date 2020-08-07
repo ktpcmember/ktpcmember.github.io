@@ -220,6 +220,7 @@
  
  .cb38 {
   margin:0.5em auto auto;
+  overflow:scroll;
  }
  
  .cb40, cb44, .cb45 {
