@@ -118,10 +118,64 @@
       </div>
      </article>
      <article class="cb23">
-      <h3 class="cb33">変数</h3>
+      <h3 class="cb33">変数/型</h3>
       <span class="cb34">
-       
+       変数とは、プログラムの実行中に値を保存するものです。<br>
+       これは、実行中に値を変えられる、という点で、定数と対比されます。<br>
       </span>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">型</h3>
+       <span class="cb41">
+        C++では、整数の<span class="cb52">int</span>型、実数の<span class="cb52">double</span>型など、すべての値に型があります。<br>
+        1つの変数には、1つの型の値しか入れられません。<br>
+        そこで、変数の説明に、<span class="cb52">int</span>型の変数、などということがあります。<br>
+        表のような型のほかにも様々な型があり、自分で増やすこともできますが、これについては基礎講習や応用講習で解説します。
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        主要な型
+       </h4>
+       <h4 class="cb45">
+        int型
+       </h4>
+       <span class="cb41">
+        整数の型
+       </span>
+       <h4 class="cb45">
+        double型
+       </h4>
+       <span class="cb41">
+        実数の型
+       </span>
+       <h4 class="cb45">
+        std::wstring型
+       </h4>
+       <span class="cb41">
+        今回の講習で使う文字列型
+       </span>
+       <h4 class="cb45">
+        bool型
+       </h4>
+       <span class="cb41">
+        真偽値型
+       </span>
+      </div>
+     </article>
+     <article class="cb22">
+      <div class="cb31">
+       <h3 class="cb40">C++標準ライブラリ</h3>
+       <span class="cb41">
+        C++には、標準ライブラリという、便利なコード集が付随しています。<br>
+        これは、使われることの多い型や関数の定義をまとめたものです。<br>
+        この定義を使うことで、簡単かつ安全なプログラムを書くことができます。<br>
+        ライブラリを使うには、定義のファイルを<span class="cb52">#include &lt;ファイル名&gt;</span>で読み込みます。<br>
+        今回の講習では、UTF-16という文字コードを使っているので、<span class="cb52">std::wstring</span>型を使います。<br>
+        このために、stringというライブラリを読み込んでいます。
+       </span>
+      </div>
      </article>
      <article class="cb23">
       <h3 class="cb33">場の繋ぎ</h3>
