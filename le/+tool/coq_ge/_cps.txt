@@ -82,24 +82,24 @@
 - } s
 - ~ s
 
-- ? #include p
-- ? #define p
-- ? #if p
-- ? #ifdef p
-- ? #ifndef p
-- ? #else p
-- ? #endif p
+! ? #include p
+! ? #define p
+! ? #if p
+! ? #ifdef p
+! ? #ifndef p
+! ? #else p
+! ? #endif p
 
-- ? int k
-- ? double k
-- ? return k
-- ? if k
-- ? else k
-- ? for k
-- ? do k
-- ? while k
-- ? break k
-- ? continue k
-- ? switch k
-- ? case k
+! ? int k
+! ? double k
+! ? return k
+! ? if k
+! ? else k
+! ? for k
+! ? do k
+! ? while k
+! ? break k
+! ? continue k
+! ? switch k
+! ? case k
 
