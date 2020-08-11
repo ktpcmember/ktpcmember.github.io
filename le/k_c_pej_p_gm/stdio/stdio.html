@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。標準入出力について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>標準入出力 - 競技プログラミング講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <link rel="stylesheet" type="text/css" href="../codeStyle.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133906591-2');
+  </script>
+</head>
+
+<body>
+  <header class="ch00">
+    <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+    <div class="ch01">
+      <div class="ch10">
+        <div class="ch21">
+          <button type="button" class="ch31" onclick="ck()">
+            <img class="ch42" src="../../../images/menu.png">
+          </button>
+        </div>
+        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">駒場東邦物理部</span>
+            </span>
+            <a class="ch41" href="../../../index.html">
+              <span class="ch50">トップページ</span>
+            </a>
+            <a class="ch41" href="../../le.html">
+              <span class="ch50">講習トップ</span>
+            </a>
+          </div>
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">競技プログラミング講習</span>
+            </span>
+            <a class="ch41" href="../k_c_pej_p_gm.html">
+              <span class="ch50">目次</span>
+            </a>
+            <a class="ch41" href="../none/none.html">
+              <span class="ch50">索引</span>
+            </a>
+            <a class="ch41" href="../none/none.html">
+              <span class="ch50">次回</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cb00">
+      <div class="cb10">
+        <article class="cb20">
+          <h1>競技プログラミング講習/標準入出力</h1>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">概要</h3>
+          <span class="cb34">
+            今回は、競技プログラミングにおいてとても重要な標準入出力について解説します。<br>
+            標準入出力が必要な問題がほとんどですので、できるようになりましょう。
+          </span>
+        </article>
+        <article class="cb22">
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              重要語
+            </h4>
+            <h4 class="cb45">
+              標準入力
+            </h4>
+            <span class="cb41">
+              基本的にはキーボードからの入力
+            </span>
+            <h4 class="cb45">
+              標準出力
+            </h4>
+            <span class="cb41">
+              基本的には画面への出力
+            </span>
+          </div>
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              必要語
+            </h4>
+            <span class="cb41">
+              今回の必要語はありません。
+            </span>
+          </div>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">コード例</h3>
+          <span class="cb34">
+            これは、<a href="https://atcoder.jp/contests/practice/tasks/practice_1" target="_blank">A - Welcome to
+              AtCoder</a>に対する回答です。<br>
+            a+b+cの計算結果と文字列sをスペース区切りで出力します。
+          </span>
+          <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    int a, b, c;
+    std::cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    std::string s;
+    std::cin &gt;&gt; s;
+    std::cout &lt;&lt; (a + b + c) &lt;&lt; " " &lt;&lt; s &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">標準出力</h3>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">基本</h3>
+              <span class="cb41">
+                <code>std::cout &lt;&lt; "文字列" &lt;&lt; std::endl</code>でダブルクォーテーション内の文字列出力して最後に改行を行います。<br>
+                以下のコードで<code>"Hello, world!"</code>と出力することができます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    std::cout &lt;&lt; "Hello, world!" &lt;&lt; endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">endl</h3>
+              <span class="cb41">
+                また、最後の<code>std::endl</code>は改行だと思ってもらってもいいですが、正確には改行してバッファをフラッシュします。<br>
+                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    std::cout &lt;&lt; "Hello,";
+    std::cout &lt;&lt; " world!" &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">複数</h3>
+              <span class="cb41">
+                さらに、<code>&lt;&lt;</code>でつなげることによって一文で複数出力することもできます。
+                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    std::cout &lt;&lt; "Hello," &lt;&lt; " world!" &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">変数</h3>
+              <span class="cb41">
+                <code>std::cout &lt;&lt; 変数名 &lt;&lt; std::endl;</code>で変数の値を出力することができます。
+                そのため、以下のコードを実行すると<code>10</code>と出力されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    int a = 10;
+    std::cout &lt;&lt; a &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">標準入力</h3>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">基本</h3>
+              <span class="cb41">
+                <code>std::cin &gt;&gt; 変数名</code>で入力を行います。<br>
+                以下のコードで変数<code>a</code>に入力することができます。<br>
+                例えば<code>10</code>と入力すると、そのまま<code>10</code>と出力されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    int a;
+    std::cin &gt;&gt; a;
+    std::cout &lt;&lt; a &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">複数</h3>
+              <span class="cb41">
+                スペース区切りまたは改行区切りで複数の入力が与えられる場合があります。<br>
+                C++の場合スペース区切りであろうと改行区切りであろうとあまり関係なく、<code>&gt;&gt;</code>でつなげることで複数の入力をを受け取ることができます。この場合<br>
+                <code>10(改行)20(スペース)30</code><br>
+                <code>10(スペース)20(改行)30</code><br>
+                <code>10(スペース)20(スペース)30</code><br>
+                <code>10(改行)20(改行)30</code><br>
+                のすべてを正しく受け取ることができ、<code>10 20 30</code>と表示されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    int a, b, c;
+    std::cin &gt;&gt; a;
+    std::cin &gt;&gt; b &gt;&gt; c;
+    std::cout &lt;&lt; a " " &lt;&lt; b &lt;&lt; " " &lt;&lt; c &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">文字列</h3>
+              <span class="cb41">
+                文字列の入力も同じく、以下のコードを実行すると入力した文字列がそのまま出力されます。
+              </span>
+              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
+int main() {
+    std::string s;
+    std::cin &gt;&gt; s;
+    std::cout &lt;&lt; s &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+            </div>
+          </article>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">#include &lt;bits/stdc++.h&gt;</h3>
+          <article class="cb22">
+            <div class="cb31">
+              <h3 class="cb40">これって何？</h3>
+              <span class="cb41">
+                <code>#include &lt;bits/stdc++.h&gt;</code>はC++の標準ライブラリを一括でインクルードすることができます。たとえば、<code>cin</code>や<code>cout</code>を使うなら<code>#include &lt;iostream&gt;</code>を、
+                <code>string</code>を使うなら<code>#include &lt;string&gt;</code>を書けばよいのですが、これらを使うたびに書いていては時間がもったいないので、これを使用しています。<br>
+                また、時間の短縮という点については、<code>using namespace std;</code>と冒頭に記述することで、<code>std::</code>と書く手間を省くことができます。しかし、名前空間の衝突などの問題もありこの講習では使用していません。
+              </span>
+            </div>
+          </article>
+        </article>
+        <article class="cb23">
+          <h3 class="cb33">練習問題</h3>
+          <span class="cb34">
+            理解できたか確認するために、練習問題を解いてもらいます。以下の問題を解いてみてください<br>
+            <a href="https://atcoder.jp/contests/abc174/tasks/abc174_a" target="_blank">A - Air Conditioner</a><br>
+            <a href="https://atcoder.jp/contests/abc171/tasks/abc171_a" target="_blank">A - αlphabet</a><br>
+            <a href="https://atcoder.jp/contests/abc168/tasks/abc168_b" target="_blank">B - ... (Triple
+              Dots)</a> (少し難易度が上がります)
+          </span>
+        </article>
+      </div>
+    </div>
+    <footer class="cf00">
+      <div class="cf10">
+        <button class="cf21" onclick="tp()">
+          <img class="cf30" src="../../../images/top.png">
+        </button>
+        <span class="cf20">
+          (C) 2020 駒場東邦物理部[KTPC]
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
