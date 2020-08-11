@@ -282,6 +282,10 @@
   border-bottom:solid 1px #000000;
  }
  
+ .cb48 {
+  cursor:pointer;
+ }
+ 
  .cb50 {
   width:3em;
   height:1em;
@@ -331,7 +335,6 @@
   padding:0.5em 0;
   width:100%;
   overflow:auto;
-  background-color:#D0FEFE;
  }
  
  .cb60 {
@@ -390,6 +393,14 @@
   background-color:#FFFEFE;
   border:solid 1px #000000;
   padding:4px;
+ }
+ 
+ .bkgdbl {
+  background-color:#D0FEFE;
+ }
+ 
+ .bkgdrd {
+  background-color:#FED0F0;
  }
  
  .lepy_a, .lepy_b, .lepy_c {
