@@ -1,0 +1,105 @@
+﻿+ p wdp_q_p_csc_md
++ k wdkywd
++ n wdnr
++ s wdsl
++ t wdtt
++ ca wdc_mt
++ cae *
++ cb wdc_mt
++ cbe wdc_mt
+
+& ? n
+& n ?
+
+& t ?
+& t n
+& t s
+& t ca
+& t cae
+& t cb
+& t cbe
+| t t
+
+& ca ?
+& ca n
+& ca s
+& ca t
+& ca ca
+& ca cb
+& ca cbe
+| ca cae
+
+& cb ?
+& cb n
+& cb s
+& cb t
+& cb ca
+& cb cae
+& cb cb
+| cb cbe
+
+- " t
+- L" t
+- \" ?
+
+- // ca
+- !! cae
+- /* cb
+- */ cbe
+
+- 0 n
+- 1 n
+- 2 n
+- 3 n
+- 4 n
+- 5 n
+- 6 n
+- 7 n
+- 8 n
+- 9 n
+
+- ! s
+- % s
+- & s
+- ( s
+- ) s
+- * s
+- + s
+- , s
+- - s
+- / s
+- : s
+- ; s
+- < s
+- = s
+- > s
+- ? s
+- [ s
+- ] s
+- ^ s
+- { s
+- | s
+- } s
+- ~ s
+
+- ? #include p
+- ? #define p
+- ? #if p
+- ? #ifdef p
+- ? #ifndef p
+- ? #else p
+- ? #endif p
+
+- ? int k
+- ? double k
+- ? return k
+- ? if k
+- ? else k
+- ? for k
+- ? do k
+- ? while k
+- ? break k
+- ? continue k
+- ? switch k
+- ? case k
+
