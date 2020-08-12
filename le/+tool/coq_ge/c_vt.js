@@ -1,9 +1,9 @@
 ﻿
 function push(){
  var i_pt=document.getElementById("i_pt").textContent;;
- var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c;
+ var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l;
  var wd=new Array(),pr=new Array,cr=new Array,ky=new Array;
- var ttty=new Array(i_pt.length+1);
+ var p_vsty="",ctty="",cttn="";
  r_qt=new XMLHttpRequest();
  r_qt.open("GET","https://www.ktpc.tokyo/le/+tool/coq_ge/_cps.txt",false);
  r_qt.send(null);
@@ -57,6 +57,20 @@ function push(){
     i+=3;
     break;
    case "-":
+    switch(sxtn[i+1]){
+     case "EOF":
+      sxtn[i+1]="";
+      break;
+     case "NL":
+      sxtn[i+1]="\n";
+      break;
+     case "TAB":
+      sxtn[i+1]="\t";
+      break;
+     case "SP":
+      sxtn[i+1]=" ";
+      break;
+    }
     cr.push({
      na:sxtn[i+1],
      wd:sxtn[i+2]
@@ -77,30 +91,58 @@ function push(){
  }
  i=0;
  do{
-  switch(i_pt.charAt(i)){
-   case "":
-   case "\t":
-   case "\n":
-   case " ":
-    
-    break;
-   default:
-    for(j=4;0<j;j++){
-     c=i_pt.substring(i,i+j);
-     for(k=0;cr.length>k;k++){
-      if(cr[k].na==c) break;
-     }
-     if(cr.length!=k) break;
+  l=1;
+  for(j=4;0<j;j++){
+   c=i_pt.substring(i,i+j);
+   for(k=0;cr.length>k;k++){
+    if(cr[k].na==c){
+     l=j;
+     break;
     }
-    if(j==0){
-     ttty[i]="?";
-    }else{
-     ttty[i]=cr[k].wd;
-    }
+   }
+   if(cr.length!=k) break;
   }
-  i++;
+  if(j==0){
+   ctty="?";
+  }else{
+   ctty=cr[k].wd;
+  }
+  for(j=0;pr.length>j;j++){
+   if((pr[j].lt==p_vsty)&&(pr[j].rt==ctty)){
+    if(pr[j].sp){
+     j=pr.length;
+    }
+    ctty=p_vsty;
+    break;
+   }
+  }
+  if((pr.length==j)||(i_pt.charAt(i)=="")){
+   for(j=0;ky.length>j;j++){
+    if((ky[j].p_vswd==ctty)&&(ky[j].na==cttn)){
+     ctty=ky[j].ntwd;
+     break;
+    }
+   }
+   for(j=0;wd.length>j;j++){
+    if(wd[j].na==ctty){
+     ctty=wd[j].cs;
+     break;
+    }
+   }
+   if((wd.length==j)||(ctty=="*")){
+    ottt+=cttn;
+   }else{
+    ottt+="<span class=\""+ctty+"\">"+cttn+"</span>";
+   }
+   cttn="";
+   ctty="";
+  }else{
+   cttn+=c;
+  }
+  p_vsty=ctty;
+  i+=l;
  }while(i_pt.kength>i);
- alert(ttty);
+ alert(ottt);
  navigator.clipboard.writeText(ottt);
  return;
 }
