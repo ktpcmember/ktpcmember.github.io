@@ -144,6 +144,6 @@ function push(){
   i+=l;
  }while(i_pt.length>=i);
  alert(ottt);
- navigator.clipboard.writeText(ottt);
+ navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
  return;
 }
