@@ -7,6 +7,8 @@
 + cae *
 + cb wdc_mt
 + cbe wdc_mt
++ e *
++ ? *
 
 & ? n
 & n ?
@@ -14,6 +16,7 @@
 & t ?
 & t n
 & t s
+& t e
 & t ca
 & t cae
 & t cb
@@ -24,6 +27,7 @@
 & ca n
 & ca s
 & ca t
+& ca e
 & ca ca
 & ca cb
 & ca cbe
@@ -33,6 +37,7 @@
 & cb n
 & cb s
 & cb t
+& cb e
 & cb ca
 & cb cae
 & cb cb
@@ -43,9 +48,13 @@
 - \" ?
 
 - // ca
-- !! cae
+- NL cae
 - /* cb
 - */ cbe
+
+- TAB e
+- SP e
+- EOF eof
 
 - 0 n
 - 1 n
