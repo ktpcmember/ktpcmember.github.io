@@ -107,7 +107,7 @@ function push(){
   }else{
    ctty=cr[k].wd;
   }
-  for(j=0;pr.length>j;j++){
+  for(j=0;pr.length>j;j--){
    if((pr[j].lt==p_vsty)&&(pr[j].rt==ctty)){
     if(pr[j].sp){
      j=pr.length;
