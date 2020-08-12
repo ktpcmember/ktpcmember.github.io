@@ -142,6 +142,7 @@ function push(){
   cttn+=c;
   p_vsty=ctty;
   i+=l;
+  alert("##"+i);
  }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
