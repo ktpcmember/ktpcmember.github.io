@@ -92,7 +92,7 @@ function push(){
  i=0;
  do{
   l=1;
-  for(j=4;0<j;j++){
+  for(j=4;0<j;j--){
    c=i_pt.substring(i,i+j);
    for(k=0;cr.length>k;k++){
     if(cr[k].na==c){
@@ -107,7 +107,7 @@ function push(){
   }else{
    ctty=cr[k].wd;
   }
-  for(j=0;pr.length>j;j--){
+  for(j=0;pr.length>j;j++){
    if((pr[j].lt==p_vsty)&&(pr[j].rt==ctty)){
     if(pr[j].sp){
      j=pr.length;
