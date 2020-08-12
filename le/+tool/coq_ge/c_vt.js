@@ -110,6 +110,7 @@ function push(){
   alert(c);
   if(j==-1){
    ctty="?";
+   c=i_pt.charAt(i);
   }else{
    ctty=cr[k].wd;
   }
@@ -146,6 +147,7 @@ function push(){
   cttn+=c;
   p_vsty=ctty;
   i+=l;
+  alert("##"+cttn);
  }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
