@@ -118,7 +118,7 @@ function push(){
     break;
    }
   }
-  if((pr.length==j)||(i_pt.charAt(i)=="")){
+  if((cttn!="")&&((pr.length==j)||(i_pt.charAt(i)==""))){
    for(j=0;ky.length>j;j++){
     if((ky[j].p_vswd==ctty)&&(ky[j].na==cttn)){
      ctty=ky[j].ntwd;
