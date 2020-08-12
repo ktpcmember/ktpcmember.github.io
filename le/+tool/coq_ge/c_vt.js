@@ -143,7 +143,7 @@ function push(){
   p_vsty=ctty;
   i+=l;
   alert("##"+i);
- }while(i_pt.length>=i);
+ }while(i_pt.chatAt(i)!="");
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
  return;
