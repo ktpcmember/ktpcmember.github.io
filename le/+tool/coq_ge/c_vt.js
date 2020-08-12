@@ -29,7 +29,7 @@ function push(){
     break;
   }
   i++;
- }while(i<sx.length);
+ }while(i<=sx.length);
  i=0;
  while(i<nrofsxtn){
   switch(sxtn[i]){
@@ -140,7 +140,7 @@ function push(){
   cttn+=c;
   p_vsty=ctty;
   i+=l;
- }while(i_pt.length>i);
+ }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt);
  return;
