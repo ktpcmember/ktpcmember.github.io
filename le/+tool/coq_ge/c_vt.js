@@ -140,7 +140,7 @@ function push(){
   cttn+=c;
   p_vsty=ctty;
   i+=l;
- }while(i_pt.kength>i);
+ }while(i_pt.length>i);
  alert(ottt);
  navigator.clipboard.writeText(ottt);
  return;
