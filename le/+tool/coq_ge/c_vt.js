@@ -90,7 +90,11 @@ function push(){
     i++;
   }
  }
- i=0;
+ if(i_pt.charCodeAt(0)==0xFFFE){
+  i=1;
+ }else{
+  i=0;
+ }
  do{
   l=1;
   for(j=Math.min(4,i_pt.length-i);0<=j;j--){
@@ -142,7 +146,6 @@ function push(){
   cttn+=c;
   p_vsty=ctty;
   i+=l;
-  alert("##"+i);
  }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
