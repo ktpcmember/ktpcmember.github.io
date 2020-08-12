@@ -1,6 +1,6 @@
 ﻿
 function push(){
- var i_pt=document.getElementById("i_pt").textContent;
+ var i_pt=document.getElementById("i_pt").value;
  var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l;
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
