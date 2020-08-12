@@ -97,7 +97,7 @@ function push(){
    c=i_pt.substring(i,i+j);
    for(k=0;cr.length>k;k++){
     if(cr[k].na==c){
-     l=j;
+     l=Math.max(1,j);
      break;
     }
    }
@@ -143,7 +143,7 @@ function push(){
   p_vsty=ctty;
   i+=l;
   alert("##"+i);
- }while(i_pt.chatAt(i)!="");
+ }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
  return;
