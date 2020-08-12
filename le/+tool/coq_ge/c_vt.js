@@ -139,7 +139,7 @@ function push(){
   }
   p_vsty=ctty;
   i+=l;
-  alert("##"+cttn);
+  alert("##"+cttn+"//"+ctty);
  }while(i_pt.length>=i);
  alert(ottt);
  navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
