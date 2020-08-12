@@ -17,6 +17,7 @@ function push(){
    case "":
    case " ":
    case "\n":
+   case "\r":
     if(j!=nrofsxtn){
      j++;
     }
@@ -102,6 +103,7 @@ function push(){
    }
    if(cr.length!=k) break;
   }
+  alert(c);
   if(j==0){
    ctty="?";
   }else{
