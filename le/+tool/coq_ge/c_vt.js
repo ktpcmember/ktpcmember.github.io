@@ -108,7 +108,7 @@ function push(){
    if(cr.length!=k) break;
   }
   alert(c);
-  if(j==-1){
+  if(j==0){
    ctty="?";
    c=i_pt.charAt(i);
    if(c==""){
