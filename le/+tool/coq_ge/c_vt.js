@@ -80,7 +80,7 @@ function push(){
     break;
    case "!":
     ky.push({
-     p_viwd:sxtn[i+1],
+     p_vswd:sxtn[i+1],
      na:sxtn[i+2],
      ntwd:sxtn[i+3]
     });
