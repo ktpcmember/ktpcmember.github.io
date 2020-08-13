@@ -97,11 +97,11 @@ function push(){
  }
  do{
   l=1;
-  for(j=Math.min(4,i_pt.length-i);0<=j;j--){
+  for(j=Math.min(4,i_pt.length-i);0<j;j--){
    c=i_pt.substring(i,i+j);
    for(k=0;cr.length>k;k++){
     if(cr[k].na==c){
-     l=Math.max(1,j);
+     l=j;
      break;
     }
    }
@@ -111,6 +111,16 @@ function push(){
   if(j==-1){
    ctty="?";
    c=i_pt.charAt(i);
+   if(c==""){
+    for(j=0;cr.length>j;j++){
+     if(cr[j].na==c) break;
+    }
+    if(cr.length==j){
+     ctty="";
+    }else{
+     ctty=cr[j].wd;
+    }
+   }
   }else{
    ctty=cr[k].wd;
   }
