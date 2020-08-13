@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
 
  body {
   width:100%;
@@ -306,7 +307,7 @@
  .cb52 {
   padding:0 0.2em;
   border-radius:20%;
-  font-family:monospace;
+  font-family:'Inconsolata', monospace;
   background-color:#E0E0E4;
  }
  
@@ -335,6 +336,7 @@
   padding:0.5em 0;
   width:100%;
   overflow:auto;
+  font-family:'Inconsolata', monospace;
  }
  
  .cb60 {
