@@ -107,7 +107,6 @@ function push(){
    }
    if(cr.length!=k) break;
   }
-  alert(c);
   if(j==0){
    ctty="?";
    c=i_pt.charAt(i);
@@ -124,6 +123,7 @@ function push(){
   }else{
    ctty=cr[k].wd;
   }
+  alert("!"+c+"??"+ctty);
   f=false;
   for(j=0;pr.length>j;j++){
    if((pr[j].lt==p_vsty)&&(pr[j].rt==ctty)){
