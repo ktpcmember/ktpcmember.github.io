@@ -165,6 +165,7 @@ function push(){
 
 function gtky(ky,ty,tn){
  var i,m;
+ alert(""+ty+"//"+tn);
  for(i=0;ky.length>i;i++){
   if((ky[i].p_vswd==ty)&&(ky[i].na==tn)){
    m=ky[i].ntwd;
