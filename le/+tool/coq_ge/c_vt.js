@@ -159,7 +159,7 @@ function push(){
 function gtky(ky,ty,tn){
  var i,m;
  for(i=0;ky.length>i;i++){
-  if((ky[i].p_vswd==ctty)&&(ky[i].na==tn)){
+  if((ky[i].p_vswd==ty)&&(ky[i].na==tn)){
    m=ky[i].ntwd;
    break;
   }
