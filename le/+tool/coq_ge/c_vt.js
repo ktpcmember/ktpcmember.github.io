@@ -181,7 +181,7 @@ function gttt(wd,ty,tt){
  if((wd.length==i)||(a=="*")){
   m=tt;
  }else{
-  m='<span class="'+ty+'">'+tt+'</span>';
+  m='<span class="'+a+'">'+tt+'</span>';
  }
  return m;
 }
