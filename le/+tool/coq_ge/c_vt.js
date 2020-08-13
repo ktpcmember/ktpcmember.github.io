@@ -123,7 +123,6 @@ function push(){
   }else{
    ctty=cr[k].wd;
   }
-  alert("!"+c+"??"+ctty);
   f=false;
   for(j=0;pr.length>j;j++){
    if((pr[j].lt==p_vsty)&&(pr[j].rt==ctty)){
@@ -149,10 +148,18 @@ function push(){
   }
   p_vsty=ctty;
   i+=l;
-  alert("##"+cttn+"//"+ctty);
  }while(i_pt.length>=i);
  alert(ottt);
- navigator.clipboard.writeText(ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+ navigator.clipboard.writeText(
+  ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;")
+ ).then(
+  function(){
+   alert("Copied!");
+  },
+  function(){
+   alert("Failed to copy...");
+  }
+ );
  return;
 }
 
