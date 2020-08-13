@@ -149,7 +149,9 @@ function push(){
   p_vsty=ctty;
   i+=l;
  }while(i_pt.length>=i);
- alert(ottt);
+ navigator.permissions.query({
+  name:"clipboard-write"
+ });
  navigator.clipboard.writeText(ottt).then(
   function(){
    alert("Copied!");
