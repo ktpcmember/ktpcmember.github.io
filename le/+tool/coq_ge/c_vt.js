@@ -150,9 +150,7 @@ function push(){
   i+=l;
  }while(i_pt.length>=i);
  alert(ottt);
- navigator.clipboard.writeText(
-  ottt.replace(/</g,"&lt;").replace(/>/g,"&gt;")
- ).then(
+ navigator.clipboard.writeText(ottt).then(
   function(){
    alert("Copied!");
   },
@@ -185,6 +183,7 @@ function gttt(wd,ty,tt){
    break;
   }
  }
+ tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
  if((wd.length==i)||(a=="*")){
   m=tt;
  }else{
