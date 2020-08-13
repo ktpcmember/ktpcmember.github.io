@@ -192,24 +192,24 @@
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55">
-#include &lt;Windows.h&gt;
-//std::wstringとstd::to_wstringを使うために必要です。
-#include &lt;string&gt;
+<pre id="saco_1" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdc_mt">//std::wstringとstd::to_wstringを使うために必要です。
+</span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
-    //宣言、初期化
-    std::wstring str1 = L"Hello, ";
-    //連結、代入
-    str1 = str1 + L"world!";
-    //メッセージボックスに渡す
-    MessageBoxW(NULL, str1.c_str(), L"MessageBoxW1", MB_OK);
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//宣言、初期化
+</span>    std<span class="wdsl">::</span>wstring str1 <span class="wdsl">=</span> <span class="wdtt">L"Hello, "</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//連結、代入
+</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L"world!"</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//メッセージボックスに渡す
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
 
-    //初期化2
-    std::wstring str2 { str1 };
-    MessageBoxW(NULL, str2.c_str(), L"MessageBoxW2", MB_OK);
-    return 0;
-}
+    <span class="wdc_mt">//初期化2
+</span>    std<span class="wdsl">::</span>wstring str2 <span class="wdsl">{</span> str1 <span class="wdsl">};</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str2.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </div>
