@@ -16,7 +16,6 @@
   <script type="text/javascript" src="../../../header.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -116,15 +115,28 @@
               AtCoder</a>に対する回答です。<br>
             <span class="cb52">a + b + c</span>の計算結果と文字列型変数<span class="cb52">s</span>の中身をスペース区切りで出力します。
           </span>
-          <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    int a, b, c;
-    std::cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-    std::string s;
-    std::cin &gt;&gt; s;
-    std::cout &lt;&lt; (a + b + c) &lt;&lt; " " &lt;&lt; s &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">Welcome to AtCoder</span>
+              <button type="button" class="cb53" onclick="copy('WelcomeToAtCoder')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+    <pre id="WelcomeToAtCoder" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">,</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> b <span class="wdsl">&gt;&gt;</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>string s<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span>a <span class="wdsl">+</span> b <span class="wdsl">+</span> c<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> s <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+           </code>
+          </div>
         </article>
         <article class="cb23">
           <h3 class="cb33">標準出力</h3>
@@ -132,58 +144,109 @@ int main() {
             <div class="cb31">
               <h3 class="cb40">基本</h3>
               <span class="cb41">
-                <code>std::cout &lt;&lt; "文字列" &lt;&lt; std::endl</code>でダブルクォーテーション内の文字列出力して最後に改行を行います。<br>
-                以下のコードで<code>"Hello, world!"</code>と出力することができます。
+                <span class="cb52">std::cout &lt;&lt; "文字列" &lt;&lt;
+                  std::endl</span>でダブルクォーテーション内の文字列出力して最後に改行を行います。<br>
+                以下のコードで<span class="cb52">"Hello, world!"</span>と出力することができます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    std::cout &lt;&lt; "Hello, world!" &lt;&lt; endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <span class="cb54">Hello, world</span>
+                <button type="button" class="cb53" onclick="copy('HelloWorld')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="HelloWorld" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Hello, world!"</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
           <article class="cb22">
             <div class="cb31">
               <h3 class="cb40">endl</h3>
               <span class="cb41">
-                また、最後の<code>std::endl</code>は改行だと思ってもらってもいいですが、正確には改行してバッファをフラッシュします。<br>
-                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
+                また、最後の<span class="cb52">std::endl</span>は改行だと思ってもらってもいいですが、正確には改行してバッファをフラッシュします。<br>
+                そのため、以下のコードを実行すると同じく<span class="cb52">"Hello, world!"</span>と出力されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    std::cout &lt;&lt; "Hello,";
-    std::cout &lt;&lt; " world!" &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('endl')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="endl" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Hello,"</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" world!"</span> <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
           <article class="cb22">
             <div class="cb31">
               <h3 class="cb40">複数</h3>
               <span class="cb41">
-                さらに、<code>&lt;&lt;</code>でつなげることによって一文で複数出力することもできます。
-                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
+                さらに、<span class="cb52">&lt;&lt;</span>でつなげることによって一文で複数出力することもできます。
+                そのため、以下のコードを実行すると同じく<span class="cb52">"Hello, world!"</span>と出力されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    std::cout &lt;&lt; "Hello," &lt;&lt; " world!" &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+              <pre></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('multiple')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="multiple" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Hello,"</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" world!"</span> <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
           <article class="cb22">
             <div class="cb31">
               <h3 class="cb40">変数</h3>
               <span class="cb41">
-                <code>std::cout &lt;&lt; 変数名 &lt;&lt; std::endl;</code>で変数の値を出力することができます。
-                そのため、以下のコードを実行すると<code>10</code>と出力されます。
+                <span class="cb52">std::cout &lt;&lt; 変数名 &lt;&lt; std::endl;</span>で変数の値を出力することができます。
+                そのため、以下のコードを実行すると<span class="cb52">10</span>と出力されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    int a = 10;
-    std::cout &lt;&lt; a &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('variable')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="variable" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
         </article>
@@ -193,17 +256,29 @@ int main() {
             <div class="cb31">
               <h3 class="cb40">基本</h3>
               <span class="cb41">
-                <code>std::cin &gt;&gt; 変数名</code>で入力を行います。<br>
-                以下のコードで変数<code>a</code>に入力することができます。<br>
-                例えば<code>10</code>と入力すると、そのまま<code>10</code>と出力されます。
+                <span class="cb52">std::cin &gt;&gt; 変数名</span>で入力を行います。<br>
+                以下のコードで変数<span class="cb52">a</span>に入力することができます。<br>
+                例えば<span class="cb52">10</span>と入力すると、そのまま<span class="cb52">10</span>と出力されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    int a;
-    std::cin &gt;&gt; a;
-    std::cout &lt;&lt; a &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('cin')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="cin" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
           <article class="cb22">
@@ -211,21 +286,34 @@ int main() {
               <h3 class="cb40">複数</h3>
               <span class="cb41">
                 スペース区切りまたは改行区切りで複数の入力が与えられる場合があります。<br>
-                C++の場合スペース区切りであろうと改行区切りであろうとあまり関係なく、<code>&gt;&gt;</code>でつなげることで複数の入力をを受け取ることができます。この場合<br>
-                <code>10(改行)20(スペース)30</code><br>
-                <code>10(スペース)20(改行)30</code><br>
-                <code>10(スペース)20(スペース)30</code><br>
-                <code>10(改行)20(改行)30</code><br>
-                のすべてを正しく受け取ることができ、<code>10 20 30</code>と表示されます。
+                C++の場合スペース区切りであろうと改行区切りであろうとあまり関係なく、<span
+                  class="cb52">&gt;&gt;</span>でつなげることで複数の入力をを受け取ることができます。この場合<br>
+                <span class="cb52">10(改行)20(スペース)30</span><br>
+                <span class="cb52">10(スペース)20(改行)30</span><br>
+                <span class="cb52">10(スペース)20(スペース)30</span><br>
+                <span class="cb52">10(改行)20(改行)30</span><br>
+                のすべてを正しく受け取ることができ、<span class="cb52">10 20 30</span>と表示されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    int a, b, c;
-    std::cin &gt;&gt; a;
-    std::cin &gt;&gt; b &gt;&gt; c;
-    std::cout &lt;&lt; a " " &lt;&lt; b &lt;&lt; " " &lt;&lt; c &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('multipleCin')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="multipleCin" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">,</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> b <span class="wdsl">&gt;&gt;</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> c <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
           <article class="cb22">
@@ -234,13 +322,25 @@ int main() {
               <span class="cb41">
                 文字列の入力も同じく、以下のコードを実行すると入力した文字列がそのまま出力されます。
               </span>
-              <pre><code class="prettyprint linenums">#include &lt;bits/stdc++.h&gt;
-int main() {
-    std::string s;
-    std::cin &gt;&gt; s;
-    std::cout &lt;&lt; s &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+            </div>
+          </article>
+          <article class="cb21">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('stringCin')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="stringCin" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>string s<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> s <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+              </code>
             </div>
           </article>
         </article>
@@ -250,9 +350,13 @@ int main() {
             <div class="cb31">
               <h3 class="cb40">これって何？</h3>
               <span class="cb41">
-                <code>#include &lt;bits/stdc++.h&gt;</code>はC++の標準ライブラリを一括でインクルードすることができます。たとえば、<code>cin</code>や<code>cout</code>を使うなら<code>#include &lt;iostream&gt;</code>を、
-                <code>string</code>を使うなら<code>#include &lt;string&gt;</code>を書けばよいのですが、これらを使うたびに書いていては時間がもったいないので、これを使用しています。<br>
-                また、時間の短縮という点については、<code>using namespace std;</code>と冒頭に記述することで、<code>std::</code>と書く手間を省くことができます。しかし、名前空間の衝突などの問題もありこの講習では使用していません。
+                <span class="cb52">#include &lt;bits/stdc++.h&gt;</span>はC++の標準ライブラリを一括でインクルードすることができます。たとえば、<span
+                  class="cb52">cin</span>や<span class="cb52">cout</span>を使うなら<span class="cb52">#include
+                  &lt;iostream&gt;</span>を、
+                <span class="cb52">string</span>を使うなら<span class="cb52">#include
+                  &lt;string&gt;</span>を書けばよいのですが、これらを使うたびに書いていては時間がもったいないので、これを使用しています。<br>
+                また、時間の短縮という点については、<span class="cb52">using namespace std;</span>と冒頭に記述することで、<span
+                  class="cb52">std::</span>と書く手間を省くことができます。しかし、名前空間の衝突などの問題もありこの講習では使用していません。
               </span>
             </div>
           </article>
@@ -261,9 +365,10 @@ int main() {
           <h3 class="cb33">練習問題</h3>
           <span class="cb34">
             理解できたか確認するために、練習問題を解いてもらいます。以下の問題を解いてみてください<br>
-            <a href="https://atcoder.jp/contests/abc174/tasks/abc174_a">A - Air Conditioner</a><br>
-            <a href="https://atcoder.jp/contests/abc171/tasks/abc171_a">A - αlphabet</a><br>
-            <a href="https://atcoder.jp/contests/abc168/tasks/abc168_b">B - ... (Triple Dots)</a> (少し難易度が上がります)
+            <a class="cb51" href="https://atcoder.jp/contests/abc174/tasks/abc174_a">A - Air Conditioner</a><br>
+            <a class="cb51" href="https://atcoder.jp/contests/abc171/tasks/abc171_a">A - αlphabet</a><br>
+            <a class="cb51" href="https://atcoder.jp/contests/abc168/tasks/abc168_b">B - ... (Triple Dots)</a>
+            (少し難易度が上がります)
           </span>
         </article>
       </div>
