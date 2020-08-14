@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@450&display=swap');
 
  body {
   width:100%;
@@ -142,7 +142,7 @@
   
  }
  
- .cb21, .cb22, .cb23, .cb24 {
+ .cb21 {
   margin:1em 1%;
   padding:0;
   max-width:100%;
@@ -152,18 +152,6 @@
  
  .cb21 {
   flex-direction:row-reverse;
- }
- 
- .cb22 {
-  flex-direction:row;
- }
- 
- .cb23 {
-  flex-direction:column;
- }
- 
- .cb24 {
-  flex-direction:column;
  }
  
  .cb30 {
@@ -207,6 +195,12 @@
  }
  
  .cb36 {
+  margin:1em;
+  max-width:690px;
+  flex-grow:1;
+ }
+ 
+ .cb31 + .cb36 {
   margin:auto;
  }
  
@@ -407,6 +401,18 @@
  
  .bkgdrd {
   background-color:#FED0F0;
+ }
+ 
+ .fxlr {
+  flex-direction:row;
+ }
+ 
+ .fxrl {
+  flex-direction:row-reverse;
+ }
+ 
+ .fxtb {
+  flex-direction:column;
  }
  
  .lepy_a, .lepy_b, .lepy_c {
