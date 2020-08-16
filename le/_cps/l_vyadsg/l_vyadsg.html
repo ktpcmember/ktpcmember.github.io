@@ -177,60 +177,45 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h3 class="cb33">変数の例文</h3>
+      <h3 class="cb33">変数の宣言</h3>
       <span class="cb34">
-       目を通したら実行してみましょう。<br>
-       メッセージボックスが2つ出てくるはずです。
+       コードに目を通し、実行してみましょう。<br>
+       前章と違うところはどこでしょうか。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">変数の宣言/初期化/代入</span>
+        <span class="cb54">変数の宣言/初期化/値の利用</span>
         <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55 bkgdgy">
+<pre id="saco_1" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
-<span class="wdc_mt">//std::wstringとstd::to_wstringを使うために必要です。
+<span class="wdc_mt">//std::wstringを定義しているライブラリ
 </span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
     <span class="wdc_mt">//宣言、初期化
-</span>    std<span class="wdsl">::</span>wstring str1 <span class="wdsl">=</span> <span class="wdtt">L"Hello, "</span><span class="wdsl">;</span>
-    <span class="wdc_mt">//連結、代入
-</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L"world!"</span><span class="wdsl">;</span>
+</span>    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"Welcome back!"</span><span class="wdsl">;</span>
     <span class="wdc_mt">//メッセージボックスに渡す
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-
-    <span class="wdc_mt">//初期化2
-</span>    std<span class="wdsl">::</span>wstring str2 <span class="wdsl">{</span> str1 <span class="wdsl">};</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str2.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
        </code>
       </div>
      </article>
-     <article class="cb21 fxtb">
-      <h3 class="cb33">変数の宣言/初期化/代入</h3>
-      <span class="cb34">
-       さて、動作の内容を読んでいきましょう。<br>
-       なお、このコードに出てきた変数は<span class="cb52">str1</span>と<span class="cb52">str2</span>の2つです。
-      </span>
-     </article>
      <article class="cb21 fxlr">
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
        <span class="cb41">
         変数は、使う前に、その名前が変数であることを宣言しなければなりません。<br>
-        これは、使われることの多い型や関数の定義をまとめたものです。<br>
-        この定義を使うことで、簡単かつ安全なプログラムを書くことができます。<br>
-        ライブラリを使うには、定義のファイルを<span class="cb52">#include &lt;ファイル名&gt;</span>で読み込みます。<br>
-        今回の講習では、UTF-16という文字コードを使っているので、<span class="cb52">std::wstring</span>型を使います。<br>
-        このために、stringというライブラリを読み込んでいます。
+        これには、<span class="cb52">型名 変数名;</span>という構文を使います。<br>
+        今回は、<span class="cb52">std::string</span>型の変数<span class="cb52">text</span>を宣言しました。<br>
+        
        </span>
       </div>
      </article>
