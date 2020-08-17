@@ -208,7 +208,7 @@
        </code>
       </div>
      </article>
-     <article class="cb21 fxlr">
+     <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
        <span class="cb41">
@@ -218,7 +218,7 @@
        </span>
       </div>
      </article>
-     <article class="cb21 fxlr">
+     <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">初期化</h3>
        <span class="cb41">
@@ -229,13 +229,59 @@
        </span>
       </div>
      </article>
-     <article class="cb21 fxlr">
+     <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">値の利用</h3>
        <span class="cb41">
         <code>text.c_str()</code>の部分で値を利用しています。<br>
         前章の通り、<code>c_str</code>関数で変換しています。<br>
         変数の値は、変数名を書くだけで利用できます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">代入</h2>
+      <span class="cb34">
+       変数のもつ値を変えるには、代入をします。<br>
+       変数は、最後に代入された値を保持します。<br>
+       次の例を実行してみましょう。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">代入</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"First"</span><span class="wdsl">;</span>
+    
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//代入
+</span>    text <span class="wdsl">=</span> <span class="wdtt">L"Second"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">代入</h3>
+       <span class="cb41">
+        <code>text = L"Second";</code>で、変数<code>text</code>に、値<code>L"Second"</code>を代入しています。<br>
+        ここで値が変更され、<code>MessageBoxW</code>の第2引数は同じでも、違う値が表示されるのです。<br>
+        代入の文は、型に関わらず<code>変数名 = 値</code>です。
        </span>
       </div>
      </article>
