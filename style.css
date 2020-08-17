@@ -332,6 +332,7 @@
   padding:0.5em 0;
   width:100%;
   overflow:auto;
+  font-family:'Inconsolata', monospace;
  }
  
  .cb60 {
