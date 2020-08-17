@@ -84,7 +84,7 @@
        <h3 class="cb40">あらすじ</h3>
        <span class="cb41">
         文字列の表現方法はいくつかあります。<br>
-        <span class="cb52">std::wstring</span>という方法のものをWindowsの関数に渡すときは、後ろに<span class="cb52">.c_str()</span>とつけましょう。
+        <code>std::wstring</code>という方法のものをWindowsの関数に渡すときは、後ろに<code>.c_str()</code>とつけましょう。
        </span>
       </div>
      </article>
@@ -133,8 +133,8 @@
      <article class="cb21 fxtb">
       <h3 class="cb33">引数とメモリ</h3>
       <span class="cb34">
-       まず、前章で<span class="cb52">MessageBoxW</span>関数に渡した引数の正体を考えなくてはなりません。<br>
-       以下に、<span class="cb52">MessageBoxW</span>関数の行のみを切り取っておきました。
+       まず、前章で<code>MessageBoxW</code>関数に渡した引数の正体を考えなくてはなりません。<br>
+       以下に、<code>MessageBoxW</code>関数の行のみを切り取っておきました。
       </span>
      </article>
      <article class="cb21 fxrl">
@@ -158,7 +158,7 @@
         さて、引数とは関数に渡す値でした。<br>
         しかし、渡したい値をすべて引数にできるとは限りません。<br>
         コンピュータの関数の引数には、数値しか指定できないのです。<br>
-        <span class="cb52">MessageBoxW</span>関数で言えば、第1/第4引数は数値です。<br>
+        <code>MessageBoxW</code>関数で言えば、第1/第4引数は数値です。<br>
         つまり、第2/第3引数のような文字列は指定できないはずです。<br>
         なお、数値は指定できるので、1文字だけなら可能ですが、それでは文字列とは言えません。
        </span>
@@ -212,7 +212,7 @@
         C++の文脈では、C方式の文字列と呼ばれることもあります。<br>
         通常、終端文字には、NULLという値があてられます。<br>
         NULLは、ヌルと読み、何もないことを表します。<br>
-        <span class="cb52">MessageBoxW</span>の第1引数にも<span class="cb52">NULL</span>を指定していました。<br>
+        <code>MessageBoxW</code>の第1引数にも<code>NULL</code>を指定していました。<br>
         指定すべき値について解説していないので、この引数で渡すデータはない、という意味でした。
        </span>
       </div>
@@ -235,8 +235,8 @@
         さて、2つの方法には互換性がないのですが、Windowsは主にC言語で書かれています。<br>
         ですから、Windowsの関数は、前者の終端文字の方式を使います。<br>
         しかし、私たちは今、C++でプログラムを書いています。<br>
-        次の章で出てくる、<span class="cb52">std::wstring</span>という方式の文字列では、後者の方式を用いることが決められています。<br>
-        このような場合、値の後ろに<span class="cb52">c_str</span>関数をつけます。<br>
+        次の章で出てくる、<code>std::wstring</code>という方式の文字列では、後者の方式を用いることが決められています。<br>
+        このような場合、値の後ろに<code>c_str</code>関数をつけます。<br>
         詳しい書き方は次章を見てください。
        </span>
       </div>

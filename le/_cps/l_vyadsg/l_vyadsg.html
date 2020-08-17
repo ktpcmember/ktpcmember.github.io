@@ -127,9 +127,9 @@
       <div class="cb31">
        <h3 class="cb40">型</h3>
        <span class="cb41">
-        C++では、整数の<span class="cb52">int</span>型、実数の<span class="cb52">double</span>型など、すべての値に型があります。<br>
+        C++では、整数の<code>int</code>型、実数の<code>double</code>型など、すべての値に型があります。<br>
         1つの変数には、1つの型の値しか入れられません。<br>
-        そこで、変数の説明に、<span class="cb52">int</span>型の変数、などということがあります。<br>
+        そこで、変数の説明に、<code>int</code>型の変数、などということがあります。<br>
         表のような型のほかにも様々な型があり、自分で増やすこともできますが、これについては基礎講習や応用講習で解説します。
        </span>
       </div>
@@ -170,8 +170,8 @@
         C++には、標準ライブラリという、便利なコード集が付随しています。<br>
         これは、使われることの多い型や関数の定義をまとめたものです。<br>
         この定義を使うことで、簡単かつ安全なプログラムを書くことができます。<br>
-        ライブラリを使うには、定義のファイルを<span class="cb52">#include &lt;ファイル名&gt;</span>で読み込みます。<br>
-        今回の講習では、UTF-16という文字コードを使っているので、<span class="cb52">std::wstring</span>型を使います。<br>
+        ライブラリを使うには、定義のファイルを<code>#include &lt;ファイル名&gt;</code>で読み込みます。<br>
+        今回の講習では、UTF-16という文字コードを使っているので、<code>std::wstring</code>型を使います。<br>
         このために、stringというライブラリを読み込んでいます。
        </span>
       </div>
@@ -213,8 +213,8 @@
        <h3 class="cb40">宣言</h3>
        <span class="cb41">
         変数は、使う前に、その名前が変数であることを宣言しなければなりません。<br>
-        これには、<span class="cb52">型名 変数名</span>という構文を使います。<br>
-        今回は、<span class="cb52">std::string</span>型の変数<span class="cb52">text</span>を宣言しました。
+        これには、<code>型名 変数名</code>という構文を使います。<br>
+        今回は、<code>std::string</code>型の変数<code>text</code>を宣言しました。
        </span>
       </div>
      </article>
@@ -222,10 +222,10 @@
       <div class="cb31">
        <h3 class="cb40">初期化</h3>
        <span class="cb41">
-        宣言の構文の後ろに、<span class="cb52"> = L"Welcome back"</span>とついています。<br>
+        宣言の構文の後ろに、<code> = L"Welcome back"</code>とついています。<br>
         これをつけることで、変数の初期値を設定することができます。<br>
         このことを、変数の初期化といいます。<br>
-        ちなみに、<span class="cb52">std::string</span>型の初期化をしなかった場合、空の文字列が初期値になります。
+        ちなみに、<code>std::string</code>型の初期化をしなかった場合、空の文字列が初期値になります。
        </span>
       </div>
      </article>
@@ -233,8 +233,8 @@
       <div class="cb31">
        <h3 class="cb40">値の利用</h3>
        <span class="cb41">
-        <span class="cb52">text.c_str()</span>の部分で値を利用しています。<br>
-        前章の通り、<span class="cb52">c_str</span>関数で変換しています。<br>
+        <code>text.c_str()</code>の部分で値を利用しています。<br>
+        前章の通り、<code>c_str</code>関数で変換しています。<br>
         変数の値は、変数名を書くだけで利用できます。
        </span>
       </div>

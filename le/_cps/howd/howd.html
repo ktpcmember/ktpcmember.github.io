@@ -194,10 +194,10 @@
        <span class="cb41">
         まず、関数とは、動作のまとまりで、結果を返すものです。<br>
         また、プログラムの中で、最初に実行される点を、エントリーポイントといいます。<br>
-        Windows APIを用いたプログラムでは、<span class="cb52">wWinMain</span>関数がエントリーポイントとなります。<br>
-        ここでは説明しませんが、この行は、<span class="cb52">wWinMain</span>関数の定義をしています。<br>
+        Windows APIを用いたプログラムでは、<code>wWinMain</code>関数がエントリーポイントとなります。<br>
+        ここでは説明しませんが、この行は、<code>wWinMain</code>関数の定義をしています。<br>
         複雑なので、しばらくは写しておけばよいでしょう。<br>
-        今回は、<span class="cb52">int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)</span>から実行が始まることを覚えてください。
+        今回は、<code>int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)</code>から実行が始まることを覚えてください。
        </span>
       </div>
      </article>
@@ -205,7 +205,7 @@
       <div class="cb31">
        <h3 class="cb40">コメント</h3>
        <span class="cb41">
-        <span class="cb52">//</span>から行の終わりまでは、コメントになります。<br>
+        <code>//</code>から行の終わりまでは、コメントになります。<br>
         この範囲に書いた文字は、プログラムの実行には影響しません。<br>
         コメントには、コードの概要や、説明を書きます。<br>
         後で読んだときや、他の人が読んだときでも、動作を把握しやすくなります。<br>
@@ -221,9 +221,9 @@
         関数は、動作のまとまりで、結果を返すものだと書きました。<br>
         これに加え、多くの関数は、動作の内容を細かく指定できるようになっています。<br>
         呼び出し時に、指定するための値を渡すことができます。<br>
-        この値を引数といい、<span class="cb52">関数名(引数)</span>と書きます。<br>
-        複数の引数があるときは、<span class="cb52">,</span>で区切ります。<br>
-        また、左のものから順に、<span class="cb52">(第1引数, 第2引数, 第3引数, ... )</span>と呼びます。
+        この値を引数といい、<code>関数名(引数)</code>と書きます。<br>
+        複数の引数があるときは、<code>,</code>で区切ります。<br>
+        また、左のものから順に、<code>(第1引数, 第2引数, 第3引数, ... )</code>と呼びます。
        </span>
       </div>
      </article>
@@ -232,20 +232,20 @@
       <span class="cb34">
        先ほどの実行時に、通知などでよく見る、小さなウィンドウが現れました。<br>
        Windowsでは、これをメッセージボックスと呼んでいます。<br>
-       これを表示させたのは<span class="cb52">MessageBoxW</span>関数です。<br>
+       これを表示させたのは<code>MessageBoxW</code>関数です。<br>
        この関数は、Windowsに用意されている関数で、私たちユーザーが呼び出して使っています。<br>
-       なお、Windowsの関数を使うために、コードの先頭に<span class="cb52">#include &lt;Windows.h&gt;</span>と書いています。<br>
+       なお、Windowsの関数を使うために、コードの先頭に<code>#include &lt;Windows.h&gt;</code>と書いています。<br>
       </span>
      </article>
      <article class="cb21 fxlr">
       <div class="cb31">
-       <h3 class="cb40"><span class="cb52">MessageBoxW</span>関数の引数</h3>
+       <h3 class="cb40"><code>MessageBoxW</code>関数の引数</h3>
        <span class="cb41">
         この関数は、引数を4つ受け取ります。<br>
         具体的に今回渡した引数は、表のとおりです。<br>
         第1引数については、現段階ではまだ解説できません。<br>
         本講習が終わり、次の講習に入った段階で解説します。<br>
-        一旦、このまま<span class="cb52">NULL</span>を指定しておきましょう。<br>
+        一旦、このまま<code>NULL</code>を指定しておきましょう。<br>
         第2/第3引数にはそれぞれ、本文/タイトルとして表示される文字列を指定します。<br>
         第4引数は、メッセージボックスのアイコンや選択肢などのスタイルを指定します。
        </span>
@@ -258,25 +258,25 @@
         第1引数
        </h4>
        <span class="cb41">
-        <span class="cb52">NULL</span>
+        <code>NULL</code>
        </span>
        <h4 class="cb45">
         第2引数
        </h4>
        <span class="cb41">
-        <span class="cb52">L"Hello, world!"</span>
+        <code>L"Hello, world!"</code>
        </span>
        <h4 class="cb45">
         第3引数
        </h4>
        <span class="cb41">
-        <span class="cb52">L"MessageBoxW"</span>
+        <code>L"MessageBoxW"</code>
        </span>
        <h4 class="cb45">
         第4引数
        </h4>
        <span class="cb41">
-        <span class="cb52">MB_OK</span>
+        <code>MB_OK</code>
        </span>
       </div>
      </article>
@@ -290,9 +290,9 @@
         つまり、2回の変換時の変換方式に違いがあってはいけないのです。<br>
         今回、私たちはUTF-16LEという方式を使うことにしました。<br>
         これは、現在のWindowsが標準で採用しているものです。<br>
-        <span class="cb52">MessageBoxW</span>はUTF-16LE用の関数です。<br>
+        <code>MessageBoxW</code>はUTF-16LE用の関数です。<br>
         ですから、引数もUTF-16LEにしてやらなければなりません。<br>
-        UTF-16LEの文字列を書くには、<span class="cb52">L"文字列"</span>と書きます。
+        UTF-16LEの文字列を書くには、<code>L"文字列"</code>と書きます。
        </span>
       </div>
      </article>
@@ -303,7 +303,7 @@
         個々の関数だけでなく、コード全体にわたって影響するのが、デフォルト文字コードです。<br>
         Visual Studioでは、UTF-16LEになっています。<br>
         Visual Studioを使わない場合、コンパイラの実行時にUTF-16LEと指定できます。<br>
-        あるいは、コードの一番上に<span class="cb52">#define UNICODE</span>と書いてもよいです。<br>
+        あるいは、コードの一番上に<code>#define UNICODE</code>と書いてもよいです。<br>
         これらの方法で指定しなければ、ASCIIとして処理される可能性が高いです。
        </span>
       </div>
@@ -322,8 +322,8 @@
       <div class="cb31">
        <h3 class="cb40">スタイル</h3>
        <span class="cb41">
-        <span class="cb52">MessageBoxW</span>関数に指定できるスタイルは、表の通りです。<br>
-        この中から<span class="cb52">定数A | 定数B | 定数C ...</span>と書いて、複数の定数を指定することもできます。
+        <code>MessageBoxW</code>関数に指定できるスタイルは、表の通りです。<br>
+        この中から<code>定数A | 定数B | 定数C ...</code>と書いて、複数の定数を指定することもできます。
        </span>
       </div>
       <div class="cb36 debr">
@@ -391,8 +391,8 @@
       <div class="cb31">
        <h3 class="cb40">実行結果</h3>
        <span class="cb41">
-        今回、<span class="cb52">MessageBoxW</span>関数の実行結果は利用していません。<br>
-        しかし、<span class="cb52">return 0;</span>の文で、<span class="cb52">wWinMain</span>関数が正常に終了したことを知らせています。
+        今回、<code>MessageBoxW</code>関数の実行結果は利用していません。<br>
+        しかし、<code>return 0;</code>の文で、<code>wWinMain</code>関数が正常に終了したことを知らせています。
        </span>
       </div>
      </article>

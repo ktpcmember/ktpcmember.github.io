@@ -112,7 +112,7 @@
           <span class="cb34">
             これは、<a class="cb51" href="https://atcoder.jp/contests/practice/tasks/practice_1">A - Welcome to
               AtCoder</a>に対する回答です。<br>
-            <span class="cb52">a + b + c</span>の計算結果と文字列型変数<span class="cb52">s</span>の中身をスペース区切りで出力します。
+            <code>a + b + c</code>の計算結果と文字列型変数<code>s</code>の中身をスペース区切りで出力します。
           </span>
         </article>
         <article class="cb21 fxrl">
@@ -143,9 +143,9 @@
             <div class="cb31">
               <h3 class="cb40">基本</h3>
               <span class="cb41">
-                <span class="cb52">std::cout &lt;&lt; "文字列" &lt;&lt;
-                  std::endl</span>でダブルクォーテーション内の文字列出力して最後に改行を行います。<br>
-                以下のコードで<span class="cb52">"Hello, world!"</span>と出力することができます。
+                <code>std::cout &lt;&lt; "文字列" &lt;&lt;
+                  std::endl</code>でダブルクォーテーション内の文字列出力して最後に改行を行います。<br>
+                以下のコードで<code>"Hello, world!"</code>と出力することができます。
               </span>
             </div>
           </article>
@@ -171,8 +171,8 @@
             <div class="cb31">
               <h3 class="cb40">endl</h3>
               <span class="cb41">
-                また、最後の<span class="cb52">std::endl</span>は改行だと思ってもらってもいいですが、正確には改行してバッファをフラッシュします。<br>
-                そのため、以下のコードを実行すると同じく<span class="cb52">"Hello, world!"</span>と出力されます。
+                また、最後の<code>std::endl</code>は改行だと思ってもらってもいいですが、正確には改行してバッファをフラッシュします。<br>
+                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
               </span>
             </div>
           </article>
@@ -198,8 +198,8 @@
             <div class="cb31">
               <h3 class="cb40">複数</h3>
               <span class="cb41">
-                さらに、<span class="cb52">&lt;&lt;</span>でつなげることによって一文で複数出力することもできます。
-                そのため、以下のコードを実行すると同じく<span class="cb52">"Hello, world!"</span>と出力されます。
+                さらに、<code>&lt;&lt;</code>でつなげることによって一文で複数出力することもできます。
+                そのため、以下のコードを実行すると同じく<code>"Hello, world!"</code>と出力されます。
               </span>
               <pre></pre>
             </div>
@@ -225,8 +225,8 @@
             <div class="cb31">
               <h3 class="cb40">変数</h3>
               <span class="cb41">
-                <span class="cb52">std::cout &lt;&lt; 変数名 &lt;&lt; std::endl;</span>で変数の値を出力することができます。
-                そのため、以下のコードを実行すると<span class="cb52">10</span>と出力されます。
+                <code>std::cout &lt;&lt; 変数名 &lt;&lt; std::endl;</code>で変数の値を出力することができます。
+                そのため、以下のコードを実行すると<code>10</code>と出力されます。
               </span>
             </div>
           </article>
@@ -255,9 +255,9 @@
             <div class="cb31">
               <h3 class="cb40">基本</h3>
               <span class="cb41">
-                <span class="cb52">std::cin &gt;&gt; 変数名</span>で入力を行います。<br>
-                以下のコードで変数<span class="cb52">a</span>に入力することができます。<br>
-                例えば<span class="cb52">10</span>と入力すると、そのまま<span class="cb52">10</span>と出力されます。
+                <code>std::cin &gt;&gt; 変数名</code>で入力を行います。<br>
+                以下のコードで変数<code>a</code>に入力することができます。<br>
+                例えば<code>10</code>と入力すると、そのまま<code>10</code>と出力されます。
               </span>
             </div>
           </article>
@@ -285,13 +285,12 @@
               <h3 class="cb40">複数</h3>
               <span class="cb41">
                 スペース区切りまたは改行区切りで複数の入力が与えられる場合があります。<br>
-                C++の場合スペース区切りであろうと改行区切りであろうとあまり関係なく、<span
-                  class="cb52">&gt;&gt;</span>でつなげることで複数の入力をを受け取ることができます。この場合<br>
-                <span class="cb52">10(改行)20(スペース)30</span><br>
-                <span class="cb52">10(スペース)20(改行)30</span><br>
-                <span class="cb52">10(スペース)20(スペース)30</span><br>
-                <span class="cb52">10(改行)20(改行)30</span><br>
-                のすべてを正しく受け取ることができ、<span class="cb52">10 20 30</span>と表示されます。
+                C++の場合スペース区切りであろうと改行区切りであろうとあまり関係なく、<code>&gt;&gt;</code>でつなげることで複数の入力をを受け取ることができます。この場合<br>
+                <code>10(改行)20(スペース)30</code><br>
+                <code>10(スペース)20(改行)30</code><br>
+                <code>10(スペース)20(スペース)30</code><br>
+                <code>10(改行)20(改行)30</code><br>
+                のすべてを正しく受け取ることができ、<code>10 20 30</code>と表示されます。
               </span>
             </div>
           </article>
@@ -349,13 +348,12 @@
             <div class="cb31">
               <h3 class="cb40">これって何？</h3>
               <span class="cb41">
-                <span class="cb52">#include &lt;bits/stdc++.h&gt;</span>はC++の標準ライブラリを一括でインクルードすることができます。たとえば、<span
-                  class="cb52">cin</span>や<span class="cb52">cout</span>を使うなら<span class="cb52">#include
-                  &lt;iostream&gt;</span>を、
-                <span class="cb52">string</span>を使うなら<span class="cb52">#include
-                  &lt;string&gt;</span>を書けばよいのですが、これらを使うたびに書いていては時間がもったいないので、これを使用しています。<br>
-                また、時間の短縮という点については、<span class="cb52">using namespace std;</span>と冒頭に記述することで、<span
-                  class="cb52">std::</span>と書く手間を省くことができます。しかし、名前空間の衝突などの問題もありこの講習では使用していません。
+                <code>#include &lt;bits/stdc++.h&gt;</code>はC++の標準ライブラリを一括でインクルードすることができます。たとえば、<code>cin</code>や<code>cout</code>を使うなら<code>#include
+                  &lt;iostream&gt;</code>を、
+                <code>string</code>を使うなら<code>#include
+                  &lt;string&gt;</code>を書けばよいのですが、これらを使うたびに書いていては時間がもったいないので、これを使用しています。<br>
+                また、時間の短縮という点については、<code>using namespace std;</code>と冒頭に記述することで、<code>std::</code>
+                と書く手間を省くことができます。しかし、名前空間の衝突などの問題もありこの講習では使用していません。
               </span>
             </div>
           </article>
