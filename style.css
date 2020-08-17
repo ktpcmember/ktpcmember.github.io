@@ -8,7 +8,14 @@
   font-size:16px;
   background-color:#F8FAFA;
  }
-
+ 
+ code {
+  padding:0 0.2em;
+  border-radius:20%;
+  font-family:'Inconsolata', monospace;
+  background-color:#E0E0E4;
+ }
+ 
  .ch00 {
   max-width:100%;
   margin:0;
@@ -273,8 +280,10 @@
   padding:0;
   text-align:left;
   width:100%;
+  border-radius:0;
   border-top:solid 1px #000000;
   border-bottom:solid 1px #000000;
+  background-color:#FAF8F8;
  }
  
  .cb48 {
@@ -296,13 +305,6 @@
  
  .cb51:hover, .cb51:active {
   background-color:#FFFCFC;
- }
- 
- .cb52 {
-  padding:0 0.2em;
-  border-radius:20%;
-  font-family:'Inconsolata', monospace;
-  background-color:#E0E0E4;
  }
  
  .cb53, .cb54 {
@@ -330,7 +332,6 @@
   padding:0.5em 0;
   width:100%;
   overflow:auto;
-  font-family:'Inconsolata', monospace;
  }
  
  .cb60 {
