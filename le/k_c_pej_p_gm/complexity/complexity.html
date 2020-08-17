@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。計算量について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>計算量 - 競技プログラミング講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133906591-2');
+  </script>
+</head>
+
+<body>
+  <header class="ch00">
+    <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+    <div class="ch01">
+      <div class="ch10">
+        <div class="ch21">
+          <button type="button" class="ch31" onclick="ck()">
+            <img class="ch42" src="../../../images/menu.png">
+          </button>
+        </div>
+        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">駒場東邦物理部</span>
+            </span>
+            <a class="ch41" href="../../../index.html">
+              <span class="ch50">トップページ</span>
+            </a>
+            <a class="ch41" href="../../le.html">
+              <span class="ch50">講習トップ</span>
+            </a>
+          </div>
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">競技プログラミング講習</span>
+            </span>
+            <a class="ch41" href="../k_c_pej_p_gm.html">
+              <span class="ch50">目次</span>
+            </a>
+            <a class="ch41" href="../none/none.html">
+              <span class="ch50">索引</span>
+            </a>
+            <a class="ch41" href="../stdio/stdio.html">
+              <span class="ch50">前回</span>
+            </a>
+            <a class="ch41" href="../none/none.html">
+              <span class="ch50">次回</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cb00">
+      <div class="cb10">
+        <article class="cb20">
+          <h1>競技プログラミング講習/計算量</h1>
+        </article>
+        <article class="cb21 fxtb">
+          <h3 class="cb33">概要</h3>
+          <span class="cb34">
+            今回は、競技プログラミングにおいて知っておくと便利な計算量ついて解説します。<br>
+            計算量について知っていると、今書いたプログラムが大体どれくらいの時間で終わるかを見積もることができます。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              重要語
+            </h4>
+            <h4 class="cb45">
+              時間計算量
+            </h4>
+            <span class="cb41">
+              プログラムがどれくらいの時間で終わるかの指標
+            </span>
+            <h4 class="cb45">
+              空間計算量
+            </h4>
+            <span class="cb41">
+              プログラムがどれくらいのメモリを使用するかの指標
+            </span>
+          </div>
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              必要語
+            </h4>
+            <span class="cb41">
+              今回の必要語はありません。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h3 class="cb33">オーダー記法</h3>
+          <span class="cb34">
+            計算量を比較したいわけですが、厳密に2N<sup>2</sup>+N+3と求めることは大変です。<br>
+            そこで、便利な記法としてオーダー記法があります。それは以下のように求めることができます。
+            <ol>
+              <li>係数を無視する（ただし定数は1とする）。</li>
+              <li>Nを大きくしていったときに最も影響の強い項以外無視する。</li>
+            </ol>
+            例えば2N<sup>2</sup>+N+3であれば、
+            <ol>
+              <li>係数を無視して、N<sup>2</sup>+N+1とする。</li>
+              <li>N<sup>2</sup>,N,1のうちN<sup>2</sup>が最も影響が強い。</li>
+            </ol>
+            よって、O(N<sup>2</sup>)と表すことができます。
+          </span>
+        </article>
+        <article class="cb21 fxtb">
+          <h3 class="cb33">時間計算量</h3>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <h3 class="cb40">計算量の例</h3>
+              <span class="cb41">
+                例えばNが入力として与えられて、1+2+3+...+Nを求めろという問題に対して、以下のような回答が考えられます。
+              </span>
+            </div>
+          </article>
+          <article class="cb21 fxrl">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('sum1')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="sum1" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    <span class="wdkywd">int</span> ans <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span> i <span class="wdsl">&lt;=</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        ans <span class="wdsl">+=</span> i<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+                </code>
+            </div>
+          </article>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <span class="cb41">
+                しかし、これには足し算をN回繰り返す必要があり、時間計算量はO(N)です。一方、こちらのプログラムはどうでしょう。
+              </span>
+            </div>
+          </article>
+          <article class="cb21 fxrl">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('sum2')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="sum2" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    <span class="wdkywd">int</span> ans <span class="wdsl">=</span> n <span class="wdsl">*</span> <span class="wdsl">(</span>n <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">/</span> <span class="wdnr">2</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+                </code>
+            </div>
+          </article>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <span class="cb41">
+                これは和の公式1+2+3+...+N=N(N+1)/2を用いて計算しています。こちらは四則演算を数回しているだけなので、O(1)です。このように、同じ結果でも違うアルゴリズムが考えられます。その際どちらのアルゴリズムを採用するのがよいでしょうか。そこで、アルゴリズムの性能を表す指標として時間計算量があります。
+              </span>
+            </div>
+          </article>
+          <article>under preparation</article>
+        </article>
+      </div>
+    </div>
+    <footer class="cf00">
+      <div class="cf10">
+        <button class="cf21" onclick="tp()">
+          <img class="cf30" src="../../../images/top.png">
+        </button>
+        <span class="cf20">
+          (C) 2020 駒場東邦物理部[KTPC]
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
