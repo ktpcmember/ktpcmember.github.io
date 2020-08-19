@@ -129,7 +129,8 @@
         C++言語の基礎となる型を、組み込み型といいます。<br>
         組み込み型は、ライブラリを読み込まなくても使うことができます。<br>
         基本型と呼ばれることもあります。<br>
-        本講習では、主に<code>int</code>型、<code>double</code>型、<code>bool</code>型を使います。
+        本講習では、主に<code>int</code>型、<code>double</code>型、<code>bool</code>型を使います。<br>
+        なお、型という言葉で組み込み型のみを表す場合もありますが、本講習にはありません。
        </span>
       </div>
      </article>
@@ -144,16 +145,15 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">変数の宣言</h2>
+      <h2 class="cb33">文字列への変換</h2>
       <span class="cb34">
-       コードに目を通し、実行してみましょう。<br>
-       前章と違うところはどこでしょうか。
+       整数から文字列への変換を行ってみましょう。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">変数の宣言/初期化/値の利用</span>
+        <span class="cb54">文字列への変換</span>
         <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
@@ -161,14 +161,16 @@
        <code class="cb47">
 <pre id="saco_1" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
-<span class="wdc_mt">//std::wstringを定義しているライブラリ
+<span class="wdc_mt">//std::wstring, std::to_wstring()を定義しているライブラリ
 </span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    <span class="wdc_mt">//宣言、初期化
-</span>    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"Welcome back!"</span><span class="wdsl">;</span>
-    <span class="wdc_mt">//メッセージボックスに渡す
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdc_mt">//整数2020を文字列に変換して表示
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">2020</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//整数16.7を文字列に変換して表示
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">16.7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
@@ -177,57 +179,35 @@
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">宣言</h3>
+       <h3 class="cb40">整数と実数</h3>
        <span class="cb41">
-        変数は、使う前に、その名前が変数であることを宣言しなければなりません。<br>
-        これには、<code>型名 変数名</code>という構文を使います。<br>
-        今回は、<code>std::string</code>型の変数<code>text</code>を宣言しました。
+        整数は、半角数字でそのまま書きます。<br>
+        小数は、小数点<code>.</code>をつけて書きます。<br>
+        小数点以下しかない場合でも、整数部に0を書いてください。<br>
+        つまり、<code>.5</code>ではなく、<code>0.5</code>と書いてください。
        </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">初期化</h3>
+       <h3 class="cb40">文字列への変換</h3>
        <span class="cb41">
-        宣言の構文の後ろに、<code> = L"Welcome back"</code>とついています。<br>
-        これをつけることで、変数の初期値を設定することができます。<br>
-        このことを、変数の初期化といいます。<br>
-        ちなみに、<code>std::string</code>型の初期化をしなかった場合、空の文字列が初期値になります。
-       </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">値の利用</h3>
-       <span class="cb41">
-        <code>text.c_str()</code>の部分で値を利用しています。<br>
-        前章の通り、<code>c_str</code>関数で変換しています。<br>
-        変数の値は、変数名を書くだけで利用できます。
-       </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">変数の名前</h3>
-       <span class="cb41">
-        変数の名前に使える文字は、英数字とアンダーバー<code>_</code>です。<br>
-        ただし、名前の最初が数字だと、数値とみなされてしまうので、2文字目以降に使いましょう。<br>
-        変数名はわかりやすいものをつけるようにしましょう。
+        数値を<code>std::wstring</code>型に変換するには、<code>std::to_wstring</code>関数を使います。<br>
+        <code>c_str</code>関数とは違い、<code>std::to_wstring(変換する数値)</code>のように引数を書きます。
        </span>
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">代入</h2>
+      <h2 class="cb33">算術演算</h2>
       <span class="cb34">
-       変数のもつ値を変えるには、代入をします。<br>
-       変数は、最後に代入された値を保持します。<br>
-       次の例を実行してみましょう。
+       算術演算とは、四則演算と剰余算の5種類の演算のことです。<br>
+       まずは例を見てみましょう。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">代入</span>
+        <span class="cb54">整数の算術演算</span>
         <button type="button" class="cb53" onclick="copy('saco_2')">
          <span class="cb61">COPY</span>
         </button>
@@ -235,17 +215,25 @@
        <code class="cb47">
 <pre id="saco_2" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
-<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdc_mt">//std::wstring, std::to_wstring()を定義しているライブラリ
+</span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"First"</span><span class="wdsl">;</span>
-    
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
-    <span class="wdc_mt">//代入
-</span>    text <span class="wdsl">=</span> <span class="wdtt">L"Second"</span><span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
+    <span class="wdc_mt">//加算,足し算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">2</span> <span class="wdsl">+</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"2+3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//減算,引き算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">9</span> <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"9-2="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//乗算,掛け算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">51</span> <span class="wdsl">*</span> <span class="wdnr">7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"51*7="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//除算,割り算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">12</span> <span class="wdsl">/</span> <span class="wdnr">4</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"12/4="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//剰余算,余り算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">23</span> <span class="wdsl">%</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"23%3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
@@ -254,57 +242,111 @@
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">代入</h3>
+       <h3 class="cb40">剰余算</h3>
        <span class="cb41">
-        <code>text = L"Second";</code>で、変数<code>text</code>に、値<code>L"Second"</code>を代入しています。<br>
-        ここで値が変更され、<code>MessageBoxW</code>の第2引数は同じでも、違う値が表示されるのです。<br>
-        代入の文は、型に関わらず<code>変数名 = 値</code>です。<br>
-        変数が有効な間は、何度でも代入することができます。
+        四則演算にはなじみがあるでしょうが、剰余算は聞いたことがないかもしれません。<br>
+        これは、割り算をした時の余りを求める計算です。<br>
+        いくつか計算をして確かめるとよいでしょう。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">記号</h3>
+       <span class="cb41">
+        <code>+</code>と<code>-</code>は数学と同じ記号です。<br>
+        しかし、×や÷は使われず、<code>*</code>と<code>/</code>が使われます。<br>
+        ×や÷はASCIIに含まれず、昔は表示できないコンピュータもあったためです。
        </span>
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">連結</h2>
+      <h2 class="cb33">負数と丸め</h2>
       <span class="cb34">
-       文字列は、別の文字列と繋げて、長い文字列にすることができます。<br>
-       次の例では、文字列Hello, worldを2つの文字列から生成しています。
+       負数は、数字の前に<code>-</code>をつけることで表わせます。<br>
+       それでは、次の例を実行してみましょう。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">連結</span>
-        <button type="button" class="cb53" onclick="copy('saco_2')">
+        <span class="cb54">負数と丸め</span>
+        <button type="button" class="cb53" onclick="copy('saco_3')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_2" class="cb55 bkgdbl">
+<pre id="saco_3" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
-<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdc_mt">//std::wstring, std::to_wstring()を定義しているライブラリ
+</span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"Hello, "</span><span class="wdsl">;</span>
-    
-    <span class="wdc_mt">//連結と代入
-</span>    text <span class="wdsl">=</span> text <span class="wdsl">+</span> <span class="wdtt">L"world"</span><span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"MessageBoxW1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
+    <span class="wdc_mt">//負数の足し算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(-</span><span class="wdnr">2</span> <span class="wdsl">+</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"-2+3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//負数の引き算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">9</span> <span class="wdsl">-</span> <span class="wdsl">-</span><span class="wdnr">2</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"9-(-2)="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//負数の掛け算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">51</span> <span class="wdsl">*</span> <span class="wdsl">-</span><span class="wdnr">7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"51*(-7)="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//正数の丸め
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">13</span> <span class="wdsl">/</span> <span class="wdnr">5</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"13/5="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//負数の丸め
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(-</span><span class="wdnr">20</span> <span class="wdsl">/</span> <span class="wdnr">7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"-20/7="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
-
 </pre>
        </code>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">連結の記号</h3>
+       <h3 class="cb40">0への丸め</h3>
        <span class="cb41">
-        <code>text + L"world"</code>で、変数<code>text</code>の値に、<code>L"world"</code>を連結しています。<br>
-        さらに、その値を<code>text</code>に代入しています。<br>
-        また、連結では、<code>+</code>の左側の値が前になります。
+        この例のうち、最後の2つの式では、答えが整数になりません。<br>
+        整数と整数の計算をして、結果が整数でない場合、0に向かって切り捨てられます。<br>
+        このことを、0への丸めといいます。
        </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">実数の計算</h2>
+      <span class="cb34">
+       実数でも整数と同じように算術演算できますが、結果の丸めは起こりません。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">実数の計算</span>
+        <button type="button" class="cb53" onclick="copy('saco_4')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_4" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdc_mt">//std::wstring, std::to_wstring()を定義しているライブラリ
+</span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//実数の加算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.2</span> <span class="wdsl">+</span> <span class="wdnr">3.4</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.2+3.4="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//実数の乗算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.125</span> <span class="wdsl">*</span> <span class="wdsl">-</span><span class="wdnr">0.8</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.125*(-0.8)="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//実数の除算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.0</span> <span class="wdsl">/</span> <span class="wdnr">3.0</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.0/3.0="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
       </div>
      </article>
      <article class="cb21 fxtb">
