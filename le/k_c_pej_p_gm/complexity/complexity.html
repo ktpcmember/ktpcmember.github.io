@@ -77,7 +77,9 @@
           <h2 class="cb33">概要</h2>
           <span class="cb34">
             今回は、競技プログラミングにおいて知っておくと便利な計算量ついて解説します。<br>
-            計算量について知っていると、今書いたプログラムが大体どれくらいの時間で終わるかを見積もることができます。
+            計算量について知っていると、今書いたプログラムが大体どれくらいの時間で終わるかを見積もることができます。<br>
+            A問題,B問題は制約が緩くなっているので、特に計算量を意識しなくても解ける問題が多いですが、<br>
+            C問題,D問題などでは工夫して計算量を落とす問題などがあるため、何が通って何が通らないのかを意識しましょう。
           </span>
         </article>
         <article class="cb21 fxlr">
@@ -110,7 +112,11 @@
         <article class="cb21 fxtb">
           <h2 class="cb33">オーダー記法</h2>
           <span class="cb34">
-            計算量を比較したいわけですが、厳密に2N<sup>2</sup>+N+3と求めることは大変です。<br>
+            コンピュータが計算をするときには僅かですが時間がかかるので、計算回数が多くなると実行時間が長くなります。<br>
+            そのため、100000回計算するプログラムと10回計算するプログラムでは、10回計算するプログラムのほうが早いです。<br>
+            また、入力によって計算のステップ数が違うこともよくあります。<br>
+            例えばNが入力として与えられていて、N<sup>2</sup>回計算するといったようなことです。<br>
+            早いプログラムを選ぶときには計算量を比較したいわけですが、厳密に2N<sup>2</sup>+N+3と求めることは大変です。<br>
             そこで、便利な記法としてオーダー記法があります。それは以下のように求めることができます。
             <ol>
               <li>係数を無視する（ただし定数は1とする）。</li>
@@ -187,7 +193,60 @@
           <article class="cb21 fxlr">
             <div class="cb31">
               <span class="cb41">
-                これは和の公式1+2+3+...+N=N(N+1)/2を用いて計算しています。こちらは四則演算を数回しているだけなので、O(1)です。このように、同じ結果でも違うアルゴリズムが考えられます。その際どちらのアルゴリズムを採用するのがよいでしょうか。そこで、アルゴリズムの性能を表す指標として時間計算量があります。
+                これは和の公式1+2+3+...+N=N(N+1)/2を用いて計算しています。こちらは四則演算を数回しているだけなので、O(1)です。<br>
+                このように、同じ結果でも違うアルゴリズムが考えられます。この場合、O(N)とO(1)を比較して、和の公式を用いたほうが早いと判断することができます。
+              </span>
+            </div>
+          </article>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <h3 class="cb40">TLE</h3>
+              <span class="cb41">
+                AtCoderのジャッジではTLE(Time Limit Exceeded)というものがあります。これが出た場合は計算量を見積もってみましょう
+                (TLEが出てから計算量を見積もってもいいですが、コードを書く前に見積もることをお勧めします)。<br>
+                問題名の下に「実行時間制限」が書いてあり、実行時間がこれを超えるとたとえ正しい答えを出力していてもTLEと判定されます。<br>
+                実行制限時間は問題ごとに決まっていますが、たいていは2秒です。<br>
+                AtCoderのジャッジはC++の場合1秒間に10<sup>8</sup>回くらいの計算をすることができます。<br>
+                そのため、制約が1≦N≦10<sup>5</sup>となっていたら、O(N<sup>2</sup>)はTLEですが、O(N)であれば間に合います。<br>
+                1+2+3+...+Nを求めろという問題で、制約が1≦N≦10<sup>5</sup>であれば、O(N)もO(1)もどちらも間に合いますが、1≦N≦10<sup>9</sup>であれば、O(N)はTLEになります。<br>
+              </span>
+            </div>
+          </article>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">空間計算量</h2>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <h3 class="cb40">空間計算量の例</h3>
+              <span class="cb41">
+                入力としてa,b,cが与えられ、a*b*cを出力します。
+              </span>
+            </div>
+          </article>
+          <article class="cb21 fxrl">
+            <div class="cb37">
+              <div class="cb46">
+                <button type="button" class="cb53" onclick="copy('sc1')">
+                  <span class="cb61">COPY</span>
+                </button>
+              </div>
+              <code class="cb47">
+<pre id="sc1" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+	<span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">,</span> c<span class="wdsl">;</span>
+	cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> b <span class="wdsl">&gt;&gt;</span> c<span class="wdsl">;</span>
+	cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">*</span> b <span class="wdsl">*</span> c <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+                </code>
+            </div>
+          </article>
+          <article class="cb21 fxlr">
+            <div class="cb31">
+              <span class="cb41">
+                この場合、どのような入力でも使う変数はa,b,cの3つなので、空間計算量はO(1)です。
               </span>
             </div>
           </article>
