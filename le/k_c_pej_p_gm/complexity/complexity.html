@@ -132,22 +132,26 @@
         </article>
         <article class="cb21 fxtb">
           <h2 class="cb33">時間計算量</h2>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <h3 class="cb40">計算量の例</h3>
-              <span class="cb41">
-                例えばNが入力として与えられて、1+2+3+...+Nを求めろという問題に対して、以下のような回答が考えられます。
-              </span>
+          <span class="cb34">
+            プログラムには時間がかかります。その時間の見積もりは重要です。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">計算量の例</h3>
+            <span class="cb41">
+              例えばNが入力として与えられて、1+2+3+...+Nを求めろという問題に対して、以下のような回答が考えられます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb37">
+            <div class="cb46">
+              <button type="button" class="cb53" onclick="copy('sum1')">
+                <span class="cb61">COPY</span>
+              </button>
             </div>
-          </article>
-          <article class="cb21 fxrl">
-            <div class="cb37">
-              <div class="cb46">
-                <button type="button" class="cb53" onclick="copy('sum1')">
-                  <span class="cb61">COPY</span>
-                </button>
-              </div>
-              <code class="cb47">
+            <code class="cb47">
 <pre id="sum1" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
@@ -161,23 +165,23 @@
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
                 </code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              しかし、これには足し算をN回繰り返す必要があり、時間計算量はO(N)です。一方、こちらのプログラムはどうでしょう。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb37">
+            <div class="cb46">
+              <button type="button" class="cb53" onclick="copy('sum2')">
+                <span class="cb61">COPY</span>
+              </button>
             </div>
-          </article>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <span class="cb41">
-                しかし、これには足し算をN回繰り返す必要があり、時間計算量はO(N)です。一方、こちらのプログラムはどうでしょう。
-              </span>
-            </div>
-          </article>
-          <article class="cb21 fxrl">
-            <div class="cb37">
-              <div class="cb46">
-                <button type="button" class="cb53" onclick="copy('sum2')">
-                  <span class="cb61">COPY</span>
-                </button>
-              </div>
-              <code class="cb47">
+            <code class="cb47">
 <pre id="sum2" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
@@ -188,69 +192,130 @@
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
                 </code>
-            </div>
-          </article>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <span class="cb41">
-                これは和の公式1+2+3+...+N=N(N+1)/2を用いて計算しています。こちらは四則演算を数回しているだけなので、O(1)です。<br>
-                このように、同じ結果でも違うアルゴリズムが考えられます。この場合、O(N)とO(1)を比較して、和の公式を用いたほうが早いと判断することができます。
-              </span>
-            </div>
-          </article>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <h3 class="cb40">TLE</h3>
-              <span class="cb41">
-                AtCoderのジャッジではTLE(Time Limit Exceeded)というものがあります。これが出た場合は計算量を見積もってみましょう
-                (TLEが出てから計算量を見積もってもいいですが、コードを書く前に見積もることをお勧めします)。<br>
-                問題名の下に「実行時間制限」が書いてあり、実行時間がこれを超えるとたとえ正しい答えを出力していてもTLEと判定されます。<br>
-                実行制限時間は問題ごとに決まっていますが、たいていは2秒です。<br>
-                AtCoderのジャッジはC++の場合1秒間に10<sup>8</sup>回くらいの計算をすることができます。<br>
-                そのため、制約が1≦N≦10<sup>5</sup>となっていたら、O(N<sup>2</sup>)はTLEですが、O(N)であれば間に合います。<br>
-                1+2+3+...+Nを求めろという問題で、制約が1≦N≦10<sup>5</sup>であれば、O(N)もO(1)もどちらも間に合いますが、1≦N≦10<sup>9</sup>であれば、O(N)はTLEになります。<br>
-              </span>
-            </div>
-          </article>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              これは和の公式1+2+3+...+N=N(N+1)/2を用いて計算しています。こちらは四則演算を数回しているだけなので、O(1)です。<br>
+              このように、同じ結果でも違うアルゴリズムが考えられます。この場合、O(N)とO(1)を比較して、和の公式を用いたほうが早いと判断することができます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">TLE</h3>
+            <span class="cb41">
+              AtCoderのジャッジではTLE(Time Limit Exceeded)というものがあります。これが出た場合は計算量を見積もってみましょう
+              (TLEが出てから計算量を見積もってもいいですが、コードを書く前に見積もることをお勧めします)。<br>
+              問題名の下に「実行時間制限」が書いてあり、実行時間がこれを超えるとたとえ正しい答えを出力していてもTLEと判定されます。<br>
+              実行制限時間は問題ごとに決まっていますが、たいていは2秒です。<br>
+              AtCoderのジャッジはC++の場合1秒間に10<sup>8</sup>回くらいの計算をすることができます。<br>
+              そのため、制約が1≦N≦10<sup>5</sup>となっていたら、O(N<sup>2</sup>)はTLEですが、O(N)であれば間に合います。<br>
+              また、1+2+3+...+Nを求めろという問題で、制約が1≦N≦10<sup>5</sup>であればO(1)もO(N)もどちらも間に合ってACをとることができます。
+              ABCなどのコンテストにおいてTLEでなければ実行時間は順位に関係ないため、O(1)とO(N)の両方を思いついた場合は無理にO(1)を書かずに、書きやすい（もしくはバグらせにくい方）を書きましょう。
+              しかし、1≦N≦10<sup>9</sup>であれば、O(N)はTLEになりますので、諦めてO(1)を書きましょう。<br>
+            </span>
+          </div>
         </article>
         <article class="cb21 fxtb">
           <h2 class="cb33">空間計算量</h2>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <h3 class="cb40">空間計算量の例</h3>
-              <span class="cb41">
-                入力としてa,b,cが与えられ、a*b*cを出力します。
-              </span>
+          <span class="cb34">
+            C++において、空間計算量を気にすることはあまりありませんが、<br>
+            少なくとも<code>int a[100000][100000]</code>のような大きすぎる配列は確保できないということを知っておきましょう。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">空間計算量の例</h3>
+            <span class="cb41">
+              入力としてa,b,cが与えられ、a*b*cを出力します。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb37">
+            <div class="cb46">
+              <button type="button" class="cb53" onclick="copy('sc1')">
+                <span class="cb61">COPY</span>
+              </button>
             </div>
-          </article>
-          <article class="cb21 fxrl">
-            <div class="cb37">
-              <div class="cb46">
-                <button type="button" class="cb53" onclick="copy('sc1')">
-                  <span class="cb61">COPY</span>
-                </button>
-              </div>
-              <code class="cb47">
+            <code class="cb47">
 <pre id="sc1" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
-<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
-	<span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">,</span> c<span class="wdsl">;</span>
-	cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> b <span class="wdsl">&gt;&gt;</span> c<span class="wdsl">;</span>
-	cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">*</span> b <span class="wdsl">*</span> c <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
-	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">,</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> b <span class="wdsl">&gt;&gt;</span> c<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">*</span> b <span class="wdsl">*</span> c <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
                 </code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              この場合、どのような入力でも使う変数は<code>a</code>,<code>b</code>,<code>c</code>の3つなので、空間計算量はO(1)です。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb37">
+            <div class="cb46">
+              <button type="button" class="cb53" onclick="copy('sc2')">
+                <span class="cb61">COPY</span>
+              </button>
             </div>
-          </article>
-          <article class="cb21 fxlr">
-            <div class="cb31">
-              <span class="cb41">
-                この場合、どのような入力でも使う変数はa,b,cの3つなので、空間計算量はO(1)です。
-              </span>
-            </div>
-          </article>
-          <article>under preparation</article>
+            <code class="cb47">
+<pre id="sc2" class="cb55 bkgdgy">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">typedef</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> ll<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> a<span class="wdsl">(</span>n<span class="wdsl">);</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+    ll ans <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        ans <span class="wdsl">*=</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></pre>
+                </code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              この場合、変数は<code>n</code>,<code>ans</code>,<code>i</code>,<code>vector&lt;int&gt; a(n)</code>を使っています。
+              このうち<code>vector&lt;int&gt; a(n)</code>は入力Nに比例してメモリを消費するので、空間計算量はO(N)となります。<br>
+              ※<code>typedef long long ll;</code>は<code>long long</code>という型名を<code>ll</code>として使えるようにする記述で、
+              タイプ数が少なくなって便利であるため使用しています。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">MLE</h3>
+            <span class="cb41">
+              AtCoderのジャッジではMLE(Memory Limit Exceeded)というものがあります。これはC++においてなかなか起こりづらいですが、
+              問題名の下に「メモリ制限」が書いてあり、メモリ使用量がこれを超えるとMLEと判定されます。<br>
+              メモリ制限は問題ごとに決まっていますが、たいていは1024MBです。<br>
+              1024MB≒10<sup>9</sup>Bですから、int型の配列であれば要素数は10<sup>8</sup>位が限度でしょう。<br>
+              しかしそもそも、そのような配列をfor文などで見ていたらTLEしてしまいます。より効率の良いアルゴリズムを使用したり、本当にその配列は必要なのかを考え直してみてください。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">練習問題</h2>
+          <span class="cb34">
+            理解できたか確認するために、練習問題を解いてもらいます。<br>
+            実際のコンテストで出題された問題ではなく入門教材のため少し特殊な問題形式ですが、以下の問題を解いてみてください。<br>
+            <a class="cb51" href="https://atcoder.jp/contests/apg4b/tasks/APG4b_cb">EX21 - 計算量の見積もり</a>
+          </span>
         </article>
       </div>
     </div>
