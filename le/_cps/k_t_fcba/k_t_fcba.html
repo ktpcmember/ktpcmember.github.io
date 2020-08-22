@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。関数を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>変数と文字列 - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../q_pt/q_pt.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../unknown/unknown.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++講習/関数基本</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       今回はプログラムを読みやすく、管理しやすくするための重要な機能、関数の解説をします。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        関数
+       </h4>
+       <span class="cb41">
+        結果を返す、処理のまとまり
+       </span>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        関数の型と名前を定義すること
+       </span>
+       <h4 class="cb45">
+        定義
+       </h4>
+       <span class="cb41">
+        関数の処理を定義すること
+       </span>
+       <h4 class="cb45">
+        引数
+       </h4>
+       <span class="cb41">
+        関数に渡す値と関数が受け取る値の総称
+       </span>
+       <h4 class="cb45">
+        仮引数
+       </h4>
+       <span class="cb41">
+        関数に渡す値
+       </span>
+       <h4 class="cb45">
+        実引数
+       </h4>
+       <span class="cb41">
+        関数が受け取る値又は変数
+       </span>
+       <h4 class="cb45">
+        返り値
+       </h4>
+       <span class="cb41">
+        関数が返却するデータ
+       </span>
+       <h4 class="cb45">
+        値渡し
+       </h4>
+       <span class="cb41">
+        引数をコピーによって渡すこと
+       </span>
+       <h4 class="cb45">
+        ポインタ渡し
+       </h4>
+       <span class="cb41">
+        引数をメモリアドレスを通じて渡すこと
+       </span>
+       <h4 class="cb45">
+        多重定義
+       </h4>
+       <span class="cb41">
+        関数の引数のみが違う同名の関数を定義すること
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        変数の型と名前を定義すること
+       </span>
+       <h4 class="cb45">
+        初期化
+       </h4>
+       <span class="cb41">
+        変数が最初に持つ値の定義
+       </span>
+       <h4 class="cb45">
+        アドレス
+       </h4>
+       <span class="cb41">
+        メモリ内の位置を表わす数値
+       </span>
+       <h4 class="cb45">
+        ポインタ変数
+       </h4>
+       <span class="cb41">
+        アドレスを値として持つ変数
+       </span>
+       <h4 class="cb45">
+        間接参照
+       </h4>
+       <span class="cb41">
+        ポインタ変数のポインタ値にアクセスすること
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">関数の宣言/定義</h2>
+      <span class="cb34">
+       コードに目を通し、実行してみましょう。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">関数の宣言/定義</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> plus<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+	<span class="wdkywd">int</span> result <span class="wdsl">=</span> plus<span class="wdsl">(</span><span class="wdnr">30</span><span class="wdsl">,</span> <span class="wdnr">9</span><span class="wdsl">);</span>
+	std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>result<span class="wdsl">);</span>
+
+	MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"30 + 9"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> plus<span class="wdsl">(</span><span class="wdkywd">int</span> left<span class="wdsl">,</span> <span class="wdkywd">int</span> right<span class="wdsl">)</span> <span class="wdsl">{</span>
+	<span class="wdkywd">return</span> left <span class="wdsl">+</span> right<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">宣言</h3>
+       <span class="cb41">
+        変数同様に、関数も使う前にその名前が関数であることを宣言しなくてはなりません。<br>
+        ただし、関数は、関数の中で宣言することは出来ません。<br>
+        そのため多くの場合には、wWinMain関数の前で宣言をすることになります。<br>
+        宣言には、<code>型名 関数名(引数宣言)</code>という構文を使います。<br>
+        <code>型名</code>は返り値の型、<code>(引数の宣言)</code>は引数についてを定義します。<br>
+        <code>引数の宣言</code>には、コンマ区切りで変数の宣言を記述します。<br>
+        ただし、変数の名前については省略することが出来ます。<br>
+        今回は、返り値の型が<code>int</code>型で、<code>int</code>型を2つ取る関数<code>plus</code>を宣言しています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <h3 class="cd40">引数の宣言</div>
+      <span class="cb41">
+       
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">unknown</h3>
+       <span class="cb41">
+        no_making
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">unknown</h3>
+       <span class="cb41">
+        no_making
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">unknown</h3>
+       <span class="cb41">
+        no_making
+       </span>
+      </div>
+     </article>
+
+     <article class="cb21">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+          no_making
+        <!--問題文-->
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">解答の一部</span>
+        <button type="button" class="cb53" onclick="copy('saco_4')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_4" class="cb55 bkgdbl">
+    no_making
+    <!--回答の一部のコード置き場-->
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">解答</summary>
+       <div class="cb46">
+        <span class="cb54">練習問題解答</span>
+        <button type="button" class="cb53" onclick="copy('ar_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="ar_1" class="cb55 bkgdbl">
+    <!--練習問題のコード置き場-->
+</pre>
+       </code>
+      </details>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
