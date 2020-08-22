@@ -222,31 +222,33 @@
         変数同様に、関数も使う前にその名前が関数であることを宣言しなくてはなりません。<br>
         ただし、関数は、関数の中で宣言することは出来ません。<br>
         そのため多くの場合には、wWinMain関数の前で宣言をすることになります。<br>
-        宣言には、<code>型名 関数名(引数宣言)</code>という構文を使います。<br>
-        <code>型名</code>は返り値の型、<code>(引数の宣言)</code>は引数についてを定義します。<br>
-        <code>引数の宣言</code>には、コンマ区切りで変数の宣言を記述します。<br>
-        ただし、変数の名前については省略することが出来ます。<br>
-        今回は、返り値の型が<code>int</code>型で、<code>int</code>型を2つ取る関数<code>plus</code>を宣言しています。
+        宣言には、<code>型名 関数名(引数宣言)</code>という構文を用います。<br>
+        <code>型名</code>は返り値の型、<code>(引数の宣言)</code>は引数についてを定義します。
        </span>
       </div>
      </article>
      <article class="cb21">
-      <h3 class="cd40">引数の宣言</div>
+      <h3 class="cd40">引数の宣言</h3>
       <span class="cb41">
-       
+       <code>引数の宣言</code>には、コンマ区切りで変数の宣言を記述します。<br>
+       ただし、ここで宣言した変数を使用しないため、変数名は省略することができます。
       </span>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">unknown</h3>
+       <h3 class="cb40">定義</h3>
        <span class="cb41">
-        no_making
+        関数は「処理のまとまり」ですから、関数の処理内容を定義する必要があります。<br>
+        定義には、<code>型名 関数名(引数宣言){処理内容}</code>という構文を用います。<br>
+        <code>型名 関数名(引数宣言)</code>は宣言と同様です。そのため宣言を定義で代用することが出来ます。<br>
+        ただし、<code>引数宣言</code>の変数名を省略すると関数内でその引数は使用できないことになります。<br>
+        波括弧の中には関数の内容にあたる、処理を記述します。返り値を返すにはreturn文を使用します。
        </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">unknown</h3>
+       <h3 class="cb40">return文</h3>
        <span class="cb41">
         no_making
        </span>
@@ -261,7 +263,7 @@
       </div>
      </article>
 
-     <article class="cb21">
+     <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
           no_making
