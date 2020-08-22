@@ -28,12 +28,26 @@
  <url>
   <loc>https://www.ktpc.tokyo/tcp/tcp.html</loc>
  </url>
+ 
  <url>
   <loc>https://www.ktpc.tokyo/le/_p_cba/_p_cba.html</loc>
  </url>
  <url>
   <loc>https://www.ktpc.tokyo/le/_cps/_cps.html</loc>
  </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/k_c_pej_p_gm.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_enba/k_enba.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/psk_ep/psk_ep.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/uy/uy.html</loc>
+ </url>
+ 
  <url>
   <loc>https://www.ktpc.tokyo/le/_p_cba/stup/stup.html</loc>
  </url>
@@ -52,8 +66,37 @@
  <url>
   <loc>https://www.ktpc.tokyo/le/_p_cba/q_x_pl/q_x_pl.html</loc>
  </url>
+ 
  <url>
   <loc>https://www.ktpc.tokyo/le/_cps/k_e_vn/k_e_vn.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/howd/howd.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/sgk_r_p_st/sgk_r_p_st.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/l_vyadsg/l_vyadsg.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/i_traddo/i_traddo.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/i_dx/i_dx.html</loc>
+ </url>
+ 
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/about/about.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/stdio/stdio.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/complexity/complexity.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/search/search.html</loc>
  </url>
 </urlset>
 
