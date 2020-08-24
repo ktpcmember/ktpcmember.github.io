@@ -2,130 +2,130 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
-  <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。探索について解説しています。">
-  <meta name="author" content="駒場東邦物理部">
-  <meta http-equiv="content-language" content="ja">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>探索 - 競技プログラミング講習 - 駒場東邦物理部</title>
-  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
-  <link rel="stylesheet" type="text/css" href="../../../style.css">
-  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
-  <script type="text/javascript" src="../../../header.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+ <meta charset="UTF-8">
+ <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+ <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。探索について解説しています。">
+ <meta name="author" content="駒場東邦物理部">
+ <meta http-equiv="content-language" content="ja">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <title>探索 - 競技プログラミング講習 - 駒場東邦物理部</title>
+ <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+ <link rel="stylesheet" type="text/css" href="../../../style.css">
+ <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+ <script type="text/javascript" src="../../../header.js"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
-    gtag('config', 'UA-133906591-2');
-  </script>
+  gtag('config', 'UA-133906591-2');
+ </script>
 </head>
 
 <body>
-  <header class="ch00">
-    <img class="ch11" src="../../../images/br.jpg">
-  </header>
-  <div class="chb">
-    <div class="ch01">
-      <div class="ch10">
-        <div class="ch21">
-          <button type="button" class="ch31" onclick="ck()">
-            <img class="ch42" src="../../../images/menu.png">
-          </button>
-        </div>
-        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
-          <div class="ch32">
-            <span class="ch40">
-              <span class="ch50">駒場東邦物理部</span>
-            </span>
-            <a class="ch41" href="../../../index.html">
-              <span class="ch50">トップページ</span>
-            </a>
-            <a class="ch41" href="../../le.html">
-              <span class="ch50">講習トップ</span>
-            </a>
-          </div>
-          <div class="ch32">
-            <span class="ch40">
-              <span class="ch50">競技プログラミング講習</span>
-            </span>
-            <a class="ch41" href="../k_c_pej_p_gm.html">
-              <span class="ch50">目次</span>
-            </a>
-            <a class="ch41" href="../none/none.html">
-              <span class="ch50">索引</span>
-            </a>
-            <a class="ch41" href="../complexity/complexity.html">
-              <span class="ch50">前回</span>
-            </a>
-            <a class="ch41" href="../none/none.html">
-              <span class="ch50">次回</span>
-            </a>
-          </div>
-        </div>
-      </div>
+ <header class="ch00">
+  <img class="ch11" src="../../../images/br.jpg">
+ </header>
+ <div class="chb">
+  <div class="ch01">
+   <div class="ch10">
+    <div class="ch21">
+     <button type="button" class="ch31" onclick="ck()">
+      <img class="ch42" src="../../../images/menu.png">
+     </button>
     </div>
-    <div class="cb00">
-      <div class="cb10">
-        <article class="cb20">
-          <h1>競技プログラミング講習/探索</h1>
-        </article>
-        <article class="cb21 fxtb">
-          <h2 class="cb33">概要</h2>
-          <span class="cb34">
-            今回は探索について解説していきます。<br>
-            ABCにおいて、「可能性のあるものを全て列挙して当てはまる物を調べる」といった問題はよく出題されます。<br>
-            一見数学的な問題で難しそうに見えて、実は全探索であったということもあります。<br>
-            コンピュータの計算が早いことを生かして探索していきましょう。
-          </span>
-        </article>
-        <article class="cb21 fxlr">
-          <div class="cb36 debr">
-            <h4 class="cb44">
-              重要語
-            </h4>
-            <h4 class="cb45">
-              全探索
-            </h4>
-            <span class="cb41">
-              ありうるものを全て列挙して判定すること
-            </span>
-          </div>
-          <div class="cb36 debr">
-            <h4 class="cb44">
-              必要語
-            </h4>
-            <span class="cb41">
-              今回の必要語はありません。
-            </span>
-          </div>
-        </article>
-        <article class="cb21 fxtb">
-          <h2 class="cb33">全探索</h2>
-          <span class="cb34">
-            ありうるものを全て列挙して判定します。<br>
-            全探索をすると<code>for</code>や<code>while</code>などがネストしてTLEしやすいため、時間計算量に注意してください。
-          </span>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb31">
-            <h3 class="cb40">基本</h3>
-            <span class="cb41">
-              要素数Nの数列AとKが与えられて、A<sub>i</sub>&times;A<sub>j</sub>&ge;Kとなる(i,j)の組の数を出力します。
-            </span>
-          </div>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb37">
-            <div class="cb46">
-              <button type="button" class="cb53" onclick="copy('basicSerch')">
-                <span class="cb61">COPY</span>
-              </button>
-            </div>
-            <code class="cb47">
+    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">駒場東邦物理部</span>
+      </span>
+      <a class="ch41" href="../../../index.html">
+       <span class="ch50">トップページ</span>
+      </a>
+      <a class="ch41" href="../../le.html">
+       <span class="ch50">講習トップ</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">競技プログラミング講習</span>
+      </span>
+      <a class="ch41" href="../k_c_pej_p_gm.html">
+       <span class="ch50">目次</span>
+      </a>
+      <a class="ch41" href="../none/none.html">
+       <span class="ch50">索引</span>
+      </a>
+      <a class="ch41" href="../complexity/complexity.html">
+       <span class="ch50">前回</span>
+      </a>
+      <a class="ch41" href="../none/none.html">
+       <span class="ch50">次回</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="cb00">
+   <div class="cb10">
+    <article class="cb20">
+     <h1>競技プログラミング講習/探索</h1>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">概要</h2>
+     <span class="cb34">
+      今回は探索について解説していきます。<br>
+      ABCにおいて、「可能性のあるものを全て列挙して当てはまる物を調べる」といった問題はよく出題されます。<br>
+      一見数学的な問題で難しそうに見えて、実は全探索であったということもあります。<br>
+      コンピュータの計算が早いことを生かして探索していきましょう。
+     </span>
+    </article>
+    <article class="cb21 fxlr">
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       重要語
+      </h4>
+      <h4 class="cb45">
+       全探索
+      </h4>
+      <span class="cb41">
+       ありうるものを全て列挙して判定すること
+      </span>
+     </div>
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       必要語
+      </h4>
+      <span class="cb41">
+       今回の必要語はありません。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">全探索</h2>
+     <span class="cb34">
+      ありうるものを全て列挙して判定します。<br>
+      全探索をすると<code>for</code>や<code>while</code>などがネストしてTLEしやすいため、時間計算量に注意してください。
+     </span>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">基本</h3>
+      <span class="cb41">
+       要素数Nの数列AとKが与えられて、A<sub>i</sub>&times;A<sub>j</sub>&ge;Kとなる(i,j)の組の数を出力します。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <button type="button" class="cb53" onclick="copy('basicSerch')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
         <pre id="basicSerch" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
@@ -147,42 +147,42 @@
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
             </code>
-          </div>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb31">
-            <span class="cb41">
-              ありうるiとjを全て列挙してkより大きいか判定しています。
-              <code>j = i + 1</code>としていますが、これはi&lt;jとすることで(1,2)と(2,1)といったiとjの重複を避けるためです。
-              <code>if (i &gt;= j) continue;</code>でも可能です。<br>
-              また、<code>a[i] * a[j]</code>のオーバーフローに注意してください。<br>
-              この時間計算量は、二重<code>for</code>の影響でO(N<sup>2</sup>)です。
-              そのため、2&le;N&le;10<sup>3</sup>が限度でしょう。
-              もし2&le;N&le;10<sup>5</sup>となっていたらこの解法ではTLEしてしまうため、別の解法を考える必要があります
-              (Aをあらかじめソートしておいてk/a[i]を二分探索(後述)すればO(N log N)で可能です)。
-            </span>
-          </div>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb31">
-            <h3 class="cb40">工夫する全探索</h3>
-            <span class="cb41">
-              x<sup>2</sup>+y<sup>2</sup>=Nとなる非負整数(x,y)の組の数を出力せよ。
-              という問題で、制約が0&le;N&le;10<sup>3</sup>であればxとyを0&le;x,y&le;Nの範囲で二重<code>for</code>を回すO(N<sup>2</sup>)で解けますが、
-              制約が0&le;N&le;10<sup>5</sup>であればO(N<sup>2</sup>)ではTLEです。<br>
-              そこでこの問題をよく考えてみると、x,yのどちらかが√Nを上回ったらx<sup>2</sup>+y<sup>2</sup>はNを超えます。そのため、0&le;x,y&le;√Nで十分です。
-              この時の時間計算量はO(√N<sup>2</sup>)すなわちO(N)です。
-            </span>
-          </div>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb37">
-            <div class="cb46">
-              <button type="button" class="cb53" onclick="copy('artificeSearch')">
-                <span class="cb61">COPY</span>
-              </button>
-            </div>
-            <code class="cb47">
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <span class="cb41">
+       ありうるiとjを全て列挙してkより大きいか判定しています。
+       <code>j = i + 1</code>としていますが、これはi&lt;jとすることで(1,2)と(2,1)といったiとjの重複を避けるためです。
+       <code>if (i &gt;= j) continue;</code>でも可能です。<br>
+       また、<code>a[i] * a[j]</code>のオーバーフローに注意してください。<br>
+       この時間計算量は、二重<code>for</code>の影響でO(N<sup>2</sup>)です。
+       そのため、2&le;N&le;10<sup>3</sup>が限度でしょう。
+       もし2&le;N&le;10<sup>5</sup>となっていたらこの解法ではTLEしてしまうため、別の解法を考える必要があります
+       (Aをあらかじめソートしておいてk/a[i]を二分探索(後述)すればO(N log N)で可能です)。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">工夫する全探索</h3>
+      <span class="cb41">
+       x<sup>2</sup>+y<sup>2</sup>=Nとなる非負整数(x,y)の組の数を出力せよ。
+       という問題で、制約が0&le;N&le;10<sup>3</sup>であればxとyを0&le;x,y&le;Nの範囲で二重<code>for</code>を回すO(N<sup>2</sup>)で解けますが、
+       制約が0&le;N&le;10<sup>5</sup>であればO(N<sup>2</sup>)ではTLEです。<br>
+       そこでこの問題をよく考えてみると、x,yのどちらかが√Nを上回ったらx<sup>2</sup>+y<sup>2</sup>はNを超えます。そのため、0&le;x,y&le;√Nで十分です。
+       この時の時間計算量はO(√N<sup>2</sup>)すなわちO(N)です。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <button type="button" class="cb53" onclick="copy('artificeSearch')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
         <pre id="artificeSearch" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
@@ -200,37 +200,113 @@
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
             </code>
-          </div>
-        </article>
-        <article class="cb21 fxrl">
-          <div class="cb31">
-            <span class="cb41">
-              <code>for</code>文の終了条件が<code>x * x &lt;= n</code>と、少し見慣れない形式かもしれませんが、
-              これは<code>x &lt;= sqrt(n)</code>とほぼ同義です。「ほぼ」というのは、sqrt関数は返り値が<code>double</code>型であり、誤差が生じてしまいます。
-              例えば5&le;√25は真ですが、もし<code>sqrt(25)</code>で誤差が生じて4.9999999999となってしまったら偽になってしまいます(実際に誤った判定をするのはnがもっと大きいときです)。
-              しかし、5*5&le;25と判定すれば誤差は生じません。 そのため、このコードでは<code>x * x &lt;= n</code>を採用しています。
-            </span>
-          </div>
-        </article>
-        <article class="cb21 fxtb">
-          <h2 class="cb33">BFS</h2>
-          <span class="cb34">
-            under preparation
-          </span>
-        </article>
-      </div>
-    </div>
-    <footer class="cf00">
-      <div class="cf10">
-        <button class="cf21" onclick="tp()">
-          <img class="cf30" src="../../../images/top.png">
-        </button>
-        <span class="cf20">
-          (C) 2020 駒場東邦物理部[KTPC]
-        </span>
-      </div>
-    </footer>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <span class="cb41">
+       <code>for</code>文の終了条件が<code>x * x &lt;= n</code>と、少し見慣れない形式かもしれませんが、
+       これは<code>x &lt;= sqrt(n)</code>とほぼ同義です。「ほぼ」というのは、sqrt関数は返り値が<code>double</code>型であり、誤差が生じてしまいます。
+       例えば5&le;√25は真ですが、もし<code>sqrt(25)</code>で誤差が生じて4.9999999999となってしまったら偽になってしまいます(実際に誤った判定をするのはnがもっと大きいときです)。
+       しかし、5*5&le;25と判定すれば誤差は生じません。 そのため、このコードでは<code>x * x &lt;= n</code>を採用しています。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">BFS</h2>
+     <span class="cb34">
+      BFS(breadth first search, 幅優先探索)を用いると、迷路のスタートからゴールまでの最短距離を求めることなどができます。<br>
+      BFSにはqueueというデータ構造を用いるとうまくいきます。
+     </span>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">探索する迷路</h3>
+      <span class="cb41">
+       ここでは、例として図のような迷路の探索を考えてみましょう。
+       白いマスが通行可能な空きます,黒いマスが通行不可能な壁マス,sがスタート,gがゴールを表しています。
+       通行可能なマスからは、上下左右に隣接する通行可能なマスに移動することができます。
+       迷路の外に移動することや、壁マスへ移動すること、斜めに移動することはできません。
+       最短何手でスタートからゴールまでたどり着けるかを求めてましょう。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Set.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step1</h3>
+      <span class="cb41">
+       まず、スタート地点のマスは当然スタート地点から手数0で到達可能なので、このマスは距離0で確定させます。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Step1.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step2</h3>
+      <span class="cb41">
+       次に、上下左右を見て距離確定済みや範囲外,壁のマスでなければ手数1(=0+1)で到達できるマスとして距離1を書きます。
+       図の場合、上と左のマスが範囲外ですが下と右のマスは未確定ですので、下と右のマスを距離1で確定させます。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Step2.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step3</h3>
+      <span class="cb41">
+       Step2で距離1を書いたマスから上下左右を見て、距離確定済みや範囲外,壁のマスでなければ手数2(=1+1)で到達できるマスとして距離2を書きます。
+       図の場合、スタート地点からみて右下のマスが距離2で確定されます。
+       下と右のどちらの1のマスから見るかによって2が確定する順番が違いますが、どちらも正しく距離2が書かれます
+       (左上4マスをスタート地点から時計回りにA,B,C,DとするとB,Dが1のマスになりますが、
+       Bから上下左右に見てCを2と確定させたのちDから上下左右に見てCが埋まっていても、
+       Dから上下左右に見てCを2と確定させたのちBから上下左右に見てCが埋まっていても関係ありません)。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Step3.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step4</h3>
+      <span class="cb41">
+       この操作を繰り返していきます(距離2を書いたマスから上下左右を見て距離3で確定させて、距離3を書いたマスから上下左右を見て距離4で確定させて...)。
+       このように7を書くまで繰り返したときが図の状態です。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Step4.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">終了条件</h3>
+      <span class="cb41">
+       一見、「壁以外のすべてマスに距離が書かれたら」に見えますが、例えば到達することのできない孤立地帯があった場合などに無限ループしてしまいます。
+       より汎用的な終了条件は、「探索しても新たにマスが見つからなかったとき」でしょう。図の状態は、7のマスから上下左右に見ていますが、新たにマスを見つけることはできません。
+       このような状況の時、ループを抜けて探索を終了しましょう。
+      </span>
+     </div>
+     <img class="cb30" src="BFS-Finish.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">実装例</h3>
+      <span class="cb41">
+       under preparation
+      </span>
+     </div>
+    </article>
+   </div>
   </div>
+  <footer class="cf00">
+   <div class="cf10">
+    <button class="cf21" onclick="tp()">
+     <img class="cf30" src="../../../images/top.png">
+    </button>
+    <span class="cf20">
+     (C) 2020 駒場東邦物理部[KTPC]
+    </span>
+   </div>
+  </footer>
+ </div>
 </body>
 
 </html>
