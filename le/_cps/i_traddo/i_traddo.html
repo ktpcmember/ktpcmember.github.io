@@ -312,44 +312,6 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">型の異なる値の計算</h2>
-      <span class="cb34">
-       実数と整数のように、型の異なる値でも、数値ならば算術演算できます。<br>
-       ただし、表わせる範囲の狭い型の値が、広い型の値に変換され、計算されます。<br>
-       整数の<code>int</code>型と実数の<code>double</code>型では、後者の方が広い範囲を表せます。<br>
-       そこで、<code>double</code>型の値同士のように計算されるのです。
-      </span>
-     </article>
-     <article class="cb21 fxrl">
-      <div class="cb37">
-       <div class="cb46">
-        <span class="cb54">型の異なる値の計算</span>
-        <button type="button" class="cb53" onclick="copy('saco_5')">
-         <span class="cb61">COPY</span>
-        </button>
-       </div>
-       <code class="cb47">
-<pre id="saco_5" class="cb55 bkgdbl">
-<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
-<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
-
-<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">){</span>
-     <span class="wdc_mt">//整数と実数
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.5</span> <span class="wdsl">+</span> <span class="wdnr">4</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.5+4="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
-    <span class="wdc_mt">//順番は逆でもよい
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">7</span> <span class="wdsl">*</span> <span class="wdnr">1.7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"7*1.7="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
-    <span class="wdc_mt">//丸めは起こらない
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.0</span> <span class="wdsl">/</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.0/3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    
-    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
-<span class="wdsl">}</span>
-</pre>
-       </code>
-      </div>
-     </article>
-     <article class="cb21 fxtb">
       <h2 class="cb33">実数の計算</h2>
       <span class="cb34">
        実数でも整数と同じように算術演算できますが、結果の丸めは起こりません。
@@ -385,87 +347,161 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">練習問題</h2>
+      <h2 class="cb33">型の異なる値の計算</h2>
       <span class="cb34">
-       ある人が、月曜日から日曜日まで1週間、毎日箱に果物を詰めることにしました。<br>
-       各曜日ごとに、<code>MessageBoxW</code>で、詰めた後箱の中に入っている果物を列挙してください。<br>
-       なお、第3引数の方には曜日を表示してください。<br>
-       変数と文字列の連結を利用してください。<br>
-       また、プログラムは、以下のコードに書き足して作りましょう。
+       実数と整数のように、型の異なる値でも、数値ならば算術演算できます。<br>
+       ただし、表わせる範囲の狭い型の値が、広い型の値に変換され、計算されます。<br>
+       整数の<code>int</code>型と実数の<code>double</code>型では、後者の方が広い範囲を表せます。<br>
+       そこで、<code>double</code>型の値同士のように計算されるのです。<br>
+       この変換は自動で行われるので、暗黙の型変換と呼ばれます。<br>
+       ただし、この変換は組み込み型にしか適用されません。
       </span>
      </article>
-     <article class="cb21 fxlr">
-      <div class="cb31">
-       <h3 class="cb40">果物</h3>
-       <span class="cb41">
-        各曜日には、表のとおりの果物を詰めます。<br>
-        果物の名前同士の間にはスペースを1つ入れてください。
-       </span>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">型の異なる値の計算</span>
+        <button type="button" class="cb53" onclick="copy('saco_5')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_5" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">){</span>
+     <span class="wdc_mt">//整数と実数
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.5</span> <span class="wdsl">+</span> <span class="wdnr">4</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.5+4="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//順番は逆でもよい
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">7</span> <span class="wdsl">*</span> <span class="wdnr">1.7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"7*1.7="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//丸めは起こらない
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.0</span> <span class="wdsl">/</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.0/3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
       </div>
-      <div class="cb36 debr">
-       <h4 class="cb44">
-        詰める果物
-       </h4>
-       <h4 class="cb45">
-        月曜日
-       </h4>
-       <span class="cb41">
-        リンゴ
-       </span>
-       <h4 class="cb45">
-        火曜日
-       </h4>
-       <span class="cb41">
-        バナナ
-       </span>
-       <h4 class="cb45">
-        水曜日
-       </h4>
-       <span class="cb41">
-        イチゴ
-       </span>
-       <h4 class="cb45">
-        木曜日
-       </h4>
-       <span class="cb41">
-        洋ナシ
-       </span>
-       <h4 class="cb45">
-        金曜日
-       </h4>
-       <span class="cb41">
-        ブドウ
-       </span>
-       <h4 class="cb45">
-        土曜日
-       </h4>
-       <span class="cb41">
-        メロン
-       </span>
-       <h4 class="cb45">
-        日曜日
-       </h4>
-       <span class="cb41">
-        ドリアン
-       </span>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">キャスト</h2>
+      <span class="cb34">
+       暗黙の型変換と違い、明示的に型を変換することをキャストといいます。<br>
+       これには、<code>(変換先型名)変換する値</code>という構文を使います。<br>
+       暗黙の型変換と同じく、キャストも組み込み型にしか適用できません。<br>
+       例えば、<code>std::wstring</code>型の値を変換したり、他の型から変換することはできません。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">キャスト</span>
+        <button type="button" class="cb53" onclick="copy('saco_6')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_6" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">){</span>
+     <span class="wdc_mt">//実数への変換
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">((</span><span class="wdkywd">double</span><span class="wdsl">)</span><span class="wdnr">50</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"実数への変換"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//整数への変換
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">((</span><span class="wdkywd">int</span><span class="wdsl">)</span><span class="wdnr">6.2</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"整数への変換"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//丸め回避
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">2</span><span class="wdsl">/(</span><span class="wdkywd">double</span><span class="wdsl">)</span><span class="wdnr">7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"2/7.0="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
       </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">数値の変数</h2>
+      <span class="cb34">
+       前章では文字列の変数を用意しました。<br>
+       同じように、<code>int</code>型や<code>double</code>型の変数を使ってみましょう。<br>
+       変数も、数字と同じように、算術演算やキャストして使うことができます。<br>
+       なお、変数の値をキャストしても、変数そのものの型や値は変わりません。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">数値の変数</span>
+        <button type="button" class="cb53" onclick="copy('saco_7')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_7" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">){</span>
+    <span class="wdc_mt">//整数型変数の宣言と初期化
+</span>    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdsl">-</span><span class="wdnr">1452</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//値の表示
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"a="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//代入
+</span>    a <span class="wdsl">=</span> <span class="wdnr">90</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//加算
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a <span class="wdsl">+</span> <span class="wdnr">30</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"a+30="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//実数型変数の宣言と初期化
+</span>    <span class="wdkywd">double</span> b <span class="wdsl">=</span> <span class="wdnr">20.6</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//暗黙の型変換1
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>b <span class="wdsl">+</span> <span class="wdnr">5</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"b+5="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//キャスト
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">((</span><span class="wdkywd">int</span><span class="wdsl">)</span>b<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"キャスト"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//暗黙の型変換2
+</span>    a <span class="wdsl">=</span> b <span class="wdsl">*</span> <span class="wdnr">4</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"a="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       円周率を3.14として、<code>double</code>型変数<code>pi</code>に代入してください。<br>
+       また、円の半径を10として、<code>int</code>型変数<code>r</code>に代入してください。<br>
+       そして、この円の円周と面積を求めてください。<br>
+       最後に、「半径<code>rの数値</code>の円の円周の長さは<code>長さ</code>、面積は<code>面積</code>です。」のように、繋げて表示してください。
+      </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
         <span class="cb54">解答の一部</span>
-        <button type="button" class="cb53" onclick="copy('saco_3')">
+        <button type="button" class="cb53" onclick="copy('ar_1')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_3" class="cb55 bkgdbl">
+<pre id="ar_1" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    std<span class="wdsl">::</span>wstring str0 <span class="wdsl">=</span> <span class="wdtt">L"リンゴ"</span><span class="wdsl">;</span><span class="wdc_mt">//月曜日に加える果物
-</span>    
+    <span class="wdc_mt">//この後に連結すること
+</span>    std<span class="wdsl">::</span>wstring text<span class="wdsl">=</span><span class="wdtt">"半径"</span><span class="wdsl">;</span>
+    
+    
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
@@ -477,36 +513,27 @@
        <summary class="cb48">解答</summary>
        <div class="cb46">
         <span class="cb54">練習問題解答</span>
-        <button type="button" class="cb53" onclick="copy('ar_1')">
+        <button type="button" class="cb53" onclick="copy('ar_2')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="ar_1" class="cb55 bkgdbl">
+<pre id="ar_2" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    std<span class="wdsl">::</span>wstring str1 <span class="wdsl">=</span> <span class="wdtt">L"リンゴ"</span><span class="wdsl">;</span><span class="wdc_mt">//月曜日に加える果物
-</span>    std<span class="wdsl">::</span>wstring str2 <span class="wdsl">=</span> <span class="wdtt">L"バナナ"</span><span class="wdsl">;</span><span class="wdc_mt">//火曜日に加える果物
-</span>    std<span class="wdsl">::</span>wstring str3 <span class="wdsl">=</span> <span class="wdtt">L"イチゴ"</span><span class="wdsl">;</span><span class="wdc_mt">//以下略
-</span>    std<span class="wdsl">::</span>wstring str4 <span class="wdsl">=</span> <span class="wdtt">L"洋ナシ"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str5 <span class="wdsl">=</span> <span class="wdtt">L"ブドウ"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str6 <span class="wdsl">=</span> <span class="wdtt">L"メロン"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str7 <span class="wdsl">=</span> <span class="wdtt">L"ドリアン"</span><span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"月曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//月曜日にはstr1に入っている果物
-</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str2<span class="wdsl">;</span>                        <span class="wdc_mt">//火曜日に加える果物の文字列を連結
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"火曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//以下繰り返し
-</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str3<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"水曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str4<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"木曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str5<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"金曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str6<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"土曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str7<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"日曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdc_mt">//この後に連結すること
+</span>    std<span class="wdsl">::</span>wstring text <span class="wdsl">=</span> <span class="wdtt">L"半径"</span><span class="wdsl">;</span>
+    <span class="wdkywd">double</span> pi <span class="wdsl">=</span> <span class="wdnr">3.14</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> r <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>
+    
+    text <span class="wdsl">=</span> text <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>r<span class="wdsl">);</span>
+    text <span class="wdsl">=</span> text <span class="wdsl">+</span> <span class="wdtt">L"の円の円周の長さは"</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">2</span> <span class="wdsl">*</span> r <span class="wdsl">*</span> pi<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"、"</span><span class="wdsl">;</span>
+    text <span class="wdsl">=</span> text <span class="wdsl">+</span> <span class="wdtt">L"面積は"</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>r <span class="wdsl">*</span> r <span class="wdsl">*</span> pi<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"です。"</span><span class="wdsl">;</span>
+    
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> text.c_str<span class="wdsl">(),</span> <span class="wdtt">L"円周と面積"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
