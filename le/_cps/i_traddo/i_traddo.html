@@ -312,6 +312,44 @@
       </div>
      </article>
      <article class="cb21 fxtb">
+      <h2 class="cb33">型の異なる値の計算</h2>
+      <span class="cb34">
+       実数と整数のように、型の異なる値でも、数値ならば算術演算できます。<br>
+       ただし、表わせる範囲の狭い型の値が、広い型の値に変換され、計算されます。<br>
+       整数の<code>int</code>型と実数の<code>double</code>型では、後者の方が広い範囲を表せます。<br>
+       そこで、<code>double</code>型の値同士のように計算されるのです。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">型の異なる値の計算</span>
+        <button type="button" class="cb53" onclick="copy('saco_5')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_5" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">){</span>
+     <span class="wdc_mt">//整数と実数
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.5</span> <span class="wdsl">+</span> <span class="wdnr">4</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.5+4="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//順番は逆でもよい
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">7</span> <span class="wdsl">*</span> <span class="wdnr">1.7</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"7*1.7="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdc_mt">//丸めは起こらない
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span><span class="wdnr">1.0</span> <span class="wdsl">/</span> <span class="wdnr">3</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1.0/3="</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
       <h2 class="cb33">実数の計算</h2>
       <span class="cb34">
        実数でも整数と同じように算術演算できますが、結果の丸めは起こりません。
