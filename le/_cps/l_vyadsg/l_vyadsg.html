@@ -449,26 +449,20 @@
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    std<span class="wdsl">::</span>wstring str1 <span class="wdsl">=</span> <span class="wdtt">L"リンゴ"</span><span class="wdsl">;</span><span class="wdc_mt">//月曜日に加える果物
-</span>    std<span class="wdsl">::</span>wstring str2 <span class="wdsl">=</span> <span class="wdtt">L"バナナ"</span><span class="wdsl">;</span><span class="wdc_mt">//火曜日に加える果物
-</span>    std<span class="wdsl">::</span>wstring str3 <span class="wdsl">=</span> <span class="wdtt">L"イチゴ"</span><span class="wdsl">;</span><span class="wdc_mt">//以下略
-</span>    std<span class="wdsl">::</span>wstring str4 <span class="wdsl">=</span> <span class="wdtt">L"洋ナシ"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str5 <span class="wdsl">=</span> <span class="wdtt">L"ブドウ"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str6 <span class="wdsl">=</span> <span class="wdtt">L"メロン"</span><span class="wdsl">;</span>
-    std<span class="wdsl">::</span>wstring str7 <span class="wdsl">=</span> <span class="wdtt">L"ドリアン"</span><span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"月曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//月曜日にはstr1に入っている果物
-</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str2<span class="wdsl">;</span>                        <span class="wdc_mt">//火曜日に加える果物の文字列を連結
-</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"火曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//以下繰り返し
-</span>    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str3<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"水曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str4<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"木曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str5<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"金曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str6<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"土曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-    str1 <span class="wdsl">=</span> str1 <span class="wdsl">+</span> <span class="wdtt">L" "</span> <span class="wdsl">+</span> str7<span class="wdsl">;</span>
-    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str1.c_str<span class="wdsl">(),</span> <span class="wdtt">L"日曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L"リンゴ"</span><span class="wdsl">;</span>                    <span class="wdc_mt">//月曜日に加える果物
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"月曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//strに入っている文字列を表示
+</span>    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" バナナ"</span><span class="wdsl">;</span>                          <span class="wdc_mt">//火曜日に加える果物の文字列を連結
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"火曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span><span class="wdc_mt">//以下繰り返し
+</span>    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" イチゴ"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"水曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" 洋ナシ"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"木曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" ブドウ"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"金曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" メロン"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"土曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    str <span class="wdsl">=</span> str <span class="wdsl">+</span> <span class="wdtt">L" ドリアン"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"日曜日"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
