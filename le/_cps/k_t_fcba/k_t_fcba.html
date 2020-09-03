@@ -180,15 +180,15 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">関数の宣言/定義</h2>
+      <h2 class="cb33">関数基礎</h2>
       <span class="cb34">
-       コードに目を通し、実行してみましょう。
+       まず、関数の基礎についての例を実行してみましょう。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">関数の宣言/定義</span>
+        <span class="cb54">関数基礎</span>
         <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
@@ -215,6 +215,24 @@
        </code>
       </div>
      </article>
+     <article class="cb21 fxtb">
+       <h2 class="cb33">宣言/定義</h2>
+       <span class="cb34">
+        まず関数を用意する方法についてです。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">関数を使用するには</h3>
+        <span class="cb41">
+         変数は使う前に宣言していました。これは関数にも同じことが言えます。<br>
+         ところが、宣言は関数の処理の内容が含まれません。これで関数を使えるのでしょうか。<br>
+         確かに、プログラム全体としては関数を使うために関数の処理の内容が必要なので定義が必要です。<br>
+         ですが裏を返すと、定義はプログラム全体のどこかに存在すれば良いのです。<br>
+         そのため、宣言を関数の呼び出し前に記述すれば、定義はどこに書いても問題ありません。
+        </span>
+       </div>
+      </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
@@ -231,24 +249,38 @@
        <h3 class="cb40">定義</h3>
        <span class="cb41">
         関数が行う「処理のまとまり」を宣言とともに記述すると、定義になります。<br>
-        関数の定義は、<code>型名 関数名(引数並び) { 処理 }</code>という構文を用います。
+        関数の定義は、<code>型名 関数名(引数並び) { 処理 }</code>という構文を用います。<br>
         <code>型名 関数名(引数並び)</code>は宣言と同じものです。<br>
         定義は宣言と違い、同じ関数の定義を複数記述することは出来ません。
        </span>
       </div>
      </article>
+     <article class="cb21 fxtb">
+       <h2 class="cb33">関数宣言/定義詳細</h2>
+       <span class="cb34">
+        関数の定義の詳細な文法についてになります。
+       </span>
+      </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">返り値</h3>
        <span class="cb41">
-        宣言や定義での<code>型名</code>が返り値の型になります。<br>
-        返り値を返すには、定義での<code>{ 処理 }</code>において<code>return</code>文を使います。<br>
-        <code>return 式や変数;</code>と記述することで、式の結果や変数の値が返り値になります。<br>
-        <code>return</code>文は、実行されるとそこで関数の処理の実行を停止します。<br>
-        <code>return</code>文以降に処理を記述しても、実行されないことに注意しましょう。
+        宣言や定義での<code>型名</code>は返り値の型になります。<br>
+        返り値を返すには、定義での<code>処理</code>において<code>return</code>文を使います。<br>
+        なお、返り値は値をコピーすることで返却を行います。
        </span>
       </div>
      </article>
+     <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">return文</h3>
+        <span class="cb41">
+         前述の通り、返り値を返却するには<code>return</code>>文を使用します。<br>
+         <code>return 式や変数;</code>と記述することで、式の結果や変数の値を返り値として返却します。<br>
+         ただ、<code>return</code>文は関数の実行を停止するので、以降の処理は実行されません。
+        </span>
+       </div>
+      </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">関数の名前</h3>
@@ -261,9 +293,10 @@
      </article>
      <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">名前について補足</h3>
+        <h3 class="cb40">名前について補足：読み飛ばし可</h3>
         <span class="cb41">
-         変数や関数の名前のことを識別子と呼び、アルファベットと数字、アンダーバーが使用できます。<br>
+         C++では、変数や関数の名前のことを識別子と呼びます。<br>
+         識別子には、アルファベットと数字、アンダーバーが使用できます。<br>
          ただし、以下のようにはつけてはいけないと決められています。<br>
          1.数字から始まる<br>
          2.アンダーバーから始まる<br>
@@ -279,6 +312,7 @@
        <span class="cb41">
         宣言や定義での<code>(引数並び)</code>が引数についてを決定します。<br>
         <code>引数並び</code>には、変数の宣言をコンマ区切りで記述します。<br>
+        関数が呼ばれるとここで宣言する変数は渡された引数で初期化されます。<br>
         ただし、宣言では<code>引数並び</code>の変数を使わないので、変数の名前を省略できます。
        </span>
       </div>
@@ -292,18 +326,135 @@
        </span>
       </div>
      </article>
+     <article class="cb21 fxtb">
+       <h2 class="cb33">コード「関数基礎」新出解説</h2>
+       <span class="cb34">
+        コード「関数基礎」の新しいところについての解説です。
+       </span>
+      </article>
+     <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">int plus(int left, int right)</h3>
+        <span class="cb41">
+         返り値が<code>int</code>、引数に<code>int,int</code>を取る<code>plus</code>という名前の関数の定義の一部です。<br>
+         第1引数を<code>left</code>、第2引数を<code>right</code>という名前を付けています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">{ return left + right; }</h3>
+        <span class="cb41">
+         <code>plus</code>>関数の定義の処理についての部分です。<br>
+         引数として取った<code>left</code>と<code>right</code>を足した値を<code>return</code>文で返却しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">関数基本</h2>
+       <span class="cb34">
+        次に返り値/引数がない関数、ポインタ渡し、多重定義についてです。<br>
+        では、サンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">関数基本</span>
+         <button type="button" class="cb53" onclick="copy('saco_2')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+ <pre id="saco_2" class="cb55 bkgdbl">
+std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span class="wdsl">{</span>
+	std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L"thank you 39"</span><span class="wdsl">;</span>
+	<span class="wdkywd">return</span> str<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> link_and_add_ty<span class="wdsl">(</span>
+	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> buffer<span class="wdsl">,</span>
+	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str1<span class="wdsl">,</span>
+	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str2
+<span class="wdsl">)</span> <span class="wdsl">{</span>
+	<span class="wdsl">(*</span>buffer<span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdsl">(*</span>str1<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdsl">(*</span>str2<span class="wdsl">)</span> <span class="wdsl">+</span> ty_str<span class="wdsl">();</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show_with_msgbox<span class="wdsl">(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str<span class="wdsl">)</span> <span class="wdsl">{</span>
+	MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdsl">(*</span>str<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"result"</span><span class="wdsl">,</span>MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+	std<span class="wdsl">::</span>wstring str<span class="wdsl">;</span>
+
+	link_and_add_ty<span class="wdsl">(</span>
+		<span class="wdsl">&amp;</span>str<span class="wdsl">,</span>
+		<span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"hello"</span><span class="wdsl">,</span>
+		<span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L", planet "</span>
+	<span class="wdsl">);</span>
+
+	show_with_msgbox<span class="wdsl">(&amp;</span>str<span class="wdsl">);</span>
+	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+ </pre>
+        </code>
+       </div>
+      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">返り値や引数がない関数</h3>
+       <h3 class="cb40">返り値がない関数</h3>
        <span class="cb41">
-        返り値がない関数は、宣言や定義の際の返り値の型名に<code>void</code>を記述します。<br>
-        返り値がない場合、<code>return</code>文は省略することが出来ます。<br>
-        次に、引数がない関数です。引数がない関数は、宣言や定義の引数並びに何も記述しません。<br>
-        なお、引数並びに<code>void</code>を記述することでも同じ事が行えます。
+        返り値がない関数は、宣言や定義の際の返り値の型名に<code>void</code>を記述することで実現します。<br>
+        返り値がない場合、<code>return</code>文は省略することが出来ます。
        </span>
       </div>
      </article>
-
+     <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">引数がない関数</h3>
+        <span class="cb41">
+        引数がない関数は、宣言や定義の引数並びに何も記述しないことで実現します。<br>
+        なお、引数並びに<code>void</code>を記述することでも同じ事が行えます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">ポインタ渡し</h3>
+        <span class="cb41">
+        引数は原則として値渡し、すなわち値をコピーして渡されています。<br>
+        つまり、呼び出し元と引数の変数は全く別の変数であるのです。<br>
+        ですが引数に変数を渡して、その変数を関数で変更したい場合があります。<br>
+        そのような時にはアドレスを渡し、関数側からメモリ上を直接操作することで実現します。<br>
+        これをポインタ渡しと呼びます。<br>
+        場合によっては参照渡しとも呼ばれますが、本講座では別の方法を指します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">ポインタ渡し詳細</h3>
+        <span class="cb41">
+         ポインタ渡しでは実際にはアドレスを渡すことになるので、引数にはポインタ変数を記述します。<br>
+         呼び出し側でも、アドレスを渡すためにアドレス演算子を用いています。<br>
+         関数の処理では普通のポインタ変数と同様に、間接参照を行って扱っていくことになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「関数基本」解説</h2>
+       <span class="cb34">
+        コード「関数基本」についての解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">no_making</h3>
+        <span class="cb41">
+         no_making
+        </span>
+       </div>
+      </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
