@@ -1,0 +1,82 @@
+﻿+ p wdp_q_p_csc_md
++ k wdkywd
++ n wdnr
++ c wdc_mt
++ s wdsl
++ e *
++ ? *
+
+& n n
+& ? ?
+& e e
+
+& ? n
+& n ?
+
+& c ?
+& c n
+& c s
+| c ce
+
+- 0 n
+- 1 n
+- 2 n
+- 3 n
+- 4 n
+- 5 n
+- 6 n
+- 7 n
+- 8 n
+- 9 n
+- $ n
+- % n
+
+- # c
+
+- NL ce
+
+- TAB e
+- SP e
+- EOF eof
+
+- . s
+
+! ? COL p
+! ? WCF p
+
+! ? ADC k
+! ? ADD k
+! ? AND k
+! ? BCF k
+! ? BCS k
+! ? BSF k
+! ? BSS k
+! ? CAL k
+! ? CLR k
+! ? CMZ k
+! ? COM k
+! ? DEC k
+! ? DES k
+! ? GOT k
+! ? INC k
+! ? INS k
+! ? IOR k
+! ? MBS k
+! ? MOV k
+! ? MPH k
+! ? NOP k
+! ? RET k
+! ? RLF k
+! ? RRF k
+! ? RTI k
+! ? RTL k
+! ? SAF k
+! ? SLF k
+! ? SRF k
+! ? SBB k
+! ? SUB k
+! ? SWP k
+! ? XOR k
+
+
+

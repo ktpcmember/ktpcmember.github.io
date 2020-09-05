@@ -335,6 +335,11 @@
   font-family:'Inconsolata', monospace;
  }
  
+ .cb56 {
+  font-size:12px;
+  border:dashed 1px #000000;
+ }
+ 
  .cb60 {
   margin:auto;
   padding:0;
