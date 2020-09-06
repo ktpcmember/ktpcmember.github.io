@@ -137,7 +137,7 @@
         引数をメモリアドレスを通じて渡すこと
        </span>
        <h4 class="cb45">
-        多重定義
+        オーバーロード
        </h4>
        <span class="cb41">
         関数の引数のみが違う同名の関数を定義すること
@@ -179,20 +179,21 @@
        </span>
       </div>
      </article>
-     <article class="cb21 fxtb">
-      <h2 class="cb33">関数基礎</h2>
-      <span class="cb34">
-       まず、関数の基礎についての例を実行してみましょう。
-      </span>
-     </article>
-     <article class="cb21 fxrl">
-      <div class="cb37">
-       <div class="cb46">
-        <span class="cb54">関数基礎</span>
-        <button type="button" class="cb53" onclick="copy('saco_1')">
-         <span class="cb61">COPY</span>
-        </button>
-       </div>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">宣言/定義</h2>
+       <span class="cb34">
+        まず関数を用意する方法についてです。<br>
+        以下のサンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">関数基礎</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
        <code class="cb47">
 <pre id="saco_1" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
@@ -201,38 +202,32 @@
 <span class="wdkywd">int</span> plus<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>
 
 <span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-	<span class="wdkywd">int</span> result <span class="wdsl">=</span> plus<span class="wdsl">(</span><span class="wdnr">30</span><span class="wdsl">,</span> <span class="wdnr">9</span><span class="wdsl">);</span>
-	std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>result<span class="wdsl">);</span>
+    <span class="wdkywd">int</span> result <span class="wdsl">=</span> plus<span class="wdsl">(</span><span class="wdnr">30</span><span class="wdsl">,</span> <span class="wdnr">9</span><span class="wdsl">);</span>
+    std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>result<span class="wdsl">);</span>
 
-	MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"30 + 9"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
-	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"30 + 9"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 
 <span class="wdkywd">int</span> plus<span class="wdsl">(</span><span class="wdkywd">int</span> left<span class="wdsl">,</span> <span class="wdkywd">int</span> right<span class="wdsl">)</span> <span class="wdsl">{</span>
-	<span class="wdkywd">return</span> left <span class="wdsl">+</span> right<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> left <span class="wdsl">+</span> right<span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
-       </code>
-      </div>
-     </article>
-     <article class="cb21 fxtb">
-       <h2 class="cb33">宣言/定義</h2>
-       <span class="cb34">
-        まず関数を用意する方法についてです。
-       </span>
+        </code>
+       </div>
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">関数を使用するには</h3>
-        <span class="cb41">
-         変数は使う前に宣言していました。これは関数にも同じことが言えます。<br>
-         ところが、宣言は関数の処理の内容が含まれません。これで関数を使えるのでしょうか。<br>
-         確かに、プログラム全体としては関数の処理の内容が必要なので、定義は必要です。<br>
-         ですが、裏を返すと定義はプログラム全体のどこかに存在すれば良いのです。<br>
-         そのため、宣言を関数の呼び出し前に記述すれば、定義はどこに書いても問題ありません。
-        </span>
-       </div>
-      </article>
+       <h3 class="cb40">関数を使用するには</h3>
+       <span class="cb41">
+        変数は使う前に宣言していました。これは関数にも同じことが言えます。<br>
+        ところが、宣言は関数の処理の内容が含まれません。これで関数を使えるのでしょうか。<br>
+        確かに、プログラム全体としては関数の処理の内容が必要なので、定義は必要です。<br>
+        ですが、裏を返すと定義はプログラム全体のどこかに存在すれば良いのです。<br>
+        そのため、宣言を関数の呼び出し前に記述すれば、定義はどこに書いても問題ありません。
+       </span>
+      </div>
+     </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
@@ -267,11 +262,11 @@
      </div>
     </article>
      <article class="cb21 fxtb">
-       <h2 class="cb33">関数宣言/定義詳細</h2>
-       <span class="cb34">
-        関数の定義の詳細な文法についてになります。
-       </span>
-      </article>
+      <h2 class="cb33">関数宣言/定義詳細</h2>
+      <span class="cb34">
+       関数の宣言/定義の詳細な文法についてになります。
+      </span>
+     </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">返り値</h3>
@@ -283,15 +278,15 @@
       </div>
      </article>
      <article class="cb21">
-       <div class="cb31">
-        <h3 class="cb40">return文</h3>
-        <span class="cb41">
-         前述の通り、返り値を返却するには<code>return</code>>文を使用します。<br>
-         <code>return 式や変数;</code>と記述することで、式の結果や変数の値を返り値として返却します。<br>
-         ただ、<code>return</code>文は関数の実行を停止するので、以降の処理は実行されません。
-        </span>
-       </div>
-      </article>
+      <div class="cb31">
+       <h3 class="cb40">return文</h3>
+       <span class="cb41">
+        前述の通り、返り値を返却するには<code>return</code>>文を使用します。<br>
+        <code>return 式や変数;</code>と記述することで、式の結果や変数の値を返り値として返却します。<br>
+        ただ、<code>return</code>文は関数の実行を停止するので、以降の処理は実行されません。
+       </span>
+      </div>
+     </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">関数の名前</h3>
@@ -338,11 +333,11 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-       <h2 class="cb33">コード「関数基礎」新出解説</h2>
-       <span class="cb34">
-        コード「関数基礎」の新しいところについての解説です。
-       </span>
-      </article>
+      <h2 class="cb33">コード「関数基礎」解説</h2>
+      <span class="cb34">
+       コード「関数基礎」の解説です。
+      </span>
+     </article>
      <article class="cb21">
        <div class="cb31">
         <h3 class="cb40">int plus(int left, int right)</h3>
@@ -376,41 +371,40 @@
           <span class="cb61">COPY</span>
          </button>
         </div>
-        <code class="cb47">
- <pre id="saco_2" class="cb55 bkgdbl">
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
 std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span class="wdsl">{</span>
-	std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L"thank you 39"</span><span class="wdsl">;</span>
-	<span class="wdkywd">return</span> str<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L"thank you 39"</span><span class="wdsl">;</span>
+    <span class="wdkywd">return</span> str<span class="wdsl">;</span>
 <span class="wdsl">}</span>
 
 <span class="wdkywd">void</span> link_and_add_ty<span class="wdsl">(</span>
-	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> buffer<span class="wdsl">,</span>
-	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str1<span class="wdsl">,</span>
-	std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str2
+    std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> buffer<span class="wdsl">,</span>
+    std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str1<span class="wdsl">,</span>
+    std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str2
 <span class="wdsl">)</span> <span class="wdsl">{</span>
-	<span class="wdsl">(*</span>buffer<span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdsl">(*</span>str1<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdsl">(*</span>str2<span class="wdsl">)</span> <span class="wdsl">+</span> ty_str<span class="wdsl">();</span>
-<span class="wdsl">}</span>
-
-<span class="wdkywd">void</span> show_with_msgbox<span class="wdsl">(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str<span class="wdsl">)</span> <span class="wdsl">{</span>
-	MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdsl">(*</span>str<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"result"</span><span class="wdsl">,</span>MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">(*</span>buffer<span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdsl">(*</span>str1<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdsl">(*</span>str2<span class="wdsl">)</span> <span class="wdsl">+</span> ty_str<span class="wdsl">();</span>
 <span class="wdsl">}</span>
 
 <span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-	std<span class="wdsl">::</span>wstring str<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring str<span class="wdsl">;</span>
 
-	link_and_add_ty<span class="wdsl">(</span>
-		<span class="wdsl">&amp;</span>str<span class="wdsl">,</span>
-		<span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"hello"</span><span class="wdsl">,</span>
-		<span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L", planet "</span>
-	<span class="wdsl">);</span>
+    link_and_add_ty<span class="wdsl">(</span>
+        <span class="wdsl">&amp;</span>str<span class="wdsl">,</span>
+        <span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"hello"</span><span class="wdsl">,</span>
+        <span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L", planet "</span>
+    <span class="wdsl">);</span>
 
-	show_with_msgbox<span class="wdsl">(&amp;</span>str<span class="wdsl">);</span>
-	<span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"result"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
- </pre>
-        </code>
-       </div>
-      </article>
+</pre>
+       </code>
+      </div>
+     </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">返り値がない関数</h3>
@@ -429,13 +423,20 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
         </span>
        </div>
       </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">値渡し/ポインタ渡し</h2>
+       <span class="cb34">
+        実引数から仮引数への渡し方は複数に分けて考えることがあります。<br>
+        現時点では値渡しとポインタ渡しに分けて考えます。
+       </span>
+      </article>
       <article class="cb21">
         <div class="cb31">
         <h3 class="cb40">値渡し</h3>
         <span class="cb41">
-         関数の実引数は、原則として仮引数に値を丸ごとコピーして渡されます。<br>
-         これを値渡しと言います。値渡しは非常に汎用的で、扱いやすい引数の渡し方です。<br>
-         しかし、大きくメモリを使用している変数を渡す際にはコストが大きくなってしまいます。
+         値渡しは主に組み込み型に使われる方法です。<br>
+         実引数の値をコピーし、仮引数へと渡す動作をします。<br>
+         そのため、仮引数と実引数は完全に別の変数となります。
         </span>
        </div>
       </article>
@@ -443,11 +444,9 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
        <div class="cb31">
         <h3 class="cb40">ポインタ渡し</h3>
         <span class="cb41">
-        値渡しと対比されることがあるのが、ポインタ渡しです。<br>
-        内容は単純で、仮引数をポインタ変数としているだけです。<br>
-        アドレスを引数で受け取って、関数側からメモリに直接アクセスしよう発想です。<br>
-        それすなわち、実引数のアドレスを通じて変数にアクセスすることになります。<br>
-        なお、しばしばポインタ渡しは参照渡しと呼ばれますが、本講座では別の渡し方を指します。<br>
+        ポインタ渡しは呼び出し元の変数にアクセスしたいときなどに使います。<br>
+        内容は単純で、アドレスを引数で受け取るというだけです。<br>
+        つまり、変数のコピーを作らずにメモリに直接アクセスしようということです。
         </span>
        </div>
       </article>
@@ -456,8 +455,8 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
         <h3 class="cb40">ポインタ渡し詳細</h3>
         <span class="cb41">
          先述の通りアドレスを仮引数へ渡すので、仮引数にはポインタ変数を記述します。<br>
-         もちろん実引数もアドレスを渡すため、アドレス演算子を用いることになります。<br>
-         当然、関数内では普通のポインタ変数と同様に、間接参照を使っていくことになります。
+         実引数もアドレスを渡すので、変数ならアドレス演算子を用います。<br>
+         当然、関数内ではポインタ変数で扱うので間接参照をしていきます。
         </span>
        </div>
       </article>
@@ -469,17 +468,147 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">no_making</h3>
+        <h3 class="cb40">ty_str関数</h3>
         <span class="cb41">
-         no_making
+         この関数は文字列<code>thank you 39</code>という<code>std::wstring</code>の変数を作り、返却しています。<br>
+         引数を取らないので引数並びには何も書きません。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">link_and_add_ty関数</h3>
+        <span class="cb41">
+         この関数は返り値は無いので<code>void</code>、引数並びは<code>std::wstring</code>のポインタ変数が3つです。<br>
+         1つ目は<code>buffer</code>で、完成した文字列を受け取る変数のアドレスを渡します。<br>
+         2/3つ目はそれぞれ<code>str1</code>と<code>str2</code>で、連結したい<code>std::wstring</code>のアドレスを取ります。<br>
+         処理では、<code>str1</code>と<code>str2</code>と<code>ty_str</code>関数の返り値の文字列を連結し、<code>buffer</code>に代入しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">link_and_add_ty関数呼び出し</h3>
+        <span class="cb41">
+         wWinMain関数内に入ります。<br>
+         第1引数は純粋に、宣言しておいた変数<code>str</code>のアドレスを渡しています。<br>
+         第2/3引数は<code>L""</code>の文字列を<code>std::wstring</code>に変換し、そのアドレスを渡しています。<br>
+         よって、変数<code>str</code>に関数の結果が代入されることになります
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">補足</h3>
+        <span class="cb41">
+         第2/3引数の説明で、<code>std::wstring</code>に「変換」と言いました。<br>
+         確かにキャストの形をしているので、キャストしていると思うかもしれません。<br>
+         しかし、厳密には<code>link_and_add_ty</code>関数の呼び出しが終了すると破棄される<br>
+         <code>std::wstring</code>の変数を作り、その変数のアドレスを渡しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">オーバーロード</h2>
+       <span class="cb34">
+        最後に関数のオーバーロードについてです。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">オーバーロード</span>
+         <button type="button" class="cb53" onclick="copy('saco3')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_3" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">()</span> <span class="wdsl">{</span>
+    MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"Hogeがほげしてほげほげ"</span><span class="wdsl">,</span> <span class="wdtt">L"No argument"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span><span class="wdkywd">int</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"int"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span><span class="wdkywd">double</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"double"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span>std<span class="wdsl">::</span>wstring a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBox<span class="wdsl">(</span>NULL<span class="wdsl">,</span> a.c_str<span class="wdsl">(),</span> <span class="wdtt">L"std::wstring"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    show<span class="wdsl">();</span>
+    show<span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">);</span>
+    show<span class="wdsl">(</span><span class="wdnr">2.3</span><span class="wdsl">);</span>
+    show<span class="wdsl">((</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"aiueo"</span><span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">オーバーロード</h3>
+        <span class="cb41">
+         オーバーロードは同名で、引数並びが異なる関数を定義することです。<br>
+         すなわち、引数の型や引数の数、引数の型の組み合わせが異なる関数を定義することです。<br>
+         オーバーロードの定義からもわかりますが、同名で返り値のみが違う関数は定義出来ません。<br>
+         オーバーロードを使うと同じようなコードで複数の型に対応することが出来ます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">シグネチャ</h3>
+        <span class="cb41">
+         シグネチャは、関数の名前と関数の引数並びのことです。<br>
+         実は、C++ではシグネチャが異なると別の関数が定義出来るのです。<br>
+         なお、シグネチャはシグネチャーやシグニチャとも呼びます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「オーバーロード」解説</h2>
+       <span class="cb34">
+        コード「オーバーロード」についての解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">show関数</h3>
+        <span class="cb41">
+         show関数はオーバーロードされた関数です。<br>
+         引数なし、<code>int</code>、<code>double</code>、<code>std::wstring</code>に対して定義されています。<br>
+         引数なしの場合は<code>Hogeがほげしてほげほげ</code>を、<br>
+         それ以外は引数で取った値をメッセージボックスで表示させています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">show関数呼び出し</h3>
+        <span class="cb41">
+         show関数はオーバーロードされています。<br>
+         そのため全く同一の<code>show()</code>という呼び出しでありながら、異なる関数を呼び出しています。
         </span>
        </div>
       </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-          no_making
-        <!--問題文-->
+       <code>int</code>、<code>double</code>、<code>std::wstring</code>のそれぞれの型について、変数を2つずつ宣言しました。<br>
+       それぞれの型について、2つの変数の値を入れ替えたいと思っています。<br>
+       解答の一部のコードに<code>swap</code>関数を付け足す形式で、それを実現してください。<br>
+       ただし、付け足す<code>swap</code>関数以外は全く変更しないでください。
       </span>
      </article>
      <article class="cb21 fxrl">
@@ -492,8 +621,39 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
        </div>
        <code class="cb47">
 <pre id="saco_4" class="cb55 bkgdbl">
-    no_making
-    <!--回答の一部のコード置き場-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span>
+    <span class="wdkywd">int</span><span class="wdsl">*</span> int_a<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">*</span> int_b<span class="wdsl">,</span>
+    <span class="wdkywd">double</span><span class="wdsl">*</span> double_a<span class="wdsl">,</span> <span class="wdkywd">double</span><span class="wdsl">*</span> double_b<span class="wdsl">,</span>
+    std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str_a<span class="wdsl">,</span> std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str_b
+<span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring str
+        <span class="wdsl">=</span> <span class="wdtt">L"int_a = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>int_a<span class="wdsl">)</span>
+        <span class="wdsl">+</span> <span class="wdtt">L" int_b = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>int_b<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"\n"</span>
+        <span class="wdsl">+</span> <span class="wdtt">L"double_a = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>double_a<span class="wdsl">)</span>
+        <span class="wdsl">+</span> <span class="wdtt">L" double_b = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>double_b<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"\n"</span>
+        <span class="wdsl">+</span> <span class="wdtt">L"std::wstring_a = "</span> <span class="wdsl">+</span> <span class="wdsl">*</span>str_a
+        <span class="wdsl">+</span> <span class="wdtt">L" std::wstring_b = "</span> <span class="wdsl">+</span> <span class="wdsl">*</span>str_b <span class="wdsl">+</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"first"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> int_a <span class="wdsl">=</span> <span class="wdnr">14</span><span class="wdsl">,</span> int_b <span class="wdsl">=</span> <span class="wdnr">25</span><span class="wdsl">;</span>
+    <span class="wdkywd">double</span> double_a <span class="wdsl">=</span> <span class="wdnr">1.673</span><span class="wdsl">,</span> double_b <span class="wdsl">=</span> <span class="wdnr">0.911</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring str_a <span class="wdsl">=</span> <span class="wdtt">L"そしてbになる"</span><span class="wdsl">,</span> str_b <span class="wdsl">=</span> <span class="wdtt">L"そしてaになる"</span><span class="wdsl">;</span>
+
+    show<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    swap<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">);</span>
+    swap<span class="wdsl">(&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">);</span>
+    swap<span class="wdsl">(&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    show<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </div>
@@ -509,7 +669,57 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
        </div>
        <code class="cb47">
 <pre id="ar_1" class="cb55 bkgdbl">
-    <!--練習問題のコード置き場-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span>
+    <span class="wdkywd">int</span><span class="wdsl">*</span> int_a<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">*</span> int_b<span class="wdsl">,</span>
+    <span class="wdkywd">double</span><span class="wdsl">*</span> double_a<span class="wdsl">,</span> <span class="wdkywd">double</span><span class="wdsl">*</span> double_b<span class="wdsl">,</span>
+    std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str_a<span class="wdsl">,</span> std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str_b
+<span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring str
+        <span class="wdsl">=</span> <span class="wdtt">L"int_a = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>int_a<span class="wdsl">)</span>
+        <span class="wdsl">+</span> <span class="wdtt">L" int_b = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>int_b<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"\n"</span>
+        <span class="wdsl">+</span> <span class="wdtt">L"double_a = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>double_a<span class="wdsl">)</span>
+        <span class="wdsl">+</span> <span class="wdtt">L" double_b = "</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>double_b<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"\n"</span>
+        <span class="wdsl">+</span> <span class="wdtt">L"std::wstring_a = "</span> <span class="wdsl">+</span> <span class="wdsl">*</span>str_a
+        <span class="wdsl">+</span> <span class="wdtt">L" std::wstring_b = "</span> <span class="wdsl">+</span> <span class="wdsl">*</span>str_b <span class="wdsl">+</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"first"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> swap<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">*</span> a<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">*</span> b<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> temp <span class="wdsl">=</span> <span class="wdsl">*</span>a<span class="wdsl">;</span>
+    <span class="wdsl">*</span>a <span class="wdsl">=</span> <span class="wdsl">*</span>b<span class="wdsl">;</span>
+    <span class="wdsl">*</span>b <span class="wdsl">=</span> temp<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> swap<span class="wdsl">(</span><span class="wdkywd">double</span><span class="wdsl">*</span> a<span class="wdsl">,</span> <span class="wdkywd">double</span><span class="wdsl">*</span> b<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">double</span> temp <span class="wdsl">=</span> <span class="wdsl">*</span>a<span class="wdsl">;</span>
+    <span class="wdsl">*</span>a <span class="wdsl">=</span> <span class="wdsl">*</span>b<span class="wdsl">;</span>
+    <span class="wdsl">*</span>b <span class="wdsl">=</span> temp<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> swap<span class="wdsl">(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> a<span class="wdsl">,</span> std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> b<span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring temp <span class="wdsl">=</span> <span class="wdsl">*</span>a<span class="wdsl">;</span>
+    <span class="wdsl">*</span>a <span class="wdsl">=</span> <span class="wdsl">*</span>b<span class="wdsl">;</span>
+    <span class="wdsl">*</span>b <span class="wdsl">=</span> temp<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> int_a <span class="wdsl">=</span> <span class="wdnr">14</span><span class="wdsl">,</span> int_b <span class="wdsl">=</span> <span class="wdnr">25</span><span class="wdsl">;</span>
+    <span class="wdkywd">double</span> double_a <span class="wdsl">=</span> <span class="wdnr">1.673</span><span class="wdsl">,</span> double_b <span class="wdsl">=</span> <span class="wdnr">0.911</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring str_a <span class="wdsl">=</span> <span class="wdtt">L"そしてbになる"</span><span class="wdsl">,</span> str_b <span class="wdsl">=</span> <span class="wdtt">L"そしてaになる"</span><span class="wdsl">;</span>
+
+    show<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    swap<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">);</span>
+    swap<span class="wdsl">(&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">);</span>
+    swap<span class="wdsl">(&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    show<span class="wdsl">(&amp;</span>int_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>int_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>double_b<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>str_b<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </details>
