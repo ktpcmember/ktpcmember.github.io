@@ -9,12 +9,17 @@
   <link rel="stylesheet" type="text/css" href="style.css">
  </head>
  <body class="by">
-  <select id="la" class="csla">
-   <option value="_cps">C++</option>
-   <option value="ktpcpicasm">KTPCPICASM</option>
-  </select>
   <textarea id="i_pt" class="ttaa" placeholder="Write here some code."></textarea>
-  <button class="bn" onclick="push()">Convert and Copy</button>
+  <div class="cdtp">
+   <button class="bn" onclick="push()">Convert and Copy</button>
+   <div class="cdit">
+    <select id="la" class="csla">
+     <option value="_cps">C++</option>
+     <option value="ktpcpicasm">KTPCPICASM</option>
+    </select>
+    <input type="number" class="cinr" id="nrofsp" placeholder="TAB変換後のSPACE字数、0or空欄で変換なし">
+   </div>
+  </div>
   <textarea id="o_pt" class="ttaa" placeholder="Results are put out here." readonly></textarea>
  </body>
 </html>

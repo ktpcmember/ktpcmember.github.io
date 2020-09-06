@@ -17,15 +17,38 @@
   resize:none;
  }
  
- .bn {
-  margin:1em auto;
+ .cdtp {
+  margin:0.5em auto;
   width:90%;
-  min-height:5em;
+  height:5em;
+  display:flex;
+  flex-direction:row;
+ }
+ 
+ .bn {
+  margin:auto;
+  flex-grow:1;
+  min-height:90%;
+ }
+ 
+ .cdit {
+  margin:auto;
+  flex-grow:1;
+  min-height:90%;
+  display:flex;
+  flex-direction:column;
  }
  
  .csla {
-  margin:1em auto;
-  width:90%;
+  margin:auto;
+  min-width:90%;
   min-height:2em;
  }
+ 
+ .cinr {
+  margin:auto;
+  min-width:90%;
+  min-height:2em;
+ }
+ 
  

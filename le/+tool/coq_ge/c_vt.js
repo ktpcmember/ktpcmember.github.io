@@ -2,7 +2,8 @@
 function push(){
  var i_pt=document.getElementById("i_pt").value;
  var la=document.getElementById("la").value;
- var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l,f;
+ var nrofsp=document.getElementById("nrofsp").value;
+ var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l,f,spt_r_pt="";
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
  r_qt=new XMLHttpRequest();
@@ -150,6 +151,12 @@ function push(){
   p_vsty=ctty;
   i+=l;
  }while(i_pt.length>=i);
+ if(nrofsp>0){
+  for(nrofsp;nrofsp>0;nrofsp--){
+   spt_r_pt+=" ";
+  }
+  ottt=ottt.replace(/\t/g,spt_r_pt);
+ }
  document.getElementById("o_pt").value=ottt;
  navigator.permissions.query({
   name:"clipboard-write"
