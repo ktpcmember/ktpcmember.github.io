@@ -41,13 +41,13 @@
  
  .csla {
   margin:auto;
-  width:90%;
+  min-width:90%;
   min-height:2em;
  }
  
  .cinr {
   margin:auto;
-  width:90%;
+  min-width:90%;
   min-height:2em;
  }
  
