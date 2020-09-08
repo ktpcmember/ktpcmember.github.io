@@ -122,7 +122,7 @@
         typedef
        </h4>
        <span class="cb41">
-        型の別名を宣言する構文
+        型の別名を宣言するキーワード
        </span>
       </div>
       <div class="cb36 debr">
@@ -288,6 +288,12 @@
        </div>
       </article>
       <article class="cb21 fxtb">
+       <h2 class="cb33">コード「構造体基本」解説</h2>
+       <span class="cb34">
+        コード「構造体基本」の解説です。
+       </span>
+      </article>
+      <article class="cb21 fxtb">
        <h2 class="cb33">エイリアス</h2>
        <span class="cb34">
         型名の別名、エイリアスについてです。以下のサンプルコードを実行してみましょう。
@@ -303,9 +309,66 @@
         </div>
         <code class="cb47">
 <pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
+<span class="wdkywd">using</span> my_str <span class="wdsl">=</span> std<span class="wdsl">::</span>wstring<span class="wdsl">;</span>
+
+<span class="wdkywd">typedef</span> <span class="wdkywd">struct</span> tagITEM <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> number<span class="wdsl">;</span>
+    my_str name<span class="wdsl">;</span>
+<span class="wdsl">}</span> ITEM<span class="wdsl">,</span> <span class="wdsl">*</span> LPITEM<span class="wdsl">;</span>
+
+<span class="wdkywd">void</span> show<span class="wdsl">(</span>LPITEM item<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBoxW<span class="wdsl">(</span>
+        NULL<span class="wdsl">,</span>
+        item<span class="wdsl">-&gt;</span>name.c_str<span class="wdsl">(),</span>
+        std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>item<span class="wdsl">-&gt;</span>number<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span>
+        MB_OK
+    <span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    ITEM a<span class="wdsl">{</span> <span class="wdnr">1</span><span class="wdsl">,</span><span class="wdtt">L"hanauta"</span> <span class="wdsl">};</span>
+    show<span class="wdsl">(&amp;</span>a<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
         </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">エイリアス宣言</h3>
+        <span class="cb41">
+         エイリアス宣言は、型名の別名を定義する言語機能です。<br>
+         <code>using 別名 = 型名;</code>という構文で、<code>型名</code>の<code>別名</code>を定義します。<br>
+         この<code>型名</code>にはポインタ型などの厄介な型も指定することができます。<br>
+         また、<code>別名</code>はエイリアス宣言後にあらゆる場所で通常の型と同様に使用できます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">変数宣言の補足</h3>
+        <span class="cb41">
+         実は、変数宣言の<code>型名 変数名</code>には、コンマ区切りで<code>変数名</code>を追加できます。<br>
+         ここで注意したいのがポインタ変数の時です。ポインタ型は<code>型名*</code>と言いました。<br>
+         しかし、変数宣言ではこのアスタリスクはこの<code>型名</code>ではなく、<code>変数名</code>に係っているのです。<br>
+         すなわち<code>型名* 変数名A,変数名B;</code>とすると、<code>変数名A</code>は<code>型名*</code>ですが、<code>変数名B</code>は<code>型名</code>です。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">typedef</h3>
+        <span class="cb41">
+         typedefは、<code>typedef 変数宣言</code>という構文で変数の別名を定義するためのキーワードです。<br>
+         サンプルコードを読んだ人は、構造体の宣言と同時に構造体変数を宣言するのに
+         実は、構造体の宣言時の波括弧の後に<code>変数名</code>を変数宣言の<code>変数名</code>以下同様に記述できます。<br>
+         ただしその方法を使うと、その構造体の変数を後から宣言することができなくなります。
+        </span>
        </div>
       </article>
      <article class="cb21 fxtb">
