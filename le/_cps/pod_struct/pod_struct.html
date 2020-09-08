@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。構造体、特にPODの解説をしています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>構造体/POD - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../k_t_fcba/k_t_fcba.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../unknown/unknown.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++講習/構造体（準備中です。もうしばらくお待ちください。）</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       構造体、特にPODと呼ばれるC言語互換形式のものについて解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        構造体
+       </h4>
+       <span class="cb41">
+        複数の変数をまとめた型を作るもの
+       </span>
+       <h4 class="cb45">
+        メンバ
+       </h4>
+       <span class="cb41">
+        構造体の中にある変数のこと
+       </span>
+       <h4 class="cb45">
+        ドット演算子
+       </h4>
+       <span class="cb41">
+        構造体のメンバにアクセスする演算子
+       </span>
+       <h4 class="cb45">
+        アロー演算子
+       </h4>
+       <span class="cb41">
+        <code>(*).</code>の糖衣構文
+       </span>
+       <h4 class="cb45">
+        エイリアス
+       </h4>
+       <span class="cb41">
+        英語で「別名、通称」などの意味の単語。
+       </span>
+       <h4 class="cb45">
+        エイリアス宣言
+       </h4>
+       <span class="cb41">
+        型名の別名を宣言する言語機能
+       </span>
+       <h4 class="cb45">
+        typedef
+       </h4>
+       <span class="cb41">
+        型の別名を宣言する構文
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        変数の宣言
+       </h4>
+       <span class="cb41">
+        変数の型と名前を定義すること
+       </span>
+       <h4 class="cb45">
+        ポインタ変数
+       </h4>
+       <span class="cb41">
+        アドレスを値として持つ変数
+       </span>
+       <h4 class="cb45">
+        アドレス値
+       </h4>
+       <span class="cb41">
+        ポインタ変数が持っているアドレスの値
+       </span>
+       <h4 class="cb45">
+        ポインタ型
+       </h4>
+       <span class="cb41">
+        ポインタ変数の型
+       </span>
+       <h4 class="cb45">
+        間接参照
+       </h4>
+       <span class="cb41">
+        ポインタ変数のポインタ値にアクセスすること
+       </span>
+       <h4 class="cb45">
+        糖衣構文/シンタックスシュガー
+       </h4>
+       <span class="cb41">
+        長い、又は複雑な構文の簡単な書き方
+       </span>
+      </div>
+     </article>
+
+      <article class="cb21 fxtb">
+       <h2 class="cb33">構造体基本</h2>
+       <span class="cb34">
+        構造体の宣言/初期化/メンバアクセスについてです。<br>
+        次のサンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">構造体基本</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">struct</span> item <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> number<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring name<span class="wdsl">;</span>
+<span class="wdsl">};</span>
+
+<span class="wdkywd">void</span> show_item<span class="wdsl">(</span>item a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBoxW<span class="wdsl">(</span>
+        NULL<span class="wdsl">,</span>
+        a.name.c_str<span class="wdsl">(),</span>
+        std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a.number<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span>
+        MB_OK
+    <span class="wdsl">);</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show_item<span class="wdsl">(</span>item<span class="wdsl">*</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBoxW<span class="wdsl">(</span>
+        NULL<span class="wdsl">,</span>
+        a<span class="wdsl">-&gt;</span>name.c_str<span class="wdsl">(),</span>
+        std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">-&gt;</span>number<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span>
+        MB_OK
+    <span class="wdsl">);</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    item a<span class="wdsl">;</span>
+    a.number <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    a.name <span class="wdsl">=</span> <span class="wdtt">L"Shibuya"</span><span class="wdsl">;</span>
+
+    item b<span class="wdsl">{</span> <span class="wdnr">3</span><span class="wdsl">,</span><span class="wdtt">L"Komabatodaimae"</span> <span class="wdsl">};</span>
+
+    show_item<span class="wdsl">(</span>a<span class="wdsl">);</span>
+    show_item<span class="wdsl">(&amp;</span>b<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>    
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">宣言</h3>
+        <span class="cb41">
+         やはり変数や関数と同様に、宣言をしなくてはなりません。<br>
+         <code>struct</code>というキーワードを使い、<code>struct 構造体名 { 変数並び };</code>という構文で宣言します。<br>
+         構造体は複数の変数をまとめる機能が主なので、変数並びに変数宣言を記述していきます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">変数として宣言/初期化</h3>
+        <span class="cb41">
+         宣言した構造体を実際に使うには、組み込み型と同様に宣言を行います。<br>
+         宣言した構造体を型として、宣言された変数を構造体変数と呼んだりします。<br>
+         初期化は波括弧を使い、<code>変数並び</code>の記述順にコンマ区切りで値を渡し、行うことが出来ます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">メンバアクセス</h2>
+       <span class="cb34">
+        構造体のわかりにくいところ、構造体が持つメンバへのアクセス方法についてです。<br>
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">メンバアクセス - ドット演算子</h3>
+        <span class="cb41">
+         当然ですが、構造体変数が持っている変数にアクセスすることが出来ます。<br>
+         構造体のメンバにアクセスする際には、<code>変数名.メンバ名</code>という構文を使用します。<br>
+         なお、<code>変数名.メンバ名</code>は1つの変数を指すので、まとめて1つの変数の名前と見なせます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">メンバアクセス - ポインタ変数から</h3>
+        <span class="cb41">
+         組み込み型にポインタ変数があるように、構造体にもポインタ変数が存在します。<br>
+         もちろんポインタ型は<code>構造体名*</code>で、ポインタ変数の宣言やアドレス演算子は変わりません。<br>
+         ただし、ポインタ変数からのメンバアクセスは<code>(*変数名).メンバ名</code>となります。<br>
+         これは、ドット演算子の方が間接参照演算子よりも優先されてしまうからです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">メンバアクセス - アロー演算子</h3>
+        <span class="cb41">
+         先述したように、ポインタ変数からメンバアクセスする際は<code>(*変数名).メンバ名</code>となります。<br>
+         しかし演算子を2つ使い、丸括弧も付けないといけないのは間違いの元です。<br>
+         そのため、アロー演算子という糖衣構文/シンタックスシュガーが存在します。<br>
+         アロー演算子を用いると、<code>変数名->メンバ名</code>と記述することが出来ます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">エイリアス</h2>
+       <span class="cb34">
+        型名の別名、エイリアスについてです。以下のサンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">エイリアス</span>
+         <button type="button" class="cb53" onclick="copy('saco_2')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+
+</pre>
+        </code>
+       </div>
+      </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       <!--問題文-->
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">解答の一部</span>
+        <button type="button" class="cb53" onclick="copy('saco_4')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_4" class="cb55 bkgdbl">
+    <!--回答の一部のコード置き場-->
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">解答</summary>
+       <div class="cb46">
+        <span class="cb54">練習問題解答</span>
+        <button type="button" class="cb53" onclick="copy('ar_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="ar_1" class="cb55 bkgdbl">
+    <!--練習問題の解答コード置き場-->
+</pre>
+       </code>
+      </details>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
