@@ -86,13 +86,31 @@
         構造体
        </h4>
        <span class="cb41">
-        複数の変数をまとめた型を作るもの
+        複数の変数などをまとめた型を作るもの
        </span>
        <h4 class="cb45">
         メンバ
        </h4>
        <span class="cb41">
         構造体の中にある変数などのこと
+       </span>
+       <h4 class="cb45">
+        構造体の宣言
+       </h4>
+       <span class="cb41">
+        構造体の名前を定義すること
+       </span>
+       <h4 class="cb45">
+        構造体の定義
+       </h4>
+       <span class="cb41">
+        構造体の名前とメンバを定義すること
+       </span>
+       <h4 class="cb45">
+        構造体変数の宣言
+       </h4>
+       <span class="cb41">
+        定義した構造体の変数を宣言すること
        </span>
        <h4 class="cb45">
         ドット演算子
@@ -151,7 +169,7 @@
         間接参照
        </h4>
        <span class="cb41">
-        ポインタ変数のポインタ値にアクセスすること
+        アドレスを変数のように扱うこと
        </span>
        <h4 class="cb45">
         糖衣構文/シンタックスシュガー
@@ -165,7 +183,7 @@
       <article class="cb21 fxtb">
        <h2 class="cb33">構造体基本</h2>
        <span class="cb34">
-        構造体の宣言/初期化/メンバアクセスについてです。<br>
+        構造体の宣言/定義/初期化/メンバアクセスについてです。<br>
         次のサンプルコードを実行してみましょう。
        </span>
       </article>
@@ -181,6 +199,8 @@
 <pre id="saco_1" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">struct</span> item<span class="wdsl">;</span>
 
 <span class="wdkywd">struct</span> item <span class="wdsl">{</span>
     <span class="wdkywd">int</span> number<span class="wdsl">;</span>
@@ -222,23 +242,33 @@
 </pre>
         </code>
        </div>
-      </article>    
+      </article>
       <article class="cb21">
        <div class="cb31">
         <h3 class="cb40">構造体の宣言</h3>
         <span class="cb41">
-         やはり変数や関数と同様に、宣言をしなくてはなりません。<br>
-         <code>struct</code>というキーワードを使い<code>struct 構造体名 { メンバ並び };</code>という構文で宣言します。<br>
+         構造体は、関数と同様に宣言と定義を区別します。<br>
+         宣言は<code>struct</code>というキーワードを使い、<code>struct 構造体名;</code>という構文を用います。<br>
+         後述する、構造体の定義の前におかれている宣言を、前方宣言と呼びます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">構造体の定義</h3>
+        <span class="cb41">
+         関数と同様に、構造体の宣言に波括弧を付けると定義となります。<br>
+         構造体の定義は<code>struct 構造体名 { メンバ並び };</code>という構文を用います。<br>
          構造体は複数の変数をまとめる機能が主なので、メンバ並びに変数宣言を記述していきます。
         </span>
        </div>
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">変数として宣言/初期化</h3>
+        <h3 class="cb40">構造体変数の宣言/初期化</h3>
         <span class="cb41">
-         宣言した構造体を実際に使うには、組み込み型と同様に宣言を行います。<br>
-         宣言した構造体を型として、宣言された変数を構造体変数と呼んだりします。<br>
+         宣言した構造体を使うには、組み込み型と同様の形で変数の宣言を行います。<br>
+         宣言した構造体を型として、宣言された変数を構造体変数と呼ぶことがあります。<br>
          初期化は波括弧を使い、<code>メンバ並び</code>の記述順にコンマ区切りで値を渡して行います。
         </span>
        </div>
@@ -289,19 +319,19 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">item構造体の宣言</h3>
+        <h3 class="cb40">item構造体の定義</h3>
         <span class="cb41">
-         構造体の宣言には<code>struct 構造体名 { メンバ並び };</code>の構文を使います。<br>
+         構造体の定義には<code>struct 構造体名 { メンバ並び };</code>の構文を使います。<br>
          <code>int</code>と<code>std::wstring</code>をもつ構造体<code>item</code>を宣言しています。<br>
-         それぞれ<code>number</code>と<code>name</code>という名前を付けています。
+         そして、それぞれ<code>number</code>と<code>name</code>という名前を付けています。
         </span>
        </div>
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">item構造体の変数の宣言と初期化</h3>
+        <h3 class="cb40">item構造体変数の宣言と初期化</h3>
         <span class="cb41">
-         構造体も組み込みと同じ変数宣言を用いりました。<br>
+         構造体も組み込みと同じ変数宣言の形を用いりました。<br>
          ただし、初期化は波括弧を用いて、<code>リスト並び</code>で行うのでした。<br>
          <code>wWinMain</code>関数内では、<code>item</code>構造体の変数<code>a</code>と<code>b</code>を宣言しています。<br>
          <code>a</code>はドット演算子でメンバアクセスして値を与えています。<br>
@@ -340,14 +370,18 @@
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">using</span> my_str <span class="wdsl">=</span> std<span class="wdsl">::</span>wstring<span class="wdsl">;</span>
+<span class="wdkywd">struct</span> tagITEM<span class="wdsl">;</span>
+
+<span class="wdkywd">using</span> show_func <span class="wdsl">=</span> <span class="wdkywd">void</span><span class="wdsl">(</span>tagITEM<span class="wdsl">*);</span>
+<span class="wdkywd">using</span> show_func_ptr <span class="wdsl">=</span> show_func<span class="wdsl">*;</span>
 
 <span class="wdkywd">typedef</span> <span class="wdkywd">struct</span> tagITEM <span class="wdsl">{</span>
     <span class="wdkywd">int</span> number<span class="wdsl">;</span>
-    my_str name<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>wstring name<span class="wdsl">;</span>
+    show_func_ptr show<span class="wdsl">;</span>
 <span class="wdsl">}</span> ITEM<span class="wdsl">,</span> <span class="wdsl">*</span> LPITEM<span class="wdsl">;</span>
 
-<span class="wdkywd">void</span> show<span class="wdsl">(</span>LPITEM item<span class="wdsl">)</span> <span class="wdsl">{</span>
+<span class="wdkywd">void</span> show_item<span class="wdsl">(</span>LPITEM item<span class="wdsl">)</span> <span class="wdsl">{</span>
     MessageBoxW<span class="wdsl">(</span>
         NULL<span class="wdsl">,</span>
         item<span class="wdsl">-&gt;</span>name.c_str<span class="wdsl">(),</span>
@@ -357,8 +391,9 @@
 <span class="wdsl">}</span>
 
 <span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-    ITEM a<span class="wdsl">{</span> <span class="wdnr">1</span><span class="wdsl">,</span><span class="wdtt">L"hanauta"</span> <span class="wdsl">};</span>
-    show<span class="wdsl">(&amp;</span>a<span class="wdsl">);</span>
+    ITEM a<span class="wdsl">{</span> <span class="wdnr">1</span><span class="wdsl">,</span><span class="wdtt">L"hanauta"</span><span class="wdsl">,</span>show_item <span class="wdsl">};</span>
+
+    a.show<span class="wdsl">(&amp;</span>a<span class="wdsl">);</span>
 
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
@@ -379,7 +414,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">変数宣言の補足</h3>
+        <h3 class="cb40">補足 - 変数宣言</h3>
         <span class="cb41">
          実は、変数宣言の<code>型名 変数名</code>には、コンマ区切りで<code>変数名</code>を追加できます。<br>
          ここで問題になるのが、ポインタ変数宣言でのアスタリスクは<code>変数名</code>に係ることです。<br>
@@ -399,6 +434,20 @@
         </span>
        </div>
       </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">コラム - LPWSTRの正体</h3>
+        <span class="cb41">
+         <code>wWinMain</code>関数の引数に、<code>LPWSTR</code>がありました。<br>
+         これは、<code>LP</code>がポインタ、<code>W</code>がワイド文字、<code>STR</code>が文字列を意味します。<br>
+         ワイド文字というのは、Visual StudioにおいてはUTF-16LEの文字のことです。<br>
+         つまり、UTF-16LEを扱える型の文字列へのポインタということになります。<br>
+         厳密に言うと、UTF-16LEを扱える型の文字へのポインタです。<br>
+         配列を学ぶとここで言っていることがわかるようになるでしょう。<br>
+         実際には、<code>LPWSTR</code>が<code>typedef WCHAR *LPWSTR;</code>で、<code>WCHAR</code>が<code>typedef wchar_t WCHAR;</code>です。
+        </span>
+       </div>
+      </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">コード「エイリアス」解説</h2>
        <span class="cb34">
@@ -410,6 +459,7 @@
         <h3 class="cb40">show_func、show_func_ptr</h3>
         <span class="cb41">
          双方とも、エイリアス宣言によって宣言されている、型の別名です。<br>
+         ただ、構造体<code>tagITEM</code>の構造体名を使いたいので、前方宣言をしています。
          <code>show_func</code>は、返り値<code>void</code>、引数は構造体<code>tagITEM</code>へのポインタを取る関数の型です。<br>
          <code>show_func_ptr</code>は<code>show_func</code>へのポインタ、即ち<code>void(*)(tagITEM*)</code>を表わします。
         </span>
@@ -417,12 +467,24 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">構造体tagITEMの宣言</h3>
+        <h3 class="cb40">構造体tagITEMの定義</h3>
         <span class="cb41">
          構造体<code>tagITEM</code>は、typedefと組み合わせています。<br>
          そして、<code>tagITEM</code>の別名<code>ITEM</code>と、<code>tagITEM</code>へのポインタ型<code>LPITEM</code>を定義しています。<br>
-         <code>tagITEM</code>の<code>tag</code>というのはC言語由来のtypedefに指定している構造体を示す慣習の名前です。<br>
-         <code>LPTEM</code>の<code>LP</code>は、Windows APIがポインタの接頭辞として<code>LP</code>を使っていることに由来します。
+         <code>tagITEM</code>の<code>tag</code>というのはC言語では構造体名は型名でなく、タグ名だったことに由来します。<br>
+         <code>LPITEM</code>の<code>LP</code>は、Windows APIがポインタ型の接頭辞で<code>LP</code>を使っていることに由来します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">補足 - C言語での構造体</h3>
+        <span class="cb41">
+         構造体名はC言語だとタグ名と言いました。<br>
+         実は、C言語だと構造体名は単体では型名にならなかったのです。<br>
+         そのため、構造体変数を宣言するときは<code>struct</code>キーワードを書く必要がありました。<br>
+         すなわち、<code>struct 構造体名 変数名;</code>だったのです。<br>
+         なお、C++でもこの構造体変数の構文を用いても良いことになっています。
         </span>
        </div>
       </article>
@@ -433,6 +495,15 @@
          <code>show_item</code>関数は、構造体<code>ITEM</code>のメンバ<code>show</code>に渡すために用意した関数です。<br>
          <code>LPITEM</code>、すなわち<code>ITEM</code>へのポインタを引数に取ります。<br>
          処理は構造体<code>ITEM</code>の内容をメッセージボックスに表示させています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">a.show(&a);</h3>
+        <span class="cb41">
+         これは、構造体変数<code>a</code>のメンバの<code>show</code>を経由して<code>show_item</code>関数を呼び出しています。<br>
+         <code>show_item</code>関数は、<code>LPITEM</code>を引数に取るので、構造体変数<code>a</code>のアドレスを渡しています。
         </span>
        </div>
       </article>
