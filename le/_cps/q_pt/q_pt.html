@@ -7,7 +7,7 @@
   <meta name="author" content="駒場東邦物理部">
   <meta http-equiv="content-language" content="ja">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>メモリとポインタ - C++講習 - 駒場東邦物理部</title>
+  <title>ポインタ - C++講習 - 駒場東邦物理部</title>
   <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
   <link rel="stylesheet" type="text/css" href="../../../style.css">
   <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
@@ -69,12 +69,13 @@
     <div class="cb00">
      <div class="cb10">
       <article class="cb20">
-       <h1>C++講習/メモリとポインタ（準備中です。もうしばらくお待ちください。）</h1>
+       <h1>C++講習/ポインタ</h1>
       </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">概要</h2>
        <span class="cb34">
-        準備中です。もうしばらくお待ちください。
+        本章では、ポインタを通してアドレスの使い方を学びます。<br>
+        C++の中でも低層に位置する機能ではありますが、かなりややこしい構文を使います。
        </span>
       </article>
       <article class="cb21 fxlr">
@@ -82,54 +83,202 @@
         <h4 class="cb44">
          重要語
         </h4>
-        <h4 class="cb45">準備中</h4>
-        <span class="cb41">もうしばらくお待ちください。</span>
+        <h4 class="cb45">
+         ポインタ
+        </h4>
+        <span class="cb41">
+         アドレスを保存する変数
+        </span>
+        <h4 class="cb45">
+         間接参照
+        </h4>
+        <span class="cb41">
+         アドレスを変数のように扱うこと
+        </span>
+        <h4 class="cb45">
+         値渡し
+        </h4>
+        <span class="cb41">
+         数値データをそのまま引数にすること
+        </span>
+        <h4 class="cb45">
+         ポインタ渡し
+        </h4>
+        <span class="cb41">
+         データを指すポインタを引数にすること
+        </span>
        </div>
        <div class="cb36 debr">
-       <h4 class="cb44">
-        必要語
-       </h4>
-       <h4 class="cb45">準備中</h4>
-       <span class="cb41">もうしばらくお待ちください。</span>
+        <h4 class="cb44">
+         必要語
+        </h4>
+        <h4 class="cb45">
+         アドレス
+        </h4>
+        <span class="cb41">
+         メモリ内の位置を表す数値
+        </span>
+        <h4 class="cb45">
+         関数
+        </h4>
+        <span class="cb41">
+         結果を返す、動作のまとまり
+        </span>
+        <h4 class="cb45">
+         引数
+        </h4>
+        <span class="cb41">
+         関数に渡す値
+       </span>
       </div>
      </article>
-
      <article class="cb21 fxtb">
-      <h2 class="cb33">練習問題</h2>
+      <h2 class="cb33">ポインタ</h2>
       <span class="cb34">
-       準備中です。もうしばらくお待ちください。
+       まずは以下のプログラムを実行してみましょう。
       </span>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">解答の一部</span>
-        <button type="button" class="cb53" onclick="copy('ar_not')">
+        <span class="cb54">ポインタ</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="ar_not" class="cb55 bkgdbl">
-<!--コード-->
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//100で初期化
+</span>    <span class="wdkywd">int</span> a<span class="wdsl">=</span><span class="wdnr">100</span><span class="wdsl">;</span>
+    <span class="wdc_mt">//int型へのポインタ
+</span>    <span class="wdkywd">int</span><span class="wdsl">*</span> ptr<span class="wdsl">;</span>
+    <span class="wdc_mt">//aのアドレスを代入する
+</span>    ptr <span class="wdsl">=</span> <span class="wdsl">&amp;</span>a<span class="wdsl">;</span>
+
+    <span class="wdc_mt">//ここでの*ptrはaと同じ意味になる
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*</span>ptr<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"(*ptr)の値"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//a = 200;と同じ
+</span>    <span class="wdsl">*</span>ptr <span class="wdsl">=</span> <span class="wdnr">200</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">//aが書き換えられている
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"aの値"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </div>
      </article>
-     <article class="cb21 fxlr">
-      <details class="cb37">
-       <summary class="cb48">解答</summary>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ポインタの宣言</h3>
+       <span class="cb41">
+        アドレスを保存する変数のことを、ポインタといいます。<br>
+        ポインタは<code>型名* ポインタ名</code>という構文で宣言します。<br>
+        型名には、そのポインタが指す値の型を書きます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ポインタの型</h3>
+       <span class="cb41">
+        C++の変数には型がありますが、メモリには型がありません。<br>
+        そして、値の符号化方法は型によって違います。<br>
+        別の型として読み出せば、全く異なる意味になってしまいます。<br>
+        ここで、ポインタが値の型を表すことで、読み書き時に型を間違える事故を防げます。<br>
+        また、<code>int* ptr;</code>で宣言した変数を、<code>int</code>型へのポインタ<code>ptr</code>と呼びます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">変数のアドレス</h3>
+       <span class="cb41">
+        さて、ポインタに入れるためのアドレスはどうやって取得するのでしょうか。<br>
+        多くのC++の変数はメモリ上にあり、それぞれにアドレスがあります。<br>
+        アドレスを取得するには、<code>&変数名</code>という構文を用います。<br>
+        上の例文では、<code>int</code>型変数<code>a</code>のアドレスを、<code>int</code>型へのポインタ<code>ptr</code>に代入しています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">間接参照</h2>
+      <span class="cb34">
+       ポインタに入っているアドレスは、変数のように扱うことができます。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
        <div class="cb46">
-        <span class="cb54">練習問題解答</span>
-        <button type="button" class="cb53" onclick="copy('ar_1')">
+        <span class="cb54">間接参照</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="ar_1" class="cb55 bkgdbl">
-<!--解答-->
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//通常のint型変数
+</span>    <span class="wdkywd">int</span> a<span class="wdsl">;</span>
+    <span class="wdc_mt">//int型の変数を指すポインタ
+</span>    <span class="wdkywd">int</span><span class="wdsl">*</span> ptr<span class="wdsl">;</span>
+    <span class="wdc_mt">//aのアドレスを代入する
+</span>    ptr <span class="wdsl">=</span> <span class="wdsl">&amp;</span>a<span class="wdsl">;</span>
+
+    <span class="wdc_mt">//std::wstringはアドレスを受け取らないのでint型にキャストする
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">((</span><span class="wdkywd">int</span><span class="wdsl">)</span>ptr<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"アドレス"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
-      </details>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">構文</h3>
+       <span class="cb41">
+        <code>*ポインタ名</code>で、ポインタが指すメモリを変数のように扱うことができます。<br>
+        例文では、<code>ptr</code>が指すメモリを<code>a</code>も使っています。<br>
+        そのため、<code>*ptr</code>は<code>a</code>と同じように扱うことができます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ポインタ渡し</h2>
+      <span class="cb34">
+       コンピュータの関数の引数にできるのは、数値だけです。<br>
+       <code>int</code>型などであれば、そのまま渡すことができます。<br>
+       しかし、<code>std::wstring</code>型のようなデータは、そのまま渡すことができません。<br>
+       ですから、コンピュータの関数の引数の渡し方には2種類があります。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">値渡し</h3>
+       <span class="cb41">
+        先ほど述べた、<code>int</code>型のほかに、<code>double</code>型などの数値型は、そのまま引数にすることができます。<br>
+        このことを、値渡しといいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ポインタ渡し</h3>
+       <span class="cb41">
+        一方、文字列型のような、数値1つで表せない型は、一度メモリに保存し、そのアドレスを引数とします。<br>
+        こちらの方法を、ポインタ渡しといいます。
+       </span>
+      </div>
      </article>
     </div>
    </div>
