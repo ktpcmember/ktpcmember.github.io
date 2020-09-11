@@ -7,7 +7,7 @@
   <meta name="author" content="駒場東邦物理部">
   <meta http-equiv="content-language" content="ja">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>構造体/POD - C++講習 - 駒場東邦物理部</title>
+  <title>構造体 - C++講習 - 駒場東邦物理部</title>
   <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
   <link rel="stylesheet" type="text/css" href="../../../style.css">
   <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
@@ -92,7 +92,7 @@
         メンバ
        </h4>
        <span class="cb41">
-        構造体の中にある変数のこと
+        構造体の中にある変数などのこと
        </span>
        <h4 class="cb45">
         ドット演算子
@@ -140,12 +140,6 @@
        </h4>
        <span class="cb41">
         アドレスを値として持つ変数
-       </span>
-       <h4 class="cb45">
-        アドレス値
-       </h4>
-       <span class="cb41">
-        ポインタ変数が持っているアドレスの値
        </span>
        <h4 class="cb45">
         ポインタ型
@@ -203,7 +197,7 @@
     <span class="wdkywd">return</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 
-<span class="wdkywd">void</span> show_item<span class="wdsl">(</span>item<span class="wdsl">*</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
+<span class="wdkywd">void</span> show_item_p<span class="wdsl">(</span>item<span class="wdsl">*</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
     MessageBoxW<span class="wdsl">(</span>
         NULL<span class="wdsl">,</span>
         a<span class="wdsl">-&gt;</span>name.c_str<span class="wdsl">(),</span>
@@ -221,7 +215,7 @@
     item b<span class="wdsl">{</span> <span class="wdnr">3</span><span class="wdsl">,</span><span class="wdtt">L"Komabatodaimae"</span> <span class="wdsl">};</span>
 
     show_item<span class="wdsl">(</span>a<span class="wdsl">);</span>
-    show_item<span class="wdsl">(&amp;</span>b<span class="wdsl">);</span>
+    show_item_p<span class="wdsl">(&amp;</span>b<span class="wdsl">);</span>
 
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
@@ -231,11 +225,11 @@
       </article>    
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">宣言</h3>
+        <h3 class="cb40">構造体の宣言</h3>
         <span class="cb41">
          やはり変数や関数と同様に、宣言をしなくてはなりません。<br>
-         <code>struct</code>というキーワードを使い、<code>struct 構造体名 { 変数並び };</code>という構文で宣言します。<br>
-         構造体は複数の変数をまとめる機能が主なので、変数並びに変数宣言を記述していきます。
+         <code>struct</code>というキーワードを使い<code>struct 構造体名 { メンバ並び };</code>という構文で宣言します。<br>
+         構造体は複数の変数をまとめる機能が主なので、メンバ並びに変数宣言を記述していきます。
         </span>
        </div>
       </article>
@@ -245,7 +239,7 @@
         <span class="cb41">
          宣言した構造体を実際に使うには、組み込み型と同様に宣言を行います。<br>
          宣言した構造体を型として、宣言された変数を構造体変数と呼んだりします。<br>
-         初期化は波括弧を使い、<code>変数並び</code>の記述順にコンマ区切りで値を渡し、行うことが出来ます。
+         初期化は波括弧を使い、<code>メンバ並び</code>の記述順にコンマ区切りで値を渡して行います。
         </span>
        </div>
       </article>
@@ -292,6 +286,40 @@
        <span class="cb34">
         コード「構造体基本」の解説です。
        </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">item構造体の宣言</h3>
+        <span class="cb41">
+         構造体の宣言には<code>struct 構造体名 { メンバ並び };</code>の構文を使います。<br>
+         <code>int</code>と<code>std::wstring</code>をもつ構造体<code>item</code>を宣言しています。<br>
+         それぞれ<code>number</code>と<code>name</code>という名前を付けています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">item構造体の変数の宣言と初期化</h3>
+        <span class="cb41">
+         構造体も組み込みと同じ変数宣言を用いりました。<br>
+         ただし、初期化は波括弧を用いて、<code>リスト並び</code>で行うのでした。<br>
+         <code>wWinMain</code>関数内では、<code>item</code>構造体の変数<code>a</code>と<code>b</code>を宣言しています。<br>
+         <code>a</code>はドット演算子でメンバアクセスして値を与えています。<br>
+         対して<code>b</code>は、波括弧の初期化をしています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">show_item、show_item_p関数</h3>
+        <span class="cb41">
+         <code>show_item</code>関数は<code>item</code>構造体を値渡しで受け取ります。<br>
+         対して、<code>show_item_p</code>関数は<code>item</code>構造体へのポインタを受け取っています。<br>
+         処理はどちらも<code>item</code>構造体の内容をメッセージボックスに出力しています。<br>
+         メンバアクセスは<code>show_item</code>関数では、ドット演算子を使います。<br>
+         対して<code>show_item_p</code>関数はポインタなので、アロー演算子を使っています。
+        </span>
+       </div>
       </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">エイリアス</h2>
@@ -344,7 +372,7 @@
         <span class="cb41">
          エイリアス宣言は、型名の別名を定義する言語機能です。<br>
          <code>using 別名 = 型名;</code>という構文で、<code>型名</code>の<code>別名</code>を定義します。<br>
-         この<code>型名</code>にはポインタ型などの厄介な型も指定することができます。<br>
+         この<code>型名</code>にはポインタ型なども指定でき、1つの型として宣言できます。<br>
          また、<code>別名</code>はエイリアス宣言後にあらゆる場所で通常の型と同様に使用できます。
         </span>
        </div>
@@ -354,8 +382,8 @@
         <h3 class="cb40">変数宣言の補足</h3>
         <span class="cb41">
          実は、変数宣言の<code>型名 変数名</code>には、コンマ区切りで<code>変数名</code>を追加できます。<br>
-         ここで注意したいのがポインタ変数の時です。ポインタ型は<code>型名*</code>と言いました。<br>
-         しかし、変数宣言ではこのアスタリスクはこの<code>型名</code>ではなく、<code>変数名</code>に係っているのです。<br>
+         ここで問題になるのが、ポインタ変数宣言でのアスタリスクは<code>変数名</code>に係ることです。<br>
+         そのため、コンマ区切りの各変数名にアスタリスクを付けないとポインタ変数になりません。<br>
          すなわち<code>型名* 変数名A,変数名B;</code>とすると、<code>変数名A</code>は<code>型名*</code>ですが、<code>変数名B</code>は<code>型名</code>です。
         </span>
        </div>
@@ -365,9 +393,46 @@
         <h3 class="cb40">typedef</h3>
         <span class="cb41">
          typedefは、<code>typedef 変数宣言</code>という構文で変数の別名を定義するためのキーワードです。<br>
-         サンプルコードを読んだ人は、構造体の宣言と同時に構造体変数を宣言するのに
+         サンプルコードでは構造体の宣言と同時に構造体変数を宣言する形でtypedefしています。<br>
          実は、構造体の宣言時の波括弧の後に<code>変数名</code>を変数宣言の<code>変数名</code>以下同様に記述できます。<br>
-         ただしその方法を使うと、その構造体の変数を後から宣言することができなくなります。
+         なお、typedefは旧来の方法なのでC++ではエイリアス宣言を使うことが推奨されています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「エイリアス」解説</h2>
+       <span class="cb34">
+        コード「エイリアス」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">show_func、show_func_ptr</h3>
+        <span class="cb41">
+         双方とも、エイリアス宣言によって宣言されている、型の別名です。<br>
+         <code>show_func</code>は、返り値<code>void</code>、引数は構造体<code>tagITEM</code>へのポインタを取る関数の型です。<br>
+         <code>show_func_ptr</code>は<code>show_func</code>へのポインタ、即ち<code>void(*)(tagITEM*)</code>を表わします。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">構造体tagITEMの宣言</h3>
+        <span class="cb41">
+         構造体<code>tagITEM</code>は、typedefと組み合わせています。<br>
+         そして、<code>tagITEM</code>の別名<code>ITEM</code>と、<code>tagITEM</code>へのポインタ型<code>LPITEM</code>を定義しています。<br>
+         <code>tagITEM</code>の<code>tag</code>というのはC言語由来のtypedefに指定している構造体を示す慣習の名前です。<br>
+         <code>LPTEM</code>の<code>LP</code>は、Windows APIがポインタの接頭辞として<code>LP</code>を使っていることに由来します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">show_item関数</h3>
+        <span class="cb41">
+         <code>show_item</code>関数は、構造体<code>ITEM</code>のメンバ<code>show</code>に渡すために用意した関数です。<br>
+         <code>LPITEM</code>、すなわち<code>ITEM</code>へのポインタを引数に取ります。<br>
+         処理は構造体<code>ITEM</code>の内容をメッセージボックスに表示させています。
         </span>
        </div>
       </article>
