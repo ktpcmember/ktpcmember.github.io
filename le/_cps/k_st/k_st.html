@@ -59,7 +59,7 @@
        <a class="ch41" href="../k_t_fcba/k_t_fcba.html">
         <span class="ch50">前回</span>
        </a>
-       <a class="ch41" href="../unknown/unknown.html">
+       <a class="ch41" href="../ifadsh/ifadsh.html">
         <span class="ch50">次回</span>
        </a>
       </div>
@@ -510,7 +510,7 @@
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-       <!--問題文-->
+       以下のコードに書かれている内容は一切変更せず、書き加える形でコードを完成させてください。<br>
       </span>
      </article>
      <article class="cb21 fxrl">
@@ -523,10 +523,75 @@
        </div>
        <code class="cb47">
 <pre id="saco_4" class="cb55 bkgdbl">
-    <!--回答の一部のコード置き場-->
+#include <Windows.h>
+#include <string>
+
+void ass(int a, LPFUNC p) {
+	p->a = a;
+	return;
+}
+
+void show(LPFUNC p) {
+	MessageBoxW(
+		NULL,
+		std::to_wstring(p->a).c_str(),
+		L"after",
+		MB_OK
+	);
+	return;
+}
+
+void call_struct_func(int a, LPFUNC p) {
+	p->ass(a, p);
+	p->show(p);
+	return;
+}
+
+int wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
+	FUNC object{ 0,ass,show };
+	MessageBoxW(
+		NULL,
+		std::to_wstring(object.a).c_str(),
+		L"before",
+		MB_OK
+	);
+
+	call_struct_func(10, &object);
+	return 0;
+}
 </pre>
        </code>
       </div>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">ヒント1</summary>
+        <code>wWinMain</code>関数内の<code>FUNC</code>は構造体の名前です。<br>
+        また、<code>ass</code>関数の引数の<code>LPFUNC</code>は<code>FUNC</code>へのポインタです。
+      </details>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">ヒント2</summary>
+        ヒント1より、構造体の定義とエイリアスの宣言が必要があります。<br>
+        その構造体のメンバの型は初期化から推察が出来ます。
+      </details>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">ヒント3</summary>
+       構造体のメンバの型は上から、<code>0</code>より<code>int</code>、<br>
+       <code>ass</code>関数より<code>void(*)(int,LPFUNC)</code>、<br>
+       <code>show</code>関数より<code>void(*)(int,LPFUNC)</code>です。<br>
+       また、構造体のメンバの名前は<code>ass</code>関数と<code>call_struct_func</code>関数からわかります。
+      </details>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">ヒント4</summary>
+       構造体のメンバ名は、それぞれ<code>int</code>は<code>a</code>、<br>
+       <code>void(*)(int,LPFUNC)</code>の片方は<code>ass</code>、もう片方は<code>show</code>です。
+      </details>
      </article>
      <article class="cb21 fxlr">
       <details class="cb37">
@@ -539,7 +604,48 @@
        </div>
        <code class="cb47">
 <pre id="ar_1" class="cb55 bkgdbl">
-    <!--練習問題の解答コード置き場-->
+#include <Windows.h>
+#include <string>
+
+typedef struct tagFUNC {
+	int a;
+	void(*ass)(int, tagFUNC*);
+	void(*show)(tagFUNC*);
+}FUNC, * LPFUNC;
+
+void ass(int a, LPFUNC p) {
+	p->a = a;
+	return;
+}
+
+void show(LPFUNC p) {
+	MessageBoxW(
+		NULL,
+		std::to_wstring(p->a).c_str(),
+		L"after",
+		MB_OK
+	);
+	return;
+}
+
+void call_struct_func(int a, LPFUNC p) {
+	p->ass(a, p);
+	p->show(p);
+	return;
+}
+
+int wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
+	FUNC object{ 0,ass,show };
+	MessageBoxW(
+		NULL,
+		std::to_wstring(object.a).c_str(),
+		L"before",
+		MB_OK
+	);
+
+	call_struct_func(10, &object);
+	return 0;
+}
 </pre>
        </code>
       </details>
