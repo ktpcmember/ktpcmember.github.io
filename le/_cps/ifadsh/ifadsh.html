@@ -74,7 +74,7 @@
       <article class="cb21 fxtb">
        <h2 class="cb33">概要</h2>
        <span class="cb34">
-        プログラムの流れを分岐させる制御構文の、if文やfor文を解説します。
+        プログラムの流れを分岐させる選択文の、if文やswitch文を解説します。
        </span>
       </article>
       <article class="cb21 fxlr">
@@ -83,22 +83,46 @@
          重要語
         </h4>
         <h4 class="cb45">
-         文
-        </h4>
-        <span class="cb41">
-         
-        </span>
-        <h4 class="cb45">
          式
         </h4>
         <span class="cb41">
-         
+         値と演算子の並び
+        </span>
+        <h4 class="cb45">
+         選択文
+        </h4>
+        <span class="cb41">
+         if文とswitch文の総称
+        </span>
+        <h4 class="cb45">
+         反復文
+        </h4>
+        <span class="cb41">
+         while文とfor文の総称
+        </span>
+        <h4 class="cb45">
+         制御文
+        </h4>
+        <span class="cb41">
+         選択文や反復文などの総称
         </span>
         <h4 class="cb45">
          式文
         </h4>
         <span class="cb41">
-         
+         式にセミコロンがついたもの
+        </span>
+        <h4 class="cb45">
+         空文
+        </h4>
+        <span class="cb41">
+         セミコロンのみの文
+        </span>
+        <h4 class="cb45">
+         文
+        </h4>
+        <span class="cb41">
+         制御文や式文などの総称
         </span>
         <h4 class="cb45">
          複合文
@@ -113,16 +137,16 @@
          
         </span>
         <h4 class="cb45">
-         if
+         if文
         </h4>
         <span class="cb41">
-         条件に応じて文を実行する文
+         条件式に応じて文を実行する選択文
         </span>
         <h4 class="cb45">
-         switch
+         switch文
         </h4>
         <span class="cb41">
-         整数の値に応じて文を実行する文
+         整数などに応じて文を順次実行する選択文
         </span>
        </div>
        <div class="cb36 debr">
@@ -133,6 +157,66 @@
        <span class="cb41">重要語例</span>
       </div>
      </article>
+
+     <article class="cb21 fxtb">
+      <h2 class="cb33">式と文</h2>
+      <span class="cb34">
+       制御構文に入る前に、式と文について学びましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">式と文</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">式</h3>
+        <span class="cb41">
+         何気なく使っている式の定義は、値と演算子の並びです。<br>
+         値には、コード上の値や変数、式や関数呼び出しなどが属します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">文</h3>
+        <span class="cb41">
+         C++の文は選択文や反復文、変数宣言、式文、空文などの総称です。<br>
+         文は実行の順番を指定するもので、セミコロンで区切られていると文です。<br>
+         選択文は今回のif文とswitch文、反復文は次回のwhile文とfor文です。<br>
+         式文は式の末尾にセミコロンを付けたものです。<br>
+         空文はセミコロンのみのことで、その名の通り何も処理されません。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">複合文</h3>
+        <span class="cb41">
+         複数の文を波括弧で囲うと、複数の文を1つの文として扱う複合文になります。<br>
+         複合文の終わりはセミコロンが不要です。付けると空文が続く事になります。<br>
+         複合文は複数の文をまとめる機能が主ですが、変数の見え方や寿命に影響します。<br>
+         変数は宣言された複合文と、その複合文に含まれる複合文の中でしか使用できないのです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">式と文</h2>
+       <span class="cb34">
+        コード「式と文」の解説です。
+       </span>
+      </article>
 
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
