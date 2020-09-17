@@ -131,10 +131,40 @@
          複数の文をまとめたもの
         </span>
         <h4 class="cb45">
+         関係演算子
+        </h4>
+        <span class="cb41">
+         <code>&lt,&gt,&lt=,&gt=,==,!=</code>
+        </span>
+        <h4 class="cb45">
          条件式
         </h4>
         <span class="cb41">
-         
+         関係演算子と値の並び
+        </span>
+        <h4 class="cb45">
+         論理演算子
+        </h4>
+        <span class="cb41">
+         <code>&&,||,!</code>
+        </span>
+        <h4 class="cb45">
+         評価
+        </h4>
+        <span class="cb41">
+         式が計算されること
+        </span>
+        <h4 class="cb45">
+         短絡評価
+        </h4>
+        <span class="cb41">
+         理論積と理論和で右辺が評価されないこと
+        </span>
+        <h4 class="cb45">
+         条件演算子
+        </h4>
+        <span class="cb41">
+         <code>条件式 ? 値A : 値B</code>
         </span>
         <h4 class="cb45">
          if文
@@ -147,6 +177,18 @@
         </h4>
         <span class="cb41">
          整数などに応じて文を順次実行する選択文
+        </span>
+        <h4 class="cb45">
+         フォールスルー
+        </h4>
+        <span class="cb41">
+         他のラベルを跨ぐこと
+        </span>
+        <h4 class="cb45">
+         break文
+        </h4>
+        <span class="cb41">
+         選択文や反復文の実行をやめる文
         </span>
        </div>
        <div class="cb36 debr">
@@ -161,7 +203,8 @@
      <article class="cb21 fxtb">
       <h2 class="cb33">式と文</h2>
       <span class="cb34">
-       制御構文に入る前に、式と文について学びましょう。
+       まず、式と文について細かい定義について学びましょう。<br>
+       以下のサンプルコードを実行してみましょう。
       </span>
      </article>
       <article class="cb21 fxrl">
@@ -217,7 +260,214 @@
         コード「式と文」の解説です。
        </span>
       </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">条件式とbool</h2>
+       <span class="cb34">
+        制御文に入る前に条件式と<code>bool</code>型について学びます。<br>
+        以下のサンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">条件式とbool</span>
+         <button type="button" class="cb53" onclick="copy('saco_2')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
+std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><span class="wdkywd">bool</span> b<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> b <span class="wdsl">?</span> <span class="wdtt">L"true"</span> <span class="wdsl">:</span> <span class="wdtt">L"false"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">bool</span> b <span class="wdsl">=</span> MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"こんにちは"</span><span class="wdsl">,</span> <span class="wdtt">L"どうも"</span><span class="wdsl">,</span> MB_YESNO<span class="wdsl">)</span> <span class="wdsl">==</span> IDYES<span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> to_wstring<span class="wdsl">(</span>b<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"「はい」だったか"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    std<span class="wdsl">::</span>wstring str<span class="wdsl">,</span> str2<span class="wdsl">;</span>
+    str <span class="wdsl">=</span> to_wstring<span class="wdsl">(</span><span class="wdnr">10</span> <span class="wdsl">&lt;</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L", "</span>
+        <span class="wdsl">+</span> to_wstring<span class="wdsl">(</span><span class="wdnr">10</span> <span class="wdsl">&gt;</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L", "</span>
+        <span class="wdsl">+</span> to_wstring<span class="wdsl">(</span><span class="wdnr">10</span> <span class="wdsl">&lt;=</span> <span class="wdnr">10</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L", "</span>
+        <span class="wdsl">+</span> to_wstring<span class="wdsl">(</span><span class="wdnr">20</span> <span class="wdsl">&gt;=</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L", "</span>
+        <span class="wdsl">+</span> to_wstring<span class="wdsl">(</span><span class="wdnr">30</span> <span class="wdsl">==</span> <span class="wdnr">30</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L", "</span>
+        <span class="wdsl">+</span> to_wstring<span class="wdsl">(</span><span class="wdnr">39</span> <span class="wdsl">!=</span> <span class="wdnr">39</span><span class="wdsl">);</span>
+    str2 <span class="wdsl">=</span> <span class="wdtt">L"10&lt;10, 10&gt;20, 10&lt;=10, 20&gt;=20, 30==30, 39!=39"</span><span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> str2.c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">int</span> result
+        <span class="wdsl">=</span> MessageBoxW<span class="wdsl">(</span>
+            NULL<span class="wdsl">,</span>
+            <span class="wdtt">L"「はい」か「いいえ」を押さないとtrue"</span><span class="wdsl">,</span>
+            <span class="wdtt">L"ばつ"</span><span class="wdsl">,</span>
+            MB_ICONWARNING <span class="wdsl">|</span> MB_YESNOCANCEL
+        <span class="wdsl">);</span>
+    b <span class="wdsl">=</span> result <span class="wdsl">!=</span> IDYES <span class="wdsl">&amp;&amp;</span> result <span class="wdsl">!=</span> IDNO<span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> to_wstring<span class="wdsl">(</span>b<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"「はい」か「いいえ」を押さなかったか"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    b <span class="wdsl">=</span> <span class="wdsl">!</span>b<span class="wdsl">;</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> to_wstring<span class="wdsl">(</span>b<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"論理否定"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">bool型</h3>
+        <span class="cb41">
+         <code>bool</code>型は値に<code>false</code>か<code>true</code>を持つ型です。<code>false</code>を0、<code>true</code>を1として値を持っています。<br>
+         <code>false</code>は偽のことで「正しくない」、<code>true</code>は真のことで「正しい」という意味を持ちます。<br>
+         <code>bool</code>型は整数型とほぼ同じもので、ほとんどの場合で1バイトの整数として実装されます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">int型とbool型</h3>
+        <span class="cb41">
+         C言語との互換のため、0は<code>false</code>、0以外は<code>true</code>に暗黙のうちにキャストされます。<br>
+         その逆も同様に、<code>false</code>は0に、 <code>true</code>1に暗黙のうちにキャストされます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">条件式と関係演算子</h3>
+        <span class="cb41">
+         条件式は式の一種ですが、演算子には関係演算子を用いります。<br>
+         条件式は<code>bool</code>値を結果として持ちます。<br>
+         比較できる型の値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。
+        </span>
+       </div>
+       <div class="cb36 debr">
+        <h4 class="cb44">関係演算子一覧</h4>
+        <h4 class="cb45">&lt</h4>
+        <span class="cb41">右辺が左辺よりも大きいと<code>true</code></span>
+        <h4 class="cb45">&gt</h4>
+        <span class="cb41">左辺が右辺よりも大きいと<code>true</code></span>
+        <h4 class="cb45">&lt=</h4>
+        <span class="cb41">右辺が左辺と等しいか大きいと<code>true</code></span>
+        <h4 class="cb45">&gt=</h4>
+        <span class="cb41">左辺が右辺と等しいか大きいと<code>true</code></span>
+        <h4 class="cb45">==</h4>
+        <span class="cb41">左辺と右辺が等しいと<code>true</code></span>
+        <h4 class="cb45">!=</h4>
+        <span class="cb41">左辺と右辺が等しくないと<code>true</code></span>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">論理演算子</h3>
+        <span class="cb41">
+         複数の<code>bool</code>値を組み合わせたり、否定をするときには論理演算子を使います。<br>
+         <code>&&</code>を論理積演算子、<code>||</code>を論理和演算子、<code>!</code>を論理否定演算子と呼びます。<br>
+         論理積、論理和演算子は<code>bool</code>値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。<br>
+         論理否定演算子は<code>bool</code>値の<code>値</code>を用いて、<code>!値</code>と用います。
+        </span>
+       </div>
+       <div class="cb36 debr">
+        <h4 class="cb44">論理演算子一覧</h4>
+        <h4 class="cb45">&&</h4>
+        <span class="cb41">両辺が<cdoe>true</cdoe>だと<code>true</code></span>
+        <h4 class="cb45">||</h4>
+        <span class="cb41">どちらか一辺が<code>true</code>だと<code>true</code></span>
+        <h4 class="cb45">!</h4>
+        <span class="cb41"><code>false</code>なら<code>true</code>、<code>true</code>なら<code>false</code></span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">評価と短絡評価</h3>
+        <span class="cb41">
+         式や値は評価されて値を持ちます。すなわち、評価されると演算されます。<br>
+         そして、論理積と論理和演算子は短絡評価が行われることがあります。<br>
+         これは右辺を評価しなくとも結果が変わらない場合に、右辺を評価しないことです。<br>
+         すなわち、論理積では左辺が<code>false</code>、論理和では左辺が<code>true</code>であると短絡評価されます。<br>
+         短絡評価された時、右辺で変数などに変更を伴う式を書いていても実行されません。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">条件演算子</h3>
+        <span class="cb41">
+         条件演算子は<code>条件式 ? 値A : 値B</code>という構文で、条件式と値を二つ取ります。<br>
+         <code>値A,値B</code>は、条件式が<code>true</code>であると<code>値A</code>が、<code>false</code>であると<code>値B</code>が選択されます。<br>
+         そして、選択された値が条件演算子を用いた式の値になります。<br>
+         ほとんどの場合、<code>値A,値B</code>は同じ型の値を用いります。<br>
+         違う型の場合、変換によって同じ型に出来ないとエラーになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">if文とswitch文</h2>
+       <span class="cb34">
+        それでは、if文とswitch文を学んでいきます。以下のコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">if文とswitch文</span>
+         <button type="button" class="cb53" onclick="copy('saco_3')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_3" class="cb55 bkgdbl">
+
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">if文</h3>
+        <span class="cb41">
+         if文は、<code>if (条件式) 文A</code>もしくは<code>if (条件式) 文A else 文B</code>という構文です。<br>
+         なお、後者の構文をif-else文と呼び、区別することがあります。<br>
+         <code>条件式</code>が<code>true</code>であれば<code>文A</code>が、<code>false</code>でかつif-else文であれば<code>文B</code>が実行されます。<br>
+         ただし、<code>文A,文B</code>どちらも1文のみ許容されるので、複数の文を扱うときは複合文を使います。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">switch文</h3>
+        <span class="cb41">
+         switch文は<code>switch (ラベル) { 処理部 }</code>という構文です。<br>
+         ラベルには整数などが指定できます。Windows APIの定数も実体は整数なので指定できます。<br>
+         <code>処理部</code>では、caseラベルとdefaultラベルを用いて分岐をします。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">switch文の<code>処理部</code></h3>
+        <span class="cb41">
+         caseラベルは<code>case ラベル:</code>、defaultラベルは<code>default:</code>という構文を用います。<br>
+         <code>ラベル</code>に指定した値と対応するcaseラベルがあるとcaseラベルに処理が移ります。<br>
+         対応するcaseラベルが無く、defaultラベルがある場合はdefaultラベルに処理が移ります。<br>
+         いずれかのラベルに飛んだ後は、ラベル以降の文を順次実行していきます。<br>
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">フォールスルーとbreak文</h3>
+        <span class="cb41">
+         switch文で気を付けたいのが、順次実行はラベルを超えても続くことです。<br>
+         つまり、他の条件で実行したい文をも実行してしまうということです。<br>
+         これをフォールスルーと言います。フォールスルーを防ぐには、break文を記述します。<br>
+         break文は<code>break;</code>という構文で、順次実行をやめ、switch文から抜けます。<br>
+        </span>
+       </div>
+      </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
