@@ -217,7 +217,38 @@
         </div>
         <code class="cb47">
 <pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
+<span class="wdkywd">int</span> r10<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> <span class="wdnr">10</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+ <span class="wdkywd">int</span> z <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+ 
+ <span class="wdc_mt">//セミコロンを付けているので純粋な値ではない
+</span>    <span class="wdc_mt">//値と見做せるもの
+</span>    <span class="wdnr">0</span><span class="wdsl">;</span>     <span class="wdc_mt">//リテラル
+</span>    z<span class="wdsl">;</span>     <span class="wdc_mt">//変数
+</span>    r10<span class="wdsl">;</span>   <span class="wdc_mt">//アドレス
+</span>    r10<span class="wdsl">();</span> <span class="wdc_mt">//関数呼び出し
+</span>
+ <span class="wdc_mt">//セミコロンを付けているので実際は式文
+</span>    <span class="wdc_mt">//式と見做せるもの
+</span>    z <span class="wdsl">=</span> <span class="wdnr">10</span> <span class="wdsl">+</span> r10<span class="wdsl">();</span>
+
+    <span class="wdc_mt">//複合文
+</span>    <span class="wdsl">{</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>z<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"wWinMainのz"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+        <span class="wdc_mt">//複合文のzがwWinMainのzを隠す
+</span>        <span class="wdkywd">int</span> z <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>z<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"複合文のz"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
         </code>
        </div>
@@ -259,6 +290,19 @@
        <span class="cb34">
         コード「式と文」の解説です。
        </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">値と式</h3>
+        <span class="cb41">
+         <code>0;</code>の<code>0</code>は整数リテラルです。リテラルはソースコード上の値のことです。<br>
+         <code>z;</code>の<code>z</code>は変数名です。直前で宣言したint型の変数zのことなので値です。<br>
+         <code>r10;</code>の<code>r10</code>は関数名です。関数名はアドレスにされるので値です。<br>
+         <code>r10();</code>の<code>r10()</code>は関数呼び出しです。関数は値を返却するので値と見做せます。<br>
+         <code>z = 10 + r10();</code>の<code>z = 10 + r10()</code>は式です。<br>
+         ただし、セミコロンを付けると式文になるので、 全体としては式文です。
+        </span>
+       </div>
       </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">条件式とbool</h2>
@@ -405,6 +449,12 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        </div>
       </article>
       <article class="cb21 fxtb">
+       <h2 class="cb33">コード「条件式とbool」解説</h2>
+       <span class="cb34">
+        コード「条件式とbool」の解説です。
+       </span>
+      </article>
+      <article class="cb21 fxtb">
        <h2 class="cb33">if文とswitch文</h2>
        <span class="cb34">
         それでは、if文とswitch文を学んでいきます。以下のコードを実行してみましょう。
@@ -420,7 +470,38 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         </div>
         <code class="cb47">
 <pre id="saco_3" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">true</span><span class="wdsl">)</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"trueなので実行される"</span><span class="wdsl">,</span> <span class="wdtt">L"if文"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"こんにちは"</span><span class="wdsl">,</span> <span class="wdtt">L"どうも"</span><span class="wdsl">,</span> MB_YESNO<span class="wdsl">)</span> <span class="wdsl">==</span> IDYES<span class="wdsl">)</span> <span class="wdsl">{</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"はいが押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"結果 - 文A"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span> <span class="wdsl">{</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"いいえが押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"結果 - 文B"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">int</span> label
+        <span class="wdsl">=</span> MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"something"</span><span class="wdsl">,</span> <span class="wdtt">L"switch"</span><span class="wdsl">,</span> MB_CANCELTRYCONTINUE<span class="wdsl">);</span>
+    <span class="wdkywd">switch</span> <span class="wdsl">(</span>label<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">case</span> IDCANCEL<span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"が押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"キャンセル"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdkywd">case</span> IDTRYAGAIN<span class="wdsl">:</span> <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L"が押されました"</span><span class="wdsl">;</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"再実行"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">default</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"が押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"続行"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
         </code>
        </div>
@@ -468,11 +549,42 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         </span>
        </div>
       </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「if文とswitch文」解説</h2>
+       <span class="cb34">
+        コード「if文とswitch文」の解説です。
+       </span>
+      </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
+      <div class="cb21 fxlr">
       <span class="cb34">
-       <!--問題文-->
+       Windows APIには<code>POINT</code>構造体が用意されています。<br>
+       POINT構造体は<code>LONG</code>という型の変数を<code>x,y</code>と2つ持っています。<br>
+       <code>LONG</code>は、int型と同様に整数を扱うlong型のエイリアスです。<br>
+       <br>
+       <code>POINT</code>構造体変数のペア<code>a,b</code>と<code>x,y</code>について、同一の座標か判定してください。<br>
+       関数に切り出しても、<code>wWinMain</code>関数に直接書いても問題ありません。<br>
+       <br>
+       また、0から5までの値を発生させる<code>random</code>関数が用意されています。<br>
+       <code>random</code>関数の返り値に対応する表のメッセージを表示してください。
       </span>
+      <div class="cb36 debr">
+       <h4 class="cb44">対応表</h4>
+       <h4 class="cb45">タイトル</h4>
+       <span class="cb41">本文</span>
+       <h4 class="cb45">1</h4>
+       <span class="cb41">せかいせいふく</span>
+       <h4 class="cb45">2</h4>
+       <span class="cb41">しぼう</span>
+       <h4 class="cb45">3</h4>
+       <span class="cb41">にっぽん</span>
+       <h4 class="cb45">4</h4>
+       <span class="cb41">いみふめい</span>
+       <h4 class="cb45">default</h4>
+       <span class="cb41">ないです</span>
+      </div>
+      </div>
      </article>
      <article class="cb21 fxrl">
       <div class="cb37">
@@ -484,14 +596,39 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        </div>
        <code class="cb47">
 <pre id="ar_not" class="cb55 bkgdbl">
-<!--コード-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+
+<span class="wdc_mt">/*POINT構造体の定義**********
+* typedef struct tagPOINT *
+* {                       *
+*    LONG  x;             *
+*    LONG  y;             *
+* } POINT;                *
+**************************/</span>
+
+<span class="wdkywd">int</span> random<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>random_device seed_gen<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>default_random_engine engine<span class="wdsl">(</span>seed_gen<span class="wdsl">());</span>
+    <span class="wdkywd">return</span> std<span class="wdsl">::</span>uniform_int_distribution<span class="wdsl">&lt;&gt;(</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">4</span><span class="wdsl">)(</span>engine<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    POINT a<span class="wdsl">{</span> <span class="wdnr">50</span><span class="wdsl">,</span><span class="wdnr">100</span> <span class="wdsl">},</span> b<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">50</span> <span class="wdsl">},</span> x<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">20</span> <span class="wdsl">},</span> y<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">20</span> <span class="wdsl">};</span>
+
+    <span class="wdkywd">int</span> random_number <span class="wdsl">=</span> random<span class="wdsl">();</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </div>
      </article>
      <article class="cb21 fxlr">
       <details class="cb37">
-       <summary class="cb48">解答</summary>
+       <summary class="cb48">解答例</summary>
        <div class="cb46">
         <span class="cb54">練習問題解答</span>
         <button type="button" class="cb53" onclick="copy('ar_1')">
@@ -500,7 +637,63 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        </div>
        <code class="cb47">
 <pre id="ar_1" class="cb55 bkgdbl">
-<!--解答-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+
+<span class="wdc_mt">/*POINT構造体の定義**********
+* typedef struct tagPOINT *
+* {                       *
+*    LONG  x;             *
+*    LONG  y;             *
+* } POINT;                *
+**************************/</span>
+
+<span class="wdkywd">int</span> random<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>random_device seed_gen<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>default_random_engine engine<span class="wdsl">(</span>seed_gen<span class="wdsl">());</span>
+    <span class="wdkywd">return</span> std<span class="wdsl">::</span>uniform_int_distribution<span class="wdsl">&lt;&gt;(</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">4</span><span class="wdsl">)(</span>engine<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdc_mt">//変数名の表示は問題文に記載がないのでする必要はありません
+</span><span class="wdkywd">void</span> is_same<span class="wdsl">(</span>POINT<span class="wdsl">*</span> a<span class="wdsl">,</span> POINT<span class="wdsl">*</span> b<span class="wdsl">,</span> std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> str<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>a<span class="wdsl">-&gt;</span>x <span class="wdsl">==</span> b<span class="wdsl">-&gt;</span>x <span class="wdsl">&amp;&amp;</span> a<span class="wdsl">-&gt;</span>y <span class="wdsl">==</span> b<span class="wdsl">-&gt;</span>y<span class="wdsl">)</span> <span class="wdsl">{</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"等しいです"</span><span class="wdsl">,</span> str<span class="wdsl">-&gt;</span>c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span> <span class="wdsl">{</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"等しくないです"</span><span class="wdsl">,</span> str<span class="wdsl">-&gt;</span>c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    POINT a<span class="wdsl">{</span> <span class="wdnr">50</span><span class="wdsl">,</span><span class="wdnr">100</span> <span class="wdsl">},</span> b<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">50</span> <span class="wdsl">},</span> x<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">20</span> <span class="wdsl">},</span> y<span class="wdsl">{</span> <span class="wdnr">10</span><span class="wdsl">,</span><span class="wdnr">20</span> <span class="wdsl">};</span>
+
+    is_same<span class="wdsl">(&amp;</span>a<span class="wdsl">,</span> <span class="wdsl">&amp;</span>b<span class="wdsl">,</span> <span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"aとbは"</span><span class="wdsl">);</span>
+    is_same<span class="wdsl">(&amp;</span>x<span class="wdsl">,</span> <span class="wdsl">&amp;</span>y<span class="wdsl">,</span> <span class="wdsl">&amp;(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">)</span><span class="wdtt">L"xとyは"</span><span class="wdsl">);</span>
+
+    <span class="wdkywd">int</span> random_number <span class="wdsl">=</span> random<span class="wdsl">();</span>
+    <span class="wdkywd">switch</span> <span class="wdsl">(</span>random_number<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">case</span> <span class="wdnr">1</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"せかいせいふく"</span><span class="wdsl">,</span> <span class="wdtt">L"1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdkywd">case</span> <span class="wdnr">2</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"しぼう"</span><span class="wdsl">,</span> <span class="wdtt">L"2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdkywd">case</span> <span class="wdnr">3</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"にっぽん"</span><span class="wdsl">,</span> <span class="wdtt">L"3"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdkywd">case</span> <span class="wdnr">4</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"いみふめい"</span><span class="wdsl">,</span> <span class="wdtt">L"4"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdkywd">default</span><span class="wdsl">:</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"ないです"</span><span class="wdsl">,</span> <span class="wdtt">L"default"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdkywd">break</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </details>
