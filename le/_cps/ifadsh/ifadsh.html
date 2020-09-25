@@ -69,7 +69,7 @@
     <div class="cb00">
      <div class="cb10">
       <article class="cb20">
-       <h1>C++講習/if文とswitch文（準備中です。もうしばらくお待ちください。）</h1>
+       <h1>C++講習/if文とswitch文</h1>
       </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">概要</h2>
@@ -193,13 +193,10 @@
        </div>
        <div class="cb36 debr">
        <h4 class="cb44">
-        必要語
+        今回の必要語はありません。
        </h4>
-       <h4 class="cb45">重要語例</h4>
-       <span class="cb41">重要語例</span>
       </div>
      </article>
-
      <article class="cb21 fxtb">
       <h2 class="cb33">式と文</h2>
       <span class="cb34">
@@ -225,7 +222,7 @@
 <span class="wdsl">}</span>
 
 <span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
- <span class="wdkywd">int</span> z <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+   <span class="wdkywd">int</span> z <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
  
  <span class="wdc_mt">//セミコロンを付けているので純粋な値ではない
 </span>    <span class="wdc_mt">//値と見做せるもの
@@ -304,6 +301,17 @@
         </span>
        </div>
       </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">変数z</h3>
+        <span class="cb41">
+         変数<code>z</code>は<code>wWinMain</code>関数と、それに含まれる複合文で宣言されています。<br>
+         <code>wWinMain</code>の変数<code>z</code>は、複合文で宣言される変数<code>z</code>に隠されます。<br>
+         すなわち複合文の中での識別子<code>z</code>は、変数<code>z</code>宣言前は<code>wWinMain</code>の変数<code>z</code>を指します。<br>
+         そして変数<code>z</code>の宣言後には、複合文で宣言した方の変数<code>z</code>を指すことになるのです。
+        </span>
+       </div>
+      </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">条件式とbool</h2>
        <span class="cb34">
@@ -366,7 +374,8 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         <span class="cb41">
          <code>bool</code>型は値に<code>false</code>か<code>true</code>を持つ型です。<code>false</code>を0、<code>true</code>を1として値を持っています。<br>
          <code>false</code>は偽のことで「正しくない」、<code>true</code>は真のことで「正しい」という意味を持ちます。<br>
-         <code>bool</code>型は整数型とほぼ同じもので、ほとんどの場合で1バイトの整数として実装されます。
+         <code>bool</code>型は整数型とほぼ同じもので、ほとんどの場合で1バイトの整数として実装されます。<br>
+         ただし、どんな整数を代入してもbool型が持つ値は<code>false</code>か<code>true</code>です。
         </span>
        </div>
       </article>
@@ -385,7 +394,8 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         <span class="cb41">
          条件式は式の一種ですが、演算子には関係演算子を用いります。<br>
          条件式は<code>bool</code>値を結果として持ちます。<br>
-         比較できる型の値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。
+         比較できる型の値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。<br>
+         <code>std::wstring</code>は、辞書順での大小が比較されます。
         </span>
        </div>
        <div class="cb36 debr">
@@ -454,6 +464,51 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         コード「条件式とbool」の解説です。
        </span>
       </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">to_wstring関数</h3>
+        <span class="cb41">
+         <code>std::to_wstring</code>関数と別に、bool値を文字列に変換する<code>to_wstring</code>関数を定義しています。<br>
+         条件演算子を用いて、bool値が<code>false</code>なら<code>L"false"</code>を、<code>true</code>なら<code>L"true"</code>を選択します。<br>
+         選択した文字列は、<code>std::wstring</code>に変換されて返却されます。<br>
+         なお、<code>std::to_wstring</code>ではboolは用意されておらず、整数として変換されてしまいます。<br>
+         すなわち、<code>false</code>が<code>0</code>、<code>true</code>が<code>1</code>に変換されてしまうということです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">1、2個目のメッセージボックス</h3>
+        <span class="cb41">
+         メッセージボックスを表示し、その返り値によって「はい」が押されたかを表示しています。<br>
+         返り値と<code>IDYES</code>が等しいかを判定し、変数<code>b</code>に代入します。<br>
+         そして、<code>to_wstring</code>関数を用いて<code>std::wstring</code>にして表示しています。<br>
+         なお、<code>MB_YESNO</code>のメッセージボックスの返り値は、<code>IDYES</code>か<code>IDNO</code>です。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">3個目のメッセージボックス</h3>
+        <span class="cb41">
+         全ての関係演算子を用いた条件式の結果をまとめて表示しています。<br>
+         どの関係演算子も数学と似ているので期待通りになったと思います。<br>
+         また、<code>std::wstring</code>は辞書順で比較されるのでした。<br>
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">4、5、6個目のメッセージボックス</h3>
+        <span class="cb41">
+         4個目のメッセージボックスの値を<code>result</code>に代入しています。<br>
+         そして、<code>result</code>が<code>IDYES</code>でも、<code>IDNO</code>でもなければ<code>true</code>という条件式を立てています。<br>
+         条件式の結果は変数<code>b</code>へ代入し、それを5個目のメッセージボックスで表示しています。<br>
+         更に、変数<code>b</code>の値を否定した結果を6個目のメッセージボックスで表示しています。<br>
+         bool値を否定すると、<code>false</code>なら<code>true</code>、<code>true</code>なら<code>false</code>になるのでした。
+        </span>
+       </div>
+      </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">if文とswitch文</h2>
        <span class="cb34">
@@ -484,9 +539,9 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"いいえが押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"結果 - 文B"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
     <span class="wdsl">}</span>
 
-    <span class="wdkywd">int</span> label
-        <span class="wdsl">=</span> MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"something"</span><span class="wdsl">,</span> <span class="wdtt">L"switch"</span><span class="wdsl">,</span> MB_CANCELTRYCONTINUE<span class="wdsl">);</span>
-    <span class="wdkywd">switch</span> <span class="wdsl">(</span>label<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> result <span class="wdsl">=</span> MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"something"</span><span class="wdsl">,</span> <span class="wdtt">L"switch"</span><span class="wdsl">,</span> MB_CANCELTRYCONTINUE<span class="wdsl">);</span>
+
+    <span class="wdkywd">switch</span> <span class="wdsl">(</span>result<span class="wdsl">)</span> <span class="wdsl">{</span>
     <span class="wdkywd">case</span> IDCANCEL<span class="wdsl">:</span>
         MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"が押されました"</span><span class="wdsl">,</span> <span class="wdtt">L"キャンセル"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
         <span class="wdkywd">break</span><span class="wdsl">;</span>
@@ -514,6 +569,16 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
          なお、後者の構文をif-else文と呼び、区別することがあります。<br>
          <code>条件式</code>が<code>true</code>であれば<code>文A</code>が、<code>false</code>でかつif-else文であれば<code>文B</code>が実行されます。<br>
          ただし、<code>文A,文B</code>どちらも1文のみ許容されるので、複数の文を扱うときは複合文を使います。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">コラム - if文の条件式の落とし穴</h3>
+        <span class="cb41">
+         if文の条件式に、<code>==</code>を使った条件式を指定するときは注意が必要です。<br>
+         なぜなら、<code>==</code>を<code>=</code>とタイプミスし、代入にしてもintなどではエラーが出ないからです。<br>
+         というのも、前述したようにintとboolは暗黙のうちに変換されてしまうからです。
         </span>
        </div>
       </article>
@@ -554,6 +619,49 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        <span class="cb34">
         コード「if文とswitch文」の解説です。
        </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">if文、if-else文</h3>
+        <span class="cb41">
+         1個目のif文は条件式に<code>true</code>を指定しているので、<code>文A</code>は常に実行されます。<br>
+         2個目のif文は、if-else文です。条件式は「メッセージボックスの返り値が<code>IDYES</code>か」です。<br>
+         すなわち、メッセージボックスで「はい」を押すと<code>文A</code>、「いいえ」だと<code>文B</code>が実行されます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">switch文</h3>
+        <span class="cb41">
+         swtich文のラベルにはメッセージボックスの返り値を代入した、変数<code>label</code>を指定しています。<br>
+         メッセージボックスのスタイルには<code>MB_CANCELTRYCONTINUE</code>を指定しています。<br>
+         そのため、変数<code>label</code>が取る値は<code>IDCANCEL</code>、<code>IDTRYAGAIN</code>、<code>IDCONTINUE</code>のいずれかです。<br>
+         今回は、<code>IDCANCEL</code>と<code>IDTRYAGAIN</code>はcaseラベルで、<code>IDCONTINUE</code>はdefaultラベルで対応します。<br>
+         また今回は、フォールスルーは必要ないのでbreak文を忘れないようにします。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">switch文と変数</h3>
+        <span class="cb41">
+         swtich文の中では、原則として変数を使用することが出来ません。<br>
+         ただし、caseラベルやdefaultラベルを跨がない複合文では、変数を使用出来ます。<br>
+         今回は、<code>case IDTRYAGAIN:</code>に複合文を置き、<code>std::wstring</code>を宣言しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">コラム - switch文の中で変数が使えないわけ</h3>
+        <span class="cb41">
+         前述した通り、原則としてswitch文の中では変数を使用することが出来ません。<br>
+         これは、switch文はcaseラベルかdefaultラベルに処理が飛ぶという処理に起因します。<br>
+         すなわち、処理が飛んだ際に変数の宣言が飛ばされてしまう可能性があるのです。<br>
+         それによって、変数を宣言していないのに破棄をすることになるのでエラーになるのです。
+        </span>
+       </div>
       </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
