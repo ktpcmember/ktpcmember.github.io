@@ -574,6 +574,17 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
       </article>
       <article class="cb21">
        <div class="cb31">
+        <h3 class="cb40">補足 - if文のネスト</h3>
+        <span class="cb41">
+         また、当然<code>文A,文B</code>にif文を入れる、すなわちネストをすることも出来ます。<br>
+         よって、<code>if (条件式1) 文A1 else if (条件式2) 文A2</code>などというような形も出来ます。<br>
+         この形だと<code>条件式1</code>が<code>false</code>の時に、<code>else if</code>のif文へ実行が進みます。<br>
+         なお、<code>else if</code>という記述を構文と見做すことがあり、else-if文と言います。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
         <h3 class="cb40">コラム - if文の条件式の落とし穴</h3>
         <span class="cb41">
          if文の条件式に、<code>==</code>を使った条件式を指定するときは注意が必要です。<br>
