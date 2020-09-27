@@ -11,7 +11,7 @@
 * 　　：ハイフンを付けるとマイナス値になる
 * 使用：エディットコントロールに入力後、Enterキーか下のボタンをクリックします
 */
-namespace winio {
+namespace wini {
 	using string = std::wstring;
 
 	/*
