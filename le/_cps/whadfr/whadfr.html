@@ -82,17 +82,257 @@
         <h4 class="cb44">
          重要語
         </h4>
-        <h4 class="cb45">重要語例</h4>
-        <span class="cb41">重要語説明</span>
+        <h4 class="cb45">
+         input_int.hpp
+        </h4>
+        <span class="cb41">
+         講習担当者が作ったint値入力ライブラリ
+        </span>
+        <h4 class="cb45">
+         winput::input関数
+        </h4>
+        <span class="cb41">
+         input_int.hppの入力関数
+        </span>
+        <h4 class="cb45">
+         while文
+        </h4>
+        <span class="cb41">
+         条件式がtrueである限り文を実行する反復文
+        </span>
+        <h4 class="cb45">
+         do-while文
+        </h4>
+        <span class="cb41">
+         文を実行してから条件式を評価するwhile文
+        </span>
+        <h4 class="cb45">
+         初期化式
+        </h4>
+        <span class="cb41">
+         for文の初めに1回実行される式
+        </span>
+        <h4 class="cb45">
+         継続式
+        </h4>
+        <span class="cb41">
+         for文が文を1回実行するごとに実行する式
+        </span>
+        <h4 class="cb45">
+         for文
+        </h4>
+        <span class="cb41">
+         初期化式と継続式を備えるwhile文のような反復文
+        </span>
        </div>
        <div class="cb36 debr">
        <h4 class="cb44">
         必要語
        </h4>
-       <h4 class="cb45">重要語例</h4>
-       <span class="cb41">重要語例</span>
+       <h4 class="cb45">
+        反復文
+       </h4>
+       <span class="cb41">
+        while文とfor文の総称
+       </span>
+       <h4 class="cb45">
+        制御文
+       </h4>
+       <span class="cb41">
+        選択文や反復文などの総称
+       </span>
+       <h4 class="cb45">
+        文
+       </h4>
+       <span class="cb41">
+        制御文や式文などの総称
+       </span>
+       <h4 class="cb45">
+        複合文
+       </h4>
+       <span class="cb41">
+        複数の文をまとめたもの
+       </span>
+       <h4 class="cb45">
+        条件式
+       </h4>
+       <span class="cb41">
+        関係演算子と値の並び
+       </span>
+       <h4 class="cb45">
+        論理演算子
+       </h4>
+       <span class="cb41">
+        <code>&&,||,!</code>
+       </span>
+       <h4 class="cb45">
+        評価
+       </h4>
+       <span class="cb41">
+        式が計算されること
+       </span>
       </div>
      </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">入力</h2>
+      <span class="cb34">
+       講習担当者がint値を入力するためのライブラリを用意しました。<br>
+       導入方法と使い方を解説します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - 概要</h3>
+       <span class="cb41">
+        大まかに以下の手順で導入します。<br>
+        1.<a href="../uy/input_int.hpp" download>input_int.hpp</a>からヘッダファイルをダウンロードする<br>
+        2.プロジェクトディレクトリにinput_int.hppを移動する<br>
+        3.input_int.hppをVisual Studioに認識させる<br>
+        4.ヘッダファイルをインクルードして使えるかを確認する
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - 1.ダウンロード</h3>
+       <span class="cb41">
+        まず、ライブラリ本体であるヘッダファイルを<a href="../uy/input_int.hpp" download>input_int.hpp</a>からダウンロードします。<br>
+        ファイル名は「input_int.hpp」で、「hpp」はC++のヘッダファイルを示す拡張子です。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - 2.移動</h3>
+       <span class="cb41">
+        もしプロジェクトのディレクトリがわかっている人は飛ばしてしまっても構いません。<br>
+        まず、「ソリューション エクスプローラー」の「"プロジェクト名"」を右クリックします。<br>
+        「ソリューション "ソリューション名" (1/1プロジェクト)」とは違うので注意しましょう。<br>
+        そして、「エクスプローラーで表示」をクリック、プロジェクトディレクトリが表示されます。<br>
+        最後に、そこへダウンロードした「input_int.hpp」を移動して完了です。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - 3.認識</h3>
+       <span class="cb41">
+        次に、ダウンロードしたヘッダをVisual Studioのプロジェクトに紐づけましょう。<br>
+        エクスプローラーとVisual Studioを2つを同時に開きましょう。<br>
+        そしてエクスプローラーにあるinput_int.hppのファイルをドラッグして、<br>
+        「ソリューション エクスプローラー」の「ヘッダー ファイル」にドロップします。<br>
+        input_int.hppが「ヘッダー ファイル」の一覧に表示されるか確認しましょう。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - 4.インクルード</h3>
+       <span class="cb41">
+        インクルードして使います。コードの始めに<code>#include "input_int.hpp"</code>と書きます。<br>
+        標準ライブラリは<code>&lt&gt</code>で囲みますが、今回は<code>""</code>で囲みます。<br>
+        <code>""</code>は今回のように、プロジェクトディレクトリにヘッダを置いた時に使います。<br>
+        これでVisual Studioが「ファイルを読み込めません」と出力しなければ導入成功です。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">導入 - エラーが出たら</h3>
+       <span class="cb41">
+        「ファイルを読み込めません」というエラーが出てしまうかもしれません。原因としては、<br>
+        ・<code>#include "input_int.hpp"</code>が<code>#include &ltinput_int.hpp&gt</code>になっていること、<br>
+        ・input_int.hppが適切な場所に置かれていないこと、などがあります。<br>
+        input_int.hppは、「framework.h」や「Resource.h」などがあるディレクトリに置きます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">使い方</h3>
+       <span class="cb41">
+        それでは使い方です。以下のサンプルコードを実行してみましょう。
+       </span>
+      </div>
+     </article>
+     </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">使い方</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//文字列を渡さない場合はNoneが表示される
+</span>    <span class="wdkywd">int</span> in <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">();</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>in<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"1回目入力結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//文字列を渡す場合は渡した文字列が表示される
+</span>    in <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"2回目"</span><span class="wdsl">);</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>in<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"2回目入力結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">winput::input関数</h3>
+        <span class="cb41">
+         input_int.hppの入力は、winput::input関数を用います。返り値が入力された数値です。<br>
+         また、引数に文字列を渡すと入力のウィンドウに表示されます。<br>
+         ただし引数は省略することが出来、省略すると「None」が表示されます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">入力方法</h3>
+        <span class="cb41">
+         winput::input関数が実行されるとウィンドウが表示されます。<br>
+         そのウィンドウに入力出来る欄があるので、そこに数値を入力します。<br>
+         決定するには、すぐ下にある「ENTER」と書かれたボタンか、Enterキーを押します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「使い方」解説</h2>
+       <span class="cb34">
+        コード「使い方」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">winput::input関数</h3>
+        <span class="cb41">
+         先述した通りです。1回目は引数を渡さないため、「None」が表示されます。<br>
+         2回目は引数に「2回目」と渡したため、「2回目」が表示されます。<br>
+         そして、1回目も2回目も入力された値をメッセージボックスで表示しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">予告 - input_int.hppについて</h3>
+        <span class="cb41">
+         input_int.hppは、大方Windows API講習の方で学ぶことを使って実装されています。<br>
+         ということで、Windows APIのエディットコントロールを扱う回に書いてもらいます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">while文</h2>
+       <span class="cb34">
+       </span>
+      </article>
 
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>

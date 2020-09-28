@@ -11,7 +11,7 @@
 * 　　：ハイフンを付けるとマイナス値になる
 * 使用：エディットコントロールに入力後、Enterキーか下のボタンをクリックします
 */
-namespace wini {
+namespace winput {
 	using string = std::wstring;
 
 	/*
@@ -196,9 +196,10 @@ namespace wini {
 	* 目的：エディットコントロールの文字列をint値に変換します
 	* 返値：エディットコントロールの文字列から変換したint値
 	* 備考：ハイフンが入力された文字列のいずれかに存在するとマイナス値と判定されます
+	* 　　：オーバーフローした時の挙動は当然無定義です
 	*/
 	int convert() {
-		int result = 0;
+		unsigned result = 0;
 		string str = get_edittext(win_data::edit);
 
 		SetWindowTextW(win_data::edit, L"");
@@ -206,7 +207,7 @@ namespace wini {
 		bool is_minus = false;
 		for (auto& ch : str) {
 			if (ch == L'-') is_minus = true;
-			if (L'0' < ch && ch < L'9') {
+			if (L'0' <= ch && ch <= L'9') {
 				result = result * 10 + (ch - L'0');
 			}
 		}
