@@ -47,6 +47,9 @@
  <url>
   <loc>https://www.ktpc.tokyo/le/uy/uy.html</loc>
  </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_pic/_pic.html</loc>
+ </url>
  
  <url>
   <loc>https://www.ktpc.tokyo/le/_p_cba/stup/stup.html</loc>
@@ -83,6 +86,18 @@
   <loc>https://www.ktpc.tokyo/le/_cps/i_traddo/i_traddo.html</loc>
  </url>
  <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/q_pt/q_pt.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/k_st/k_st.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/ifadsh/ifadsh.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/whadfr/whadfr.html</loc>
+ </url>
+ <url>
   <loc>https://www.ktpc.tokyo/le/_cps/i_dx/i_dx.html</loc>
  </url>
  
@@ -98,5 +113,10 @@
  <url>
   <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/search/search.html</loc>
  </url>
+ 
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_pic/kppA/kppA.html</loc>
+ </url>
+ 
 </urlset>
 
