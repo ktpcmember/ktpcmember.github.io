@@ -149,7 +149,7 @@
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40"></h3>
+       <h3 class="cb40">サイクル</h3>
        <span class="cb41">
         よほど複雑な回路でない限り、1クロックで行える動作には限りがあります。<br>
         そこで、PICでは、4クロックを1サイクルとしています。
@@ -170,7 +170,7 @@
        <h3 class="cb40">プログラムメモリ</h3>
        <span class="cb41">
         プログラムメモリは、命令の列を記憶する回路です。<br>
-        命令は1語<span class="cb56">word<span>ずつ、オペコード<span class="cb56">op-code<span>として保存されます。<br>
+        命令は1語<span class="cb56">word</span>ずつ、オペコード<span class="cb56">op-code</span>として保存されます。<br>
         オペコードとは、命令の内容を表すビット列のことです。<br>
         PIC16系列では、1語のオペコードの大きさは14ビットです。<br>
         なお、プログラム書き込み以外では、このメモリの値を変更できません。<br>
@@ -188,7 +188,7 @@
         ここから必要な値を取り出すために、値の位置を指定する必要があります。<br>
         この位置の番号を、アドレス<span class="cb56">address</span>といいます。<br>
         アドレスは0から始まり、サイズより1つ小さい番号まで連続します。<br>
-        1827のプログラムメモリなら、0から4095<span class="cb56">16進:FFF</span>までが有効なアドレスです。<br>
+        1827のプログラムメモリなら、0から4095<span class="cb56">16進=FFF</span>までが有効なアドレスです。<br>
         場合によっては、サイズ内でも無効なアドレスが存在します。<br>
         無効なアドレスを使ったときの動作は、メモリによって異なります。
        </span>
@@ -211,7 +211,7 @@
         レジスタ<span class="cb56">register</span>とは、計算中の値などを保存するメモリです。<br>
         PIC16系列では、レジスタ1つの大きさは8ビット、つまり1バイトです。<br>
         実行中に値を変更できますが、電源を切ると失われてしまいます。<br>
-        PIC16F1827は、384<span class="cb56">16進:180</span>個の通常レジスタ<span class="cb56">General Purpose Register</span>を持ちます。<br>
+        PIC16F1827は、384<span class="cb56">16進=180</span>個の通常レジスタ<span class="cb56">General Purpose Register</span>を持ちます。<br>
         これらのレジスタは、プログラムが自由に使ってよいです。<br>
         また、特殊レジスタ<span class="cb56">Special Function Register</span>が100個ほど存在しますが、これらは用途が決められています。<br>
         プログラムカウンタもここに含まれます。
