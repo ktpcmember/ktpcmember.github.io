@@ -122,7 +122,7 @@
       </div>
      </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">プログラム</h2>
+      <h2 class="cb33">プログラム/回路</h2>
       <span class="cb34">
        以下はLチカのプログラムです。<br>
        メモ帳を開き、<code>Lチカ.txt</code>などの名前を付けて保存してください。<br>
@@ -140,8 +140,8 @@
        <code class="cb47">
 <pre id="saco_0" class="cb55 bkgdbl">
   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>STR<span class="wdsl">.</span><span class="wdnr">3</span>       <span class="wdc_mt">#どのバンクからでもアクセス可
-</span>   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>CF<span class="wdsl">.</span><span class="wdnr">0</span>       <span class="wdc_mt">#クリアフラグ
-</span>   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ZF<span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#ゼロフラグ
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>CF<span class="wdsl">.</span><span class="wdnr">0</span>      <span class="wdc_mt">#クリアフラグ
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ZF<span class="wdsl">.</span><span class="wdnr">2</span>      <span class="wdc_mt">#ゼロフラグ
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">$0C</span>   <span class="wdc_mt">#バンク1
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISB<span class="wdsl">.</span><span class="wdnr">$0D</span>   <span class="wdc_mt">#バンク1
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>OSCCON<span class="wdsl">.</span><span class="wdnr">$19</span>  <span class="wdc_mt">#バンク1、オシレータ設定
@@ -162,49 +162,78 @@
 </span>  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>         <span class="wdc_mt">#バンク0に戻る
 </span>    
   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
-</span>   <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>        <span class="wdc_mt">#バンク2
-</span>   <span class="wdkywd">BCF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RB0ピンに0を出力する
-</span>   <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
-   <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA    <span class="wdc_mt">#1秒待つ
-</span>   <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>
-   <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RB0ピンに1を出力する
-</span>   <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
-   <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA    <span class="wdc_mt">#1秒待つ
-</span>   <span class="wdkywd">GOT</span><span class="wdsl">.</span>START    <span class="wdc_mt">#戻る(無限にループする)
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span>    <span class="wdkywd">BCF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RB0ピンに0を出力する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>
+    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RB0ピンに1を出力する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)
 </span>
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA        <span class="wdc_mt">#1秒待つ関数
-</span>   <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">100</span>         <span class="wdc_mt">#0.01秒を100回回す
-</span>   <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F   <span class="wdc_mt">#カウンタに代入
-</span>   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA-LOOP  <span class="wdc_mt">#ループ開始
-</span>    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITB      <span class="wdc_mt">#0.1秒待つ関数を呼ぶ
-</span>    <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F  <span class="wdc_mt">#0ならスキップ
-</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITA-LOOP <span class="wdc_mt">#戻る
-</span>   <span class="wdkywd">RET</span>             <span class="wdc_mt">#関数を抜ける
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA          <span class="wdc_mt">#1秒待つ関数
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">100</span>          <span class="wdc_mt">#0.01秒を100回回す
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F    <span class="wdc_mt">#カウンタに代入
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA-LOOP   <span class="wdc_mt">#ループ開始
+</span>      <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITB      <span class="wdc_mt">#0.1秒待つ関数を呼ぶ
+</span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F  <span class="wdc_mt">#0ならスキップ
+</span>      <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITA-LOOP <span class="wdc_mt">#戻る
+</span>    <span class="wdkywd">RET</span>              <span class="wdc_mt">#関数を抜ける
 </span>
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB       <span class="wdc_mt">#9998サイクルかかる
-</span>   <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">38</span>         <span class="wdc_mt">#263サイクル*38回=9994サイクル
-</span>   <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F  <span class="wdc_mt">#上の命令、最後のRETと合わせて4サイクル
-</span>   <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L0   <span class="wdc_mt">#1つめのループ(1周263サイクル)
-</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">87</span>        <span class="wdc_mt">#3サイクル*87回=261サイクル
-</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F <span class="wdc_mt">#上の命令と合わせて2サイクル
-</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L1  <span class="wdc_mt">#2つめのループ(1周3サイクル)
-</span>    <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F <span class="wdc_mt">#通常1、スキップ時2サイクル
-</span>     <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L1 <span class="wdc_mt">#戻る、2サイクル
-</span>   <span class="wdkywd">NOP</span>            <span class="wdc_mt">#スキップ時の誤差1サイクル
-</span>   <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F
-    <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L0  <span class="wdc_mt">#戻る
-</span>  <span class="wdkywd">NOP</span>             <span class="wdc_mt">#誤差1サイクル
-</span>  <span class="wdkywd">RET</span>             <span class="wdc_mt">#関数を抜ける(2サイクル)
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB           <span class="wdc_mt">#9998サイクルかかる
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">38</span>            <span class="wdc_mt">#263サイクル*38回=9994サイクル
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F     <span class="wdc_mt">#上の命令、最後のRETと合わせて4サイクル
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L0      <span class="wdc_mt">#1つめのループ(1周263サイクル)
+</span>      <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">87</span>          <span class="wdc_mt">#3サイクル*87回=261サイクル
+</span>      <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F   <span class="wdc_mt">#上の命令と合わせて2サイクル
+</span>      <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L1    <span class="wdc_mt">#2つめのループ(1周3サイクル)
+</span>        <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F <span class="wdc_mt">#通常1、スキップ時2サイクル
+</span>        <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L1  <span class="wdc_mt">#戻る、2サイクル
+</span>        <span class="wdkywd">NOP</span>           <span class="wdc_mt">#スキップ時の誤差1サイクル
+</span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F
+      <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L0    <span class="wdc_mt">#戻る
+</span>    <span class="wdkywd">NOP</span>               <span class="wdc_mt">#誤差1サイクル
+</span>    <span class="wdkywd">RET</span>               <span class="wdc_mt">#関数を抜ける(2サイクル)
 </span>
+
 </pre>
        </code>
       </div>
      </article>
-     <article class="cb21">
+     <article class="cb21 fxrl">
       <div class="cb31">
        <h3 class="cb40 fxtb">回路</h3>
        <span class="cb41">
         マイコンの向きなどには注意してください。
+       </span>
+      </div>
+      <img class="cb30" src="j0K3leD.jpg">
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">コンパイル/プログラム書き込み</h2>
+      <span class="cb34">
+       この作業は、今後何回も行うことになるので、覚えておいてください。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40 fxtb">コンパイル</h3>
+       <span class="cb41">
+        先ほどファイルを保存したフォルダに、KTPCPICASM.exeのショートカットを作ってください。<br>
+        そして、ファイルをその上にドラッグ&amp;ドロップしてください。<br>
+        メッセージが表示されるので、解釈可能なプログラムだったかどうかを判断できます。<br>
+        うまくいけば、出力完了と表示されます。<br>
+        このとき、先ほどのファイルのフォルダに、拡張子が.hexのファイルができていると思います。<br>
+        このファイルに、機械語が含まれています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40 fxtb">IPEの設定</h3>
+       <span class="cb41">
+        IPEを起動してください。
        </span>
       </div>
      </article>

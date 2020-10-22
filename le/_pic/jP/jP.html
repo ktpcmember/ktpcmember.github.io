@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。ジャンプ命令と使用例を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>ジャンプ - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../hasEq5A/hasEq5A.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../bTaDqrgI/bTaDqrgA.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/ジャンプ</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、ジャンプと呼ばれる機能を解説します。<br>
+       メモリ上のアドレスが変化していくので、時間軸で区切って順に考えましょう。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        ラベル
+       </h4>
+       <span class="cb41">
+        プログラムメモリ上のアドレスを示す定数
+       </span>
+       <h4 class="cb45">
+        ジャンプ
+       </h4>
+       <span class="cb41">
+        プログラムカウンタを変更すること
+       </span>
+       <h4 class="cb45">
+        サブルーチン
+       </h4>
+       <span class="cb41">
+        プログラム中で呼び出す副命令列
+       </span>
+       <h4 class="cb45">
+        スタック
+       </h4>
+       <span class="cb41">
+        プログラムカウンタの値を一時退避するメモリ
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        命令
+       </h4>
+       <span class="cb41">
+        コンピュータへの指令の最小単位
+       </span>
+       <h4 class="cb45">
+        プログラムカウンタ
+       </h4>
+       <span class="cb41">
+        次に実行する命令のアドレス
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ラベル</h2>
+      <span class="cb34">
+       定数のうち、特にプログラムメモリ上のアドレスを示すものを、ラベルといいます。<br>
+       本や辞書の重要な箇所に付箋を貼るのに似ています。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">特殊変数PWC</h3>
+       <span class="cb41">
+        特殊変数<code>PWC</code>は、次に翻訳される命令が書き込まれるアドレスを示します。<br>
+        プログラムの先頭で0であり、コンパイラが命令を1つ翻訳して書き込んだ後、1増えます。<br>
+        なお、これはコンパイル時のみの概念ですが、実行時のプログラムカウンタと等しい値になります。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ラベルの定義</h3>
+       <span class="cb41">
+        ラベルは定数なので、<code class="wdp_q_p_csc_md">COL</code>を使って定義します。<br>
+        ただし、2つめの引数に<code>PWC</code>を指定するか、定数の名前だけ指定します。<br>
+        後者の場合、<code class="wdsl">.</code>は命令と引数の間の1つだけでよいです。<br>
+        <code class="wdp_q_p_csc_md">COL</code>構文は、2つめの引数が省略されたとき、<code>PWC</code>とみなすようになっています。<br>
+        ラベルであることがわかりやすいですし、書くのも楽なので、省略するとよいです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">ラベルの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LABEL1     <span class="wdc_mt">#2つめの引数省略
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LABEL2<span class="wdsl">.</span>PWC <span class="wdc_mt">#こちらでもよい
+</span>
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LABEL3     <span class="wdc_mt">#LABEL3は次のNOP命令のアドレスを示す
+</span>  <span class="wdkywd">NOP</span>          <span class="wdc_mt">#ラベルの後はインデントを付けるとわかりやすい</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ジャンプ</h2>
+      <span class="cb34">
+       プログラムカウンタは、命令を実行するごとに1増えます。<br>
+       しかし、プログラムメモリは有限なので、すぐに端についてしまいます。<br>
+       プログラムでは、繰り返しや分岐が重要ですが、1方向に1ずつしか進めないのでは、どちらも実現できません。<br>
+       これらに対応するための、実行中にプログラムカウンタを変更できる機能が、ジャンプです。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">GOT命令</h3>
+       <span class="cb41">
+        具体的には、<code class="wdkywd">GOT</code>命令がジャンプの機能を持ちます。<br>
+        引数は1つで、プログラムカウンタに書き込む値を指定します。<br>
+        しかし、ジャンプ先の命令のアドレスを手動で調べるのは、非常に大変で信頼性も低いです。<br>
+        そこで、先ほどのラベルを使えば、コンパイラが自動でやってくれます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">ジャンプの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdkywd">GOT</span><span class="wdsl">.</span>SKIP
+  <span class="wdc_mt">#ここに書いた命令は飛ばされる
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>SKIP
+
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LOOP
+  <span class="wdc_mt">#ここに書いた命令を繰り返す
+</span>  <span class="wdkywd">GOT</span><span class="wdsl">.</span>LOOP
+
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">サブルーチン</h2>
+      <span class="cb34">
+       PICのプログラムメモリは限られています。<br>
+       効率的にプログラムを書くには、同じ命令列を何度も書くのは避けたいです。<br>
+       そこで、サブルーチンと呼ばれる命令列を書き、必要な個所からジャンプする、という方法があります。<br>
+       サブルーチンにジャンプすることを、サブルーチンを呼び出す<span class="cb56">call a subroutine</span>、ということがあります。<br>
+       Lチカのプログラムでは、一定時間待つ命令列を、サブルーチンにしていました。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">CAL/RET命令</h3>
+       <span class="cb41">
+        ところで、サブルーチンを実行した後は、どこに戻ればよいのでしょうか。<br>
+        複数個所から呼び出されるサブルーチンであれば、単純に<code class="wdkywd">GOT</code>命令を使うわけにもいきません。<br>
+        呼び出し元のアドレスを保存してからジャンプする必要があります。<br>
+        これを行うのが、<code class="wdkywd">CAL</code>命令です。<br>
+        現在のプログラムカウンタを後述のスタックに保存した後、ジャンプします。<br>
+        サブルーチン終了時には、<code class="wdkywd">RET</code>命令で戻り<span class="cb56">return from a subroutine</span>ます。<br>
+        <code class="wdkywd">RET</code>のジャンプ先は、スタックに保存されているアドレスなので、引数はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スタック</h3>
+       <span class="cb41">
+        スタックとはメモリの一つで、プログラムカウンタを保存できます。<br>
+        ただし、サブルーチンからさらにサブルーチンを呼び出す状況なども考えられます。<br>
+        そのため、16F1827では、16段の領域があり、16重までの多重呼び出しが可能です。<br>
+        しかし、安全のため、8重以上になるような状況は避けましょう。<br>
+        なお、スタックは最後に保存された値から順に取り出される構造になっています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">サブルーチンの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdkywd">CAL</span><span class="wdsl">.</span>SRA   <span class="wdc_mt">#サブルーチンSRAを呼び出す
+</span>
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>SRA   <span class="wdc_mt">#サブルーチンSRAはここから
+</span>  <span class="wdkywd">NOP</span>     <span class="wdc_mt">#ここにサブルーチンの内容おい
+</span>  <span class="wdkywd">CAL</span><span class="wdsl">.</span>SRB <span class="wdc_mt">#別のサブルーチンを呼び出してもよい
+</span>  <span class="wdkywd">RET</span>     <span class="wdc_mt">#サブルーチンSRAはここで終わり
+</span>
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>SRB   <span class="wdc_mt">#サブルーチンSRBはここから
+</span>  <span class="wdkywd">NOP</span>
+  <span class="wdkywd">RET</span>     <span class="wdc_mt">#ここまで</span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

@@ -237,7 +237,8 @@
        そこで、よく使う数値や、仕様上決まっている数値、わかりにくい数値に名前をつけて、書きやすくします。<br>
        具体的には、レジスタの番号や、オペコードのアドレスなどです。<br>
        定数の定義には、<code class="wdp_q_p_csc_md">COL</code>構文を使い、名前と値を引数にします。<br>
-       命令のように書きますが、命令ではないので、オペコードにはなりません。
+       命令のように書きますが、命令ではないので、オペコードにはなりません。<br>
+       なお、値として、定義済みの別の定数を指定してもよいです。
       </span>
      </article>
      <article class="cb21">
@@ -251,7 +252,8 @@
        <code class="cb47">
 <pre id="saco_2" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ABC<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#定数ABCの値は0
-</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>D<span class="wdsl">.</span>-$20 <span class="wdc_mt">#定数Dは-$20,つまり-32</span>
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>D<span class="wdsl">.</span><span class="wdnr">-$20</span> <span class="wdc_mt">#定数Dは-$20,つまり-32
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>E<span class="wdsl">.</span>D    <span class="wdc_mt">#定数Eの値も-32</span>
 </pre>
        </code>
       </div>
