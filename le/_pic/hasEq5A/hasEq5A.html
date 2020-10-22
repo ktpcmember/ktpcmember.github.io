@@ -182,7 +182,7 @@
 <pre id="saco_0" class="cb55 bkgdbl">
 <span class="wdkywd">NOP</span>
 <span class="wdkywd">CLR</span><span class="wdsl">.</span><span class="wdnr">9</span>
-<span class="wdkywd">BCF</span><span class="wdsl">.</span><span class="wdnr">$2D</span><span class="wdsl">.</span><span class="wdnr">3</span> <span class="wdc_mt">#0</span>
+<span class="wdkywd">BCF</span><span class="wdsl">.</span><span class="wdnr">$2D</span><span class="wdsl">.</span><span class="wdnr">3</span>
 </pre>
        </code>
       </div>
@@ -224,7 +224,7 @@
 </span>ここはコメントでないので不正な命令文
 
 <span class="wdkywd">NOP</span> <span class="wdc_mt">#左の命令は認識されるが右はされない</span> <span class="wdkywd">NOP</span>
-  <span class="wdkywd">SLP</span><span class="wdc_mt">#2字分インデント</span>
+  <span class="wdkywd">SLP</span> <span class="wdc_mt">#2字分インデント</span>
 </pre>
        </code>
       </div>
@@ -236,7 +236,7 @@
        プログラムでは、たくさんの数値を記述する必要がありますが、数値だけではわかりにくく、覚えにくいです。<br>
        そこで、よく使う数値や、仕様上決まっている数値、わかりにくい数値に名前をつけて、書きやすくします。<br>
        具体的には、レジスタの番号や、オペコードのアドレスなどです。<br>
-       定数は、<code class="wdp_q_p_csc_md">COL</code>構文を使います。<br>
+       定数の定義には、<code class="wdp_q_p_csc_md">COL</code>構文を使い、名前と値を引数にします。<br>
        命令のように書きますが、命令ではないので、オペコードにはなりません。
       </span>
      </article>

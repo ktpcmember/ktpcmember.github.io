@@ -7,7 +7,7 @@ function push(){
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
  r_qt=new XMLHttpRequest();
- r_qt.open("GET",la+".txt",false);
+ r_qt.open("GET","https://www.ktpc.tokyo/le/+tool/coq_ge/"+la+".txt",false);
  r_qt.send(null);
  sx=r_qt.responseText;
  sxtn.fill("");
