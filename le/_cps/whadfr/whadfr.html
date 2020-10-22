@@ -69,7 +69,7 @@
     <div class="cb00">
      <div class="cb10">
       <article class="cb20">
-       <h1>C++講習/while文とfor文（準備中です。もうしばらくお待ちください。）</h1>
+       <h1>C++講習/while文とfor文</h1>
       </article>
       <article class="cb21 fxtb">
        <h2 class="cb33">概要</h2>
@@ -123,6 +123,12 @@
         </h4>
         <span class="cb41">
          初期化式と継続式を備えるwhile文のような反復文
+        </span>
+        <h4 class="cb45">
+         ネスト
+        </h4>
+        <span class="cb41">
+         同じような構造が繰り返し記述されること
         </span>
        </div>
        <div class="cb36 debr">
@@ -218,7 +224,7 @@
        <h3 class="cb40">導入 - 3.認識</h3>
        <span class="cb41">
         次に、ダウンロードしたヘッダをVisual Studioのプロジェクトに紐づけましょう。<br>
-        エクスプローラーとVisual Studioを2つを同時に開きましょう。<br>
+        まず、エクスプローラーとVisual Studioを2つを同時に開きます。<br>
         そしてエクスプローラーにあるinput_int.hppのファイルをドラッグして、<br>
         「ソリューション エクスプローラー」の「ヘッダー ファイル」にドロップします。<br>
         input_int.hppが「ヘッダー ファイル」の一覧に表示されるか確認しましょう。
@@ -278,6 +284,8 @@
     <span class="wdc_mt">//文字列を渡す場合は渡した文字列が表示される
 </span>    in <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"2回目"</span><span class="wdsl">);</span>
     MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>in<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"2回目入力結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </pre>
         </code>
@@ -331,13 +339,452 @@
       <article class="cb21 fxtb">
        <h2 class="cb33">while文</h2>
        <span class="cb34">
+        繰り返し文を実行するための反復文、while文について解説します。<br>
+        以下のサンプルコードを実行してみましょう。
        </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">while文</span>
+         <button type="button" class="cb53" onclick="copy('saco_2')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> sum <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdkywd">int</span> in <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"0を入力すると終了"</span><span class="wdsl">))</span> <span class="wdsl">{</span>
+        sum <span class="wdsl">+=</span> in<span class="wdsl">;</span>
+        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>sum<span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"現在の合計"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>sum<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"です。"</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> <span class="wdtt">L"総合計は"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">while文</h3>
+        <span class="cb41">
+         while文は、<code>while (条件式) 文</code>の構文を取ります。<br>
+         条件式がtrueである限り、文を実行し続けるという効果を持ちます。<br>
+         なおif文の時と同様に、複数の文を扱いたい場合には複合文を用います。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">コード「while文」解説</h3>
+        <span class="cb41">
+         入力を足し続けるプログラムです。while文を用いてループをして実現しています。<br>
+         while文の条件式で入力をし、それを条件式にしています。<br>
+         0はfalseに、0以外はtrueに変換されることを利用した条件式です。<br>
+         0以外が入力されると、while文の条件式がtrueになり、文が実行されループします。<br>
+         0が入力されるとwhile文の条件式がfalseとなり、ループを抜けることになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">インデックスループ</h2>
+       <span class="cb34">
+        N回ループしたい、という時がこの先よく出てきます。<br>
+        このような時には、整数の変数を用いて条件式を作ります。<br>
+        以下のサンプルコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">インデックスループ</span>
+         <button type="button" class="cb53" onclick="copy('saco_3')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_3" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>algorithm<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> min <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"範囲1"</span><span class="wdsl">),</span> max <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"範囲2"</span><span class="wdsl">);</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>min <span class="wdsl">&gt;</span> max<span class="wdsl">)</span> std<span class="wdsl">::</span>swap<span class="wdsl">(</span>min<span class="wdsl">,</span> max<span class="wdsl">);</span>
+
+    std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">int</span> i <span class="wdsl">=</span> min<span class="wdsl">;</span>
+        <span class="wdkywd">while</span> <span class="wdsl">(</span>i <span class="wdsl">&lt;=</span> max<span class="wdsl">)</span> <span class="wdsl">{</span>
+            <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">%</span> <span class="wdnr">2</span> <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+                str <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+            <span class="wdsl">}</span>
+
+            i<span class="wdsl">++;</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"その範囲の2の倍数は"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">std::swap関数</h3>
+        <span class="cb41">
+         std::swap関数は、<code>#include &lt;algorithm&gt;</code>と書くと使えるようになる関数です。<br>
+         組み込み型や標準ライブラリの型において、二つの変数の値を交換する機能を持ちます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「インデックスループ」解説</h2>
+       <span class="cb34">
+        コード「インデックスループ」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">概要</h3>
+        <span class="cb41">
+         2つの整数の値を受け取り、その2つの整数の範囲において昇順に2の倍数を列挙します。<br><br>
+
+         1.<code>min</code>と<code>max</code>に整数の値を入力させます。<code>min&lt;=max</code>であることを期待します。<br>
+         2.<code>min</code>よりも<code>max</code>の方が小さな値が入力された場合には、<code>std::swap</code>で交換しています。<br>
+         3.<code>min</code>から<code>max</code>まで、N回ループを回します。Nは、<code>max-min+1</code>回のことです。<br>
+         4.それぞれについて2の倍数か判定し、2の倍数を文字列に追加していきます。<br>
+         5.結果を出力します
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">解説 - 3</h3>
+        <span class="cb41">
+         別に変数を用意して<code>min</code>で初期化して<code>max</code>まで増やしていけばよいでしょう。<br>
+         <code>+=</code>でも良いですが、インクリメント<code>++</code>を使うとより簡潔に書けます。<br>
+         インクリメントは、<code>++変数名</code>もしくは<code>変数名++</code>で変数の値を1増やす演算子です。<br>
+         なお、インクリメントは前者の前置か、後者の後置かで計算結果が異なうことがあります。<br>
+         ただし、それはインクリメント単体では起こりえないので問題はあまりないでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">解説 - 4</h3>
+        <span class="cb41">
+         2の倍数かを判定するのは、2で割った余りが0かを判定すれば良いでしょう。<br>
+         なので、<code>変数名 % 2 == 0</code>になります。文字列には空白区切りで追加しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">補足</h3>
+        <span class="cb41">
+         これはインデックスループであるのは確かですが、1番多い書き方とは違う所があります。<br>
+         普通、<code>初期化式</code>で宣言した変数は0で初期化すること。<br>
+         <code>条件式</code>は<code>初期化式で宣言した変数 &lt; ループしたい回数</code>となること。<br>
+         の2つです。「なぜ0から始めるのか」というと、「慣習である」というのが1つの理由です。<br>
+         また、今後扱う機能には0から始めた方が都合がいいことがあることも理由の1つです。<br>
+         なお<code>条件式</code>の方は、0から始めた時、ループしたい回数を直接書けるのがこうだからです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">for文</h2>
+       <span class="cb34">
+        for文を使うと、コード「インデックスループ」はもっと簡潔に書くことが出来ます。<br>
+        コードの内容はそのまま、while文をfor文に書き換えた以下のコードを実行してみましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">for文でのインデックスループ</span>
+         <button type="button" class="cb53" onclick="copy('saco_4')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_4" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>algorithm<span class="wdsl">&gt;</span>
+
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> min <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"範囲1"</span><span class="wdsl">),</span> max <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"範囲2"</span><span class="wdsl">);</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>min <span class="wdsl">&gt;</span> max<span class="wdsl">)</span> std<span class="wdsl">::</span>swap<span class="wdsl">(</span>min<span class="wdsl">,</span> max<span class="wdsl">);</span>
+
+    std<span class="wdsl">::</span>wstring str <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> min<span class="wdsl">;</span> i <span class="wdsl">&lt;=</span> max<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">%</span> <span class="wdnr">2</span> <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+            str <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> str.c_str<span class="wdsl">(),</span> <span class="wdtt">L"その範囲の2の倍数は"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">for文の構造</h3>
+        <span class="cb41">
+         for文は<code>for (初期化式; 条件式; 継続式) 文</code>という構文を取ります。<br>
+         <code>初期化式</code>はfor文に入る前に実行される式ですが、変数を宣言することもできます。<br>
+         <code>初期化式</code>で宣言した変数は、そのfor文の中でのみ使うことができます。<br><br>
+
+         <code>条件式</code>はwhile文と全く同じで、trueになるとループし<code>文</code>を実行します。<br>
+         そしてfalseになるとループをやめ、<code>文</code>を実行するのも終了します。<br><br>
+
+         継続式は、<code>文</code>を実行した後に実行される式で、ループ1回ごとに実行する式を書きます。<br>
+         インデックスループでは、用意した変数をインクリメントすることがほとんどです。
+        </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">for文の実行</h3>
+        <span class="cb41">
+         for文の実行についてサンプルコードで細かく見ていきましょう。<br>
+         <code>for(int i = min; i &lt;= max; i++)</code>ですね。わかりやすく、min=0,max=3にします。<br>
+         まず、<code>int i = min</code>が実行されます。変数<code>i</code>は0になりました。<br>
+         次に、<code>i &lt;= max</code>が実行されます。<code>0 &lt;= 3</code>なのでtrueです。<br>
+         次に、<code>文</code>が実行されます。が、ここはループの処理とは関係ないので割愛します。<br>
+         次に、<code>i++</code>が実行されます。変数<code>i</code>は1になりました。<br>
+         次に、<code>i &lt;= max</code>が実行されます。<code>1 &lt;= 3</code>なのでtrueです。<br>
+         ここからは同じことの繰り返しなので、省略します。<br>
+         はい、<code>i++</code>が実行されました。変数<code>i</code>は4になりました。<br>
+         はい、<code>i &lt;= max</code>が実行されました。今回の仮定では<code>4 &lt;= 3</code>なのでfalseです。<br>
+         そしてここで<code>条件式</code>がfalseになったので実行は終了です。
+        </span>
+       </div>
+      </article>
+
+      <article class="cb21 fxtb">
+       <h2 class="cb33">for文</h2>
+       <span class="cb34">
+        for文の他の機能についても見ていきましょう。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">for文</span>
+         <button type="button" class="cb53" onclick="copy('saco_5')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_5" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> random<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>random_device seed_gen<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>default_random_engine engine<span class="wdsl">(</span>seed_gen<span class="wdsl">());</span>
+    <span class="wdkywd">return</span> std<span class="wdsl">::</span>uniform_int_distribution<span class="wdsl">&lt;&gt;(-</span><span class="wdnr">1000</span><span class="wdsl">,</span> <span class="wdnr">1000</span><span class="wdsl">)(</span>engine<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> set_random<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">*</span> lhs<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">*</span> rhs<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">*</span> answer<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdsl">(*</span>lhs<span class="wdsl">)</span> <span class="wdsl">=</span> random<span class="wdsl">();</span>
+    <span class="wdsl">(*</span>rhs<span class="wdsl">)</span> <span class="wdsl">=</span> random<span class="wdsl">();</span>
+    <span class="wdsl">(*</span>answer<span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdsl">(*</span>lhs<span class="wdsl">)</span> <span class="wdsl">*</span> <span class="wdsl">(*</span>rhs<span class="wdsl">);</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> lhs<span class="wdsl">,</span> rhs<span class="wdsl">,</span> answer<span class="wdsl">;</span>
+    set_random<span class="wdsl">(&amp;</span>lhs<span class="wdsl">,</span> <span class="wdsl">&amp;</span>rhs<span class="wdsl">,</span> <span class="wdsl">&amp;</span>answer<span class="wdsl">);</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>wstring s<span class="wdsl">;;</span> set_random<span class="wdsl">(&amp;</span>lhs<span class="wdsl">,</span> <span class="wdsl">&amp;</span>rhs<span class="wdsl">,</span> <span class="wdsl">&amp;</span>answer<span class="wdsl">))</span> <span class="wdsl">{</span>
+
+        s <span class="wdsl">=</span> <span class="wdtt">L"次の答えを入力:"</span>
+            <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>lhs<span class="wdsl">)</span>
+            <span class="wdsl">+</span> <span class="wdtt">L"*"</span> <span class="wdsl">+</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>rhs<span class="wdsl">);</span>
+
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>answer <span class="wdsl">==</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span>s<span class="wdsl">))</span> <span class="wdsl">{</span>
+            MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"正解！"</span><span class="wdsl">,</span> <span class="wdtt">L"結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+        <span class="wdsl">}</span>
+        <span class="wdkywd">else</span> <span class="wdsl">{</span>
+            MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"不正解"</span><span class="wdsl">,</span> <span class="wdtt">L"結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+            <span class="wdkywd">break</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+
+    std<span class="wdsl">::</span>wstring s <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">11</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">17</span><span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;;</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            s <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i <span class="wdsl">*</span> <span class="wdnr">100</span> <span class="wdsl">+</span> j<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+            <span class="wdkywd">if</span> <span class="wdsl">(</span>j <span class="wdsl">&lt;</span> <span class="wdnr">6</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+                <span class="wdkywd">continue</span><span class="wdsl">;</span>
+            <span class="wdsl">}</span>
+            <span class="wdkywd">else</span> <span class="wdsl">{</span>
+                <span class="wdkywd">break</span><span class="wdsl">;</span>
+            <span class="wdsl">}</span>
+            s <span class="wdsl">=</span> <span class="wdtt">L"ここは実行されません！"</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+        s <span class="wdsl">+=</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L""</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">break/continue文</h3>
+        <span class="cb41">
+         反復文ではbreak文に加えて、continue文という文も使うことが出来ます。<br>
+         break文はswitch文と同様に、実行された時点で反復文を終了させます。<br>
+         continue文は、実行された時点で<code>文</code>の一番最後へ処理が飛びます。<br>
+         すなわち、残りの<code>文</code>の実行を飛ばし、<code>条件式</code>の評価へと移ります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">for文の式の省略</h3>
+        <span class="cb41">
+         for文には、<code>初期化式、条件式、継続式</code>があると説明していました。<br>
+         これら3つの式は、空文のように何も書かないことで省略することが出来ます。<br>
+         特筆すべきなのが<code>条件式</code>を省略すると、常にtrueとして実行されることです。<br>
+         while文では<code>条件式</code>は省略出来ないので、ここが唯一の<code>条件式</code>の違いでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">制御文や複合文のネスト</h3>
+        <span class="cb41">
+         制御文と複合文は自身の中に、更に制御式や複合文を入れることが出来ます。<br>
+         このように、同じような構造が繰り返し記述されることをネストと呼びます。<br>
+         ネストは、条件や処理が複雑にならないように、最小限に留めるのが良いでしょう。<br>
+         ただ、反復文ではネストした方がコードが短く、わかりやすくできることがしばしばです。<br>
+         今回ではルームの番号を外側、出席番号を内側で、としたことでforを2回で済ましています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">ネストされた文の実行</h3>
+        <span class="cb41">
+         文をネストした時も、上から順次実行されていくことには変わりありません。<br>
+         つまり、反復文では外側の1回のループごとに、内側は始めから最後までループします。<br>
+         なおbreak文とcontinue文は、効果が与えられる文のうち一番内側の文に対して実行されます。<br>
+         疑似的には<code>for[if[break]]</code>ならfor、<code>for1[for2[]for3[break]]</code>ならfor3に効果が及びます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「for文」解説</h2>
+       <span class="cb34">
+        コード「for文」の解説です。このコードは長いですが、重要なのは<code>wWinMain</code>関数内だけです。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">概要</h3>
+        <span class="cb41">
+         前半では、まず<code>random</code>関数、<code>set_random</code>関数で掛け算の式を用意します。<br>
+         <code>random</code>関数は-1000から1000までの乱数を発生させる関数ですが、気にしなくてよいです。<br>
+         <code>set_random</code>関数は、<code>lhs</code>、<code>rhs</code>、<code>answer</code>に値をセットする、すなわち式を用意する関数です。<br>
+         そして、用意した式を表示して正解か不正解かを判定して、不正解なら出題をやめています。<br>
+         後半では、11R~16Rの1番から5番までを列挙して表のような形式で表示しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">前半 - <code>set_random</code>関数</h3>
+        <span class="cb41">
+         <code>lhs</code>は<code>left-hand side</code>、<code>rhs</code>は<code>right-hand size</code>、つまり右辺と左辺という意味です。<br>
+         今回は掛け算のみを出すということにしているので、この2つの変数に値をセットしています。<br>
+         <code>answer</code>は名前通り、式の結果を代入しています。<br>
+         ポインタで受け取った引数はアスタリスクで間接参照して、渡された変数を操作するのでした。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">前半 - for文</h3>
+        <span class="cb41">
+         このfor文では<code>条件式</code>が省略されています。つまり、break文が実行されるまで止まりません。<br>
+         今回break文が実行されるのは変数<code>answer</code>と入力値が違う、すなわち回答を間違えた時です。<br>
+         前述していますが、このbreak文は1番内側のfor文を終了させます。<br>
+         なお<code>winput::input</code>関数に問を代入したstd::wstringを引数に渡し、表示させています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">後半 - ネスト</h3>
+        <span class="cb41">
+         前述した通りfor文をネスト、外側でルームを、内側で出席番号を考えています。<br>
+         もしこれをルームだけ、出席番号だけfor文にしたらどうなるでしょう。<br>
+         前者だと同じ<code>文</code>のfor文を6回、後者だと出席番号の1~6をそれぞれ書かなければいけません。<br>
+         なお「何度も書く」というのは、変更に弱くなり、保守性が下がるという問題もあります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">後半 - ネストの実行</h3>
+        <span class="cb41">
+         前述した通り、上から順次実行されます。実行順としては、<br>
+         <code>外側</code>1回目始まり、i=11 &nbsp;<code>内側</code>1-6回目 &nbsp;<code>外側</code>1回目終わり<br>
+         <code>外側</code>2回目始まり、i=12 &nbsp;<code>内側</code>1-6回目 &nbsp;<code>外側</code>2回目終わり<br>
+         ...<br>
+         <code>外側</code>6回目始まり、i==16 &nbsp;<code>内側</code>1-6回目 &nbsp;<code>外側</code>6回目終わり<br>
+         のような感じになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">後半 - break/continue文</h3>
+        <span class="cb41">
+         continu文は<code>文</code>の実行を最後まで飛ばし、break文はfor文自体を終了するのでした。<br>
+         そのため、全く実行されない場所があります。すぐにわかりますね。<br>
+         また、break文はどちらとも1番内側のfor文を終了させるのでした。<br>
+         なので、外側のループも同時に終了することはありません。
+        </span>
+       </div>
       </article>
 
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-       <!--問題文-->
+       九九表を作成して表示するプログラムを作りましょう。<br>
+       つまり、以下のような9*9の表を表示してください。横は空白区切りで問題ありません。<br>
+       1 2 ... 9<br>
+       2 4 ... 18<br>
+       ... ... ... ...<br>
+       9 18 ... 81<br>
       </span>
      </article>
      <article class="cb21 fxrl">
@@ -350,7 +797,16 @@
        </div>
        <code class="cb47">
 <pre id="ar_not" class="cb55 bkgdbl">
-<!--コード-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> 
+    std<span class="wdsl">::</span>wstring s <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L"九九表"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </div>
@@ -366,7 +822,23 @@
        </div>
        <code class="cb47">
 <pre id="ar_1" class="cb55 bkgdbl">
-<!--解答-->
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring s <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">10</span><span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> <span class="wdnr">10</span><span class="wdsl">;</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            s <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i <span class="wdsl">*</span> j<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+        s <span class="wdsl">+=</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L"九九表"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
 </pre>
        </code>
       </details>
