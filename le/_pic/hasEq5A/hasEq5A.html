@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。講習で使うアセンブリ言語の文法を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>アセンブリ言語の文法 - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../j0K3leD/j0K3leD.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../jP/jP.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/アセンブリ言語の文法</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、アセンブリ言語の文法を解説します。<br>
+       一般的なプログラミング言語よりは簡単ですが、やはり覚えるべきことはあります。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        命令文
+       </h4>
+       <span class="cb41">
+        命令と引数の組
+       </span>
+       <h4 class="cb45">
+        引数
+       </h4>
+       <span class="cb41">
+        命令を詳しく修飾する値
+       </span>
+       <h4 class="cb45">
+        インデント
+       </h4>
+       <span class="cb41">
+        行頭の字下げ
+       </span>
+       <h4 class="cb45">
+        コメント
+       </h4>
+       <span class="cb41">
+        コンパイルされない注釈
+       </span>
+       <h4 class="cb45">
+        定数
+       </h4>
+       <span class="cb41">
+        数値を名前で表したもの
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        命令
+       </h4>
+       <span class="cb41">
+        コンピュータへの指令の最小単位
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">命令文</h2>
+      <span class="cb34">
+       命令文<span class="cb56">statement</span>とは、命令と引数の組です。<br>
+       プログラムは、実行させたい動作に対応する命令文を並べて作ります。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">引数</h3>
+       <span class="cb41">
+        引数<span class="cb56">ひきすう/operand</span>とは、命令の内容を修飾する値です。<br>
+        例えば、<code>ADD</code>という命令は、2つの値を足せ、という意味です。<br>
+        しかし、これでは計算に使う値や、結果を保存するレジスタがわかりません。<br>
+        引数は、そのような内容を示します。<br>
+        なお、単純な動作の命令文には、引数を持たないものもあります。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">数値</h3>
+       <span class="cb41">
+        プログラムには、数値が必要です。<br>
+        今回のコンパイラでは、2/10/16進数に対応しています。<br>
+        10進数はそのまま、<code class="wdnr">0</code>や<code class="wdnr">9</code>、<code class="wdnr">107</code>のように記述します。<br>
+        2進数は、先頭に<code class="wdnr">%</code>をつけることで表します。<br>
+        先ほどの10進数は、<code class="wdnr">%0</code>、<code class="wdnr">%1001</code>、<code class="wdnr">%1101011</code>のようになります。<br>
+        16進数には、<code class="wdnr">$</code>をつけて、<code class="wdnr">$0</code>、<code class="wdnr">$9</code>、<code class="wdnr">$6B</code>と書きます。<br>
+        なお、<code class="wdnr">$08</code>のように、桁数を揃えてもよいです。<br>
+        負数を記述するには、<code class="wdnr">$</code>や<code class="wdnr">%</code>よりも前に、<code class="wdnr">-</code>を置きます。<br>
+        また、数値はスペースや改行を含んではいけません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">命令文の例</h3>
+       <span class="cb41">
+        以下は、命令文の例です。<br>
+        <code class="wdkywd">命令</code>の後に、<code class="wdnr">数値</code>などの引数を、ドット<code class="wdsl">.</code>を挟んで並べます。<br>
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">命令文の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdkywd">NOP</span>
+<span class="wdkywd">CLR</span><span class="wdsl">.</span><span class="wdnr">9</span>
+<span class="wdkywd">BCF</span><span class="wdsl">.</span><span class="wdnr">$2D</span><span class="wdsl">.</span><span class="wdnr">3</span> <span class="wdc_mt">#0</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">インデント</h3>
+       <span class="cb41">
+        行の先頭の位置をずらすことを、インデントと言います。<br>
+        日本語では字下げと言い、段落の最初の文字をずらしたりします。<br>
+        プログラムでは、段落の全ての行で字下げをします。<br>
+        具体的には、スペースやタブで位置をずらします。<br>
+        これらは命令文などとして認識されないので、コンパイラの解釈に影響はありません。<br>
+        しかし、段落が分からないプログラムは読みにくいので、インデントを付けるべきでしょう。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">コメント</h2>
+      <span class="cb34">
+       コメントとは、プログラムにつける注釈のことです。<br>
+       コンパイラは、<code class="wdc_mt">#</code>から改行までを無視します。<br>
+       コメントを残しておくことで、記述したときの意図を掴みやすくなります。<br>
+       自分が読み返しやすいだけでなく、他の人にも理解しやすいです。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">コメントの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdc_mt">#ここはコメント
+</span> <span class="wdc_mt">#ここもコメント
+</span>ここはコメントでないので不正な命令文
+
+<span class="wdkywd">NOP</span> <span class="wdc_mt">#左の命令は認識されるが右はされない</span> <span class="wdkywd">NOP</span>
+  <span class="wdkywd">SLP</span><span class="wdc_mt">#2字分インデント</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">定数</h2>
+      <span class="cb34">
+       定数とは、数値に名前をつけたものです。<br>
+       プログラムでは、たくさんの数値を記述する必要がありますが、数値だけではわかりにくく、覚えにくいです。<br>
+       そこで、よく使う数値や、仕様上決まっている数値、わかりにくい数値に名前をつけて、書きやすくします。<br>
+       具体的には、レジスタの番号や、オペコードのアドレスなどです。<br>
+       定数は、<code class="wdp_q_p_csc_md">COL</code>構文を使います。<br>
+       命令のように書きますが、命令ではないので、オペコードにはなりません。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">簡単な定数の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ABC<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#定数ABCの値は0
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>D<span class="wdsl">.</span>-$20 <span class="wdc_mt">#定数Dは-$20,つまり-32</span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
