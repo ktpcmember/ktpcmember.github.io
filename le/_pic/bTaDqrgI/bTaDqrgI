@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。ビットとレジスタの操作を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>ビットとレジスタ - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../jP/jP.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../ipTaDopT/ipTaDopT.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/ビットとレジスタ</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、まずレジスタの各ビットを操作する命令を解説します。<br>
+       そして、レジスタを指定するのに必要な、バンクという概念についても解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        ビット番号
+       </h4>
+       <span class="cb41">
+        最下位ビットを0とする桁番号
+       </span>
+       <h4 class="cb45">
+        クリア
+       </h4>
+       <span class="cb41">
+        レジスタの値を0にすること
+       </span>
+       <h4 class="cb45">
+        バンク
+       </h4>
+       <span class="cb41">
+        128個分のレジスタ領域のまとまり
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        レジスタ
+       </h4>
+       <span class="cb41">
+        数値を一時記憶する回路
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ビット操作</h2>
+      <span class="cb34">
+       PICマイコンのレジスタ1つは、8ビットからなります。<br>
+       1ビットずつ制御することも、8ビットまとめて制御することもできます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ビット番号</h3>
+       <span class="cb41">
+        ビット番号とは、最下位のビットを<code class="wdnr">0</code>とした、桁の番号です。<br>
+        レジスタの大きさは8ビットなので、最上位は<code class="wdnr">7</code>になります。<br>
+        今後、ビット番号が<code class="wdnr">N</code>のビットを、ビット<code class="wdnr">N</code>と呼びます。<br>
+        例えば、2の位に当たるビットはビット1です。<br>
+        0から数え始めることに注意してください。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ビット操作</h3>
+       <span class="cb41">
+        1ビットは2進数の1桁ですから、0もしくは1の値をとります。<br>
+        PICにも、指定したビットを0や1に設定する命令があります。<br>
+        0が<code class="wdkywd">BCF</code>命令、1が<code class="wdkywd">BSF</code>命令です。<br>
+        引数は両命令とも同じで、1つめがレジスタのアドレス、2つめがビット番号です。<br>
+        なお、ある特殊な場合を除き、指定したビット以外は変化しません。<br>
+        以下はこれらの命令の例文です。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">BCF/BSFの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$43</span> <span class="wdc_mt">#使う定数は先に定義
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>B<span class="wdsl">.</span><span class="wdnr">5</span>
+
+<span class="wdkywd">BCF</span><span class="wdsl">.</span>R<span class="wdsl">.</span>B   <span class="wdc_mt">#レジスタRのビットBを0にする
+</span><span class="wdkywd">BCF</span><span class="wdsl">.</span><span class="wdnr">$43</span><span class="wdsl">.</span><span class="wdnr">5</span> <span class="wdc_mt">#こう書いても同じ意味
+</span>
+<span class="wdkywd">BSF</span><span class="wdsl">.</span>R<span class="wdsl">.</span>B   <span class="wdc_mt">#BSFは1にする命令</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">クリアとセット</h2>
+      <span class="cb34">
+       クリア<span class="cb56">Clear</span>とは、値を0にすることです。<br>
+       前項の<code class="wdkywd">BCF</code>命令の名前のCもこれに由来します。<br>
+       ちなみに、<code class="wdkywd">BSF</code>のSはSetに由来します。<br>
+       さて、この項では、レジスタの8ビット全体をクリアする命令について説明します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">クリア</h3>
+       <span class="cb41">
+        8ビットをまとめてクリアするには、<code class="wdkywd">CLR</code>命令を使います。<br>
+        引数は1つで、レジスタのアドレスを指定します。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">CLR命令</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$5A</span> <span class="wdc_mt">#使う定数は先に定義
+</span>
+<span class="wdkywd">CLR</span><span class="wdsl">.</span>R     <span class="wdc_mt">#$5Aのレジスタの値は0になる</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">セット</h3>
+       <span class="cb41">
+        レジスタの8ビットをまとめて設定する方法は、代入の章を読んでください。<br>
+        また、ビット演算の章では、各ビットを反転する命令を解説しています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">バンク</h2>
+      <span class="cb34">
+       ここからは、レジスタを指定するのに必要な、バンクという概念について解説します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">アドレスのビット数</h3>
+       <span class="cb41">
+        16F1827のレジスタは、12ビットのアドレスで指定することができます。<br>
+        しかし、オペコード1つに含められるレジスタのアドレスは7ビットまでです。<br>
+        残りの5ビット分は、別の手段で指定しなければなりません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">バンク</h3>
+       <span class="cb41">
+        PICで取られた解決策では、まず7ビットで指定できる範囲のレジスタをまとめました。<br>
+        このまとまりが、バンク<span class="cb56">Bank</span>です。<br>
+        そして、選択中のバンクの番号を保存するレジスタを設けました。<br>
+        このレジスタを、BSRレジスタといいます。<br>
+        BSRレジスタの5ビットを上位、オペコードの7ビットを下位に置き、12ビットのアドレスとします。<br>
+        これで、全てのレジスタが指定できるようになりました。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">共通レジスタ</h3>
+       <span class="cb41">
+        ところで、BSRレジスタが特定のバンクのみにあると、大変なことになってしまいます。<br>
+        そこで、選択中のバンクに影響されず、同じレジスタを使うアドレスが決められています。<br>
+        下位7ビットが0から$0Bの基幹レジスタ<span class="cb56">Core Register</span>と、$70から$7Fの共通レジスタ<span class="cb56">Common RAM</span>です。<br>
+        前者は特殊レジスタで、プログラムカウンタなども含まれます。<br>
+        後者は汎用レジスタですが、バンク共通であることを忘れるとバグの原因になります。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">BSRレジスタの操作</h3>
+       <span class="cb41">
+        BSRレジスタは、アドレス8の基幹レジスタです。<br>
+        操作するには、<code class="wdkywd">BCF</code>や<code class="wdkywd">BSF</code>、<code class="wdkywd">CLR</code>の各命令も使えます。<br>
+        しかし、このレジスタは非常によく変更されるので、5ビットの値を直接書き込む命令があります。<br>
+        それが、<code class="wdkywd">MSB</code>命令です。<br>
+        引数は1つで、BSRレジスタに書き込む値を指定します。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">MSB命令の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$2C</span> <span class="wdc_mt">#使う定数は先に定義
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">$77</span> <span class="wdc_mt">#共通レジスタ
+</span>
+<span class="wdkywd">CLR</span><span class="wdsl">.</span>R     <span class="wdc_mt">#バンク0の$2Cにあるレジスタを0に設定
+</span>MSB<span class="wdsl">.</span><span class="wdnr">1</span>     <span class="wdc_mt">#バンク1を選択
+</span><span class="wdkywd">CLR</span><span class="wdsl">.</span>R     <span class="wdc_mt">#先ほど0にしたのとは別のレジスタ
+</span>
+<span class="wdkywd">BSF</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#ビット0を1にする
+</span>MSB<span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#バンク0に戻す
+</span>
+<span class="wdkywd">BCF</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#1にしたビットを0にする
+</span>          <span class="wdc_mt">#共通レジスタはバンクに無関係
+</span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
