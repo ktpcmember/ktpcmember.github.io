@@ -199,8 +199,129 @@
        </code>
       </div>
      </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ANSELA/ANSELB</h3>
+       <span class="cb41">
+        ANSELA/ANSELBは、各ピンの入力がデジタルとアナログのいずれか選択するレジスタです。<br>
+        0のビットに対応するピンはデジタルに、1でかつ機能を持つピンはアナログになります。<br>
+        しばらくはデジタル入力しか使わないので、クリアしておきましょう。<br>
+        これらのレジスタを直接設定する命令はないので、バンク3を選択しなければなりません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">ANSEL設定の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ANSELA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク3
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ANSELB<span class="wdsl">.</span><span class="wdnr">$0D</span>
+
+<span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">3</span>
+<span class="wdkywd">CLR</span><span class="wdsl">.</span>ANSELA     <span class="wdc_mt">#すべてデジタル入力
+</span><span class="wdkywd">CLR</span><span class="wdsl">.</span>ANSELB
+<span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>          <span class="wdc_mt">#バンクは忘れないうちに戻すこと</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">PORTA/PORTB</h3>
+       <span class="cb41">
+        PORTA/PORTBは、対応するピンの入出力の値を表すレジスタです。<br>
+        これらから読み出される値は、そのときのピンの電圧に応じて、0もしくは1になります。<br>
+        対応するピンが出力に設定されていても同じように動作します。<br>
+        これらのレジスタに値を書き込むと、出力電圧のLow/Highを選択できます。<br>
+        対応するピンが入力に設定されている場合は、何も起こりません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">PORT入出力の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PORTA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク0
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PORTB<span class="wdsl">.</span><span class="wdnr">$0D</span>
+
+<span class="wdkywd">MOV</span><span class="wdsl">.</span>PORTA<span class="wdsl">.</span>W   <span class="wdc_mt">#ポートAの各ピンの電圧を読み込み
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%10000100</span> <span class="wdc_mt">#RB2,RB7にHigh、他にLowを出力
+</span><span class="wdkywd">MOV</span><span class="wdsl">.</span>PORTB<span class="wdsl">.</span>F   <span class="wdc_mt">#ポートBに出力</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">PORTA/PORTBの問題点</h3>
+       <span class="cb41">
+        POTRA/PORTBは、特定の使い方をすると、誤動作を起こします。<br>
+        特に<code class="wdkywd">BCF</code>/<code class="wdkywd">BSF</code>命令が、問題を引き起こすものとして知られています。<br>
+        これらの命令は、定義上1ビットのみ変更するように見えます。<br>
+        しかし、PORTA/PORTBについては、他のビットを変更してしまう可能性があります。<br>
+        原因の一つは、前回書き込んだ値と異なる値を読み出す可能性があることです。<br>
+        PIC側でHighの電圧を出力したつもりでも、外部の回路によっては下がります。<br>
+        そして、Low扱いの電圧に達することもあります。<br>
+        このとき、1を書き込んだビットが、読み出すと0になってしまっています。<br>
+        もう一つの理由は、これらの命令が、8ビットまとめて読み出し/書き込みを行うことです。<br>
+        変更するのは1ビットでも、他のビットも転送されるのです。<br>
+        これらが、<code class="wdkywd">BCF</code>/<code class="wdkywd">BSF</code>とPORTA/PORTBの組み合わせの誤作動の原因です。<br>
+        つまり、Highのはずのビットを、Lowとして読み出し、そのまま書き込んでしまうのです。<br>
+        なお、これはHighとLowが逆でも起こりうる現象です。<br>
+        さらに、MOVでWレジスタに移し、一部のビットを変えて出力する場合なども考えられます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">LATA/LATB</h3>
+       <span class="cb41">
+        LATA/LATBは、PORTA/PORTBの欠点を補うためにつけられたレジスタです。<br>
+        入力時と、出力ピン全てへの出力時には、同じ動作をします。<br>
+        異なるのは、出力ピンの一部のみに出力する場合です。<br>
+        このような場合には、LATA/LATBを使うのがよいでしょう。<br>
+        実際の電圧ではなく、出力中の値を読み出すので、誤作動はおきません。<br>
+        ただ、LATA/LATBはバンク2にあり、選択する手間がかかります。<br>
+        不必要な場合には、PORTA/PORTBでよいです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">LAT出力の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク2
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">$0D</span>
+
+MSB<span class="wdsl">.</span><span class="wdnr">2</span>
+<span class="wdkywd">BSF</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RA0の出力をHighにする
+</span>             <span class="wdc_mt">#他のピンには影響しない
+</span>MSB<span class="wdsl">.</span><span class="wdnr">0</span>
+</pre>
+       </code>
+      </div>
+     </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">サブルーチン</h2>
+      <h2 class="cb33">実際の設定と入出力</h2>
       <span class="cb34">
        PICのプログラムメモリは限られています。<br>
        効率的にプログラムを書くには、同じ命令列を何度も書くのは避けたいです。<br>
