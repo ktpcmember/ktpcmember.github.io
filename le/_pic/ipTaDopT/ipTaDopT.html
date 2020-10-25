@@ -179,12 +179,12 @@
       <div class="cb37">
        <div class="cb46">
         <span class="cb54">TRIS設定の例</span>
-        <button type="button" class="cb53" onclick="copy('saco_1')">
+        <button type="button" class="cb53" onclick="copy('saco_0')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55 bkgdbl">
+<pre id="saco_0" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク1
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISB<span class="wdsl">.</span><span class="wdnr">$0D</span>
 
@@ -247,12 +247,12 @@
       <div class="cb37">
        <div class="cb46">
         <span class="cb54">PORT入出力の例</span>
-        <button type="button" class="cb53" onclick="copy('saco_1')">
+        <button type="button" class="cb53" onclick="copy('saco_2')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55 bkgdbl">
+<pre id="saco_2" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PORTA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク0
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PORTB<span class="wdsl">.</span><span class="wdnr">$0D</span>
 
@@ -273,8 +273,8 @@
         これらの命令は、定義上1ビットのみ変更するように見えます。<br>
         しかし、PORTA/PORTBについては、他のビットを変更してしまう可能性があります。<br>
         原因の一つは、前回書き込んだ値と異なる値を読み出す可能性があることです。<br>
-        PIC側でHighの電圧を出力したつもりでも、外部の回路によっては下がります。<br>
-        そして、Low扱いの電圧に達することもあります。<br>
+        Highの電圧を出力するよう指定しても、実際に電圧が上がるまでには時間がかかります。<br>
+        しばらくはLow扱いの電圧のままで、読み込むと0となります。<br>
         このとき、1を書き込んだビットが、読み出すと0になってしまっています。<br>
         もう一つの理由は、これらの命令が、8ビットまとめて読み出し/書き込みを行うことです。<br>
         変更するのは1ビットでも、他のビットも転送されるのです。<br>
@@ -295,7 +295,10 @@
         このような場合には、LATA/LATBを使うのがよいでしょう。<br>
         実際の電圧ではなく、出力中の値を読み出すので、誤作動はおきません。<br>
         ただ、LATA/LATBはバンク2にあり、選択する手間がかかります。<br>
-        不必要な場合には、PORTA/PORTBでよいです。
+        不必要な場合には、PORTA/PORTBでよいです。<br>
+        なお、LATA/LATBを使わず、実際に電圧が上がるまで待つ方法もあります。<br>
+        しかし、コンデンサなどが含まれていると、かなり長時間待たなければなりません。<br>
+        必要な場合にはLATA/LATBを使うようにしましょう。
        </span>
       </div>
      </article>
@@ -303,12 +306,12 @@
       <div class="cb37">
        <div class="cb46">
         <span class="cb54">LAT出力の例</span>
-        <button type="button" class="cb53" onclick="copy('saco_1')">
+        <button type="button" class="cb53" onclick="copy('saco_3')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55 bkgdbl">
+<pre id="saco_3" class="cb55 bkgdbl">
 <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">$0C</span> <span class="wdc_mt">#バンク2
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">$0D</span>
 
@@ -320,64 +323,46 @@ MSB<span class="wdsl">.</span><span class="wdnr">2</span>
        </code>
       </div>
      </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実際の設定と入出力</h3>
+       <span class="cb41">
+        実際には、起動時にTRISA/TRISBやANSELA/ANSELBをまとめて設定します。<br>
+        これらを頻繁に変更することは、ほとんどありません。<br>
+        主な処理の実行中に使うのは、PORTA/PORTBが大半です。
+       </span>
+      </div>
+     </article>
      <article class="cb21 fxtb">
-      <h2 class="cb33">実際の設定と入出力</h2>
+      <h2 class="cb33">デジタル入出力</h2>
       <span class="cb34">
-       PICのプログラムメモリは限られています。<br>
-       効率的にプログラムを書くには、同じ命令列を何度も書くのは避けたいです。<br>
-       そこで、サブルーチンと呼ばれる命令列を書き、必要な個所からジャンプする、という方法があります。<br>
-       サブルーチンにジャンプすることを、サブルーチンを呼び出す<span class="cb56">call a subroutine</span>、ということがあります。<br>
-       Lチカのプログラムでは、一定時間待つ命令列を、サブルーチンにしていました。
+       ここまで、HighとLowという言葉を用いて電圧や電位を説明してきました。<br>
+       しかし、回路に電位が2つしか存在しないということはありません。<br>
+       この項に出てくる値は、データシートのDC Characteristics<span class="cb56">直流特性</span>の項に記載されているものを参考にしました。
       </span>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">CAL/RET命令</h3>
+       <h3 class="cb40">入力時</h3>
        <span class="cb41">
-        ところで、サブルーチンを実行した後は、どこに戻ればよいのでしょうか。<br>
-        複数個所から呼び出されるサブルーチンであれば、単純に<code class="wdkywd">GOT</code>命令を使うわけにもいきません。<br>
-        呼び出し元のアドレスを保存してからジャンプする必要があります。<br>
-        これを行うのが、<code class="wdkywd">CAL</code>命令です。<br>
-        現在のプログラムカウンタを後述のスタックに保存した後、ジャンプします。<br>
-        サブルーチン終了時には、<code class="wdkywd">RET</code>命令で戻り<span class="cb56">return from a subroutine</span>ます。<br>
-        <code class="wdkywd">RET</code>のジャンプ先は、スタックに保存されているアドレスなので、引数はありません。
+        以下、「電圧」はVssに対する相対電位を示します。<br>
+        入力時には、概ねVddの15%より低い電圧がLowと判定されます。<br>
+        また、Vddの25%の電圧+0.8[V]を超えると、Highと判定されます。<br>
+        この2つのしきい値<span class="cb56">threshold</span>の間には幅があります。<br>
+        ここに含まれる電圧を入力した場合、判定は不定です。<br>
+        ですから、あいまいな電圧が入力されないように回路を組みましょう。<br>
+        なお、入力してよい電圧の下限は-0.3[V]、上限はVdd+0.3[V]です。<br>
        </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">スタック</h3>
+       <h3 class="cb40">出力時</h3>
        <span class="cb41">
-        スタックとはメモリの一つで、プログラムカウンタを保存できます。<br>
-        ただし、サブルーチンからさらにサブルーチンを呼び出す状況なども考えられます。<br>
-        そのため、16F1827では、16段の領域があり、16重までの多重呼び出しが可能です。<br>
-        しかし、安全のため、8重以上になるような状況は避けましょう。<br>
-        なお、スタックは最後に保存された値から順に取り出される構造になっています。
+        出力時はより簡単で、VssまたはVddと出力ピンが接続されます。<br>
+        ただし、25[mA]までしか流せないので、LED数個までしか駆動できません。<br>
+        それ以上流す場合には、トランジスタなどで増幅してください。
        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb37">
-       <div class="cb46">
-        <span class="cb54">サブルーチンの例</span>
-        <button type="button" class="cb53" onclick="copy('saco_2')">
-         <span class="cb61">COPY</span>
-        </button>
-       </div>
-       <code class="cb47">
-<pre id="saco_2" class="cb55 bkgdbl">
-<span class="wdkywd">CAL</span><span class="wdsl">.</span>SRA   <span class="wdc_mt">#サブルーチンSRAを呼び出す
-</span>
-<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>SRA   <span class="wdc_mt">#サブルーチンSRAはここから
-</span>  <span class="wdkywd">NOP</span>     <span class="wdc_mt">#ここにサブルーチンの内容おい
-</span>  <span class="wdkywd">CAL</span><span class="wdsl">.</span>SRB <span class="wdc_mt">#別のサブルーチンを呼び出してもよい
-</span>  <span class="wdkywd">RET</span>     <span class="wdc_mt">#サブルーチンSRAはここで終わり
-</span>
-<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>SRB   <span class="wdc_mt">#サブルーチンSRBはここから
-</span>  <span class="wdkywd">NOP</span>
-  <span class="wdkywd">RET</span>     <span class="wdc_mt">#ここまで</span>
-</pre>
-       </code>
       </div>
      </article>
     </div>

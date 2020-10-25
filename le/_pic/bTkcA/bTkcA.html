@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。ビット演算を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>ビット演算 - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../_3WqrgIaDkasI/_3WqrgIaDkasI.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../bTkcA/bTkcA.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/ビット演算</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、基本的な4つのビット演算をする命令を学びます。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        マスク
+       </h4>
+       <span class="cb41">
+        特定のビットの値のみを取り出すこと
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        レジスタ
+       </h4>
+       <span class="cb41">
+        数値を一時記憶する回路
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ビット演算</h2>
+      <span class="cb34">
+       PICでは、AND、OR、XOR、NOTの基本的なビット演算を行うことができます。<br>
+       Wレジスタの値と、レジスタの値または即値とを使うことができます。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">COM命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">COM</code>命令は、一般的にNOT演算と呼ばれる動作をします。<br>
+        引数は1つで、レジスタの番号を指定します。<br>
+        名前の由来は、1の補数<span class="cb56">One's Complement</span>をとる演算であることです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">レジスタを用いた演算</h3>
+       <span class="cb41">
+        他の3つの演算を行う命令は、それぞれ<code class="wdkywd">AND</code>/<code class="wdkywd">IOR</code>/<code class="wdkywd">XOR</code>です。<br>
+        <code class="wdkywd">IOR</code>の<code>I</code>は、排他的論理和<span class="cb56">Exclusive OR</span>に対して、包括的<span class="cb56">Inclusive</span>であることに由来します。<br>
+        これらの命令は、引数の数によって動作が異なります。<br>
+        まず、引数が2つある場合、1つめの引数の番号のレジスタを用いた演算とみなされます。<br>
+        そのレジスタとWレジスタの値を1ビットごとに計算しますが、結果の保存先を指定できます。<br>
+        2つめの引数が<code>W</code>ならWレジスタ、<code>F</code>なら一つ目の引数のレジスタに書き込みます。<br>
+        なお、1つめの引数にはWレジスタも指定できます。<br>
+        この場合、<code class="wdkywd">AND</code>/<code class="wdkywd">IOR</code>命令では何も起こらず、<code class="wdkywd">XOR</code>命令では、Wレジスタがクリアされます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">即値を用いた演算</h3>
+       <span class="cb41">
+        <code class="wdkywd">AND</code>/<code class="wdkywd">IOR</code>/<code class="wdkywd">XOR</code>命令の引数が1つのみのとき、その引数は即値とみなされます。<br>
+        この即値と、Wレジスタの値を計算し、結果はWレジスタに書き込まれます。<br>
+        なお、即値は8ビットの値で、1ビットごとに演算が行われます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">ビット演算の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>W<span class="wdsl">.</span><span class="wdnr">$09</span>     <span class="wdc_mt">#基幹レジスタ
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$20</span>     <span class="wdc_mt">#汎用レジスタ
+</span>
+              <span class="wdc_mt">#実行後の値
+</span>              <span class="wdc_mt">#レジスタR:Wレジスタ
+</span><span class="wdkywd">CLR</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%00000000: ? ? ? ?
+</span><span class="wdkywd">COM</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%11111111: ? ? ? ?
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%11011010</span> <span class="wdc_mt">#%11111111:%11011010
+</span><span class="wdkywd">XOR</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%11011010
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00110110</span> <span class="wdc_mt">#%00100101:%00110110
+</span><span class="wdkywd">AND</span><span class="wdsl">.</span>R<span class="wdsl">.</span>W       <span class="wdc_mt">#%00100101:%00100100
+</span>
+<span class="wdkywd">IOR</span><span class="wdsl">.</span><span class="wdnr">%11000101</span> <span class="wdc_mt">#%00100101:%11100101
+</span>
+<span class="wdkywd">XOR</span><span class="wdsl">.</span><span class="wdnr">%11111111</span> <span class="wdc_mt">#%00100101:%00011010
+</span><span class="wdkywd">COM</span><span class="wdsl">.</span>W         <span class="wdc_mt">#%00100101:%11100101
+</span>
+<span class="wdkywd">XOR</span><span class="wdsl">.</span>W<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%00000000</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">マスクと合成</h2>
+      <span class="cb34">
+       値には、不要なビットが含まれていることがあります。<br>
+       これを取り除いたり、意味のある値同士を合成して値を作る方法を紹介します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">マスク</h3>
+       <span class="cb41">
+        値に対して、特定のビットを残し、他の情報をなくすことを、マスクをかけるといいます。<br>
+        一般的には、AND演算で、不要な部分をすべて0にします。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">合成</h3>
+       <span class="cb41">
+        AND演算でマスクをかけた値は、OR演算で合成できます。<br>
+        演算の相手方が0であるビットの値がそのまま残るからです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">出力の合成の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>W<span class="wdsl">.</span><span class="wdnr">$09</span>     <span class="wdc_mt">#基幹レジスタ
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">$0C</span>  <span class="wdc_mt">#特殊レジスタ
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>A<span class="wdsl">.</span><span class="wdnr">$20</span>     <span class="wdc_mt">#汎用レジスタ
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%11101100</span> <span class="wdc_mt">#ビット3-5が意味を持つとする
+</span><span class="wdkywd">MOV</span><span class="wdsl">.</span>A<span class="wdsl">.</span>F
+
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00111000</span> <span class="wdc_mt">#マスク
+</span><span class="wdkywd">AND</span><span class="wdsl">.</span>A<span class="wdsl">.</span>F
+
+<span class="wdkywd">COM</span><span class="wdsl">.</span>W
+MSB<span class="wdsl">.</span><span class="wdnr">2</span>
+<span class="wdkywd">AND</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span>W    <span class="wdc_mt">#マスク
+</span>MSB<span class="wdsl">.</span><span class="wdnr">0</span>
+
+<span class="wdkywd">IOR</span><span class="wdsl">.</span>A<span class="wdsl">.</span>W       <span class="wdc_mt">#合成
+</span>
+MSB<span class="wdsl">.</span><span class="wdnr">2</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span>F    <span class="wdc_mt">#出力
+</span>MSB<span class="wdsl">.</span><span class="wdnr">0</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">ビット反転</h2>
+      <span class="cb34">
+       ビットは、<code class="wdkywd">BCF</code>/<code class="wdkywd">BSF</code>で値を設定できます。<br>
+       また、8ビットまとめて反転する<code class="wdkywd">COM</code>命令もあります。<br>
+       しかし、1ビットのみを反転する命令はありません。<br>
+       そこで、XORを用いて、特定のビットを反転させる方法があります。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">Lチカのループ部分</h3>
+       <span class="cb41">
+        以下に、Lチカの章のプログラムのループ部分を再掲します。<br>
+        また、その次のプログラムは、XORを用いて書き換えた例です。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">再掲</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdgy">
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span>    <span class="wdkywd">BCF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RB0ピンに0を出力する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>
+    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RB0ピンに1を出力する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">XORを用いた例</span>
+        <button type="button" class="cb53" onclick="copy('saco_3')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_3" class="cb55 bkgdbl">
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00000001</span>
+    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span>    <span class="wdkywd">XOR</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span>F  <span class="wdc_mt">#RB0ピンを反転する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)</span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
