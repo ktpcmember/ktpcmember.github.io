@@ -258,8 +258,8 @@
        <span class="cb41">
         BSRレジスタは、アドレス8の基幹レジスタです。<br>
         操作するには、<code class="wdkywd">BCF</code>や<code class="wdkywd">BSF</code>、<code class="wdkywd">CLR</code>の各命令も使えます。<br>
-        しかし、このレジスタは非常によく変更されるので、5ビットの値を直接書き込む命令があります。<br>
-        それが、<code class="wdkywd">MSB</code>命令です。<br>
+        しかし、このレジスタは非常によく変更されるレジスタです。<br>
+        そのため、5ビットの値を直接書き込む<code class="wdkywd">MBS</code>命令があります。<br>
         引数は1つで、BSRレジスタに書き込む値を指定します。
        </span>
       </div>
@@ -278,11 +278,11 @@
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">$77</span> <span class="wdc_mt">#共通レジスタ
 </span>
 <span class="wdkywd">CLR</span><span class="wdsl">.</span>R     <span class="wdc_mt">#バンク0の$2Cにあるレジスタを0に設定
-</span>MSB<span class="wdsl">.</span><span class="wdnr">1</span>     <span class="wdc_mt">#バンク1を選択
+</span><span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>     <span class="wdc_mt">#バンク1を選択
 </span><span class="wdkywd">CLR</span><span class="wdsl">.</span>R     <span class="wdc_mt">#先ほど0にしたのとは別のレジスタ
 </span>
 <span class="wdkywd">BSF</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#ビット0を1にする
-</span>MSB<span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#バンク0に戻す
+</span><span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#バンク0に戻す
 </span>
 <span class="wdkywd">BCF</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#1にしたビットを0にする
 </span>          <span class="wdc_mt">#共通レジスタはバンクに無関係

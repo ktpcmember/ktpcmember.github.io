@@ -84,6 +84,7 @@
 ! ? RTL k
 ! ? SAF k
 ! ? SLF k
+! ? SLP k
 ! ? SRF k
 ! ? SBB k
 ! ? SUB k

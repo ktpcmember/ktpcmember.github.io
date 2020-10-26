@@ -223,8 +223,9 @@
 </span> <span class="wdc_mt">#ここもコメント
 </span>ここはコメントでないので不正な命令文
 
-<span class="wdkywd">NOP</span> <span class="wdc_mt">#左の命令は認識されるが右はされない</span> <span class="wdkywd">NOP</span>
-  <span class="wdkywd">SLP</span> <span class="wdc_mt">#2字分インデント</span>
+<span class="wdkywd">NOP</span> <span class="wdc_mt">#左の命令は認識されるが右はされない NOP
+</span>  <span class="wdkywd">SLP</span> <span class="wdc_mt">#2字分インデント
+</span>
 </pre>
        </code>
       </div>
@@ -256,6 +257,33 @@
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>E<span class="wdsl">.</span>D    <span class="wdc_mt">#定数Eの値も-32</span>
 </pre>
        </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">簡単な命令</h2>
+      <span class="cb34">
+       以下の命令には、引数がなく、計算も行いません。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">NOP命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">NOP</code>命令は、何も行いません。<br>
+        ただ待機するだけですが、1サイクル分の時間を調整するのに使います。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">SLP命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">SLP</code>命令は、PICマイコンを休止させます。<br>
+        休止状態のPICは、命令を実行しなくなり、消費電力が減ります。<br>
+        PCをスリープ状態にするのと同じことです。<br>
+        なお、休止状態から復帰するには、割り込みという機能を使います。<br>
+        詳しくは対応する章を読んでください。
+       </span>
       </div>
      </article>
     </div>

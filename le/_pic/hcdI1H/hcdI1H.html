@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。ビットの条件による分岐を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>条件分岐 - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../bTkcA/bTkcA.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../kadIaDks7A/kadIaDks7A.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/条件分岐</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、条件に応じて実行する命令列を変える方法を解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        スキップ
+       </h4>
+       <span class="cb41">
+        次の命令を実行せず飛ばすこと
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        サイクル
+       </h4>
+       <span class="cb41">
+        命令実行の最小時間単位
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">条件分岐</h2>
+      <span class="cb34">
+       条件分岐<span class="cb56">Conditional Branch</span>とは、条件に応じて異なる命令列を選択することです。<br>
+       これによって、コンピュータは数値を速く計算するだけの機械から大きく進歩しました。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スキップ</h3>
+       <span class="cb41">
+        PICマイコンにおけるスキップ<span class="cb56">Skip</span>とは、機能的には、次の命令を実行せずに飛ばすことです。<br>
+        実際には、次の命令を、プログラムメモリの内容にかかわらず、<code class="wdkywd">NOP</code>命令と解釈します。<br>
+        これらの表現の間の差異は、スキップしたときの実行時間にあります。<br>
+        実際には、<code class="wdkywd">NOP</code>命令1つ分、すなわち1サイクルの時間を要します。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">BCS/BSS命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">BCS</code>命令は、<code class="wdkywd">BCF</code>命令と同じ引数を持ちます。<br>
+        ただし、指定したビットを0にするのではなく、0だった場合にスキップを行います。<br>
+        <code class="wdkywd">BSS</code>命令も同様に、1であればスキップを行います。<br>
+        スキップが起こらなかった場合は次の命令を実行します。<br>
+        また、どの場合でも、指定したビットの値は変更されません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">複数命令のスキップ</h3>
+       <span class="cb41">
+        PICのスキップ系命令は、その次の1命令のみしか飛ばせません。<br>
+        しかし、<code class="wdkywd">GOT</code>命令などを組み合わせることで、複数の命令を飛ばすことができます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">入力による分岐</h2>
+      <span class="cb34">
+       PORTA/PORTBの特定のビットを条件にすることで、スイッチなどによって操作できるようになります。<br>
+       入出力関係のレジスタの設定を忘れないようにしてください。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スイッチ付きLチカ</h3>
+       <span class="cb41">
+        ここで、入力を条件とする条件分岐の例を示します。<br>
+        スイッチをプルダウンするのを忘れないでください。
+       </span>
+      </div>
+      <img class="cb30" src="j0K3leDwHWH.jpg">
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">スイッチ付きLチカ</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>W<span class="wdsl">.</span><span class="wdnr">$09</span>     <span class="wdc_mt">#基幹レジスタ
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$20</span>     <span class="wdc_mt">#汎用レジスタ
+</span>
+              <span class="wdc_mt">#実行後の値
+</span>              <span class="wdc_mt">#レジスタR:Wレジスタ
+</span><span class="wdkywd">CLR</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%00000000: ? ? ? ?
+</span><span class="wdkywd">COM</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%11111111: ? ? ? ?
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%11011010</span> <span class="wdc_mt">#%11111111:%11011010
+</span><span class="wdkywd">XOR</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%11011010
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00110110</span> <span class="wdc_mt">#%00100101:%00110110
+</span><span class="wdkywd">AND</span><span class="wdsl">.</span>R<span class="wdsl">.</span>W       <span class="wdc_mt">#%00100101:%00100100
+</span>
+<span class="wdkywd">IOR</span><span class="wdsl">.</span><span class="wdnr">%11000101</span> <span class="wdc_mt">#%00100101:%11100101
+</span>
+<span class="wdkywd">XOR</span><span class="wdsl">.</span><span class="wdnr">%11111111</span> <span class="wdc_mt">#%00100101:%00011010
+</span><span class="wdkywd">COM</span><span class="wdsl">.</span>W         <span class="wdc_mt">#%00100101:%11100101
+</span>
+<span class="wdkywd">XOR</span><span class="wdsl">.</span>W<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%00000000</span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
