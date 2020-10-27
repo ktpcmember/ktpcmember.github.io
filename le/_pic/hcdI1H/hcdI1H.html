@@ -151,8 +151,9 @@
       <div class="cb31">
        <h3 class="cb40">スイッチ付きLチカ</h3>
        <span class="cb41">
-        ここで、入力を条件とする条件分岐の例を示します。<br>
-        スイッチをプルダウンするのを忘れないでください。
+        このプログラムは、Lチカのプログラムに4行追加したものです。<br>
+        スイッチを押している間のみ点滅するようにしました。<br>
+        入力をプルダウンするのを忘れないでください。
        </span>
       </div>
       <img class="cb30" src="j0K3leDwHWH.jpg">
@@ -167,29 +168,102 @@
        </div>
        <code class="cb47">
 <pre id="saco_0" class="cb55 bkgdbl">
-<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>W<span class="wdsl">.</span><span class="wdnr">$09</span>     <span class="wdc_mt">#基幹レジスタ
-</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$20</span>     <span class="wdc_mt">#汎用レジスタ
-</span>
-              <span class="wdc_mt">#実行後の値
-</span>              <span class="wdc_mt">#レジスタR:Wレジスタ
-</span><span class="wdkywd">CLR</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%00000000: ? ? ? ?
-</span><span class="wdkywd">COM</span><span class="wdsl">.</span>R         <span class="wdc_mt">#%11111111: ? ? ? ?
-</span>
-<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%11011010</span> <span class="wdc_mt">#%11111111:%11011010
-</span><span class="wdkywd">XOR</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%11011010
-</span>
-<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00110110</span> <span class="wdc_mt">#%00100101:%00110110
-</span><span class="wdkywd">AND</span><span class="wdsl">.</span>R<span class="wdsl">.</span>W       <span class="wdc_mt">#%00100101:%00100100
-</span>
-<span class="wdkywd">IOR</span><span class="wdsl">.</span><span class="wdnr">%11000101</span> <span class="wdc_mt">#%00100101:%11100101
-</span>
-<span class="wdkywd">XOR</span><span class="wdsl">.</span><span class="wdnr">%11111111</span> <span class="wdc_mt">#%00100101:%00011010
-</span><span class="wdkywd">COM</span><span class="wdsl">.</span>W         <span class="wdc_mt">#%00100101:%11100101
-</span>
-<span class="wdkywd">XOR</span><span class="wdsl">.</span>W<span class="wdsl">.</span>F       <span class="wdc_mt">#%00100101:%00000000</span>
+  COL.STR.3       #どのバンクからでもアクセス可
+    COL.CF.0      #クリアフラグ
+    COL.ZF.2      #ゼロフラグ
+  COL.TRISA.$0C   #バンク1
+  COL.TRISB.$0D   #バンク1
+  COL.OSCCON.$19  #バンク1、オシレータ設定
+  COL.LATA.$0C    #バンク2
+  COL.LATB.$0D    #バンク2
+  COL.ANSELA.$0C  #バンク3
+  COL.ANSELB.$0D  #バンク3
+  COL.WAITA_0.$20 #自由に使えるメモリは$20から
+  COL.WAITB_0.$21
+  COL.WAITB_1.$22
+  
+  COL.PWC.$8007 #コンフィギュレーションビット
+  WCF.$03.%100  #内蔵オシレータ
+  COL.PWC.0     #戻す
+  
+  MBS.1         #バンク1に移動
+  BSF.TRISA.0   #RA0に入力
+  CLR.TRISB     #全ピン出力
+  MOV.%01101000 #4MHzで内部発振
+  MOV.OSCCON.F  #設定する
+  MBS.3
+  CLR.ANSELA    #アナログ入力は使わない
+  MBS.0         #バンク0に戻る
+    
+  COL.START     #ループ開始
+    MOV.%00000001
+    MBS.2       #バンク2
+    BSF.LATA.0  #RA0が1ならスキップ
+      XOR.LATB.F #RB0の出力を反転する
+    MBS.0
+    CAL.WAITA   #1秒待つ
+    GOT.START   #戻る(無限にループする)
+
+  COL.WAITA          #1秒待つ関数
+    MOV.100          #0.01秒を100回回す
+    MOV.WAITA_0.F    #カウンタに代入
+    COL.WAITA-LOOP   #ループ開始
+      CAL.WAITB      #0.1秒待つ関数を呼ぶ
+      DES.WAITA_0.F  #0ならスキップ
+      GOT.WAITA-LOOP #戻る
+    RET              #関数を抜ける
+
+  COL.WAITB           #9998サイクルかかる
+    MOV.38            #263サイクル*38回=9994サイクル
+    MOV.WAITB_0.F     #上の命令、最後のRETと合わせて4サイクル
+    COL.WAITB_L0      #1つめのループ(1周263サイクル)
+      MOV.87          #3サイクル*87回=261サイクル
+      MOV.WAITB_1.F   #上の命令と合わせて2サイクル
+      COL.WAITB_L1    #2つめのループ(1周3サイクル)
+        DES.WAITB_1.F #通常1、スキップ時2サイクル
+        GOT.WAITB_L1  #戻る、2サイクル
+        NOP           #スキップ時の誤差1サイクル
+      DES.WAITB_0.F
+      GOT.WAITB_L0    #戻る
+    NOP               #誤差1サイクル
+    RET               #関数を抜ける(2サイクル)
 </pre>
        </code>
       </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       理解できたか確認するために、練習問題を解いてもらいます。<br>
+       (1) 前項のプログラムを書き換え、スイッチを離している間のみ点滅するようにしてください。<br>
+       (2) さらに、RB1ピンにもLEDを付け、交互に点滅するようにしてください。<br>
+       (3) RA1ピンにもスイッチを付け、押すと休止状態に入るようにしてください。<br>
+       抵抗を忘れずに付けるようにしましょう。<br>
+       各問題のように動作するプログラムを書いて、試してみてください。<br>
+       うまく動かなければ、間違いがないか確認してください。<br>
+       どうしても動かなければ、以下の解答例を見てください。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">解答</summary>
+       <div class="cb46">
+        <span class="cb54">(1)解答例</span>
+        <button type="button" class="cb53" onclick="copy('howd_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="howd_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"Are you a student?"</span><span class="wdsl">,</span> <span class="wdtt">L"Choose"</span><span class="wdsl">,</span> MB_YESNO <span class="wdsl">|</span> MB_ICONINFORMATION<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </details>
      </article>
     </div>
    </div>
