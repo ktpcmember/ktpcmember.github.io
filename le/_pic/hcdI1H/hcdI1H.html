@@ -168,65 +168,66 @@
        </div>
        <code class="cb47">
 <pre id="saco_0" class="cb55 bkgdbl">
-  COL.STR.3       #どのバンクからでもアクセス可
-    COL.CF.0      #クリアフラグ
-    COL.ZF.2      #ゼロフラグ
-  COL.TRISA.$0C   #バンク1
-  COL.TRISB.$0D   #バンク1
-  COL.OSCCON.$19  #バンク1、オシレータ設定
-  COL.LATA.$0C    #バンク2
-  COL.LATB.$0D    #バンク2
-  COL.ANSELA.$0C  #バンク3
-  COL.ANSELB.$0D  #バンク3
-  COL.WAITA_0.$20 #自由に使えるメモリは$20から
-  COL.WAITB_0.$21
-  COL.WAITB_1.$22
+ <span class="paghde">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>STR<span class="wdsl">.</span><span class="wdnr">3</span>       <span class="wdc_mt">#どのバンクからでもアクセス可
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>CF<span class="wdsl">.</span><span class="wdnr">0</span>      <span class="wdc_mt">#クリアフラグ
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ZF<span class="wdsl">.</span><span class="wdnr">2</span>      <span class="wdc_mt">#ゼロフラグ
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">$0C</span>   <span class="wdc_mt">#バンク1
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISB<span class="wdsl">.</span><span class="wdnr">$0D</span>   <span class="wdc_mt">#バンク1
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>OSCCON<span class="wdsl">.</span><span class="wdnr">$19</span>  <span class="wdc_mt">#バンク1、オシレータ設定
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">$0C</span>    <span class="wdc_mt">#バンク2
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span><span class="wdnr">$0D</span>    <span class="wdc_mt">#バンク2
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ANSELA<span class="wdsl">.</span><span class="wdnr">$0C</span>  <span class="wdc_mt">#バンク3
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ANSELB<span class="wdsl">.</span><span class="wdnr">$0D</span>  <span class="wdc_mt">#バンク3
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span><span class="wdnr">$20</span> <span class="wdc_mt">#自由に使えるメモリは$20から
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span><span class="wdnr">$21</span>
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span><span class="wdnr">$22</span>
   
-  COL.PWC.$8007 #コンフィギュレーションビット
-  WCF.$03.%100  #内蔵オシレータ
-  COL.PWC.0     #戻す
-  
-  MBS.1         #バンク1に移動
-  BSF.TRISA.0   #RA0に入力
-  CLR.TRISB     #全ピン出力
-  MOV.%01101000 #4MHzで内部発振
-  MOV.OSCCON.F  #設定する
-  MBS.3
-  CLR.ANSELA    #アナログ入力は使わない
-  MBS.0         #バンク0に戻る
-    
-  COL.START     #ループ開始
-    MOV.%00000001
-    MBS.2       #バンク2
-    BSF.LATA.0  #RA0が1ならスキップ
-      XOR.LATB.F #RB0の出力を反転する
-    MBS.0
-    CAL.WAITA   #1秒待つ
-    GOT.START   #戻る(無限にループする)
-
-  COL.WAITA          #1秒待つ関数
-    MOV.100          #0.01秒を100回回す
-    MOV.WAITA_0.F    #カウンタに代入
-    COL.WAITA-LOOP   #ループ開始
-      CAL.WAITB      #0.1秒待つ関数を呼ぶ
-      DES.WAITA_0.F  #0ならスキップ
-      GOT.WAITA-LOOP #戻る
-    RET              #関数を抜ける
-
-  COL.WAITB           #9998サイクルかかる
-    MOV.38            #263サイクル*38回=9994サイクル
-    MOV.WAITB_0.F     #上の命令、最後のRETと合わせて4サイクル
-    COL.WAITB_L0      #1つめのループ(1周263サイクル)
-      MOV.87          #3サイクル*87回=261サイクル
-      MOV.WAITB_1.F   #上の命令と合わせて2サイクル
-      COL.WAITB_L1    #2つめのループ(1周3サイクル)
-        DES.WAITB_1.F #通常1、スキップ時2サイクル
-        GOT.WAITB_L1  #戻る、2サイクル
-        NOP           #スキップ時の誤差1サイクル
-      DES.WAITB_0.F
-      GOT.WAITB_L0    #戻る
-    NOP               #誤差1サイクル
-    RET               #関数を抜ける(2サイクル)
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">$8007</span> <span class="wdc_mt">#コンフィギュレーションビット
+</span>  <span class="wdp_q_p_csc_md">WCF</span><span class="wdsl">.</span><span class="wdnr">$03</span><span class="wdsl">.</span><span class="wdnr">%100</span>  <span class="wdc_mt">#内蔵オシレータ
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#戻す
+</span>  
+  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>         <span class="wdc_mt">#バンク1に移動
+</span></span><span class="paghnw"><span class="paghco">  <span class="wdkywd">BSF</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RA0に入力</span></span><span class="paghti"><span style="display:none;">{{</span>追加部<span style="display:none;">}}</span></span></span><span class="paghde">
+  <span class="wdkywd">CLR</span><span class="wdsl">.</span>TRISB     <span class="wdc_mt">#全ピン出力
+</span>  <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%01101000</span> <span class="wdc_mt">#4MHzで内部発振
+</span>  <span class="wdkywd">MOV</span><span class="wdsl">.</span>OSCCON<span class="wdsl">.</span>F  <span class="wdc_mt">#設定する
+</span></span><span class="paghnw"><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">3</span>
+  <span class="wdkywd">CLR</span><span class="wdsl">.</span>ANSELA    <span class="wdc_mt">#アナログ入力は使わない</span></span><span class="paghti"><span style="display:none;">{{</span>追加部<span style="display:none;">}}</span></span></span><span class="paghde">
+  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>         <span class="wdc_mt">#バンク0に戻る
+</span>    
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00000001</span>
+    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span></span><span class="paghnw"><span class="paghco">    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RA0が1ならスキップ</span></span><span class="paghti"><span style="display:none;">{{</span>追加部<span style="display:none;">}}</span></span></span><span class="paghde">
+      <span class="wdkywd">XOR</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span>F <span class="wdc_mt">#RB0の出力を反転する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)
+</span>
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA          <span class="wdc_mt">#1秒待つ関数
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">100</span>          <span class="wdc_mt">#0.01秒を100回回す
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F    <span class="wdc_mt">#カウンタに代入
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA-LOOP   <span class="wdc_mt">#ループ開始
+</span>      <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITB      <span class="wdc_mt">#0.1秒待つ関数を呼ぶ
+</span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F  <span class="wdc_mt">#0ならスキップ
+</span>      <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITA-LOOP <span class="wdc_mt">#戻る
+</span>    <span class="wdkywd">RET</span>              <span class="wdc_mt">#関数を抜ける
+</span>
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB           <span class="wdc_mt">#9998サイクルかかる
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">38</span>            <span class="wdc_mt">#263サイクル*38回=9994サイクル
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F     <span class="wdc_mt">#上の命令、最後のRETと合わせて4サイクル
+</span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L0      <span class="wdc_mt">#1つめのループ(1周263サイクル)
+</span>      <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">87</span>          <span class="wdc_mt">#3サイクル*87回=261サイクル
+</span>      <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F   <span class="wdc_mt">#上の命令と合わせて2サイクル
+</span>      <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L1    <span class="wdc_mt">#2つめのループ(1周3サイクル)
+</span>        <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span>F <span class="wdc_mt">#通常1、スキップ時2サイクル
+</span>        <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L1  <span class="wdc_mt">#戻る、2サイクル
+</span>        <span class="wdkywd">NOP</span>           <span class="wdc_mt">#スキップ時の誤差1サイクル
+</span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F
+      <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L0    <span class="wdc_mt">#戻る
+</span>    <span class="wdkywd">NOP</span>               <span class="wdc_mt">#誤差1サイクル
+</span>    <span class="wdkywd">RET</span>               <span class="wdc_mt">#関数を抜ける(2サイクル)
+</span>
 </pre>
        </code>
       </div>
