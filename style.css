@@ -468,8 +468,8 @@
  }
  
  .paghde, .paghnw{
-  width:95%;
-  margin:0 auto;
+  min-width:90%;
+  margin:0;
   padding:0;
  }
  
