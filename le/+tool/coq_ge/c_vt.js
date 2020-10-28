@@ -3,7 +3,7 @@ function push(){
  var i_pt=document.getElementById("i_pt").value;
  var la=document.getElementById("la").value;
  var nrofsp=document.getElementById("nrofsp").value;
- var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l,f,spt_r_pt="";
+ var ottt='<span class="paghde">',sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l,f,spt_r_pt="";
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
  r_qt=new XMLHttpRequest();
@@ -157,6 +157,7 @@ function push(){
   }
   ottt=ottt.replace(/\t/g,spt_r_pt);
  }
+ ottt=ottt.split('<span class="paghde"></span>').join('');
  document.getElementById("o_pt").value=ottt;
  navigator.permissions.query({
   name:"clipboard-write"
@@ -196,12 +197,12 @@ function gttt(wd,ty,tt){
  }
  tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
  if(a=="PGS"){
-  m='<span class="'+tt.slice(2)+'">';
+  m='</span><span class="'+tt.slice(2)+'">';
  }else if(a=="PGE"){
   if(tt.length>2){
     m='<span class="paghti"><span style="display:none;">{{</span>'+tt.slice(2)+'<span style="display:none;">}}</span></span>';
   }
-  m+="</span>";
+  m+='</span><span class="paghde">';
  }else if((wd.length==i)||(a=="*")){
   m=tt;
  }else{
