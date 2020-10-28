@@ -196,10 +196,10 @@ function gttt(wd,ty,tt){
  }
  tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
  if(a=="PGS"){
-  m='<span class="'+tt.slice(2)+'">':
+  m='<span class="'+tt.slice(2)+'">';
  }else if(a=="PGE"){
   if(tt.length>2){
-    m='<span class="'+tt.slice(2)+'">';
+    m='<span class="paghti"><span style="display:none;">{{</span>'+tt.slice(2)+'<span style="display:none;">}}</span></span>';
   }
   m+="</span>";
  }else if((wd.length==i)||(a=="*")){
