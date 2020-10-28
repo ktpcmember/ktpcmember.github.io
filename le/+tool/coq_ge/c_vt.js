@@ -187,7 +187,7 @@ function gtky(ky,ty,tn){
 }
 
 function gttt(wd,ty,tt){
- var i,a,m;
+ var i,a,m="";
  for(i=0;wd.length>i;i++){
   if(wd[i].na==ty){
    a=wd[i].cs;
@@ -195,7 +195,14 @@ function gttt(wd,ty,tt){
   }
  }
  tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
- if((wd.length==i)||(a=="*")){
+ if(a=="PGS"){
+  m='<span class="'+tt.slice(2)+'">':
+ }else if(a=="PGE"){
+  if(tt.length>2){
+    m='<span class="'+tt.slice(2)+'">';
+  }
+  m+="</span>";
+ }else if((wd.length==i)||(a=="*")){
   m=tt;
  }else{
   m='<span class="'+a+'">'+tt+'</span>';
