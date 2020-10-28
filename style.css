@@ -482,6 +482,10 @@
   background-color:#F0E0F0;
  }
  
+ .paghco {
+  flex-grow:1;
+ }
+ 
  .paghti {
   margin-left:1em;
   border-left:dashed 1px #404040;
