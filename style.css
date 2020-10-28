@@ -333,6 +333,8 @@
   width:100%;
   overflow:auto;
   font-family:'Inconsolata', monospace;
+  display:flex;
+  flex-direction:column;
  }
  
  .cb56 {
@@ -463,6 +465,17 @@
  
  .wdc_mt {
   color:#808080;
+ }
+ 
+ .paghde, .paghnw{
+  width:95%;
+  margin:0 auto;
+  padding:0;
+ }
+ 
+ .paghnw {
+  display:flex;
+  flex-direction:row;
  }
  
  .paghnw {
