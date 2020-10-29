@@ -467,15 +467,12 @@
   color:#808080;
  }
  
- .paghnw {
+ .pagh {
+  flex-grow:1;
   margin:0;
   padding:0;
   display:flex;
   flex-direction:row;
- }
- 
- .paghnw {
-  background-color:#F0E0F0;
  }
  
  .paghco {
