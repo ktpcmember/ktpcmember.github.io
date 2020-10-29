@@ -470,7 +470,8 @@
  .pagh {
   flex-grow:1;
   margin:0;
-  padding:0;
+  padding:0 auto 0 0 
+;
   display:flex;
   flex-direction:row;
  }
