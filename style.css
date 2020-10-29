@@ -479,15 +479,15 @@
   flex-grow:1;
  }
  
- .paghti {
-  margin-left:1em;
+ .paghna {
+  margin:0 0 0 1em;
+  padding:0 0.3em;
   border-left:dashed 1px #404040;
-  background-color:#F8E0B0;
   display:flex;
   flex-direction:column;
  }
  
- .paghna {
+ .paghti {
   margin:auto 0;
  }
  
