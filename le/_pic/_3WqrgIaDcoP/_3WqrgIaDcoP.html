@@ -129,8 +129,8 @@
      <article class="cb21 fxtb">
       <h2 class="cb33">値の複写</h2>
       <span class="cb34">
-       レジスタに保存された値は、複写することができます。<br>
-       なお、データシートなどにはmove<span class="cb56">移動</span>という単語が記載されています。<br>
+       レジスタに保存された値は、別のレジスタに複写することができます。<br>
+       この動作について、データシートなどにはmove<span class="cb56">移動</span>という名称が記載されています。<br>
        命令名もこれによるものですが、動作後における複写元のレジスタの値について誤解を生むので、本講習では複写と呼びます。
       </span>
      </article>
@@ -156,7 +156,8 @@
         </button>
        </div>
        <code class="cb47">
-<span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>L<span class="wdsl">.</span><span class="wdnr">$2C</span> <span class="wdc_mt">#バンク0とする
+<pre id="saco_0" class="cb55f bkgdbl">
+<span class="paghco"><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>L<span class="wdsl">.</span><span class="wdnr">$2C</span> <span class="wdc_mt">#バンク0とする
 </span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$3F</span> <span class="wdc_mt">#バンク1とする
 </span>
 <span class="wdkywd">MOV</span><span class="wdsl">.</span>L<span class="wdsl">.</span>W   <span class="wdc_mt">#WレジスタにレジスタLの値を複写
@@ -164,6 +165,7 @@
 <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>
 <span class="wdkywd">MOV</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F   <span class="wdc_mt">#レジスタRにWレジスタの値を複写
 </span><span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+</span>
 </pre>
        </code>
       </div>
@@ -190,13 +192,13 @@
      <article class="cb21">
       <div class="cb37">
        <div class="cb46">
-        <span class="cb54">CLR命令</span>
+        <span class="cb54">MOV命令</span>
         <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_1" class="cb55 bkgdbl">
+<pre id="saco_1" class="cb55f bkgdbl">
 
 </pre>
        </code>
