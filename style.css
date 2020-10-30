@@ -327,12 +327,15 @@
   
  }
  
- .cb55 {
+ .cb55, .cb55f {
   margin:0;
   padding:0.5em 0;
   width:100%;
   overflow:auto;
   font-family:'Inconsolata', monospace;
+ }
+ 
+ .cb55f {
   display:flex;
   flex-direction:column;
  }
@@ -412,6 +415,14 @@
   background-color:#FED0F0;
  }
  
+ .bkgdgn {
+  background-color:#E0F8F0;
+ }
+ 
+ .bkgdyw {
+  background-color:#F8F0E0;
+ }
+ 
  .fxlr {
   flex-direction:row;
  }
@@ -469,8 +480,9 @@
  
  .pagh {
   flex-grow:1;
-  margin:0 auto;
-  padding:0 auto 0 0;
+  min-width:calc(100% - 0.5em);
+  margin:0 auto 0 0;
+  padding:0;
   display:flex;
   flex-direction:row;
  }
@@ -480,9 +492,10 @@
  }
  
  .paghna {
-  margin:0 0 0 1em;
+  margin:0 0 0 0.5em;
   padding:0 0.3em;
   border-left:dashed 1px #404040;
+  border-right:dashed 1px #404040;
   display:flex;
   flex-direction:column;
  }
