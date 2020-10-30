@@ -167,8 +167,8 @@
         </button>
        </div>
        <code class="cb47">
-<pre id="saco_0" class="cb55f bkgdyw">
-<span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>STR<span class="wdsl">.</span><span class="wdnr">3</span>       <span class="wdc_mt">#どのバンクからでもアクセス可
+<pre id="saco_0" class="cb55f bkgdbl">
+<span class="pagh bkgdgy"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>STR<span class="wdsl">.</span><span class="wdnr">3</span>       <span class="wdc_mt">#どのバンクからでもアクセス可
 </span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>CF<span class="wdsl">.</span><span class="wdnr">0</span>      <span class="wdc_mt">#クリアフラグ
 </span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ZF<span class="wdsl">.</span><span class="wdnr">2</span>      <span class="wdc_mt">#ゼロフラグ
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">$0C</span>   <span class="wdc_mt">#バンク1
@@ -180,40 +180,40 @@
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>ANSELB<span class="wdsl">.</span><span class="wdnr">$0D</span>  <span class="wdc_mt">#バンク3
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span><span class="wdnr">$20</span> <span class="wdc_mt">#自由に使えるメモリは$20から
 </span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span><span class="wdnr">$21</span>
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span><span class="wdnr">$22</span>
-  
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">$8007</span> <span class="wdc_mt">#コンフィギュレーションビット
+  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_1<span class="wdsl">.</span><span class="wdnr">$22</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>定数定義
+<span style="display:none;">}}</span></span></span></span><span class="paghco">  
+</span><span class="pagh bkgdyw"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">$8007</span> <span class="wdc_mt">#コンフィギュレーションビット
 </span>  <span class="wdp_q_p_csc_md">WCF</span><span class="wdsl">.</span><span class="wdnr">$03</span><span class="wdsl">.</span><span class="wdnr">%100</span>  <span class="wdc_mt">#内蔵オシレータ
-</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#戻す
-</span>  
-</span><span class="pagh bkgdgy"><span class="paghco"><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>         <span class="wdc_mt">#バンク1に移動
-</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">  <span class="wdkywd">BSF</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RA0に入力</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>新規追加部
+</span>  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>PWC<span class="wdsl">.</span><span class="wdnr">0</span>     <span class="wdc_mt">#戻す</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>コンフィギュレーションビット
+<span style="display:none;">}}</span></span></span></span><span class="paghco">  
+</span><span class="pagh bkgdgn"><span class="paghco"><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>         <span class="wdc_mt">#バンク1に移動
+</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">  <span class="wdkywd">BSF</span><span class="wdsl">.</span>TRISA<span class="wdsl">.</span><span class="wdnr">0</span>   <span class="wdc_mt">#RA0に入力</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>追加部分
 <span style="display:none;">}}</span></span></span></span><span class="paghco">  <span class="wdkywd">CLR</span><span class="wdsl">.</span>TRISB     <span class="wdc_mt">#全ピン出力
 </span>  <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%01101000</span> <span class="wdc_mt">#4MHzで内部発振
 </span>  <span class="wdkywd">MOV</span><span class="wdsl">.</span>OSCCON<span class="wdsl">.</span>F  <span class="wdc_mt">#設定する
 </span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">3</span>
-  <span class="wdkywd">CLR</span><span class="wdsl">.</span>ANSELA    <span class="wdc_mt">#アナログ入力は使わない</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>新規追加部
-<span style="display:none;">}}</span></span></span></span><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>         <span class="wdc_mt">#バンク0に戻る</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>設定
+  <span class="wdkywd">CLR</span><span class="wdsl">.</span>ANSELA    <span class="wdc_mt">#アナログ入力は使わない</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>追加部分
+<span style="display:none;">}}</span></span></span></span><span class="paghco">  <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>         <span class="wdc_mt">#バンク0に戻る</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>起動時設定
 <span style="display:none;">}}</span></span></span></span><span class="paghco">    
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span><span class="pagh bkgdgy"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
 </span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00000001</span>
     <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
-</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RA0が1ならスキップ</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>新規追加部
+</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">    <span class="wdkywd">BCS</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RA0がLowならスキップ</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>追加部分
 <span style="display:none;">}}</span></span></span></span><span class="paghco">      <span class="wdkywd">XOR</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span>F <span class="wdc_mt">#RB0の出力を反転する
 </span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
     <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
-</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)
-</span>
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA          <span class="wdc_mt">#1秒待つ関数
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>メインのループ
+<span style="display:none;">}}</span></span></span></span><span class="paghco">
+</span><span class="pagh bkgdyw"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA          <span class="wdc_mt">#1秒待つサブルーチン
 </span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">100</span>          <span class="wdc_mt">#0.01秒を100回回す
 </span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F    <span class="wdc_mt">#カウンタに代入
 </span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITA-LOOP   <span class="wdc_mt">#ループ開始
 </span>      <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITB      <span class="wdc_mt">#0.1秒待つ関数を呼ぶ
 </span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITA_0<span class="wdsl">.</span>F  <span class="wdc_mt">#0ならスキップ
 </span>      <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITA-LOOP <span class="wdc_mt">#戻る
-</span>    <span class="wdkywd">RET</span>              <span class="wdc_mt">#関数を抜ける
-</span>
-  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB           <span class="wdc_mt">#9998サイクルかかる
+</span>    <span class="wdkywd">RET</span>              <span class="wdc_mt">#関数を抜ける</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>サブルーチン
+<span style="display:none;">}}</span></span></span></span><span class="paghco">
+</span><span class="pagh bkgdgn"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB           <span class="wdc_mt">#9998サイクルかかる
 </span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">38</span>            <span class="wdc_mt">#263サイクル*38回=9994サイクル
 </span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F     <span class="wdc_mt">#上の命令、最後のRETと合わせて4サイクル
 </span>    <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>WAITB_L0      <span class="wdc_mt">#1つめのループ(1周263サイクル)
@@ -226,9 +226,8 @@
 </span>      <span class="wdkywd">DES</span><span class="wdsl">.</span>WAITB_0<span class="wdsl">.</span>F
       <span class="wdkywd">GOT</span><span class="wdsl">.</span>WAITB_L0    <span class="wdc_mt">#戻る
 </span>    <span class="wdkywd">NOP</span>               <span class="wdc_mt">#誤差1サイクル
-</span>    <span class="wdkywd">RET</span>               <span class="wdc_mt">#関数を抜ける(2サイクル)
-</span>
-</span>
+</span>    <span class="wdkywd">RET</span>               <span class="wdc_mt">#関数を抜ける(2サイクル)</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>サブルーチン
+<span style="display:none;">}}</span></span></span></span>
 </pre>
        </code>
       </div>
@@ -243,21 +242,52 @@
        抵抗を忘れずに付けるようにしましょう。<br>
        各問題のように動作するプログラムを書いて、試してみてください。<br>
        うまく動かなければ、間違いがないか確認してください。<br>
-       どうしても動かなければ、以下の解答例を見てください。
+       どうしても動かなければ、以下の解答例を見てください。<br>
+       なお、変更点の周囲のみ記載しています。
       </span>
      </article>
      <article class="cb21 fxlr">
       <details class="cb37">
-       <summary class="cb48">解答</summary>
+       <summary class="cb48">(1)解答</summary>
        <div class="cb46">
         <span class="cb54">(1)解答例</span>
-        <button type="button" class="cb53" onclick="copy('howd_1')">
+        <button type="button" class="cb53" onclick="copy('saco_1')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="howd_1" class="cb55 bkgdbl">
-<span class="paghnw"> <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">$A0</span> <span class="paghti"><span style="display:none;">{{</span>新規追加部<span style="display:none;">}}</span></span></span>
+<pre id="saco_1" class="cb55f bkgdbl">
+<span class="pagh bkgdgy"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00000001</span>
+    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RA0が1ならスキップ</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>変更部分
+<span style="display:none;">}}</span></span></span></span><span class="paghco">      <span class="wdkywd">XOR</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span>F <span class="wdc_mt">#RB0の出力を反転する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>メインのループ<span style="display:none;">}}</span></span></span></span>
+</pre>
+       </code>
+      </details>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">(2)解答</summary>
+       <div class="cb46">
+        <span class="cb54">(2)解答例</span>
+        <button type="button" class="cb53" onclick="copy('saco_2')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_2" class="cb55f bkgdbl">
+<span class="pagh bkgdgy"><span class="paghco"><span class="paghco">  <span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>START     <span class="wdc_mt">#ループ開始
+</span>    <span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">%00000001</span>
+    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">2</span>       <span class="wdc_mt">#バンク2
+</span></span><span class="pagh bkgdrd"><span class="paghco"><span class="paghco">    <span class="wdkywd">BSF</span><span class="wdsl">.</span>LATA<span class="wdsl">.</span><span class="wdnr">0</span>  <span class="wdc_mt">#RA0が1ならスキップ</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>変更部分
+<span style="display:none;">}}</span></span></span></span><span class="paghco">      <span class="wdkywd">XOR</span><span class="wdsl">.</span>LATB<span class="wdsl">.</span>F <span class="wdc_mt">#RB0の出力を反転する
+</span>    <span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+    <span class="wdkywd">CAL</span><span class="wdsl">.</span>WAITA   <span class="wdc_mt">#1秒待つ
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>START   <span class="wdc_mt">#戻る(無限にループする)</span></span></span><span class="paghna"><span class="paghti"><span style="display:none;">{{</span>メインのループ<span style="display:none;">}}</span></span></span></span>
 </pre>
        </code>
       </details>

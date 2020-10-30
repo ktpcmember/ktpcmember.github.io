@@ -7,6 +7,8 @@
 + cae *
 + cb wdc_mt
 + cbe wdc_mt
++ pgs PGS
++ pge PGE
 + e *
 + ? *
 
@@ -47,6 +49,18 @@
 & cb cae
 & cb cb
 | cb cbe
+
+& pgs ?
+& pgs n
+
+& pge ?
+& pge n
+& pge s
+& pge t
+& pge e
+& pge ca
+& pge cb
+& pge cbe
 
 - " t
 - L" t
@@ -95,6 +109,9 @@
 - | s
 - } s
 - ~ s
+
+- {{ pgs
+- }} pge
 
 ! ? #include p
 ! ? #define p

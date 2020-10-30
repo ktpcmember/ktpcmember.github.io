@@ -29,7 +29,6 @@
 & pg s
 & pg e
 & pg c
-| pg ce
 
 - 0 n
 - 1 n

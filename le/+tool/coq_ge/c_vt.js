@@ -101,11 +101,11 @@ function push(){
  }
  do{
   l=1;
-  if(g&&(i_pt.charAt(i)=="\n")){
+  /*if(g&&(i_pt.charAt(i)=="\n")){
     g=false;
     i++;
     continue;
-  }
+  }*/
   g=false;
   for(j=Math.min(4,i_pt.length-i);0<j;j--){
    c=i_pt.substring(i,i+j);
@@ -144,6 +144,9 @@ function push(){
    }
   }
   if(f){
+   if(ctty=="pg"){
+    alert("@"+c);
+   }
    cttn+=c;
    ctty=gtky(ky,ctty,cttn);
    g=gttt(wd,ctty,cttn,sk);
@@ -220,6 +223,7 @@ function gttt(wd,ty,tt,sk){
    if(t.sg!=""){
     m='<span class="pagh '+t.tg+'"><span class="paghco">'+t.sg+'</span>';
     if(tt.length>2){
+     alert(tt+"5");
      m+='<span class="paghna"><span class="paghti"><span style="display:none;">{{</span>'+tt.slice(2)+'<span style="display:none;">}}</span></span></span>';
     }else{
      m+='<span style="display:none;">{{}}</span>';

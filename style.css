@@ -481,7 +481,7 @@
  .pagh {
   flex-grow:1;
   min-width:calc(100% - 0.5em);
-  margin:0 auto 0 0;
+  margin:0 0.3em 0 0;
   padding:0;
   display:flex;
   flex-direction:row;
