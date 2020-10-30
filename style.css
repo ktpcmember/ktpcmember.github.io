@@ -494,6 +494,7 @@
  .paghna {
   margin:0 0 0 0.5em;
   padding:0 0.3em;
+  flex-basis:4em;
   border-left:dashed 1px #404040;
   border-right:dashed 1px #404040;
   display:flex;
@@ -501,6 +502,7 @@
  }
  
  .paghti {
-  margin:auto 0;
+  margin:auto;
+  user-select:none;
  }
  

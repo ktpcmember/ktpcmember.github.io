@@ -17,6 +17,6 @@ function tp(){
 }
 
 function copy(s){
- navigator.clipboard.writeText(document.getElementById(s).textContent.replace(/\{\{[~\}]*\}\}/g,'\n'));
+ navigator.clipboard.writeText(document.getElementById(s).textContent.replace(/\{\{[^\}]*\}\}/g,''));
  return;
 }
