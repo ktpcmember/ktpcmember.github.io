@@ -327,17 +327,12 @@
   
  }
  
- .cb55, .cb55f {
+ .cb55 {
   margin:0;
   padding:0.5em 0;
   width:100%;
   overflow:auto;
   font-family:'Inconsolata', monospace;
- }
- 
- .cb55f {
-  display:flex;
-  flex-direction:column;
  }
  
  .cb56 {
@@ -353,6 +348,12 @@
  
  .cb61 {
   margin:0.5em auto;
+ }
+ 
+ .cb62 {
+  display:flex;
+  flex-direction:column;
+  margin-left:0.3em;
  }
  
  .cf00 {
