@@ -167,6 +167,7 @@ function push(){
   }
   ottt=ottt.replace(/\t/g,spt_r_pt);
  }
+ ottt='<span class="cb62">'+ottt+'</span>';
  document.getElementById("o_pt").value=ottt;
  navigator.permissions.query({
   name:"clipboard-write"
