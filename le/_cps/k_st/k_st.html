@@ -306,7 +306,7 @@
         <span class="cb41">
          先述したように、ポインタ変数からメンバアクセスする際は<code>(*変数名).メンバ名</code>となります。<br>
          しかし演算子を2つ使い、丸括弧も付けないといけないのは間違いの元です。<br>
-         そのため、アロー演算子という糖衣構文/シンタックスシュガーが存在します。<br>
+         そのため、アロー演算子というシンタックスシュガーが存在します。<br>
          アロー演算子を用いると、<code>変数名->メンバ名</code>と記述することが出来ます。
         </span>
        </div>
@@ -319,7 +319,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">item構造体の定義</h3>
+        <h3 class="cb40"><code>item</code>構造体の定義</h3>
         <span class="cb41">
          構造体の定義には<code>struct 構造体名 { メンバ並び };</code>の構文を使います。<br>
          <code>int</code>と<code>std::wstring</code>をもつ構造体<code>item</code>を宣言しています。<br>
@@ -329,7 +329,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">item構造体変数の宣言と初期化</h3>
+        <h3 class="cb40"><code>item</code>構造体変数の宣言と初期化</h3>
         <span class="cb41">
          構造体も組み込みと同じ変数宣言の形を用いりました。<br>
          ただし、初期化は波括弧を用いて、<code>リスト並び</code>で行うのでした。<br>
@@ -341,7 +341,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">show_item、show_item_p関数</h3>
+        <h3 class="cb40"><code>show_item、show_item_p</code>関数</h3>
         <span class="cb41">
          <code>show_item</code>関数は<code>item</code>構造体を値渡しで受け取ります。<br>
          対して、<code>show_item_p</code>関数は<code>item</code>構造体へのポインタを受け取っています。<br>
@@ -425,18 +425,19 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">typedef</h3>
+        <h3 class="cb40"><code>typedef</code></h3>
         <span class="cb41">
-         typedefは、<code>typedef 変数宣言</code>という構文で変数の別名を定義するためのキーワードです。<br>
-         サンプルコードでは構造体の宣言と同時に構造体変数を宣言する形でtypedefしています。<br>
+         <code>typedef</code>は、<code>typedef 変数宣言</code>という形で変数の別名を定義するためのキーワードです。<br>
+         すなわち<code>変数宣言</code>の<code>変数名</code>が、別名として宣言、定義されることになります。<br>
+         サンプルコードでは構造体の宣言と同時に構造体変数を宣言する形で別名を宣言しています。<br>
          実は、構造体の宣言時の波括弧の後に<code>変数名</code>を変数宣言の<code>変数名</code>以下同様に記述できます。<br>
-         なお、typedefは旧来の方法なのでC++ではエイリアス宣言を使うことが推奨されています。
+         なお、<code>typedef</code>は旧来の方法なのでC++ではエイリアス宣言を使うことが推奨されています。
         </span>
        </div>
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">コラム - LPWSTRの正体</h3>
+        <h3 class="cb40">コラム - <code>LPWSTR</code>の正体</h3>
         <span class="cb41">
          <code>wWinMain</code>関数の引数に、<code>LPWSTR</code>がありました。<br>
          これは、<code>LP</code>がポインタ、<code>W</code>がワイド文字、<code>STR</code>が文字列を意味します。<br>
@@ -456,7 +457,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">show_func、show_func_ptr</h3>
+        <h3 class="cb40"><code>show_func、show_func_ptr</code></h3>
         <span class="cb41">
          双方とも、エイリアス宣言によって宣言されている、型の別名です。<br>
          ただ、構造体<code>tagITEM</code>の構造体名を使いたいので、前方宣言をしています。
@@ -467,7 +468,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">構造体tagITEMの定義</h3>
+        <h3 class="cb40">構造体<code>tagITEM</code>の定義</h3>
         <span class="cb41">
          構造体<code>tagITEM</code>は、typedefと組み合わせています。<br>
          そして、<code>tagITEM</code>の別名<code>ITEM</code>と、<code>tagITEM</code>へのポインタ型<code>LPITEM</code>を定義しています。<br>
@@ -480,17 +481,15 @@
        <div class="cb31">
         <h3 class="cb40">補足 - C言語での構造体</h3>
         <span class="cb41">
-         構造体名はC言語だとタグ名と言いました。<br>
-         実は、C言語だと構造体名は単体では型名にならなかったのです。<br>
-         そのため、構造体変数を宣言するときは<code>struct</code>キーワードを書く必要がありました。<br>
-         すなわち、<code>struct 構造体名 変数名;</code>だったのです。<br>
-         なお、C++でもこの構造体変数の構文を用いても良いことになっています。
+         実は、C言語だと構造体名はタグ名であって、単体では型名にならなかったのです。<br>
+         そのため、構造体変数を宣言するとき、<code>struct 構造体名 変数名;</code>と言う構文でした。<br>
+         ただし互換性から、C++でもこの構造体変数の構文を用いても良いことになっています。
         </span>
        </div>
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">show_item関数</h3>
+        <h3 class="cb40"><code>show_item</code>関数</h3>
         <span class="cb41">
          <code>show_item</code>関数は、構造体<code>ITEM</code>のメンバ<code>show</code>に渡すために用意した関数です。<br>
          <code>LPITEM</code>、すなわち<code>ITEM</code>へのポインタを引数に取ります。<br>
@@ -500,7 +499,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">a.show(&a);</h3>
+        <h3 class="cb40"><code>a.show(&a)</code></h3>
         <span class="cb41">
          これは、構造体変数<code>a</code>のメンバの<code>show</code>を経由して<code>show_item</code>関数を呼び出しています。<br>
          <code>show_item</code>関数は、<code>LPITEM</code>を引数に取るので、構造体変数<code>a</code>のアドレスを渡しています。
@@ -510,7 +509,8 @@
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-       以下のコードに書かれている内容は一切変更せず、書き加える形でコードを完成させてください。<br>
+       以下のコードの<code>wWinMain</code>関数を変更せず、書き加える形でプログラムとして完成させてください。<br>
+       難しいので、ヒントを複数用意しています。始めに行き詰る時には、ヒントを見てしまいましょう。
       </span>
      </article>
      <article class="cb21 fxrl">

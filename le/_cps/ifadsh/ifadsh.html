@@ -303,7 +303,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">変数z</h3>
+        <h3 class="cb40">変数<code>z</code></h3>
         <span class="cb41">
          変数<code>z</code>は<code>wWinMain</code>関数と、それに含まれる複合文で宣言されています。<br>
          <code>wWinMain</code>の変数<code>z</code>は、複合文で宣言される変数<code>z</code>に隠されます。<br>
@@ -315,7 +315,7 @@
       <article class="cb21 fxtb">
        <h2 class="cb33">条件式とbool</h2>
        <span class="cb34">
-        制御文に入る前に条件式と<code>bool</code>型について学びます。<br>
+        制御文に入る前に条件式とbool型について学びます。<br>
         以下のサンプルコードを実行してみましょう。
        </span>
       </article>
@@ -372,9 +372,9 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        <div class="cb31">
         <h3 class="cb40">bool型</h3>
         <span class="cb41">
-         <code>bool</code>型は値に<code>false</code>か<code>true</code>を持つ型です。<code>false</code>を0、<code>true</code>を1として値を持っています。<br>
+         bool型は値に<code>false</code>か<code>true</code>を持つ型です。<code>false</code>を0、<code>true</code>を1として値を持っています。<br>
          <code>false</code>は偽のことで「正しくない」、<code>true</code>は真のことで「正しい」という意味を持ちます。<br>
-         <code>bool</code>型は整数型とほぼ同じもので、ほとんどの場合で1バイトの整数として実装されます。<br>
+         bool型は整数型とほぼ同じもので、ほとんどの場合で1バイトの整数として実装されます。<br>
          ただし、どんな整数を代入してもbool型が持つ値は<code>false</code>か<code>true</code>です。
         </span>
        </div>
@@ -393,7 +393,7 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
         <h3 class="cb40">条件式と関係演算子</h3>
         <span class="cb41">
          条件式は式の一種ですが、演算子には関係演算子を用いります。<br>
-         条件式は<code>bool</code>値を結果として持ちます。<br>
+         条件式はbool値を結果として持ちます。<br>
          比較できる型の値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。<br>
          <code>std::wstring</code>は、辞書順での大小が比較されます。
         </span>
@@ -418,10 +418,10 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
        <div class="cb31">
         <h3 class="cb40">論理演算子</h3>
         <span class="cb41">
-         複数の<code>bool</code>値を組み合わせたり、否定をするときには論理演算子を使います。<br>
+         複数のbool値を組み合わせたり、否定をするときには論理演算子を使います。<br>
          <code>&&</code>を論理積演算子、<code>||</code>を論理和演算子、<code>!</code>を論理否定演算子と呼びます。<br>
-         論理積、論理和演算子は<code>bool</code>値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。<br>
-         論理否定演算子は<code>bool</code>値の<code>値</code>を用いて、<code>!値</code>と用います。
+         論理積、論理和演算子はbool値<code>値A,値B</code>を用いて、<code>値A 演算子 値B</code>と用います。<br>
+         論理否定演算子はbool値の<code>値</code>を用いて、<code>!値</code>と用います。
         </span>
        </div>
        <div class="cb36 debr">
@@ -679,7 +679,7 @@ std<span class="wdsl">::</span>wstring to_wstring<span class="wdsl">(</span><spa
       <div class="cb21 fxlr">
       <span class="cb34">
        Windows APIには<code>POINT</code>構造体が用意されています。<br>
-       POINT構造体は<code>LONG</code>という型の変数を<code>x,y</code>と2つ持っています。<br>
+       <code>POINT</code>構造体は<code>LONG</code>という型の変数を<code>x,y</code>と2つ持っています。<br>
        <code>LONG</code>は、int型と同様に整数を扱うlong型のエイリアスです。<br>
        <br>
        <code>POINT</code>構造体変数のペア<code>a,b</code>と<code>x,y</code>について、同一の座標か判定してください。<br>

@@ -59,7 +59,7 @@
        <a class="ch41" href="../ifadsh/ifadsh.html">
         <span class="ch50">前回</span>
        </a>
-       <a class="ch41" href="../unknown/unknown.html">
+       <a class="ch41" href="../c_array/c_array.html">
         <span class="ch50">次回</span>
        </a>
       </div>
@@ -98,7 +98,7 @@
          while文
         </h4>
         <span class="cb41">
-         条件式がtrueである限り文を実行する反復文
+         条件式が<code>true</code>である限り文を実行する反復文
         </span>
         <h4 class="cb45">
          do-while文
@@ -293,11 +293,11 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">winput::input関数</h3>
+        <h3 class="cb40"><code>winput::input</code>関数</h3>
         <span class="cb41">
-         input_int.hppの入力は、winput::input関数を用います。返り値が入力された数値です。<br>
+         input_int.hppの入力は、<code>winput::input</code>関数を用います。返り値が入力された数値です。<br>
          また、引数に文字列を渡すと入力のウィンドウに表示されます。<br>
-         ただし引数は省略することが出来、省略すると「None」が表示されます。
+         ただし引数は省略することが出来、省略すると<code>None</code>>が表示されます。
         </span>
        </div>
       </article>
@@ -305,7 +305,7 @@
        <div class="cb31">
         <h3 class="cb40">入力方法</h3>
         <span class="cb41">
-         winput::input関数が実行されるとウィンドウが表示されます。<br>
+         <code>winput::input</code>関数が実行されるとウィンドウが表示されます。<br>
          そのウィンドウに入力出来る欄があるので、そこに数値を入力します。<br>
          決定するには、すぐ下にある「ENTER」と書かれたボタンか、Enterキーを押します。
         </span>
@@ -319,7 +319,7 @@
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">winput::input関数</h3>
+        <h3 class="cb40"><code>winput::input</code></h3>
         <span class="cb41">
          先述した通りです。1回目は引数を渡さないため、「None」が表示されます。<br>
          2回目は引数に「2回目」と渡したため、「2回目」が表示されます。<br>
@@ -376,7 +376,7 @@
         <h3 class="cb40">while文</h3>
         <span class="cb41">
          while文は、<code>while (条件式) 文</code>の構文を取ります。<br>
-         条件式がtrueである限り、文を実行し続けるという効果を持ちます。<br>
+         条件式が<code>true</code>である限り、文を実行し続けるという効果を持ちます。<br>
          なおif文の時と同様に、複数の文を扱いたい場合には複合文を用います。
         </span>
        </div>
@@ -387,9 +387,9 @@
         <span class="cb41">
          入力を足し続けるプログラムです。while文を用いてループをして実現しています。<br>
          while文の条件式で入力をし、それを条件式にしています。<br>
-         0はfalseに、0以外はtrueに変換されることを利用した条件式です。<br>
-         0以外が入力されると、while文の条件式がtrueになり、文が実行されループします。<br>
-         0が入力されるとwhile文の条件式がfalseとなり、ループを抜けることになります。
+         0は<code>false</code>に、0以外は<code>true</code>に変換されることを利用した条件式です。<br>
+         0以外が入力されると、while文の条件式が<code>true</code>になり、文が実行されループします。<br>
+         0が入力されるとwhile文の条件式が<code>false</code>となり、ループを抜けることになります。
         </span>
        </div>
       </article>
@@ -554,8 +554,8 @@
          <code>初期化式</code>はfor文に入る前に実行される式ですが、変数を宣言することもできます。<br>
          <code>初期化式</code>で宣言した変数は、そのfor文の中でのみ使うことができます。<br><br>
 
-         <code>条件式</code>はwhile文と全く同じで、trueになるとループし<code>文</code>を実行します。<br>
-         そしてfalseになるとループをやめ、<code>文</code>を実行するのも終了します。<br><br>
+         <code>条件式</code>はwhile文と全く同じで、<code>true</code>になるとループし<code>文</code>を実行します。<br>
+         そして<code>false</code>になるとループをやめ、<code>文</code>を実行するのも終了します。<br><br>
 
          継続式は、<code>文</code>を実行した後に実行される式で、ループ1回ごとに実行する式を書きます。<br>
          インデックスループでは、用意した変数をインクリメントすることがほとんどです。
@@ -568,14 +568,14 @@
          for文の実行についてサンプルコードで細かく見ていきましょう。<br>
          <code>for(int i = min; i &lt;= max; i++)</code>ですね。わかりやすく、min=0,max=3にします。<br>
          まず、<code>int i = min</code>が実行されます。変数<code>i</code>は0になりました。<br>
-         次に、<code>i &lt;= max</code>が実行されます。<code>0 &lt;= 3</code>なのでtrueです。<br>
+         次に、<code>i &lt;= max</code>が実行されます。<code>0 &lt;= 3</code>なので<code>true</code>です。<br>
          次に、<code>文</code>が実行されます。が、ここはループの処理とは関係ないので割愛します。<br>
          次に、<code>i++</code>が実行されます。変数<code>i</code>は1になりました。<br>
-         次に、<code>i &lt;= max</code>が実行されます。<code>1 &lt;= 3</code>なのでtrueです。<br>
+         次に、<code>i &lt;= max</code>が実行されます。<code>1 &lt;= 3</code>なので<code>true</code>です。<br>
          ここからは同じことの繰り返しなので、省略します。<br>
          はい、<code>i++</code>が実行されました。変数<code>i</code>は4になりました。<br>
-         はい、<code>i &lt;= max</code>が実行されました。今回の仮定では<code>4 &lt;= 3</code>なのでfalseです。<br>
-         そしてここで<code>条件式</code>がfalseになったので実行は終了です。
+         はい、<code>i &lt;= max</code>が実行されました。今回の仮定では<code>4 &lt;= 3</code>なので<code>false</code>です。<br>
+         そしてここで<code>条件式</code>が<code>false</code>になったので実行は終了です。
         </span>
        </div>
       </article>
@@ -672,7 +672,7 @@
         <span class="cb41">
          for文には、<code>初期化式、条件式、継続式</code>があると説明していました。<br>
          これら3つの式は、空文のように何も書かないことで省略することが出来ます。<br>
-         特筆すべきなのが<code>条件式</code>を省略すると、常にtrueとして実行されることです。<br>
+         特筆すべきなのが<code>条件式</code>を省略すると、常に<code>true</code>として実行されることです。<br>
          while文では<code>条件式</code>は省略出来ないので、ここが唯一の<code>条件式</code>の違いでしょう。
         </span>
        </div>
@@ -696,7 +696,7 @@
          文をネストした時も、上から順次実行されていくことには変わりありません。<br>
          つまり、反復文では外側の1回のループごとに、内側は始めから最後までループします。<br>
          なおbreak文とcontinue文は、効果が与えられる文のうち一番内側の文に対して実行されます。<br>
-         疑似的には<code>for[if[break]]</code>ならfor、<code>for1[for2[]for3[break]]</code>ならfor3に効果が及びます。
+         疑似的には<code>for{if{break}}</code>ならfor、<code>for1{for2{}for3{break}}</code>ならfor3に効果が及びます。
         </span>
        </div>
       </article>
@@ -797,6 +797,7 @@
        </div>
        <code class="cb47">
 <pre id="ar_not" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 
@@ -822,6 +823,7 @@
        </div>
        <code class="cb47">
 <pre id="ar_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
 

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。C言語配列について解説しています">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>C言語配列 - C++講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++講習</span>
+       </span>
+       <a class="ch41" href="../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../whadfr/whadfr.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../unknown/unknown.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+    <div class="cb00">
+     <div class="cb10">
+      <article class="cb20">
+       <h1>C++講習/C言語配列</h1>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">概要</h2>
+       <span class="cb34">
+        同じ型の変数を複数管理するのに便利な機能の配列を解説します。<br>
+        今回の前提となるアドレスやポインタの知識がとても重要です。
+       </span>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb36 debr">
+        <h4 class="cb44">
+         重要語
+        </h4>
+        <h4 class="cb45">
+         配列
+        </h4>
+        <span class="cb41">
+         同型の変数をメモリ上に連続して確保するもの
+        </span>
+        <h4 class="cb45">
+         要素
+        </h4>
+        <span class="cb41">
+         配列に存在する1つ1つの変数
+        </span>
+        <h4 class="cb45">
+         添え字
+        </h4>
+        <span class="cb41">
+         配列の各要素の番号
+        </span>
+        <h4 class="cb45">
+         添え字演算子
+        </h4>
+        <span class="cb41">
+         <code>*(配列名 + 添え字)</code>の糖衣構文
+        </span>
+        <h4 class="cb45">
+         <code>std::size</code>関数
+        </h4>
+        <span class="cb41">
+         配列のサイズを取得する関数
+        </span>
+        <h4 class="cb45">
+         不完全型
+        </h4>
+        <span class="cb41">
+         変数として宣言できない型
+        </span>
+        <h4 class="cb45">
+         const
+        </h4>
+        <span class="cb41">
+         変数の値などが不変である事を示すキーワード
+        </span>
+       </div>
+       <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        定数
+       </h4>
+       <span class="cb41">
+        実行中に変化しない値
+       </span>
+       <h4 class="cb45">
+        変数
+       </h4>
+       <span class="cb41">
+        実行中に値を保存しているもの
+       </span>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        変数の型と名前を定義すること
+       </span>
+       <h4 class="cb45">
+        初期化
+       </h4>
+       <span class="cb41">
+        変数が最初に持つ値を定義すること
+       </span>
+       <h4 class="cb45">
+        アドレス
+       </h4>
+       <span class="cb41">
+        メモリ内の位置を表す数値
+       </span>
+       <h4 class="cb45">
+        ポインタ
+       </h4>
+       <span class="cb41">
+        アドレスを保存する変数
+       </span>
+       <h4 class="cb45">
+        間接参照
+       </h4>
+       <span class="cb41">
+        アドレスを変数のように扱うこと
+       </span>
+       <h4 class="cb45">
+        糖衣構文/シンタックスシュガー
+       </h4>
+       <span class="cb41">
+        長い、又は複雑な構文の簡単な書き方
+       </span>
+       <h4 class="cb45">
+        関数
+       </h4>
+       <span class="cb41">
+        結果を返す、処理のまとまり
+       </span>
+       <h4 class="cb45">
+        仮引数
+       </h4>
+       <span class="cb41">
+        関数に渡す値
+       </span>
+       <h4 class="cb45">
+        実引数
+       </h4>
+       <span class="cb41">
+        関数が受け取る値又は変数
+       </span>
+       <h4 class="cb45">
+        input_int.hpp
+       </h4>
+       <span class="cb41">
+        講習担当者が作ったint値入力ライブラリ
+       </span>
+      </div>
+     </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">1次元配列</h2>
+       <span class="cb34">
+        はじめに、最も基本的である1次元配列について解説します。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">1次元配列</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring s <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">//配列の宣言には、変数の宣言の変数名の後に角括弧を書く
+</span>    <span class="wdc_mt">//0ではない要素数を記述する。初期化値の数が要素数に満たない場合、不足分は0で埋められる
+</span>    <span class="wdkywd">int</span> array1<span class="wdsl">[</span><span class="wdnr">5</span><span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{};</span>
+    <span class="wdkywd">int</span> array2<span class="wdsl">[]</span> <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdnr">5</span><span class="wdsl">,</span><span class="wdnr">6</span><span class="wdsl">,</span><span class="wdnr">7</span><span class="wdsl">,</span><span class="wdnr">8</span><span class="wdsl">,</span><span class="wdnr">9</span> <span class="wdsl">};</span>
+
+    <span class="wdc_mt">//配列名は先頭の要素のアドレスに変換されるので、間接参照してアクセスできる
+</span>    <span class="wdsl">*(</span>array1<span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdnr">5</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">//配列はメモリ上に連続して要素が配置されている
+</span>    <span class="wdc_mt">//また、アドレスに対する演算は、アドレスが指す型の大きさごとに行われる
+</span>    <span class="wdc_mt">//従って、配列名に添え字を足すことで、添え字に対応する要素のアドレスが得られる
+</span>    <span class="wdsl">*(</span>array1 <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">//上記のアクセス方法は記法が複雑になりがちであるので、添え字演算子を利用する
+</span>    array1<span class="wdsl">[</span><span class="wdnr">2</span><span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdnr">15</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">//インデックスループならば「0から始め、全ての要素にアクセスする」ことが一般的
+</span>    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">5</span><span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        s <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(*(</span>array1 <span class="wdsl">+</span> i<span class="wdsl">))</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L"array1"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdc_mt">//std::sizeは、配列の長さを取得できる
+</span>    <span class="wdc_mt">//要素数を指定しなかった配列は、初期化に応じて要素数が決定されている
+</span>    s <span class="wdsl">=</span> <span class="wdtt">L""</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>array2<span class="wdsl">);</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        s <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>array2<span class="wdsl">[</span>i<span class="wdsl">])</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L"array2"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">C言語配列とは</h3>
+        <span class="cb41">
+         今回扱う範囲は、C言語から受け継いだ、長さを変えることが出来ない配列です。<br>
+         これは「C言語配列」や「生配列」と呼ばれることが多いです。<br>
+         ただ、いずれは標準ライブラリのvectorに含まれる<code>std::vector</code>を使う方が便利でしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">1次元配列の宣言</h3>
+        <span class="cb41">
+         配列は同じ型の変数をメモリ上に連続して確保するもので、広義の変数です。<br>
+         配列も変数同様に宣言が必要で、<code>型名 変数名[定数]</code>という構文を取ります。<br>
+         この<code>定数</code>は自然数で、コード上の値や後述するconst変数などの定数が指定できます。<br>
+         なお、配列の型は<code>型名 [定数]</code>で、要素数が違うと型は違うことになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列の構造、要素、添え字</h3>
+        <span class="cb41">
+         配列を宣言すると<code>定数</code>の個数分だけ変数がメモリ上に連続して確保されます。<br>
+         メモリ上に確保されたそれぞれの変数のことを要素、要素を一意に指す番号が添え字です。<br>
+         ここで注意したいのが、添え字は<code>0</code>から始まるということです。<br>
+         すなわち、添え字は<code>0</code>から<code>要素数-1</code>まで存在するということになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列の初期化</h3>
+        <span class="cb41">
+         配列の初期化には、<code>= {}</code>もしくは<code>{}</code>を用います。<br>
+         波括弧の中に要素数まで、コンマ区切りで初期化値を記述することが出来ます。<br>
+         そして要素数に初期化値の数が満たない場合には、残りの要素については0で埋められます。<br>
+         なお、1次元配列の<code>定数</code>を指定しない場合は、初期化値の数が配列の要素数になります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列のアクセス - ポインタ演算</h3>
+        <span class="cb41">
+         配列は複数の変数を指すので、各々の要素には配列名だけではアクセス出来ません。<br>
+         そこで配列の各々の要素には、配列名と添え字を使ってアクセスします。<br>
+         実は、配列名は先頭の要素へのアドレスへと暗黙のうちに変換されます。<br>
+         そのため、アドレス演算を用いることで、<code>*(配列名 + 添え字)</code>で要素にアクセスします。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列のアクセス - 添え字演算子</h3>
+        <span class="cb41">
+         先述の通り、アドレス演算を用いて<code>*(配列名 + 添え字)</code>で配列の各要素にアクセス出来ます。<br>
+         ですが、決まり切ったポインタの加算や括弧、間接参照は複数重なるとかなり複雑になります。<br>
+         そのため、添え字演算子と呼ばれるシンタックスシュガーが存在します。<br>
+         添え字演算子を用いると、<code>配列名[添え字]</code>という構文で記述することが出来ます。<br>
+         また、添え字演算子の方が、間接参照演算子や四則演算、代入よりも優先されます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列の外へのアクセス</h3>
+        <span class="cb41">
+         大原則として、配列の外へアクセスすること、すなわち、範囲外アクセスは許されません。<br>
+         これは、範囲外アクセスが関係の無いメモリを変更し、意図しない動作の原因になるからです。<br>
+         よって私達は、負数や要素数以上の値を指定しないようにコードを書かなくてはなりません。<br>
+         ただし、基本WindowsなどのOS環境下では範囲外アクセスはブロックされます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>std::size</code>関数</h3>
+        <span class="cb41">
+         <code>std::size</code>関数は、配列を渡すとその配列の要素数を返却する関数です。<br>
+         この関数は、<code>#include &lt;string&gt;</code>があれば使うことが出来ます。<br>
+         もちろん、当然ですが、ただのポインタを渡した場合はエラーとなります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">配列の全要素にアクセスする</h3>
+        <span class="cb41">
+         配列の全要素にアクセスする時には、インデックスループを使用するのが一般的です。<br>
+         今回は1次元配列なので、1回だけインデックスループを回せばよいことになります。<br>
+         添え字は<code>0</code>から<code>要素数 - 1</code>なので、<code>for(int i = 0; i &lt; size; i++)</code>などになります。<br>
+         sizeが配列の要素数のことを示します。これは<code>std::size</code>関数で得てもよいでしょう。<br>
+         このfor文を使用すると、変数<code>i</code>がそのまま添え字として使用できます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「1次元配列」解説</h2>
+       <span class="cb34">
+        コード「1次元配列」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>array1、array2</code>宣言</h3>
+        <span class="cb41">
+         配列の宣言は、<code>型名 変数名[定数]</code>という構文を取るのでした。<br>
+         つまり、<code>array1</code>と<code>array2</code>は、int型の変数が5個並んだ配列ということになります。<br>
+         なお、<code>array2</code>は要素数を指定していないので、初期化値の個数で要素数が決定しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>array1、array2</code>初期化</h3>
+        <span class="cb41">
+         <code>array1</code>は<code>={}</code>であるので、要素数に対しての不足分、すなわち全てが0で埋められます。<br>
+         <code>array2</code>は<code>={5,6,7,8,9}</code>であるので、前から5,6,7,8,9で初期化されます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40"><code>array1、array2</code>へのアクセス</h3>
+        <span class="cb41">
+         配列の名前は先頭要素のアドレスになるので、<code>*(配列名)</code>で先頭要素にアクセス出来ました。<br>
+         その他の要素に対しては、アドレス演算を用いて、<code>*(配列名 + 添え字)</code>とアクセスできます。<br>
+         しかし、それは複雑になりやすいため、シンタックスシュガーの添え字演算子を用いましょう。<br>
+         添え字演算子を用いると、<code>配列名[添え字]</code>という構文でアクセスできるのでした。<br>
+         また、アドレス演算から分かる通り、添え字は<code>0</code>から<code>要素数-1</code>であることに注意しましょう。<br>
+        </span>
+       </div>
+       <div class="cb36 debr">
+        <h4 class="cb44">アクセス例 : <code>array1</code>：添え字</h4>
+        <h4 class="cb45">0：先頭</h4>
+        <span class="cb41"><code>*(array1)</code> <code>*(array1 + 0)</code> <code>array1[0]</code></span>
+        <h4 class="cb45">n：nは先頭と終端との間の添え字</h4>
+        <span class="cb41"><code>*(array1 + n)</code> <code>array1[n]</code></span>
+        <h4 class="cb45">4：終端</h4>
+        <span class="cb41"><code>*(array1 + 4)</code> <code>array1[4]</code> <code>array1[std::size(array1) - 1]</code></span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">2次元配列</h2>
+       <span class="cb34">
+        それでは、配列を要素として持つ配列の、2次元配列を解説していきます。<br>
+        2次元配列も使えると便利ですが、1次元配列では出来ない事では無いので安心してください。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">2次元配列</span>
+         <button type="button" class="cb53" onclick="copy('saco_2')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_2" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">void</span> push_int_and_tab<span class="wdsl">(</span>std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> s<span class="wdsl">,</span> <span class="wdkywd">int</span> a<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdsl">*</span>s <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>a<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"\t"</span><span class="wdsl">;</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> input<span class="wdsl">[</span><span class="wdnr">5</span><span class="wdsl">];</span>
+    <span class="wdkywd">int</span> table<span class="wdsl">[][</span><span class="wdnr">5</span><span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdsl">{},{},{},{},{}</span> <span class="wdsl">};</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>input<span class="wdsl">);</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        input<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span>std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"個目"</span><span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>table<span class="wdsl">);</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>table<span class="wdsl">[</span>i<span class="wdsl">]);</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            table<span class="wdsl">[</span>i<span class="wdsl">][</span>j<span class="wdsl">]</span> <span class="wdsl">=</span> input<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">*</span> input<span class="wdsl">[</span>j<span class="wdsl">];</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+
+    std<span class="wdsl">::</span>wstring s <span class="wdsl">=</span> <span class="wdtt">L"\t"</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>input<span class="wdsl">);</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        push_int_and_tab<span class="wdsl">(&amp;</span>s<span class="wdsl">,</span> input<span class="wdsl">[</span>i<span class="wdsl">]);</span>
+    <span class="wdsl">}</span>
+    s <span class="wdsl">+=</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>table<span class="wdsl">);</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        push_int_and_tab<span class="wdsl">(&amp;</span>s<span class="wdsl">,</span> input<span class="wdsl">[</span>i<span class="wdsl">]);</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> std<span class="wdsl">::</span>size<span class="wdsl">(</span>table<span class="wdsl">[</span>i<span class="wdsl">]);</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            push_int_and_tab<span class="wdsl">(&amp;</span>s<span class="wdsl">,</span> table<span class="wdsl">[</span>i<span class="wdsl">][</span>j<span class="wdsl">]);</span>
+        <span class="wdsl">}</span>
+        s <span class="wdsl">+=</span> <span class="wdtt">L"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> s.c_str<span class="wdsl">(),</span> <span class="wdtt">L"結果"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">不完全型</h3>
+        <span class="cb41">
+         不完全型は、変数として宣言できない、すなわち大きさが分からない型のことを指します。<br>
+         宣言のみされた構造体や要素数が決定しない配列、void型などがこれに属します。<br>
+         ただし、初期化で要素数が決定する1次元配列や、<code>void*</code>は不完全型には分類されません。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">void型</h3>
+        <span class="cb41">
+         voidは英語で「空」などの意味を持ち、型の情報が失われているという文脈で使用されます。<br>
+         既に解説した範囲であると、関数宣言での<code>void</code>があります。<br>
+         なお、<code>void*</code>は、「ポインタである」のでサイズが決定できるのです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">2次元配列の宣言</h3>
+        <span class="cb41">
+         2次元配列の宣言は、<code>型名 変数名[定数2][定数1]</code>という構文を取ります。<br>
+         <code>定数2</code>は1次元配列の<code>定数</code>と同様で、<code>定数1</code>も概ね同様ですが、省略出来ません。<br>
+         これは、配列の要素に不完全型を持つことが許されていないことが原因です。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">2次元配列での次元</h3>
+        <span class="cb41">
+         2次元配列では、配列を持つ配列を1次元、変数を要素として持つ配列を2次元と考えます。<br>
+         これによって、宣言の<code>定数1</code>を1次元の要素数、<code>定数2</code>を2次元の要素数と言います。<br>
+         またこのように、2次元配列を平面として見做して考えることができます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">2次元配列のアクセス</h3>
+        <span class="cb41">
+         配列を要素として持つ配列なので、<code>*(*(配列名+添え字2)+添え字1)</code>でもいいでしょう。<br>
+         ただし、添え字演算子を用いて、<code>配列名[添え字2][添え字1]</code>の方がよいでしょう。<br>
+         <code>添え字2</code>で要素の配列を選択し、<code>添え字1</code>で選択した配列の要素へとアクセスしています。
+        </span>
+       </div>
+      </article>      
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>std::size</code>関数</h3>
+        <span class="cb41">
+         <code>std::size</code>関数は、配列の要素数を返す関数なので、2次元配列でも特別なことはありません。<br>
+         2次元配列は、1次元配列を幾つか持っている1次元配列と捉えられます。<br>
+         すなわち、1次元の要素数、宣言での<code>定数1</code>が要素数として返却されることになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">全要素へのアクセス</h3>
+        <span class="cb41">
+         今回は要素の配列を選択し、更にその配列の要素へとアクセスする必要があります。<br>
+         なので、2重でインデックスループを回せばよいでしょう。<br>
+         すると、外側は<code>0</code>から<code>2次元の要素数-1</code>、内側は<code>0</code>から<code>1次元の要素数-1</code>などになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">発展 - 多次元配列</h3>
+        <span class="cb41">
+         2次元配列があったのですから、3次元、4次元など、n次元配列も作ることが出来ます。<br>
+         なお、2次元以上の配列はまとめて、多次元配列と呼びます。<br>
+         宣言の角括弧を増やして宣言しますが、やはり1次元の要素数のみ省略できます。<br>
+         アクセスも同様ですが、こちらもやはり、添え字演算子を使うことが賢明でしょう。<br>
+         全要素にアクセスするときは、次元数ごとにインデックスループを回せばよいでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「2次元配列」解説</h2>
+       <span class="cb34">
+        コード「2次元配列」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">概要</h3>
+        <span class="cb41">
+         配列inputにint値をそれぞれ入力させ、総当たり的に表を作り、表示するプログラムです。<br>
+         配列<code>table</code>に計算結果を全て保存した後に、文字列に加工して表示させます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>table</code>宣言/初期化</h3>
+        <span class="cb41">
+         <code>table</code>は、<code>定数1</code>を省略し、初期化で要素数を決定しています。<br>
+         したがって、int型の変数が5個並ぶ配列を、5個並ぶ配列を持つ2次元配列です。<br>
+         今回、<code>table</code>に存在する25個の要素は、全て0で初期化されることになります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>table</code>へのアクセス</h3>
+        <span class="cb41">
+         やはり、添え字演算子を使うのがよいでしょう。
+        </span>
+       </div>
+       <div class="cb36 debr">
+        <h4 class="cb44">アクセス例：<code>table</code>：2次元/1次元添え字</h4>
+        <h4 class="cb45">0/0：先頭/先頭</h4>
+        <span class="cb41">
+         <code>**table</code> <code>*table[0]</code> <code>(*table)[0]</code> <code>table[0][0]</code>
+        </span>
+        <h4 class="cb45">n/m</h4>
+        <span class="cb41">
+         <code>*(*(table+n)+m)</code> <code>*(table[n]+m)</code> <code>(*(table+n))[m]</code> <code>table[n][m]</code>
+        </span>
+        <h4 class="cb45">4/4：終端/終端</h4>
+        <span class="cb41">
+         <code>*(*(table+4)+4)</code> <code>*(table[4]+4)</code> <code>(*(table+4))[4]</code> <code>table[4][4]</code><br>
+         <code>*(*(table+std::size(table)-1)+std::size(table[0])-1)</code><br>
+         <code>*(table[std::size(table)-1]+std::size(table[0])-1)</code><br>
+         <code>(*(table+std::size(table)-1))[std::size(table[0])-1]</code><br>
+         <code>table[std::size(table)-1][std::size(table[0])-1]</code>
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">1次元配列を関数に渡す</h2>
+       <span class="cb34">
+        最後に、配列を関数に渡すことについて解説します。<br>
+        多次元配列を関数に渡すのは複雑なので割愛します。
+       </span>
+      </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">1次元配列を関数に渡す</span>
+         <button type="button" class="cb53" onclick="copy('saco_3')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_3" class="cb55 bkgdbl">
+<span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">void</span> copy<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> from<span class="wdsl">[],</span> <span class="wdkywd">int</span> to<span class="wdsl">[],</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> size<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> size<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        to<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">=</span> from<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">using</span> ca_obj_type <span class="wdsl">=</span> <span class="wdkywd">int</span><span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span><span class="wdsl">);</span>
+<span class="wdkywd">using</span> ca_obj_ptr <span class="wdsl">=</span> ca_obj_type<span class="wdsl">*;</span>
+<span class="wdkywd">void</span> ca<span class="wdsl">(</span><span class="wdkywd">const int</span> lhs<span class="wdsl">[],</span> <span class="wdkywd">const int</span> rhs<span class="wdsl">[],</span> <span class="wdkywd">int</span> to<span class="wdsl">[],</span> <span class="wdkywd">const int</span> size<span class="wdsl">,</span> ca_obj_ptr ca_obj<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> size<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        to<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">=</span> ca_obj<span class="wdsl">(</span>lhs<span class="wdsl">[</span>i<span class="wdsl">],</span> rhs<span class="wdsl">[</span>i<span class="wdsl">]);</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">+</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">-</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> mul<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">*</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdc_mt">//divはstdlib.hにも定義されているのでdivi
+</span><span class="wdkywd">int</span> divi<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">/</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> array_to_wstring<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> array<span class="wdsl">[],</span> std<span class="wdsl">::</span>wstring<span class="wdsl">*</span> <span class="wdkywd">const</span> str<span class="wdsl">,</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> size<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> size<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdsl">*</span>str <span class="wdsl">+=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>array<span class="wdsl">[</span>i<span class="wdsl">])</span> <span class="wdsl">+</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">void</span> show_array<span class="wdsl">(</span><span class="wdkywd">const</span> <span class="wdkywd">int</span> array<span class="wdsl">[],</span> <span class="wdkywd">const</span> <span class="wdkywd">int</span> size<span class="wdsl">,</span> std<span class="wdsl">::</span>wstring str<span class="wdsl">)</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>wstring out<span class="wdsl">;</span>
+    array_to_wstring<span class="wdsl">(</span>array<span class="wdsl">,</span> <span class="wdsl">&amp;</span>out<span class="wdsl">,</span> size<span class="wdsl">);</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> out.c_str<span class="wdsl">(),</span> str.c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">const</span> <span class="wdkywd">int</span> sizes <span class="wdsl">=</span> <span class="wdnr">5</span><span class="wdsl">;</span>
+
+    <span class="wdkywd">int</span> result<span class="wdsl">[</span>sizes<span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{};</span>
+    <span class="wdkywd">int</span> in1<span class="wdsl">[</span>sizes<span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{},</span> num<span class="wdsl">[</span>sizes<span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdnr">1</span><span class="wdsl">,</span><span class="wdnr">2</span><span class="wdsl">,</span><span class="wdnr">3</span><span class="wdsl">,</span><span class="wdnr">4</span><span class="wdsl">,</span><span class="wdnr">5</span> <span class="wdsl">};</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> sizes<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        in1<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span>std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>i<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"番目を入力"</span><span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    copy<span class="wdsl">(</span>in1<span class="wdsl">,</span> result<span class="wdsl">,</span> sizes<span class="wdsl">);</span>
+    show_array<span class="wdsl">(</span>result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> <span class="wdtt">L"結果：copy"</span><span class="wdsl">);</span>
+
+    ca<span class="wdsl">(</span>in1<span class="wdsl">,</span> in1<span class="wdsl">,</span> result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> add<span class="wdsl">);</span>
+    show_array<span class="wdsl">(</span>result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> <span class="wdtt">L"結果：ca-add / in1+in1"</span><span class="wdsl">);</span>
+
+    ca<span class="wdsl">(</span>in1<span class="wdsl">,</span> in1<span class="wdsl">,</span> result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> sub<span class="wdsl">);</span>
+    show_array<span class="wdsl">(</span>result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> <span class="wdtt">L"結果：ca-sub / in1-in1"</span><span class="wdsl">);</span>
+
+    ca<span class="wdsl">(</span>in1<span class="wdsl">,</span> num<span class="wdsl">,</span> result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> mul<span class="wdsl">);</span>
+    show_array<span class="wdsl">(</span>result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> <span class="wdtt">L"結果：ca-mul / in1*num"</span><span class="wdsl">);</span>
+
+    ca<span class="wdsl">(</span>in1<span class="wdsl">,</span> num<span class="wdsl">,</span> result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> divi<span class="wdsl">);</span>
+    show_array<span class="wdsl">(</span>result<span class="wdsl">,</span> sizes<span class="wdsl">,</span> <span class="wdtt">L"結果：ca-divi / in1/num ただしint値"</span><span class="wdsl">);</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span>
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">const変数</h3>
+        <span class="cb41">
+         constは、変数の値などが不変であることを示すキーワードです。<br>
+         これと変数を用いることで、定数を表現することが出来ます。<br>
+         変数の宣言で、<code>const 型名</code>や<code>型名 const</code>などと用います。<br>
+         const変数は初期化でのみ値を代入でき、なおかつ初期化が必須となります。<br>
+         なお、以後<code>const 型名</code>と<code>型名 const</code>は等価であることから、前者を積極的に扱います。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">constポインタ</h3>
+        <span class="cb41">
+         ポインタでは、位置によって2種類の意味に分れています。<br>
+         <code>const 型名 *</code>は、ポインタが指す変数が<code>const 型名</code>であることを意味します。<br>
+         従って、この場合のconstポインタを間接参照した時に、代入をすることは出来ません。<br>
+         対して<code>型名 * const</code>は、ポインタが持つアドレスが定数であることを意味します。<br>
+         従って、この場合のconstポインタはアドレスを再代入出来ず、参照先を変更できません。<br>
+         もちろん、双方のconstを同時に指定することも可能です。
+        </span>
+       </div>
+       <div class="cb36 debr">
+        <h4 class="cb44">ポインタのconstパターン</h4>
+        <h4 class="cb45"><code>型名 *</code></h4>
+        <span class="cb41">参照先の値の書き換え、参照先の変更が出来るポインタ</span>
+        <h4 class="cb45"><code>const 型名 *</code> <code>型名 const *</code></h4>
+        <span class="cb41">参照先の値の書き換えは出来ないが、参照先の変更は出来るポインタ</span>
+        <h4 class="cb45"><code>型名 * const</code></h4>
+        <span class="cb41">参照先の値の書き換えは出来るが、参照先の変更は出来ないポインタ</span>
+        <h4 class="cb45"><code>const 型名 * const</code> <code>型名 const * const</code></h4>
+        <span class="cb41">参照先の値の書き換えも、参照先の変更もできないポインタ</span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">関数の仮引数のconst</h3>
+        <span class="cb41">
+         一般に、ポインタ渡しかつ、それを変更しない場合、仮引数にconstを指定するべきです。<br>
+         これは、関数側でポインタ渡しされた引数を変更しないことを保証出来るからです。<br>
+         また今回では、値渡しの場合にもconstを指定しているようにしています。<br>
+         更に、<code>array_to_wstring</code>関数では、参照先を変更しない意味のconstを指定しています。<br>
+         これらは、関数を利用する側にとっては重要でないので、通常では過剰と言えるでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">1次元配列のポインタへの降格</h3>
+        <span class="cb41">
+         C++において、配列は関数の引数として渡したり、関数の返り値として返却できません。<br>
+         そこで、配列はポインタへと降格され、ポインタとして引数に渡せるようになっています。<br>
+         すなわち、配列はポインタ渡しでのみ、関数へと渡すことが出来るのです。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">1次元配列の仮引数</h3>
+        <span class="cb41">
+         仮引数での1次元配列<code>型名 []</code>は、要素数が無視され、<code>型名 *</code>と等価になります。<br>
+         すなわち、ポインタに降格された「元配列」を、通常のポインタで受け取っているのです。<br>
+         そのため、引数で受け取った配列は「ただのポインタ」であり、<code>std::size</code>関数に渡せません。<br>
+         したがって、配列の要素数を同時に引数で受け、それを用いるのが良いでしょう。<br>
+         なお、通常のポインタはアドレス演算を適用できるので、添え字演算子を使用できます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">補足 - 構造体で配列を隠す</h3>
+        <span class="cb41">
+         配列は、関数の引数に渡したり、返り値として返却できないと言いました。<br>
+         しかし、構造体のメンバに配列を持たせた場合は、それらは出来るようになります。<br>
+         もちろん、配列の要素数こそ自由に変えることは出来ませんが、価値はあるかもしれません。<br>
+         ただ、標準ライブラリの<code>std::vector</code>は要素数が変更できるので、そちらの方が良いでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">発展 - 多次元配列のポインタへの降格</h3>
+        <span class="cb41">
+         配列がポインタへ降格されるのは、最も高い次元のみです。<br>
+         すなわち、<code>int[5][10]</code>を関数に渡す際は、<code>int(*)[10]</code>や<code>int[][10]</code> になります。<br>
+         したがって、多次元配列はそれぞれの要素数ごとに、関数が必要になってしまいます。<br>
+         これを解決するには、構造体等で配列を隠すか、今後学ぶテンプレートを使いましょう。<br>
+         なお、前者の場合には<code>std::vector</code>でも良いでしょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">コード「1次元配列を関数に渡す」解説</h2>
+       <span class="cb34">
+        コード「1次元配列を関数に渡す」の解説です。
+       </span>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">概要</h3>
+        <span class="cb41">
+         要素数5のint配列<code>in1</code>に入力を受け、<code>1,2,3,4,5</code>のint型配列<code>num</code>を用意します。<br>
+         まず、入力された配列を、同じく要素数5のint配列<code>result</code>にコピーして出力します。<br>
+         そして、<code>in1+in1</code>と<code>in1-in1</code>、<code>in1*num</code>と<code>in1/num</code>を計算、出力するコードです。<br>
+         const変数すなわち定数である、<code>sizes</code>の値を変更すると、扱う要素数が変化します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>copy</code>関数</h3>
+        <span class="cb41">
+         第1引数のint配列<code>from</code>の先頭から<code>size</code>個を、第2引数のint配列<code>to</code>の先頭からコピーします。<br>
+         <code>size</code>が有効な値かは、関数側では検証できないので、呼び出し側が注意する必要があります。<br>
+         なお、<code>from</code>は、受け取る配列を変更する必要がないため、constを指定しています。<br>
+         <code>size</code>は、関数実行中に変更してはいけない変数なので、constを指定しています。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>ca</code>関数</h3>
+        <span class="cb41">
+         「C++講習 - 入門 - 関数基本」でも扱ったように、関数のポインタを取っています。<br>
+         この関数のポインタの処理を、int配列<code>lhs</code>、<code>rhs</code>の各要素について行います。<br>
+         その結果は、int配列<code>to</code>へ、それぞれの要素について代入されます。<br>
+         <code>lhs</code>と<code>rhs</code>は受け取った配列を変更しないのでconstを指定します。<br>
+         <code>size</code>は、関数実行中に変更してはいけない変数なので、constを指定しています。<br>
+         対して、<code>to</code>は、受け取った配列を変更する必要があるので、constを指定していません。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code><code>add/sub/mul/divi</code></code>関数</h3>
+        <span class="cb41">
+         それぞれ、2つのint値を取り、それらを足し/引き/掛け/割りした結果を返します。<br>
+         これらは、<code>ca</code>関数に渡し、<code>ca</code>関数の動作を決定するのに使います。<br>
+         なお、割り算は<code>div</code>であるとC言語の標準ライブラリと被るので、<code>divi</code>にしています。<br>
+         ちなみに、<code>div</code>関数はstdlib.hに含まれていて、int値を2つ取り、<code>div_t</code>構造体を返します。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>array_to_wstring/show_array</code>関数</h3>
+        <span class="cb41">
+         <code>array_to_wstring</code>関数は、int配列とその要素数、<code>std::wstring</code>へのポインタを取ります。<br>
+         そして、int配列を先頭から、<code>std::wstring</code>へと空白区切りで追加していきます。<br>
+         一方、<code>show_array</code>関数は、<code>array_to_wstring</code>関数を用いて、配列を表示します。
+        </span>
+       </div>
+      </article>
+
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       あるRの、1番から40番までの出席番号が付けられた生徒40人が数学のテストを受けました。<br>
+       出席番号順にテストの点が入力されるので、平均点を計算、出力してください。<br>
+       ただし、テストの点は0から100点で、平均点は小数で出力するようにして下さい。<br>
+       また、平均点を出力した後、任意の出席番号の点数を出力するようにしてください。<br>
+       詳しくは、コード「解答の一部」を参照してください。<br><br>
+
+       なお、入力はC++標準ライブラリのsstreamに含まれる、<code>std::wstringstream</code>を用いています。<br>
+       今回のコードでは、<code>input >> int型の変数名</code>で、40回入力することが出来るようになっています。<br>
+       <code>std::wstringstream</code>に関しては、いづれ執筆します。今すぐ知りたい人は検索してみてください。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">解答の一部</span>
+        <button type="button" class="cb53" onclick="copy('ar_not')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="ar_not" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>sstream<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> r_random<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>random_device seed_gen<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>default_random_engine engine<span class="wdsl">(</span>seed_gen<span class="wdsl">());</span>
+    <span class="wdkywd">return</span> std<span class="wdsl">::</span>uniform_int_distribution<span class="wdsl">&lt;&gt;(</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">100</span><span class="wdsl">)(</span>engine<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+std<span class="wdsl">::</span>wstringstream input<span class="wdsl">;</span>
+
+<span class="wdkywd">void</span> init<span class="wdsl">(</span>std<span class="wdsl">::</span>wstringstream<span class="wdsl">*</span> ss<span class="wdsl">,</span> <span class="wdkywd">int</span> size<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> size<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdsl">(*</span>ss<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> r_random<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    init<span class="wdsl">(&amp;</span>input<span class="wdsl">,</span> <span class="wdnr">40</span><span class="wdsl">);</span>
+    <span class="wdc_mt">//入力：input &gt;&gt; int型の変数名
+</span>    <span class="wdc_mt">//例　：int x; input &gt;&gt; x;
+</span>
+    std<span class="wdsl">::</span>wstring out<span class="wdsl">;</span>
+
+    <span class="wdc_mt">//全員の平均点を出力
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> out.c_str<span class="wdsl">(),</span> <span class="wdtt">L"平均"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdkywd">int</span> index <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"0で終了"</span><span class="wdsl">))</span> <span class="wdsl">{</span>
+        <span class="wdc_mt">//入力された出席番号の点数を出力
+</span>        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> out.c_str<span class="wdsl">(),</span>
+            <span class="wdsl">(</span>std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>index<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"番の点数は"</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">解答</summary>
+       <div class="cb46">
+        <span class="cb54">練習問題解答</span>
+        <button type="button" class="cb53" onclick="copy('ar_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="ar_1" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>sstream<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>random<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdtt">"input_int.hpp"</span>
+
+<span class="wdkywd">int</span> r_random<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>random_device seed_gen<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>default_random_engine engine<span class="wdsl">(</span>seed_gen<span class="wdsl">());</span>
+    <span class="wdkywd">return</span> std<span class="wdsl">::</span>uniform_int_distribution<span class="wdsl">&lt;&gt;(</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">100</span><span class="wdsl">)(</span>engine<span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+std<span class="wdsl">::</span>wstringstream input<span class="wdsl">;</span>
+
+<span class="wdkywd">void</span> init<span class="wdsl">(</span>std<span class="wdsl">::</span>wstringstream<span class="wdsl">*</span> ss<span class="wdsl">,</span> <span class="wdkywd">int</span> size<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> size<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdsl">(*</span>ss<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> r_random<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">L" "</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    init<span class="wdsl">(&amp;</span>input<span class="wdsl">,</span> <span class="wdnr">40</span><span class="wdsl">);</span>
+    <span class="wdc_mt">//入力：input &gt;&gt; int型の変数名
+</span>    <span class="wdc_mt">//例　：int x; input &gt;&gt; x;
+</span>
+    std<span class="wdsl">::</span>wstring out<span class="wdsl">;</span>
+
+    <span class="wdkywd">int</span> students<span class="wdsl">[</span><span class="wdnr">40</span><span class="wdsl">];</span>
+    <span class="wdkywd">int</span> sum <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">40</span><span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        input <span class="wdsl">&gt;&gt;</span> students<span class="wdsl">[</span>i<span class="wdsl">];</span>
+        sum <span class="wdsl">+=</span> students<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+
+    out <span class="wdsl">=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>sum <span class="wdsl">/</span> <span class="wdnr">40.0</span><span class="wdsl">);</span>
+
+    <span class="wdc_mt">//全員の平均点を出力
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> out.c_str<span class="wdsl">(),</span> <span class="wdtt">L"平均"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+
+    <span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdkywd">int</span> index <span class="wdsl">=</span> winput<span class="wdsl">::</span>input<span class="wdsl">(</span><span class="wdtt">L"0で終了"</span><span class="wdsl">))</span> <span class="wdsl">{</span>
+        <span class="wdc_mt">//入力される出席番号の1-40は、添え字の0-39に対応する
+</span>        <span class="wdc_mt">//そのため、配列にアクセスするときには1引く必要がある
+</span>        out <span class="wdsl">=</span> std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>students<span class="wdsl">[</span>index <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">]);</span>
+
+        <span class="wdc_mt">//入力された出席番号の点数を出力
+</span>        MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> out.c_str<span class="wdsl">(),</span>
+            <span class="wdsl">(</span>std<span class="wdsl">::</span>to_wstring<span class="wdsl">(</span>index<span class="wdsl">)</span> <span class="wdsl">+</span> <span class="wdtt">L"番の点数は"</span><span class="wdsl">)</span>.c_str<span class="wdsl">(),</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span>
+</pre>
+       </code>
+      </details>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

@@ -335,7 +335,7 @@
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">int plus(int left, int right);</h3>
+       <h3 class="cb40"><code>int plus(int left, int right);</code></h3>
        <span class="cb41">
         返り値が<code>int</code>、引数に<code>int,int</code>を取る<code>plus</code>関数の宣言です。<br>
         宣言を始めに書くことで、定義を後から記述する方式を使っています。
@@ -344,7 +344,7 @@
      </article>
      <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">int plus(int left, int right) {...}</h3>
+        <h3 class="cb40"><code>int plus(int left, int right) {...}</code></h3>
         <span class="cb41">
          返り値が<code>int</code>、引数に<code>int,int</code>を取る<code>plus</code>という関数の定義です。<br>
          見出しでは省略されている処理は、<code>return left + right;</code>となっています。<br>
@@ -428,7 +428,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">ty_str関数</h3>
+        <h3 class="cb40"><code>ty_str</code>関数</h3>
         <span class="cb41">
          この関数は文字列<code>thank you 39</code>という<code>std::wstring</code>の変数を作り、返却しています。<br>
          引数を取らないので引数並びには何も書きません。
@@ -437,7 +437,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">link_and_add_ty関数</h3>
+        <h3 class="cb40"><code>link_and_add_ty</code>関数</h3>
         <span class="cb41">
          この関数は返り値は無いので<code>void</code>、引数並びは<code>std::wstring</code>のポインタ変数が3つです。<br>
          1つ目は<code>buffer</code>で、完成した文字列を受け取る変数のアドレスを渡します。<br>
@@ -448,7 +448,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">link_and_add_ty関数呼び出し</h3>
+        <h3 class="cb40"><code>link_and_add_ty</code>関数呼び出し</h3>
         <span class="cb41">
          wWinMain関数内に入ります。<br>
          第1引数は純粋に、宣言しておいた変数<code>str</code>のアドレスを渡しています。<br>
@@ -459,7 +459,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">補足 - (std::wstring)L""</h3>
+        <h3 class="cb40">補足 - <code>(std::wstring)L""</code></h3>
         <span class="cb41">
          第2/3引数の説明で、<code>std::wstring</code>に「変換」と言いました。<br>
          確かにキャストの形をしているので、キャストしていると思うかもしれません。<br>
@@ -562,7 +562,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">call関数</h3>
+        <h3 class="cb40"><code>call</code>関数</h3>
         <span class="cb41">
          <code>call</code>関数は、<code>int</code>を2つと<code>int(int,int)</code>の関数へのポインタ<code>func</code>を引数に取ります。<br>
          funcから関数を呼び出し、その引数に<code>call</code>関数が取った引数を渡しています。<br>
@@ -572,7 +572,7 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">add/sub関数</h3>
+        <h3 class="cb40"><code>add/sub</code>関数</h3>
         <span class="cb41">
          <code>add</code>関数と<code>sub</code>関数は、<code>call</code>関数に渡すための関数として用意しています。<br>
          それぞれ<code>int</code>を2つとり、<code>add</code>は足し算、<code>sub</code>は引き算した結果を返却します。
@@ -581,9 +581,9 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
       </article>
       <article class="cb21">
        <div class="cb31">
-        <h3 class="cb40">call関数呼び出し</h3>
+        <h3 class="cb40"><code>call</code>関数呼び出し</h3>
         <span class="cb41">
-         wWinMain関数内に入ります。<br>
+         <code>wWinMain</code>関数内に入ります。<br>
          <code>call</code>関数は第3引数に<code>int(*)(int,int)</code>を取るので、<code>add</code>関数や<code>sub</code>関数を指定しています。<br>
          先述の通り、関数は関数名がアドレスになるので、アドレス演算子は付けていません。
         </span>
@@ -592,9 +592,9 @@ std<span class="wdsl">::</span>wstring ty_str<span class="wdsl">()</span> <span 
      <article class="cb21 fxtb">
       <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-       以下のプログラムを、次に示すswap関数とmsgboxw関数を記述して完成させてください。<br>
-       ・swap関数 2つの<code>int</code>の変数の値を入れ替える<br>
-       ・msgboxw関数 第1引数を本文、第2引数をタイトルとしてメッセージボックスに表示する<br>
+       以下のプログラムを、次に示す<code>swap</code>関数と<code>msgboxw</code>関数を記述して完成させてください。<br>
+       ・<code>swap</code>関数 2つの<code>int</code>の変数の値を入れ替える<br>
+       ・<code>msgboxw</code>関数 第1引数を本文、第2引数をタイトルとしてメッセージボックスに表示する<br>
       </span>
      </article>
      <article class="cb21 fxrl">
