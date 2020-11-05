@@ -36,6 +36,9 @@
   <loc>https://www.ktpc.tokyo/le/_cps/_cps.html</loc>
  </url>
  <url>
+  <loc>https://www.ktpc.tokyo/le/y_wwai/y_wwai.html</loc>
+ </url>
+ <url>
   <loc>https://www.ktpc.tokyo/le/k_c_pej_p_gm/k_c_pej_p_gm.html</loc>
  </url>
  <url>
@@ -98,7 +101,19 @@
   <loc>https://www.ktpc.tokyo/le/_cps/whadfr/whadfr.html</loc>
  </url>
  <url>
+  <!-- リネームしておいてください -->
+  <loc>https://www.ktpc.tokyo/le/_cps/c_array/c_array.html</loc>
+ </url>
+ <url>
   <loc>https://www.ktpc.tokyo/le/_cps/i_dx/i_dx.html</loc>
+ </url>
+
+ <url>
+  <!-- リネームしておいてください -->
+  <loc>https://www.ktpc.tokyo/le/y_wwai/first_window/first_window.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/y_wwai/i_dx/i_dx.html</loc>
  </url>
  
  <url>
