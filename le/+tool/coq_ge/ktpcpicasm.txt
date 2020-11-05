@@ -3,6 +3,8 @@
 + n wdnr
 + c wdc_mt
 + s wdsl
++ pgs PGS
++ pg PGE
 + e *
 + ? *
 
@@ -18,6 +20,15 @@
 & c s
 & c e
 | c ce
+
+& pgs ?
+& pgs n
+
+& pg ?
+& pg n
+& pg s
+& pg e
+& pg c
 
 - 0 n
 - 1 n
@@ -43,20 +54,26 @@
 
 - . s
 
+- {{ pgs
+- }} pg
+
 ! ? COL p
 ! ? WCF p
 
 ! ? ADC k
 ! ? ADD k
+! ? ADF k
 ! ? AND k
 ! ? BCF k
 ! ? BCS k
+! ? BRW k
 ! ? BSF k
 ! ? BSS k
 ! ? CAL k
 ! ? CLR k
 ! ? CMZ k
 ! ? COM k
+! ? CWT k
 ! ? DEC k
 ! ? DES k
 ! ? GOT k
@@ -64,20 +81,31 @@
 ! ? INS k
 ! ? IOR k
 ! ? MBS k
+! ? MDM k
+! ? MIM k
+! ? MMD k
+! ? MMI k
+! ? MOI k
 ! ? MOV k
 ! ? MPH k
 ! ? NOP k
+! ? OPT k
 ! ? RET k
 ! ? RLF k
 ! ? RRF k
+! ? RST k
 ! ? RTI k
 ! ? RTL k
 ! ? SAF k
 ! ? SLF k
+! ? SLP k
 ! ? SRF k
 ! ? SBB k
 ! ? SUB k
 ! ? SWP k
+! ? TRA k
+! ? TRB k
+! ? TRC k
 ! ? XOR k
 
 

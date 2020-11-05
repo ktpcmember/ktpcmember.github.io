@@ -6,6 +6,8 @@ function push(){
  var ottt="",sx,sxtn=new Array(4096),nrofsxtn=0,r_qt,i,j,k,c,l,f,spt_r_pt="";
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
+ var sk=new Array();
+ sk.push({tg:"",sg:"",tt:false});
  r_qt=new XMLHttpRequest();
  r_qt.open("GET","https://www.ktpc.tokyo/le/+tool/coq_ge/"+la+".txt",false);
  r_qt.send(null);
@@ -92,7 +94,7 @@ function push(){
     i++;
   }
  }
- if(i_pt.charCodeAt(0)==0xFFFE){
+ if(i_pt.charCodeAt(0)==0xFEFF){
   i=1;
  }else{
   i=0;
@@ -138,25 +140,34 @@ function push(){
   if(f){
    cttn+=c;
    ctty=gtky(ky,ctty,cttn);
-   ottt+=gttt(wd,ctty,cttn);
+   gttt(wd,ctty,cttn,sk);
    cttn="";
    ctty="";
   }else if((pr.length==j)&&(cttn!="")){
    p_vsty=gtky(ky,p_vsty,cttn);
-   ottt+=gttt(wd,p_vsty,cttn);
-   cttn=c;
+   if(gttt(wd,p_vsty,cttn,sk)&&(c=="\n")){
+    cttn="\\\n";
+   }else{
+    cttn=c;
+   }
   }else{
    cttn+=c;
   }
   p_vsty=ctty;
   i+=l;
  }while(i_pt.length>=i);
+ if(sk[sk.length-1].tt){
+  t=sk.pop();
+  sk[sk.length-1].sg+='<span class="'+t.tg+'">'+t.sg+'</span>';
+ }
+ ottt+=sk[0].sg;
  if(nrofsp>0){
   for(nrofsp;nrofsp>0;nrofsp--){
    spt_r_pt+=" ";
   }
   ottt=ottt.replace(/\t/g,spt_r_pt);
  }
+ ottt='<span class="cb62">'+ottt+'</span>';
  document.getElementById("o_pt").value=ottt;
  navigator.permissions.query({
   name:"clipboard-write"
@@ -186,19 +197,45 @@ function gtky(ky,ty,tn){
  return m;
 }
 
-function gttt(wd,ty,tt){
- var i,a,m;
+function gttt(wd,ty,tt,sk){
+ var i,a,m="",t,f=false;
  for(i=0;wd.length>i;i++){
   if(wd[i].na==ty){
    a=wd[i].cs;
    break;
   }
  }
- tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
- if((wd.length==i)||(a=="*")){
-  m=tt;
+ tt=tt.split("&").join("&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\\\n/g,'<span style="display:none">\n</span>');
+ if((a=="PGS")||(a=="PGE")){
+  if(sk[sk.length-1].tt){
+   t=sk.pop();
+   sk[sk.length-1].sg+='<span class="'+t.tg+'">'+t.sg+'</span>';
+  }
+  if(a=="PGS"){
+   sk.push({tg:tt.slice(2),sg:"",tt:false});
+  }else{
+   t=sk.pop();
+   if(t.sg!=""){
+    m='<span class="pagh '+t.tg+'"><span class="paghco">'+t.sg+'</span>';
+    if(tt.length>2){
+     m+='<span class="paghna"><span class="paghti"><span style="display:none;">{{</span>'+tt.slice(2)+'<span style="display:none;">}}</span></span></span>';
+    }else{
+     m+='<span style="display:none;">{{}}</span>';
+    }
+    m+='</span>';
+    f=true;
+   }
+  }
  }else{
-  m='<span class="'+a+'">'+tt+'</span>';
+  if(!sk[sk.length-1].tt){
+   sk.push({tg:"paghco",sg:"",tt:true});
+  }
+  if((wd.length==i)||(a=="*")){
+   m=tt;
+  }else{
+   m='<span class="'+a+'">'+tt+'</span>';
+  }
  }
- return m;
+ sk[sk.length-1].sg+=m;
+ return f;
 }

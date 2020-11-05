@@ -350,6 +350,13 @@
   margin:0.5em auto;
  }
  
+ .cb62 {
+  display:flex;
+  flex-direction:column;
+  margin-left:0.3em;
+  min-width:calc(100% - 0.5em);
+ }
+ 
  .cf00 {
   width:100%;
   height:6ex;
@@ -410,6 +417,14 @@
   background-color:#FED0F0;
  }
  
+ .bkgdgn {
+  background-color:#E0F8F0;
+ }
+ 
+ .bkgdyw {
+  background-color:#F8F0E0;
+ }
+ 
  .fxlr {
   flex-direction:row;
  }
@@ -465,5 +480,31 @@
   color:#808080;
  }
  
+ .pagh {
+  flex-grow:1;
+  min-width:calc(100% - 0.5em);
+  margin:0 0.3em 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:row;
+ }
  
+ .paghco {
+  flex-grow:1;
+ }
+ 
+ .paghna {
+  margin:0 0 0 0.5em;
+  padding:0 0.3em;
+  flex-basis:4em;
+  border-left:dashed 1px #404040;
+  border-right:dashed 1px #404040;
+  display:flex;
+  flex-direction:column;
+ }
+ 
+ .paghti {
+  margin:auto;
+  user-select:none;
+ }
  
