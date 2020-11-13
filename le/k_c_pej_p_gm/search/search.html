@@ -76,7 +76,7 @@
     <article class="cb21 fxtb">
      <h2 class="cb33">概要</h2>
      <span class="cb34">
-      今回は探索について解説していきます。<br>
+      今回は、全探索について解説していきます。<br>
       ABCにおいて、「可能性のあるものを全て列挙して当てはまる物を調べる」といった問題はよく出題されます。<br>
       一見数学的な問題で難しそうに見えて、実は全探索であったということもあります。<br>
       コンピュータの計算が早いことを生かして探索していきましょう。
@@ -106,7 +106,7 @@
     <article class="cb21 fxtb">
      <h2 class="cb33">全探索</h2>
      <span class="cb34">
-      ありうるものを全て列挙して判定します。<br>
+      競プロにおいて基本である全探索です。ありうるものを全て列挙して判定します。<br>
       全探索をすると<code>for</code>や<code>while</code>などがネストしてTLEしやすいため、時間計算量に注意してください。
      </span>
     </article>
@@ -114,7 +114,7 @@
      <div class="cb31">
       <h3 class="cb40">基本</h3>
       <span class="cb41">
-       要素数Nの数列AとKが与えられて、A<sub>i</sub>&times;A<sub>j</sub>&ge;Kとなる(i,j)の組の数を出力します。
+       要素数Nの数列Aと、整数Kが与えられて、A<sub>i</sub>&times;A<sub>j</sub>&ge;Kとなる(i,j)の組の数を出力します。
       </span>
      </div>
     </article>
@@ -126,7 +126,7 @@
        </button>
       </div>
       <code class="cb47">
-        <pre id="basicSerch" class="cb55 bkgdgy">
+      <pre id="basicSerch" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
     <span class="wdkywd">int</span> n<span class="wdsl">,</span> k<span class="wdsl">;</span>
@@ -146,7 +146,7 @@
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
-            </code>
+      </code>
      </div>
     </article>
     <article class="cb21 fxrl">
@@ -183,7 +183,7 @@
        </button>
       </div>
       <code class="cb47">
-        <pre id="artificeSearch" class="cb55 bkgdgy">
+      <pre id="artificeSearch" class="cb55 bkgdgy">
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
     <span class="wdkywd">int</span> n<span class="wdsl">;</span>
@@ -199,7 +199,7 @@
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>endl<span class="wdsl">;</span>
     <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 <span class="wdsl">}</span></pre>
-            </code>
+      </code>
      </div>
     </article>
     <article class="cb21 fxrl">
@@ -209,167 +209,6 @@
        これは<code>x &lt;= sqrt(n)</code>とほぼ同義です。「ほぼ」というのは、sqrt関数は返り値が<code>double</code>型であり、誤差が生じてしまいます。
        例えば5&le;√25は真ですが、もし<code>sqrt(25)</code>で誤差が生じて4.9999999999となってしまったら偽になってしまいます(実際に誤った判定をするのはnがもっと大きいときです)。
        しかし、5*5&le;25と判定すれば誤差は生じません。 そのため、このコードでは<code>x * x &lt;= n</code>を採用しています。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">BFS</h2>
-     <span class="cb34">
-      BFS(breadth first search, 幅優先探索)を用いると、迷路のスタートからゴールまでの最短距離を求めることなどができます。<br>
-      BFSにはqueueというデータ構造を用いるとうまくいきます。queueは「キュー」と読み、先入れ先出し(First In First Out, FIFO)の構造になっています。<br>
-      先入れ先出しとはどのようなものかというと、queueが英語で「順番を待つ人などの列」を表すとおり、そのイメージは「行列」です。<br>
-      例えば、もし後から並ぶ人がいればその人はその列の最後尾に並び(先入れ)、もし席が空いたら案内されるのは列の先頭にいる人です(先出し)。
-     </span>
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">探索する迷路</h3>
-      <span class="cb41">
-       ここでは、例として図のような迷路の探索を考えてみましょう。
-       白いマスが通行可能な空きます,黒いマスが通行不可能な壁マス,sがスタート,gがゴールを表しています。
-       通行可能なマスからは、上下左右に隣接する通行可能なマスに移動することができます。
-       迷路の外に移動することや、壁マスへ移動すること、斜めに移動することはできません。
-       最短何手でスタートからゴールまでたどり着けるかを求めてましょう。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Set.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step1</h3>
-      <span class="cb41">
-       まず、スタート地点のマスは当然スタート地点から手数0で到達可能なので、このマスは距離0で確定させます。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Step1.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step2</h3>
-      <span class="cb41">
-       次に、上下左右を見て距離確定済みや範囲外,壁のマスでなければ手数1(=0+1)で到達できるマスとして距離1を書きます。
-       図の場合、上と左のマスが範囲外ですが下と右のマスは未確定ですので、下と右のマスを距離1で確定させます。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Step2.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step3</h3>
-      <span class="cb41">
-       Step2で距離1を書いたマスから上下左右を見て、距離確定済みや範囲外,壁のマスでなければ手数2(=1+1)で到達できるマスとして距離2を書きます。
-       図の場合、スタート地点からみて右下のマスが距離2で確定されます。
-       下と右のどちらの1のマスから見るかによって2が確定する順番が違いますが、どちらも正しく距離2が書かれます
-       (左上4マスをスタート地点から時計回りにA,B,C,DとするとB,Dが1のマスになりますが、
-       Bから上下左右に見てCを2と確定させたのちDから上下左右に見てCが埋まっていても、
-       Dから上下左右に見てCを2と確定させたのちBから上下左右に見てCが埋まっていても関係ありません)。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Step3.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step4</h3>
-      <span class="cb41">
-       この操作を繰り返していきます(距離2を書いたマスから上下左右を見て距離3で確定させて、距離3を書いたマスから上下左右を見て距離4で確定させて...)。
-       このように7を書くまで繰り返したときが図の状態です。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Step4.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">終了条件</h3>
-      <span class="cb41">
-       一見、「壁以外のすべてマスに距離が書かれたら」に見えますが、例えば到達することのできない孤立地帯があった場合などに無限ループしてしまいます。
-       より汎用的な終了条件は、「探索しても新たにマスが見つからなかったとき」でしょう。図の状態は、7のマスから上下左右に見ていますが、新たにマスを見つけることはできません。
-       このような状況の時、ループを抜けて探索を終了しましょう。
-      </span>
-     </div>
-     <img class="cb30" src="BFS-Finish.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">実装例</h3>
-      <span class="cb41">
-       それでは、実装例を見ていきます。queueの使い方に注意してください。
-       左上(0,0)をスタート地点として、縦Hマス横WマスのH&times;Wマスからなる迷路を探索し、各マスについてスタート地点からの距離を求めます。
-       入力の形式は、1行目にH,Wが与えられ、2行目からのH行には迷路の各マスの情報が<code>#</code>は壁で<code>.</code>は道として与えられることを想定しています。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb37">
-      <div class="cb46">
-       <span class="cb54">BFS</span>
-       <button type="button" class="cb53" onclick="copy('BFS')">
-        <span class="cb61">COPY</span>
-       </button>
-      </div>
-      <code class="cb47">
-         <pre id="BFS" class="cb55 bkgdgy">
-  <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
-  <span class="wdkywd">void</span> BFS<span class="wdsl">(</span><span class="wdkywd">int</span> h<span class="wdsl">,</span> <span class="wdkywd">int</span> w<span class="wdsl">,</span> <span class="wdkywd">int</span> sx<span class="wdsl">,</span> <span class="wdkywd">int</span> sy<span class="wdsl">,</span> std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;&gt;</span> <span class="wdsl">&amp;</span>d<span class="wdsl">,</span> std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>string<span class="wdsl">&gt;</span> <span class="wdsl">&amp;</span>s<span class="wdsl">)</span> <span class="wdsl">{</span>
-      <span class="wdc_mt">// x,yの上下左右移動を配列で持つ
-  </span>    <span class="wdkywd">int</span> vx<span class="wdsl">[</span><span class="wdnr">4</span><span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">1</span><span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">};</span>
-      <span class="wdkywd">int</span> vy<span class="wdsl">[</span><span class="wdnr">4</span><span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdsl">{</span><span class="wdnr">1</span><span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">};</span>
-      <span class="wdc_mt">// スタート地点はスタート地点から距離0で到達可能
-  </span>    d<span class="wdsl">[</span>sy<span class="wdsl">][</span>sx<span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
-      <span class="wdc_mt">// queueで訪問するべきマスを持つ
-  </span>    std<span class="wdsl">::</span>queue<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>pair<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">&gt;&gt;</span> q<span class="wdsl">;</span>
-      <span class="wdc_mt">// 最初はスタート地点をqueueにqush
-  </span>    q.push<span class="wdsl">(</span>std<span class="wdsl">::</span>make_pair<span class="wdsl">(</span>sx<span class="wdsl">,</span> sy<span class="wdsl">));</span>
-      <span class="wdc_mt">// queueが空になるまで(訪問するべきマスが無くなるまで)
-  </span>    <span class="wdkywd">while</span> <span class="wdsl">(!</span>q.empty<span class="wdsl">())</span> <span class="wdsl">{</span>
-          <span class="wdc_mt">// queueの先頭が現在のマス
-  </span>        std<span class="wdsl">::</span>pair<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">&gt;</span> n <span class="wdsl">=</span> q.front<span class="wdsl">();</span>
-          <span class="wdc_mt">// 現在のマスはこれから見るのでpop
-  </span>        q.pop<span class="wdsl">();</span>
-          <span class="wdc_mt">// 現在のマスから上下左右を見る
-  </span>        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">4</span><span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
-              <span class="wdc_mt">// nx,nyが現在のマスから見ているマスの座標
-  </span>            <span class="wdkywd">int</span> nx <span class="wdsl">=</span> n.first <span class="wdsl">+</span> vx<span class="wdsl">[</span>i<span class="wdsl">];</span>
-              <span class="wdkywd">int</span> ny <span class="wdsl">=</span> n.second <span class="wdsl">+</span> vy<span class="wdsl">[</span>i<span class="wdsl">];</span>
-              <span class="wdc_mt">// 範囲外アクセスをしないようにそのマスが迷路の外だったらcontinue
-  </span>            <span class="wdkywd">if</span> <span class="wdsl">(</span>nx <span class="wdsl">&lt;</span> <span class="wdnr">0</span> <span class="wdsl">||</span> w <span class="wdsl">&lt;=</span> nx <span class="wdsl">||</span> ny <span class="wdsl">&lt;</span> <span class="wdnr">0</span> <span class="wdsl">||</span> h <span class="wdsl">&lt;=</span> ny<span class="wdsl">)</span> <span class="wdkywd">continue</span><span class="wdsl">;</span>
-              <span class="wdc_mt">// そのマスが未訪問でかつ道のマスなら
-  </span>            <span class="wdkywd">if</span> <span class="wdsl">(</span>d<span class="wdsl">[</span>ny<span class="wdsl">][</span>nx<span class="wdsl">]</span> <span class="wdsl">==</span> <span class="wdsl">-</span><span class="wdnr">1</span> <span class="wdsl">&amp;&amp;</span> s<span class="wdsl">[</span>ny<span class="wdsl">][</span>nx<span class="wdsl">]</span> <span class="wdsl">==</span> '.'<span class="wdsl">)</span> <span class="wdsl">{</span>
-                  <span class="wdc_mt">// そのマスの距離は現在のマスから+1で到達可能なので更新
-  </span>                d<span class="wdsl">[</span>ny<span class="wdsl">][</span>nx<span class="wdsl">]</span> <span class="wdsl">=</span> d<span class="wdsl">[</span>n.second<span class="wdsl">][</span>n.first<span class="wdsl">]</span> <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">;</span>
-                  <span class="wdc_mt">// そのマスを訪問するべきマスとしてqueueにpush
-  </span>                q.push<span class="wdsl">(</span>std<span class="wdsl">::</span>make_pair<span class="wdsl">(</span>nx<span class="wdsl">,</span> ny<span class="wdsl">));</span>
-              <span class="wdsl">}</span>
-          <span class="wdsl">}</span>
-      <span class="wdsl">}</span>
-      <span class="wdkywd">return</span><span class="wdsl">;</span>
-  <span class="wdsl">}</span>
-  <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
-      <span class="wdc_mt">// 縦と横を入力
-  </span>    <span class="wdkywd">int</span> h<span class="wdsl">,</span> w<span class="wdsl">;</span>
-      std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> h <span class="wdsl">&gt;&gt;</span> w<span class="wdsl">;</span>
-      <span class="wdc_mt">// 迷路を入力
-  </span>    std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>string<span class="wdsl">&gt;</span> s<span class="wdsl">(</span>h<span class="wdsl">);</span>
-      <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> h<span class="wdsl">;</span> i<span class="wdsl">++)</span> std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">[</span>i<span class="wdsl">];</span>
-      <span class="wdc_mt">// スタート地点から各マスの最短距離(全てのマスを未訪問(-1)で初期化する)
-  </span>    std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;&gt;</span> d<span class="wdsl">(</span>h<span class="wdsl">,</span> std<span class="wdsl">::</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;(</span>w<span class="wdsl">,</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">));</span>
-      <span class="wdc_mt">// BFSを行う
-  </span>    BFS<span class="wdsl">(</span>h<span class="wdsl">,</span> w<span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">,</span> d<span class="wdsl">,</span> s<span class="wdsl">);</span>
-      <span class="wdc_mt">// 結果を出力
-  </span>    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> h<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
-          <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> w<span class="wdsl">;</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
-              printf<span class="wdsl">(</span><span class="wdtt">"%2d%s"</span><span class="wdsl">,</span> d<span class="wdsl">[</span>i<span class="wdsl">][</span>j<span class="wdsl">],</span> j <span class="wdsl">&lt;</span> w <span class="wdsl">-</span> <span class="wdnr">1</span> <span class="wdsl">?</span> <span class="wdtt">" "</span> <span class="wdsl">:</span> <span class="wdtt">"\n"</span><span class="wdsl">);</span>
-          <span class="wdsl">}</span>
-      <span class="wdsl">}</span>
-      <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
-  <span class="wdsl">}</span></pre>
-           </code>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">計算量</h3>
-      <span class="cb41">
-       では、BFSの計算量はどうなるでしょうか。BFSにおいて、queueにpushされるマスの数は高々H&times;W個です。そのため、計算量はO(HW)になります。
       </span>
      </div>
     </article>
