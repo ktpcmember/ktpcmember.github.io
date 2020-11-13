@@ -436,6 +436,11 @@
  .fxtb {
   flex-direction:column;
  }
+
+ .tbct {
+  flex-direction: column;
+  align-items: center;
+ }
  
  .lepy_a, .lepy_b, .lepy_c {
   padding:0 0.3em;
