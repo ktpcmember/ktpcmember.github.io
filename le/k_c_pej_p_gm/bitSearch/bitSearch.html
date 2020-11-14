@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+ <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。bit全探索について解説しています。">
+ <meta name="author" content="駒場東邦物理部">
+ <meta http-equiv="content-language" content="ja">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <title>bit全探索 - 競技プログラミング講習 - 駒場東邦物理部</title>
+ <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+ <link rel="stylesheet" type="text/css" href="../../../style.css">
+ <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+ <script type="text/javascript" src="../../../header.js"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133906591-2');
+ </script>
+</head>
+
+<body>
+ <header class="ch00">
+  <img class="ch11" src="../../../images/br.jpg">
+ </header>
+ <div class="chb">
+  <div class="ch01">
+   <div class="ch10">
+    <div class="ch21">
+     <button type="button" class="ch31" onclick="ck()">
+      <img class="ch42" src="../../../images/menu.png">
+     </button>
+    </div>
+    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">駒場東邦物理部</span>
+      </span>
+      <a class="ch41" href="../../../index.html">
+       <span class="ch50">トップページ</span>
+      </a>
+      <a class="ch41" href="../../le.html">
+       <span class="ch50">講習トップ</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">競技プログラミング講習</span>
+      </span>
+      <a class="ch41" href="../k_c_pej_p_gm.html">
+       <span class="ch50">目次</span>
+      </a>
+      <a class="ch41" href="../none/none.html">
+       <span class="ch50">索引</span>
+      </a>
+      <a class="ch41" href="../bfs/bfs.html">
+       <span class="ch50">前回</span>
+      </a>
+      <a class="ch41" href="../binarySearch/binarySearch.html">
+       <span class="ch50">次回</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="cb00">
+   <div class="cb10">
+    <article class="cb20">
+     <h1>競技プログラミング講習/bit全探索</h1>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">概要</h2>
+     <span class="cb34">
+      今回は、bit全探索について解説します。<br>
+      bit全探索は、最近のABCのC問題あたりでよく出題されています。使えるようにしておきましょう。
+     </span>
+    </article>
+    <article class="cb21 fxlr">
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       重要語
+      </h4>
+      <h4 class="cb45">
+       bit全探索
+      </h4>
+      <span class="cb41">
+       2進数とビット演算を用いてある集合の部分集合を全探索できる
+      </span>
+     </div>
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       必要語
+      </h4>
+      <span class="cb41">
+       今回の必要語はありません。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">bit全探索</h2>
+     <span class="cb34">
+      2進数を用いてある集合の部分集合を全て列挙していくことができます。例えば、<code>{0, 1, 2}</code>の部分集合は、
+      <code>{0, 2}</code>や<code>{1}</code>や<code>{}</code>（空集合）などです。
+     </span>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">部分集合の表現</h3>
+      <span class="cb41">
+       まず、N個の整数A<sub>0</sub>, A<sub>1</sub>, ... A<sub>n-1</sub>からいくつかを選ぶということを考えてみましょう。
+       それぞれの整数A<sub>i</sub>に対して選ぶ/選ばないという選択をすることになりますから、選び方は全部で2<sup>N</sup>通りです。
+       n=3の時に考えてみると、
+       {},
+       {A<sub>0</sub>},
+       {A<sub>1</sub>},
+       {A<sub>0</sub>, A<sub>1</sub>},
+       {A<sub>2</sub>},
+       {A<sub>0</sub>, A<sub>2</sub>},
+       {A<sub>1</sub>, A<sub>2</sub>},
+       {A<sub>0</sub>, A<sub>1</sub>, A<sub>2</sub>}
+       の8（=2<sup>3</sup>）通りあります。
+       ここで、A<sub>i</sub>を選ぶことを1、選ばないことを0として2進数のiビット目と対応させてみましょう。
+       そうすると、各集合を2進数で表すことができます。例えば、{A<sub>0</sub>, A<sub>1</sub>}は011、
+       {A<sub>2</sub>}は100、{}は000のようになります。
+       このようにすると、各集合は000, 001, 010, 011, ... 111となり、10進数にすると0, 1, 2, 3, ... 7となります。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">部分集合の列挙</h3>
+      <span class="cb41">
+       このように部分集合を表現すれば、10進数で0, 1, 2, 3, ... 2<sup>N</sup>-1となるため、
+       通常の<code>for</code>ループで列挙することができます。2<sup>N</sup>-1まで回すため、継続条件式を
+       <code>b <span class="wdsl">&lt;</span> pow<span class="wdsl">(</span><span class="wdnr">2</span><span class="wdsl">,</span> n<span class="wdsl">);</span></code>
+       と書きたくなりますが、この書き方はあまりよくありません。2<sup>N</sup>は整数ですが、
+       pow関数は小数で計算するため、誤差が出る可能性があり、実行速度が遅いためです。
+       ではどうすればいいかというと、
+       <code>b <span class="wdsl">&lt;</span> <span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> n</code>
+       です。<code><span class="wdsl">&lt;</span></code>（左不等号）と<code><span class="wdsl">&lt;&lt;</span></code>（左シフト）
+       では<code><span class="wdsl">&lt;&lt;</span></code>のほうが優先順位が高いので、
+       <code>b <span class="wdsl">&lt;</span> <span class="wdsl">(</span><span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> n<span class="wdsl">)</span></code>
+       と解釈されます。2<sup>N</sup>と<code><span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> n</code>
+       の値は等しいですから、2<sup>N</sup>-1まで回すことができます。
+       2をN回かけて計算してもいいですが、こちらのほうが簡潔で実行速度は断然速いです。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <button type="button" class="cb53" onclick="copy('bitLoop')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="bitLoop" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> b <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> b <span class="wdsl">&lt;</span> <span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> n<span class="wdsl">;</span> b<span class="wdsl">++)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">// bが部分集合を表す
+</span><span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">実装例</h3>
+      <span class="cb41">
+       以上のことをまとめて実装すると、以下のようになります。
+       N個の整数A<sub>0</sub>, A<sub>1</sub>, ... A<sub>n-1</sub>からいくつかを選んで和をKにできるかどうか判定します。
+       計算量はO(2<sup>N</sup>)のため、1&le;N&le;20ほどが現実的です。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">bit全探索</span>
+       <button type="button" class="cb53" onclick="copy('bitSearch')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="bitSearch" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">,</span> k<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> n <span class="wdsl">&gt;&gt;</span> k<span class="wdsl">;</span>
+    vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> a<span class="wdsl">(</span>n<span class="wdsl">);</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdkywd">bool</span> ok <span class="wdsl">=</span> <span class="wdkywd">false</span><span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> b <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> b <span class="wdsl">&lt;</span> <span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> n<span class="wdsl">;</span> b<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">int</span> sum <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            <span class="wdkywd">if</span> <span class="wdsl">((</span>b <span class="wdsl">&gt;&gt;</span> i<span class="wdsl">)</span> <span class="wdsl">&amp;</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+                sum <span class="wdsl">+=</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+            <span class="wdsl">}</span>
+        <span class="wdsl">}</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>sum <span class="wdsl">==</span> k<span class="wdsl">)</span> ok <span class="wdsl">=</span> <span class="wdkywd">true</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>ok<span class="wdsl">)</span> cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Yes"</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">else</span> cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"No"</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">ビット演算(おまけ)</h2>
+     <span class="cb34">
+      AND、OR、XOR、NOT、左シフト、右シフトを紹介します。ビット単位の演算を行います。
+     </span>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">AND</h3>
+      <span class="cb41">
+       特定のビット以外を0にしたいときに使用します。AND演算の特性上、
+       <code>a & b</code>の結果は、bが1である部分はそのまま残り、0である部分は0になります。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">AND</span>
+       <button type="button" class="cb53" onclick="copy('AND')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="AND" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">,</span> b <span class="wdsl">=</span> <span class="wdnr">0b00111100</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> c <span class="wdsl">=</span> a <span class="wdsl">&amp;</span> b<span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b10010101
+    b | 0b00111100
+    --------------
+    c | 0b00010100 = 0x14
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%02X"</span><span class="wdsl">,</span> c<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">OR</h3>
+      <span class="cb41">
+       特定のビットを1にしたいときに使用します。OR演算の特性上、
+       <code>a | b</code>の結果は、bが1である部分は1になり、0である部分はそのまま残ります。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">OR</span>
+       <button type="button" class="cb53" onclick="copy('OR')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="OR" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">,</span> b <span class="wdsl">=</span> <span class="wdnr">0b00111100</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> c <span class="wdsl">=</span> a <span class="wdsl">|</span> b<span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b10010101
+    b | 0b00111100
+    --------------
+    c | 0b10111101 = 0xBD
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%02X"</span><span class="wdsl">,</span> c<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">XOR</h3>
+      <span class="cb41">
+       特定のビットを反転したいときに使用します。XOR演算の特性上、
+       <code>a ^ b</code>の結果は、bが1である部分は反転し、0である部分はそのまま残ります。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">XOR</span>
+       <button type="button" class="cb53" onclick="copy('XOR')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="XOR" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">,</span> b <span class="wdsl">=</span> <span class="wdnr">0b00111100</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> c <span class="wdsl">=</span> a <span class="wdsl">^</span> b<span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b10010101
+    b | 0b00111100
+    --------------
+    c | 0b10101001 = 0xA9
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%02X"</span><span class="wdsl">,</span> c<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">NOT</h3>
+      <span class="cb41">
+       全てのビットを反転したいときに使用します。NOT演算は全て反転してしまうため、
+       <code>0xF</code>が前に余計につくことが多いです（もちろんそれが必要ならいいですが）。
+       XOR演算のほうが特定のビットを反転できるため、NOT演算は使うことはあまりありません。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">NOT</span>
+       <button type="button" class="cb53" onclick="copy('NOT')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="NOT" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> b <span class="wdsl">=</span> <span class="wdsl">~</span>a<span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b00...010010101
+    -------------------
+    b | 0b11...101101010 = 0xFFFFFF6A
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%08X"</span><span class="wdsl">,</span> b<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">左シフト</h3>
+      <span class="cb41">
+       全てのビットを左にシフトしたいときに使用します。空いたビットは0で埋められ、はみ出たビットは無視されます。
+       左シフト演算の特性上、nビット左にシフトすると、値は2<sup>n</sup>倍になります（オーバーフローしなければ）。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">左シフト</span>
+       <button type="button" class="cb53" onclick="copy('LSHIFT')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="LSHIFT" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> b <span class="wdsl">=</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdnr">3</span><span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b000010010101 = 0x095 =  149
+    ------------------
+    b | 0b010010101000 = 0x4A8 = 1192
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%03X"</span><span class="wdsl">,</span> b<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">右シフト</h3>
+      <span class="cb41">
+       全てのビットを右にシフトしたいときに使用します。空いたビットは0で埋められ、はみ出たビットは無視されます。
+       右シフト演算の特性上、nビット右にシフトすると、値は2<sup>n</sup>分の1になります（小数部は捨てられる）。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">右シフト</span>
+       <button type="button" class="cb53" onclick="copy('RSHIFT')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+      <pre id="RSHIFT" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0b10010101</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> b <span class="wdsl">=</span> a <span class="wdsl">&gt;&gt;</span> <span class="wdnr">3</span><span class="wdsl">;</span>
+    <span class="wdc_mt">/*
+    a | 0b10010101 = 0x95 = 149
+    --------------
+    b | 0b00010010 = 0x12 =  18
+    */</span>
+    printf<span class="wdsl">(</span><span class="wdtt">"%02X"</span><span class="wdsl">,</span> b<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+   </div>
+  </div>
+  <footer class="cf00">
+   <div class="cf10">
+    <button class="cf21" onclick="tp()">
+     <img class="cf30" src="../../../images/top.png">
+    </button>
+    <span class="cf20">
+     (C) 2020 駒場東邦物理部[KTPC]
+    </span>
+   </div>
+  </footer>
+ </div>
+</body>
+
+</html>
