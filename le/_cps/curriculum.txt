@@ -1,0 +1,125 @@
+Hello,world
+	標準ライブラリ
+	std::cin
+	std::cout
+	リテラル
+	エスケープシーケンス
+	using namespace std
+	return
+型と変数
+	ビット(PC基礎講習へ)
+	1/2の補数(PC基礎講習へ)
+	IEEE-754(PC基礎講習へ)
+	サイズと上限下限
+		MSVCのサイズについて
+	組み込み
+		signed, unsigned
+		short, int, long, long long, std::byte
+		char, wchar_t, char8_t, char16_t, char32_t
+		float, double, long double
+		bool, true, false
+		void
+		nullptr_t, nullptr
+	ユーザー定義
+		クラス, 構造体, (共用体, 列挙体)
+			std::string
+	宣言
+	auto
+	using, typedef
+	初期化
+		= () {}
+	代入
+		=
+	スコープ
+	おまけ
+		C++標準が定義する大きさ
+		データモデル
+演算子と式と文
+	式
+	文
+		空文
+		式文
+		宣言文
+		複合文
+		制御文
+			選択文
+				if
+				else
+				switch
+			反復文
+				for
+				while
+				do-while
+			ジャンプ文
+				goto
+				break
+				continue
+				return
+		tryブロック
+	演算子の優先順位
+	単項
+		+ -
+	四則演算
+		+ - * / %
+	イン/デクリメント
+		++ --
+	ビットand/or/xor/反転
+		& | ^ ~
+	ビットシフト/ストリーム
+		<< >>
+	複合代入
+		+= -= *= /= %= &= |= ^= <<= >>=
+	関係演算子
+		< <= > >= == !=
+	論理和/積/否定
+		!
+	三項条件
+		? :
+	コンマ
+		,
+	goto
+	ラベル
+	if
+	else
+	switch
+		case
+		break
+	for
+		break
+		continue
+	while
+	do-while
+関数
+	宣言
+	定義
+		ODR
+	型
+	再帰
+	return
+	インライン
+	RVO, NRVO
+参照
+	expression
+			lvalue	(通常の左辺値オブジェクト)
+		glvalue		(lvalue + xvalue, ムーブされたオブジェクトの本質はlvalue)
+			xvalue	(ムーブが等されたオブジェクト)
+		rvalue		(xvalue + pvalue, 見た目で定義される広義での右辺値)
+			pvalue	(リテラルや関数の返り値, C++03までのrvalue)
+	左辺値参照
+	右辺値参照
+	(ユニヴァーサル参照)
+ポインタ
+	メモリ
+	アドレス
+	レジスタ
+	アドレス演算子
+		&
+	間接参照
+		*
+配列
+	修飾子
+	range-based for
+文字列
+C構造体
+単純なクラス
+継承
