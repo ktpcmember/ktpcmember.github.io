@@ -1,40 +1,66 @@
+・言語機能
 Hello,world
+	#include(簡単に)
+	コメント
 	標準ライブラリ
 	std::cin
 	std::cout
 	リテラル
-	エスケープシーケンス
-	using namespace std
+		整数
+		浮動小数
+		文字列
+			エスケープシーケンス
+	using namespace std(簡単に)
+	main関数
 	return
-型と変数
+	キーワード
+変数
 	ビット(PC基礎講習へ)
 	1/2の補数(PC基礎講習へ)
 	IEEE-754(PC基礎講習へ)
 	サイズと上限下限
 		MSVCのサイズについて
-	組み込み
-		signed, unsigned
-		short, int, long, long long, std::byte
-		char, wchar_t, char8_t, char16_t, char32_t
-		float, double, long double
-		bool, true, false
-		void
-		nullptr_t, nullptr
-	ユーザー定義
-		クラス, 構造体, (共用体, 列挙体)
-			std::string
-	宣言
-	auto
-	using, typedef
+	変数の宣言
+		型
+			組み込み
+				signed, unsigned, std::byte
+				short, int, long, long long
+				char, wchar_t
+				float, double, long double
+				bool
+			ユーザー定義
+				std::string
+			リテラル
+				true
+				false
+			using, typedef
+				int8_t, int16_t, int32_t, int64_t
+				size_t
+			キャスト
+				暗黙
+				C言語形式
+				static_cast
+		識別子
+			使える文字
+				a-z A-Z 0-9 _
+			数字から始めてはいけない
+			アンダースコアで始まる
+				グローバル空間であるとダメ
+			アンダースコアで始まりその直後に大文字が続く
+				いかなる場所でもダメ
+			ダブルアンダースコアを持つ
+				いかなる場所でもダメ
 	初期化
 		= () {}
 	代入
 		=
 	スコープ
+		グローバル
+		ブロックスコープ
 	おまけ
 		C++標準が定義する大きさ
 		データモデル
-演算子と式と文
+式と文
 	式
 	文
 		空文
@@ -75,51 +101,334 @@ Hello,world
 		!
 	三項条件
 		? :
-	コンマ
+	コンマ演算子
 		,
 	goto
 	ラベル
+	複合文
+		{}
 	if
 	else
 	switch
 		case
 		break
-	for
+		default
+		fall-through
+	while
+		while
+		do-while
+		スコープ
 		break
 		continue
-	while
-	do-while
+	for
+		for
+		スコープ
+		break
+		continue
 関数
 	宣言
 	定義
+		return
+		delete定義
+		多重定義
 		ODR
-	型
-	再帰
-	return
-	インライン
-	RVO, NRVO
-参照
-	expression
-			lvalue	(通常の左辺値オブジェクト)
-		glvalue		(lvalue + xvalue, ムーブされたオブジェクトの本質はlvalue)
-			xvalue	(ムーブが等されたオブジェクト)
-		rvalue		(xvalue + pvalue, 見た目で定義される広義での右辺値)
-			pvalue	(リテラルや関数の返り値, C++03までのrvalue)
-	左辺値参照
-	右辺値参照
-	(ユニヴァーサル参照)
+	引数
+		デフォ引数
+	返り値
+		void
+		最適化
+			戻り値の最適化(RVO)
+			名前付き戻り値の最適化(NRVO)
+	スコープ
+		関数の引数のスコープ
+		関数スコープ
+	関数呼び出し演算子
+		()
+	static
+		静的ローカル変数
+	関数の型
+	再帰関数
 ポインタ
-	メモリ
-	アドレス
-	レジスタ
+	PC上での変数
+		メモリ
+		アドレス
+		レジスタ
 	アドレス演算子
 		&
 	間接参照
 		*
+	リテラルとヌルポインタ
+		NULLマクロ
+		nullptr
+		未定義動作
+	reinterpret_cast
+		ポインタ同士のキャスト
+		整数のポインタへのキャスト
+参照
+	値のタイプ
+		lvalue
+		rvalue
+		所有権
+	reference
+		lavlue reference(左辺値参照)
+		rvalue reference(右辺値参照)
+		Qiita - みんなlvalueとrvalueを難しく考えすぎちゃいないかい？
+		(ユニヴァーサル参照)
 配列
-	修飾子
-	range-based for
-文字列
+	定数
+		const
+			const_cast
+	宣言
+	初期化
+	次元
+		1次元
+		多次元
+	メモリアクセス
+		先頭アドレス
+			アドレスを用いたアクセス
+		添え字
+			添え字演算子
+			std::stringの添え字演算子
+			インデックスループ
+		range-based for
+		範囲外アクセス
+			未定義動作
+	ポインタへの降格
+	文字コード
+		Unicode(PC基礎講習へ)
+		char, wchar_t, char8_t, char16_t, char32_t
+	文字列形式
+		null終端
+		文字数
+コマンドライン
+	main関数
+		int main()
+		int main(int argc, char * argv [])
+		int WinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 C構造体
-単純なクラス
-継承
+	メンバ
+		データメンバ
+	ドット演算子
+		.
+	アロー演算子
+		->
+	おまけ
+		Windows APIの構造体
+例外
+	throw
+	try-catch
+	noexcept
+名前空間
+	宣言
+	スコープ
+		名前空間スコープ
+	スコープ解決演算子
+		::
+	標準ライブラリ
+		std
+		and more ...
+	inline namespace
+	省略系
+		using指令
+		using宣言
+		名前空間のエイリアス
+クラス
+	メンバ
+		スコープ
+			クラススコープ
+		データメンバ
+			mutable
+			コンストラクタによる初期化
+			デフォルトメンバ初期化子
+		メンバ関数
+			コンストラクタ
+				継承コンストラクタ
+				デフォルトコンストラクタ
+				変換コンストラクタ
+				初期化子リスト
+			デストラクタ
+			変換関数
+			explict
+			thisポインタ
+			修飾
+				const
+				左辺値修飾
+				右辺値就職
+		型メンバ
+			エイリアス
+			ネストした型
+		アクセスモード
+			public
+			private
+		inlineメンバ
+		静的メンバ
+			static
+			静的データメンバ
+			静的メンバ関数
+			静的定数メンバ
+		ビットフィールド
+		フレンド宣言
+			friend
+		メンバポインタ
+			メンバポインタアクセス演算子
+				.*
+				->*
+	継承
+		基底クラス(親クラス)
+		派生クラス(子クラス)
+		仮想
+			仮想関数
+			純粋仮想関数
+				抽象クラス
+		オーバーライド
+			final
+			override
+		dynamic_cast
+	演算子の多重定義
+		三方比較演算子(宇宙船演算子)
+			<=>
+	ムーブセマンティクス
+		値のタイプ(規格準拠)
+			基本カテゴリ
+					lvalue	(通常の左辺値オブジェクト)
+				glvalue		(lvalue + xvalue, ムーブされたオブジェクトの本質はlvalue)
+					xvalue	(ムーブが等されたオブジェクト)
+				rvalue		(xvalue + pvalue, 見た目で定義される広義での右辺値)
+					pvalue	(リテラルや関数の返り値, C++17以降はRVOによりムーブされない)
+			特殊カテゴリ
+				保留中のメンバ関数呼び出し
+				void式
+				ビットフィールド
+			cppreference.com - 値カテゴリ
+		コンストラクタ
+			コピーコンストラクタ
+			ムーブコンストラクタ
+			コピー代入
+			ムーブ代入
+			default定義
+	関数オブジェクト
+		関数のポインタ
+		関数の参照
+		関数オブジェクト型
+		ラムダ
+	亜種
+		共用体
+			union
+			unionライクなクラス
+		列挙体
+			列挙スコープ
+			enum
+			enum class
+メモリの動的確保
+	new
+	delete
+	RAII
+	動的な配列クラス
+ビルド
+	コンパイル
+		翻訳単位
+		翻訳フェーズ
+		プリプロセス
+		コンパイル
+		アセンブル
+		リンク
+コンパイル時実行
+	constexpr
+		constexpr関数
+		constexprクラス
+			constexprコンストラクタ
+		constexpr変数
+	consteval
+		consteval関数
+	テンプレート
+		共通
+			スコープ
+				テンプレート引数スコープ
+			テンプレート仮引数
+				ユニヴァーサル参照
+			テンプレート実引数
+			実体化
+				明示的実体化
+			特殊化
+				部分特殊化
+				完全特殊化
+			デフォルトテンプレート引数
+			実引数推定
+			非型テンプレート
+			実引数依存の名前探索(ADL)
+		テンプレートテンプレート
+		関数テンプレート
+		クラステンプレート
+		変数テンプレート
+		コンセプト
+			Substitution Failure Is Not An Error(SFINAE)
+			requires
+				節
+				式
+		パラメータパック
+			std::tuple
+			sizeof...
+			畳み込み式
+	型推論
+		ユーザー定義リテラル
+		auto
+		decltype
+		decltype(auto)
+		構造化束縛
+		返り値の後置
+			autoブレスホルダー
+	static_assert
+プリプロセッサ
+	#if
+	#ifdef
+	#ifndef
+	#else
+	#elif
+	#endif
+	#define
+		オブジェクトライク
+		関数ライク
+			#
+			...
+			__VA_OPT__
+			__VA_ARGS__
+		##
+	定義済みマクロ
+		__cplusplus
+		__STDC_HOSTED__
+		__FILE__
+		__LINE__
+		__DATE__
+		__TIME__
+		__STDC__
+		__STDC_VERSION__
+		__STDC_ISO_10646__
+		__STDC_MB_MIGHT_NEQ_WC__
+		__func__
+	機能テストマクロ
+	#undef
+	#include
+		__has_inclued
+	#error
+	#pragma
+分割コンパイル
+	cpp
+	h/hpp
+	翻訳単位
+	inline
+		インライン関数
+		インライン変数
+	リンケージ
+		外部リンケージ
+			extern
+		内部リンケージ
+			static
+	言語リンケージ
+		C++リンケージ
+		Cリンケージ
+	ODR
+	インクルードガード
+		#defineによるガード
+		#pragma once
+	
+・ライブラリ
