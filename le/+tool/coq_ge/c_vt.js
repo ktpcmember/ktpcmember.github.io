@@ -1,5 +1,5 @@
 ﻿
-function push(){
+function push(os){
  var i_pt=document.getElementById("i_pt").value;
  var la=document.getElementById("la").value;
  var nrofsp=document.getElementById("nrofsp").value;
@@ -7,6 +7,7 @@ function push(){
  var wd=new Array(),pr=new Array(),cr=new Array(),ky=new Array();
  var p_vsty="",ctty="",cttn="";
  var sk=new Array();
+ var ostt;
  sk.push({tg:"",sg:"",tt:false});
  r_qt=new XMLHttpRequest();
  r_qt.open("GET","https://www.ktpc.tokyo/le/+tool/coq_ge/"+la+".txt",false);
@@ -167,14 +168,19 @@ function push(){
   }
   ottt=ottt.replace(/\t/g,spt_r_pt);
  }
- ottt='<span class="cb62">'+ottt+'</span>';
+ if(os==0){
+  ottt='<span class="cb62">'+ottt+'</span>';
+  ostt="multi-line";
+ }else{
+  ostt="single-line";
+ }
  document.getElementById("o_pt").value=ottt;
  navigator.permissions.query({
   name:"clipboard-write"
  });
  navigator.clipboard.writeText(ottt).then(
   function(){
-   alert("Copied!");
+   alert("Copied for "+ostt);
   },
   function(){
    alert("Failed to copy...");
