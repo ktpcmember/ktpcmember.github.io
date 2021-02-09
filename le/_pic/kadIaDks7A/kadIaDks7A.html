@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。加減算について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>加減算 - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../hcdI1H/hcdI1H.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../kcAVG/kcAVG.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/加減算</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、PICにおける加減算と、負値の表現について解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        インクリメント
+       </h4>
+       <span class="cb41">
+        1を足すこと
+       </span>
+       <h4 class="cb45">
+        デクリメント
+       </h4>
+       <span class="cb41">
+        1を引くこと
+       </span>
+       <h4 class="cb45">
+        カウント
+       </h4>
+       <span class="cb41">
+        ループなどの回数を数えること
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">
+        今回の必要語はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">1の加減算</h2>
+      <span class="cb34">
+       はじめに、加減算のうちで最も簡単な演算であふ、1の加算を解説します。<br>
+       この演算は、特にインクリメント<span class="cb56">Increment</span>と呼ばれます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">INC命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">INC</code>命令は、インクリメントを行う命令です。<br>
+        1つ目の引数に計算する値が入っているレジスタを、2つ目には結果の保存先を指定します。<br>
+        ここで、<case>W</case>を保存先に指定すると、Wレジスタは計算に影響しませんが、上書きされてしまいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">DEC命令</h2>
+      <span class="cb34">
+       <code class="wdkywd">DEC</code>命令は、1を引く命令です。<br>
+       このことを、デクリメント<span class="cb56">Decrement</span>と呼びます。<br>
+       インクリメントと対称の動作で、<code class="wdnr">$FF</code>を足す命令と言い換えることもできます。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">符号反転</h2>
+      <span class="cb34">
+       <code class="wdkywd">COM</code>命令と<code class="wdkywd">INC</code>命令を使うと、値の符号を反転させることができます。<br>
+       ただし、<code class="wdnr">-128</code>は符号を反転すると8ビットに収まらなくなるので、気をつけてください。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">カウント</h2>
+      <span class="cb34">
+       ある回数だけループ内の命令を繰り返したい場合、実行回数を数えなくてはなりません。<br>
+       このことをカウント、回数を保存するレジスタをカウンタといいます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">INS/DES命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">INS</code>命令は、<code class="wdkywd">INC</code>命令の動作をしたあと、計算結果が<code class="wdnr">0</code>であれば、次の命令をスキップします。<br>
+        <code class="wdkywd">BCS</code>命令などと同様、スキップすると2サイクルを要します。<br>
+        また、計算結果はスキップに関係なく保存されます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">8ビットの加減算</h2>
+      <span class="cb34">
+       PICには、8ビットの値の加減算を行う命令もあります。<br>
+       インクリメントなども含め、引数の1ビットが結果の複数ビットに影響する計算を、ビット演算に対して算術演算といいます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ADD/SUB命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">ADD</code>命令が加算、<code class="wdkywd">SUB</code>命令が減算です。<br>
+        引数は<code class="wdkywd">AND</code>命令などと同じで、レジスタ同士と即値を使えます。<br>
+        ただし、<code class="wdkywd">SUB</code>命令は、Wレジスタの値を、引数のレジスタや即値から引きます。<br>
+        逆の動作を行う命令はありませんが、代替手段があります。<br>
+        Wレジスタから即値を引きたい場合は、その値の負値を引数に<code class="wdkywd">ADD</code>命令を使います。<br>
+        レジスタ同士の演算の場合は、演算後の値の負値を計算するか、計算の順序を見直します。
+       </span>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
