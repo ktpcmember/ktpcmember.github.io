@@ -145,6 +145,27 @@
        </span>
       </div>
      </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">符号反転の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$20</span>
+
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">5</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span>R <span class="wdc_mt">#$05
+</span><span class="wdkywd">COM</span><span class="wdsl">.</span>R <span class="wdc_mt">#$FA
+</span><span class="wdkywd">INC</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F <span class="wdc_mt">#$FB
+</span>      <span class="wdc_mt">#$FBは-5と解釈できる</span></span></span>
+</pre>
+       </code>
+      </div>
+     </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">カウント</h2>
       <span class="cb34">
@@ -158,8 +179,32 @@
        <span class="cb41">
         <code class="wdkywd">INS</code>命令は、<code class="wdkywd">INC</code>命令の動作をしたあと、計算結果が<code class="wdnr">0</code>であれば、次の命令をスキップします。<br>
         <code class="wdkywd">BCS</code>命令などと同様、スキップすると2サイクルを要します。<br>
-        また、計算結果はスキップに関係なく保存されます。
+        また、計算結果はスキップに関係なく保存されます。<br>
+        <code class="wdkywd">DES</code>命令も同様に、<code class="wdkywd">DEC</code>命令に対応する条件分岐命令です。
        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">カウントの例</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>C<span class="wdsl">.</span><span class="wdnr">$20</span>
+
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">10</span> <span class="wdc_mt">#10回ループ
+</span><span class="wdkywd">MOV</span><span class="wdsl">.</span>C  <span class="wdc_mt">#カウンタに代入
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>LOOP
+  <span class="wdc_mt">#実行内容
+</span>  <span class="wdkywd">DES</span><span class="wdsl">.</span>C<span class="wdsl">.</span>F <span class="wdc_mt">#10回引くと終わり
+</span>    <span class="wdkywd">GOT</span><span class="wdsl">.</span>LOOP
+</span></span>
+</pre>
+       </code>
       </div>
      </article>
      <article class="cb21 fxtb">
