@@ -1,3 +1,4 @@
+網羅的に機能を挙げる
 ・言語機能
 Hello,world
 	#include(簡単に)
@@ -338,6 +339,7 @@ C構造体
 		constexprクラス
 			constexprコンストラクタ
 		constexpr変数
+ contexpr if文
 	consteval
 		consteval関数
 	テンプレート
