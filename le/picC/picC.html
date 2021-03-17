@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,PIC,C言語,講習">
+	<meta name="description" content="駒場東邦物理部(KTPC)部員向けPICマイコン講習（C言語）の資料です。">
+	<meta name="author" content="駒場東邦物理部">
+	<meta http-equiv="content-language" content="ja">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>PIC講習(C言語) - 駒場東邦物理部</title>
+	<link rel="icon" type="image/jpeg" href="../../images/logo.jpg">
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../static.css">
+	<script type="text/javascript" src="../../header.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-133906591-2');
+	</script>
+</head>
+
+<body>
+	<header class="ch00">
+		<img class="ch11" src="../../images/br.jpg">
+	</header>
+	<div class="chb">
+		<div class="ch01">
+			<div class="ch10">
+				<div class="ch21">
+					<button type="button" class="ch31" onclick="ck()">
+						<img class="ch42" src="../../images/menu.png">
+					</button>
+				</div>
+				<div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">駒場東邦物理部</span>
+						</span>
+						<a class="ch41" href="../../index.html">
+							<span class="ch50">トップページ</span>
+						</a>
+						<a class="ch41" href="../le.html">
+							<span class="ch50">講習トップ</span>
+						</a>
+					</div>
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">プログラミング班</span>
+						</span>
+						<a class="ch41" href="../_p_cba/_p_cba.html">
+							<span class="ch50">PC基礎</span>
+						</a>
+						<a class="ch41" href="../_cps/_cps.html">
+							<span class="ch50">C++</span>
+						</a>
+						<a class="ch41" href="../y_wwai/y_wwai.html">
+							<span class="ch50">WinAPI</span>
+						</a>
+						<a class="ch41" href="../uy/uy.html">
+							<span class="ch50">Unity</span>
+						</a>
+						<a class="ch41" href="../q_c_puba/q_c_puba.html">
+							<span class="ch50">コンピュータ基礎</span>
+						</a>
+						<a class="ch41" href="../k_c_pej_p_gm/k_c_pej_p_gm.html">
+							<span class="ch50">競技プログラミング</span>
+						</a>
+					</div>
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">電子工作・マイコン班</span>
+						</span>
+						<a class="ch41" href="../k_enba/k_enba.html">
+							<span class="ch50">電工基礎</span>
+						</a>
+						<a class="ch41" href="../_pic/_pic.html">
+							<span class="ch50">PICマイコン（アセンブリ言語）</span>
+						</a>
+						<a class="ch41" href="../picC/picC.html">
+							<span class="ch50">PICマイコン（C言語）</span>
+						</a>
+					</div>
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">ピタゴラ班</span>
+						</span>
+						<a class="ch41" href="../psk_ep/psk_ep.html">
+							<span class="ch50">ピタゴラ</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cb00">
+			<div class="cb10">
+				<article class="cb20">
+					<h1>PIC講習(C言語)</h1>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">概要</h3>
+						<span class="cb41">
+							本講習では、PICマイコンの使い方について解説します。<br>
+							電子工作にプログラムを組み込み、複雑なロボットなども作れるようになるはずです。<br>
+							物理部での作業を想定していますが、必要な部品を揃えればどこでもできます。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">内容</h3>
+						<span class="cb41">
+							ほとんどの章は、PICにプログラムを書き込み、動作させるまでを想定しています。<br>
+							片付けまで含め、1時間ほどかかると思います。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">目次 - 基礎編</h2>
+					<span class="cb34">
+						自分のPCに開発環境をインストールしたい場合は、インストールの章を読んでください。<br>
+						それ以外は、すべての章を順番に読んでください。
+					</span>
+				</article>
+				<article class="cb21 fxtb">
+					<div class="cb35">
+						<a class="cb42">インストール<span class="lepy_c">C</span></a>
+						<span class="cb43">PICマイコン/機械語/コンパイル/コンパイラ/PICkit/IDE/XC8</span>
+					</div>
+					<div class="cb35">
+						<a class="cb42" href="helloWorld/helloWorld.html">プログラムの作成と書き込み<span class="lepy_a">A</span></a>
+						<span class="cb43">プロジェクト/ソースファイル/ビルド</span>
+					</div>
+				</article>
+			</div>
+		</div>
+		<footer class="cf00">
+			<div class="cf10">
+				<button class="cf21" onclick="tp()">
+					<img class="cf30" src="../../images/top.png">
+				</button>
+				<span class="cf20">
+					(C) 2020 駒場東邦物理部[KTPC]
+				</span>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>
