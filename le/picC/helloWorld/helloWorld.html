@@ -252,6 +252,8 @@
 
 <span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>xc.h<span class="wdsl">&gt;</span>
 
+<span class="wdp_q_p_csc_md">#define</span> _XTAL_FREQ <span class="wdnr">8000000</span>
+
 <span class="wdc_mt">// コンフィギュレーションの設定
 </span>#pragma config FOSC <span class="wdsl">=</span> INTOSC
 #pragma config WDTE <span class="wdsl">=</span> OFF
@@ -280,8 +282,11 @@
     TRISB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
 
     <span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-        <span class="wdc_mt">// ここに書く
-</span>    <span class="wdsl">}</span>
+        RB0 <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+        __delay_ms<span class="wdsl">(</span><span class="wdnr">1000</span><span class="wdsl">);</span>
+        RB0 <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+        __delay_ms<span class="wdsl">(</span><span class="wdnr">1000</span><span class="wdsl">);</span>
+    <span class="wdsl">}</span>
 <span class="wdsl">}</span></span></span></pre>
       </code>
      </div>
