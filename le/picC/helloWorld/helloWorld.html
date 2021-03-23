@@ -122,7 +122,7 @@
 					<div class="cb31">
 						<h3 class="cb40">Step1</h3>
 						<span class="cb41">
-							画面右上のNew Projectのアイコンをクリックしてください。
+							画面左上のNew Projectのアイコンをクリックしてください。
 						</span>
 					</div>
 				</article>
@@ -196,7 +196,7 @@
 					<div class="cb31">
 						<h3 class="cb40">Step1</h3>
 						<span class="cb41">
-							画面右上の、New Fileのアイコンをクリックしてください（Source Filesのところを選択した状態でクリックすると、確実にここにソースファイルが作られるのでよいです）。
+							画面左上の、New Fileのアイコンをクリックしてください（Source Filesのところを選択した状態でクリックすると、確実にここにソースファイルが作られるのでよいです）。
 						</span>
 					</div>
 				</article>
@@ -223,6 +223,7 @@
 						</span>
 					</div>
 				</article>
+
 				<article class="cb21 fxrl">
 					<img class="cb32" src="sStep3.png">
 				</article>
@@ -284,16 +285,16 @@
     OSCCON <span class="wdsl">=</span> <span class="wdnr">0b01110010</span><span class="wdsl">;</span>
     ANSELA <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
     ANSELB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
-    PORTA <span class="wdsl">=</span> <span class="wdnr">0xFF</span><span class="wdsl">;</span>
-    PORTB <span class="wdsl">=</span> <span class="wdnr">0xFF</span><span class="wdsl">;</span>
+    PORTA <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+    PORTB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
     TRISA <span class="wdsl">=</span> <span class="wdnr">0x20</span><span class="wdsl">;</span>
     TRISB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
 
     <span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span>
         RB0 <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
-        __delay_ms<span class="wdsl">(</span><span class="wdnr">1000</span><span class="wdsl">);</span>
+        __delay_ms<span class="wdsl">(</span><span class="wdnr">500</span><span class="wdsl">);</span>
         RB0 <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
-        __delay_ms<span class="wdsl">(</span><span class="wdnr">1000</span><span class="wdsl">);</span>
+        __delay_ms<span class="wdsl">(</span><span class="wdnr">500</span><span class="wdsl">);</span>
     <span class="wdsl">}</span>
 <span class="wdsl">}</span></span></span></pre>
       			</code>
@@ -303,7 +304,7 @@
 					<div class="cb31">
 						<h3 class="cb40">ビルドの実行</h3>
 						<span class="cb41">
-							右上のビルドをクリックしてください。
+							画面左上のビルドをクリックしてください。
 						</span>
 					</div>
 				</article>
@@ -331,6 +332,82 @@
 				</article>
 				<article class="cb21 fxrl">
 					<img class="cb32" src="buildFailed.png">
+				</article>
+
+				<article class="cb21 fxtb">
+					<h2 class="cb33">書き込み</h2>
+					<span class="cb34">
+						では、PICに書き込んでいきます。
+					</span>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">電源の供給設定</h3>
+						<span class="cb41">
+							画面左のProject Propertiesをクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="projectProperties.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<span class="cb41">
+							左側のCategoriesはPICkit3を選択して、右側のOption categoriesはPowerを選択してください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="power.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<span class="cb41">
+							Power target circuit from PICkit3にチェックを入れたら、OKをクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="voltage.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">書き込み実行</h3>
+						<span class="cb41">
+							では、PICkit3とパソコンを専用の赤いケーブルでつないでください。そして、PICkit3とPICをつなぐのですが、
+							物理部には、PICが外しやすいゼロプレッシャーICソケットで作った変換基盤がありますので、それを使ってください。
+							といっても、ここの接続はそれぞれのピンに対応するピンをつないで10kΩの抵抗を挟むだけでよいので、ブレッドボードでも可能です。<br>
+							接続し終わったら、Make and Program Device Main Projectをクリックしてください。その際、Toolを聞かれることがありますが、PICkit3を選択してください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="write.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<span class="cb41">
+							初回の書き込みは遅い印象がありますので、気長に待ってください。書き込みが成功すると、Programming Verify Completeというメッセージが出ます。<br>
+							ちなみに、このMake and Program Device Main Projectボタンは、書き込みをする前にBuildもやってくれるので、いちいちBulidしてからMake~を押す必要はありません。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">回路</h2>
+					<span class="cb34">
+						では、回路の準備をしていきます。以下の回路を組んでください。<br>
+						電圧は、3Vか4.5Vがよいでしょう（一応データシートには1.8V~5.5Vと書いてあるので、6Vは推奨しません）。
+					</span>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="LtikaCir.jpg">
+				</article>
+				<article class="cb21 fxtb">
+					<span class="cb34">
+						組んだら、電源を入れてみてください。うまくいけば、LEDが点滅します。<br>
+						これで、環境の確認は終わりです。お疲れ様でした。
+					</span>
 				</article>
 			</div>
 		</div>
