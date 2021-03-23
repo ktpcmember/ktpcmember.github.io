@@ -2,246 +2,254 @@
 <html>
 
 <head>
- <meta charset="UTF-8">
- <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,PIC,C言語,講習">
- <meta name="description" content="駒場東邦物理部(KTPC)部員向けPICマイコン講習（C言語）の資料です。プログラムの作成と書き込みについて解説しています。">
- <meta name="author" content="駒場東邦物理部">
- <meta http-equiv="content-language" content="ja">
- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- <title>プログラムの作成と書き込み - PIC講習 - 駒場東邦物理部</title>
- <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
- <link rel="stylesheet" type="text/css" href="../../../style.css">
- <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
- <script type="text/javascript" src="../../../header.js"></script>
- <!-- Global site tag (gtag.js) - Google Analytics -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+	<meta charset="UTF-8">
+	<meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,PIC,C言語,講習">
+	<meta name="description" content="駒場東邦物理部(KTPC)部員向けPICマイコン講習（C言語）の資料です。プログラムの作成と書き込みについて解説しています。">
+	<meta name="author" content="駒場東邦物理部">
+	<meta http-equiv="content-language" content="ja">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>プログラムの作成と書き込み - PIC講習 - 駒場東邦物理部</title>
+	<link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+	<link rel="stylesheet" type="text/css" href="../../../style.css">
+	<link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+	<script type="text/javascript" src="../../../header.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-  gtag('config', 'UA-133906591-2');
- </script>
+		gtag('config', 'UA-133906591-2');
+	</script>
 </head>
 
 <body>
- <header class="ch00">
-  <img class="ch11" src="../../../images/br.jpg">
- </header>
- <div class="chb">
-  <div class="ch01">
-   <div class="ch10">
-    <div class="ch21">
-     <button type="button" class="ch31" onclick="ck()">
-      <img class="ch42" src="../../../images/menu.png">
-     </button>
-    </div>
-    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
-     <div class="ch32">
-      <span class="ch40">
-       <span class="ch50">駒場東邦物理部</span>
-      </span>
-      <a class="ch41" href="../../../index.html">
-       <span class="ch50">トップページ</span>
-      </a>
-      <a class="ch41" href="../../le.html">
-       <span class="ch50">講習トップ</span>
-      </a>
-     </div>
-     <div class="ch32">
-      <span class="ch40">
-       <span class="ch50">競技プログラミング講習</span>
-      </span>
-      <a class="ch41" href="../picC.html">
-       <span class="ch50">目次</span>
-      </a>
-      <a class="ch41" href="../none/none.html">
-       <span class="ch50">索引</span>
-      </a>
-      <a class="ch41" href="">
-       <span class="ch50">前回</span>
-      </a>
-      <a class="ch41" href="">
-       <span class="ch50">次回</span>
-      </a>
-     </div>
-    </div>
-   </div>
-  </div>
-  <div class="cb00">
-   <div class="cb10">
-    <article class="cb20">
-     <h1>PIC講習/プログラムの作成と書き込み</h1>
-    </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">概要</h2>
-     <span class="cb34">
-      今回は、MPLAB X IDEの使い方と、どのようにPICに書き込むのかを説明します。
-     </span>
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb36 debr">
-      <h4 class="cb44">
-       重要語
-      </h4>
-      <h4 class="cb45">
-       プロジェクト
-      </h4>
-      <span class="cb41">
-       プログラムを作成するためのファイル群
-      </span>
-      <h4 class="cb45">
-       ソースファイル
-      </h4>
-      <span class="cb41">
-       処理を記したファイル
-      </span>
-      <h4 class="cb45">
-       ビルド
-      </h4>
-      <span class="cb41">
-       コンパイルに加え、ライブラリなどの必要なファイルをつなぐこと
-      </span>
-     </div>
-     <div class="cb36 debr">
-      <h4 class="cb44">
-       必要語
-      </h4>
-      <span class="cb41">
-       今回の必要語はありません。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">プロジェクトの作成</h2>
-     <span class="cb34">
-      では、プロジェクトを作成していきますので、まずはMPLAB X IDEを起動してください。
-     </span>
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step1</h3>
-      <span class="cb41">
-       画面右上のNew Projectのアイコンをクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step1.png">
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step2</h3>
-      <span class="cb41">
-       Microchip EmbeddedとStadalone Projectを選択して、Next>をクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step2.png">
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step3</h3>
-      <span class="cb41">
-       DeviceはPIC16F1827を選択して（キーボードから入力できるので、それを活用するとよいです）、Next>をクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step3.png">
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step4</h3>
-      <span class="cb41">
-       デバッグヘッダは使わないので、そのままNext>をクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step4.png">
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step5</h3>
-      <span class="cb41">
-       コンパイラは、XC8を使います。XC8を選択して、Nextをクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step5.png">
-    </article>
-    <article class="cb21 fxlr">
-     <div class="cb31">
-      <h3 class="cb40">Step6</h3>
-      <span class="cb41">
-       Project Nameにはプロジェクトの名前を入力してください（ここではlessonとしましたが、何でもよいです）。
-       そして、EncodingはUTF-8にすると、日本語が正常に使えるようになります（Shift_JISでも日本語は使えますが、0x5cの問題があるのでおすすめしません）。
-       最後に、Finishをクリックすると、プロジェクトの作成が完了します。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="step6.png">
-    </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">ソースファイルの作成</h2>
-     <span class="cb34">
-      続いて、ソースファイルを作成していきます。
-     </span>
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step1</h3>
-      <span class="cb41">
-       画面右上の、New Fileのアイコンをクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="sStep1.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step2</h3>
-      <span class="cb41">
-       CategoriesはC、File TypesはC Source Fileを選択してNext>をクリックしてください。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="sStep2.png">
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb31">
-      <h3 class="cb40">Step3</h3>
-      <span class="cb41">
-       ファイル名を入力してください（ここではmainとしましたが、何でもよいです）。
-       最後に、Finishをクリックしてください。これで、ソースファイルの作成は完了です。
-      </span>
-     </div>
-    </article>
-    <article class="cb21 fxrl">
-     <img class="cb32" src="sStep3.png">
-    </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">動作確認</h2>
-     <span class="cb34">
-      以下のコードをコピー&ペーストしてください。
-     </span>
-    </article>
-    <article class="cb21 fxrl">
-     <div class="cb37">
-      <div class="cb46">
-       <span class="cb54">test</span>
-       <button type="button" class="cb53" onclick="copy('test')">
-        <span class="cb61">COPY</span>
-       </button>
-      </div>
-      <code class="cb47">
-      <pre id="test" class="cb55 bkgdgy">
+	<header class="ch00">
+		<img class="ch11" src="../../../images/br.jpg">
+	</header>
+	<div class="chb">
+		<div class="ch01">
+			<div class="ch10">
+				<div class="ch21">
+					<button type="button" class="ch31" onclick="ck()">
+						<img class="ch42" src="../../../images/menu.png">
+					</button>
+				</div>
+				<div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">駒場東邦物理部</span>
+						</span>
+						<a class="ch41" href="../../../index.html">
+							<span class="ch50">トップページ</span>
+						</a>
+						<a class="ch41" href="../../le.html">
+							<span class="ch50">講習トップ</span>
+						</a>
+					</div>
+					<div class="ch32">
+						<span class="ch40">
+							<span class="ch50">競技プログラミング講習</span>
+						</span>
+						<a class="ch41" href="../picC.html">
+							<span class="ch50">目次</span>
+						</a>
+						<a class="ch41" href="../none/none.html">
+							<span class="ch50">索引</span>
+						</a>
+						<a class="ch41" href="">
+							<span class="ch50">前回</span>
+						</a>
+						<a class="ch41" href="">
+							<span class="ch50">次回</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cb00">
+			<div class="cb10">
+				<article class="cb20">
+					<h1>PIC講習/プログラムの作成と書き込み</h1>
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">概要</h2>
+					<span class="cb34">
+						今回は、MPLAB X IDEの使い方と、どのようにPICに書き込むのかを説明します。
+					</span>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb36 debr">
+						<h4 class="cb44">
+							重要語
+						</h4>
+						<h4 class="cb45">
+							プロジェクト
+						</h4>
+						<span class="cb41">
+							プログラムを作成するためのファイル群
+						</span>
+						<h4 class="cb45">
+							ソースファイル
+						</h4>
+						<span class="cb41">
+							処理を記したファイル
+						</span>
+						<h4 class="cb45">
+							ビルド
+						</h4>
+						<span class="cb41">
+							コンパイルに加え、ライブラリなどの必要なファイルをつなぐこと
+						</span>
+					</div>
+					<div class="cb36 debr">
+						<h4 class="cb44">
+							必要語
+						</h4>
+						<span class="cb41">
+							今回の必要語はありません。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">プロジェクトの作成</h2>
+					<span class="cb34">
+						では、プロジェクトを作成していきますので、まずはMPLAB X IDEを起動してください。
+					</span>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step1</h3>
+						<span class="cb41">
+							画面右上のNew Projectのアイコンをクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step1.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step2</h3>
+						<span class="cb41">
+							Microchip EmbeddedとStadalone Projectを選択して、Next>をクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step2.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step3</h3>
+						<span class="cb41">
+							DeviceはPIC16F1827を選択して（キーボードから入力できるので、それを活用するとよいです）、Next>をクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step3.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step4</h3>
+						<span class="cb41">
+							デバッグヘッダは使わないので、そのままNext>をクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step4.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step5</h3>
+						<span class="cb41">
+							コンパイラは、XC8を使います。XC8を選択して、Nextをクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step5.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">Step6</h3>
+						<span class="cb41">
+							Project Nameにはプロジェクトの名前を入力してください（ここではlessonとしましたが、何でもよいです）。
+							そして、EncodingはUTF-8にすると、日本語が正常に使えるようになります（Shift_JISでも日本語は使えますが、0x5cの問題があるのでおすすめしません）。
+							最後に、Finishをクリックすると、プロジェクトの作成が完了します。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="step6.png">
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">ソースファイルの作成</h2>
+					<span class="cb34">
+						続いて、ソースファイルを作成していきます。
+					</span>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">Step1</h3>
+						<span class="cb41">
+							画面右上の、New Fileのアイコンをクリックしてください（Source Filesのところを選択した状態でクリックすると、確実にここにソースファイルが作られるのでよいです）。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="sStep1.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">Step2</h3>
+						<span class="cb41">
+							CategoriesはC、File TypesはC Source Fileを選択してNext>をクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="sStep2.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">Step3</h3>
+						<span class="cb41">
+							ファイル名を入力してください（ここではmainとしましたが、何でもよいです）。
+							最後に、Finishをクリックしてください。これで、ソースファイルの作成は完了です。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="sStep3.png">
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">ビルド</h2>
+					<span class="cb34">
+						では、ビルドしていきます。
+					</span>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">コード</h3>
+						<span class="cb41">
+							以下のコードをコピー&ペーストしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb37">
+						<div class="cb46">
+							<span class="cb54">test</span>
+							<button type="button" class="cb53" onclick="copy('test')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="test" class="cb55 bkgdgy">
 <span class="cb62"><span class="paghco"><span class="wdc_mt">/****************************
  main.c
  PIC16F1827
@@ -258,7 +266,7 @@
 </span>#pragma config FOSC <span class="wdsl">=</span> INTOSC
 #pragma config WDTE <span class="wdsl">=</span> OFF
 #pragma config PWRTE <span class="wdsl">=</span> ON
-#pragma config MCLRE <span class="wdsl">=</span> ON
+#pragma config MCLRE <span class="wdsl">=</span> OFF
 #pragma config CP <span class="wdsl">=</span> OFF
 #pragma config CPD <span class="wdsl">=</span> OFF
 #pragma config BOREN <span class="wdsl">=</span> ON
@@ -288,22 +296,55 @@
         __delay_ms<span class="wdsl">(</span><span class="wdnr">1000</span><span class="wdsl">);</span>
     <span class="wdsl">}</span>
 <span class="wdsl">}</span></span></span></pre>
-      </code>
-     </div>
-    </article>
-   </div>
-  </div>
-  <footer class=" cf00">
-   <div class="cf10">
-    <button class="cf21" onclick="tp()">
-     <img class="cf30" src="../../../images/top.png">
-    </button>
-    <span class="cf20">
-     (C) 2020 駒場東邦物理部[KTPC]
-    </span>
-   </div>
-  </footer>
- </div>
+      			</code>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">ビルドの実行</h3>
+						<span class="cb41">
+							右上のビルドをクリックしてください。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="buildButton.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<h3 class="cb40">ビルド終了</h3>
+						<span class="cb41">
+							ビルドが正常に終了すると、「BUILD SUCCESSFUL」というメッセージが出ます。<br>
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="buildSuccess.png">
+				</article>
+				<article class="cb21 fxrl">
+					<div class="cb31">
+						<span class="cb41">
+							異常に終了すると、「BUILD FAILED」というメッセージが出ます。以下は、セミコロンを忘れてしまった場合です。<br>
+							しかし、このコードをコピーしてこのメッセージが出た場合は、コンパイラが入っていないか、何らかの設定が間違っている可能性があります。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="buildFailed.png">
+				</article>
+			</div>
+		</div>
+		<footer class=" cf00">
+			<div class="cf10">
+				<button class="cf21" onclick="tp()">
+					<img class="cf30" src="../../../images/top.png">
+				</button>
+				<span class="cf20">
+					(C) 2020 駒場東邦物理部[KTPC]
+				</span>
+			</div>
+		</footer>
+	</div>
 </body>
 
 </html>
