@@ -156,10 +156,13 @@
 						</code>
 					</div>
 				</article>
-				<article class="cb21 fxtb">
-					<span class="cb34">
-						コメントをつけることで、他人が見た時にここはどのような処理を行っているかということがわかりやすくなったり、数か月後の自分が見た時に思い出しやすくなります。プログラマのメモのようなものです。<code class="paghco"><span class="wdc_mt">/*</span></code>から<code class="paghco"><span class="wdc_mt">*/</span></code>までの範囲と、<code class="paghco"><span class="wdc_mt">//</span></code>から行末までの範囲が、コメントとして認識されます。プログラムには基本的に半角文字を使いますが、コメントでは全角文字も使うことができます（全角スペースや全角記号をコメント外に書かないように注意です）。ただ、コンパイラにはコメントは無視されるため、コメントを全く書かなくても動作に何ら影響はありません。
-					</span>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">コメント</h3>
+						<span class="cb41">
+							コメントをつけることで、他人が見た時にここはどのような処理を行っているかということがわかりやすくなったり、数か月後の自分が見た時に思い出しやすくなります。プログラマのメモのようなものです。<code class="paghco"><span class="wdc_mt">/*</span></code>から<code class="paghco"><span class="wdc_mt">*/</span></code>までの範囲と、<code class="paghco"><span class="wdc_mt">//</span></code>から行末までの範囲が、コメントとして認識されます。プログラムには基本的に半角文字を使いますが、コメントでは全角文字も使うことができます（全角スペースや全角記号をコメント外に書かないように注意です）。ただ、コンパイラにはコメントは無視されるため、コメントを全く書かなくても動作に何ら影響はありません。
+						</span>
+					</div>
 				</article>
 				<article class="cb21">
 					<div class="cb37">
@@ -181,13 +184,30 @@
 						</code>
 					</div>
 				</article>
-				<article class="cb21 fxtb">
-					<span class="cb34">
-						<code class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>xc.h<span class="wdsl">&gt;</span></code>という記述は、xc.hというヘッダファイルを読み込んでくださいという記述です。この記述によって、PORTAやOSCCONといった元来のC言語にはない、PIC特有のものを使うことができます。<br>
-						<code class="paghco">#pragma config</code>という記述がたくさん並んでいますが、これはPICの設定を決める記述です。 PICのどの機能を使ってどの機能を使わないかを選択しています。ここを書き換えることは当分ありませんので、書き換える時に説明したいと思います。<br>
-						mainというからには、ここが一番重要です。プログラムが開始されるとき、すなわち（PICの場合は）電源が入ったとき （厳密に言えば電源が入ってから数十ms後）は、ここから始まります（これをエントリポイントといいます）。 <code class="paghco">main<span class="wdsl">()</span></code>の前に<code class="paghco"><span class="wdkywd">void</span></code>という記述がありますが、 これは返り値がないことを示しているのですが、詳しくは関数のところでやりますので、あまり気にしないでください。 main関数が始まると、<code class="paghco"><span class="wdsl">{</span></code>と<code class="paghco"><span class="wdsl">}</span></code>で囲まれた部分（これをブロックといいます）の処理を基本的には上から順番に実行していきます。<br>
-						例えば、以下のようなコードを考えてみましょう。
-					</span>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">include</h3>
+						<span class="cb41">
+							<code class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>xc.h<span class="wdsl">&gt;</span></code>という記述は、xc.hというヘッダファイルを読み込んでくださいという記述です。この記述によって、PORTAやOSCCONといった元来のC言語にはない、PIC特有のものを使うことができます。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">config</h3>
+						<span class="cb41">
+							<code class="paghco">#pragma config</code>という記述がたくさん並んでいますが、これはPICの設定を決める記述です。 PICのどの機能を使ってどの機能を使わないかを選択しています。ここを書き換えることは当分ありませんので、書き換える時に説明したいと思います。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">main関数</h3>
+						<span class="cb41">
+							mainというからには、ここが一番重要です。プログラムが開始されるとき、すなわち（PICの場合は）電源が入ったとき （厳密に言えば電源が入ってから数十ms後）は、ここから始まります（これをエントリポイントといいます）。 <code class="paghco">main<span class="wdsl">()</span></code>の前に<code class="paghco"><span class="wdkywd">void</span></code>という記述がありますが、 これは返り値がないことを示しているのですが、詳しくは関数のところでやりますので、あまり気にしないでください。 main関数が始まると、<code class="paghco"><span class="wdsl">{</span></code>と<code class="paghco"><span class="wdsl">}</span></code>で囲まれた部分（これをブロックといいます）の処理を基本的には上から順番に実行していきます。<br>
+							例えば、以下のようなコードを考えてみましょう。
+						</span>
+					</div>
 				</article>
 				<article class="cb21">
 					<div class="cb37">
@@ -207,11 +227,20 @@
 						</code>
 					</div>
 				</article>
-				<article class="cb21 fxtb">
-					<span class="cb34">
-						この場合、処理A→処理B→処理Cの順に実行されます。<br>
-						また、先ほどから「処理」と言ってきましたが、この1つの処理単位を文といいます。 結局のところ、たくさんの文を、どんな時にどの順番でやるかを指定することによって、PICが制御できます。 そして、C言語の重要な規則として、文の終わりにはセミコロン（<code class="paghco"><span class="wdsl">;</span></code>）をつけなければならないというものがあります。 これによってコンパイラは、どこまでが文なのかを判別することができます。このセミコロン（<code class="paghco"><span class="wdsl">;</span></code>） やブロック（<code class="paghco"><span class="wdsl">{</span> <span class="wdsl">}</span></code>）などがあるため、C言語では改行や空白などは基本的に関係ありません。 そのため、先ほどのコードを
-					</span>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							この場合、処理A→処理B→処理Cの順に実行されます。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">文</h3>
+						<span class="cb41">
+							また、先ほどから「処理」と言ってきましたが、この1つの処理単位を文といいます。 結局のところ、たくさんの文を、どんな時にどの順番でやるかを指定することによって、PICが制御できます。 そして、C言語の重要な規則として、文の終わりにはセミコロン（<code class="paghco"><span class="wdsl">;</span></code>）をつけなければならないというものがあります。 これによってコンパイラは、どこまでが文なのかを判別することができます。このセミコロン（<code class="paghco"><span class="wdsl">;</span></code>） やブロック（<code class="paghco"><span class="wdsl">{</span> <span class="wdsl">}</span></code>）などがあるため、C言語では改行や空白などは基本的に関係ありません。 そのため、先ほどのコードを
+						</span>
+					</div>
 				</article>
 				<article class="cb21">
 					<div class="cb37">
@@ -227,10 +256,12 @@
 						</code>
 					</div>
 				</article>
-				<article class="cb21 fxtb">
-					<span class="cb34">
-						このように書いても問題ありません。しかしこれでは、コンパイラにはよくても人間には優しくなく、可読性の低いコードになってしまいます。 そのため、適切な改行や空白、インデント（字下げ）を行うのが望ましいでしょう。これを自分でいちいちやるのが面倒だという人は、 MPLAB X IDEの、Source>Formatをクリックしてみましょう（Alt+Shift+Fでもできます）。自動で適切にフォーマットしてくれますので、非常に便利です。 適宜活用するとよいでしょう。
-					</span>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							このように書いても問題ありません。しかしこれでは、コンパイラにはよくても人間には優しくなく、可読性の低いコードになってしまいます。 そのため、適切な改行や空白、インデント（字下げ）を行うのが望ましいでしょう。これを自分でいちいちやるのが面倒だという人は、 MPLAB X IDEの、Source>Formatをクリックしてみましょう（Alt+Shift+Fでもできます）。自動で適切にフォーマットしてくれますので、非常に便利です。 適宜活用するとよいでしょう。
+						</span>
+					</div>
 				</article>
 				<article class="cb21 fxrl">
 					<img class="cb32" src="autoFormat.png">
@@ -251,8 +282,17 @@
 				<article class="cb21 fxrl">
 					<img class="cb32" src="task1Cir.png">
 				</article>
+				<article class="cb21 fxlr">
+					<details class="cb31">
+						<summary class="cb48">Hint</summary>
+						<span class="cb41">
+							LEDを点灯させるには、PICの端子をH/Lのどちらにすればいいでしょうか。
+						</span>
+					</details>
+				</article>
 				<article class="cb21">
-					<div class="cb37">
+					<details class="cb37">
+						<summary class="cb48">解答</summary>
 						<div class="cb46">
 							<span class="cb54">Task1解答</span>
 							<button type="button" class="cb53" onclick="copy('task1')">
@@ -277,10 +317,11 @@
 <span class="wdsl">}</span>
 </span></span></pre>
 						</code>
-					</div>
+					</details>
 				</article>
 				<article class="cb21">
-					<div class="cb37">
+					<details class="cb37">
+						<summary class="cb48">解答2</summary>
 						<div class="cb46">
 							<span class="cb54">Task1解答2</span>
 							<button type="button" class="cb53" onclick="copy('task1ar')">
@@ -313,7 +354,7 @@ while (1);
 としてしまう方法など、いろいろ考えられます */</span>
 </span></span></pre>
 						</code>
-					</div>
+					</details>
 				</article>
 			</div>
 		</div>
