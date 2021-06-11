@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="駒場東邦物理部">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,講習,C++,MSVC,Hello,World">
+  <meta name="description" content="C++コンソールプログラムでのHello, world!について解説しています。">
+  <title>Hello World! - C++ on MSVC講習</title>
+  <link rel="icon" type="image/jpeg" href="..\..\..\..\..\images\logo.jpg">
+  <link rel="stylesheet" type="text/css" href="..\..\..\..\..\style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="..\..\..\..\..\static.css">
+  <script type="text/javascript" src="..\..\..\..\..\header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="..\..\..\..\..\images\br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="..\..\..\..\..\images\menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="..\..\..\..\..\index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="..\..\..\_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="..\..\..\m\i_dx\i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\..">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\..">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20 fxtb">
+      <h1>C++ on MSVC講習/Hello World!</h1>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       初めてのC++プログラムは、<code>Hello&nbsp;World!</code>のような文章を表示するのが慣習です。<br>今回は、<code>Hello&nbsp;World!</code>と表示するプログラムを作りましょう。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+<div class="tntwfg debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        コード
+       </h4>
+       <span class="cb41">
+        プログラマーが書く文章
+       </span>
+       <h4 class="cb45">
+        ビルド
+       </h4>
+       <span class="cb41">
+        Visual&nbsp;Studioでの実行ファイルへの変換
+       </span>
+
+      </div>
+
+<div class="tntwfg debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+今回はありません
+      </div>
+
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">C++のプログラム事始め</h2>
+      <span class="cb34">
+       まず、C++のプログラムを学んでいくにあたって、プログラムの仕組みについて説明します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コード、プログラムの実行とビルド</h3>
+        <span class="cb41">
+         C++ではプログラマーが書いている文章のことを<b>コード</b>だとか、<b>ソースコード</b>と言います。<br>コードは幾つかの手順を踏んでPCが実行できるファイルに変換してから使用します。<br>Visual&nbsp;Studioでは実行ファイルへ変換する一連の動作を<b>ビルド</b>と呼んでいます。<br>ビルドは<b><code>Ctrl+B</code></b>、ビルドと実行（デバッグ無しで実行）は<b><code>Ctrl+F5</code></b>がショートカットです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コンパイルとコンパイラ</h3>
+        <span class="cb41">
+         ビルド中には、コードを機械語に翻訳する作業があり、これを<b>コンパイル</b>と呼びます。<br>コンパイルをする時は専用のプログラムが使われますが、それを<b>コンパイラ</b>と言います。<br>私達はMicrosoft社のMicrosoft&nbsp;Visual&nbsp;C++（<b>VC++</b>や<b>MSVC</b>とも）を使います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">処理系</h3>
+        <span class="cb41">
+         処理系は、コードの機械語への翻訳と実行をする一連の仕組みの事です。<br>即ち、ビルドと実行をする一連の仕組みで、多くの場合はコンパイラとOSの組み合わせとなります。<br>ですが、処理系や実装という言葉は、コンパイラを指す言葉として使われることもあります。<br>C++では、処理系によって処理が異なる場合が多数あり、そのためこの言葉は多く使われます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コンソール</h3>
+        <span class="cb41">
+         これから私達が学ぶC++プログラムは、原則としていわゆる<b>コンソール</b>を使用します。<br>ここでの<b>コンソール</b>は、<b>文字のみ</b>でやり取りをする<ruby><rb>CUI</rb><rp>（</rp><rt>Character&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面の事です。<br>一方、普段から私達が使っているプログラムのほとんどは<ruby><rb>GUI</rb><rp>（</rp><rt>Graphical&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面です。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33"><code>Hello&nbsp;World!</code>のコード</h2>
+      <span class="cb34">
+       さて、Visual&nbsp;Studioを開いて、Visual&nbsp;Studioのプロジェクトの初期コードを実行します。<br><b>新しいプロジェクトの作成&gt;コンソール&nbsp;アプリ</b>で新しいプロジェクトを作り、実行しましょう。<br>以後も同様に<b>コンソール&nbsp;アプリ</b>を選択してプロジェクトを作るので、覚えておいてください。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">Hello, World!</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdc_mt">// example.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
+</span><span class="wdc_mt">//
+</span>
+#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Hello World!\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdc_mt">// プログラムの実行: Ctrl + F5 または [デバッグ] &gt; [デバッグなしで開始] メニュー
+</span><span class="wdc_mt">// プログラムのデバッグ: F5 または [デバッグ] &gt; [デバッグの開始] メニュー
+</span>
+<span class="wdc_mt">// 作業を開始するためのヒント: 
+</span><span class="wdc_mt">//   1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
+</span><span class="wdc_mt">//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
+</span><span class="wdc_mt">//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
+</span><span class="wdc_mt">//   4. エラー一覧ウィンドウを使用してエラーを表示します
+</span><span class="wdc_mt">//   5. [プロジェクト] &gt; [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] &gt; [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
+</span><span class="wdc_mt">//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] &gt; [開く] &gt; [プロジェクト] と移動して .sln ファイルを選択します
+</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実行結果</h3>
+        <span class="cb41">
+         コンソールが出てきて、<code>Hello&nbsp;World!</code>と改行（気付きにくいですが）が表示されます。<br>下にVisual&nbsp;Studioからの終了メッセージが表示されますが、無視していきましょう。<br>出力については、<code>&gt;&nbsp;Hello&nbsp;World!</code>のように、<b><code>&gt;&nbsp;</code>を付けて記載</b>していきます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+&gt;&nbsp;Hello&nbsp;World!<br>&gt;&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">コード<code>Hello&nbsp;World!</code>解説</h2>
+      <span class="cb34">
+       それでは、まず上の方からコードを見ていきましょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コードで使える文字</h3>
+        <span class="cb41">
+         さて、C++の文法について触れていきますが、初めにコードで使える文字についてです。<br>実は、「必ずコードで使用できる文字」の集合がC++では定義されています。<br>その集合は、基本ソース文字集合などと呼ばれていて、以下に挙げる96文字です。<br>ただ、後述する文字/文字列リテラルなどでは、その他の文字も使える事があります。<br>ちなみに、MSVCでは拡張機能として、<code>$</code>も基本ソース文字集合として定義されています。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">基本ソース文字集合（確実にコードで使用できる文字）</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+<code>A</code>&nbsp;<code>B</code>&nbsp;<code>C</code>&nbsp;<code>D</code>&nbsp;<code>E</code>&nbsp;<code>F</code>&nbsp;<code>G</code>&nbsp;<code>H</code>&nbsp;<code>I</code>&nbsp;<code>J</code>&nbsp;<code>K</code>&nbsp;<code>L</code>&nbsp;<code>M</code>&nbsp;<code>N</code>&nbsp;<code>O</code>&nbsp;<code>P</code>&nbsp;<code>Q</code>&nbsp;<code>R</code>&nbsp;<code>S</code>&nbsp;<code>T</code>&nbsp;<code>U</code>&nbsp;<code>V</code>&nbsp;<code>W</code>&nbsp;<code>X</code>&nbsp;<code>Y</code>&nbsp;<code>Z</code><br><code>a</code>&nbsp;<code>b</code>&nbsp;<code>c</code>&nbsp;<code>d</code>&nbsp;<code>e</code>&nbsp;<code>f</code>&nbsp;<code>g</code>&nbsp;<code>h</code>&nbsp;<code>i</code>&nbsp;<code>j</code>&nbsp;<code>k</code>&nbsp;<code>l</code>&nbsp;<code>m</code>&nbsp;<code>n</code>&nbsp;<code>o</code>&nbsp;<code>p</code>&nbsp;<code>q</code>&nbsp;<code>r</code>&nbsp;<code>s</code>&nbsp;<code>t</code>&nbsp;<code>u</code>&nbsp;<code>v</code>&nbsp;<code>w</code>&nbsp;<code>x</code>&nbsp;<code>y</code>&nbsp;<code>z</code><br><code>0</code>&nbsp;<code>1</code>&nbsp;<code>2</code>&nbsp;<code>3</code>&nbsp;<code>4</code>&nbsp;<code>5</code>&nbsp;<code>6</code>&nbsp;<code>7</code>&nbsp;<code>8</code>&nbsp;<code>9</code><br><code>_</code>&nbsp;<code>{</code>&nbsp;<code>}</code>&nbsp;<code>[</code>&nbsp;<code>]</code>&nbsp;<code>#</code>&nbsp;<code>(</code>&nbsp;<code>)</code>&nbsp;<code>&lt;</code>&nbsp;<code>&gt;</code>&nbsp;<code>%</code>&nbsp;<code>:</code>&nbsp;<code>;</code>&nbsp;<code>.</code>&nbsp;<code>?</code>&nbsp;<code>*</code>&nbsp;<code>+</code>&nbsp;<code>-</code>&nbsp;<code>/</code>&nbsp;<code>^</code>&nbsp;<code>&amp;</code>&nbsp;<code>|</code>&nbsp;<code>~</code>&nbsp;<code>!</code>&nbsp;<code>=</code>&nbsp;<code>,</code>&nbsp;<code>\</code>&nbsp;<code>&quot;</code>&nbsp;<code>&#39;</code><br>スペース&nbsp;水平タブ&nbsp;垂直タブ&nbsp;改行&nbsp;改ページ&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">基本ソース文字集合と踏みやすいエラー</h3>
+        <span class="cb41">
+         ありがちなミスとして、「<b>スペースを全角</b>にしてしまってビルドに失敗する」があります。<br>先述通り、コード中で必ず使える文字は96文字で、それ以外だとエラーになる可能性があります。<br>なので、<b>全角文字など</b>が紛れ込んでいると、ほとんどの処理系でビルドが<b>失敗</b>するのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コメント</h3>
+        <span class="cb41">
+         まず、Visual&nbsp;Studioのエディターで緑で表示されている部分は全て<b>コメント</b>です。<br>コメントはコンパイルする時に削除され、<b>実行ファイルには影響しません</b>。<br>つまり、<b>無視してもいい</b>所です。コードの意図や補足を書く時などで使います。<br>構文は、<code>//から改行まで</code>と、<code>/*から*/まで</code>があり、後者は改行をコメントに含められます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">コメントの文法</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+<code>//</code>&nbsp;改行以外の任意の文字&nbsp;改行<br><code>/*</code>&nbsp;任意の文字&nbsp;<code>*/</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>#<ruby><rb>include</rb><rp>（</rp><rt>インクルード</rt><rp>）</rp></ruby>&nbsp;&lt;<ruby><rb>iostream</rb><rp>（</rp><rt>アイオーストリーム</rt><rp>）</rp></ruby>&gt;</code></h3>
+        <span class="cb41">
+         この一行は、大雑把に言うと、<b>C++標準ライブラリの<code>iostream</code></b>を読み込みます。<br>今は、後で出てくる<b><code>std::<ruby><rb>cout</rb><rp>（</rp><rt>シーアウト</rt><rp>）</rp></ruby></code>を使うために必要だから書く</b>、という認識をしてください。<br>この一行は次に出てくる、<b><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数の前に書く</b>必要があるので注意してください。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数</h3>
+        <span class="cb41">
+         コードの<code>int&nbsp;main()&nbsp;{}</code>の部分のことを<b>main関数</b>と呼びます。<br>数学でも関数という概念が存在しますが、ひとまず、「動作のまとまり」と捉えてください。<br>main関数は<b>プログラム全体のまとまり</b>で、main関数に書いた内容が実行されるのです。<br>関数の<b>本体は<code>{}</code>の中</b>で、まずは基本的に<b>main関数の本体だけ</b>にコードを書いていきます。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">コード<code>Hello&nbsp;World!</code>&nbsp;main関数内解説</h2>
+      <span class="cb34">
+       それでは、main関数内の<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;;</code>について見ていきましょう。<br>ですが、もう少し追加で基礎的なC++のコードの構成のされ方を踏まえておきましょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">式と演算子、オペランド</h3>
+        <span class="cb41">
+         C++では式は、演算子とオペランドの並びのことです。<br>演算子は言わずと知れた<code>+</code>や<code>-</code>などから、<code>new</code>や<code>delete</code>などまで様々あります。<br>一方、オペランドはリテラルや、追々説明する変数など、何らか「値」のことを指します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文と式</h3>
+        <span class="cb41">
+         C++には式と文とがあり、コードは<b>主に文が並べられることで構成</b>されています。<br>式の構文の一つに、算数や数学のような<b><code>値</code>と<code>演算子</code>の繰り返し</b>があります。<br>一方、<b><code><ruby><rb>;</rb><rp>（</rp><rt>セミコロン</rt><rp>）</rp></ruby></code>があれば、それは文</b>です。つまり、式に<code>;</code>を付けると文になります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">トークン</h3>
+        <span class="cb41">
+         コードで<b>意味を持つ最小の単位</b>は、英語等の「単語」に当たる<b>トークン</b>と呼ばれるものです。<br>トークンはキーワード、識別子、リテラル、演算子、区切り記号などに分けられます。<br>詳しくは追々ですが、キーワードはC++規格で予約されているトークンのことです。<br>また、識別子はアルファベットや数字、演算子と区切り文字は記号で構成されます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">トークンの区切りとホワイトスペース</h3>
+        <span class="cb41">
+         トークン同士は、ホワイトスペースもしくは演算子、区切り記号のトークンで区切られます。<br>それぞれのトークンの間には<b>自由にホワイトスペースなどを追加</b>することが出来ます。<br>ちなみに、ホワイトスペースはスペース、水平/垂直タブ、改行、改ページのことです。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33"><code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;</code>;を分解</h2>
+      <span class="cb34">
+       それではトークンに分解すると、<code>std::cout</code>、<code>&lt;&lt;</code>、<code>&quot;Hello&nbsp;World!\n&quot;</code>、<code>;</code>の四つになります。<br><code>;</code>というのは<b>文であることを示すトークン</b>なので他の三つを見ていきましょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">標準出力と<code>std::<ruby><rb>cout</rb><rp>（</rp><rt>シーアウト</rt><rp>）</rp></ruby></code></h3>
+        <span class="cb41">
+         標準出力は、標準で用意されている出力先のことで、大体はコンソールです。<br>C++で標準出力を表すのは<code>std::cout</code>で、<b>紐づいている先に文字を出力する</b>ことが出来ます。<br>ただ、大抵の場合はコンソールに紐づいて居るので、<b>コンソールに出力する</b>ために使います。<br><code>std::cout</code>の詳しいことは追々扱うので今はこのような理解をしてください。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ストリーム演算子こと左シフト演算子</h3>
+        <span class="cb41">
+         <code>&lt;&lt;</code>は、俗に「ストリーム演算子」と呼ばれることもある「左シフト演算子」です。<br>左に<code>std::cout</code>、右に「値」があると、右の「値」を<code>std::cout</code>に渡し、出力します。<br>また、<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;&nbsp;&lt;&lt;&nbsp;10;</code>のように、<b>連鎖する</b>ことが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">リテラル</h3>
+        <span class="cb41">
+         コード上に<b>直接書かれているデータ</b>のことを<b>リテラル</b>と呼びます。<br>主なリテラルとして、整数/小数/文字/文字列/真偽リテラルが存在し、一行で書きます。<br>整数/小数は、<b>単純に数字を直接書く</b>ことでリテラルとして表現することが出来ます。<br>真偽リテラルについては追々やるので、今は見なかったことにして進みましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文字/文字列リテラル</h3>
+        <span class="cb41">
+         <b>文字/文字列はそれぞれ<code><ruby><rb>&#39;</rb><rp>（</rp><rt>シングルクオーテーション</rt><rp>）</rp></ruby></code>/<code><ruby><rb>&quot;</rb><rp>（</rp><rt>ダブルクオーテーション</rt><rp>）</rp></ruby></code>で囲う</b>必要があります。<br>それは、<b>文法に従わないデータ部分</b>で、C++の文法部分とは区別する必要があるからです。<br>結局<code>&quot;Hello&nbsp;World!\n&quot;</code>というのは、即ち<b>文字列のデータ</b>のことなのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">エスケープシーケンス</h3>
+        <span class="cb41">
+         文字列リテラルの中では、特殊記法である<b>エスケープシーケンス</b>を用いる必要があります。<br>特に使うのは以下で、これらから<code>&quot;Hello&nbsp;World!\n&quot;</code>は<code>Hello&nbsp;World!</code>と<b>改行</b>だとわかります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        特に使うエスケープシーケンス
+       </h4>
+       <h4 class="cb45">
+        \\
+       </h4>
+       <span class="cb41">
+        バックスラッシュ（円記号）
+       </span>
+       <h4 class="cb45">
+        \&quot;
+       </h4>
+       <span class="cb41">
+        ダブルクオーテーション
+       </span>
+       <h4 class="cb45">
+        \n
+       </h4>
+       <span class="cb41">
+        Line&nbsp;Feed（改行）
+       </span>
+       <h4 class="cb45">
+        \t
+       </h4>
+       <span class="cb41">
+        水平タブ
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       次に示す出力結果になるように、<b>整数/小数/文字/文字/文字列リテラルを使って</b>コードを書きましょう。<br>ただし、<b>回答例はあくまで回答例</b>なので、<b>実行結果と問題の制約</b>を満たせば問題ありません。<br>また、問題がわからない場合などに<b>読み直したり、調べること</b>も問題ないとします。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">出力結果</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+&gt;&nbsp;C++&nbsp;is&nbsp;a&nbsp;good&nbsp;programming&nbsp;language.<br>&gt;&nbsp;42&nbsp;2021.05<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <details class="cb37">
+        <summary class="cb48">回答例</summary>
+        <div class="cb46">
+        <span class="cb54">回答例</span>
+        <button type="button" class="cb53" onclick="copy('5')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"C++ is a good programming language.\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">42</span> <span class="wdsl">&lt;&lt;</span> ' ' <span class="wdsl">&lt;&lt;</span> <span class="wdnr">2021.05</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span>
+</pre>
+       </code>
+       </details>
+     </article>
+     <article class="cb21">
+      <details class="cb37">
+       <summary class="cb48">解説</summary>
+       <span class="cb41">
+        <br>##&nbsp;参照、出典
+       </span>
+      </details>
+
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="..\..\..\..\..\images\top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
