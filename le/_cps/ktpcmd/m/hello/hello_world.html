@@ -76,8 +76,8 @@
        初めてのC++プログラムは、<code>Hello&nbsp;World!</code>のような文章を表示するのが慣習です。<br>今回は、<code>Hello&nbsp;World!</code>と表示するプログラムを作りましょう。
       </span>
      </article>
-     <article class="cb21 fxlr">
-<div class="tntwfg debr">
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
        <h4 class="cb44">
         重要語
        </h4>
@@ -85,18 +85,126 @@
         コード
        </h4>
        <span class="cb41">
-        プログラマーが書く文章
+        プログラマーが書いている文書
        </span>
        <h4 class="cb45">
         ビルド
        </h4>
        <span class="cb41">
-        Visual&nbsp;Studioでの実行ファイルへの変換
+        実行ファイルへ変換する一連の動作
+       </span>
+       <h4 class="cb45">
+        コンパイル
+       </h4>
+       <span class="cb41">
+        コードを機械語に翻訳する作業
+       </span>
+       <h4 class="cb45">
+        コンパイラ
+       </h4>
+       <span class="cb41">
+        コンパイルをするプログラム
+       </span>
+       <h4 class="cb45">
+        処理系
+       </h4>
+       <span class="cb41">
+        コードを機械語への翻訳し、実行をするまでの一連の仕組み
+       </span>
+       <h4 class="cb45">
+        コンソール
+       </h4>
+       <span class="cb41">
+        文字のみでPCとやり取りするCUI形式の画面
+       </span>
+       <h4 class="cb45">
+        基本ソース文字集合
+       </h4>
+       <span class="cb41">
+        標準規格で「コードで使用できる文字」とされる96文字
+       </span>
+       <h4 class="cb45">
+        コメント
+       </h4>
+       <span class="cb41">
+        コード中に実行ファイルには影響しない文字を書ける機能
+       </span>
+       <h4 class="cb45">
+        エントリーポイント
+       </h4>
+       <span class="cb41">
+        プログラムが実行される時に、実行を開始する場所
+       </span>
+       <h4 class="cb45">
+        main関数
+       </h4>
+       <span class="cb41">
+        C++のエントリーポイント、かつプログラム全体のまとまり
+       </span>
+       <h4 class="cb45">
+        式
+       </h4>
+       <span class="cb41">
+        演算子とオペランド（被演算子）の並び
+       </span>
+       <h4 class="cb45">
+        演算子
+       </h4>
+       <span class="cb41">
+        <code>+</code>や<code>-</code>など、何らかの演算を表す記号
+       </span>
+       <h4 class="cb45">
+        オペランド
+       </h4>
+       <span class="cb41">
+        何らかの「値」
+       </span>
+       <h4 class="cb45">
+        文
+       </h4>
+       <span class="cb41">
+        順番に実行されるC++プログラムの断片
+       </span>
+       <h4 class="cb45">
+        トークン
+       </h4>
+       <span class="cb41">
+        コード上で意味を持つ最小の単位
+       </span>
+       <h4 class="cb45">
+        標準出力
+       </h4>
+       <span class="cb41">
+        標準で用意されている出力先
+       </span>
+       <h4 class="cb45">
+        std::cout
+       </h4>
+       <span class="cb41">
+        プログラム実行時に標準出力に紐づけられるもの
+       </span>
+       <h4 class="cb45">
+        左シフト演算子
+       </h4>
+       <span class="cb41">
+        <code>&lt;&lt;</code>
+       </span>
+       <h4 class="cb45">
+        リテラル
+       </h4>
+       <span class="cb41">
+        コード上に直接書かれているデータ
+       </span>
+       <h4 class="cb45">
+        エスケープシーケンス
+       </h4>
+       <span class="cb41">
+        文字/文字列リテラルの中での一部文字の表記方法
        </span>
 
       </div>
 
-<div class="tntwfg debr">
+<div class="cb36 debr">
        <h4 class="cb44">
         必要語
        </h4>
@@ -114,7 +222,7 @@
       <div class="cb31">
        <h3 class="cb40">コード、プログラムの実行とビルド</h3>
         <span class="cb41">
-         C++ではプログラマーが書いている文章のことを<b>コード</b>だとか、<b>ソースコード</b>と言います。<br>コードは幾つかの手順を踏んでPCが実行できるファイルに変換してから使用します。<br>Visual&nbsp;Studioでは実行ファイルへ変換する一連の動作を<b>ビルド</b>と呼んでいます。<br>ビルドは<b><code>Ctrl+B</code></b>、ビルドと実行（デバッグ無しで実行）は<b><code>Ctrl+F5</code></b>がショートカットです。
+         C++ではプログラマーが書いている文書のことを<b>コード</b>だとか、<b>ソースコード</b>と言います。<br>コードは幾つかの手順を踏んでPCが実行できるファイルに変換してから使用します。<br>Visual&nbsp;Studioでは実行ファイルへ変換する一連の動作を<b>ビルド</b>と呼んでいます。<br>ビルドは<b><code>Ctrl+B</code></b>、ビルドと実行（デバッグ無しで実行）は<b><code>Ctrl+F5</code></b>がショートカットです。
         </span>
       </div>
      </article>
@@ -130,7 +238,7 @@
       <div class="cb31">
        <h3 class="cb40">処理系</h3>
         <span class="cb41">
-         処理系は、コードの機械語への翻訳と実行をする一連の仕組みの事です。<br>即ち、<b>ビルドと実行をする一連の仕組み</b>で、多くの場合はコンパイラとOSの組み合わせです。<br>C++では、処理系によって処理が異なる場合が多数あり、それ故に<b>多用される言葉</b>です。
+         処理系は、コードを機械語への翻訳し、実行をするまでの一連の仕組みの事です。<br>即ち、<b>ビルドと実行をする一連の仕組み</b>で、多くの場合はコンパイラとOSの組み合わせです。<br>C++では、処理系によって処理が異なる場合が多数あり、それ故に<b>多用される言葉</b>です。
         </span>
       </div>
      </article>
@@ -245,7 +353,7 @@
       <div class="cb31">
        <h3 class="cb40">コメント</h3>
         <span class="cb41">
-         さて、Visual&nbsp;Studioのエディターで緑で表示されている部分は全て<b>コメント</b>です。<br>コメントはコンパイルする時に半角スペース1個に変換され、<b>実行ファイルには影響しません</b>。<br><b>無視してもいい</b>ことになりますが、<b>コードの意図や補足</b>を書く時などで使うため、重要です。<br>構文は、<code>//から改行まで</code>と、<code>/*から*/まで</code>があり、後者は改行をコメントに含められます。<br>ちなみに、コメントでは、どんな文字でも使うことが出来ます。
+         さて、Visual&nbsp;Studioのエディターで緑で表示されている部分は全て<b>コメント</b>です。<br>コメントは、コード中に<b>実行ファイルには影響しない</b>文字を書くことが出来る機能です。<br>そのため、主にプログラマー同士での<b>コードの意図や補足</b>を書き残すために使います。<br>構文は、<code>//から改行まで</code>と、<code>/*から*/まで</code>があり、後者は改行をコメントに含められます。
         </span>
       </div>
      </article>
@@ -275,7 +383,7 @@
       <div class="cb31">
        <h3 class="cb40"><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数</h3>
         <span class="cb41">
-         コードの<code>int&nbsp;main()&nbsp;{}</code>の部分のことを<b>main関数</b>と呼びます。<br>数学でも関数という概念が存在しますが、ひとまず、「動作のまとまり」と捉えてください。<br>main関数はプログラム全体のまとまりで、<b>main関数に書いた内容が実行</b>されるのです。<br>関数の<b>本体は<code>{}</code>の中</b>で、まずは基本的に<b>main関数の本体だけ</b>にコードを書いていきます。
+         コードの<code>int&nbsp;main()&nbsp;{}</code>の部分のことを<b>main関数</b>と呼びます。<br>main関数は、<b>エントリーポイント</b>であり、プログラムの処理が始まり、終わるところです。<br>即ち、C++のコンソールプログラムは、<b>main関数の本体を上から順々に実行していく</b>のです。<br>ただし、関数の<b>本体は<code>{</code>と<code>}</code>に挟まれている部分</b>のことです。
         </span>
       </div>
      </article>
@@ -297,7 +405,7 @@
       <div class="cb31">
        <h3 class="cb40">文</h3>
         <span class="cb41">
-         C++には文という単位があり、意味論的に、コードは<b>文が並べられることで構成</b>します。<br>そして、多くの文では、<code><ruby><rb>;</rb><rp>（</rp><rt>セミコロン</rt><rp>）</rp></ruby></code>が文が終わる終端を表す記号です。<br>即ち、多くの文では、<b><code>;</code>を必ず最後に付ける必要がある</b>文法になっているのです。
+         C++には文という単位があり、意味論的に、コードは<b>文が並べられることで構成</b>します。<br>そして、コード上の文が<b>順番に実行される</b>ことによって、プログラムが実行されるのです。<br>また、多くの文では、<code><ruby><rb>;</rb><rp>（</rp><rt>セミコロン</rt><rp>）</rp></ruby></code>が文の終端を表す記号です。<br>即ち、多くの文では、<b><code>;</code>を必ず最後に付ける必要がある</b>ことになっているのです。
         </span>
       </div>
      </article>
@@ -321,7 +429,7 @@
       <div class="cb31">
        <h3 class="cb40">だから…</h3>
         <span class="cb41">
-         <code>#include&nbsp;&lt;iostream&gt;</code>は、コンパイルの中でも、プリプロセスという作業で処理されます。<br>なので、「今解説しているトークン」とは別の存在なので触れないでおきます。<br>さて、先段落の解説より、コード「Hello&nbsp;World!」は、次のように書くことも出来ます。<br>（ただし、コメント部分はあまりにも量が多いので、コメント部分以外を抜粋）
+         <code>#include&nbsp;&lt;iostream&gt;</code>は、ビルドの中でも、プリプロセスという作業で処理されます。<br>なので、「今解説しているトークン」とは別の存在なので触れないでおきます。<br>さて、先段落の解説より、コード「Hello&nbsp;World!」は、次のように書くことも出来ます。<br>（ただし、コメント部分はあまりにも量が多いので、コメント部分以外を抜粋）
         </span>
       </div>
      </article>
@@ -370,9 +478,9 @@ std      <span class="wdsl">::</span>     cout
         </div>
        </article>
     <article class="cb21 fxtb">
-     <h2 class="cb33"><code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;</code>;を分解</h2>
+     <h2 class="cb33"><code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;;</code></h2>
       <span class="cb34">
-       それではこの1文を分解すると、<code>std::cout</code>、<code>&lt;&lt;</code>、<code>&quot;Hello&nbsp;World!\n&quot;</code>、<code>;</code>の四つになります。<br><code>;</code>というのは<b>文の終わりを示すトークン</b>なので他の三つを見ていきましょう。<br>ちなみに、<code>std::cout</code>は3つのトークンですが、簡略化の為に今回は1つと見做してしまいます。
+       それでは、この1文を、<code>std::cout</code>、<code>&lt;&lt;</code>、<code>&quot;Hello&nbsp;World!\n&quot;</code>、<code>;</code>の四つに分けて考えましょう。<br><code>;</code>というのは<b>文の終わりを示すトークン</b>なので他の3つについて解説します。
       </span>
      </article>
      <article class="cb21">
@@ -385,9 +493,9 @@ std      <span class="wdsl">::</span>     cout
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">ストリーム演算子</h3>
+       <h3 class="cb40">ストリーム演算子（<code>&lt;&lt;</code>）</h3>
         <span class="cb41">
-         <code>&lt;&lt;</code>は、俗に「<b>ストリーム演算子</b>」と呼ばれることもある「左シフト演算子」です。<br>左に<code>std::cout</code>、右に「値」があると、右の「値」を<code>std::cout</code>に渡し、出力します。<br>また、<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;&nbsp;&lt;&lt;&nbsp;10;</code>のように繋げ、連続して出力出来ます。
+         <code>&lt;&lt;</code>は、俗に「ストリーム演算子」と呼ばれることもある「<b>左シフト演算子</b>」です。<br>左に<code>std::cout</code>、右に「値」があると、右の「値」を<code>std::cout</code>に渡し、出力します。<br>また、<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;&nbsp;&lt;&lt;&nbsp;10;</code>のように繋げ、連続して出力出来ます。
         </span>
       </div>
      </article>
@@ -401,7 +509,7 @@ std      <span class="wdsl">::</span>     cout
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">文字列リテラル</h3>
+       <h3 class="cb40">文字列リテラル（<code>&quot;Hello&nbsp;World!\n&quot;</code>）</h3>
         <span class="cb41">
          文字列リテラルは<b><code><ruby><rb>&quot;</rb><rp>（</rp><rt>ダブルクオーテーション</rt><rp>）</rp></ruby></code>で囲う</b>必要があります。<br>それは、あくまで<b>データ部分</b>であることを示す必要があるからです。<br>つまり、<code>&quot;Hello&nbsp;World!\n&quot;</code>というのは、<b>文字列のデータ</b>ということなのです。
         </span>
@@ -417,9 +525,9 @@ std      <span class="wdsl">::</span>     cout
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">エスケープシーケンス</h3>
+       <h3 class="cb40">エスケープシーケンス（<code>\n</code>）</h3>
         <span class="cb41">
-         文字/文字列リテラルの中では、一部文字を<b>エスケープシーケンス</b>を用いて記述します。<br>特に使うのは以下です。よって、<code>&quot;Hello&nbsp;World!\n&quot;</code>は<code>Hello&nbsp;World!</code>と<b>改行</b>だとわかります。
+         文字/文字列リテラルの中では、一部文字を<b>エスケープシーケンス</b>を用いて記述します。<br>特に使うのは以下です。以下から、<code>&quot;Hello&nbsp;World!\n&quot;</code>は<b><code>Hello&nbsp;World!</code>と改行</b>だとわかります。<br>なお、エスケープシーケンスは文字リテラルで使用することが出来ます。
         </span>
       </div>
      </article>
@@ -506,9 +614,82 @@ std      <span class="wdsl">::</span>     cout
       <details class="cb37">
        <summary class="cb48">解説</summary>
        <span class="cb41">
-        <br>##&nbsp;参照、出典
+        _
        </span>
       </details>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照や出典です
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        標準規格と処理系&nbsp;-&nbsp;cpprefjp&nbsp;C++日本語リファレンス
+       </h4>
+       <span class="cb41">
+        https://cpprefjp.github.io/implementation-compliance.html
+       </span>
+       <h4 class="cb45">
+        翻訳フェーズ&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/translation_phases
+       </span>
+       <h4 class="cb45">
+        トークンと文字セット&nbsp;|&nbsp;Microsoft&nbsp;Docs
+       </h4>
+       <span class="cb41">
+        https://docs.microsoft.com/ja-jp/cpp/cpp/character-sets?view=msvc-160
+       </span>
+       <h4 class="cb45">
+        コメント&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/comment
+       </span>
+       <h4 class="cb45">
+        main&nbsp;関数&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/main_function
+       </span>
+       <h4 class="cb45">
+        式&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/expressions
+       </span>
+       <h4 class="cb45">
+        文&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/statements
+       </span>
+       <h4 class="cb45">
+        std::cout,&nbsp;std::wcout&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/io/cout
+       </span>
+       <h4 class="cb45">
+        式&nbsp;-&nbsp;cppreference.com（演算子）
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/expressions#Operators
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
 
     </div>
    </div>

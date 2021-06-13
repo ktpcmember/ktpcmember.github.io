@@ -683,6 +683,7 @@ ${right_base}
         ${text(groups.drpdwn1_m)}
        </span>
       </details>
+     </article>
 `;
 		}
 		else if (groups.drpdwn2 != null) {
