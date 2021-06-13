@@ -543,28 +543,10 @@ function main(str) {
 			}
 		}
 
-		//// タイトルなり、要素なりが無かった時は追加しておく（これいる？？？）
-		//if (need_left) {
-		//	if (left_title.length == 0) {
-		//		left_title = unavailable;
-		//	}
-		//	if (left.length == 0) {
-		//		left = unavailable;
-		//	}
-		//}
-
-		//if (need_right) {
-		//	if (right_title.length == 0) {
-		//		right_title = unavailable;
-		//	}
-		//	if (right.length == 0) {
-		//		right = unavailable;
-		//	}
-		//}
-
 		// 表を二つ並べる時は必要/重要語の表の仕様、一つの時は独自仕様
-		// ただしどちらも margin-top: -2.0em
-		const table_direction = (need_left ^ need_right) ? "tnonfg" : "tntwfg";
+		// 二つの時 cb21 fxlr tntwfg, cb36 debr
+		// 一つの時 cb21 fxlr, tnonfg debr
+		const table_direction = (need_left ^ need_right) ? "tnonfg" : "cb36";
 
 		const left_base =
 			need_left
@@ -602,7 +584,7 @@ ${right_base}
      </article>
 `
 			: // 表が二つある時
-			`     <article class="cb21 fxlr">
+			`     <article class="cb21 fxlr tntwfg">
 ${left_base}
 ${right_base}
      </article>
@@ -747,7 +729,7 @@ ${codeblock(groups.cb_p, groups.cb_m)}</pre>
 			s += table(groups.table.split(/\n/g));
 		}
 	}
-	//console.log(s);
+
 	return s;
 }
 
@@ -763,5 +745,3 @@ if (PATH.parse(argv4).ext == null) {
 }
 
 FS.writeFileSync(to_file, root(FS.readFileSync(from_file), "utf8"), "utf8");
-
-//sleep(1000);

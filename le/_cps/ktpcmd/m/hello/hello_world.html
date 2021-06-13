@@ -107,7 +107,7 @@
     <article class="cb21 fxtb">
      <h2 class="cb33">C++のプログラム事始め</h2>
       <span class="cb34">
-       まず、C++のプログラムを学んでいくにあたって、プログラムの仕組みについて説明します。
+       まず、C++のプログラムを学んでいくにあたって、プログラムの仕組みについて解説します。
       </span>
      </article>
      <article class="cb21">
@@ -130,7 +130,7 @@
       <div class="cb31">
        <h3 class="cb40">処理系</h3>
         <span class="cb41">
-         処理系は、コードの機械語への翻訳と実行をする一連の仕組みの事です。<br>即ち、ビルドと実行をする一連の仕組みで、多くの場合はコンパイラとOSの組み合わせとなります。<br>ですが、処理系や実装という言葉は、コンパイラを指す言葉として使われることもあります。<br>C++では、処理系によって処理が異なる場合が多数あり、そのためこの言葉は多く使われます。
+         処理系は、コードの機械語への翻訳と実行をする一連の仕組みの事です。<br>即ち、<b>ビルドと実行をする一連の仕組み</b>で、多くの場合はコンパイラとOSの組み合わせです。<br>C++では、処理系によって処理が異なる場合が多数あり、それ故に<b>多用される言葉</b>です。
         </span>
       </div>
      </article>
@@ -138,7 +138,7 @@
       <div class="cb31">
        <h3 class="cb40">コンソール</h3>
         <span class="cb41">
-         これから私達が学ぶC++プログラムは、原則としていわゆる<b>コンソール</b>を使用します。<br>ここでの<b>コンソール</b>は、<b>文字のみ</b>でやり取りをする<ruby><rb>CUI</rb><rp>（</rp><rt>Character&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面の事です。<br>一方、普段から私達が使っているプログラムのほとんどは<ruby><rb>GUI</rb><rp>（</rp><rt>Graphical&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面です。
+         これから私達が学ぶC++プログラムは、原則としていわゆる<b>コンソール</b>を使用します。<br>ここでの<b>コンソール</b>は、<b>文字のみ</b>でPCとやり取りする<ruby><rb>CUI</rb><rp>（</rp><rt>Character&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面の事です。<br>一方、普段から私達が使っているプログラムのほとんどは<ruby><rb>GUI</rb><rp>（</rp><rt>Graphical&nbsp;User&nbsp;Interface</rt><rp>）</rp></ruby>形式の画面です。
         </span>
       </div>
      </article>
@@ -215,7 +215,7 @@
       <div class="cb31">
        <h3 class="cb40">コードで使える文字</h3>
         <span class="cb41">
-         さて、C++の文法について触れていきますが、初めにコードで使える文字についてです。<br>実は、「必ずコードで使用できる文字」の集合がC++では定義されています。<br>その集合は、基本ソース文字集合などと呼ばれていて、以下に挙げる96文字です。<br>ただ、後述する文字/文字列リテラルなどでは、その他の文字も使える事があります。<br>ちなみに、MSVCでは拡張機能として、<code>$</code>も基本ソース文字集合として定義されています。
+         さて、C++の文法について触れていきますが、初めにコードで使える文字についてです。<br>以下96文字が、標準規格で「コードで使用できる文字」とされる、<b>基本ソース文字集合</b>です。<br>ただし、<b>コメントやリテラル</b>、追々解説する<b>識別子</b>などではその限りではありません。<br>ちなみに、MSVCでは拡張機能として、<code>$</code>も基本ソース文字集合として定義されています。
         </span>
       </div>
      </article>
@@ -237,7 +237,7 @@
       <div class="cb31">
        <h3 class="cb40">基本ソース文字集合と踏みやすいエラー</h3>
         <span class="cb41">
-         ありがちなミスとして、「<b>スペースを全角</b>にしてしまってビルドに失敗する」があります。<br>先述通り、コード中で必ず使える文字は96文字で、それ以外だとエラーになる可能性があります。<br>なので、<b>全角文字など</b>が紛れ込んでいると、ほとんどの処理系でビルドが<b>失敗</b>するのです。
+         ありがちなミスとして、「<b>スペースを全角</b>にしてしまってビルドに失敗する」があります。<br>先述の通り、基本文字集合以外の文字を使用すると、おおむねエラーになります。<br>つまり、いわゆる<b>全角文字</b>などが紛れ込んでいると、<b>おおむねビルドが失敗</b>するのです。
         </span>
       </div>
      </article>
@@ -245,7 +245,7 @@
       <div class="cb31">
        <h3 class="cb40">コメント</h3>
         <span class="cb41">
-         まず、Visual&nbsp;Studioのエディターで緑で表示されている部分は全て<b>コメント</b>です。<br>コメントはコンパイルする時に削除され、<b>実行ファイルには影響しません</b>。<br>つまり、<b>無視してもいい</b>所です。コードの意図や補足を書く時などで使います。<br>構文は、<code>//から改行まで</code>と、<code>/*から*/まで</code>があり、後者は改行をコメントに含められます。
+         さて、Visual&nbsp;Studioのエディターで緑で表示されている部分は全て<b>コメント</b>です。<br>コメントはコンパイルする時に半角スペース1個に変換され、<b>実行ファイルには影響しません</b>。<br><b>無視してもいい</b>ことになりますが、<b>コードの意図や補足</b>を書く時などで使うため、重要です。<br>構文は、<code>//から改行まで</code>と、<code>/*から*/まで</code>があり、後者は改行をコメントに含められます。<br>ちなみに、コメントでは、どんな文字でも使うことが出来ます。
         </span>
       </div>
      </article>
@@ -267,7 +267,7 @@
       <div class="cb31">
        <h3 class="cb40"><code>#<ruby><rb>include</rb><rp>（</rp><rt>インクルード</rt><rp>）</rp></ruby>&nbsp;&lt;<ruby><rb>iostream</rb><rp>（</rp><rt>アイオーストリーム</rt><rp>）</rp></ruby>&gt;</code></h3>
         <span class="cb41">
-         この一行は、大雑把に言うと、<b>C++標準ライブラリの<code>iostream</code></b>を読み込みます。<br>今は、後で出てくる<b><code>std::<ruby><rb>cout</rb><rp>（</rp><rt>シーアウト</rt><rp>）</rp></ruby></code>を使うために必要だから書く</b>、という認識をしてください。<br>この一行は次に出てくる、<b><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数の前に書く</b>必要があるので注意してください。
+         大雑把に言うと、<b>C++標準ライブラリの<code>iostream</code></b>を読み込んでいます。<br>今は、後で解説する、<b><code>std::<ruby><rb>cout</rb><rp>（</rp><rt>シーアウト</rt><rp>）</rp></ruby></code>を使うために必要だから書く</b>、という認識をしてください。<br>この一行は次に開設する、<b><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数の前に書く</b>必要があるので注意してください。
         </span>
       </div>
      </article>
@@ -275,29 +275,29 @@
       <div class="cb31">
        <h3 class="cb40"><ruby><rb>main</rb><rp>（</rp><rt>メイン</rt><rp>）</rp></ruby>関数</h3>
         <span class="cb41">
-         コードの<code>int&nbsp;main()&nbsp;{}</code>の部分のことを<b>main関数</b>と呼びます。<br>数学でも関数という概念が存在しますが、ひとまず、「動作のまとまり」と捉えてください。<br>main関数は<b>プログラム全体のまとまり</b>で、main関数に書いた内容が実行されるのです。<br>関数の<b>本体は<code>{}</code>の中</b>で、まずは基本的に<b>main関数の本体だけ</b>にコードを書いていきます。
+         コードの<code>int&nbsp;main()&nbsp;{}</code>の部分のことを<b>main関数</b>と呼びます。<br>数学でも関数という概念が存在しますが、ひとまず、「動作のまとまり」と捉えてください。<br>main関数はプログラム全体のまとまりで、<b>main関数に書いた内容が実行</b>されるのです。<br>関数の<b>本体は<code>{}</code>の中</b>で、まずは基本的に<b>main関数の本体だけ</b>にコードを書いていきます。
         </span>
       </div>
      </article>
     <article class="cb21 fxtb">
      <h2 class="cb33">コード<code>Hello&nbsp;World!</code>&nbsp;main関数内解説</h2>
       <span class="cb34">
-       それでは、main関数内の<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;;</code>について見ていきましょう。<br>ですが、もう少し追加で基礎的なC++のコードの構成のされ方を踏まえておきましょう。
+       それでは、main関数内の<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;;</code>について見ていきます。<br>そのために、もう少し基礎的なC++の文法についてを踏まえておきましょう。
       </span>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">式と演算子、オペランド</h3>
+       <h3 class="cb40">式</h3>
         <span class="cb41">
-         C++では式は、演算子とオペランドの並びのことです。<br>演算子は言わずと知れた<code>+</code>や<code>-</code>などから、<code>new</code>や<code>delete</code>などまで様々あります。<br>一方、オペランドはリテラルや、追々説明する変数など、何らか「値」のことを指します。
+         C++では式は、<b>演算子とオペランド（被演算子）の並び</b>のことです。<br>オペランドはリテラルや、追々解説する変数など、<b>何らか「値」</b>のことを指します。<br>そして、演算子は<code>+</code>や<code>-</code>などの、何らかの演算を表す記号のことです。
         </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">文と式</h3>
+       <h3 class="cb40">文</h3>
         <span class="cb41">
-         C++には式と文とがあり、コードは<b>主に文が並べられることで構成</b>されています。<br>式の構文の一つに、算数や数学のような<b><code>値</code>と<code>演算子</code>の繰り返し</b>があります。<br>一方、<b><code><ruby><rb>;</rb><rp>（</rp><rt>セミコロン</rt><rp>）</rp></ruby></code>があれば、それは文</b>です。つまり、式に<code>;</code>を付けると文になります。
+         C++には文という単位があり、意味論的に、コードは<b>文が並べられることで構成</b>します。<br>そして、多くの文では、<code><ruby><rb>;</rb><rp>（</rp><rt>セミコロン</rt><rp>）</rp></ruby></code>が文が終わる終端を表す記号です。<br>即ち、多くの文では、<b><code>;</code>を必ず最後に付ける必要がある</b>文法になっているのです。
         </span>
       </div>
      </article>
@@ -305,7 +305,7 @@
       <div class="cb31">
        <h3 class="cb40">トークン</h3>
         <span class="cb41">
-         コードで<b>意味を持つ最小の単位</b>は、英語等の「単語」に当たる<b>トークン</b>と呼ばれるものです。<br>トークンはキーワード、識別子、リテラル、演算子、区切り記号などに分けられます。<br>詳しくは追々ですが、キーワードはC++規格で予約されているトークンのことです。<br>また、識別子はアルファベットや数字、演算子と区切り文字は記号で構成されます。
+         コードで<b>意味を持つ最小の単位</b>は、英語等の「単語」に当たる<b>トークン</b>と呼ばれるものです。<br>トークンは<b>キーワード、識別子、リテラル、演算子、区切り記号</b>などに分けられます。
         </span>
       </div>
      </article>
@@ -313,29 +313,81 @@
       <div class="cb31">
        <h3 class="cb40">トークンの区切りとホワイトスペース</h3>
         <span class="cb41">
-         トークン同士は、ホワイトスペースもしくは演算子、区切り記号のトークンで区切られます。<br>それぞれのトークンの間には<b>自由にホワイトスペースなどを追加</b>することが出来ます。<br>ちなみに、ホワイトスペースはスペース、水平/垂直タブ、改行、改ページのことです。
+         トークン同士は、ホワイトスペースもしくは演算子、区切り記号のトークンで区切られます。<br>そして、それぞれのトークンの間には<b>自由にホワイトスペースなどを追加</b>することが出来ます。<br>ホワイトスペースとは、<b>スペース、水平/垂直タブ、改行、改ページ</b>のことです。
         </span>
       </div>
      </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">だから…</h3>
+        <span class="cb41">
+         <code>#include&nbsp;&lt;iostream&gt;</code>は、コンパイルの中でも、プリプロセスという作業で処理されます。<br>なので、「今解説しているトークン」とは別の存在なので触れないでおきます。<br>さて、先段落の解説より、コード「Hello&nbsp;World!」は、次のように書くことも出来ます。<br>（ただし、コメント部分はあまりにも量が多いので、コメント部分以外を抜粋）
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">ぎゅうぎゅうずめ</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">(){</span>std<span class="wdsl">::</span>cout<span class="wdsl">&lt;&lt;</span><span class="wdtt">"Hello World!\n"</span><span class="wdsl">;}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">すっかすか</span>
+          <button type="button" class="cb53" onclick="copy('5')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span>
+
+
+　　　　main
+<span class="wdsl">(</span>           <span class="wdsl">)</span>
+
+<span class="wdsl">{</span>
+std      <span class="wdsl">::</span>     cout
+   <span class="wdsl">&lt;&lt;</span>
+<span class="wdtt">"Hello World!\n"</span>
+<span class="wdsl">;</span>
+       <span class="wdsl">}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
     <article class="cb21 fxtb">
      <h2 class="cb33"><code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;</code>;を分解</h2>
       <span class="cb34">
-       それではトークンに分解すると、<code>std::cout</code>、<code>&lt;&lt;</code>、<code>&quot;Hello&nbsp;World!\n&quot;</code>、<code>;</code>の四つになります。<br><code>;</code>というのは<b>文であることを示すトークン</b>なので他の三つを見ていきましょう。
+       それではこの1文を分解すると、<code>std::cout</code>、<code>&lt;&lt;</code>、<code>&quot;Hello&nbsp;World!\n&quot;</code>、<code>;</code>の四つになります。<br><code>;</code>というのは<b>文の終わりを示すトークン</b>なので他の三つを見ていきましょう。<br>ちなみに、<code>std::cout</code>は3つのトークンですが、簡略化の為に今回は1つと見做してしまいます。
       </span>
      </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">標準出力と<code>std::<ruby><rb>cout</rb><rp>（</rp><rt>シーアウト</rt><rp>）</rp></ruby></code></h3>
         <span class="cb41">
-         標準出力は、標準で用意されている出力先のことで、大体はコンソールです。<br>C++で標準出力を表すのは<code>std::cout</code>で、<b>紐づいている先に文字を出力する</b>ことが出来ます。<br>ただ、大抵の場合はコンソールに紐づいて居るので、<b>コンソールに出力する</b>ために使います。<br><code>std::cout</code>の詳しいことは追々扱うので今はこのような理解をしてください。
+         標準出力は、標準で用意されている出力先のことで、大体はコンソールです。<br>C++で標準出力を表すのは<code>std::cout</code>で、<b>紐づいている先に文字を出力する</b>ことが出来ます。<br>ただ、大抵の場合はコンソールに紐づいて居るので、<b>コンソールに出力する</b>ために使います。
         </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">ストリーム演算子こと左シフト演算子</h3>
+       <h3 class="cb40">ストリーム演算子</h3>
         <span class="cb41">
-         <code>&lt;&lt;</code>は、俗に「ストリーム演算子」と呼ばれることもある「左シフト演算子」です。<br>左に<code>std::cout</code>、右に「値」があると、右の「値」を<code>std::cout</code>に渡し、出力します。<br>また、<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;&nbsp;&lt;&lt;&nbsp;10;</code>のように、<b>連鎖する</b>ことが出来ます。
+         <code>&lt;&lt;</code>は、俗に「<b>ストリーム演算子</b>」と呼ばれることもある「左シフト演算子」です。<br>左に<code>std::cout</code>、右に「値」があると、右の「値」を<code>std::cout</code>に渡し、出力します。<br>また、<code>std::cout&nbsp;&lt;&lt;&nbsp;&quot;Hello&nbsp;World!\n&quot;&nbsp;&lt;&lt;&nbsp;10;</code>のように繋げ、連続して出力出来ます。
         </span>
       </div>
      </article>
@@ -343,15 +395,23 @@
       <div class="cb31">
        <h3 class="cb40">リテラル</h3>
         <span class="cb41">
-         コード上に<b>直接書かれているデータ</b>のことを<b>リテラル</b>と呼びます。<br>主なリテラルとして、整数/小数/文字/文字列/真偽リテラルが存在し、一行で書きます。<br>整数/小数は、<b>単純に数字を直接書く</b>ことでリテラルとして表現することが出来ます。<br>真偽リテラルについては追々やるので、今は見なかったことにして進みましょう。
+         コード上に<b>直接書かれているデータ</b>のことを<b>リテラル</b>と呼びます。<br>リテラルは多数ありますが、整数/小数/文字/文字/文字列リテラルを今回解説します。<br>整数/小数は、<b>単純に数字を直接書く</b>だけでリテラルとなります。
         </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">文字/文字列リテラル</h3>
+       <h3 class="cb40">文字列リテラル</h3>
         <span class="cb41">
-         <b>文字/文字列はそれぞれ<code><ruby><rb>&#39;</rb><rp>（</rp><rt>シングルクオーテーション</rt><rp>）</rp></ruby></code>/<code><ruby><rb>&quot;</rb><rp>（</rp><rt>ダブルクオーテーション</rt><rp>）</rp></ruby></code>で囲う</b>必要があります。<br>それは、<b>文法に従わないデータ部分</b>で、C++の文法部分とは区別する必要があるからです。<br>結局<code>&quot;Hello&nbsp;World!\n&quot;</code>というのは、即ち<b>文字列のデータ</b>のことなのです。
+         文字列リテラルは<b><code><ruby><rb>&quot;</rb><rp>（</rp><rt>ダブルクオーテーション</rt><rp>）</rp></ruby></code>で囲う</b>必要があります。<br>それは、あくまで<b>データ部分</b>であることを示す必要があるからです。<br>つまり、<code>&quot;Hello&nbsp;World!\n&quot;</code>というのは、<b>文字列のデータ</b>ということなのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文字リテラル</h3>
+        <span class="cb41">
+         文字リテラルでは、文字列リテラル同様に、<b><code><ruby><rb>&#39;</rb><rp>（</rp><rt>シングルクオーテーション</rt><rp>）</rp></ruby></code></b>で囲う必要があります。<br>文字リテラルは、<b>文字列リテラルと違い1文字</b>のみしか使用することが出来ません。<br>詳しくすると難しいですが、文字リテラルに<b>使えない文字も非常にたくさんあります</b>。<br>ただし、アルファベットや半角数字、基本的な記号は、ほぼすべての場合で使えます。
         </span>
       </div>
      </article>
@@ -359,7 +419,7 @@
       <div class="cb31">
        <h3 class="cb40">エスケープシーケンス</h3>
         <span class="cb41">
-         文字列リテラルの中では、特殊記法である<b>エスケープシーケンス</b>を用いる必要があります。<br>特に使うのは以下で、これらから<code>&quot;Hello&nbsp;World!\n&quot;</code>は<code>Hello&nbsp;World!</code>と<b>改行</b>だとわかります。
+         文字/文字列リテラルの中では、一部文字を<b>エスケープシーケンス</b>を用いて記述します。<br>特に使うのは以下です。よって、<code>&quot;Hello&nbsp;World!\n&quot;</code>は<code>Hello&nbsp;World!</code>と<b>改行</b>だとわかります。
         </span>
       </div>
      </article>
@@ -402,19 +462,19 @@
     <article class="cb21 fxtb">
      <h2 class="cb33">練習問題</h2>
       <span class="cb34">
-       次に示す出力結果になるように、<b>整数/小数/文字/文字/文字列リテラルを使って</b>コードを書きましょう。<br>ただし、<b>回答例はあくまで回答例</b>なので、<b>実行結果と問題の制約</b>を満たせば問題ありません。<br>また、問題がわからない場合などに<b>読み直したり、調べること</b>も問題ないとします。
+       次に示す出力結果になるようにC++コンソールプログラムを作りましょう。<br>ただし、<b>整数/小数/文字/文字/文字列リテラルとエスケープシーケンス</b>を使いましょう。<br>なお、<b>回答例はあくまで回答例</b>なので、<b>実行結果と問題の制約</b>を満たせば問題ありません。<br>また、問題がわからない場合などに<b>読み直したり、調べること</b>も問題ないとします。
       </span>
      </article>
       <article class="cb21 fxrl">
         <div class="cb37">
          <div class="cb46">
           <span class="cb54">出力結果</span>
-          <button type="button" class="cb53" onclick="copy('4')">
+          <button type="button" class="cb53" onclick="copy('6')">
            <span class="cb61">COPY</span>
           </button>
          </div>
          <code class="cb47">
-<pre id="4" class="cb55 bkgdbl">
+<pre id="6" class="cb55 bkgdbl">
 &gt;&nbsp;C++&nbsp;is&nbsp;a&nbsp;good&nbsp;programming&nbsp;language.<br>&gt;&nbsp;42&nbsp;2021.05<br></pre>
          </code>
         </div>
@@ -425,12 +485,12 @@
         <summary class="cb48">回答例</summary>
         <div class="cb46">
         <span class="cb54">回答例</span>
-        <button type="button" class="cb53" onclick="copy('5')">
+        <button type="button" class="cb53" onclick="copy('7')">
          <span class="cb61">COPY</span>
         </button>
        </div>
        <code class="cb47">
-<pre id="5" class="cb55 bkgdbl">
+<pre id="7" class="cb55 bkgdbl">
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 
 <span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
