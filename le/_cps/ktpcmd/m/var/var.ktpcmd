@@ -1,5 +1,5 @@
 <meta>
-title += "C++講習概要 - C++ on MSVC講習"
+title += "変数基礎 - C++ on MSVC講習"
 keywords += ", C++, MSVC"
 description = "C++の組み込み型とstd::stringについて解説しています。"
 </meta>
@@ -8,10 +8,17 @@ description = "C++の組み込み型とstd::stringについて解説していま
 name = "C++ on MSVC講習"
 top = "le\_cps\_cps.html"
 index = "le\_cps\m\i_dx\i_dx.html"
-before = "le\_cps\ktpccmd\m\hello\hello_world.html"
+before = "le\_cps\ktpcmd\m\hello\hello.html"
 next = ""
 </header>
 
 <main>
+# C++ on MSVC講習/変数基礎
+
+## 概要
+準備中です。
+
+*- 重要語
+*+ 必要語
 
 </main>
