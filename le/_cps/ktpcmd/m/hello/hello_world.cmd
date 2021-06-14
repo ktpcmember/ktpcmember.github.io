@@ -1,1 +1,0 @@
-node "%ktpcmd%" "%ktpc_root%" "%ktpc_root%\le\_cps\ktpcmd\m\hello\hello_world.ktpcmd" "%ktpc_root%\le\_cps\ktpcmd\m\hello\hello_world.html"

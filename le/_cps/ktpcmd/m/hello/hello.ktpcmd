@@ -8,8 +8,8 @@ description = "C++コンソールプログラムでのHello, world!について�
 name = "C++ on MSVC講習"
 top = "le\_cps\_cps.html"
 index = "le\_cps\m\i_dx\i_dx.html"
-before = ""
-next = ""
+before = "le\_cps\ktpcmd\m\intro\intro.html"
+next = "le\_cps\ktpcmd\m\var\var.html"
 </header>
 
 <main>

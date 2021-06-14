@@ -1,0 +1,17 @@
+<meta>
+title += "C++講習概要 - C++ on MSVC講習"
+keywords += ", C++, MSVC"
+description = "C++の組み込み型とstd::stringについて解説しています。"
+</meta>
+
+<header>
+name = "C++ on MSVC講習"
+top = "le\_cps\_cps.html"
+index = "le\_cps\m\i_dx\i_dx.html"
+before = "le\_cps\ktpccmd\m\hello\hello_world.html"
+next = ""
+</header>
+
+<main>
+
+</main>

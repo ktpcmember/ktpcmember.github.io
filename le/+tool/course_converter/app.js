@@ -370,28 +370,39 @@ function meta(str) {
 // headerセクション
 // call_from : root
 function header(str) {
+	// パスが無かったら404.htmlにする
+	function not_found(path) {
+		return PATH.relative(to_dir, PATH.join(ktpc_root, path || "404.html"));
+	}
+
 	// name、top、before、next、index文の正規表現
-	let name = /^name[^S\n]*=[^\S\n]*"(.*?)"/ms.exec(str),
-		top = /^top[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str),
-		before = /^before[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str),
-		next = /^next[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str),
-		index = /^index[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str);
+	let name = /^name[^S\n]*=[^\S\n]*"(.*?)"/ms.exec(str)[1],
+		top = /^top[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str)[1],
+		before = /^before[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str)[1],
+		next = /^next[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str)[1],
+		index = /^index[^\S\n]*=[^\S\n]*"(.*?)"/ms.exec(str)[1];
+
+	name = (name || "");
+	top = not_found(top);
+	before = not_found(before);
+	next = not_found(next);
+	index = not_found(index);
 
 	// String.rawわs(ry
 	return String.raw`      <div class="ch32">
        <span class="ch40">
-        <span class="ch50">${name[1]}</span>
+        <span class="ch50">${name}</span>
        </span>
-       <a class="ch41" href="${PATH.relative(to_dir, PATH.join(ktpc_root, top[1]))}">
+       <a class="ch41" href="${top}">
         <span class="ch50">目次</span>
        </a>
-       <a class="ch41" href="${PATH.relative(to_dir, PATH.join(ktpc_root, index[1]))}">
+       <a class="ch41" href="${index}">
         <span class="ch50">索引</span>
        </a>
-       <a class="ch41" href="${PATH.relative(to_dir, PATH.join(ktpc_root, before[1]))}">
+       <a class="ch41" href="${before}">
         <span class="ch50">前回</span>
        </a>
-       <a class="ch41" href="${PATH.relative(to_dir, PATH.join(ktpc_root, next[1]))}">
+       <a class="ch41" href="${next}">
         <span class="ch50">次回</span>
        </a>
       </div>`;
