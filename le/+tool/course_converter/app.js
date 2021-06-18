@@ -435,16 +435,12 @@ function main(str) {
 		switch (mode) {
 			case "cpp":
 				return cpp_codeblock(str);
-				break;
 			case "cmd":
 				return cmd_codeblock(str);
-				break;
 			case "ktpcpicasm":
 				return ktpcpicasm_codeblock(str);
-				break;
 			case "syntax":
 				return syntax_codeblock(str);
-				break;
 		}
 	}
 
@@ -617,6 +613,22 @@ ${right_base}
 		};
 	}();
 
+	function pre(req, str) {
+		let ex = function () {
+			let res = /attribute\s+(.+?);/msg.exec(req);
+			return res[1] || "";
+		}
+
+		if (str.endsWith("\n")) {
+			str.pop();
+		}
+
+		return `     <article ${ex}>
+${str}
+     </article>
+`;
+	}
+
 	//ブロックに分解
 
 	// 上の方で表の正規表現の定義、aryでそれぞれ
@@ -638,6 +650,7 @@ ${right_base}
 		// drpdwn1 折り畳み段落
 		// drpdwn2 折り畳みコード
 		// cb コード
+		// pre htmlコードの直接貼り付け
 		const ary = [
 			String.raw`(?:^(?<h1>#)${non_lf_s}+(?<h1_t>${non_lf}*?)\n{2})`,
 			String.raw`(?:^(?<h2>#{2})${non_lf_s}+(?<h2_t>${non_lf}*?)\n(?<h2_m>${all}*?)\n{2})`,
@@ -645,7 +658,8 @@ ${right_base}
 			String.raw`(?:^(?<drpdwn1>@)${non_lf_s}+(?<drpdwn1_t>${non_lf}*?)\n(?<drpdwn1_m>${all}*?)\n{2})`,
 			String.raw`(?:^(?<drpdwn2>@\`{2})(?<drpdwn2_m>${normal}*?)${non_lf_s}+(?<drpdwn2_t>${non_lf}*?)\n(?<drpdwn2_p>${all}*?)\`{3}\n{2})`,
 			String.raw`(?:^(?<cb>\`{3})(?<cb_m>${normal}*?)${non_lf_s}+(?<cb_t>${non_lf}*?)\n(?<cb_p>${all}*?)\`{3}\n{2})`,
-			String.raw`(?:${table})`
+			String.raw`(?:${table})`,
+			String.raw`(?:^(?<pre>&)\((?<pre_req>${non_lf}*)\)\n(?<pre_m>${all}*?)^&;\n{2})`
 		];
 
 		return ary.join("|");
@@ -739,6 +753,8 @@ ${codeblock(groups.cb_p, groups.cb_m)}</pre>
 `;
 		} else if (groups.table != null) {
 			s += table(groups.table.split(/\n/g));
+		} else if (groups.pre != null) {
+			s += pre(groups.pre_req, groups.pre_m);
 		}
 	}
 
