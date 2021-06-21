@@ -71,9 +71,9 @@
       <h1>C++ on MSVC講習/変数基礎</h1>
      </article>
     <article class="cb21 fxtb">
-     <h2 class="cb33">概要</h2>
+     <h2 class="cb33">あらすじ</h2>
       <span class="cb34">
-       準備中です。
+       前回は、Hello&nbsp;World!プログラムを通じて、基本的なコードの決まりを解説しました。<br>また、標準出力やリテラルを使い、コンソールへ単純な文字列を出力できるようになりました。
       </span>
      </article>
      <article class="cb21 fxlr tntwfg">
@@ -91,6 +91,332 @@
 今回はありません
       </div>
 
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">C++の変数</h2>
+      <span class="cb34">
+       変数って、何なんでしょうか。ひとまず解説するので一読してみてください。<br>一読したら、進んでみて、また分からなくなったら読んでみてくださいね。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">リテラルだと不便なところ</h3>
+        <span class="cb41">
+         前回のコードHello&nbsp;World!では、リテラルを使っていました。<br>それでは、同じ値でも複数の文で使用するには、<b>その度に書かなくては</b>いけません。<br>他にも、<b>実行時に値を決定したり、変更</b>したりすることが出来ません。<br>前回のプログラムだと、表示する内容を変えるごとにコンパイルしないといけません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">値を保存すればいいのよ</h3>
+        <span class="cb41">
+         それらは、<b>実行時に値を保存・変更できる仕組み</b>があれば解決することが出来ます。<br>その仕組みが変数で、<b>名前に値を関連付ける</b>ことで値を保存することが出来るようになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">型</h3>
+        <span class="cb41">
+         C++の変数は、必ず型を持っていて、<b>型によってコードでの振る舞いが制限</b>されています。<br>そして、型による振る舞いの制限が守られているか<b>コンパイル時にチェック</b>されます。<br>それによって、プログラマーの<b>ミスを実行前に発見し、修正</b>することが出来るのです。<br>ですから多くの場合、型には、意味論としての使用法や性質が名前として付けられます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">型の種類</h3>
+        <span class="cb41">
+         ライブラリ等が必要ない、C++に元から組み込まれている型を<b>組み込み型</b>と総称します。<br>一方、ライブラリ等で型の定義を導入できるものを<b>ユーザー定義型</b>と総称します。<br>今回は組み込み型から、<b>整数だけを扱える<code>int</code></b>と、<b>小数まで扱える<code>double</code>を、<br>ユーザー定義型からは、</b>文字列を扱う為の<code>std::string</code>について解説します。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">整数を扱おう</h2>
+      <span class="cb34">
+       まずは整数を扱ってみましょう。次のコードをコピペして実行しましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">整数</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">// 符号付き（負数も使える）
+</span>    <span class="wdc_mt">// 最長名                           // 普通使われる名前
+</span>    <span class="wdkywd">signed</span> <span class="wdkywd">short</span> <span class="wdkywd">int</span>        a<span class="wdsl">;</span>          <span class="wdc_mt">// short
+</span>    <span class="wdkywd">signed</span> <span class="wdkywd">int</span>              b <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>     <span class="wdc_mt">// int
+</span>    <span class="wdkywd">signed</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>         c<span class="wdsl">(</span><span class="wdnr">20</span><span class="wdsl">);</span>      <span class="wdc_mt">// long
+</span>    <span class="wdkywd">signed</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>    d<span class="wdsl">{</span> <span class="wdnr">40</span> <span class="wdsl">};</span>    <span class="wdc_mt">// long long
+</span>
+    <span class="wdc_mt">// 初期化されていない「a」は、値が不定なので使用してはいけない
+</span>
+    <span class="wdc_mt">// 「a」に1を代入
+</span>    a <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">// 代入された「a」は、代入された値になったので、使用してよい
+</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"a : "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"b : "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"c : "</span> <span class="wdsl">&lt;&lt;</span> c <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"d : "</span> <span class="wdsl">&lt;&lt;</span> d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">// 符号なし（負数は使えない）
+</span>    <span class="wdc_mt">// 最長名                             // 通常使われる名前
+</span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">short</span> <span class="wdkywd">int</span>      u_a <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>      <span class="wdc_mt">// unsigned short
+</span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">int</span>            u_b<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">);</span>      <span class="wdc_mt">// unsigned
+</span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>       u_c<span class="wdsl">{</span> <span class="wdnr">20</span> <span class="wdsl">};</span>    <span class="wdc_mt">// unsigned long
+</span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>  u_d <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdnr">40</span> <span class="wdsl">};</span> <span class="wdc_mt">// unsigned long long
+</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_a : "</span> <span class="wdsl">&lt;&lt;</span> u_a <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_b : "</span> <span class="wdsl">&lt;&lt;</span> u_b <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_c : "</span> <span class="wdsl">&lt;&lt;</span> u_c <span class="wdsl">&lt;&lt;</span> '\n'
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_d : "</span> <span class="wdsl">&lt;&lt;</span> u_d <span class="wdsl">&lt;&lt;</span> '\n'<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+&gt;&nbsp;a&nbsp;:&nbsp;-1<br>&gt;&nbsp;b&nbsp;:&nbsp;-10<br>&gt;&nbsp;c&nbsp;:&nbsp;-20<br>&gt;&nbsp;d&nbsp;:&nbsp;-40<br>&gt;<br>&gt;&nbsp;u_a&nbsp;:&nbsp;1<br>&gt;&nbsp;u_b&nbsp;:&nbsp;10<br>&gt;&nbsp;u_c&nbsp;:&nbsp;20<br>&gt;&nbsp;u_d&nbsp;:&nbsp;40&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       さて、コードの解説に入っていきます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">宣言</h3>
+        <span class="cb41">
+         変数は<b>「名前に値を関連付けることで値を保存」</b>出来ると説明しました。<br>そのためには、まず<b>コンパイラに変数を使うことを教える</b>必要があります。<br>それを<b>宣言</b>といい、以下のような構文を用いります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        追加される構文の記法
+       </h4>
+       <h4 class="cb45">
+        なにかしら(opt)
+       </h4>
+       <span class="cb41">
+        省略可能（例だと、「なにかしら」を省略可能）
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">変数宣言</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+型名&nbsp;識別子&nbsp;初期化子(opt)&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">整数を扱う型</h3>
+        <span class="cb41">
+         整数を扱う型は、<b>組み込み型の1つである<code>int</code></b>です。<br><b>signed/unsigned</b>で<b>符号のあり/なし</b>、即ち<b>負の数が扱えない/る</b>を、<br><b>short/long/long&nbsp;long</b>で<b>変数のサイズ</b>を指定することが出来ます。<br>サイズについてはコード解説が終わった後に解説します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        主な整数を扱う型と別名
+       </h4>
+       <h4 class="cb45">
+        short&nbsp;int
+       </h4>
+       <span class="cb41">
+        short/signed&nbsp;short/signed&nbsp;short&nbsp;int
+       </span>
+       <h4 class="cb45">
+        int
+       </h4>
+       <span class="cb41">
+        signed/signed&nbsp;int
+       </span>
+       <h4 class="cb45">
+        long&nbsp;int
+       </h4>
+       <span class="cb41">
+        long/signed&nbsp;long/signed&nbsp;long&nbsp;int
+       </span>
+       <h4 class="cb45">
+        long&nbsp;long&nbsp;int
+       </h4>
+       <span class="cb41">
+        long&nbsp;long/signed&nbsp;long&nbsp;long/signed&nbsp;long&nbsp;long&nbsp;int
+       </span>
+       <h4 class="cb45">
+        unsigned&nbsp;short&nbsp;int
+       </h4>
+       <span class="cb41">
+        unsigned&nbsp;short
+       </span>
+       <h4 class="cb45">
+        unsigned&nbsp;int
+       </h4>
+       <span class="cb41">
+        unsigned
+       </span>
+       <h4 class="cb45">
+        unsigned&nbsp;long&nbsp;int
+       </h4>
+       <span class="cb41">
+        unsigned&nbsp;long
+       </span>
+       <h4 class="cb45">
+        unsigned&nbsp;long&nbsp;long&nbsp;int
+       </h4>
+       <span class="cb41">
+        unsigned&nbsp;long&nbsp;long
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">初期化</h3>
+        <span class="cb41">
+         宣言すると同時に、<b>値を設定</b>しましょう。<b>それが初期化です</b>。<br>大雑把に説明すると、下3つは、<b>値を省略すると<code>0</code>で初期化</b>され、<br>特に、下2つは、値が<b>変数で表せない値であるかのチェック</b>がされます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">初期化子</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+<code>=</code>&nbsp;値<br><code>(</code>&nbsp;値(opt)&nbsp;<code>)</code><br><code>{</code>&nbsp;値(opt)&nbsp;<code>}</code><br><code>=</code>&nbsp;<code>{</code>&nbsp;値(opt)&nbsp;<code>}</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">代入</h3>
+        <span class="cb41">
+         初期化したしないに関わらず、<b>宣言後に値を変更するときは代入式</b>を使用します。<br><b>左辺には変数</b>、<b>演算子は<code>=</code></b>、<b>右辺には値</b>（変数も大丈夫）を書きます。<br>すると、<b>右辺の値を左辺に設定する働き</b>をします。<b>数学的なイコールとは違います</b>。<br><b>代入は式</b>なので、<b>最後に<code>;</code>を付けて文にしないと存在できない</b>ことに注意しましょう。<br>構文は以下のようになります。2つ目の挙動は初期化のものとほぼ同じです。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">代入</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+変数&nbsp;<code>=</code>&nbsp;値<br>変数&nbsp;<code>=</code>&nbsp;<code>{</code>&nbsp;値(opt)&nbsp;<code>}</code><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">整数の内部表現</h2>
+      <span class="cb34">
+       変数のサイズとは何のことでしょうか。それにはまず、コンピューターでの内部表現を知りましょう。<br>また、丁度いいので、整数の内部表現についても解説していきます。<br>正直コードを理解するのに必要は無いので、必要になったら読むのでもいいでしょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ビットとバイト</h3>
+        <span class="cb41">
+         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1Byteとは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">変数のサイズ</h3>
+        <span class="cb41">
+         変数のサイズというのは、即ち<b>変数が使うビットの量</b>のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、<b>変数にサイズを決める、あるいは決まってしまう</b>のが普通です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">負の数を扱いたくなりました</h3>
+        <span class="cb41">
+         <b>負の数を扱いたくなりました</b>。この時一番簡単に思いつくのは<b>符号ビットを使う</b>ことです。<br>例えば、8bitの整数があった時、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>を符号ビットということにしてみましょう。<br>符号ビットが<b><code>0</code>/<code>1</code>の時、正/負</b>とし、<b>残り7bitは絶対値で表現</b>してみましょう。<br><code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>に対して、<code><ruby><rb>1000&nbsp;0001</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>のようになり、<b><code>-127から127</code>が表現できます</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">1の補数表現</h3>
+        <span class="cb41">
+         符号ビットと絶対値で表す以外にも、<b>正の数の表現を<ruby><rb>ビット反転</rb><rp>（</rp><rt>各ビットの0と1を逆にする</rt><rp>）</rp></ruby>する方法</b>もあります。<br>例えば、上と同じく8bitの整数で、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>をビット反転して<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>といった具合。<br>これも<b>やっぱり<code>-127から127</code>まで表現でき</b>、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>は<b>符号ビットの役割を果たします</b>。<br>これは、数学の「補数」という考え方に由来するため、<b>1の補数表現</b>と言います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ダメなのよ。</h3>
+        <span class="cb41">
+         上の2つの表現、<b>実はどっちもダメ</b>なところがあります。例えば、<b><code>0</code>が2種類ある</b>のです。<br>1つの数値に対して2つ以上表現があると、<b>一意に表現できていない</b>ということになるのです。<br>でも、符号ビットが<code>1</code>の時は<code>0</code>を表現しない、とすると<b>表現が1個捨てられて無駄</b>です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">2の補数表現</h3>
+        <span class="cb41">
+         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、例えば8bitであれば、<b><code>127から-128</code>までを表せる</b>のです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">何がいいのさ</h3>
+        <span class="cb41">
+         さて、ここまで斜め読みした人は、<b>どうしてこんな面倒なことをしたんだろう</b>と思うでしょう。<br>実は、2の補数表現は<b>減算を乗算で処理できる</b>という真の力を秘めているのです。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、<b>あらあら</b>。<br><b>桁あふれした分は見なかったこと</b>にして、<b>2進法で計算すると減算が加算で処理できる</b>のです。
+        </span>
+      </div>
      </article>
 
     </div>
