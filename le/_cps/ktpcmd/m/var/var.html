@@ -163,9 +163,9 @@
 
     <span class="wdc_mt">// 代入された「a」は、代入された値になったので、使用してよい
 </span>
-    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"a : "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> '\n'
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"b : "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> '\n'
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"c : "</span> <span class="wdsl">&lt;&lt;</span> c <span class="wdsl">&lt;&lt;</span> '\n'
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"a : "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"b : "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"c : "</span> <span class="wdsl">&lt;&lt;</span> c <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"d : "</span> <span class="wdsl">&lt;&lt;</span> d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
 
     <span class="wdc_mt">// 符号なし（負数は使えない）
@@ -175,10 +175,10 @@
 </span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>       u_c<span class="wdsl">{</span> <span class="wdnr">20</span> <span class="wdsl">};</span>    <span class="wdc_mt">// unsigned long
 </span>    <span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> <span class="wdkywd">int</span>  u_d <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdnr">40</span> <span class="wdsl">};</span> <span class="wdc_mt">// unsigned long long
 </span>
-    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_a : "</span> <span class="wdsl">&lt;&lt;</span> u_a <span class="wdsl">&lt;&lt;</span> '\n'
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_b : "</span> <span class="wdsl">&lt;&lt;</span> u_b <span class="wdsl">&lt;&lt;</span> '\n'
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_c : "</span> <span class="wdsl">&lt;&lt;</span> u_c <span class="wdsl">&lt;&lt;</span> '\n'
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_d : "</span> <span class="wdsl">&lt;&lt;</span> u_d <span class="wdsl">&lt;&lt;</span> '\n'<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_a : "</span> <span class="wdsl">&lt;&lt;</span> u_a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_b : "</span> <span class="wdsl">&lt;&lt;</span> u_b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_c : "</span> <span class="wdsl">&lt;&lt;</span> u_c <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_d : "</span> <span class="wdsl">&lt;&lt;</span> u_d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </span></span></pre>
          </code>
@@ -194,7 +194,7 @@
          </div>
          <code class="cb47">
 <pre id="1" class="cb55 bkgdbl">
-&gt;&nbsp;a&nbsp;:&nbsp;-1<br>&gt;&nbsp;b&nbsp;:&nbsp;-10<br>&gt;&nbsp;c&nbsp;:&nbsp;-20<br>&gt;&nbsp;d&nbsp;:&nbsp;-40<br>&gt;<br>&gt;&nbsp;u_a&nbsp;:&nbsp;1<br>&gt;&nbsp;u_b&nbsp;:&nbsp;10<br>&gt;&nbsp;u_c&nbsp;:&nbsp;20<br>&gt;&nbsp;u_d&nbsp;:&nbsp;40&nbsp;<br></pre>
+&lt;&nbsp;a&nbsp;:&nbsp;-1<br>&lt;&nbsp;b&nbsp;:&nbsp;-10<br>&lt;&nbsp;c&nbsp;:&nbsp;-20<br>&lt;&nbsp;d&nbsp;:&nbsp;-40<br>&lt;<br>&lt;&nbsp;u_a&nbsp;:&nbsp;1<br>&lt;&nbsp;u_b&nbsp;:&nbsp;10<br>&lt;&nbsp;u_c&nbsp;:&nbsp;20<br>&lt;&nbsp;u_d&nbsp;:&nbsp;40<br>&lt;<br></pre>
          </code>
         </div>
        </article>
@@ -208,7 +208,7 @@
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
         <span class="cb41">
-         変数は<b>「名前に値を関連付けることで値を保存」</b>出来ると説明しました。<br>そのためには、まず<b>コンパイラに変数を使うことを教える</b>必要があります。<br>それを<b>宣言</b>といい、以下のような構文を用いります。
+         変数は<b>「名前に値を関連付けることで値を保存」</b>出来ると説明しました。<br>そのためには、まず<b>コンパイラに変数を使うことを教える</b>必要があります。<br>それを<b>宣言</b>といい、一番基本的には、以下のような構文を用いります。
         </span>
       </div>
      </article>
@@ -248,7 +248,7 @@
       <div class="cb31">
        <h3 class="cb40">整数を扱う型</h3>
         <span class="cb41">
-         整数を扱う型は、<b>組み込み型の1つである<code>int</code></b>です。<br><b>signed/unsigned</b>で<b>符号のあり/なし</b>、即ち<b>負の数が扱えない/る</b>を、<br><b>short/long/long&nbsp;long</b>で<b>変数のサイズ</b>を指定することが出来ます。<br>サイズについてはコード解説が終わった後に解説します。
+         整数を扱う型は、<b>組み込み型の1つである<code><ruby><rb>int</rb><rp>（</rp><rt>いんと</rt><rp>）</rp></ruby></code></b>です。<br><b><ruby><rb>signed</rb><rp>（</rp><rt>さいんど</rt><rp>）</rp></ruby>/<ruby><rb>unsigned</rb><rp>（</rp><rt>あんさいんど</rt><rp>）</rp></ruby></b>で<b>符号のあり/なし</b>、即ち<b>負の数が扱えない/る</b>を、<br><b><ruby><rb>short</rb><rp>（</rp><rt>しょーと</rt><rp>）</rp></ruby>/<ruby><rb>long</rb><rp>（</rp><rt>ろんぐ</rt><rp>）</rp></ruby>/<ruby><rb>long&nbsp;long</rb><rp>（</rp><rt>ろんぐろんぐ</rt><rp>）</rp></ruby></b>で<b>変数のサイズ</b>を指定することが出来ます。<br>サイズについてはコード解説が終わった後に解説します。
         </span>
       </div>
      </article>
@@ -336,6 +336,14 @@
        </article>
      <article class="cb21">
       <div class="cb31">
+       <h3 class="cb40">初期化してない組み込み型</h3>
+        <span class="cb41">
+         初期化を<b>しなかった</b>組み込み型の変数は、<b>その持つ値は不定になります</b>。<br>この不定の値を持つ組み込み型の変数は、<b>その値を使うことはしてはいけません</b>。<br>その様な変数を使って良い状態になるのは、<b>代入等で値を設定してから</b>です。<br><b>コンパイルエラーは出ません</b>が、標準規格で<b>未定義動作とされる状態になります</b>。<br>未定義動作は、タイムトラベルしたり鼻から悪魔が出るので、起こしてはいけません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
        <h3 class="cb40">代入</h3>
         <span class="cb41">
          初期化したしないに関わらず、<b>宣言後に値を変更するときは代入式</b>を使用します。<br><b>左辺には変数</b>、<b>演算子は<code>=</code></b>、<b>右辺には値</b>（変数も大丈夫）を書きます。<br>すると、<b>右辺の値を左辺に設定する働き</b>をします。<b>数学的なイコールとは違います</b>。<br><b>代入は式</b>なので、<b>最後に<code>;</code>を付けて文にしないと存在できない</b>ことに注意しましょう。<br>構文は以下のようになります。2つ目の挙動は初期化のものとほぼ同じです。
@@ -366,7 +374,7 @@
       <div class="cb31">
        <h3 class="cb40">ビットとバイト</h3>
         <span class="cb41">
-         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1Byteとは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
+         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1<ruby><rb>Byte</rb><rp>（</rp><rt>バイト</rt><rp>）</rp></ruby>とは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
         </span>
       </div>
      </article>
@@ -406,7 +414,7 @@
       <div class="cb31">
        <h3 class="cb40">2の補数表現</h3>
         <span class="cb41">
-         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、例えば8bitであれば、<b><code>127から-128</code>までを表せる</b>のです。
+         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、例えば8bitであれば、<b><code>127から-128</code>までを表せる</b>のです。<br>また、これも1Byte=8bitのくだりと同じく、ごく稀にそうでない処理系もあります。
         </span>
       </div>
      </article>
@@ -415,6 +423,360 @@
        <h3 class="cb40">何がいいのさ</h3>
         <span class="cb41">
          さて、ここまで斜め読みした人は、<b>どうしてこんな面倒なことをしたんだろう</b>と思うでしょう。<br>実は、2の補数表現は<b>減算を乗算で処理できる</b>という真の力を秘めているのです。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、<b>あらあら</b>。<br><b>桁あふれした分は見なかったこと</b>にして、<b>2進法で計算すると減算が加算で処理できる</b>のです。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">小数を扱おう</h2>
+      <span class="cb34">
+       次は小数を扱ってみましょう。次のコードをコピペして実行しましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">小数</span>
+          <button type="button" class="cb53" onclick="copy('5')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>iomanip<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">float</span> f<span class="wdsl">;</span>
+    <span class="wdkywd">double</span> d <span class="wdsl">=</span> .1<span class="wdsl">;</span>
+    <span class="wdkywd">long</span> <span class="wdkywd">double</span> ld <span class="wdsl">=</span> <span class="wdnr">1234e</span><span class="wdsl">-</span><span class="wdnr">5</span><span class="wdsl">;</span>
+
+    f <span class="wdsl">=</span> <span class="wdnr">2.345</span><span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>fixed <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>setprecision<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">)</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"f  : "</span> <span class="wdsl">&lt;&lt;</span> f <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"d  : "</span> <span class="wdsl">&lt;&lt;</span> d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ld : "</span> <span class="wdsl">&lt;&lt;</span> ld <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例</span>
+          <button type="button" class="cb53" onclick="copy('6')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="6" class="cb55 bkgdbl">
+&lt;&nbsp;f&nbsp;&nbsp;:&nbsp;2.3450000286<br>&lt;&nbsp;d&nbsp;&nbsp;:&nbsp;0.1000000000<br>&lt;&nbsp;ld&nbsp;:&nbsp;0.0123400000<br>&lt;<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実行結果例補足</h3>
+        <span class="cb41">
+         代入値と異なる表示になる場合があります。<br>が、それは生じてしまう誤差なので気にしない方針にしてください。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       コードの解説をします。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">概説</h3>
+        <span class="cb41">
+         小数を扱える型は、<b><code><ruby><rb>float</rb><rp>（</rp><rt>ふろーと</rt><rp>）</rp></ruby></code>と<code><ruby><rb>double</rb><rp>（</rp><rt>だぶる</rt><rp>）</rp></ruby></code>と<code><ruby><rb>long&nbsp;double</rb><rp>（</rp><rt>ろんぐだぶる</rt><rp>）</rp></ruby></code></b>があります。<br>これらは、左よりは右の方が<b>より誤差無く表せる値の範囲が大きい、又は同様</b>になります。<br>ただし、宣言と初期化、代入についての文法は、整数と同様なので飛ばします。<br>もちろん、整数と同様に、<b>初期化をしないと不定な値を持ち、それを使用してはいけません</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">小数リテラル</h3>
+        <span class="cb41">
+         前回軽く取り上げた小数リテラルですが、<b>指数表記</b>も用いることが出来ます。<br>指数表記は、<code><ruby><rb>1.2e5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>や<code><ruby><rb>-1.2e-5</rb><rp>（</rp><rt>-1.2×10^-5=-0.000012</rt><rp>）</rp></ruby></code>など、<b>仮数+基数の指数乗で表現</b>する表記法です。<br>通常、<code><ruby><rb>1.2×10^5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>などと基数を書きますが、<b><code>E</code>や<code>e</code>が<code>10</code>として用いられる事があります</b>。<br>また、通常の表記法でも、<b>整数部分や小数部分がない場合、省略</b>することも出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">std::coutとマニピュレータ</h3>
+        <span class="cb41">
+         <code>std::cout</code>、実は<b>出力を少し変化させる</b>ことが出来、その時に使うのが<b>マニピュレータ</b>です。<br>マニピュレータを使う時には、<b>main関数の前に<code>#include&nbsp;&lt;iomanip&gt;</code>と書きます</b>。<br>小数を表示するときには、<b><code>std::fixed</code>と<code>std::setprecision</code></b>が便利です。<br><b>先に<code>std::fixed</code>を出力し、次に<code>std::setprecision(自然数)</code>として出力</b>します。<br>すると、<b>小数点以下の出力桁数が<code>std::setprecision</code>の括弧の中に書いた値</b>になります。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">文字列を扱おう</h2>
+      <span class="cb34">
+       ひとまず最後に文字列を扱いましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">文字列</span>
+          <button type="button" class="cb53" onclick="copy('7')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="7" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>string s1 <span class="wdsl">=</span> <span class="wdtt">"namanegi"</span><span class="wdsl">;</span>
+    std<span class="wdsl">::</span>string s2<span class="wdsl">(</span><span class="wdtt">"namagoe"</span><span class="wdsl">);</span>
+    std<span class="wdsl">::</span>string s3<span class="wdsl">{</span> <span class="wdtt">"namahatsune"</span> <span class="wdsl">};</span>
+    std<span class="wdsl">::</span>string s4 <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdtt">"mikudayo-"</span> <span class="wdsl">};</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"s1 : "</span> <span class="wdsl">&lt;&lt;</span> s1 <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns2 : "</span> <span class="wdsl">&lt;&lt;</span> s2 <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns3 : "</span> <span class="wdsl">&lt;&lt;</span> s3 <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns4 : "</span> <span class="wdsl">&lt;&lt;</span> s4 <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('8')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="8" class="cb55 bkgdbl">
+&lt;&nbsp;s1&nbsp;:&nbsp;namanegi<br>&lt;&nbsp;s2&nbsp;:&nbsp;namagoe<br>&lt;&nbsp;s3&nbsp;:&nbsp;namahatsune<br>&lt;&nbsp;s4&nbsp;:&nbsp;mikudayo-<br>&lt;<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       それでは解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文字の表現</h3>
+        <span class="cb41">
+         例によってコンピューターでは文字を直接表現することは出来ません。<br>なので、<b>文字1つ1つに一意な番号をつけ</b>、<b>それを符号化</b>することで表現しています。<br>また、<b>文字とその番号、そしてそれの符号化形式を定めたものを文字コード</b>と呼びます。<br>なお、符号化は、あるデータを<b>コンピューターで表せるような形式にする</b>ことを指します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文字列の表現</h3>
+        <span class="cb41">
+         文字列は、当然文字の列ですから、変数で扱うときは<b>1つの整数に収まる筈はありません</b>。<br><b>沢山変数を並べた物を1つの変数として扱う</b>必要があり、それを実現する機能が<b>配列</b>です。<br>文字列は配列を使って表現されますが、難しいので<b>標準ライブラリを使いましょう</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">&lt;string&gt;とstd::string</h3>
+        <span class="cb41">
+         使う標準ライブラリは<code>string</code>です。<b><code>#include&nbsp;&lt;string&gt;</code>をmain関数の前に書きましょう</b>。<br><b>文字列を扱うために作られた、<code>std::string</code>という型</b>が使用できるようになります。<br><code>std::stirng</code>は、<b>ユーザー定義型ですから、型の定義を<code>string</code>から導入</b>しないといけません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">組み込み型と違う所</h3>
+        <span class="cb41">
+         宣言と代入は組み込み型と同様ですが、初期化はユーザー定義型であるので、少し異なります。<br>丸括弧や波括弧を使った初期化の場合、<b><code>,</code>区切りの値の並びを取ることがあります</b>。<br>ただし、これは<b>型での定義次第</b>なので、特になにも取らないときもあります。<br>詳しくは、<b>ユーザー定義型の定義方法の1つ、クラス</b>を扱うときに同時に扱います。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       今回はAPG4bという、AtCoder社のC++教材の問題を2つ解いてみましょう。<br>AtCoder社は、プログラミングで問題を解くオンラインゲームを提供しています。<br>詳しくは、<a href="..\..\..\..\k_c_pej_p_gm\about\about.html">AtCoderとは&nbsp;-&nbsp;競技プログラミング講習&nbsp;-&nbsp;駒場東邦物理部</a>を参照してください。<br>AtCoderへの登録を済ませていた場合、AtCoderの問題ページ下から提出が出来ます。<br>GCCを選んで提出し、ACと出れば正解、CEならコンパイルエラー、WAなら不正解です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">その1-問題文</h3>
+        <span class="cb41">
+         空白区切りの文字列<code>S</code>,<code>T</code>の入力に対して、<code>T</code>、<code>S</code>の順でくっつけて出力してください。<br>入力例は便宜的にまとめています。空行の上と下でそれぞれ入力、出力だと思って下さい。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">入力</span>
+          <button type="button" class="cb53" onclick="copy('9')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="9" class="cb55 bkgdbl">
+&gt;&nbsp;S&nbsp;T<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">入力例と出力例</span>
+          <button type="button" class="cb53" onclick="copy('10')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="10" class="cb55 bkgdbl">
+&gt;&nbsp;oumu&nbsp;watashiha<br><br>&lt;&nbsp;watashihaoumu<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <details class="cb37">
+        <summary class="cb48">回答例</summary>
+        <div class="cb46">
+        <span class="cb54">回答例</span>
+        <button type="button" class="cb53" onclick="copy('11')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="11" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>string s<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>string t<span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s <span class="wdsl">&gt;&gt;</span> t<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> t <span class="wdsl">&lt;&lt;</span> s<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span>
+</pre>
+       </code>
+       </details>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">その2-問題文</h3>
+        <span class="cb41">
+         2つの整数<code>A</code>,<code>B</code>が以下のように与えられます。<code>A+B</code>の結果と改行を出力してください。<br>出典：<a href="https://atcoder.jp/contests/apg4b/tasks/APG4b_cr">EX5&nbsp;-&nbsp;A足すB問題</a>
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">入力</span>
+          <button type="button" class="cb53" onclick="copy('12')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="12" class="cb55 bkgdbl">
+&gt;&nbsp;A&nbsp;B<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">制約</span>
+          <button type="button" class="cb53" onclick="copy('13')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="13" class="cb55 bkgdbl">
+0&nbsp;&lt;=&nbsp;A,B&nbsp;&lt;=&nbsp;100<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">入力例と出力例</span>
+          <button type="button" class="cb53" onclick="copy('14')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="14" class="cb55 bkgdbl">
+&gt;&nbsp;1&nbsp;2<br><br>&lt;&nbsp;3<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <details class="cb37">
+        <summary class="cb48">回答例</summary>
+        <div class="cb46">
+        <span class="cb54">回答例</span>
+        <button type="button" class="cb53" onclick="copy('15')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="15" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">;</span>
+    <span class="wdkywd">int</span> b<span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> b<span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">+</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span>
+</pre>
+       </code>
+       </details>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">文字コード物語</h2>
+      <span class="cb34">
+       文字を表すのは大変なんだ、という話をします。<br>この段落は私情が入った言い回しをしているので留意してください。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>ASCII</rb><rp>（</rp><rt>あすきー</rt><rp>）</rp></ruby></h3>
+        <span class="cb41">
+         まず<b>ほとんどの符号化形式の元となっている</b>のが、<b>ASCII</b>と呼ばれる文字コードです。<br>ASCIIでは、<code>0-127</code>の範囲に基本的な文字を割り当て、それを7bit以上の整数で符号化します。<br>実際の対応表は、<a href="https://ja.wikipedia.org/wiki/ASCII">ASCII&nbsp;-&nbsp;Wikipedia</a>を確認してください。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">悪夢の始まり</h3>
+        <span class="cb41">
+         ASCIIの成立後、ASCIIが使用しない範囲に文字を割り当てた<b>文字コードが乱立しました</b>。<br><b>地域ごとに文字コードが存在</b>し、文字コードを<b>切り替えたりする</b>必要があるのです。<br>これは、<b>データの置き場たるメモリ</b>が、今のPC程<b>潤沢でない</b>ことが理由していました。<br>日本語Windowsでは<b>現在に至るまで</b>、Shift-JISの亜種Windows-31Jが使われています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">悪夢の終わりかのように見えた</h3>
+        <span class="cb41">
+         そうして乱立した文字コードの波に飲まれ、疲弊してしていたプログラマ達[要検証]。<br>そこに現れたのは、<b>世界中の全ての文字を一つの文字コードにしようとした<ruby><rb>Unicode</rb><rp>（</rp><rt>ゆにこーど</rt><rp>）</rp></ruby></b>。<br>Unicodeは元々、<b>世界の文字を<ruby><rb>16bit</rb><rp>（</rp><rt>65536文字</rt><rp>）</rp></ruby>に収めよう</b>として作られ、様々模索されました。<br>しかし、世界の文字が<b>16bitに収まる筈もなく、それらの模索は負債と化しました</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">現在</h3>
+        <span class="cb41">
+         さて、Unicodeが普及し、<b>事無き事を得たように思えますが、そうでもありません</b>。<br>現在のUnicodeでは、UTF-8、UTF-16、UTF-32という符号化形式が使われていますが、<br>日本語Windowsでは、未だにWindows-31Jが標準で、UTF-8のサポートはまだまだです。<br>C+においても、Unicode対応が杜撰であることは広く知られています。<br>互換性等様々な壁があることは確かなので、一概に言える話では無いのですが。
         </span>
       </div>
      </article>
