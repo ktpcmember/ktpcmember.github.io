@@ -81,14 +81,176 @@
        <h4 class="cb44">
         重要語
        </h4>
-今回はありません
+       <h4 class="cb45">
+        変数
+       </h4>
+       <span class="cb41">
+        名前に値を関連付けることで値を保存する機能
+       </span>
+       <h4 class="cb45">
+        型
+       </h4>
+       <span class="cb41">
+        コードでの振る舞いを規定し、実行前にミスを検出する機能
+       </span>
+       <h4 class="cb45">
+        組み込み型
+       </h4>
+       <span class="cb41">
+        C++に元から組み込まれている型
+       </span>
+       <h4 class="cb45">
+        ユーザー定義型
+       </h4>
+       <span class="cb41">
+        ライブラリ等で定義を導入できる型
+       </span>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        コンパイラに新たな識別子を使うことを伝える構文
+       </span>
+       <h4 class="cb45">
+        識別子
+       </h4>
+       <span class="cb41">
+        変数などの名前
+       </span>
+       <h4 class="cb45">
+        キーワード
+       </h4>
+       <span class="cb41">
+        C++規格で特別な意味を持たせられたトークン
+       </span>
+       <h4 class="cb45">
+        初期化
+       </h4>
+       <span class="cb41">
+        宣言と同時に値を設定する文法
+       </span>
+       <h4 class="cb45">
+        代入
+       </h4>
+       <span class="cb41">
+        宣言後に値を変更する方法
+       </span>
+       <h4 class="cb45">
+        ビット
+       </h4>
+       <span class="cb41">
+        1/0を表現する情報の最小単位
+       </span>
+       <h4 class="cb45">
+        バイト
+       </h4>
+       <span class="cb41">
+        概ね8bitである、情報の基本的な単位
+       </span>
+       <h4 class="cb45">
+        1の補数表現
+       </h4>
+       <span class="cb41">
+        1の補数でマイナスの整数を表現する方法
+       </span>
+       <h4 class="cb45">
+        2の補数表現
+       </h4>
+       <span class="cb41">
+        2の補数でマイナスの整数を表現する方法
+       </span>
+       <h4 class="cb45">
+        符号ビット
+       </h4>
+       <span class="cb41">
+        値が正であるか負であるかを判定できるビット
+       </span>
+       <h4 class="cb45">
+        符号化
+       </h4>
+       <span class="cb41">
+        データをコンピューターで表わせる形式に変換すること
+       </span>
+       <h4 class="cb45">
+        文字コード
+       </h4>
+       <span class="cb41">
+        文字に割り当てる番号と、それの符号化形式を定めるもの
+       </span>
+       <h4 class="cb45">
+        標準入力
+       </h4>
+       <span class="cb41">
+        標準で用意されている入力元
+       </span>
+       <h4 class="cb45">
+        <code>std::cin</code>
+       </h4>
+       <span class="cb41">
+        プログラム実行時に標準入力に紐づけられるもの
+       </span>
+
       </div>
 
 <div class="cb36 debr">
        <h4 class="cb44">
         必要語
        </h4>
-今回はありません
+       <h4 class="cb45">
+        コンソール
+       </h4>
+       <span class="cb41">
+        文字のみでPCとやり取りするCUI形式の画面
+       </span>
+       <h4 class="cb45">
+        式
+       </h4>
+       <span class="cb41">
+        演算子とオペランド（被演算子）の並び
+       </span>
+       <h4 class="cb45">
+        演算子
+       </h4>
+       <span class="cb41">
+        <code>+</code>や<code>-</code>など、何らかの演算を表す記号
+       </span>
+       <h4 class="cb45">
+        オペランド
+       </h4>
+       <span class="cb41">
+        何らかの「値」
+       </span>
+       <h4 class="cb45">
+        文
+       </h4>
+       <span class="cb41">
+        順番に実行されるC++プログラムの断片
+       </span>
+       <h4 class="cb45">
+        トークン
+       </h4>
+       <span class="cb41">
+        コード上で意味を持つ最小の単位
+       </span>
+       <h4 class="cb45">
+        標準出力
+       </h4>
+       <span class="cb41">
+        標準で用意されている出力先
+       </span>
+       <h4 class="cb45">
+        <code>std::cout</code>
+       </h4>
+       <span class="cb41">
+        プログラム実行時に標準出力に紐づけられるもの
+       </span>
+       <h4 class="cb45">
+        リテラル
+       </h4>
+       <span class="cb41">
+        コード上に直接書かれているデータ
+       </span>
+
       </div>
 
      </article>
@@ -203,7 +365,7 @@
       <div class="cb31">
        <h3 class="cb40">宣言</h3>
         <span class="cb41">
-         変数は<b>「名前に値を関連付けることで値を保存」</b>出来ると説明しました。<br>そのためには、まず<b>コンパイラに変数を使うことを教える</b>必要があります。<br>それを<b>宣言（文）</b>といい、必要な所を単純化すると、以下のような構文になります。<br>宣言子で宣言子が出るのは、<code>識別子&nbsp;初期化子(opt)</code>を<code>,</code>並びで書ける為です。
+         変数は<b>「名前に値を関連付けることで値を保存」</b>出来ると説明しました。<br>そのためには、まず<b>コンパイラに変数を使うことを教える</b>必要があります。<br>それを<b>宣言（文）</b>といい、必要な所を単純化すると、以下のような構文になります。<br>宣言子では、<b><code>識別子&nbsp;初期化子(opt)</code>を<code>,</code>区切りで複数書く</b>ことが出来ます。
         </span>
       </div>
      </article>
@@ -253,6 +415,64 @@
          </code>
         </div>
        </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">識別子</h3>
+        <span class="cb41">
+         識別子は、<b>変数の名前になる</b>ものです。以下に挙げるルールを守る必要があります。<br>ただし、MSVCは独自拡張として、あらゆる文字を使用することが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        識別子のルール
+       </h4>
+       <h4 class="cb45">
+        使える文字
+       </h4>
+       <span class="cb41">
+        基本ソース文字集合のアルファベット、数字、<code><ruby><rb>_</rb><rp>（</rp><rt>アンダーバー</rt><rp>）</rp></ruby></code>など
+       </span>
+       <h4 class="cb45">
+        使えない単語
+       </h4>
+       <span class="cb41">
+        キーワードとなる単語
+       </span>
+       <h4 class="cb45">
+        使ってはいけないアンダーバー1
+       </h4>
+       <span class="cb41">
+        識別子中に<code><ruby><rb>__</rb><rp>（</rp><rt>ダブルアンダーバー</rt><rp>）</rp></ruby></code>（アンダーバーが2つ連続すること）
+       </span>
+       <h4 class="cb45">
+        使ってはいけないアンダーバー2
+       </h4>
+       <span class="cb41">
+        識別子先頭に<code>_</code>と大文字のアルファベット
+       </span>
+       <h4 class="cb45">
+        使ってはいけない場所があるアンダーバー
+       </h4>
+       <span class="cb41">
+        識別子先頭に<code>_</code>
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">キーワード</h3>
+        <span class="cb41">
+         キーワードは、<b>C++規格で特別な意味を持っているトークン</b>のことです。<br>組み込み型の型名や修飾子等など（<code>int</code>、<code>double</code>など）がこれにあたります。<br>なお、Visual&nbsp;Studioでは、<b>キーワードは青く表示</b>されます。<br>一覧は<a href="https://ja.cppreference.com/w/cpp/keyword">C++&nbsp;のキーワード&nbsp;-&nbsp;cppreference.com</a>を参照してください。
+        </span>
+      </div>
+     </article>
      <article class="cb21">
       <div class="cb31">
        <h3 class="cb40">整数を扱う型</h3>
@@ -393,6 +613,42 @@
         <span class="cb41">
          変数のサイズというのは、即ち<b>変数が使うビットの量</b>のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、<b>変数にサイズを決める、あるいは決まってしまう</b>のが普通です。
         </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        MSVCにおける整数のサイズ
+       </h4>
+       <h4 class="cb45">
+        short
+       </h4>
+       <span class="cb41">
+        16bit
+       </span>
+       <h4 class="cb45">
+        int（サイズに関する修飾子なし）
+       </h4>
+       <span class="cb41">
+        32bit
+       </span>
+       <h4 class="cb45">
+        long
+       </h4>
+       <span class="cb41">
+        32bit
+       </span>
+       <h4 class="cb45">
+        long&nbsp;long
+       </h4>
+       <span class="cb41">
+        64bit
+       </span>
+
+      </div>
+
+
       </div>
      </article>
      <article class="cb21">
@@ -646,7 +902,7 @@
       <div class="cb31">
        <h3 class="cb40">入力例</h3>
         <span class="cb41">
-         コンソールに、今度は入力する必要があるので、入力も含めて実行結果例を書きます。<br>MSVCでは、標準では1つのコンソールに入出力をするので、混ざることがあります。<br>また、今後は入力に<code>&gt;&nbsp;</code>を、出力に<code>&lt;&nbsp;</code>を先頭に追加して表記していきます。
+         今度は、<b>コンソールに入力する必要がある</b>ので、入力も含めて実行結果例を書きます。<br>MSVCでは、<b>標準では1つのコンソールに入出力をする</b>ので、<b>混ざる</b>ことがあります。<br>また、今後は<b>入力に<code>&gt;&nbsp;</code>を、出力に<code>&lt;&nbsp;</code></b>を先頭に追加して表記していきます。
         </span>
       </div>
      </article>
@@ -688,7 +944,7 @@
       <div class="cb31">
        <h3 class="cb40">標準入力とstd::<ruby><rb>cin</rb><rp>（</rp><rt>しーいん</rt><rp>）</rp></ruby></h3>
         <span class="cb41">
-         標準出力の逆です。コンソールから数字や文字列を入力することが出来ます。<br><code>std::cin</code>から入力する時に使う演算子も逆で、<code>&gt;&gt;</code>を使用します。<br>変数<code>s</code>と<code>t</code>のように、文字列の場合は半角スペースや改行で区切られて入力されます。
+         標準出力の逆です。コンソールから数字や文字列を入力することが出来ます。<br><code>std::cin</code>から入力する時に<b>使う演算子も逆</b>で、<b>右シフト演算子である、<code>&gt;&gt;</code></b>を使用します。<br>変数<code>s</code>と<code>t</code>のように、文字列の場合は<b>半角スペースや改行があると区切られて入力</b>されます。
         </span>
       </div>
      </article>
@@ -874,6 +1130,162 @@
         <span class="cb41">
          さて、Unicodeが普及し、<b>事無き事を得たように思えますが、そうでもありません</b>。<br>現在のUnicodeでは、UTF-8、UTF-16、UTF-32という符号化形式が使われていますが、<br>日本語Windowsでは、未だにWindows-31Jが標準で、UTF-8のサポートはまだまだです。<br>C+においても、Unicode対応が杜撰であることは広く知られています。<br>互換性等様々な壁があることは確かなので、一概に言える話では無いのですが。
         </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照と出典です。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        オブジェクト&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/object
+       </span>
+       <h4 class="cb45">
+        型&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/type
+       </span>
+       <h4 class="cb45">
+        組み込み型&nbsp;(C++)&nbsp;|&nbsp;Microsoft&nbsp;Docs
+       </h4>
+       <span class="cb41">
+        https://docs.microsoft.com/ja-jp/cpp/cpp/fundamental-types-cpp?view=msvc-160
+       </span>
+       <h4 class="cb45">
+        宣言&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/declarations
+       </span>
+       <h4 class="cb45">
+        識別子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/identifiers
+       </span>
+       <h4 class="cb45">
+        C++&nbsp;識別子&nbsp;|&nbsp;Microsoft&nbsp;Docs
+       </h4>
+       <span class="cb41">
+        https://docs.microsoft.com/ja-jp/cpp/cpp/identifiers-cpp?view=msvc-160
+       </span>
+       <h4 class="cb45">
+        C++&nbsp;のキーワード&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/keyword
+       </span>
+       <h4 class="cb45">
+        C++&nbsp;キーワード&nbsp;|&nbsp;Microsoft&nbsp;Docs
+       </h4>
+       <span class="cb41">
+        https://docs.microsoft.com/ja-jp/cpp/cpp/keywords-cpp?view=msvc-160
+       </span>
+       <h4 class="cb45">
+        初期化&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/initialization
+       </span>
+       <h4 class="cb45">
+        代入演算子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_assignment
+       </span>
+       <h4 class="cb45">
+        ビット&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%83%E3%83%88
+       </span>
+       <h4 class="cb45">
+        バイト&nbsp;(情報)&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88_(%E6%83%85%E5%A0%B1)
+       </span>
+       <h4 class="cb45">
+        補数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E8%A3%9C%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        符号付数値表現&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/<br>%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE
+       </span>
+       <h4 class="cb45">
+        2の補数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/2%E3%81%AE%E8%A3%9C%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        文字コード&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89
+       </span>
+       <h4 class="cb45">
+        std::basic_string&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/string/basic_string
+       </span>
+       <h4 class="cb45">
+        std::cin,&nbsp;std::wcin&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/io/cin
+       </span>
+       <h4 class="cb45">
+        C++標準化委員会、ついに文字とは何かを理解する:&nbsp;char8_t&nbsp;-&nbsp;Qiita
+       </h4>
+       <span class="cb41">
+        https://qiita.com/yumetodo/items/54e1a8230dbf513ea85b
+       </span>
+       <h4 class="cb45">
+        ASCII&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/ASCII
+       </span>
+       <h4 class="cb45">
+        Unicode&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/Unicode
+       </span>
+       <h4 class="cb45">
+        Shift_JIS&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/Shift_JIS
+       </span>
+       <h4 class="cb45">
+        Microsoftコードページ932&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/<br>Microsoft%E3%82%B3%E3%83%BC%E3%83%89%E3%83%9A%E3%83%BC%E3%82%B8932
+       </span>
+
+      </div>
+
+
       </div>
      </article>
 

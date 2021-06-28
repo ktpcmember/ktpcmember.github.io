@@ -441,6 +441,8 @@ function main(str) {
 				return ktpcpicasm_codeblock(str);
 			case "syntax":
 				return syntax_codeblock(str);
+			default:
+				return text(str);
 		}
 	}
 
@@ -458,6 +460,7 @@ function main(str) {
 			.replace(/\n/msg, "<br>")
 			.replace(/(?<!\\)\*{2}(.+?)\*{2}/msg, "<b>$1</b>").replace(/\\\*{2}/msg, "**")
 			.replace(/(?<!\\)`(.+?)`/msg, "<code>$1</code>")
+			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)(\.)?\{((?:(?:[^\}])|(?:\\\}))+?)\}/msg, (match, p1, p2, p3) => `<a href="${p2 != null ? PATH.relative(to_dir, PATH.join(ktpc_root, p3)) : p3}">${p1}</a>`)
 			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)\(((?:(?:[^\)])|(?:\\\)))+?)\)/msg, "<ruby><rb>$1</rb><rp>（</rp><rt>$2</rt><rp>）</rp></ruby>");
 	}
 
@@ -516,11 +519,16 @@ function main(str) {
 
 				if (g.item_tag != null) {
 					// 要素の時
+
+					function br(str) {
+						return str.replace(/\$;/msg, `<br>`);
+					}
+
 					let s = String.raw`       <h4 class="cb45">
-        ${text(deesc(g.word))}
+        ${br(text(deesc(g.word)))}
        </h4>
        <span class="cb41">
-        ${text(deesc(g.desc))}
+        ${br(text(deesc(g.desc)))}
        </span>
 `;
 					switch (g.item_tag) {
