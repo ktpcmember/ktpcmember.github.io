@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="駒場東邦物理部">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,講習,C++,MSVC,Hello,World">
+  <meta name="description" content="C++の整数と小数について解説しています。">
+  <title>整数と小数 - C++ on MSVC講習</title>
+  <link rel="icon" type="image/jpeg" href="..\..\..\..\..\images\logo.jpg">
+  <link rel="stylesheet" type="text/css" href="..\..\..\..\..\style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="..\..\..\..\..\static.css">
+  <script type="text/javascript" src="..\..\..\..\..\header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="..\..\..\..\..\images\br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="..\..\..\..\..\images\menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="..\..\..\..\..\index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="..\..\..\_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="..\..\..\m\i_dx\i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="..\var\var.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="..\stmt_select\stmt_select.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20 fxtb">
+      <h1>C++ on MSVC講習/整数と小数</h1>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">あらすじと概要</h2>
+      <span class="cb34">
+       前回は整数、小数、文字列を実行時に保存したり、入力できるようになりました。<br>今回は、整数と小数の内部表現と、計算をやっていきましょう。
+      </span>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+今回はありません
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+今回はありません
+      </div>
+
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">整数の内部表現</h2>
+      <span class="cb34">
+       組み込み型での計算を正確にするには、組み込み型の内部表現を知っているべきです。<br>ですからまず、一番基本的な整数の内部表現を学んでいきましょう。<br>前回保留していた、変数のサイズについても触れていきます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ビットとバイト</h3>
+        <span class="cb41">
+         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1<ruby><rb>Byte</rb><rp>（</rp><rt>バイト</rt><rp>）</rp></ruby>とは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">変数のサイズ</h3>
+        <span class="cb41">
+         変数のサイズというのは、<b>変数が使うビットの量</b>のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、<b>変数にサイズを決める、あるいは決まってしまう</b>のが普通です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">負の数を扱いたくなりました</h3>
+        <span class="cb41">
+         <b>負の数を扱いたくなりました</b>。この時一番簡単に思いつくのは<b>符号ビットを使う</b>ことです。<br>例えば、8bitの整数があった時、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>を符号ビットということにしてみましょう。<br>符号ビットが<b><code>0</code>/<code>1</code>の時、正/負</b>とし、<b>残り7bitは絶対値で表現</b>してみましょう。<br><code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>に対して、<code><ruby><rb>1000&nbsp;0001</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>のようになり、<b><code>-127から127</code>が表現できます</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">1の補数表現</h3>
+        <span class="cb41">
+         符号ビットと絶対値で表す以外にも、<b>正の数の表現を<ruby><rb>ビット反転</rb><rp>（</rp><rt>各ビットの0と1を逆にする</rt><rp>）</rp></ruby>する方法</b>もあります。<br>例えば、上と同じく8bitの整数で、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>をビット反転して<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>といった具合。<br>これも<b>やっぱり<code>-127から127</code>まで表現でき</b>、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>は<b>符号ビットの役割を果たします</b>。<br>これは、数学の「補数」という考え方に由来するため、<b>1の補数表現</b>と言います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ダメなのよ。</h3>
+        <span class="cb41">
+         上の2つの表現、<b>実はどっちもダメ</b>なところがあります。例えば、<b><code>0</code>が2種類ある</b>のです。<br>1つの数値に対して2つ以上表現があると、<b>一意に表現できていない</b>ということになるのです。<br>でも、符号ビットが<code>1</code>の時は<code>0</code>を表現しない、とすると<b>表現が1個捨てられて無駄</b>です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">2の補数表現</h3>
+        <span class="cb41">
+         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、<b>例えば8bitであれば、<code>127から-128</code>までを表せる</b>のです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">何がいいのさ</h3>
+        <span class="cb41">
+         実は、2の補数表現は<b>減算を乗算で処理できる</b>という素晴らしい性質を持っています。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、<b>あらあら</b>。<br><b>桁あふれした分は見なかったこと</b>にして、<b>2進法で計算すると減算が加算で処理できる</b>のです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">C++の整数</h3>
+        <span class="cb41">
+         C++17までは、C++はC言語と同様に2の補数以外の整数表現を許可していました。<br>しかし、<b>C++20からは整数は2の補数表現に限られる</b>ことになりました。<br>ただ、<b>ほとんどは2の補数表現が用いられている</b>ので、気にするほどでもないかもしれません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">扱える値の範囲とオーバーフロー</h3>
+        <span class="cb41">
+         さて、負の値の扱い方まで分かると、整数が扱える値の範囲が分かると思います。<br><b>扱える値の範囲に制限がある</b>ということは、<b>範囲を超えてしまったときはまずい</b>のです。<br>そのことを<b>オーバーフロー</b>といい、符号ありの変数では<b>未定義動作</b>となります。<br>符号なしの変数の場合には<b>未定義動作ではありませんが、バグを引き起こす</b>可能性が高いです。<br>C++では計算するときですら、変数が<b>どの程度の値を扱えるのかを考える</b>必要があるのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ゼロ除算</h3>
+        <span class="cb41">
+         オーバーフローの解説をしたので、同時に<b>ゼロ除算</b>についても解説します。<br>名前の通り、<b>値を0で割ること</b>をゼロ除算と言い、C++では<b>整数の場合未定義動作</b>です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        MSVCにおける整数のサイズ
+       </h4>
+       <h4 class="cb45">
+        short
+       </h4>
+       <span class="cb41">
+        16bit
+       </span>
+       <h4 class="cb45">
+        int（サイズに関する修飾子なし）
+       </h4>
+       <span class="cb41">
+        32bit
+       </span>
+       <h4 class="cb45">
+        long
+       </h4>
+       <span class="cb41">
+        32bit
+       </span>
+       <h4 class="cb45">
+        long&nbsp;long
+       </h4>
+       <span class="cb41">
+        64bit
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        MSVCにおける整数が扱える値の範囲
+       </h4>
+       <h4 class="cb45">
+        short&nbsp;(signed&nbsp;/&nbsp;unsigned)
+       </h4>
+       <span class="cb41">
+        -32,768&nbsp;～&nbsp;32,767&nbsp;/&nbsp;0&nbsp;～&nbsp;65,535&nbsp;
+       </span>
+       <h4 class="cb45">
+        int&nbsp;(signed&nbsp;/&nbsp;unsigned)
+       </h4>
+       <span class="cb41">
+        -2,147,483,648&nbsp;～&nbsp;2,147,483,647&nbsp;/&nbsp;0&nbsp;～&nbsp;4,294,967,295
+       </span>
+       <h4 class="cb45">
+        long&nbsp;(signed&nbsp;/&nbsp;unsigned)
+       </h4>
+       <span class="cb41">
+        -2,147,483,648&nbsp;～&nbsp;2,147,483,647&nbsp;/&nbsp;0&nbsp;～&nbsp;4,294,967,295
+       </span>
+       <h4 class="cb45">
+        long&nbsp;long&nbsp;(signed&nbsp;/&nbsp;unsigned)
+       </h4>
+       <span class="cb41">
+        -9,223,372,036,854,775,808&nbsp;～&nbsp;9,223,372,036,854,775,807&nbsp;<br>/&nbsp;0&nbsp;～&nbsp;18,446,744,073,709,551,615
+       </span>
+
+      </div>
+
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">小数の内部表現</h2>
+      <span class="cb34">
+       さて、整数が分かりましたが、小数はどうなっているのでしょうか。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">固定小数点数</h3>
+        <span class="cb41">
+         これは、小数点の位置を決めておき、<b>整数/小数部分をそれぞれ整数で表わす</b>方法です。<br>整数で整数/小数部分を表現することから、<b>基本的に誤差は発生しません</b>。<br>その代わりに、<b>扱える値の範囲が狭かったり、無駄が発生したり</b>することが多いのです。<br>そのため、一般的には使われず、特殊な分野で使用されることが多いです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">浮動小数点数</h3>
+        <span class="cb41">
+         前回指数表記を解説しましたが、その発想に近いのが浮動小数点数です。<br>すなわち、<b>符号と仮数と指数で小数を表す</b>表現をするのが浮動小数点数です。<br>現在の多くのコンピューターでは、<b><ruby><rb>専用のプロセッサ</rb><rp>（</rp><rt>FPU,&nbsp;Floating&nbsp;Point&nbsp;Unit</rt><rp>）</rp></ruby>があり、主流</b>となっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>IEEE</rb><rp>（</rp><rt>あいとりぷるいー</rt><rp>）</rp></ruby>&nbsp;754</h3>
+        <span class="cb41">
+         浮動小数点数の実装や扱いとして<b>一般的に用いられるのが、IEEE&nbsp;754</b>です。<br>IEEE&nbsp;754の中でも、C++で使われているのは<b><ruby><rb>binary32/binary64</rb><rp>（</rp><rt>ばいなりー32/ばいなりー64,&nbsp;俗に単精度/倍精度</rt><rp>）</rp></ruby></b>の2つです。<br><b>binary32は合計32bit、binary64は合計64bit</b>を用いる表現方法です。<br>以下では、特に言及がない場合はIEEE&nbsp;754に基づいて解説します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">特殊な値</h3>
+        <span class="cb41">
+         浮動小数点数には、整数にはない特殊な値、<b><ruby><rb>inf</rb><rp>（</rp><rt>infinity,&nbsp;いんふぃにてぃー</rt><rp>）</rp></ruby>と<ruby><rb>NaN</rb><rp>（</rp><rt>なん,&nbsp;Not&nbsp;a&nbsp;Number</rt><rp>）</rp></ruby></b>があります。<br>infは無限大のことで、<b>非0のゼロ除算などの演算</b>で発生し、正負が存在します。<br>NaNは<b>0のゼロ除算</b>や、infと0の乗算、inf同士の除算、異符号infの加算などで発生します。<br>なおinfは0の対数を取った時、NaNは結果が虚数になる演算などでも設定される事があります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">指数表記のおさらい</h3>
+        <span class="cb41">
+         指数表記は、1.25e5などのように表記する方法で、<b>符号/仮数/基数/指数</b>に分けられます。<br>例えば、<code>-1.25e5</code>なら<code>符号/仮数/基数/指数</code>は<code>-/1.25/e/5</code>となります。<br><b>符号が+の場合は+が省略されますが符号は+</b>です。また、<b><code>e</code>は<code>10</code></b>として扱います。<br><b>基数がeではない場合は、紙に書く時と同じように</b>します。例えば<code>-1.25*2^5</code>のように。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">正規化</h3>
+        <span class="cb41">
+         指数表記において、<b>仮数を0以上10未満にした表現に変換する</b>ことを正規化と言います。<br>例えば、<code>12.345e2</code>という値であれば、<code>1.2345e3</code>という形に正規化することが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">基数と丸め</h3>
+        <span class="cb41">
+         binary32/64では、<b>基数は<code>2</code></b>と定められます。つまり、2進数の小数ということになります。<br>そのため、10進数の小数を2進数で表すときや、除算で<b>循環小数になる事がある</b>のです。<br>この場合に、<b>何らかの値に近似する</b>する必要があり、<b>その近似方法を丸め</b>と言います。<br>主に、<b>最も近くの表現できる値</b>へ丸める、最近接偶数方向丸めが用いられています。<br>なお、表現可能な2つの値の丁度間の値なら、偶数へと丸めるとされています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">精度</h3>
+        <span class="cb41">
+         binary32では、2進数で23～24bit程度、<b>10進数で6～7桁程度</b>の精度を持っています。<br>binary64では、2進数で52～53bit程度、<b>10進数で15桁程度</b>の精度を持っています。<br>ここで示す精度より大きい桁については、不確かな値が含まれることになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">C++における小数の扱い</h3>
+        <span class="cb41">
+         C++の標準規格では、<b>固定小数点数か浮動小数点数かすら決められていません</b>。<br>ただし、主要な処理系では、<b>floatをbinary32、doubleをbinary64</b>で実装しています。<br>long&nbsp;doubleについては、<b>MSVCはdoubleと同様binary64</b>で実装していますが、<br>他の処理系では、doubleよりも高精度なものを実装していることもあります。<br><b>普通はdoubleを使用していれば良いでしょう</b>。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        MSVCにおける小数の扱い
+       </h4>
+       <h4 class="cb45">
+        float
+       </h4>
+       <span class="cb41">
+        binary32
+       </span>
+       <h4 class="cb45">
+        double
+       </h4>
+       <span class="cb41">
+        binary64
+       </span>
+       <h4 class="cb45">
+        long&nbsp;double
+       </h4>
+       <span class="cb41">
+        binary64
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        MSVCにおける小数が扱える値の範囲
+       </h4>
+       <h4 class="cb45">
+        float
+       </h4>
+       <span class="cb41">
+        3.4E±38
+       </span>
+       <h4 class="cb45">
+        double
+       </h4>
+       <span class="cb41">
+        1.7E±308
+       </span>
+       <h4 class="cb45">
+        long&nbsp;double
+       </h4>
+       <span class="cb41">
+        1.7E±308
+       </span>
+
+      </div>
+
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">整数と小数の演算</h2>
+      <span class="cb34">
+       それでは、やっと今回初めてのサンプルコードです。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">整数と小数の演算</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdnr">0b1010</span> <span class="wdsl">+</span> <span class="wdnr">020</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">0xFF</span> <span class="wdsl">-</span> <span class="wdnr">1.5</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">2.5</span> <span class="wdsl">*</span> <span class="wdnr">8</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1ul</span> <span class="wdsl">/</span> <span class="wdnr">3ull</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span><span class="wdnr">1.5</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">double</span><span class="wdsl">)</span><span class="wdnr">1</span> <span class="wdsl">/</span> <span class="wdnr">3</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1</span> <span class="wdsl">/</span> <span class="wdkywd">static_cast</span><span class="wdsl">&lt;</span><span class="wdkywd">double</span><span class="wdsl">&gt;(</span><span class="wdnr">3</span><span class="wdsl">);</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+&lt;&lt;&nbsp;26<br>&lt;&lt;&nbsp;253.5<br>&lt;&lt;&nbsp;20<br>&lt;&lt;&nbsp;0<br>&lt;&lt;&nbsp;1<br>&lt;&lt;&nbsp;0.333333<br>&lt;&lt;&nbsp;0.333333<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説します
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">リテラルの型</h3>
+        <span class="cb41">
+         既に分かっているかもしれませんが、リテラルもやはり型を持っています。<br>整数/小数リテラル<b>それぞれ標準で、int/double型</b>になります。<br>整数/小数リテラルは、それぞれ、以下の<b><ruby><rb>サフィックス</rb><rp>（</rp><rt>suffix,&nbsp;後に付ける記号の総称</rt><rp>）</rp></ruby>を付けると型を変えられます</b>。<br>整数リテラルのサフィックスは、<b>符号とサイズについては組み合わせる</b>ことが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        整数リテラルのサフィックス
+       </h4>
+       <h4 class="cb45">
+        signed
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        unsigned
+       </h4>
+       <span class="cb41">
+        u&nbsp;または&nbsp;U
+       </span>
+       <h4 class="cb45">
+        int
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        long
+       </h4>
+       <span class="cb41">
+        l&nbsp;または&nbsp;L
+       </span>
+       <h4 class="cb45">
+        long&nbsp;long
+       </h4>
+       <span class="cb41">
+        ll&nbsp;または&nbsp;LL
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        整数リテラルのサフィックス
+       </h4>
+       <h4 class="cb45">
+        float
+       </h4>
+       <span class="cb41">
+        f&nbsp;または&nbsp;F
+       </span>
+       <h4 class="cb45">
+        double
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        long&nbsp;double
+       </h4>
+       <span class="cb41">
+        l&nbsp;または&nbsp;L
+       </span>
+
+      </div>
+
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">整数リテラルの進法選択</h3>
+        <span class="cb41">
+         更に、整数リテラルは<b>2/8/10/16進法の何れかを使用できます</b>。<br>これらは、以下の<b><ruby><rb>プレフィックス</rb><rp>（</rp><rt>prefix,&nbsp;前につける記号の総称</rt><rp>）</rp></ruby>を使用して選択</b>することが出来ます。<br>16進法では、<b><code>a/A</code>～<code>f/F</code>まで、順番に<code>10</code>～<code>15</code></b>を表します。<br>特に、<b>始めを<code>0</code>にすると、8進法</b>となってしまうことに注意しましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        整数リテラルのプレフィックス
+       </h4>
+       <h4 class="cb45">
+        2進法
+       </h4>
+       <span class="cb41">
+        0b
+       </span>
+       <h4 class="cb45">
+        8進法
+       </h4>
+       <span class="cb41">
+        0
+       </span>
+       <h4 class="cb45">
+        10進法
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        16進法
+       </h4>
+       <span class="cb41">
+        0x
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        各進法で使用できる数字と文字
+       </h4>
+       <h4 class="cb45">
+        2進法
+       </h4>
+       <span class="cb41">
+        0/1
+       </span>
+       <h4 class="cb45">
+        8進法
+       </h4>
+       <span class="cb41">
+        0/1/2/3/4/5/6/7
+       </span>
+       <h4 class="cb45">
+        10進法
+       </h4>
+       <span class="cb41">
+        0/1/2/3/4/5/6/7/8/9
+       </span>
+       <h4 class="cb45">
+        16進法
+       </h4>
+       <span class="cb41">
+        0/1/2/3/4/5/6/7/8/9/a/A/b/B/c/C/d/D/e/E/f/F
+       </span>
+
+      </div>
+
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">式と評価</h3>
+        <span class="cb41">
+         <b>式は演算子とオペランド（被演算子）の並び</b>ですが、結果的には値になります。<br>式を計算することを<b>評価する</b>と言うので、<b>式は評価されると値になる</b>と言えます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">演算子について</h3>
+        <span class="cb41">
+         演算子は式を構成する要素ですが、演算子は<b>主にオペランドを1/2つ持つもの</b>があります。<br>1つのオペランドを取るものは、更に<b>オペランドの前/後に置くか</b>で、<b>前置/後置</b>と分れます。<br>普通、前置/後置で、それぞれ<b><code>演算子&nbsp;オペランド</code>/<code>オペランド&nbsp;演算子</code></b>と配置します。<br>2つのオペランドを取るものは、<b>単純に<code>オペランド&nbsp;演算子&nbsp;オペランド</code></b>という配置です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        今回用いた演算子
+       </h4>
+       <h4 class="cb45">
+        +
+       </h4>
+       <span class="cb41">
+        加算
+       </span>
+       <h4 class="cb45">
+        -
+       </h4>
+       <span class="cb41">
+        減算
+       </span>
+       <h4 class="cb45">
+        *
+       </h4>
+       <span class="cb41">
+        乗算
+       </span>
+       <h4 class="cb45">
+        /
+       </h4>
+       <span class="cb41">
+        除算
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">問題の箇所と0方向への丸め</h3>
+        <span class="cb41">
+         <code><ruby><rb>1ul</rb><rp>（</rp><rt>unsigned&nbsp;longの1</rt><rp>）</rp></ruby>&nbsp;/&nbsp;<ruby><rb>3ull</rb><rp>（</rp><rt>unsigned&nbsp;long&nbsp;longの3</rt><rp>）</rp></ruby></code>が0に評価されるのは驚いたでしょうか。<br>これは、<b>C++では整数同士の計算結果は、やはり整数</b>になるからなのです。<br>整数同士の計算が数学的に小数になる場合、<b>0方向に丸められます</b>。<br>つまり、<b>小数部分を見なかったことにして、整数部分が計算結果</b>になるということです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">暗黙の型変換</h3>
+        <span class="cb41">
+         一般に、式のオペランドの型が違う場合、<b>暗黙の型変換</b>というものが行われる事があります。<br>組み込み型では、<b>2つのオペランドのうち、より表せる値の範囲が広い方へ</b>変換されます。<br>整数/小数同士では、単純により大きい方へと、<b>整数と小数では、小数へ</b>変換されます。<br>ただし、<b>整数のsignedとunsignedが一致しない場合、unsignedへと変換</b>されます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        暗黙の型変換（より右へ合わせられる）
+       </h4>
+       <h4 class="cb45">
+        整数同士
+       </h4>
+       <span class="cb41">
+        <code>short&nbsp;&lt;&nbsp;int&nbsp;&lt;&nbsp;long&nbsp;&lt;&nbsp;long&nbsp;long</code>,&nbsp;<code>signed&nbsp;&lt;&nbsp;unsigned</code>
+       </span>
+       <h4 class="cb45">
+        小数同士
+       </h4>
+       <span class="cb41">
+        <code>float&nbsp;&lt;&nbsp;double&nbsp;&lt;&nbsp;long&nbsp;double</code>
+       </span>
+       <h4 class="cb45">
+        整数と小数
+       </h4>
+       <span class="cb41">
+        整数&nbsp;&lt;&nbsp;小数
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">キャスト（型変換、明示的な型変換）</h3>
+        <span class="cb41">
+         暗黙の型変換以外にも<b>明示的に型を変換</b>でき、それを<b>キャスト</b>と言います。<br>キャストは、まず<b>Cスタイルのキャスト</b>と、C++で追加されたキャストがあります。<br>C++で追加されたキャストは、<b>Cスタイルのキャストをより役割ごとに分割したもの</b>です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">Cスタイルのキャスト</h3>
+        <span class="cb41">
+         Cスタイルのキャストの中で一番使われる構文は以下のようになります。<br>Cスタイルのキャストは、<b>C++で追加されたキャスト演算子を組み合わせてキャスト</b>されます。<br>そのため、<b>記述するのは楽ですが、曖昧さが残りやすく</b>、あまり推奨はされません。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">Cスタイルのキャストの構文</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+<code>(</code>&nbsp;型名&nbsp;<code>)</code>&nbsp;値<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">static_cast</h3>
+        <span class="cb41">
+         static_castは<b>演算子</b>で、<b>暗黙の型変換で行われるようなキャストを明示的に</b>行えます。<br>構文は以下のようで、<b><code>&lt;&gt;</code>の中に型名、<code>()</code>の中にキャストしたい値</b>を入れます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">static_cast</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+<code>static_cast</code>&nbsp;<code>&lt;</code>&nbsp;型名&nbsp;<code>&gt;</code>&nbsp;<code>(</code>&nbsp;値&nbsp;<code>)</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">問題の箇所2</h3>
+        <span class="cb41">
+         <code>(int)1.5</code>は<code>1</code>に評価されます。<b>小数から整数へのキャストでも、0方向へ丸められる</b>のです。<br>そして、<code>(double)1&nbsp;/&nbsp;3</code>と<code>1&nbsp;/&nbsp;static_cast&lt;double&gt;(3)</code>は、<b>片方をdoubleにしています</b>。<br>その結果、<b>もう片方が暗黙の型変換</b>でdoubleになり、<b>評価はdouble</b>となるのです。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照や出典です
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        ビット&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%83%E3%83%88
+       </span>
+       <h4 class="cb45">
+        バイト&nbsp;(情報)&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88_(%E6%83%85%E5%A0%B1)
+       </span>
+       <h4 class="cb45">
+        補数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E8%A3%9C%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        符号付数値表現&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/<br>%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE
+       </span>
+       <h4 class="cb45">
+        2の補数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/2%E3%81%AE%E8%A3%9C%E6%95%B0
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="..\..\..\..\..\images\top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

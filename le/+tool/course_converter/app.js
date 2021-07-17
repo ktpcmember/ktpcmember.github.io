@@ -487,7 +487,7 @@ function main(str) {
 
 			const table_item_holder = String.raw`{${non_lf}*}|${normal}+`;
 			const table_title = String.raw`(?:^(?<title_tag>(?:\*\+)|(?:\*-))(?:${non_lf_s}+)(?<title>${normal}${non_lf}*))`;
-			const table_item = String.raw`(?<item_tag>^(?:\+|-))(?:${non_lf_s}+)(?<word>${table_item_holder})(?:${non_lf_s}+)(?<desc>${table_item_holder})`;
+			const table_item = String.raw`(?<item_tag>^(?:\+|-))(?:${non_lf_s}+)(?<word>${table_item_holder})(?:${non_lf_s}+)(?<desc>${table_item_holder})${non_lf_s}*`;
 			const table = String.raw`${table_title}|${table_item}`;
 
 			return table;
@@ -649,7 +649,7 @@ ${str}
 
 		const table_item_holder = String.raw`{${non_lf}*}|${normal}+`;
 		const table_title = String.raw`(?:^(?:(?:\*\+)|(?:\*-))(?:${non_lf_s}+)(?:${normal}${non_lf}*)\n)`;
-		const table_item = String.raw`(?:^(?:\+|-)(?:${non_lf_s}+)(?:${table_item_holder})(?:${non_lf_s}+)(?:${table_item_holder})\n)`;
+		const table_item = String.raw`(?:^(?:\+|-)(?:${non_lf_s}+)(?:${table_item_holder})(?:${non_lf_s}+)(?:${table_item_holder})${non_lf_s}*\n)`;
 		const table = String.raw`(?<table>(?:${table_title}|${table_item})+)\n`;
 
 		// h1 タイトル

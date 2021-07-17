@@ -58,7 +58,7 @@
        <a class="ch41" href="..\hello\hello.html">
         <span class="ch50">前回</span>
        </a>
-       <a class="ch41" href="..\..\..\..\..\404.html">
+       <a class="ch41" href="..\stmt_select\stmt_select.html">
         <span class="ch50">次回</span>
        </a>
       </div>
@@ -71,9 +71,9 @@
       <h1>C++ on MSVC講習/変数基礎</h1>
      </article>
     <article class="cb21 fxtb">
-     <h2 class="cb33">あらすじ</h2>
+     <h2 class="cb33">あらすじと概要</h2>
       <span class="cb34">
-       前回は、Hello&nbsp;World!プログラムを通じて、基本的なコードの決まりを解説しました。<br>また、標準出力やリテラルを使い、コンソールへ単純な文字列を出力できるようになりました。
+       前回は、Hello&nbsp;World!プログラムを通じて、基本的なコードの決まりを解説しました。<br>また、標準出力やリテラルを使い、コンソールへ単純な文字列を出力できるようになりました。<br>今回は、実行時に値を保持できるようになり、入力が出来るようになります。
       </span>
      </article>
      <article class="cb21 fxlr tntwfg">
@@ -477,7 +477,7 @@
       <div class="cb31">
        <h3 class="cb40">整数を扱う型</h3>
         <span class="cb41">
-         整数を扱う型は、<b>組み込み型の1つである<code><ruby><rb>int</rb><rp>（</rp><rt>いんと</rt><rp>）</rp></ruby></code></b>です。<br><b><ruby><rb>signed</rb><rp>（</rp><rt>さいんど</rt><rp>）</rp></ruby>/<ruby><rb>unsigned</rb><rp>（</rp><rt>あんさいんど</rt><rp>）</rp></ruby></b>で<b>符号のあり/なし</b>、即ち<b>負の数が扱えない/る</b>を、<br><b><ruby><rb>short</rb><rp>（</rp><rt>しょーと</rt><rp>）</rp></ruby>/<ruby><rb>long</rb><rp>（</rp><rt>ろんぐ</rt><rp>）</rp></ruby>/<ruby><rb>long&nbsp;long</rb><rp>（</rp><rt>ろんぐろんぐ</rt><rp>）</rp></ruby></b>で<b>変数のサイズ</b>を指定することが出来ます。<br>サイズについてはコード解説が終わった後に解説します。
+         整数を扱う型は、<b>組み込み型の1つである<code><ruby><rb>int</rb><rp>（</rp><rt>いんと</rt><rp>）</rp></ruby></code></b>です。<br><b><ruby><rb>signed</rb><rp>（</rp><rt>さいんど</rt><rp>）</rp></ruby>/<ruby><rb>unsigned</rb><rp>（</rp><rt>あんさいんど</rt><rp>）</rp></ruby></b>で<b>符号のあり/なし</b>、即ち<b>負の数が扱えない/る</b>を、<br><b><ruby><rb>short</rb><rp>（</rp><rt>しょーと</rt><rp>）</rp></ruby>/<ruby><rb>long</rb><rp>（</rp><rt>ろんぐ</rt><rp>）</rp></ruby>/<ruby><rb>long&nbsp;long</rb><rp>（</rp><rt>ろんぐろんぐ</rt><rp>）</rp></ruby></b>で<b>変数のサイズ</b>を指定することが出来ます。<br>サイズについては、次回に整数の内部表現を解説すると同時に解説します。
         </span>
       </div>
      </article>
@@ -567,7 +567,7 @@
       <div class="cb31">
        <h3 class="cb40">初期化してない組み込み型</h3>
         <span class="cb41">
-         初期化を<b>しなかった</b>組み込み型の変数は、<b>その持つ値は不定になります</b>。<br>この不定の値を持つ組み込み型の変数は、<b>その値を使うことはしてはいけません</b>。<br>その様な変数を使って良い状態になるのは、<b>代入等で値を設定してから</b>です。<br><b>コンパイルエラーは出ません</b>が、標準規格で<b>未定義動作とされる状態になります</b>。<br>未定義動作は、タイムトラベルしたり鼻から悪魔が出るので、起こしてはいけません。
+         初期化を<b>しなかった</b>組み込み型の変数は、<b>その持つ値は不定になります</b>。<br>この不定の値を持つ組み込み型の変数は、<b>その値を使うことはしてはいけません</b>。<br>その様な変数を使って良い状態になるのは、<b>代入等で値を設定してから</b>です。<br><b>コンパイルエラーは出ません</b>が、標準規格で<b>未定義動作とされる状態になります</b>。<br>未定義動作は、タイムトラベルしたり鼻から悪魔が出るので、<b>起こしてはいけません</b>。
         </span>
       </div>
      </article>
@@ -593,104 +593,6 @@
          </code>
         </div>
        </article>
-    <article class="cb21 fxtb">
-     <h2 class="cb33">整数の内部表現</h2>
-      <span class="cb34">
-       変数のサイズとは何のことでしょうか。それにはまず、コンピューターでの内部表現を知りましょう。<br>また、丁度いいので、整数の内部表現についても解説していきます。<br>正直コードを理解するのに必要は無いので、必要になったら読むのでもいいでしょう。
-      </span>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">ビットとバイト</h3>
-        <span class="cb41">
-         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1<ruby><rb>Byte</rb><rp>（</rp><rt>バイト</rt><rp>）</rp></ruby>とは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
-        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">変数のサイズ</h3>
-        <span class="cb41">
-         変数のサイズというのは、即ち<b>変数が使うビットの量</b>のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、<b>変数にサイズを決める、あるいは決まってしまう</b>のが普通です。
-        </span>
-      </div>
-     </article>
-     <article class="cb21 fxlr">
-      <div class="cb31">
-<div class="tnonfg debr">
-       <h4 class="cb44">
-        MSVCにおける整数のサイズ
-       </h4>
-       <h4 class="cb45">
-        short
-       </h4>
-       <span class="cb41">
-        16bit
-       </span>
-       <h4 class="cb45">
-        int（サイズに関する修飾子なし）
-       </h4>
-       <span class="cb41">
-        32bit
-       </span>
-       <h4 class="cb45">
-        long
-       </h4>
-       <span class="cb41">
-        32bit
-       </span>
-       <h4 class="cb45">
-        long&nbsp;long
-       </h4>
-       <span class="cb41">
-        64bit
-       </span>
-
-      </div>
-
-
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">負の数を扱いたくなりました</h3>
-        <span class="cb41">
-         <b>負の数を扱いたくなりました</b>。この時一番簡単に思いつくのは<b>符号ビットを使う</b>ことです。<br>例えば、8bitの整数があった時、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>を符号ビットということにしてみましょう。<br>符号ビットが<b><code>0</code>/<code>1</code>の時、正/負</b>とし、<b>残り7bitは絶対値で表現</b>してみましょう。<br><code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>に対して、<code><ruby><rb>1000&nbsp;0001</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>のようになり、<b><code>-127から127</code>が表現できます</b>。
-        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">1の補数表現</h3>
-        <span class="cb41">
-         符号ビットと絶対値で表す以外にも、<b>正の数の表現を<ruby><rb>ビット反転</rb><rp>（</rp><rt>各ビットの0と1を逆にする</rt><rp>）</rp></ruby>する方法</b>もあります。<br>例えば、上と同じく8bitの整数で、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>をビット反転して<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>といった具合。<br>これも<b>やっぱり<code>-127から127</code>まで表現でき</b>、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>は<b>符号ビットの役割を果たします</b>。<br>これは、数学の「補数」という考え方に由来するため、<b>1の補数表現</b>と言います。
-        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">ダメなのよ。</h3>
-        <span class="cb41">
-         上の2つの表現、<b>実はどっちもダメ</b>なところがあります。例えば、<b><code>0</code>が2種類ある</b>のです。<br>1つの数値に対して2つ以上表現があると、<b>一意に表現できていない</b>ということになるのです。<br>でも、符号ビットが<code>1</code>の時は<code>0</code>を表現しない、とすると<b>表現が1個捨てられて無駄</b>です。
-        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">2の補数表現</h3>
-        <span class="cb41">
-         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、例えば8bitであれば、<b><code>127から-128</code>までを表せる</b>のです。<br>また、これも1Byte=8bitのくだりと同じく、ごく稀にそうでない処理系もあります。
-        </span>
-      </div>
-     </article>
-     <article class="cb21">
-      <div class="cb31">
-       <h3 class="cb40">何がいいのさ</h3>
-        <span class="cb41">
-         さて、ここまで斜め読みした人は、<b>どうしてこんな面倒なことをしたんだろう</b>と思うでしょう。<br>実は、2の補数表現は<b>減算を乗算で処理できる</b>という真の力を秘めているのです。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、<b>あらあら</b>。<br><b>桁あふれした分は見なかったこと</b>にして、<b>2進法で計算すると減算が加算で処理できる</b>のです。
-        </span>
-      </div>
-     </article>
     <article class="cb21 fxtb">
      <h2 class="cb33">小数を扱おう</h2>
       <span class="cb34">
@@ -766,7 +668,7 @@
       <div class="cb31">
        <h3 class="cb40">小数リテラル</h3>
         <span class="cb41">
-         前回軽く取り上げた小数リテラルですが、<b>指数表記</b>も用いることが出来ます。<br>指数表記は、<code><ruby><rb>1.2e5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>や<code><ruby><rb>-1.2e-5</rb><rp>（</rp><rt>-1.2×10^-5=-0.000012</rt><rp>）</rp></ruby></code>など、<b>仮数+基数の指数乗で表現</b>する表記法です。<br>通常、<code><ruby><rb>1.2×10^5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>などと基数を書きますが、<b><code>E</code>や<code>e</code>が<code>10</code>として用いられる事があります</b>。<br>また、通常の表記法でも、<b>整数部分や小数部分がない場合、省略</b>することも出来ます。
+         前回軽く取り上げた小数リテラルですが、<b>指数表記</b>も用いることが出来ます。<br>指数表記は、<code><ruby><rb>1.2e5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>や<code><ruby><rb>-1.2e-5</rb><rp>（</rp><rt>-1.2×10^-5=-0.000012</rt><rp>）</rp></ruby></code>など、<b>仮数×基数の指数乗で表現</b>する表記法です。<br>普通<code><ruby><rb>1.2×10^5</rb><rp>（</rp><rt>1.2×10^5=120000</rt><rp>）</rp></ruby></code>などと基数を書きますが、C++では<b><code>E</code>や<code>e</code>を<code>10</code>として用いて表記します</b>。<br>また通常の表記法でも、<b>整数部分や小数部分が0の場合、0を省略</b>することも出来ます。
         </span>
       </div>
      </article>
@@ -1203,36 +1105,6 @@
        </h4>
        <span class="cb41">
         https://ja.cppreference.com/w/cpp/language/operator_assignment
-       </span>
-       <h4 class="cb45">
-        ビット&nbsp;-&nbsp;Wikipedia
-       </h4>
-       <span class="cb41">
-        https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%83%E3%83%88
-       </span>
-       <h4 class="cb45">
-        バイト&nbsp;(情報)&nbsp;-&nbsp;Wikipedia
-       </h4>
-       <span class="cb41">
-        https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88_(%E6%83%85%E5%A0%B1)
-       </span>
-       <h4 class="cb45">
-        補数&nbsp;-&nbsp;Wikipedia
-       </h4>
-       <span class="cb41">
-        https://ja.wikipedia.org/wiki/%E8%A3%9C%E6%95%B0
-       </span>
-       <h4 class="cb45">
-        符号付数値表現&nbsp;-&nbsp;Wikipedia
-       </h4>
-       <span class="cb41">
-        https://ja.wikipedia.org/wiki/<br>%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE
-       </span>
-       <h4 class="cb45">
-        2の補数&nbsp;-&nbsp;Wikipedia
-       </h4>
-       <span class="cb41">
-        https://ja.wikipedia.org/wiki/2%E3%81%AE%E8%A3%9C%E6%95%B0
        </span>
        <h4 class="cb45">
         文字コード&nbsp;-&nbsp;Wikipedia
