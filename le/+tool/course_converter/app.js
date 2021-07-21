@@ -458,7 +458,7 @@ function main(str) {
 			.replace(/ /msg, "&nbsp;")
 			.replace(/ \\\n/msg, "")
 			.replace(/\n/msg, "<br>")
-			.replace(/(?<!\\)\*{2}(.+?)\*{2}/msg, "<b>$1</b>").replace(/\\\*{2}/msg, "**")
+			.replace(/(?<!\\)\*{2}(.+?)\*{2}/msg, "<b>$1</b>").replace(/\\\*{2}/msg, "***")
 			.replace(/(?<!\\)`(.+?)`/msg, "<code>$1</code>")
 			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)(\.)?\{((?:(?:[^\}])|(?:\\\}))+?)\}/msg, (match, p1, p2, p3) => `<a href="${p2 != null ? PATH.relative(to_dir, PATH.join(ktpc_root, p3)) : p3}">${p1}</a>`)
 			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)\(((?:(?:[^\)])|(?:\\\)))+?)\)/msg, "<ruby><rb>$1</rb><rp>（</rp><rt>$2</rt><rp>）</rp></ruby>");
