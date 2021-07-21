@@ -76,21 +76,137 @@
        前回は整数、小数、文字列を実行時に保存したり、入力できるようになりました。<br>今回は、整数と小数の内部表現と、計算をやっていきましょう。
       </span>
      </article>
-     <article class="cb21 fxlr tntwfg">
-<div class="cb36 debr">
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
        <h4 class="cb44">
         重要語
        </h4>
-今回はありません
-      </div>
-
-<div class="cb36 debr">
-       <h4 class="cb44">
-        必要語
+       <h4 class="cb45">
+        ビット
        </h4>
-今回はありません
+       <span class="cb41">
+        1/0を表現する情報の最小単位
+       </span>
+       <h4 class="cb45">
+        バイト
+       </h4>
+       <span class="cb41">
+        概ね8bitである、情報の基本的な単位
+       </span>
+       <h4 class="cb45">
+        1の補数表現
+       </h4>
+       <span class="cb41">
+        1の補数でマイナスの整数を表現する方法
+       </span>
+       <h4 class="cb45">
+        2の補数表現
+       </h4>
+       <span class="cb41">
+        2の補数でマイナスの整数を表現する方法
+       </span>
+       <h4 class="cb45">
+        符号ビット
+       </h4>
+       <span class="cb41">
+        値が正であるか負であるかを判定できるビット
+       </span>
+       <h4 class="cb45">
+        オーバーフロー
+       </h4>
+       <span class="cb41">
+        扱える値の範囲を超えてしまうこと
+       </span>
+       <h4 class="cb45">
+        ゼロ除算
+       </h4>
+       <span class="cb41">
+        値を<code>0</code>で割ること
+       </span>
+       <h4 class="cb45">
+        固定小数点数
+       </h4>
+       <span class="cb41">
+        予め小数点の位置を決定して整数で小数を表す方法
+       </span>
+       <h4 class="cb45">
+        浮動小数点数
+       </h4>
+       <span class="cb41">
+        符号と仮数と指数で小数を表す方法
+       </span>
+       <h4 class="cb45">
+        IEEE&nbsp;754
+       </h4>
+       <span class="cb41">
+        一般的に用いられる浮動小数点数の規格
+       </span>
+       <h4 class="cb45">
+        inf
+       </h4>
+       <span class="cb41">
+        infinityとも、無限大になる浮動小数点数演算の値
+       </span>
+       <h4 class="cb45">
+        NaN
+       </h4>
+       <span class="cb41">
+        Not&nbsp;a&nbsp;Number、数値にならない浮動小数点数演算の値
+       </span>
+       <h4 class="cb45">
+        正規化（正規表現）
+       </h4>
+       <span class="cb41">
+        指数表現の仮数を0以上10未満の表現にすること
+       </span>
+       <h4 class="cb45">
+        丸め
+       </h4>
+       <span class="cb41">
+        値を表現できる値に近似すること、またその近似方法
+       </span>
+       <h4 class="cb45">
+        サフィックス
+       </h4>
+       <span class="cb41">
+        接尾辞
+       </span>
+       <h4 class="cb45">
+        プレフィックス
+       </h4>
+       <span class="cb41">
+        接頭辞
+       </span>
+       <h4 class="cb45">
+        評価
+       </h4>
+       <span class="cb41">
+        式を実際に計算などして実行すること
+       </span>
+       <h4 class="cb45">
+        ゼロ方向への丸め
+       </h4>
+       <span class="cb41">
+        小数部分を破棄し、ゼロに向かって丸めること
+       </span>
+       <h4 class="cb45">
+        暗黙の型変換
+       </h4>
+       <span class="cb41">
+        型が違う場合で自動的に行われる型変換
+       </span>
+       <h4 class="cb45">
+        キャスト
+       </h4>
+       <span class="cb41">
+        型変換、型を変更すること
+       </span>
+
       </div>
 
+
+      </div>
      </article>
     <article class="cb21 fxtb">
      <h2 class="cb33">整数の内部表現</h2>
@@ -102,7 +218,7 @@
       <div class="cb31">
        <h3 class="cb40">ビットとバイト</h3>
         <span class="cb41">
-         コンピューターでは、<b>電気的なOn/Offで1/0を表現し、2進数として</b>扱っています。<br>最小となる、その<b>1/0を表現する単位をビット</b>、そして<b>8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイト</b>と扱われます。<br>なお、8bitで1<ruby><rb>Byte</rb><rp>（</rp><rt>バイト</rt><rp>）</rp></ruby>とは<b>決まっているわけでは無く</b>、そうでない場合も極々稀にあります。
+         コンピューターでは、電気的なOn/Offで1/0を表現し、2進数として扱っています。<br>最小となる、その1/0を表現する単位をビット、そして8<ruby><rb>bit</rb><rp>（</rp><rt>ビット</rt><rp>）</rp></ruby>でバイトと扱われます。<br>なお、8bitで1<ruby><rb>Byte</rb><rp>（</rp><rt>バイト</rt><rp>）</rp></ruby>とは決まっているわけでは無く、そうでない場合も極々稀にあります。
         </span>
       </div>
      </article>
@@ -110,7 +226,7 @@
       <div class="cb31">
        <h3 class="cb40">変数のサイズ</h3>
         <span class="cb41">
-         変数のサイズというのは、<b>変数が使うビットの量</b>のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、<b>変数にサイズを決める、あるいは決まってしまう</b>のが普通です。
+         変数のサイズというのは、変数が使うビットの量のことになります。<br>ただし、ビットは物理的に存在している以上、無限に存在しているわけではありません。<br>また、変数のサイズは固定されていると何かと便利ですし、効率がよくなります。<br>以上のことから、変数にサイズを決める、あるいは決まってしまうのが普通です。
         </span>
       </div>
      </article>
@@ -118,7 +234,7 @@
       <div class="cb31">
        <h3 class="cb40">負の数を扱いたくなりました</h3>
         <span class="cb41">
-         <b>負の数を扱いたくなりました</b>。この時一番簡単に思いつくのは<b>符号ビットを使う</b>ことです。<br>例えば、8bitの整数があった時、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>を符号ビットということにしてみましょう。<br>符号ビットが<b><code>0</code>/<code>1</code>の時、正/負</b>とし、<b>残り7bitは絶対値で表現</b>してみましょう。<br><code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>に対して、<code><ruby><rb>1000&nbsp;0001</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>のようになり、<b><code>-127から127</code>が表現できます</b>。
+         負の数を扱いたくなりました。この時一番簡単に思いつくのは符号ビットを使うことです。<br>例えば、8bitの整数があった時、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>を符号ビットということにしてみましょう。<br>符号ビットが<code>0</code>/<code>1</code>の時、正/負とし、残り7bitは絶対値で表現してみましょう。<br><code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>に対して、<code><ruby><rb>1000&nbsp;0001</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>のようになり、<code>-127から127</code>が表現できます。
         </span>
       </div>
      </article>
@@ -126,7 +242,7 @@
       <div class="cb31">
        <h3 class="cb40">1の補数表現</h3>
         <span class="cb41">
-         符号ビットと絶対値で表す以外にも、<b>正の数の表現を<ruby><rb>ビット反転</rb><rp>（</rp><rt>各ビットの0と1を逆にする</rt><rp>）</rp></ruby>する方法</b>もあります。<br>例えば、上と同じく8bitの整数で、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>をビット反転して<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>といった具合。<br>これも<b>やっぱり<code>-127から127</code>まで表現でき</b>、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>は<b>符号ビットの役割を果たします</b>。<br>これは、数学の「補数」という考え方に由来するため、<b>1の補数表現</b>と言います。
+         符号ビットと絶対値で表す以外にも、正の数の表現を<ruby><rb>ビット反転</rb><rp>（</rp><rt>各ビットの0と1を逆にする</rt><rp>）</rp></ruby>する方法もあります。<br>例えば、上と同じく8bitの整数で、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>をビット反転して<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>-1</rt><rp>）</rp></ruby></code>といった具合。<br>これもやっぱり<code>-127から127</code>まで表現でき、<code><b><ruby><rb>0</rb><rp>（</rp><rt>これ</rt><rp>）</rp></ruby></b>000&nbsp;0000</code>は符号ビットの役割を果たします。<br>これは、数学の「補数」という考え方に由来するため、1の補数表現と言います。
         </span>
       </div>
      </article>
@@ -134,7 +250,7 @@
       <div class="cb31">
        <h3 class="cb40">ダメなのよ。</h3>
         <span class="cb41">
-         上の2つの表現、<b>実はどっちもダメ</b>なところがあります。例えば、<b><code>0</code>が2種類ある</b>のです。<br>1つの数値に対して2つ以上表現があると、<b>一意に表現できていない</b>ということになるのです。<br>でも、符号ビットが<code>1</code>の時は<code>0</code>を表現しない、とすると<b>表現が1個捨てられて無駄</b>です。
+         上の2つの表現、実はどっちもダメなところがあります。例えば、<code>0</code>が2種類あるのです。<br>1つの数値に対して2つ以上表現があると、一意に表現できていないということになるのです。<br>でも、符号ビットが<code>1</code>の時は<code>0</code>を表現しない、とすると表現が1個捨てられて無駄です。
         </span>
       </div>
      </article>
@@ -142,7 +258,7 @@
       <div class="cb31">
        <h3 class="cb40">2の補数表現</h3>
         <span class="cb41">
-         どうすればいいのか。人類はやっぱり数学に由来して、<b>2の補数表現</b>にたどり着きました。<br>内容としては、<b>負の数は、1の補数表現に<code>+1</code>をした表現</b>で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、<b>例えば8bitであれば、<code>127から-128</code>までを表せる</b>のです。
+         どうすればいいのか。人類はやっぱり数学に由来して、2の補数表現にたどり着きました。<br>内容としては、負の数は、1の補数表現に<code>+1</code>をした表現で表すことにしたのです。<br>つまり、8bitの<code>-1</code>なら、<code><ruby><rb>0000&nbsp;0001</rb><rp>（</rp><rt>1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1110</rb><rp>（</rp><rt>1の補数の-1</rt><rp>）</rp></ruby></code>→<code><ruby><rb>1111&nbsp;1111</rb><rp>（</rp><rt>2の補数の-1</rt><rp>）</rp></ruby></code>ということになりました。<br>これなら、例えば8bitであれば、<code>127から-128</code>までを表せるのです。
         </span>
       </div>
      </article>
@@ -150,7 +266,7 @@
       <div class="cb31">
        <h3 class="cb40">何がいいのさ</h3>
         <span class="cb41">
-         実は、2の補数表現は<b>減算を乗算で処理できる</b>という素晴らしい性質を持っています。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、<b>あらあら</b>。<br><b>桁あふれした分は見なかったこと</b>にして、<b>2進法で計算すると減算が加算で処理できる</b>のです。
+         実は、2の補数表現は減算を加算で処理できるという素晴らしい性質を持っています。<br><code>36-12→24</code>なら、<code>12</code>を<code>-12</code>にして足すと<code><ruby><rb>0010&nbsp;0100</rb><rp>（</rp><rt>36</rt><rp>）</rp></ruby>&nbsp;+&nbsp;<ruby><rb>1111&nbsp;0100</rb><rp>（</rp><rt>-12</rt><rp>）</rp></ruby>&nbsp;→&nbsp;<ruby><rb>0001&nbsp;1000</rb><rp>（</rp><rt>24</rt><rp>）</rp></ruby></code>、あらあら。<br>桁あふれした分は見なかったことにして、2進法で計算すると減算が加算で処理できるのです。
         </span>
       </div>
      </article>
@@ -158,15 +274,23 @@
       <div class="cb31">
        <h3 class="cb40">C++の整数</h3>
         <span class="cb41">
-         C++17までは、C++はC言語と同様に2の補数以外の整数表現を許可していました。<br>しかし、<b>C++20からは整数は2の補数表現に限られる</b>ことになりました。<br>ただ、<b>ほとんどは2の補数表現が用いられている</b>ので、気にするほどでもないかもしれません。
+         C++17までは、C++はC言語と同様に2の補数以外の整数表現を許可していました。<br>しかし、C++20からは整数は2の補数表現に限られることになりました。<br>ただ、ほとんどは2の補数表現が用いられているので、気にするほどでもないかもしれません。<br>この講習では、整数は2の補数表現であることを前提にして進めていきます。
         </span>
       </div>
      </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40">扱える値の範囲とオーバーフロー</h3>
+       <h3 class="cb40">オーバーフローと符号付き整数</h3>
         <span class="cb41">
-         さて、負の値の扱い方まで分かると、整数が扱える値の範囲が分かると思います。<br><b>扱える値の範囲に制限がある</b>ということは、<b>範囲を超えてしまったときはまずい</b>のです。<br>そのことを<b>オーバーフロー</b>といい、符号ありの変数では<b>未定義動作</b>となります。<br>符号なしの変数の場合には<b>未定義動作ではありませんが、バグを引き起こす</b>可能性が高いです。<br>C++では計算するときですら、変数が<b>どの程度の値を扱えるのかを考える</b>必要があるのです。
+         さて、負の値の扱い方まで分かると、整数が扱える値の範囲が分かると思います。<br>扱える値の範囲に制限があるということは、範囲を超えてしまったときはまずいのです。<br>そのことをオーバーフローといい、符号ありの変数では未定義動作となります。<br>なお、実行時に起こりうるエラーを検出するサニタイザーなどで検出することが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">オーバーフローと符号なし整数</h3>
+        <span class="cb41">
+         符号なしの変数の場合には、その符号なし変数が表せる最大の値で<ruby><rb>剰余</rb><rp>（</rp><rt>じょうよ</rt><rp>）</rp></ruby>した値になります。<br>なお剰余、つまりあまり算は、割られる数を割る数で割った余りが求める値になる計算です。<br>例えば、<ruby><rb>8bitの符号なし整数</rb><rp>（</rp><rt>扱える値の範囲は0～255</rt><rp>）</rp></ruby>に対して、<code>256</code>になる演算をしたら、<code>1</code>になります。<br>以上のように、C++は単純な計算でも、変数でどの程度の値を扱うか把握するのが重要です。
         </span>
       </div>
      </article>
@@ -174,7 +298,7 @@
       <div class="cb31">
        <h3 class="cb40">ゼロ除算</h3>
         <span class="cb41">
-         オーバーフローの解説をしたので、同時に<b>ゼロ除算</b>についても解説します。<br>名前の通り、<b>値を0で割ること</b>をゼロ除算と言い、C++では<b>整数の場合未定義動作</b>です。
+         オーバーフローの解説をしたので、同時にゼロ除算についても解説します。<br>名前の通り、値を0で割ることをゼロ除算と言い、C++では整数の場合未定義動作です。
         </span>
       </div>
      </article>
@@ -252,7 +376,7 @@
       <div class="cb31">
        <h3 class="cb40">固定小数点数</h3>
         <span class="cb41">
-         これは、小数点の位置を決めておき、<b>整数/小数部分をそれぞれ整数で表わす</b>方法です。<br>整数で整数/小数部分を表現することから、<b>基本的に誤差は発生しません</b>。<br>その代わりに、<b>扱える値の範囲が狭かったり、無駄が発生したり</b>することが多いのです。<br>そのため、一般的には使われず、特殊な分野で使用されることが多いです。
+         これは、小数点の位置を予め決めておくことで、整数で小数を表す方法です。<br>整数で整数/小数部分を表現することから、基本的に誤差は発生しません。<br>その代わりに、扱える値の範囲が狭かったり、無駄が発生したりすることが多いのです。<br>そのため、一般的には使われず、特殊な分野で使用されることが多いです。
         </span>
       </div>
      </article>
@@ -260,7 +384,7 @@
       <div class="cb31">
        <h3 class="cb40">浮動小数点数</h3>
         <span class="cb41">
-         前回指数表記を解説しましたが、その発想に近いのが浮動小数点数です。<br>すなわち、<b>符号と仮数と指数で小数を表す</b>表現をするのが浮動小数点数です。<br>現在の多くのコンピューターでは、<b><ruby><rb>専用のプロセッサ</rb><rp>（</rp><rt>FPU,&nbsp;Floating&nbsp;Point&nbsp;Unit</rt><rp>）</rp></ruby>があり、主流</b>となっています。
+         前回指数表記を解説しましたが、その発想に近いのが浮動小数点数です。<br>すなわち、符号と仮数と指数で小数を表す表現をするのが浮動小数点数です。<br>現在の多くのコンピューターでは、<ruby><rb>専用のプロセッサ</rb><rp>（</rp><rt>FPU,&nbsp;Floating&nbsp;Point&nbsp;Unit</rt><rp>）</rp></ruby>があり、主流となっています。
         </span>
       </div>
      </article>
@@ -268,7 +392,7 @@
       <div class="cb31">
        <h3 class="cb40"><ruby><rb>IEEE</rb><rp>（</rp><rt>あいとりぷるいー</rt><rp>）</rp></ruby>&nbsp;754</h3>
         <span class="cb41">
-         浮動小数点数の実装や扱いとして<b>一般的に用いられるのが、IEEE&nbsp;754</b>です。<br>IEEE&nbsp;754の中でも、C++で使われているのは<b><ruby><rb>binary32/binary64</rb><rp>（</rp><rt>ばいなりー32/ばいなりー64,&nbsp;俗に単精度/倍精度</rt><rp>）</rp></ruby></b>の2つです。<br><b>binary32は合計32bit、binary64は合計64bit</b>を用いる表現方法です。<br>以下では、特に言及がない場合はIEEE&nbsp;754に基づいて解説します。
+         浮動小数点数の実装や扱いとして一般的に用いられるのが、IEEE&nbsp;754です。<br>IEEE&nbsp;754の中でも、C++で使われているのは<ruby><rb>binary32/binary64</rb><rp>（</rp><rt>ばいなりー32/ばいなりー64,&nbsp;俗に単精度/倍精度</rt><rp>）</rp></ruby>の2つです。<br>binary32は合計32bit、binary64は合計64bitを用いる表現方法です。<br>以下では、特に言及がない場合はIEEE&nbsp;754に基づいて解説します。
         </span>
       </div>
      </article>
@@ -276,7 +400,7 @@
       <div class="cb31">
        <h3 class="cb40">特殊な値</h3>
         <span class="cb41">
-         浮動小数点数には、整数にはない特殊な値、<b><ruby><rb>inf</rb><rp>（</rp><rt>infinity,&nbsp;いんふぃにてぃー</rt><rp>）</rp></ruby>と<ruby><rb>NaN</rb><rp>（</rp><rt>なん,&nbsp;Not&nbsp;a&nbsp;Number</rt><rp>）</rp></ruby></b>があります。<br>infは無限大のことで、<b>非0のゼロ除算などの演算</b>で発生し、正負が存在します。<br>NaNは<b>0のゼロ除算</b>や、infと0の乗算、inf同士の除算、異符号infの加算などで発生します。<br>なおinfは0の対数を取った時、NaNは結果が虚数になる演算などでも設定される事があります。
+         浮動小数点数には、整数にはない特殊な値、<ruby><rb>inf</rb><rp>（</rp><rt>infinity,&nbsp;いんふぃにてぃー</rt><rp>）</rp></ruby>と<ruby><rb>NaN</rb><rp>（</rp><rt>なん,&nbsp;Not&nbsp;a&nbsp;Number</rt><rp>）</rp></ruby>があります。<br>infは無限大のことで、非0のゼロ除算などの演算で発生し、正負が存在します。<br>NaNは0のゼロ除算や、infと0の乗算、inf同士の除算、異符号infの加算などで発生します。<br>なおinfは0の対数を取った時、NaNは結果が虚数になる演算などでも設定される事があります。
         </span>
       </div>
      </article>
@@ -284,7 +408,7 @@
       <div class="cb31">
        <h3 class="cb40">指数表記のおさらい</h3>
         <span class="cb41">
-         指数表記は、1.25e5などのように表記する方法で、<b>符号/仮数/基数/指数</b>に分けられます。<br>例えば、<code>-1.25e5</code>なら<code>符号/仮数/基数/指数</code>は<code>-/1.25/e/5</code>となります。<br><b>符号が+の場合は+が省略されますが符号は+</b>です。また、<b><code>e</code>は<code>10</code></b>として扱います。<br><b>基数がeではない場合は、紙に書く時と同じように</b>します。例えば<code>-1.25*2^5</code>のように。
+         指数表記は、1.25e5などのように表記する方法で、符号/仮数/基数/指数に分けられます。<br>例えば、<code>-1.25e5</code>なら<code>符号/仮数/基数/指数</code>は<code>-/1.25/e/5</code>となります。<br>符号が+の場合は+が省略されますが符号は+です。また、<code>e</code>は<code>10</code>として扱います。<br>基数がeではない場合は、紙に書く時と同じようにします。例えば<code>-1.25*2**5</code>のように。
         </span>
       </div>
      </article>
@@ -292,7 +416,7 @@
       <div class="cb31">
        <h3 class="cb40">正規化</h3>
         <span class="cb41">
-         指数表記において、<b>仮数を0以上10未満にした表現に変換する</b>ことを正規化と言います。<br>例えば、<code>12.345e2</code>という値であれば、<code>1.2345e3</code>という形に正規化することが出来ます。
+         指数表記において、仮数を0以上10未満にした表現に変換することを正規化と言います。<br>例えば、<code>12.345e2</code>という値であれば、<code>1.2345e3</code>という形に正規化することが出来ます。
         </span>
       </div>
      </article>
@@ -300,7 +424,7 @@
       <div class="cb31">
        <h3 class="cb40">基数と丸め</h3>
         <span class="cb41">
-         binary32/64では、<b>基数は<code>2</code></b>と定められます。つまり、2進数の小数ということになります。<br>そのため、10進数の小数を2進数で表すときや、除算で<b>循環小数になる事がある</b>のです。<br>この場合に、<b>何らかの値に近似する</b>する必要があり、<b>その近似方法を丸め</b>と言います。<br>主に、<b>最も近くの表現できる値</b>へ丸める、最近接偶数方向丸めが用いられています。<br>なお、表現可能な2つの値の丁度間の値なら、偶数へと丸めるとされています。
+         binary32/64では、基数は<code>2</code>と定められます。つまり、2進数の小数ということになります。<br>そのため、10進数の小数を2進数で表すときや、除算で循環小数になる事があるのです。<br>この場合に、何らかの値に近似するする必要があり、その近似方法を丸めと言います。<br>主に、最も近くの表現できる値へ、丁度中間の値なら偶数へ丸める方法が用いられます。
         </span>
       </div>
      </article>
@@ -308,7 +432,7 @@
       <div class="cb31">
        <h3 class="cb40">精度</h3>
         <span class="cb41">
-         binary32では、2進数で23～24bit程度、<b>10進数で6～7桁程度</b>の精度を持っています。<br>binary64では、2進数で52～53bit程度、<b>10進数で15桁程度</b>の精度を持っています。<br>ここで示す精度より大きい桁については、不確かな値が含まれることになります。
+         binary32では、2進数で23～24bit程度、10進数で6～7桁程度の精度を持っています。<br>binary64では、2進数で52～53bit程度、10進数で15桁程度の精度を持っています。<br>ここで示す精度より大きい桁については、不確かな値が含まれることになります。
         </span>
       </div>
      </article>
@@ -316,7 +440,7 @@
       <div class="cb31">
        <h3 class="cb40">C++における小数の扱い</h3>
         <span class="cb41">
-         C++の標準規格では、<b>固定小数点数か浮動小数点数かすら決められていません</b>。<br>ただし、主要な処理系では、<b>floatをbinary32、doubleをbinary64</b>で実装しています。<br>long&nbsp;doubleについては、<b>MSVCはdoubleと同様binary64</b>で実装していますが、<br>他の処理系では、doubleよりも高精度なものを実装していることもあります。<br><b>普通はdoubleを使用していれば良いでしょう</b>。
+         C++の標準規格では、固定小数点数か浮動小数点数かすら決められていません。<br>ただし、主要な処理系では、floatをbinary32、doubleをbinary64で実装しています。<br>long&nbsp;doubleについては、MSVCはdoubleと同様binary64で実装していますが、<br>他の処理系ではより高精度かもしれません。ただ、通常doubleを使用すればよいでしょう。
         </span>
       </div>
      </article>
@@ -397,7 +521,8 @@
         <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1ul</span> <span class="wdsl">/</span> <span class="wdnr">3ull</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span><span class="wdnr">1.5</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">double</span><span class="wdsl">)</span><span class="wdnr">1</span> <span class="wdsl">/</span> <span class="wdnr">3</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
-        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1</span> <span class="wdsl">/</span> <span class="wdkywd">static_cast</span><span class="wdsl">&lt;</span><span class="wdkywd">double</span><span class="wdsl">&gt;(</span><span class="wdnr">3</span><span class="wdsl">);</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1</span> <span class="wdsl">/</span> <span class="wdkywd">static_cast</span><span class="wdsl">&lt;</span><span class="wdkywd">double</span><span class="wdsl">&gt;(</span><span class="wdnr">3</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdnr">15</span> <span class="wdsl">%</span> <span class="wdnr">8</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 </span></span></pre>
          </code>
@@ -413,7 +538,7 @@
          </div>
          <code class="cb47">
 <pre id="1" class="cb55 bkgdbl">
-&lt;&lt;&nbsp;26<br>&lt;&lt;&nbsp;253.5<br>&lt;&lt;&nbsp;20<br>&lt;&lt;&nbsp;0<br>&lt;&lt;&nbsp;1<br>&lt;&lt;&nbsp;0.333333<br>&lt;&lt;&nbsp;0.333333<br></pre>
+&lt;&lt;&nbsp;26<br>&lt;&lt;&nbsp;253.5<br>&lt;&lt;&nbsp;20<br>&lt;&lt;&nbsp;0<br>&lt;&lt;&nbsp;1<br>&lt;&lt;&nbsp;0.333333<br>&lt;&lt;&nbsp;0.333333<br>&lt;&lt;&nbsp;7<br></pre>
          </code>
         </div>
        </article>
@@ -427,7 +552,7 @@
       <div class="cb31">
        <h3 class="cb40">リテラルの型</h3>
         <span class="cb41">
-         既に分かっているかもしれませんが、リテラルもやはり型を持っています。<br>整数/小数リテラル<b>それぞれ標準で、int/double型</b>になります。<br>整数/小数リテラルは、それぞれ、以下の<b><ruby><rb>サフィックス</rb><rp>（</rp><rt>suffix,&nbsp;後に付ける記号の総称</rt><rp>）</rp></ruby>を付けると型を変えられます</b>。<br>整数リテラルのサフィックスは、<b>符号とサイズについては組み合わせる</b>ことが出来ます。
+         既に分かっているかもしれませんが、リテラルもやはり型を持っています。<br>整数/小数リテラルそれぞれ標準で、int/double型になります。<br>整数/小数リテラルは、それぞれ、以下の<ruby><rb>サフィックス</rb><rp>（</rp><rt>suffix,&nbsp;接尾辞の総称</rt><rp>）</rp></ruby>を付けると型を変えられます。<br>整数リテラルのサフィックスは、符号とサイズについては組み合わせることが出来ます。<br>ただしリテラルの値が、指定されている型で表せない場合、より大きい型になります。
         </span>
       </div>
      </article>
@@ -471,7 +596,7 @@
 
 <div class="cb36 debr">
        <h4 class="cb44">
-        整数リテラルのサフィックス
+        小数リテラルのサフィックス
        </h4>
        <h4 class="cb45">
         float
@@ -499,7 +624,7 @@
       <div class="cb31">
        <h3 class="cb40">整数リテラルの進法選択</h3>
         <span class="cb41">
-         更に、整数リテラルは<b>2/8/10/16進法の何れかを使用できます</b>。<br>これらは、以下の<b><ruby><rb>プレフィックス</rb><rp>（</rp><rt>prefix,&nbsp;前につける記号の総称</rt><rp>）</rp></ruby>を使用して選択</b>することが出来ます。<br>16進法では、<b><code>a/A</code>～<code>f/F</code>まで、順番に<code>10</code>～<code>15</code></b>を表します。<br>特に、<b>始めを<code>0</code>にすると、8進法</b>となってしまうことに注意しましょう。
+         更に、整数リテラルは2/8/10/16進法の何れかを使用できます。<br>これらは、以下の<ruby><rb>プレフィックス</rb><rp>（</rp><rt>prefix,&nbsp;接頭辞の総称</rt><rp>）</rp></ruby>を使用して選択することが出来ます。<br>16進法では、<code>a/A</code>～<code>f/F</code>まで、順番に<code>10</code>～<code>15</code>を表します。<br>特に、始めを<code>0</code>にすると、8進法となってしまうことに注意しましょう。
         </span>
       </div>
      </article>
@@ -571,7 +696,7 @@
       <div class="cb31">
        <h3 class="cb40">式と評価</h3>
         <span class="cb41">
-         <b>式は演算子とオペランド（被演算子）の並び</b>ですが、結果的には値になります。<br>式を計算することを<b>評価する</b>と言うので、<b>式は評価されると値になる</b>と言えます。
+         式は演算子とオペランド（被演算子）の並びですが、結果的には値になります。<br>式を計算することを評価すると言うので、式は評価されると値になると言えます。
         </span>
       </div>
      </article>
@@ -579,7 +704,7 @@
       <div class="cb31">
        <h3 class="cb40">演算子について</h3>
         <span class="cb41">
-         演算子は式を構成する要素ですが、演算子は<b>主にオペランドを1/2つ持つもの</b>があります。<br>1つのオペランドを取るものは、更に<b>オペランドの前/後に置くか</b>で、<b>前置/後置</b>と分れます。<br>普通、前置/後置で、それぞれ<b><code>演算子&nbsp;オペランド</code>/<code>オペランド&nbsp;演算子</code></b>と配置します。<br>2つのオペランドを取るものは、<b>単純に<code>オペランド&nbsp;演算子&nbsp;オペランド</code></b>という配置です。
+         演算子は式を構成する要素ですが、演算子は主オペランドを1/2/3つ持つものがあります。<br>1つのオペランドを取るものは、オペランドの前/後に置くかで、更に前置/後置と区別します。<br>なお、オペランドは値に評価されるものであればよいので、式も取ることが出来ます。
         </span>
       </div>
      </article>
@@ -613,6 +738,12 @@
        <span class="cb41">
         除算
        </span>
+       <h4 class="cb45">
+        %
+       </h4>
+       <span class="cb41">
+        <ruby><rb>剰余</rb><rp>（</rp><rt>じょうよ</rt><rp>）</rp></ruby>、モジュロ、余り算とも
+       </span>
 
       </div>
 
@@ -623,7 +754,7 @@
       <div class="cb31">
        <h3 class="cb40">問題の箇所と0方向への丸め</h3>
         <span class="cb41">
-         <code><ruby><rb>1ul</rb><rp>（</rp><rt>unsigned&nbsp;longの1</rt><rp>）</rp></ruby>&nbsp;/&nbsp;<ruby><rb>3ull</rb><rp>（</rp><rt>unsigned&nbsp;long&nbsp;longの3</rt><rp>）</rp></ruby></code>が0に評価されるのは驚いたでしょうか。<br>これは、<b>C++では整数同士の計算結果は、やはり整数</b>になるからなのです。<br>整数同士の計算が数学的に小数になる場合、<b>0方向に丸められます</b>。<br>つまり、<b>小数部分を見なかったことにして、整数部分が計算結果</b>になるということです。
+         <code><ruby><rb>1ul</rb><rp>（</rp><rt>unsigned&nbsp;longの1</rt><rp>）</rp></ruby>&nbsp;/&nbsp;<ruby><rb>3ull</rb><rp>（</rp><rt>unsigned&nbsp;long&nbsp;longの3</rt><rp>）</rp></ruby></code>が0に評価されるのは驚いたでしょうか。<br>これは、C++では整数同士の計算結果は、やはり整数になるからなのです。<br>整数同士の計算が数学的に小数になる場合、0方向に丸められます。<br>つまり、小数部分を見なかったことにして、整数部分が計算結果になるということです。
         </span>
       </div>
      </article>
@@ -631,7 +762,7 @@
       <div class="cb31">
        <h3 class="cb40">暗黙の型変換</h3>
         <span class="cb41">
-         一般に、式のオペランドの型が違う場合、<b>暗黙の型変換</b>というものが行われる事があります。<br>組み込み型では、<b>2つのオペランドのうち、より表せる値の範囲が広い方へ</b>変換されます。<br>整数/小数同士では、単純により大きい方へと、<b>整数と小数では、小数へ</b>変換されます。<br>ただし、<b>整数のsignedとunsignedが一致しない場合、unsignedへと変換</b>されます。
+         一般に、式のオペランドの型が違う場合、暗黙の型変換というものが行われる事があります。<br>組み込み型では、2つのオペランドのうち、より表せる値の範囲が広い方へ変換されます。<br>整数/小数同士では、単純により大きい方へと、整数と小数では、小数へ変換されます。<br>ただし、整数のsignedとunsignedが一致しない場合、unsignedへと変換されます。
         </span>
       </div>
      </article>
@@ -639,7 +770,7 @@
       <div class="cb31">
 <div class="tnonfg debr">
        <h4 class="cb44">
-        暗黙の型変換（より右へ合わせられる）
+        整数と小数についての暗黙の型変換
        </h4>
        <h4 class="cb45">
         整数同士
@@ -669,7 +800,7 @@
       <div class="cb31">
        <h3 class="cb40">キャスト（型変換、明示的な型変換）</h3>
         <span class="cb41">
-         暗黙の型変換以外にも<b>明示的に型を変換</b>でき、それを<b>キャスト</b>と言います。<br>キャストは、まず<b>Cスタイルのキャスト</b>と、C++で追加されたキャストがあります。<br>C++で追加されたキャストは、<b>Cスタイルのキャストをより役割ごとに分割したもの</b>です。
+         暗黙の型変換以外にも明示的に型を変換でき、それをキャストと言います。<br>キャストは、まずCスタイルのキャストと、C++で追加されたキャストがあります。<br>C++で追加されたキャストは、Cスタイルのキャストをより役割ごとに分割したものです。
         </span>
       </div>
      </article>
@@ -677,7 +808,7 @@
       <div class="cb31">
        <h3 class="cb40">Cスタイルのキャスト</h3>
         <span class="cb41">
-         Cスタイルのキャストの中で一番使われる構文は以下のようになります。<br>Cスタイルのキャストは、<b>C++で追加されたキャスト演算子を組み合わせてキャスト</b>されます。<br>そのため、<b>記述するのは楽ですが、曖昧さが残りやすく</b>、あまり推奨はされません。
+         Cスタイルのキャストの中で一番使われる構文は以下のようになります。<br>Cスタイルのキャストは、C++で追加されたキャスト演算子を組み合わせてキャストされます。<br>そのため、記述するのは楽ですが、余りにも強力な為、あまり推奨されません。
         </span>
       </div>
      </article>
@@ -699,7 +830,7 @@
       <div class="cb31">
        <h3 class="cb40">static_cast</h3>
         <span class="cb41">
-         static_castは<b>演算子</b>で、<b>暗黙の型変換で行われるようなキャストを明示的に</b>行えます。<br>構文は以下のようで、<b><code>&lt;&gt;</code>の中に型名、<code>()</code>の中にキャストしたい値</b>を入れます。
+         static_castは演算子で、暗黙の型変換で行われるようなキャストを明示的に行えます。<br>構文は以下のようで、<code>&lt;&gt;</code>の中に型名、<code>()</code>の中にキャストしたい値を入れます。
         </span>
       </div>
      </article>
@@ -721,7 +852,15 @@
       <div class="cb31">
        <h3 class="cb40">問題の箇所2</h3>
         <span class="cb41">
-         <code>(int)1.5</code>は<code>1</code>に評価されます。<b>小数から整数へのキャストでも、0方向へ丸められる</b>のです。<br>そして、<code>(double)1&nbsp;/&nbsp;3</code>と<code>1&nbsp;/&nbsp;static_cast&lt;double&gt;(3)</code>は、<b>片方をdoubleにしています</b>。<br>その結果、<b>もう片方が暗黙の型変換</b>でdoubleになり、<b>評価はdouble</b>となるのです。
+         <code>(int)1.5</code>は<code>1</code>に評価されます。小数から整数へのキャストでも、0方向へ丸められるのです。<br>そして、<code>(double)1&nbsp;/&nbsp;3</code>と<code>1&nbsp;/&nbsp;static_cast&lt;double&gt;(3)</code>は、片方をdoubleにしています。<br>その結果、もう片方が暗黙の型変換でdoubleになり、評価はdoubleとなるのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">剰余</h3>
+        <span class="cb41">
+         前半でも説明しましたが、割られる数を割る数で割った時の余りが、剰余で得られる値です。<br>剰余演算子は挙げた5つの演算子の中で唯一、オペランドに取れるのが整数だけとなります。<br>まあ、剰余はnの倍数かの判定くらいでしか使用しないので[要検証]いいでしょう。<br>余剰は除算同様に、ゼロの余剰を取ろうとすると未定義動作になります。
         </span>
       </div>
      </article>
@@ -747,7 +886,7 @@
         バイト&nbsp;(情報)&nbsp;-&nbsp;Wikipedia
        </h4>
        <span class="cb41">
-        https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88_(%E6%83%85%E5%A0%B1)
+        https://ja.wikipedia.org/wiki/<br>%E3%83%90%E3%82%A4%E3%83%88_(%E6%83%85%E5%A0%B1)
        </span>
        <h4 class="cb45">
         補数&nbsp;-&nbsp;Wikipedia
@@ -766,6 +905,90 @@
        </h4>
        <span class="cb41">
         https://ja.wikipedia.org/wiki/2%E3%81%AE%E8%A3%9C%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        符号付き整数型が2の補数表現であることを規定&nbsp;-&nbsp;cpprefjp&nbsp;C++日本語リファレンス
+       </h4>
+       <span class="cb41">
+        https://cpprefjp.github.io/lang/cpp20/signed_integers_are_twos_complement.html
+       </span>
+       <h4 class="cb45">
+        算術演算子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_arithmetic
+       </span>
+       <h4 class="cb45">
+        固定小数点数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/<br>%E5%9B%BA%E5%AE%9A%E5%B0%8F%E6%95%B0%E7%82%B9%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        浮動小数点数&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/<br>%E6%B5%AE%E5%8B%95%E5%B0%8F%E6%95%B0%E7%82%B9%E6%95%B0
+       </span>
+       <h4 class="cb45">
+        IEEE&nbsp;754&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/IEEE_754
+       </span>
+       <h4 class="cb45">
+        小数の表現
+       </h4>
+       <span class="cb41">
+        http://www.cc.kyoto-su.ac.jp/~kbys/kiso/number/fraction.html
+       </span>
+       <h4 class="cb45">
+        端数処理&nbsp;-&nbsp;Wikipedia
+       </h4>
+       <span class="cb41">
+        https://ja.wikipedia.org/wiki/%E7%AB%AF%E6%95%B0%E5%87%A6%E7%90%86
+       </span>
+       <h4 class="cb45">
+        整数リテラル&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/integer_literal
+       </span>
+       <h4 class="cb45">
+        浮動小数点リテラル&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/floating_literal
+       </span>
+       <h4 class="cb45">
+        評価順序&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/eval_order
+       </span>
+       <h4 class="cb45">
+        C++の演算子の優先順位&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_precedence
+       </span>
+       <h4 class="cb45">
+        暗黙の変換&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/implicit_conversion
+       </span>
+       <h4 class="cb45">
+        明示的な型変換&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/explicit_cast
+       </span>
+       <h4 class="cb45">
+        static_cast&nbsp;変換&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/static_cast
        </span>
 
       </div>
