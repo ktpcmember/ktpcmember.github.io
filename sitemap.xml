@@ -74,18 +74,19 @@
  </url>
  
  <url>
-  <!-- リネーム -->
-  <loc>https://www.ktpc.tokyo/le/_cps/i/overview/overview.html</loc>
- </url>
- <url>
-  <!-- リネーム -->
-  <loc>https://www.ktpc.tokyo/le/_cps/i/history/history.html</loc>
- </url>
- <url>
   <loc>https://www.ktpc.tokyo/le/_cps/i/k_e_vn/k_e_vn.html</loc>
  </url>
  <url>
   <loc>https://www.ktpc.tokyo/le/_cps/i/i_dx/i_dx.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/ktpcmd/m/hello/hello.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/ktpcmd/m/var/var.html</loc>
+ </url>
+ <url>
+  <loc>https://www.ktpc.tokyo/le/_cps/ktpcmd/m/i&d/i&d.html</loc>
  </url>
 
  <url>

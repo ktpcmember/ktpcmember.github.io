@@ -325,6 +325,7 @@ static_castは演算子で、暗黙の型変換で行われるようなキャス
 - {符号付き整数型が2の補数表現であることを規定 - cpprefjp C++日本語リファレンス} https://cpprefjp.github.io/lang/cpp20/signed_integers_are_twos_complement.html
 - {算術演算子 - cppreference.com} https://ja.cppreference.com/w/cpp/language/operator_arithmetic
 - {固定小数点数 - Wikipedia} https://ja.wikipedia.org/wiki/$;%E5%9B%BA%E5%AE%9A%E5%B0%8F%E6%95%B0%E7%82%B9%E6%95%B0
+- {データ型の範囲 | Microsoft Docs} https://docs.microsoft.com/ja-jp/cpp/cpp/data-type-ranges?view=msvc-160
 - {浮動小数点数 - Wikipedia} https://ja.wikipedia.org/wiki/$;%E6%B5%AE%E5%8B%95%E5%B0%8F%E6%95%B0%E7%82%B9%E6%95%B0
 - {IEEE 754 - Wikipedia} https://ja.wikipedia.org/wiki/IEEE_754
 - 小数の表現 http://www.cc.kyoto-su.ac.jp/~kbys/kiso/number/fraction.html
