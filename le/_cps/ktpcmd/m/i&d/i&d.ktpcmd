@@ -9,7 +9,7 @@ name = "C++ on MSVC講習"
 top = "le\_cps\_cps.html"
 index = "le\_cps\m\i_dx\i_dx.html"
 before = "le\_cps\ktpcmd\m\var\var.html"
-next = "le\_cps\ktpcmd\m\stmt_select\stmt_select.html"
+next = "le\_cps\ktpcmd\m\if\if.html"
 </header>
 
 <main>
@@ -199,14 +199,14 @@ int main() {
 ```
 
 ```cmd 実行結果例
-<< 26
-<< 253.5
-<< 20
-<< 0
-<< 1
-<< 0.333333
-<< 0.333333
-<< 7
+26
+253.5
+20
+0
+1
+0.333333
+0.333333
+7
 ```
 
 ## 解説
