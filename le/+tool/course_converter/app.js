@@ -458,7 +458,7 @@ function main(str) {
 			.replace(/ /msg, "&nbsp;")
 			.replace(/ \\\n/msg, "")
 			.replace(/\n/msg, "<br>")
-			.replace(/(?<!\\)\*{2}(.+?)\*{2}/msg, "<b>$1</b>").replace(/\\\*{2}/msg, "***")
+			.replace(/(?<!\\)\*{3}(.+?)\*{3}/msg, "<b>$1</b>").replace(/\\\*{3}/msg, "***")
 			.replace(/(?<!\\)`(.+?)`/msg, "<code>$1</code>")
 			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)(\.)?\{((?:(?:[^\}])|(?:\\\}))+?)\}/msg, (match, p1, p2, p3) => `<a href="${p2 != null ? PATH.relative(to_dir, PATH.join(ktpc_root, p3)) : p3}">${p1}</a>`)
 			.replace(/(?<!\\)\[((?:(?:[^\]])|(?:\\\]))+?)\](?<!\\)\(((?:(?:[^\)])|(?:\\\)))+?)\)/msg, "<ruby><rb>$1</rb><rp>（</rp><rt>$2</rt><rp>）</rp></ruby>");
@@ -684,7 +684,7 @@ ${str}
 		if (groups.h1 != null) {
 			// タイトル
 			s += String.raw`     <article class="cb20 fxtb">
-      <h1>${groups.h1_t}</h1>
+      <h1>${text(groups.h1_t)}</h1>
      </article>
 `;
 		} else if (groups.h2 != null) {
@@ -734,8 +734,7 @@ ${str}
        </div>
        <code class="cb47">
 <pre id="${num}" class="cb55 bkgdbl">
-${codeblock(groups.drpdwn2_p, groups.drpdwn2_m)}
-</pre>
+${codeblock(groups.drpdwn2_p, groups.drpdwn2_m)}</pre>
        </code>
        </details>
      </article>
