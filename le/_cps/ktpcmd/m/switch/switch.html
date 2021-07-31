@@ -58,7 +58,7 @@
        <a class="ch41" href="..\if\if.html">
         <span class="ch50">前回</span>
        </a>
-       <a class="ch41" href="..\..\..\..\..\404.html">
+       <a class="ch41" href="..\wfor\wfor.html">
         <span class="ch50">次回</span>
        </a>
       </div>
@@ -190,7 +190,8 @@
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> red <span class="wdsl">&lt;&lt;</span> green <span class="wdsl">&lt;&lt;</span> blue <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> fruit<span class="wdsl">::</span>apple <span class="wdsl">&lt;&lt;</span> fruit<span class="wdsl">::</span>orange <span class="wdsl">&lt;&lt;</span> fruit<span class="wdsl">::</span>grape <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> apple <span class="wdsl">&lt;&lt;</span> orange <span class="wdsl">&lt;&lt;</span> grape <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
-        <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span>c <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span>color<span class="wdsl">::</span>green <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)(</span>c <span class="wdsl">=</span> color<span class="wdsl">::</span>blue<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span>c <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span>color<span class="wdsl">::</span>green<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)(</span>c <span class="wdsl">=</span> color<span class="wdsl">::</span>blue<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 
 </span></span></pre>
@@ -200,7 +201,7 @@
       <article class="cb21 fxrl">
         <div class="cb37">
          <div class="cb46">
-          <span class="cb54">実行結果</span>
+          <span class="cb54">実行結果1</span>
           <button type="button" class="cb53" onclick="copy('1')">
            <span class="cb61">COPY</span>
           </button>
@@ -540,7 +541,7 @@ $&nbsp;2<br>blue<br><br></pre>
       <div class="cb31">
        <h3 class="cb40">ラベル</h3>
         <span class="cb41">
-         ラベルと<code><ruby><rb>:</rb><rp>（</rp><rt>ころん</rt><rp>）</rp></ruby></code>を1個以上文の頭に付けて文をラベル付けすることが出来ます。<br>ラベルは、switch文や今後解説するgoto文などから移動する時の目印になります。<br>あくまでラベルなので、switch文とgoto文で使用され無い場合には、特に何も起こしません。<br><ruby><rb>case</rb><rp>（</rp><rt>けーす</rt><rp>）</rp></ruby>ラベルと<ruby><rb>default</rb><rp>（</rp><rt>でふぉると</rt><rp>）</rp></ruby>ラベル以外は、識別子のルールに従って命名し、goto文から使用します。<br>なおラベルは唯一、関数単位でのみスコープを持っており、他の識別子とは別で管理されます。
+         ラベルと<code><ruby><rb>:</rb><rp>（</rp><rt>ころん</rt><rp>）</rp></ruby></code>を1個以上文の頭に付けて文をラベル付けすることが出来ます。<br>ラベルは、switch文や今後解説するgoto文などから移動する時の目印になります。<br>ラベルなので、switch文とgoto文で使用されない、順次実行時には特に何も起こしません。
         </span>
       </div>
      </article>

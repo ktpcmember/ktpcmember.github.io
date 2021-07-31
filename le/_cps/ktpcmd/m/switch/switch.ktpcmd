@@ -9,7 +9,7 @@ name = "C++ on MSVC講習"
 top = "le\_cps\_cps.html"
 index = "le\_cps\m\i_dx\i_dx.html"
 before = "le\_cps\ktpcmd\m\if\if.html"
-next = ""
+next = "le\_cps\ktpcmd\m\wfor\wfor.html"
 </header>
 
 <main>
@@ -62,12 +62,13 @@ int main() {
 	std::cout << red << green << blue << "\n"
 		<< fruit::apple << fruit::orange << fruit::grape << "\n"
 		<< apple << orange << grape << "\n"
-		<< (int)c << (int)color::green << (int)(c = color::blue) << "\n";
+		<< (int)c << (int)color::green;
+	std::cout << (int)(c = color::blue) << "\n";
 }
 
 ```
 
-```cmd 実行結果
+```cmd 実行結果1
 012
 012
 012
@@ -249,9 +250,7 @@ switch文の構文の`文`は、条件分岐してそれぞれに処理を書く
 ### ラベル
 ラベルと`[:](ころん)`を1個以上文の頭に付けて文をラベル付けすることが出来ます。
 ラベルは、switch文や今後解説するgoto文などから移動する時の目印になります。
-あくまでラベルなので、switch文とgoto文で使用され無い場合には、特に何も起こしません。
-[case](けーす)ラベルと[default](でふぉると)ラベル以外は、識別子のルールに従って命名し、goto文から使用します。
-なおラベルは唯一、関数単位でのみスコープを持っており、他の識別子とは別で管理されます。
+ラベルなので、switch文とgoto文で使用されない、順次実行時には特に何も起こしません。
 
 ### caseラベル、defaultラベル
 [case](けーす)ラベルや[default](でふぉると)ラベルは、switch文の`文`の中でのみ使用することが出来ます。
