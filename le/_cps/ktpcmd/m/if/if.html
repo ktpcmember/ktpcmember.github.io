@@ -214,7 +214,8 @@
 <pre id="0" class="cb55 bkgdbl">
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
 
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"1\n"</span>
@@ -357,7 +358,8 @@
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
 
     std<span class="wdsl">::</span>string s <span class="wdsl">=</span> <span class="wdtt">"string"</span><span class="wdsl">;</span>
 
@@ -644,38 +646,49 @@
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdc_mt">// 常に真文が実行される
 </span>    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">int</span> num<span class="wdsl">{</span> <span class="wdnr">1</span> <span class="wdsl">})</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"数学の定期テスト何点でした？\n"</span><span class="wdsl">;</span> <span class="wdkywd">else</span> <span class="wdkywd">int</span> dummy <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
 
-    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">int</span> num<span class="wdsl">;</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> num<span class="wdsl">),</span> num <span class="wdsl">&lt;</span> <span class="wdnr">0</span> <span class="wdsl">||</span> num <span class="wdsl">&gt;</span> <span class="wdnr">100</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">int</span> num<span class="wdsl">;</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> num<span class="wdsl">),</span> num <span class="wdsl">&lt;</span> <span class="wdnr">0</span> <span class="wdsl">||</span> num <span class="wdsl">&gt;</span> <span class="wdnr">100</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
         std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"受けていないですね？\n"</span><span class="wdsl">;</span>
     <span class="wdsl">}</span>
-    <span class="wdkywd">else</span> <span class="wdsl">{</span>
+    <span class="wdkywd">else</span>
+    <span class="wdsl">{</span>
         <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">95</span><span class="wdsl">)</span>      <span class="wdc_mt">/*評価 10 */</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"素晴らしい！\n"</span><span class="wdsl">;</span>
         <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">75</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 9,8*/</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"よくできました。\n"</span><span class="wdsl">;</span>
         <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">65</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 7  */</span> <span class="wdsl">{</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"よくがんばりました。\n"</span><span class="wdsl">;</span> <span class="wdsl">}</span>
         <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">55</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 6  */</span> <span class="wdsl">{</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もうすこしがんばりましょう。\n"</span><span class="wdsl">;</span> <span class="wdsl">}</span>
-        <span class="wdkywd">else</span> <span class="wdsl">{</span>
+        <span class="wdkywd">else</span>
+        <span class="wdsl">{</span>
             std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"中学生ですか？中学生ならyを入力してください。\n"</span><span class="wdsl">;</span>
             std<span class="wdsl">::</span>string s<span class="wdsl">;</span> std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">;</span>
 
-            <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">bool</span> flag<span class="wdsl">{</span> s <span class="wdsl">==</span> <span class="wdtt">"y"</span> <span class="wdsl">})</span> <span class="wdsl">{</span>
-                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span> <span class="wdsl">{</span>      <span class="wdc_mt">/*評価 5  */</span>
+            <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">bool</span> flag<span class="wdsl">{</span> s <span class="wdsl">==</span> <span class="wdtt">"y"</span> <span class="wdsl">})</span>
+            <span class="wdsl">{</span>
+                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 5  */</span>
                     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ぎりぎりですね。がんばりましょう。\n"</span><span class="wdsl">;</span>
                 <span class="wdsl">}</span>
-                <span class="wdkywd">else</span> <span class="wdsl">{</span>                <span class="wdc_mt">/*赤点    */</span>
+                <span class="wdkywd">else</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*赤点    */</span>
                     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もっとがんばりましょう。\n"</span><span class="wdsl">;</span>
                 <span class="wdsl">}</span>
             <span class="wdsl">}</span>
-            <span class="wdkywd">else</span> <span class="wdsl">{</span>
-                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span> <span class="wdsl">{</span>      <span class="wdc_mt">/*評価 5  */</span>
+            <span class="wdkywd">else</span>
+            <span class="wdsl">{</span>
+                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 5  */</span>
                     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もうすこしがんばりましょう。\n"</span><span class="wdsl">;</span>
                 <span class="wdsl">}</span>
-                <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">35</span><span class="wdsl">)</span> <span class="wdsl">{</span> <span class="wdc_mt">/*評価 4  */</span>
+                <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">35</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 4  */</span>
                     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ぎりぎりですね。がんばりましょう。\n"</span><span class="wdsl">;</span>
                 <span class="wdsl">}</span>
-                <span class="wdkywd">else</span> <span class="wdsl">{</span>                <span class="wdc_mt">/*赤点    */</span>
+                <span class="wdkywd">else</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*赤点    */</span>
                     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もっとがんばりましょう。\n"</span><span class="wdsl">;</span>
                 <span class="wdsl">}</span>
             <span class="wdsl">}</span>
@@ -1152,38 +1165,45 @@ $&nbsp;A&nbsp;op&nbsp;B<br></pre>
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">;</span>
     std<span class="wdsl">::</span>string op<span class="wdsl">;</span>
 
     std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> op <span class="wdsl">&gt;&gt;</span> b<span class="wdsl">;</span>
 
-    <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"+"</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"+"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
         std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">+</span> b<span class="wdsl">;</span>
     <span class="wdsl">}</span>
-    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"-"</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"-"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
         std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">-</span> b<span class="wdsl">;</span>
     <span class="wdsl">}</span>
-    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"*"</span><span class="wdsl">){</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"*"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
         std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">*</span> b<span class="wdsl">;</span>
     <span class="wdsl">}</span>
-    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"/"</span><span class="wdsl">)</span> <span class="wdsl">{</span>
-        <span class="wdkywd">if</span> <span class="wdsl">(</span>b <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"/"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>b <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span>
+        <span class="wdsl">{</span>
             std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"error"</span><span class="wdsl">;</span>
         <span class="wdsl">}</span>
-        <span class="wdkywd">else</span> <span class="wdsl">{</span>
+        <span class="wdkywd">else</span>
+        <span class="wdsl">{</span>
             std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">/</span> b<span class="wdsl">;</span>
         <span class="wdsl">}</span>
     <span class="wdsl">}</span>
-    <span class="wdkywd">else</span> <span class="wdsl">{</span>
+    <span class="wdkywd">else</span>
+    <span class="wdsl">{</span>
         std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"error"</span><span class="wdsl">;</span>
     <span class="wdsl">}</span>
 
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
 
-</span></span>
-</pre>
+</span></span></pre>
        </code>
        </details>
      </article>

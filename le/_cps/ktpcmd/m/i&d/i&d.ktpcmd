@@ -186,7 +186,8 @@ long doubleについては、MSVCはdoubleと同様binary64で実装していま
 ```cpp 整数と小数の演算
 #include <iostream>
 
-int main() {
+int main()
+{
 	std::cout << 0b1010 + 020 << "\n"
 		<< 0xFF - 1.5 << "\n"
 		<< 2.5 * 8 << "\n"
@@ -196,6 +197,7 @@ int main() {
 		<< 1 / static_cast<double>(3) << "\n"
 		<< 15 % 8;
 }
+
 ```
 
 ```cmd 実行結果例

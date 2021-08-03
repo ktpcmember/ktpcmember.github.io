@@ -68,7 +68,7 @@
    <div class="cb00">
     <div class="cb10">
      <article class="cb20 fxtb">
-      <h1>C++ on MSVC講習/変数基礎</h1>
+      <h1>C++&nbsp;on&nbsp;MSVC講習/変数基礎</h1>
      </article>
     <article class="cb21 fxtb">
      <h2 class="cb33">あらすじと概要</h2>
@@ -280,7 +280,8 @@
 <pre id="0" class="cb55 bkgdbl">
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdc_mt">//符号あり（負数が使える）
 </span>    <span class="wdkywd">signed</span> <span class="wdkywd">short</span> <span class="wdkywd">int</span>        a<span class="wdsl">;</span>
     <span class="wdkywd">signed</span> <span class="wdkywd">int</span>              b <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">;</span>
@@ -307,6 +308,7 @@
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_c : "</span> <span class="wdsl">&lt;&lt;</span> u_c <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"u_d : "</span> <span class="wdsl">&lt;&lt;</span> u_d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
+
 </span></span></pre>
          </code>
         </div>
@@ -590,7 +592,8 @@ a&nbsp;:&nbsp;-1<br>b&nbsp;:&nbsp;-10<br>c&nbsp;:&nbsp;-20<br>d&nbsp;:&nbsp;-40<
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>iomanip<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdkywd">float</span> f<span class="wdsl">;</span>
     <span class="wdkywd">double</span> d <span class="wdsl">=</span> .1<span class="wdsl">;</span>
     <span class="wdkywd">long</span> <span class="wdkywd">double</span> ld <span class="wdsl">=</span> <span class="wdnr">1234e</span><span class="wdsl">-</span><span class="wdnr">5</span><span class="wdsl">;</span>
@@ -602,6 +605,7 @@ a&nbsp;:&nbsp;-1<br>b&nbsp;:&nbsp;-10<br>c&nbsp;:&nbsp;-20<br>d&nbsp;:&nbsp;-40<
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"d  : "</span> <span class="wdsl">&lt;&lt;</span> d <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ld : "</span> <span class="wdsl">&lt;&lt;</span> ld <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
+
 </span></span></pre>
          </code>
         </div>
@@ -677,17 +681,19 @@ f&nbsp;&nbsp;:&nbsp;2.3450000286<br>d&nbsp;&nbsp;:&nbsp;0.1000000000<br>ld&nbsp;
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     std<span class="wdsl">::</span>string s1 <span class="wdsl">=</span> <span class="wdtt">"namanegi"</span><span class="wdsl">,</span>
         s2<span class="wdsl">(</span><span class="wdtt">"namagoe"</span><span class="wdsl">),</span>
         s3<span class="wdsl">{</span> <span class="wdtt">"namahatsune"</span> <span class="wdsl">},</span>
         s4 <span class="wdsl">=</span> <span class="wdsl">{</span> <span class="wdtt">"mikudayo-"</span> <span class="wdsl">};</span>
 
-    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"s1 : "</span> <span class="wdsl">&lt;&lt;</span> s1 
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns2 : "</span> <span class="wdsl">&lt;&lt;</span> s2 
-        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns3 : "</span> <span class="wdsl">&lt;&lt;</span> s3 
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"s1 : "</span> <span class="wdsl">&lt;&lt;</span> s1
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns2 : "</span> <span class="wdsl">&lt;&lt;</span> s2
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns3 : "</span> <span class="wdsl">&lt;&lt;</span> s3
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ns4 : "</span> <span class="wdsl">&lt;&lt;</span> s4 <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
+
 </span></span></pre>
          </code>
         </div>
@@ -763,7 +769,8 @@ s1&nbsp;:&nbsp;namanegi<br>s2&nbsp;:&nbsp;namagoe<br>s3&nbsp;:&nbsp;namahatsune<
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdkywd">int</span> i<span class="wdsl">;</span>
     <span class="wdkywd">double</span> d<span class="wdsl">;</span>
     std<span class="wdsl">::</span>string s<span class="wdsl">,</span> t<span class="wdsl">;</span>
@@ -774,6 +781,7 @@ s1&nbsp;:&nbsp;namanegi<br>s2&nbsp;:&nbsp;namagoe<br>s3&nbsp;:&nbsp;namahatsune<
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\nd : "</span> <span class="wdsl">&lt;&lt;</span> d
         <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\nts: "</span> <span class="wdsl">&lt;&lt;</span> t <span class="wdsl">&lt;&lt;</span> s<span class="wdsl">;</span>
 <span class="wdsl">}</span>
+
 </span></span></pre>
          </code>
         </div>
@@ -885,15 +893,16 @@ $&nbsp;oumu&nbsp;watashiha<br><br>watashihaoumu<br></pre>
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 #include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     std<span class="wdsl">::</span>string s<span class="wdsl">;</span>
     std<span class="wdsl">::</span>string t<span class="wdsl">;</span>
 
     std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s <span class="wdsl">&gt;&gt;</span> t<span class="wdsl">;</span>
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> t <span class="wdsl">&lt;&lt;</span> s<span class="wdsl">;</span>
 <span class="wdsl">}</span>
-</span></span>
-</pre>
+
+</span></span></pre>
        </code>
        </details>
      </article>
@@ -961,7 +970,8 @@ $&nbsp;1&nbsp;2<br><br>3<br></pre>
 <pre id="19" class="cb55 bkgdbl">
 <span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
 
-<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
     <span class="wdkywd">int</span> a<span class="wdsl">;</span>
     <span class="wdkywd">int</span> b<span class="wdsl">;</span>
 
@@ -969,8 +979,8 @@ $&nbsp;1&nbsp;2<br><br>3<br></pre>
 
     std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">+</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
 <span class="wdsl">}</span>
-</span></span>
-</pre>
+
+</span></span></pre>
        </code>
        </details>
      </article>

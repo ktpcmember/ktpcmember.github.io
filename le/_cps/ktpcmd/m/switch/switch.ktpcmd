@@ -38,20 +38,24 @@ next = "le\_cps\ktpcmd\m\wfor\wfor.html"
 ```cpp 列挙型
 #include <iostream>
 
-int main() {
-	enum {
+int main()
+{
+	enum
+	{
 		red,
 		green,
 		blue
 	};
 
-	enum fruit : unsigned {
+	enum fruit : unsigned
+	{
 		apple,
 		orange,
 		grape,
 	};
 
-	enum class color {
+	enum class color
+	{
 		red = -123,
 		green = 456,
 		blue = 789,
@@ -62,8 +66,7 @@ int main() {
 	std::cout << red << green << blue << "\n"
 		<< fruit::apple << fruit::orange << fruit::grape << "\n"
 		<< apple << orange << grape << "\n"
-		<< (int)c << (int)color::green;
-	std::cout << (int)(c = color::blue) << "\n";
+		<< (int)c << (int)color::green　<< (int)(c = color::blue) << "\n";
 }
 
 ```
@@ -75,6 +78,12 @@ int main() {
 -123456789
 
 ```
+
+### 補足
+C++17以降でコンパイルしなかった場合、最後の出力が`789456789`となることがあります。
+これは、`(int)c`や`(int)(c = color::blue)`などの評価順が決まっていなかったからです。
+`(int)(c = color::blue)`が先に実行され、`(int)c`が`789`に評価される事があるのです。
+しかし、`<<`は評価順が左から右へと固定されたため、C+17以降は`-123456789`になります。
 
 ## 解説
 解説にいきます。
@@ -156,8 +165,10 @@ int main() {
 ```cpp switch文
 #include <iostream>
 
-int main() {
-	enum class color {
+int main()
+{
+	enum class color
+	{
 		red,
 		green,
 		blue,
@@ -165,32 +176,39 @@ int main() {
 
 	color c; bool f = true;
 
-	switch (int num; (std::cin >> num), num) {
-	case 0: c = color::red; break;
-	case 1: c = color::green; break;
-	case 2: c = color::blue; break;
-	default: f = false;
+	switch (int num; (std::cin >> num), num)
+	{
+		case 0: c = color::red; break;
+		case 1: c = color::green; break;
+		case 2: c = color::blue; break;
+		default: f = false;
 	}
 
-	if (f) {
+	if (f)
+	{
 		std::string str;
 
-		switch (c) {
-		case color::red: {
-			str = "red";
-		} [[fallthrough]];
-		case color::green: {
-			str = str + "green";
-		} [[fallthrough]];
-		case color::blue:
-			str = str + "blue";
-			[[fallthrough]];
-		default: {
-			std::cout << str << "\n";
-		}
+		switch (c)
+		{
+			case color::red:
+				{
+					str = "red";
+				} [[fallthrough]];
+			case color::green:
+				{
+					str = str + "green";
+				} [[fallthrough]];
+			case color::blue:
+				str = str + "blue";
+				[[fallthrough]];
+			default:
+				{
+					std::cout << str << "\n";
+				}
 		}
 	}
-	else {
+	else
+	{
 		std::cout << "error\n";
 	}
 }
@@ -325,32 +343,43 @@ switch文は、純粋に整数値でしか分岐できないので、使いづ�
 #include <iostream>
 #include <string>
 
-int main() {
-	if (int num; (std::cin >> num), num < 0 || num > 100) {
+int main()
+{
+	if (int num; (std::cin >> num), num < 0 || num > 100)
+	{
 		std::cout << "受けていないですね？\n";
 	}
-	else {
+	else
+	{
 		if (num >= 95)      /*評価 10 */ std::cout << "素晴らしい！\n";
 		else if (num >= 75) /*評価 9,8*/ std::cout << "よくできました。\n";
 		else if (num >= 65) /*評価 7  */ { std::cout << "よくがんばりました。\n"; }
 		else if (num >= 55) /*評価 6  */ { std::cout << "もうすこしがんばりましょう。\n"; }
-		else {
-			if (std::string s; (std::cin >> s), s == "y") {
-				if (num >= 45) {      /*評価 5  */
+		else
+		{
+			if (std::string s; (std::cin >> s), s == "y")
+			{
+				if (num >= 45)
+				{   /*評価 5  */
 					std::cout << "ぎりぎりですね。がんばりましょう。\n";
 				}
-				else {                /*赤点    */
+				else
+				{   /*赤点    */
 					std::cout << "もっとがんばりましょう。\n";
 				}
 			}
-			else {
-				if (num >= 45) {      /*評価 5  */
+			else
+			{
+				if (num >= 45)
+				{   /*評価 5  */
 					std::cout << "もうすこしがんばりましょう。\n";
 				}
-				else if (num >= 35) { /*評価 4  */
+				else if (num >= 35)
+				{   /*評価 4  */
 					std::cout << "ぎりぎりですね。がんばりましょう。\n";
 				}
-				else {                /*赤点    */
+				else
+				{   /*赤点    */
 					std::cout << "もっとがんばりましょう。\n";
 				}
 			}
@@ -462,32 +491,41 @@ $ 30 n
 #include <iostream>
 #include <string>
 
-int main() {
-	if (int num; (std::cin >> num), num < 0 || num > 100) {
+int main()
+{
+	if (int num; (std::cin >> num), num < 0 || num > 100)
+	{
 		std::cout << "受けていないですね？\n";
 	}
-	else {
-		switch (num = (num + 5) / 10) {
-		case 6: std::cout << "もうすこしがんばりましょう。\n"; break;
-		case 7: std::cout << "よくがんばりました。\n"; break;
-		case 8: [[fallthrough]];
-		case 9: std::cout << "よくできました。\n"; break;
-		case 10: std::cout << "素晴らしい！\n"; break;
-		default: {
-			if (std::string s; (std::cin >> s), s == "y") {
-				switch (num) {
-				case 5: std::cout << "ぎりぎりですね。がんばりましょう。\n"; break;
-				default: std::cout << "もっとがんばりましょう。\n";
+	else
+	{
+		switch (num = (num + 5) / 10)
+		{
+			case 6: std::cout << "もうすこしがんばりましょう。\n"; break;
+			case 7: std::cout << "よくがんばりました。\n"; break;
+			case 8: [[fallthrough]];
+			case 9: std::cout << "よくできました。\n"; break;
+			case 10: std::cout << "素晴らしい！\n"; break;
+			default:
+				{
+					if (std::string s; (std::cin >> s), s == "y")
+					{
+						switch (num)
+						{
+							case 5: std::cout << "ぎりぎりですね。がんばりましょう。\n"; break;
+							default: std::cout << "もっとがんばりましょう。\n";
+						}
+					}
+					else
+					{
+						switch (num)
+						{
+							case 4: std::cout << "ぎりぎりですね。がんばりましょう。\n"; break;
+							case 5: std::cout << "もうすこしがんばりましょう。\n"; break;
+							default: std::cout << "もっとがんばりましょう。\n";
+						}
+					}
 				}
-			}
-			else {
-				switch (num) {
-				case 4: std::cout << "ぎりぎりですね。がんばりましょう。\n"; break;
-				case 5: std::cout << "もうすこしがんばりましょう。\n"; break;
-				default: std::cout << "もっとがんばりましょう。\n";
-				}
-			}
-		}
 		}
 	}
 }
@@ -512,5 +550,6 @@ int main() {
 - {属性指定子(C++11以上) - cppreference.com} https://ja.cppreference.com/w/cpp/language/attributes
 - {属性: fallthrough (C++17以上) - cppreference.com} https://ja.cppreference.com/w/cpp/language/attributes/fallthrough
 - {goto 文 - cppreference.com} https://ja.cppreference.com/w/cpp/language/goto
+- {厳密な式の評価順 - cpprefjp C++日本語リファレンス} https://cpprefjp.github.io/lang/cpp17/expression_evaluation_order.html
 
 </main>

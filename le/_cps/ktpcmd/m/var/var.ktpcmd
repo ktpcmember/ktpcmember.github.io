@@ -77,7 +77,8 @@ C++の変数は、必ず型を持っていて、型によってコードでの�
 ```cpp 整数
 #include <iostream>
 
-int main() {
+int main()
+{
 	//符号あり（負数が使える）
 	signed short int        a;
 	signed int              b = 10;
@@ -104,6 +105,7 @@ int main() {
 		<< "u_c : " << u_c << "\n"
 		<< "u_d : " << u_d << "\n";
 }
+
 ```
 
 ```cmd 実行結果
@@ -215,7 +217,8 @@ u_d : 40
 #include <iostream>
 #include <iomanip>
 
-int main() {
+int main()
+{
 	float f;
 	double d = .1;
 	long double ld = 1234e-5;
@@ -227,6 +230,7 @@ int main() {
 		<< "d  : " << d << "\n"
 		<< "ld : " << ld << "\n\n";
 }
+
 ```
 
 ```cmd 実行結果例
@@ -276,17 +280,19 @@ ld : 0.0123400000
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 	std::string s1 = "namanegi",
 		s2("namagoe"),
 		s3{ "namahatsune" },
 		s4 = { "mikudayo-" };
 
-	std::cout << "s1 : " << s1 
-		<< "\ns2 : " << s2 
-		<< "\ns3 : " << s3 
+	std::cout << "s1 : " << s1
+		<< "\ns2 : " << s2
+		<< "\ns3 : " << s3
 		<< "\ns4 : " << s4 << "\n";
 }
+
 ```
 
 ```cmd 実行結果
@@ -330,7 +336,8 @@ s4 : mikudayo-
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 	int i;
 	double d;
 	std::string s, t;
@@ -341,6 +348,7 @@ int main() {
 		<< "\nd : " << d
 		<< "\nts: " << t << s;
 }
+
 ```
 
 ### 入力例
@@ -398,13 +406,15 @@ watashihaoumu
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 	std::string s;
 	std::string t;
 
 	std::cin >> s >> t;
 	std::cout << t << s;
 }
+
 ```
 
 ### その2-問題文
@@ -428,7 +438,8 @@ $ 1 2
 @``cpp 回答例
 #include <iostream>
 
-int main() {
+int main()
+{
 	int a;
 	int b;
 
@@ -436,6 +447,7 @@ int main() {
 
 	std::cout << a + b << "\n";
 }
+
 ```
 
 ## 文字コード物語

@@ -45,7 +45,8 @@ if文の前にいくらか説明をしたいので、次のサンプルコード
 ```cpp 複合文
 #include <iostream>
 
-int main() {
+int main()
+{
 	int a = 1;
 
 	std::cout << "1\n"
@@ -154,7 +155,8 @@ main関数の`{}`と複合文は別なものですが、どちらもスコープ
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 
 	std::string s = "string";
 
@@ -292,38 +294,49 @@ Visual Studioの設定をあまり変更してないので、cmd.exeとWindows-3
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 	// 常に真文が実行される
 	if (int num{ 1 }) std::cout << "数学の定期テスト何点でした？\n"; else int dummy = 0;
 
-	if (int num; (std::cin >> num), num < 0 || num > 100) {
+	if (int num; (std::cin >> num), num < 0 || num > 100)
+	{
 		std::cout << "受けていないですね？\n";
 	}
-	else {
+	else
+	{
 		if (num >= 95)      /*評価 10 */ std::cout << "素晴らしい！\n";
 		else if (num >= 75) /*評価 9,8*/ std::cout << "よくできました。\n";
 		else if (num >= 65) /*評価 7  */ { std::cout << "よくがんばりました。\n"; }
 		else if (num >= 55) /*評価 6  */ { std::cout << "もうすこしがんばりましょう。\n"; }
-		else {
+		else
+		{
 			std::cout << "中学生ですか？中学生ならyを入力してください。\n";
 			std::string s; std::cin >> s;
 
-			if (bool flag{ s == "y" }) {
-				if (num >= 45) {      /*評価 5  */
+			if (bool flag{ s == "y" })
+			{
+				if (num >= 45)
+				{   /*評価 5  */
 					std::cout << "ぎりぎりですね。がんばりましょう。\n";
 				}
-				else {                /*赤点    */
+				else
+				{   /*赤点    */
 					std::cout << "もっとがんばりましょう。\n";
 				}
 			}
-			else {
-				if (num >= 45) {      /*評価 5  */
+			else
+			{
+				if (num >= 45)
+				{   /*評価 5  */
 					std::cout << "もうすこしがんばりましょう。\n";
 				}
-				else if (num >= 35) { /*評価 4  */
+				else if (num >= 35)
+				{   /*評価 4  */
 					std::cout << "ぎりぎりですね。がんばりましょう。\n";
 				}
-				else {                /*赤点    */
+				else
+				{   /*赤点    */
 					std::cout << "もっとがんばりましょう。\n";
 				}
 			}
@@ -564,30 +577,38 @@ $ 0 + 0
 #include <iostream>
 #include <string>
 
-int main() {
+int main()
+{
 	int a, b;
 	std::string op;
 
 	std::cin >> a >> op >> b;
 
-	if (op == "+") {
+	if (op == "+")
+	{
 		std::cout << a + b;
 	}
-	else if (op == "-") {
+	else if (op == "-")
+	{
 		std::cout << a - b;
 	}
-	else if (op == "*"){
+	else if (op == "*")
+	{
 		std::cout << a * b;
 	}
-	else if (op == "/") {
-		if (b == 0) {
+	else if (op == "/")
+	{
+		if (b == 0)
+		{
 			std::cout << "error";
 		}
-		else {
+		else
+		{
 			std::cout << a / b;
 		}
 	}
-	else {
+	else
+	{
 		std::cout << "error";
 	}
 
