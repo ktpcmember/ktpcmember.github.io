@@ -517,7 +517,7 @@ $&nbsp;2<br>blue<br><br></pre>
          </div>
          <code class="cb47">
 <pre id="11" class="cb55 bkgdbl">
-<code>switch</code>&nbsp;<code>(</code>&nbsp;初期化子(opt)&nbsp;条件&nbsp;<code>)</code>&nbsp;文<br></pre>
+<code>switch</code>&nbsp;<code>(</code>&nbsp;初期化文(opt)&nbsp;条件&nbsp;<code>)</code>&nbsp;文<br></pre>
          </code>
         </div>
        </article>
@@ -551,9 +551,9 @@ $&nbsp;2<br>blue<br><br></pre>
        </article>
      <article class="cb21">
       <div class="cb31">
-       <h3 class="cb40"><code>初期化子</code>（C++17）と<code>条件</code></h3>
+       <h3 class="cb40"><code>初期化文</code>（C++17）と<code>条件</code></h3>
         <span class="cb41">
-         <code>初期化子</code>はif文と同じで、宣言や式文などを記述することが出来ます。<br>一方<code>条件</code>はif文とは違い列挙型か整数型に評価されるものでないといけません。<br>なお、if文の時と同様に宣言も書くことが出来るようになっています。<br>もちろん、どちらで変数を宣言したとしても、switch文全体をスコープに持ちます。
+         <code>初期化文</code>はif文と同じで、宣言や式文などを記述することが出来ます。<br>一方<code>条件</code>はif文とは違い列挙型か整数型に評価されるものでないといけません。<br>なお、if文の時と同様に宣言も書くことが出来るようになっています。<br>もちろん、どちらで変数を宣言したとしても、switch文全体をスコープに持ちます。
         </span>
       </div>
      </article>
@@ -631,7 +631,7 @@ $&nbsp;2<br>blue<br><br></pre>
       <div class="cb31">
        <h3 class="cb40">ラベルとswitch文と変数</h3>
         <span class="cb41">
-         switch文の<code>初期化子</code>や<code>条件</code>では、switch文全体をスコープに持つ変数を宣言できます。<br>しかし、switch文の<code>文</code>の中では、そのままだと変数の宣言をすることは出来ません。<br>なぜなら、「ラベルへ移動する」動作によって、変数の宣言を飛び越すことがあるからです。<br>そのため、<code>文</code>の中では、ラベルを跨がないスコープでしか変数を宣言出来ません。<br>複合文でラベルを跨がないスコープを形成し、そこで変数を宣言するくらいしか出来ませんね。
+         switch文の<code>初期化文</code>や<code>条件</code>では、switch文全体をスコープに持つ変数を宣言できます。<br>しかし、switch文の<code>文</code>の中では、そのままだと変数の宣言をすることは出来ません。<br>なぜなら、「ラベルへ移動する」動作によって、変数の宣言を飛び越すことがあるからです。<br>そのため、<code>文</code>の中では、ラベルを跨がないスコープでしか変数を宣言出来ません。<br>複合文でラベルを跨がないスコープを形成し、そこで変数を宣言するくらいしか出来ませんね。
         </span>
       </div>
      </article>
@@ -639,7 +639,7 @@ $&nbsp;2<br>blue<br><br></pre>
       <div class="cb31">
        <h3 class="cb40">補足</h3>
         <span class="cb41">
-         宣言を飛び越すのでエラーと書いたのですが、実はエラーにならない条件があります。<br>その1つとして、組み込み型であれば初期化子がない宣言はエラーにならないとされています。<br>しかし、宣言を飛び越えるようなコードはバグやエラーと隣り合わせなのであえて書きました。
+         宣言を飛び越すのでエラーと書いたのですが、実はエラーにならない条件があります。<br>その1つとして、組み込み型であれば<code>初期化子</code>がない宣言はエラーにならないとされています。<br>しかし、宣言を飛び越えるようなコードはバグやエラーと隣り合わせなのであえて書きました。
         </span>
       </div>
      </article>
