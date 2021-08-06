@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="駒場東邦物理部">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,講習, C++, MSVC">
+  <meta name="description" content="列挙型とswitch文、属性について解説しています。">
+  <title>C++講習概要 - C++ on MSVC講習</title>
+  <link rel="icon" type="image/jpeg" href="..\..\..\..\..\images\logo.jpg">
+  <link rel="stylesheet" type="text/css" href="..\..\..\..\..\style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="..\..\..\..\..\static.css">
+  <script type="text/javascript" src="..\..\..\..\..\header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="..\..\..\..\..\images\br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="..\..\..\..\..\images\menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="..\..\..\..\..\index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="..\..\..\_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="..\..\..\m\i_dx\i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="..\switch\switch.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\..\404.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20 fxtb">
+      <h1>C++&nbsp;on&nbsp;MSVC講習/反復文&nbsp;-&nbsp;<ruby><rb>while</rb><rp>（</rp><rt>ほわいる</rt><rp>）</rp></ruby>/<ruby><rb>for</rb><rp>（</rp><rt>ふぉー</rt><rp>）</rp></ruby>文</h1>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">あらすじと概要</h2>
+      <span class="cb34">
+       前回は条件分岐2回目ということで、switch文を解説しました。<br>今回は、同じような動作を反復することで、短いコードに収める文たちを解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        goto文
+       </h4>
+       <span class="cb41">
+        実行すると、対応するラベルに処理が移動する文
+       </span>
+       <h4 class="cb45">
+        ラベル
+       </h4>
+       <span class="cb41">
+        switch文やgoto文などから移動する時の目印
+       </span>
+       <h4 class="cb45">
+        ループ
+       </h4>
+       <span class="cb41">
+        同じ文を複数回実行する部分
+       </span>
+       <h4 class="cb45">
+        複合代入演算子
+       </h4>
+       <span class="cb41">
+        <code>@</code>を二項演算子として、<code>a&nbsp;@=&nbsp;b</code>の形で、<code>a&nbsp;=&nbsp;a&nbsp;@&nbsp;b</code>を行う演算子
+       </span>
+       <h4 class="cb45">
+        <code>+=</code>
+       </h4>
+       <span class="cb41">
+        複合加算代入演算子
+       </span>
+       <h4 class="cb45">
+        <code>-=</code>
+       </h4>
+       <span class="cb41">
+        複合減算代入演算子
+       </span>
+       <h4 class="cb45">
+        <code>*=</code>
+       </h4>
+       <span class="cb41">
+        複合乗算代入演算子
+       </span>
+       <h4 class="cb45">
+        <code>/=</code>
+       </h4>
+       <span class="cb41">
+        複合除算代入演算子
+       </span>
+       <h4 class="cb45">
+        <code>%=</code>
+       </h4>
+       <span class="cb41">
+        複合剰余代入演算子
+       </span>
+       <h4 class="cb45">
+        while文
+       </h4>
+       <span class="cb41">
+        <code>条件</code>がtrueである限り<code>文</code>を実行し続ける文
+       </span>
+       <h4 class="cb45">
+        do文（do-while文とも）
+       </h4>
+       <span class="cb41">
+        無条件に1回<code>文</code>を実行してから、<code>条件式</code>がtrueである限り<code>文</code>を実行し続ける文
+       </span>
+       <h4 class="cb45">
+        for文
+       </h4>
+       <span class="cb41">
+        <code>初期化文</code>と<code>反復式</code>が追加されて使いやすいwhile文
+       </span>
+       <h4 class="cb45">
+        break文
+       </h4>
+       <span class="cb41">
+        switch文、while文、do文、for文を終了させる文
+       </span>
+       <h4 class="cb45">
+        continue文
+       </h4>
+       <span class="cb41">
+        while文、do文、for文の<code>文</code>実行を終了させる文
+       </span>
+       <h4 class="cb45">
+        ループカウンタ
+       </h4>
+       <span class="cb41">
+        ループでループの回数を数える時に使っている変数
+       </span>
+       <h4 class="cb45">
+        <code>++</code>
+       </h4>
+       <span class="cb41">
+        インクリメント演算子、整数の変数の値を<code>1</code>増やす
+       </span>
+       <h4 class="cb45">
+        <code>--</code>
+       </h4>
+       <span class="cb41">
+        デクリメント演算子、整数の変数の値を<code>1</code>減らす
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">goto文</h2>
+      <span class="cb34">
+       goto文は、C++よりもより低いレイヤーでも存在する非常に機械よりの文です。<br>switch文で触れたように、goto文を実行すると、対応するラベルに処理が移動します。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">goto文</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">goto</span> A<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"飛ばされる"</span><span class="wdsl">;</span>
+A<span class="wdsl">:</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+BACK<span class="wdsl">:</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+        a <span class="wdsl">+=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>a <span class="wdsl">&lt;</span> <span class="wdnr">10</span><span class="wdsl">)</span> <span class="wdkywd">goto</span> BACK<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ラベル</h3>
+        <span class="cb41">
+         <code>ラベル名</code>と<ruby><rb>:</rb><rp>（</rp><rt>ころん</rt><rp>）</rp></ruby>を1個以上文の頭に付けて文をラベル付けすることが出来ます。<br>ラベルはgoto文から移動する先の文を示し、順次実行時には何も起こしません。<br>goto文で使用するラベルは、識別子のルールに従って命名する必要があります。<br>ラベルは唯一、関数単位でのみスコープを持っており、他の識別子とは別で管理されます。<br>つまり、「同じ関数の中」でのみ、同じラベルを複数の文に付けてはいけないのです。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">ラベル</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+ラベル名&nbsp;<code>:</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">goto文の効果</h3>
+        <span class="cb41">
+         goto文は、以下のように記述し、指定したラベルへと直接処理を移します。<br>つまり、実行されたgoto文から指定したラベルの間にある文は、実行されないのです。<br>ただし、goto文は同じ関数内でのみ処理を移すことが出来、関数を超えることは出来ません。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">goto文</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+<code>goto</code>&nbsp;ラベル名&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">goto文の制限</h3>
+        <span class="cb41">
+         直接処理を移してしまうgoto文は非常に強力ですが、多用はコードが読みづらくなります。<br>それはさておき、goto文は変数のスコープに入ってはいけないという制限もあります。<br>つまり、ある変数の宣言を実行しないまま、その変数が存在する文に入ってはいけないのです。<br>例えば<code>goto&nbsp;Z;&nbsp;{&nbsp;int&nbsp;i&nbsp;=&nbsp;0;&nbsp;Z:;&nbsp;}</code>だと、宣言を飛び越えているのでダメです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">goto文の制限の例外</h3>
+        <span class="cb41">
+         ただし、今説明できないものを含め、いくつかの場合にはその制限が無いことがあります。<br>例えば、組み込み型の場合において<code>初期化子</code>がない場合は制限が適用されません。<br>ただ、goto文を使った方が簡潔になる機会がほぼ無いので、必ず制限を守ればいいでしょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">goto文の制限の逆</h3>
+        <span class="cb41">
+         さて、制限は変数のスコープに入る事でしたが、逆に出る時はどうなるのでしょうか。<br>変数のスコープから出る場合は、ライフタイムが終了した変数を適切に処理してくれます。<br>言い換えれば、通常通りに変数のスコープから抜けた時と同様の後処理をしてくれます。<br>特に気にする必要はありません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">goto文とif文でループ</h3>
+        <span class="cb41">
+         同じ文を複数回実行する部分のことをループと言い、while/for文はループの文です。<br>goto文とif文を用いると、良いものでは無いですが、while/for文と同じことが出来ます。<br>サンプルコードのように、ラベルを置いて、if文でgoto文を包んでループ出来ます。<br>サンプルコードでは、変数<code>a</code>を1周ごとに<code>1</code>増やしていて、<code>0</code>～<code>9</code>の間ループしますね。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">複合代入演算子</h3>
+        <span class="cb41">
+         さて、<code>a&nbsp;+=&nbsp;1;</code>が<code>a</code>に<code>1</code>足しているであろうことは分かると思います。<br>この<code>+=</code>などの<code>=</code>の前に何らかの二項演算子がくっついたものを、複合代入演算子と言います。<br>右辺の値を左辺に「何らかの二項演算子」で処理して左辺に代入するのです。<br>なので、<code>a&nbsp;+=&nbsp;1;</code>は、<code>a&nbsp;=&nbsp;a&nbsp;+&nbsp;1;</code>と同じことで、<code>a</code>に<code>1</code>足した物を<code>a</code>に代入しています。<br>即ち、<code>a</code>に<code>1</code>足している、ということですね。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        複合代入演算子（今までに解説した二項演算子の中で存在するもの）
+       </h4>
+       <h4 class="cb45">
+        <code>+=</code>
+       </h4>
+       <span class="cb41">
+        加算代入
+       </span>
+       <h4 class="cb45">
+        <code>-=</code>
+       </h4>
+       <span class="cb41">
+        減算代入
+       </span>
+       <h4 class="cb45">
+        <code>*=</code>
+       </h4>
+       <span class="cb41">
+        乗算代入
+       </span>
+       <h4 class="cb45">
+        <code>/=</code>
+       </h4>
+       <span class="cb41">
+        除算代入
+       </span>
+       <h4 class="cb45">
+        <code>%=</code>
+       </h4>
+       <span class="cb41">
+        剰余代入
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">while文</h2>
+      <span class="cb34">
+       while文は、先述の通り、ループを書くための文です。<br>goto文とif文を使うより単純に書くことが出来ます。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">while文</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>algorithm<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span> std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    <span class="wdkywd">while</span> <span class="wdsl">(</span>n <span class="wdsl">/=</span> <span class="wdnr">10</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> n <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+    <span class="wdkywd">while</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">&gt;</span> <span class="wdsl">-</span><span class="wdnr">10</span><span class="wdsl">)</span> <span class="wdsl">{</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"next : "</span><span class="wdsl">;</span> <span class="wdkywd">continue</span><span class="wdsl">;</span> <span class="wdsl">}</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">&lt;</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">{</span> <span class="wdkywd">break</span><span class="wdsl">;</span> <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>string s <span class="wdsl">=</span> <span class="wdtt">"abc"</span><span class="wdsl">;</span>
+    <span class="wdkywd">do</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> s <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span> <span class="wdkywd">while</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>next_permutation<span class="wdsl">(</span>s.begin<span class="wdsl">(),</span> s.end<span class="wdsl">()));</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例1</span>
+          <button type="button" class="cb53" onclick="copy('5')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+$&nbsp;1<br><br>$&nbsp;-20<br><br>abc<br>acb<br>bac<br>bca<br>cab<br>cba<br><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例2</span>
+          <button type="button" class="cb53" onclick="copy('6')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="6" class="cb55 bkgdbl">
+$&nbsp;11<br>1<br><br>$&nbsp;0<br>$&nbsp;next&nbsp;:&nbsp;-10<br><br>abc<br>acb<br>bac<br>bca<br>cab<br>cba<br><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例3</span>
+          <button type="button" class="cb53" onclick="copy('7')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="7" class="cb55 bkgdbl">
+$&nbsp;11111111<br>1111111<br>111111<br>11111<br>1111<br>111<br>11<br>1<br><br>$&nbsp;50<br>$&nbsp;next&nbsp;:&nbsp;-50<br><br>abc<br>acb<br>bac<br>bca<br>cab<br>cba<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>while</rb><rp>（</rp><rt>ほわいる</rt><rp>）</rp></ruby>文と<ruby><rb>do</rb><rp>（</rp><rt>どぅー</rt><rp>）</rp></ruby>文（do-while文）</h3>
+        <span class="cb41">
+         while文は、<code>条件</code>がtrueである間、<code>文</code>を実行し続ける文です。<br>do文は、<code>文</code>が無条件で1度実行された後、while文と同じ動作になる文です。<br>do文は規格での表記に従っていますが、普通はdo-while文などと呼ばれます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">while文</span>
+          <button type="button" class="cb53" onclick="copy('8')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="8" class="cb55 bkgdbl">
+<code>while</code>&nbsp;<code>(</code>&nbsp;条件&nbsp;<code>)</code>&nbsp;<code>文</code><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">do文</span>
+          <button type="button" class="cb53" onclick="copy('9')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="9" class="cb55 bkgdbl">
+<code>do</code>&nbsp;文&nbsp;<code>while</code>&nbsp;<code>(</code>&nbsp;条件式&nbsp;<code>)</code>&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>条件</code></h3>
+        <span class="cb41">
+         <code>条件</code>はif文と同様、boolに評価できる式や、boolに変換できる型の変数宣言が出来ます。<br><code>条件</code>で宣言された変数は、次に<code>条件</code>が評価される時には破棄され、また宣言されます。<br>なお、<code>条件</code>で宣言された変数は、やはりwhile文全体をスコープに持ちます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>条件式</code>と<code>文</code></h3>
+        <span class="cb41">
+         一方で、<code>条件式</code>は名前の通り、boolに変換できる式のみを書け、宣言は書けません。<br>そして、<code>文</code>は、if文やswitch文などと同様に、やはり1つの文で、複合文がほとんどです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">while文とdo文の実行のされ方</h3>
+        <span class="cb41">
+         while文とdo文は、その動きを複合文とif文とgoto文に置き換えることで説明出来ます。<br>次のような模擬コード（構文の名前は<code>これ</code>で表記）に置き換えることが出来ます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">while文を置き換えると（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('10')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="10" class="cb55 bkgdbl">
+label:<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件</code>&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto&nbsp;label;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">do文を置き換えると（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('11')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="11" class="cb55 bkgdbl">
+label:<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件式</code>&nbsp;)&nbsp;goto&nbsp;label;<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>break</rb><rp>（</rp><rt>ぶれいく</rt><rp>）</rp></ruby>文、<ruby><rb>continue</rb><rp>（</rp><rt>こんてぃにゅー</rt><rp>）</rp></ruby>文</h3>
+        <span class="cb41">
+         break文はswitch文の時と同様に、while/do文でもwhile/do文を終了させます。<br>continue文は、実行されるとループの最後へと実行を移し、<code>文</code>の実行が終了します。<br>ただし両方とも、while文がネストしている時には、一番内側のwhile文を終了させます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">break文とcontinue文を疑似的に表現すると</h3>
+        <span class="cb41">
+         break/continue文の移動先をbreak/continueラベルと、疑似的に表現して、<br>先程の疑似コードに組み込んだものと、while/do文に組み込んだものは以下です。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">while文のbreak/continue文の行先（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('12')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="12" class="cb55 bkgdbl">
+label:<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件</code>&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto&nbsp;label;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>break:<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">do文のbreak/continue文の行先（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('13')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="13" class="cb55 bkgdbl">
+label:<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件式</code>&nbsp;)&nbsp;goto&nbsp;label;<br>}<br>break:<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">while文で表現すると（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('14')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="14" class="cb55 bkgdbl">
+while&nbsp;(&nbsp;<code>条件</code>&nbsp;)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>}<br>break:<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">do文で表現すると（模擬コード）</span>
+          <button type="button" class="cb53" onclick="copy('15')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="15" class="cb55 bkgdbl">
+do<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>}&nbsp;while&nbsp;(&nbsp;<code>条件式</code>&nbsp;)&nbsp;;<br>break:<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">1つ目のwhile</h3>
+        <span class="cb41">
+         1つ目のwhile文は、入力した整数をどんどん<code>10</code>で割って、<code>0</code>になると終了します。<br>つまり、<code>入力した整数の桁数-1</code>がループする回数になるということですね。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">std::cinがboolに評価出来るということ</h3>
+        <span class="cb41">
+         std::cinがboolに評価できる事に驚いた人もいるかもしれません。<br>std::cinは、入力が出来る時にtrue、入力が出来ないときにfalseに評価されます。<br>今は標準入力の内容は分かっていると思うので、チェックする必要は無いでしょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">条件どうなってるの</h3>
+        <span class="cb41">
+         2つ目のwhile文の中のif文は、一見すると分かりづらくなっています。<br>が、よくよく整理すると次のようになり、とても簡単ですね。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        2つ目のwhile文
+       </h4>
+       <h4 class="cb45">
+        n&nbsp;&gt;=&nbsp;-9
+       </h4>
+       <span class="cb41">
+        continue
+       </span>
+       <h4 class="cb45">
+        n&nbsp;&lt;=&nbsp;-10
+       </h4>
+       <span class="cb41">
+        break
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>std::next_permutation</code></h3>
+        <span class="cb41">
+         <code>std::next_permutation</code>は、順列を生成するアルゴリズムが実装された関数です。<br><code>#include&nbsp;&lt;algorithm&gt;</code>を書くと使うことが出来るようになります。<br>詳しくは今後ですが、現在までに解説した型で使用できるのは、std::stringだけです。<br>今回のサンプルコードでの効果は、<code>s</code>の中身が、辞書順で次の順列に書き換えられます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">順列とは</h3>
+        <span class="cb41">
+         順列は数学で学ぶ考え方ですが、異なるいくつかのものを順序付けして並べることです。<br>例えば、<code>1,2,3</code>という列があれば、これの並べ方は以下のように<code>6</code>通りあります。<br><code>1,2,3</code>/<code>1,3,2</code>/<code>2,1,3</code>/<code>2,3,1</code>/<code>3,1,2</code>/<code>3,2,1</code><br>ここで、この<code>6</code>通りは辞書順に並んでいますが、1つ次（右）の列（一番右なら一番左へ）<br>に変えるのが<code>std::next_permutation</code>のすることだ、という風に言うことが出来ます。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">for文</h2>
+      <span class="cb34">
+       for文は、whileの上位互換です。更に簡潔に書くことが出来ます。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文</span>
+          <button type="button" class="cb53" onclick="copy('16')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="16" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(;</span>std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">&gt;</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdkywd">break</span><span class="wdsl">;</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"自然数（1以上の整数）を入力してください\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> <span class="wdsl">++</span>i<span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> i <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span><span class="wdsl">;</span>
+        <span class="wdkywd">continue</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> <span class="wdnr">10</span><span class="wdsl">;</span> <span class="wdsl">++</span>i<span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> <span class="wdnr">10</span><span class="wdsl">;</span> j<span class="wdsl">++)</span>
+        <span class="wdsl">{</span>
+            <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">*</span> j <span class="wdsl">&gt;</span> <span class="wdnr">30</span><span class="wdsl">)</span> <span class="wdkywd">break</span><span class="wdsl">;</span>
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> i <span class="wdsl">*</span> j <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\t"</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例</span>
+          <button type="button" class="cb53" onclick="copy('17')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="17" class="cb55 bkgdbl">
+$&nbsp;30<br>0&nbsp;1&nbsp;2&nbsp;3&nbsp;4&nbsp;5&nbsp;6&nbsp;7&nbsp;8&nbsp;9&nbsp;10&nbsp;11&nbsp;12&nbsp;13&nbsp;14&nbsp;15&nbsp;16&nbsp;17&nbsp;18&nbsp;19&nbsp;20&nbsp;21&nbsp;22&nbsp;23&nbsp;24&nbsp;25&nbsp;26&nbsp;27&nbsp;28&nbsp;29<br>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<br>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18<br>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;27<br>4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;28<br>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30<br>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30<br>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;28<br>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24<br>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;27<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説にいきます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">for文</h3>
+        <span class="cb41">
+         for文は、while文に<code>初期化文</code>と<code>反復式</code>を付け加えたものです。<br>やはり<code>条件</code>がtrueである間、<code>文</code>を実行し続ける文です。<br>基本的にはwhile文と似ていますが、do-for文みたいなのはありません。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文</span>
+          <button type="button" class="cb53" onclick="copy('18')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="18" class="cb55 bkgdbl">
+<code>for</code>&nbsp;<code>(</code>&nbsp;初期化文&nbsp;条件&nbsp;<code>;</code>&nbsp;反復式&nbsp;<code>)</code>&nbsp;<code>文</code><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">正確さを無くしてわかりやすくしたfor文</span>
+          <button type="button" class="cb53" onclick="copy('19')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="19" class="cb55 bkgdbl">
+<code>for</code>&nbsp;<code>(</code>&nbsp;宣言か式&nbsp;<code>;</code>&nbsp;宣言か式&nbsp;<code>;</code>&nbsp;式&nbsp;<code>)</code>&nbsp;<code>文</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>初期化文</code></h3>
+        <span class="cb41">
+         <code>初期化文</code>はif文やswitch文で出てきたもので、むしろfor文が元です。<br><code>;</code>で終わる変数などの宣言、式文や<code>;</code>だけの文である空文などが書けます。<br>そして、やはりここで宣言された変数は、for文全体をスコープに持ちます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>条件</code>、<code>文</code></h3>
+        <span class="cb41">
+         <code>条件</code>もif文やwhile文で出てきたものと全く同じものになっています。<br>boolに評価できる式や、boolに変換することが出来る型の変数の宣言が書けます。<br>また、<code>条件</code>で宣言された変数も、やはりfor文全体をスコープに持ちます。<br>ただし、for文の<code>条件</code>は省略すると、trueとして扱われる事には注意しましょう。<br><code>文</code>も、やはり今までのものと同様で、複合文が好まれて使われます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>反復式</code>とfor文の実行のされ方</h3>
+        <span class="cb41">
+         <code>反復式</code>には、任意の式を書くことが出来ます。<br><code>反復式</code>は<code>文</code>が実行された後、<code>条件</code>が評価される前に評価されます。<br>つまり、for文は以下のような疑似コードで表現することが出来ます。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文をwhile文で表現すると（疑似コード）</span>
+          <button type="button" class="cb53" onclick="copy('20')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="20" class="cb55 bkgdbl">
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>初期化文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(&nbsp;<code>条件</code>&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>反復式</code>&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文をgoto文レベルで表現すると（疑似コード）</span>
+          <button type="button" class="cb53" onclick="copy('21')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="21" class="cb55 bkgdbl">
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>初期化文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;label:<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件</code>&nbsp;)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>反復式</code>&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto&nbsp;label;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">break文、continue文</h3>
+        <span class="cb41">
+         やっぱり、break文とcontinue文もwhile文と同じ挙動を示します。<br>break文はfor文を終わらせ、continue文はループの最後へ移動、<code>文</code>を終了させます。<br>ただし、continue文が実行された時も、<code>反復式</code>は実行されることに留意しましょう。<br>また、for文がネストしていたら、一番内側のfor文を終了させるのも同じです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">break文とcontinue文を疑似的に表現すると</h3>
+        <span class="cb41">
+         break/continue文の移動先をbreak/continueラベルと、疑似的に表現して、<br>先程の疑似コードに組み込んだものと、for文に組み込んだものは以下です。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文のbreak/continue文の行先1（疑似コード）</span>
+          <button type="button" class="cb53" onclick="copy('22')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="22" class="cb55 bkgdbl">
+for&nbsp;(&nbsp;<code>初期化文</code>&nbsp;<code>条件</code>&nbsp;;&nbsp;<code>反復式</code>&nbsp;)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>}<br>break:<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文のbreak/continue文の行先2（疑似コード）</span>
+          <button type="button" class="cb53" onclick="copy('23')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="23" class="cb55 bkgdbl">
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>初期化文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(&nbsp;<code>条件</code>&nbsp;)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>反復式</code>&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;break:<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">for文のbreak/continue文の行先3（疑似コード）</span>
+          <button type="button" class="cb53" onclick="copy('24')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="24" class="cb55 bkgdbl">
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>初期化文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;label:<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;<code>条件</code>&nbsp;)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>文</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>反復式</code>&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto&nbsp;label;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;break:<br>}<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ループカウンタとイン/デクリメント</h3>
+        <span class="cb41">
+         <code>初期化文</code>で宣言し、ループを制御する変数を、ループカウンタと呼ぶことがあります。<br>ほとんどの場合、ループカウンタは整数型の変数で、識別子に<code>i</code>が使われます。<br>そして、<code>反復式</code>ではループカウンタに<code>1</code>を足し引きすることが多いので、演算子があります。<br><code>1</code>足すのがインクリメント演算子、<code>1</code>引くのがデクリメント演算子で、前置と後置があります。<br>後置のイン/デクリメント演算子は、落とし穴があるので、単独の式で使用するべきでしょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        インクリメントとデクリメント演算子（整数の変数をnとして）
+       </h4>
+       <h4 class="cb45">
+        <code>++n</code>
+       </h4>
+       <span class="cb41">
+        前置インクリメント、<code>n&nbsp;+=&nbsp;1</code>と同じ
+       </span>
+       <h4 class="cb45">
+        <code>n++</code>
+       </h4>
+       <span class="cb41">
+        後置インクリメント、<code>n&nbsp;+=&nbsp;1</code>と類似
+       </span>
+       <h4 class="cb45">
+        <code>--n</code>
+       </h4>
+       <span class="cb41">
+        前置デクリメント、<code>n&nbsp;-=&nbsp;1</code>と同じ
+       </span>
+       <h4 class="cb45">
+        <code>n--</code>
+       </h4>
+       <span class="cb41">
+        後置デクリメント、<code>n&nbsp;-=&nbsp;1</code>と類似
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">1つ目のfor文</h3>
+        <span class="cb41">
+         <code>int&nbsp;n;</code>は、このfor文に入れてしまうと、後のfor文で使えないので前に書きます。<br><code>std::cin&nbsp;&gt;&gt;&nbsp;n</code>を<code>条件</code>に置いています。<code>反復式</code>に置くとマズいのがわかるでしょうか。<br><code>反復式</code>に置くと、変数<code>n</code>を未初期化で読み取ってしまうので、未定義動作になりますね。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">2つ目のfor文（for文で<code>n</code>回ループしたい）</h3>
+        <span class="cb41">
+         for文は、<code>初期化文</code>と<code>反復式</code>を持っていることから、<code>n</code>回ループしたい時によく使います。<br>特に、<code>0</code>から<code>n-1</code>の<code>n</code>回ループすることが往々にしてあるため、書き方に慣れましょう。<br>continue文が申し訳程度にありますが、continue文の後に何もないので意味はないです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">3/4つ目のfor文（2重ループしたい）</h3>
+        <span class="cb41">
+         for文の中にfor文を入れれば、ループさせる回数を掛け算のように増やすことが出来ます。<br>両方のfor文で、ループカウンタを1から9まで回せば、九九表を作ることが出来ますね。<br>2重ループする時には、外側と内側のループカウンタの名前を被らせないようにしましょう。<br>被らせると、整数と小数の回で解説したように、外側のループカウンタが隠れてしまいます。<br>なお、今回は30よりも大きい値は表示しないようにしたので、右下が消えています。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照や出典です
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        [stmt.label]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/stmt.label
+       </span>
+       <h4 class="cb45">
+        [stmt.jump]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/stmt.jump#stmt.goto
+       </span>
+       <h4 class="cb45">
+        [stmt.iter]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/stmt.iter
+       </span>
+       <h4 class="cb45">
+        文&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/statements
+       </span>
+       <h4 class="cb45">
+        goto&nbsp;文&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/goto
+       </span>
+       <h4 class="cb45">
+        代入演算子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_assignment
+       </span>
+       <h4 class="cb45">
+        while&nbsp;ループ&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/while
+       </span>
+       <h4 class="cb45">
+        std::basic_ios&lt;CharT,Traits&gt;::operator&nbsp;bool&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/io/basic_ios/operator_bool
+       </span>
+       <h4 class="cb45">
+        for&nbsp;ループ&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/for
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="..\..\..\..\..\images\top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
