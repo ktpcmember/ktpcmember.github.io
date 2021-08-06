@@ -1,5 +1,5 @@
 <meta>
-title += "C++講習概要 - C++ on MSVC講習"
+title += "条件分岐2 - switch文 - C++ on MSVC講習"
 keywords += ", C++, MSVC"
 description = "列挙型とswitch文、属性について解説しています。"
 </meta>

@@ -1,5 +1,5 @@
 <meta>
-title += "Hello World! - C++ on MSVC講習"
+title += "条件分岐1 - if文 - C++ on MSVC講習"
 keywords += ",C++,MSVC,Hello,World"
 description = "複合文やbool、if文について解説しています。"
 </meta>

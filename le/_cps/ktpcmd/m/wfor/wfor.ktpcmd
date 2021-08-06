@@ -1,7 +1,7 @@
 <meta>
-title += "C++講習概要 - C++ on MSVC講習"
+title += "反復文 - while/for文 - C++ on MSVC講習"
 keywords += ", C++, MSVC"
-description = "列挙型とswitch文、属性について解説しています。"
+description = "goto文、while文、do（do-while）文、for文を解説しています。"
 </meta>
 
 <header>
