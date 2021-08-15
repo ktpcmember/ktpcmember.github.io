@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="駒場東邦物理部">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,講習, C++, MSVC">
+  <meta name="description" content="基本的なC++の関数の機能について解説しています。">
+  <title>関数基礎 - C++ on MSVC講習</title>
+  <link rel="icon" type="image/jpeg" href="..\..\..\..\..\images\logo.jpg">
+  <link rel="stylesheet" type="text/css" href="..\..\..\..\..\style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="..\..\..\..\..\static.css">
+  <script type="text/javascript" src="..\..\..\..\..\header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="..\..\..\..\..\images\br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="..\..\..\..\..\images\menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="..\..\..\..\..\index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="..\..\..\_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="..\..\..\m\i_dx\i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="..\wfor\wfor.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\..\404.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20 fxtb">
+      <h1>C++&nbsp;on&nbsp;MSVC講習/関数基礎</h1>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">あらすじと概要</h2>
+      <span class="cb34">
+       前回までで、主要な文の解説が終わりました。<br>今回は、関数について解説をするので、main関数から飛び出しましょう。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        関数
+       </h4>
+       <span class="cb41">
+        意味や内容がまとまっている作業をひとつにまとめる機能
+       </span>
+       <h4 class="cb45">
+        宣言
+       </h4>
+       <span class="cb41">
+        スコープに識別子と、その型に関する情報を導入する機能
+       </span>
+       <h4 class="cb45">
+        定義
+       </h4>
+       <span class="cb41">
+        スコープに識別子と、その全ての情報を導入する機能
+       </span>
+       <h4 class="cb45">
+        ODR
+       </h4>
+       <span class="cb41">
+        One&nbsp;Definition&nbsp;Rule、定義は同じスコープに1つしか書けない規則
+       </span>
+       <h4 class="cb45">
+        グローバルスコープ
+       </h4>
+       <span class="cb41">
+        どのスコープにも属さない、一番外側のスコープ
+       </span>
+       <h4 class="cb45">
+        <code>()</code>
+       </h4>
+       <span class="cb41">
+        （関数の識別子の後にあるものが）関数呼び出し演算子
+       </span>
+       <h4 class="cb45">
+        <ruby><rb>引数</rb><rp>（</rp><rt>ひきすう</rt><rp>）</rp></ruby>
+       </h4>
+       <span class="cb41">
+        関数の実行時に関数へ値を渡す機能、またその渡した値
+       </span>
+       <h4 class="cb45">
+        仮引数
+       </h4>
+       <span class="cb41">
+        関数の<code>引数リスト</code>で宣言されている変数
+       </span>
+       <h4 class="cb45">
+        実引数
+       </h4>
+       <span class="cb41">
+        関数呼び出し時に実際に渡した値
+       </span>
+       <h4 class="cb45">
+        デフォルト引数
+       </h4>
+       <span class="cb41">
+        指定した仮引数にデフォルト値を与える機能
+       </span>
+       <h4 class="cb45">
+        <ruby><rb>返り値</rb><rp>（</rp><rt>かえりち</rt><rp>）</rp></ruby>
+       </h4>
+       <span class="cb41">
+        関数が実行終了する際に関数側から返せる値
+       </span>
+       <h4 class="cb45">
+        return文
+       </h4>
+       <span class="cb41">
+        関数を終了させ、返り値を返すための文
+       </span>
+       <h4 class="cb45">
+        関数オーバーロード
+       </h4>
+       <span class="cb41">
+        <code>引数リスト</code>が違う、同じ名前の関数を複数定義すること
+       </span>
+       <h4 class="cb45">
+        関数オーバーロードの解決
+       </h4>
+       <span class="cb41">
+        オーバーロードされた関数のうち、どれを実行するか決定すること
+       </span>
+       <h4 class="cb45">
+        <ruby><rb>delete</rb><rp>（</rp><rt>でりーと</rt><rp>）</rp></ruby>宣言
+       </h4>
+       <span class="cb41">
+        その関数を呼び出して実行してはいけないことの宣言
+       </span>
+       <h4 class="cb45">
+        再帰呼び出し
+       </h4>
+       <span class="cb41">
+        ある関数が自分自身を呼び出すこと
+       </span>
+       <h4 class="cb45">
+        <code>chrono</code>
+       </h4>
+       <span class="cb41">
+        実行時間の計測に役立つC++標準ライブラリ
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">関数とは何ぞや</h2>
+      <span class="cb34">
+       そもそも、関数って何でしょうか。<a href="..\..\..\..\..\https:\qiita.com\yumetodo\items\cdfb41781d32d98be1b4">プログラミング言語としてはこう</a>だったりしますが、<br>実は、数学の関数と似ている点があるため関数という名前になっています。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">数学での関数</h3>
+        <span class="cb41">
+         <a href="..\..\..\..\..\https:\ja.wikipedia.org\wiki\%E9%96%A2%E6%95%B0_(%E6%95%B0%E5%AD%A6)">Wikipediaには</a>、<code>現代的には数の集合に値をとる写像の一種であると理解される。</code>とあります。<br>簡単には「2つの数による集合があった時、それぞれの集合の要素を1対1で対応させる」もの。<br>「ある数を与えると、何らかの規則に応じて対応する数を返す」機能があると言えるでしょう。<br><code>f(x)&nbsp;=&nbsp;x**2</code>として<code>f(2)</code>は<code>4</code>だとか出来る見た目からすると分かりやすいと思います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プログラミングでの関数</h3>
+        <span class="cb41">
+         <a href="..\..\..\..\..\https:\ja.wikipedia.org\wiki\%E3%82%B5%E3%83%96%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3">Wikipediaには</a>、<code>意味や内容がまとまっている作業をひとつの手続きとしたもの</code>とあります。<br>要するに「処理のまとまり」となるわけなんですが、<ruby><rb>引数</rb><rp>（</rp><rt>ひきすう</rt><rp>）</rp></ruby>と<ruby><rb>返り値</rb><rp>（</rp><rt>かえりち</rt><rp>）</rp></ruby>なるものがあります。<br>引数は関数へ値を与えるもの、返り値は関数が実行終了時に返してくる値のことです。<br>おっと。こちらの関数も「引数を与えると、何らかの処理で返り値を返す」ことが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プログラミングの関数が数学の関数と違うところ</h3>
+        <span class="cb41">
+         さて、似ている点はわかりましたが、違う点はどのような所なのでしょうか。<br>主には、「引数/返り値が無いことがある」、「引数が同じでも状況で返り値が違う」、<br>「関数の実行途中に、関数以外の場所に変化を起こすことが出来る」などが存在します。<br>3つ目は、例えば関数が関数外の変数の値を変化させるなどできるなどが挙げられます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">何がいいのさ</h3>
+        <span class="cb41">
+         関数のいい点は、大きく2つ、処理のまとまりに名前を付けることで、意味付けられること、<br>処理のまとまりを、引数によって記述し、汎用性を持たせられることが挙げられます。<br>つまり関数を用いることで、より簡潔で処理の意味が分かりやすいコードが書けます。<br>より簡潔で分かりやすいコードを書くことで、書く側も読む側も楽になります。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">関数基礎</h2>
+      <span class="cb34">
+       まずは基礎です。基礎でも非常に大量の情報量があるので頑張りましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数基礎</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdc_mt">// addの定義
+</span><span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">+</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>     <span class="wdc_mt">// subの宣言
+</span><span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">int</span> l<span class="wdsl">,</span> <span class="wdkywd">int</span> r<span class="wdsl">);</span> <span class="wdc_mt">// 宣言はいくつでも書いていい
+</span>
+<span class="wdkywd">auto</span> void_f<span class="wdsl">(</span><span class="wdkywd">void</span><span class="wdsl">)</span> <span class="wdsl">-&gt;</span> <span class="wdkywd">void</span><span class="wdsl">;</span> <span class="wdc_mt">// 後置しても前置しても返り値の型は同じ
+</span><span class="wdkywd">void</span> void_f<span class="wdsl">()</span> <span class="wdsl">{</span> <span class="wdkywd">return</span><span class="wdsl">;</span> <span class="wdsl">}</span>  <span class="wdc_mt">// (void)でも引数リスト省略でも同じ意味
+</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> ans1 <span class="wdsl">=</span> add<span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">,</span> <span class="wdnr">2</span><span class="wdsl">),</span> <span class="wdc_mt">// add呼び出し
+</span>        ans2 <span class="wdsl">=</span> sub<span class="wdsl">(</span><span class="wdnr">2</span><span class="wdsl">,</span> <span class="wdnr">2</span><span class="wdsl">),</span> <span class="wdc_mt">// sub呼び出し
+</span>        ans3 <span class="wdc_mt">// = zero(0) // zeroは呼び出せない！
+</span>        <span class="wdsl">;</span>
+
+    void_f<span class="wdsl">();</span> <span class="wdc_mt">// 何もしない
+</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ans1 : "</span> <span class="wdsl">&lt;&lt;</span> ans1
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\nans2 : "</span> <span class="wdsl">&lt;&lt;</span> ans2<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdc_mt">// subの定義
+</span><span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">-</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdc_mt">// zeroの定義
+</span><span class="wdkywd">int</span> zero<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+ans1&nbsp;:&nbsp;3<br>ans2&nbsp;:&nbsp;0<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">宣言と定義</h3>
+        <span class="cb41">
+         宣言は、スコープに識別子の情報を導入しますが、型に関する情報を導入します。<br>そのため、識別子の区別は出来るのですが、実行ファイルにするための情報が不十分です。<br>実行ファイルにするための完全な情報は、宣言ではなく定義を通じて導入します。<br>なお、宣言はいくらでも書いてよく、一方定義は後述の通りそうではありません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">定義と<ruby><rb>ODR</rb><rp>（</rp><rt>One&nbsp;Definition&nbsp;Rule</rt><rp>）</rp></ruby></h3>
+        <span class="cb41">
+         定義には「同じスコープで、1つの識別子の定義は必ず1つ」という、ODRがあります。<br>ODRのおかげで、定義は一意に定まり、複数の定義によって矛盾が生じることはありません。<br>ちなみに、変数は宣言しかしていないように書きましたが、実は定義だったりします。<br>そのため、同じ識別子を持つ変数を同じスコープに導入することが出来ないのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">グローバルスコープと関数の定義</h3>
+        <span class="cb41">
+         実は、関数は宣言は関数の中でも出来ますが、定義は関数の中では出来ません。<br>どのスコープにも属さない、一番外側のスコープをグローバルスコープと呼びますが、<br>普通の関数の定義は、グローバルスコープか名前空間で行わなければいけません。<br>名前空間は、名前が付いているスコープの事ですが、今後解説します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数</h3>
+        <span class="cb41">
+         これでも難しいかもしれませんが、分かりやすくした構文は以下のようになります。<br>構文の要素のうち、説明しないものは、他のサンプルコードを示してから説明します。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数の宣言</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+返り型&nbsp;識別子&nbsp;<code>(</code>&nbsp;引数リスト(opt)&nbsp;<code>)</code>&nbsp;<code>;</code><br><code>auto</code>&nbsp;識別子&nbsp;<code>(</code>&nbsp;引数リスト(opt)&nbsp;<code>)</code>&nbsp;<code>-&gt;</code>&nbsp;返り型&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数の定義</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+返り型&nbsp;識別子&nbsp;<code>(</code>&nbsp;引数リスト(opt)&nbsp;<code>)</code>&nbsp;関数本体<br><code>auto</code>&nbsp;識別子&nbsp;<code>(</code>&nbsp;引数リスト(opt)&nbsp;<code>)</code>&nbsp;<code>-&gt;</code>&nbsp;返り型&nbsp;関数本体<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">引数リスト</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+<code>void</code><br>型名&nbsp;識別子(opt)&nbsp;初期化子(opt)<br>型名&nbsp;識別子(opt)&nbsp;初期化子(opt)&nbsp;<code>,</code>&nbsp;引数リスト<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">初期化子</span>
+          <button type="button" class="cb53" onclick="copy('5')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+<code>=</code>&nbsp;値<br><code>=</code>&nbsp;<code>{</code>&nbsp;値(opt)&nbsp;<code>}</code><br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数本体</span>
+          <button type="button" class="cb53" onclick="copy('6')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="6" class="cb55 bkgdbl">
+複合文<br><code>=</code>&nbsp;<code>delete</code>&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数と宣言・定義</h3>
+        <span class="cb41">
+         さて、関数に当てはめて理解していきましょう。<br>まず、構文で示しましたが、関数は<code>関数本体</code>がないと宣言、あると定義となります。<br>宣言は型に関する情報、つまり関数だと引数リストの型の並びと返り値の型を導入します。<br>定義は実行ファイルにするための情報、つまり関数だと関数本体の内容も導入します。<br>関数の宣言・定義の方の<code>識別子</code>は、変数の場合と同様の規則で命名します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>返り値</rb><rp>（</rp><rt>かえりち</rt><rp>）</rp></ruby>と<code>返り型</code></h3>
+        <span class="cb41">
+         返り値は、関数が実行終了する際に関数側から返せる値で、C++では1つまでです。<br>返り値の型は、前置する方法と後置する方法があり、前置は先頭に書きます。<br>後置の場合は、先頭には<code>auto</code>を書き、<code>)</code>の後に<code>-&gt;</code>を置き、その後に書きます。<br>返り値が必要ない場合、<code>返り値</code>の場所には<code><ruby><rb>void</rb><rp>（</rp><rt>ぼいど</rt><rp>）</rp></ruby></code>と書いておきます。<br>あまり推奨されませんが、<code>返り型</code>には列挙型など、型の宣言を書くことも出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>引数</rb><rp>（</rp><rt>ひきすう</rt><rp>）</rp></ruby>と<code>引数リスト</code></h3>
+        <span class="cb41">
+         引数は関数の実行時に関数へ値を渡す機能で、宣言・定義の<code>引数リスト</code>で定義します。<br><code>引数リスト</code>では、1つの変数の宣言をコンマ区切りで書くように記述します。<br>なお<code>返り型</code>とは異なり、<code>型名</code>には型の宣言を書くことは出来ません。<br>引数が必要ない場合は、<code>返り型</code>のように<code><ruby><rb>void</rb><rp>（</rp><rt>ぼいど</rt><rp>）</rp></ruby></code>を書くか、<code>引数リスト</code>を省略します。<br>もちろん、<code>引数リスト</code>で宣言された変数は、関数全体がスコープになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">引数の<code>識別子</code></h3>
+        <span class="cb41">
+         変数の<code>識別子</code>や関数の<code>識別子</code>などと同様の規則で引数の<code>識別子</code>も命名をします。<br>引数の<code>識別子</code>が<code>(opt)</code>なのは意外でしょうか。引数では<code>識別子</code>は省略可能です。<br>実は、宣言の場合は<code>識別子</code>は何ら意味を持たず、「書いてもよい」くらいの存在感です。<br>定義の場合は、<code>関数本体</code>で使用しないのであれば、その<code>識別子</code>は省略できます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>関数本体</code></h3>
+        <span class="cb41">
+         <code>関数本体</code>には、複合文を書き、複合文の中に処理のまとまり、即ち文を書きます。<br>既に解説しましたが、<code>関数本体</code>は普通の複合文と違い、ラベルのスコープを形成します。<br>「関数の本体」と書いた場合は、複合文の場合の<code>関数本体</code>の複合文内を指します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">return文</h3>
+        <span class="cb41">
+         関数の本体では、return文を使用して、関数を終了させることが出来ます。<br><code>返り値</code>の型は<code>返り型</code>と同じか、暗黙の変換できる関係でないといけません。<br>返り値が無ければreturn文自体省略でき、使用する場合は<code>返り値</code>を省略して書きます。<br>break文と同様に、return文を実行するとそれ以降の<code>関数本体</code>は実行されません。<br>もちろん、複数のreturn文を書くことも出来ます。構文は以下のようになります。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">return文</span>
+          <button type="button" class="cb53" onclick="copy('7')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="7" class="cb55 bkgdbl">
+<code>return</code>&nbsp;返り値&nbsp;<code>;</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数の実行と関数呼び出し演算子</h3>
+        <span class="cb41">
+         関数を呼び出す際には、関数呼び出し演算子である<code>()</code>を関数の識別子に続けて書きます。<br>引数が必要な場合は、必要な引数を<code>()</code>の中に<code>,</code>区切りで書くことで関数に渡せます。<br>渡された引数は、<code>引数リスト</code>で宣言された変数の初期化の値として使われます。<br>この時、渡した引数を実引数、<code>引数リスト</code>で宣言している変数を仮引数と呼びます。<br>区別して考える必要が無い場合は、どちらとも単純に引数と呼びます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数の実行と返り値</h3>
+        <span class="cb41">
+         関数を呼び出したとしても、やはり実際に実行されるのは評価されるときです。<br>関数が評価され、実行された時、結果として残るのは関数の本体が返した値です。<br>つまり、関数は呼び出せば単純な、<code>返り型</code>の値として扱うことが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説1&nbsp;-&nbsp;<code>add</code>関数</h3>
+        <span class="cb41">
+         <code>add</code>関数は、その名の通り加算を行う関数で、引数に取った2つのint値を加算して返却します。<br><code>add</code>関数は、main関数で使用する前に定義しているため問題ありません。<br>ちなみに、<code>lhs/rhs</code>は、<code><ruby><rb>left</rb><rp>（</rp><rt>れふと</rt><rp>）</rp></ruby>/<ruby><rb>right</rb><rp>（</rp><rt>らいと</rt><rp>）</rp></ruby>&nbsp;<ruby><rb>hand</rb><rp>（</rp><rt>はんど</rt><rp>）</rp></ruby>&nbsp;<ruby><rb>side</rb><rp>（</rp><rt>さいど</rt><rp>）</rp></ruby></code>で、<code>左辺/右辺</code>などの意味を持ちます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説2&nbsp;-&nbsp;<code>add</code>/<code>sub</code>関数</h3>
+        <span class="cb41">
+         <code>sub</code>関数も、やはりその名の通り減算を行う関数で、<code>add</code>の逆のような存在です。<br><code>sub</code>関数は、main関数で使用する前に宣言をし、main関数の後で定義をするため大丈夫。<br>解説通り、宣言の<code>引数リスト</code>の名前は意味をなさないので、定義と異なっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説3&nbsp;-&nbsp;<code>void_f</code>関数</h3>
+        <span class="cb41">
+         <code>void_f</code>関数は、引数も返り値も全くない、マジで何もしないシュールな関数です。<br>解説通り、返り値は<code>void</code>で無いことを示し、もちろん前置しても後置しても同じ型です。<br>わざと宣言も定義もしていますが、実際は定義だけで問題ありません。<br>ただ、こんな関数は実際に書く場合はただただ要らない関数なので関係ありませんが。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説4&nbsp;-&nbsp;<code>zero</code>関数</h3>
+        <span class="cb41">
+         <code>zero</code>関数は、main関数で使う前に宣言・定義共に行われていません。<br>つまり、main関数で<code>zero</code>関数を使用すると、コンパイラは「それ何？」でエラーです。<br>解説通り、関数の本体で仮引数を使用しない場合、引数の<code>識別子</code>は省略できます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説5&nbsp;-&nbsp;main関数内</h3>
+        <span class="cb41">
+         main関数内では、関数をいくつか呼び出しています。<br>解説通り、呼び出すときは関数呼び出し演算子たる<code>()</code>を使用します。<br>引数は<code>()</code>の間に<code>,</code>で渡し、関数が引数を取らない場合であれば何も書きません。<br>返り値はリテラルなどの値と同様に使用できるので、変数の初期化に使っています。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">関数とスコープ</h2>
+      <span class="cb34">
+       関数とスコープについてです。<code>初期化子</code>はここで説明します。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数とスコープ</span>
+          <button type="button" class="cb53" onclick="copy('8')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="8" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>              <span class="wdc_mt">// ok
+</span><span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span> <span class="wdsl">=</span> <span class="wdnr">10</span><span class="wdsl">,</span> <span class="wdkywd">int</span> <span class="wdsl">=</span> <span class="wdnr">20</span><span class="wdsl">);</span>    <span class="wdc_mt">// ok, 後からデフォルト引数を付けることが出来る
+</span><span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>              <span class="wdc_mt">// ok
+</span><span class="wdc_mt">// int add(int, int = 30);      // ng, デフォルト引数の再定義は出来ない
+</span><span class="wdc_mt">// int add(int = 10, int = 20); // ng, デフォルト引数が完全に一致しても再定義になる
+</span>
+<span class="wdc_mt">// int sum(int = 10, int, int = 10)  // ng, デフォルト引数が末尾に並んでいない
+</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> num<span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"1 : "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">,</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+    <span class="wdc_mt">// main関数のスコープでaddを宣言
+</span>    <span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span> <span class="wdsl">=</span> <span class="wdnr">20</span><span class="wdsl">);</span> num <span class="wdsl">=</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">);</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"2 : "</span> <span class="wdsl">&lt;&lt;</span> num <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">,</span> <span class="wdnr">20</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+    <span class="wdsl">{</span>
+        <span class="wdc_mt">// main関数の複合文のスコープでaddを宣言
+</span>        <span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">),</span> num <span class="wdsl">=</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">,</span> <span class="wdnr">20</span><span class="wdsl">);</span>
+
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"3 : "</span> <span class="wdsl">&lt;&lt;</span> num <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+
+        <span class="wdsl">{</span>
+            <span class="wdc_mt">// 対応する定義がないadd関数の宣言
+</span>            <span class="wdc_mt">// main関数の複合のスコープで宣言されたadd関数を隠す
+</span>            <span class="wdkywd">short</span> add<span class="wdsl">(</span><span class="wdkywd">short</span><span class="wdsl">,</span> <span class="wdkywd">short</span><span class="wdsl">);</span>
+
+            <span class="wdc_mt">// shortの方のadd関数は、対応する定義が無いので使えない
+</span>            <span class="wdc_mt">// std::cout &lt;&lt; "4 : " &lt;&lt; add(10, 20) &lt;&lt; "\n";
+</span>
+            <span class="wdc_mt">// sub関数の宣言、定義はmain関数の後に後置
+</span>            <span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">int</span> <span class="wdsl">=</span> <span class="wdnr">60</span><span class="wdsl">,</span> <span class="wdkywd">int</span> <span class="wdsl">=</span> <span class="wdnr">30</span><span class="wdsl">),</span> dummy<span class="wdsl">();</span>
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"4 : "</span> <span class="wdsl">&lt;&lt;</span> sub<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> dummy<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+
+    <span class="wdsl">}</span>
+
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">+</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> sub<span class="wdsl">(</span><span class="wdkywd">int</span> lhs <span class="wdsl">=</span> <span class="wdnr">50</span><span class="wdsl">,</span> <span class="wdkywd">int</span> rhs <span class="wdsl">=</span> <span class="wdnr">30</span><span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">-</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+
+<span class="wdkywd">int</span> dummy<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdc_mt">// dummy関数からはsub関数の定義のデフォルト引数が使える
+</span>    <span class="wdkywd">return</span> sub<span class="wdsl">();</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('9')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="9" class="cb55 bkgdbl">
+1&nbsp;:&nbsp;30&nbsp;30&nbsp;30<br>2&nbsp;:&nbsp;30&nbsp;30<br>3&nbsp;:&nbsp;30<br>4&nbsp;:&nbsp;30&nbsp;20<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       変数の時のスコープと似ていますね。解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数と宣言・定義</h3>
+        <span class="cb41">
+         関数の宣言と定義を復習すると、宣言はいくら書いてもよく、関数内にも書けるけれど、<br>定義はODRによって1つのみ、そして関数の中にネストして書くことは出来ませんでした。<br>宣言して使っている関数も、全体として定義が無ければエラーになるのは注意が必要です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数とスコープ</h3>
+        <span class="cb41">
+         そして、変数同様に、関数も識別子を持つので、識別子を使えるコード上の範囲があります。<br>この時の、「識別子を使えるコード上の範囲を制限するもの」がスコープでした。<br>識別子は、宣言又は定義によってそのスコープに導入されてから、終わりまで使用出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数の宣言とスコープ</h3>
+        <span class="cb41">
+         変数はより内側のスコープで宣言することで、外側の変数を隠すことが出来ました。<br>これは、関数でも同様に、より内側のスコープでの宣言で外側の関数を隠すことが出来ます。<br>ここで問題になるのが、外側の関数を隠した内側の関数の定義が存在するかどうかです。<br>内側のスコープの宣言と紐づけられる定義が存在しなければ、エラーになってしまいます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>初期化子</code>とデフォルト引数</h3>
+        <span class="cb41">
+         ここで、関数の宣言・定義の構文の、引数リストの<code>初期化子</code>について解説します。<br><code>初期化子</code>は、仮引数に指定することで、その仮引数にデフォルト値を与える機能です。<br><code>初期化子</code>を用いて、デフォルト値を与えられた仮引数をデフォルト引数と言います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>初期化子</code>の形式</h3>
+        <span class="cb41">
+         構文でも示していますが、<code>引数リスト</code>の<code>初期化子</code>は<code>=</code>を使った形で<code>値</code>を与えます。<br>変数の宣言の時の<code>初期化子</code>の時と比べ、使えるものが減っていることに注意しましょう。<br>また、<code>初期化子</code>は<code>識別子</code>が無かったとしても書くことが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト引数の制限</h3>
+        <span class="cb41">
+         デフォルト引数は、必ず<code>引数リスト</code>の末尾（右端）にまとまっていないといけません。<br>言い換えれば、デフォルト引数よりも末尾（右側）の方に通常の引数は置いてはいけません。<br>つまり、<code>(int,&nbsp;int&nbsp;=&nbsp;0)</code>、<code>(int&nbsp;=&nbsp;0,&nbsp;int&nbsp;=&nbsp;0)</code>、<code>(int,&nbsp;int,&nbsp;int&nbsp;=&nbsp;0)</code>などは正しく、<br><code>(int&nbsp;=&nbsp;0,&nbsp;int)</code>や<code>(int&nbsp;=&nbsp;0,&nbsp;int,&nbsp;int&nbsp;=&nbsp;0)</code>などはエラーになるということです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト引数がある関数の呼び出し</h3>
+        <span class="cb41">
+         デフォルト引数がある関数は、存在する数の分だけ実引数を減らしても呼び出しが出来ます。<br>足りない実引数については、デフォルト引数に指定されているデフォルト値で埋められます。<br>もちろん、デフォルト引数に明示的に実引数を渡しても関数呼び出しが出来ます。<br>例えば<code>(int,&nbsp;int&nbsp;=&nbsp;0,&nbsp;int&nbsp;=&nbsp;0)</code>という関数を<code>(0)</code>/<code>(0,&nbsp;0)</code>/<code>(0,&nbsp;0,&nbsp;0)</code>などで呼び出せます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト引数のやっかいなところ</h3>
+        <span class="cb41">
+         デフォルト引数は、関数の宣言・定義を通して1度のみしか定義してはならないのです。<br>そして、全く同じデフォルト引数であったとしても、例外ではなく書くことは出来ません。<br>ただし、外側のを内側のスコープで隠す場合は、その内側の宣言で上書き状態になります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説1&nbsp;-&nbsp;<code>add</code>関数</h3>
+        <span class="cb41">
+         また<code>add</code>関数ですが、今回の<code>add</code>関数も同じような定義ですが、定義は後置しています。<br><code>add</code>関数は、2番目の宣言でデフォルト引数を付けているので、それ以降は付けられません。<br>ただしスコープが違うので、main関数やその複合文で宣言する<code>add</code>関数は違っています。<br>しかし、main関数の複合文の複合文の<code>add</code>関数は、対応する定義が無いので使えません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説2&nbsp;-&nbsp;<code>sub</code>関数</h3>
+        <span class="cb41">
+         <code>sub</code>関数は使用する前に宣言をしているので、定義がmain関数後でも使用できています。<br>そして、使用時に指定されて使用されたデフォルト引数は、明らかに直前の宣言です。<br>定義の方のデフォルト引数は、定義以降に書いた関数からなら使用することが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説3&nbsp;-&nbsp;<code>dummy</code>関数</h3>
+        <span class="cb41">
+         <code>dummy</code>関数は、<code>sub</code>関数の定義で指定されているデフォルト引数が、<br>それ以降で使用できることを示すために用意したダミー関数です。<br><code>dummy</code>関数も、<code>sub</code>関数同様に使う直前に宣言をして使用しています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説4&nbsp;-&nbsp;main関数内</h3>
+        <span class="cb41">
+         main関数内では、<code>1～4</code>まで4つの場所に分けて出力をしています。<br><code>1～3</code>では、呼び出し可能な引数の渡し方を全種類試しています。<br>概ね、変数の場合と同様ですが、関数の宣言がころころ変わっています。<br><code>1～4</code>での、それぞれの関数の宣言は以下のようになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        <code>1～4</code>での関数の宣言（<code>add</code>関数）
+       </h4>
+       <h4 class="cb45">
+        <code>1</code>
+       </h4>
+       <span class="cb41">
+        <code>int&nbsp;add(int&nbsp;=&nbsp;10,&nbsp;int&nbsp;20)</code><br>グローバルスコープ
+       </span>
+       <h4 class="cb45">
+        <code>2</code>
+       </h4>
+       <span class="cb41">
+        <code>int&nbsp;add(int,&nbsp;int&nbsp;=&nbsp;20)</code><br>main関数のスコープ
+       </span>
+       <h4 class="cb45">
+        <code>3</code>
+       </h4>
+       <span class="cb41">
+        <code>int&nbsp;add(int,&nbsp;int)</code><br>main関数の複合文のスコープ
+       </span>
+       <h4 class="cb45">
+        <code>4</code>
+       </h4>
+       <span class="cb41">
+        <code>short&nbsp;add(short,&nbsp;short)</code><br>main関数の複合文の複合文のスコープ<br>（対応する定義なし）
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        <code>1～4</code>での関数の宣言（<code>sub</code>/<code>dummy</code>関数）
+       </h4>
+       <h4 class="cb45">
+        <code>1</code>
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        <code>2</code>
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        <code>3</code>
+       </h4>
+       <span class="cb41">
+        なし
+       </span>
+       <h4 class="cb45">
+        <code>4</code>
+       </h4>
+       <span class="cb41">
+        <code>int&nbsp;sub(int&nbsp;=&nbsp;60,&nbsp;int&nbsp;=&nbsp;30)</code><br><code>int&nbsp;dummy()</code><br>main関数の複合文の複合文のスコープ
+       </span>
+
+      </div>
+
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">関数標準</h2>
+      <span class="cb34">
+       関数オーバーロード（多重定義）や再帰についてです。<br><code>関数本体</code>の<code><ruby><rb>delete</rb><rp>（</rp><rt>でりーと</rt><rp>）</rp></ruby></code>の方もここで解説します。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">関数標準</span>
+          <button type="button" class="cb53" onclick="copy('10')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="10" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>chrono<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">);</span>
+<span class="wdkywd">long</span> add<span class="wdsl">(</span><span class="wdkywd">long</span><span class="wdsl">,</span> <span class="wdkywd">long</span><span class="wdsl">)</span> <span class="wdsl">=</span> <span class="wdkywd">delete</span><span class="wdsl">;</span>
+<span class="wdkywd">long</span> <span class="wdkywd">long</span> add<span class="wdsl">(</span><span class="wdkywd">long</span> <span class="wdkywd">long</span><span class="wdsl">,</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span><span class="wdsl">);</span>
+<span class="wdkywd">double</span> add<span class="wdsl">(</span><span class="wdkywd">double</span><span class="wdsl">,</span> <span class="wdkywd">double</span><span class="wdsl">);</span>
+
+<span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> fac<span class="wdsl">(</span><span class="wdkywd">unsigned</span> n<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">==</span> <span class="wdnr">0</span> <span class="wdsl">||</span> n <span class="wdsl">==</span> <span class="wdnr">1</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">&gt;</span> <span class="wdnr">20</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span> n <span class="wdsl">*</span> fac<span class="wdsl">(</span>n <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">unsigned</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span> fib<span class="wdsl">(</span><span class="wdkywd">unsigned</span> n<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">==</span> <span class="wdnr">1</span> <span class="wdsl">||</span> n <span class="wdsl">==</span> <span class="wdnr">2</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>n <span class="wdsl">&gt;</span> <span class="wdnr">93</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span> fib<span class="wdsl">(</span>n <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">+</span> fib<span class="wdsl">(</span>n <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">);</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"int       : "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">10</span><span class="wdsl">,</span> <span class="wdnr">10</span><span class="wdsl">)</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\nlong long : "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">10ll</span><span class="wdsl">,</span> <span class="wdnr">10ll</span><span class="wdsl">)</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\ndouble    : "</span> <span class="wdsl">&lt;&lt;</span> add<span class="wdsl">(</span><span class="wdnr">1.111</span><span class="wdsl">,</span> <span class="wdnr">1.111</span><span class="wdsl">);</span>
+
+    <span class="wdc_mt">// add(10l, 10l);  // ng, 削除された関数にオーバーロード解決されたので呼び出せない！
+</span>    <span class="wdc_mt">// add(10, 10l);   // ng, int版とlong版との「近さ」が一致、どちらを呼び出せばいいかわからない！
+</span>    <span class="wdc_mt">// add(10, 10ll);  // ng, 同様！
+</span>    <span class="wdc_mt">// add(10l, 10ll); // ng, 同様！
+</span>
+    <span class="wdkywd">unsigned</span> n<span class="wdsl">;</span> std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\nNの階乗（0 &lt;= N &lt;= 20）を求めます\n"</span><span class="wdsl">;</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> fac<span class="wdsl">(</span>n<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\nフィボナッチ数列の第N項（0 &lt;= N &lt;= 93）を求めます\n"</span><span class="wdsl">;</span>
+        <span class="wdkywd">auto</span> start <span class="wdsl">=</span> std<span class="wdsl">::</span>chrono<span class="wdsl">::</span>system_clock<span class="wdsl">::</span>now<span class="wdsl">();</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> fib<span class="wdsl">(</span>n<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+        <span class="wdkywd">auto</span> end <span class="wdsl">=</span> std<span class="wdsl">::</span>chrono<span class="wdsl">::</span>system_clock<span class="wdsl">::</span>now<span class="wdsl">();</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"計算に"</span> <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>chrono<span class="wdsl">::</span>duration_cast<span class="wdsl">&lt;</span>std<span class="wdsl">::</span>chrono<span class="wdsl">::</span>milliseconds<span class="wdsl">&gt;(</span>end <span class="wdsl">-</span> start<span class="wdsl">)</span>.count<span class="wdsl">()</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"msかかりました。"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">int</span> add<span class="wdsl">(</span><span class="wdkywd">int</span> lhs<span class="wdsl">,</span> <span class="wdkywd">int</span> rhs<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">+</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">long</span> <span class="wdkywd">long</span> add<span class="wdsl">(</span><span class="wdkywd">long</span> <span class="wdkywd">long</span><span class="wdsl">,</span> <span class="wdkywd">long</span> <span class="wdkywd">long</span><span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdc_mt">// あれ？
+</span>    <span class="wdkywd">return</span> <span class="wdnr">0ll</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+<span class="wdkywd">double</span> add<span class="wdsl">(</span><span class="wdkywd">double</span> lhs<span class="wdsl">,</span> <span class="wdkywd">double</span> rhs<span class="wdsl">)</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">return</span> lhs <span class="wdsl">+</span> rhs<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">補足</h3>
+        <span class="cb41">
+         今回は、実行時間を計りたかったので、標準ライブラリの<code>chrono</code>を使用しています。<br>ほとんどこの書き方が定型であるなどするので、あまり解説しません。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例1</span>
+          <button type="button" class="cb53" onclick="copy('11')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="11" class="cb55 bkgdbl">
+int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;20<br>long&nbsp;long&nbsp;:&nbsp;0<br>double&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;2.222<br><br>Nの階乗（0&nbsp;&lt;=&nbsp;N&nbsp;&lt;=&nbsp;20）を求めます<br>1<br>1<br><br>フィボナッチ数列の第N項（0&nbsp;&lt;=&nbsp;N&nbsp;&lt;=&nbsp;93）を求めます<br>50<br>12586269025<br>計算に36550msかかりました。<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例2</span>
+          <button type="button" class="cb53" onclick="copy('12')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="12" class="cb55 bkgdbl">
+int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;20<br>long&nbsp;long&nbsp;:&nbsp;0<br>double&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;2.222<br><br>Nの階乗（0&nbsp;&lt;=&nbsp;N&nbsp;&lt;=&nbsp;20）を求めます<br>20<br>2432902008176640000<br><br>フィボナッチ数列の第N項（0&nbsp;&lt;=&nbsp;N&nbsp;&lt;=&nbsp;93）を求めます<br>60<br>1548008755920<br>計算に4488028msかかりました。<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       再帰呼び出し、難しいですから今理解しなくていいかもしれません。<br>解説です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数オーバーロード（多重定義）</h3>
+        <span class="cb41">
+         C++では、<code>引数リスト</code>が違えば、同じ名前の関数を多重定義することが出来ます。<br>この機能のことを関数オーバーロード、あるいは関数の多重定義と呼びます。<br>この機能によって、複数の型に対して同じ名前で関数を提供することが出来ます。<br>なお、多重定義出来ないC言語では、型ごとに名前が少し違う関数が多数存在します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数オーバーロードの解決</h3>
+        <span class="cb41">
+         オーバーロードされた関数を呼び出すときには、どの関数を呼び出すかの解決がされます。<br>オーバーロード解決は、大きく3つのフェーズで、複雑なルールに基づいて解決されます。<br>大筋としては、一番実引数の並びに近い<code>引数リスト</code>を持つ関数が呼び出されます。<br>ただし、その「近さ」が同じであるような関数が複数存在すると解決は失敗し、エラーです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">例を見せてくれ</h3>
+        <span class="cb41">
+         オーバーロード解決には返り値は関係ないので、<code>引数リスト</code>のみで例を示します。<br><code>f(int),f(double)</code>で<code>f(0),f(0ll),f(0.0)</code>なら、<code>f(int),/*失敗*/,f(double)</code>になります。<br><code>2</code>番目は、どちらに対しても「暗黙の型変換が1回」の「近さ」なのでエラーになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><ruby><rb>delete</rb><rp>（</rp><rt>でりーと</rt><rp>）</rp></ruby>宣言</h3>
+        <span class="cb41">
+         <code>関数本体</code>には<code>delete</code>の方は、指定した関数を呼び出してはいけないことを示します。<br>delete宣言された関数は、呼び出してはいけず、呼び出した場合にはエラーが発生します。<br>つまり、オーバーロード解決の結果、delete宣言された関数に解決するとエラーになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト引数と関数オーバーロード</h3>
+        <span class="cb41">
+         当然、オーバーロードしている関数は名前は同じこそ、別々の関数です。<br>したがって、デフォルト引数もそれぞれに対して別のデフォルト引数を置けます。<br>ただ、デフォルト引数の数が違う場合は、呼び出す関数が何なのか、注意が必要です。<br><code>int&nbsp;f(int,&nbsp;int&nbsp;=&nbsp;0),&nbsp;f(long,&nbsp;long)</code>となっていて、<code>f(0l)</code>と呼び出したとすれば<br><code>f(0l)</code>は<code>int&nbsp;f(int,&nbsp;int&nbsp;=&nbsp;0)</code>に解決されて、エラーが出ることはありません。<br>これは、<code>2</code>フェーズ目に<code>f(long,&nbsp;long)</code>は実引数が足りず、候補から外されるからです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">関数の再帰呼び出し</h3>
+        <span class="cb41">
+         C++の関数は、ある関数が自分自身を呼び出す、再帰呼び出しをすることが出来ます。<br>再帰呼び出しする関数のことを再帰関数などともよび、すごいループとして扱います。<br>再帰呼び出しの例としてよく挙げられる、階乗とフィボナッチ数列を用意しました。<br><code>n</code>の階乗は<code>1～n</code>を掛けた、<code>1!=1,&nbsp;2!=1*2=2&nbsp;,3!=1*2*3</code>のようなものです。<br>フィボナッチ数列は、前回の練習問題で説明したので、説明は省きます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">再帰呼び出しとreturn</h3>
+        <span class="cb41">
+         再帰呼び出しは、単純に関数の本体で、自分自身を呼び出すことを指します。<br>そのため、別にreturn文の<code>返り値</code>の場所に限られたりはしていません。<br>なお、再帰呼び出しの場合だけ、返り値がない関数でも<code>返り値</code>が書けます。<br>つまり、<code>void&nbsp;f()&nbsp;{&nbsp;return&nbsp;f();&nbsp;}</code>ということが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">再帰呼び出しの考え方</h3>
+        <span class="cb41">
+         再帰呼び出しは、ベースケースと再帰ケースに分けて考えることが多いです。<br>ベースケースとは、<code>1</code>の階乗や、フィボナッチ数列の第<code>1,2</code>項のことを言います。<br>つまり、再帰呼び出しをしない、定義されていて値が決まっているようなケースです。<br>一方、再帰ケースは、<code>2</code>以降の階乗や、フィボナッチ数列の第<code>3</code>項以降です。<br>つまり、再帰呼び出しを行って計算する必要がある、ベースケース以外のケースです。<br>全ての再帰ケースは、他の再帰ケースを辿るなどしてベースケースに辿り着くようにします。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ベースケースと再帰ケースの実装</h3>
+        <span class="cb41">
+         それぞれのケースの分け方は、単純にif文などで分岐すれば問題ありません。<br>ベースケースは再帰呼び出しをしないケースなので、先にチェックしてreturnしましょう。<br>すなわち、再帰呼び出し部分を実行しないようにして、再帰呼び出しを止めます。<br>ベースケースで再帰呼び出しを止めないなどすると、一生再帰呼び出しするので注意です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">再帰呼び出しの良い所</h3>
+        <span class="cb41">
+         良い所は、なんといっても単純に複数のケースの値を得て計算できることでしょう。<br>フィボナッチ数列は、ループだと2つ変数を用意して、注意深く実装する必要があります。<br>再帰呼び出しでは、単純に<code>1/2</code>前の項を再帰呼び出しで得ることが出来るので楽です。<br>つまり、関数にしたことで、セマンティクス（意味論）が分かりやすいことや、<br>数学的な定義（<ruby><rb>漸化式</rb><rp>（</rp><rt>ぜんかしき</rt><rp>）</rp></ruby>のことですが）を直感的に実装できる点で優秀です。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">再帰呼び出しの悪い所</h3>
+        <span class="cb41">
+         しかし、何と言っても再帰呼び出しは計算リソースを無駄に使うことが多いです。<br>フィボナッチ数列の場合なら、<code>f(6)</code>の時点で<code>24</code>回もの関数呼び出しが行われます。<br>これについては、<a href="..\..\..\..\..\https:\qiita.com\drken\items\23a4f604fa3f505dd5ad#1-2-%E5%86%8D%E5%B8%B0%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%8C%E8%A4%87%E6%95%B0%E5%9B%9E%E3%81%AE%E5%A0%B4%E5%90%88-%E3%83%95%E3%82%A3%E3%83%9C%E3%83%8A%E3%83%83%E3%83%81%E6%95%B0%E5%88%97">Qiitaの記事</a>の表が分かりやすいですが、<code>f(6)</code>が<code>f(5)/f(4)</code>を、<br>それが<code>f(4)/f(3),f(3)/f(2)</code>を、それが<code>f(3)/f(2),f(2)/f(1),f(2)/f(1),f(1)/f(0)</code>を…<br>のように、既に呼び出した事のある関数を、何度も被って再帰呼び出ししてしまうのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">悪い所がもろバレ</h3>
+        <span class="cb41">
+         悪い所がもろバレするのが、今回は<code>fib</code>関数である、フィボナッチ数列の再帰関数実装です。<br>実行結果を見てもらうとわかりますが、<code>f(50)</code>で<code>36.5</code>秒、<code>f(60)</code>で<code>4488</code>秒かかります。<br>そう、何度も被って再帰呼び出しした分のせいで、かなり実行に時間がかかっています。<br>前回の練習問題の方の、for文実装は<code>0.001</code>秒程度で処理できるので、明らかです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">対策</h3>
+        <span class="cb41">
+         遅くなってしまうのは、既に指摘しているように、無駄な再帰呼び出しがあるからです。<br>1度呼び出したケースの結果を保持すれば、無駄なの再帰呼び出しは省けます。<br>この時には、今後解説する配列などを使用して結果を保持すると良いでしょう。<br>この無駄な再帰呼び出しを防ぐ方法を、メモ化再帰と呼んだりするようです。<br>あるいは、そもそも再帰呼び出しを使わずに、ループで処理しても無駄が省けます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実行時間計測</h3>
+        <span class="cb41">
+         実行時間計測には、標準ライブラリの<code>chrono</code>が便利です。<code>#include&nbsp;&lt;chrono&gt;</code>しましょう。<br>計測開始と計測終了の時刻を、<code>std::chrono::system_clock::now()</code>で入手します。<br>そしてその差を<code>std::chrono::duration_cast</code>関数の引数に入れることで整えます。<br>呼び出すときには、<code>std::chrono::duration_cast&lt;型名&gt;</code>と書いて時間の単位を指定します。<br>この<code>&lt;型名&gt;</code>と書いているのは、今後解説するテンプレートという機能のものです。<br>その関数の返り値に<code>.count()</code>と書いて値を入手、それで<code>std::cout</code>に出力できます。<br>主に<code>std::chrono::duration_cast</code>の<code>型名</code>に指定できる型は以下のようになっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        <code>時間単位</code>に指定できる型
+       </h4>
+       <h4 class="cb45">
+        ナノ秒（-1e9秒）
+       </h4>
+       <span class="cb41">
+        std::chrono::nanoseconds
+       </span>
+       <h4 class="cb45">
+        マイクロ秒（-1e6秒）
+       </h4>
+       <span class="cb41">
+        std::chrono::microseconds
+       </span>
+       <h4 class="cb45">
+        ミリ秒（-1e3秒）
+       </h4>
+       <span class="cb41">
+        std::chrono::milliseconds
+       </span>
+       <h4 class="cb45">
+        秒
+       </h4>
+       <span class="cb41">
+        std::chrono::seconds
+       </span>
+       <h4 class="cb45">
+        分
+       </h4>
+       <span class="cb41">
+        std::chrono::minutes
+       </span>
+       <h4 class="cb45">
+        時
+       </h4>
+       <span class="cb41">
+        std::chrono::hours
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">変数の宣言の<code>auto</code></h3>
+        <span class="cb41">
+         時間計測の計測開始と計測終了の時刻を変数で持つ時、<code>型名</code>を<code>auto</code>と書きました。<br>この<code>auto</code>は、初期化の値に応じて、変数の型を決定する、型推論を意味します。<br><code>std::chrono::duration_cast</code>関数が返す返り値の型は長いので使っています。<br>現在主に使っている、組み込み型などは型名は短いので、<code>auto</code>を使う意味は薄いです。<br>また、今後解説する機能の参照などが付く場合があるので、今は使わないでおきましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説1&nbsp;-&nbsp;<code>add</code>関数の宣言と定義</h3>
+        <span class="cb41">
+         やっぱり<code>add</code>関数ですが、int/long&nbsp;long/double版があり、long版はdelete宣言です。<br>つまり、long版を呼び出してしまうとエラーになってしまう、ということです。<br>また、long&nbsp;long版の<code>add</code>関数は、常に<code>0</code>を返す、バグだらけの関数になっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説2&nbsp;-&nbsp;<code>add</code>関数呼び出し</h3>
+        <span class="cb41">
+         オーバーロード解決は、完全に<code>引数リスト</code>と一致する呼び出しがあればそれが最優先、<br>完全に一致しなかった場合は、暗黙の型変換で変換して呼び出せるかなど「近さ」を<br>考え、1番「近い」関数がただ1つに定まった時のみ解決し、それ以外はエラーです。<br>オーバーロード解決の結果、delete宣言された関数が選ばれてもエラーなので注意しましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説3&nbsp;-&nbsp;<code>fac</code>関数</h3>
+        <span class="cb41">
+         <code>fac</code>関数は、階乗を求める関数で、引数の値の階乗を求めて値を返します。<br>MSVCは<code>unsigned&nbsp;long&nbsp;long</code>が64bitの非負整数なので、<code>21</code>の階乗は表せません。<br>そのため、<code>21</code>以上の階乗を求めさせられた場合は、無条件で<code>0</code>を返しています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説4&nbsp;-&nbsp;<code>fac</code>関数の再帰呼び出し</h3>
+        <span class="cb41">
+         階乗の定義から、<code>0/1</code>の階乗は<code>1</code>として返し、これがベースケースになります。<br><code>2</code>以上の階乗は、再帰ケースになるので、再帰呼び出しして行きます。<br>例えば、<code>fac(5)</code>の場合であれば、以下のように関数が再帰呼び出しし、結果が返されます。<br><code>fac(5)&nbsp;=&nbsp;5*fac(4)&nbsp;=&nbsp;5*4*fac(3)&nbsp;=&nbsp;5*4*3*fac(2)&nbsp;=&nbsp;5*4*3*2*fac(1)&nbsp;=&nbsp;5*4*3*2*1&nbsp;=&nbsp;120</code>
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説5&nbsp;-&nbsp;<code>fib</code>関数</h3>
+        <span class="cb41">
+         <code>fib</code>関数は、フィボナッチ数列を求める関数で、第引数項を求めて値を返します。<br>例によって、MSVCの<code>unsigned&nbsp;long&nbsp;long</code>は第<code>94</code>項以降は表せません。<br>そのため、第<code>94</code>項以降を求めさせられた場合は、無条件で<code>0</code>を返します。<br>ただし、実行結果例のように、数が大きくなると現実的な時間では計算出来ません。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">直接的な解説6&nbsp;-&nbsp;<code>fib</code>関数の再帰呼び出し</h3>
+        <span class="cb41">
+         フィボナッチ数列の定義から、第<code>1/2</code>項は<code>1</code>とし、これがベースケースになります。<br>今回は、第<code>0</code>項を求めるのはエラーだという仕様にしたので、第<code>0</code>項は<code>0</code>が返されます。<br>第<code>3</code>項以降は、再帰ケースになるので、再帰呼び出ししていきます。<br><a href="..\..\..\..\..\https:\qiita.com\drken\items\23a4f604fa3f505dd5ad#1-2-%E5%86%8D%E5%B8%B0%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%8C%E8%A4%87%E6%95%B0%E5%9B%9E%E3%81%AE%E5%A0%B4%E5%90%88-%E3%83%95%E3%82%A3%E3%83%9C%E3%83%8A%E3%83%83%E3%83%81%E6%95%B0%E5%88%97">Qiitaの記事</a>の表を参照してもらった方が分かりやすいので推奨ですが、<br>例えば<code>fib(4)</code>の場合であれば、以下のように再帰呼び出しをし、結果が返されます。<br><code>fib(4)&nbsp;=&nbsp;4*fib(3)*fib(2)&nbsp;=&nbsp;3*fib(2)*fib(1)*fib(1)*fib(0)&nbsp;=&nbsp;4*3*2*1*1*1&nbsp;=&nbsp;24</code>
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照や出典です
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        [dcl.fct]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/dcl.fct
+       </span>
+       <h4 class="cb45">
+        [dcl.fct.def]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/dcl.fct.def
+       </span>
+       <h4 class="cb45">
+        [dcl.fct.default]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/dcl.fct.default
+       </span>
+       <h4 class="cb45">
+        [over]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/over
+       </span>
+       <h4 class="cb45">
+        宣言&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/declarations
+       </span>
+       <h4 class="cb45">
+        関数&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/functions
+       </span>
+       <h4 class="cb45">
+        関数宣言&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/function
+       </span>
+       <h4 class="cb45">
+        定義と&nbsp;ODR&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/definition
+       </span>
+       <h4 class="cb45">
+        関数のdefault／delete宣言&nbsp;-&nbsp;cpprefjp&nbsp;C++日本語リファレンス
+       </h4>
+       <span class="cb41">
+        https://cpprefjp.github.io/lang/cpp11/defaulted_and_deleted_functions.html
+       </span>
+       <h4 class="cb45">
+        オーバーロード解決&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/overload_resolution
+       </span>
+       <h4 class="cb45">
+        関数の創世から深淵まで駆け抜ける関数とはなんぞや講座&nbsp;-&nbsp;Qiita
+       </h4>
+       <span class="cb41">
+        https://qiita.com/yumetodo/items/cdfb41781d32d98be1b4
+       </span>
+       <h4 class="cb45">
+        再帰関数を学ぶと、どんな世界が広がるか&nbsp;-&nbsp;Qiita
+       </h4>
+       <span class="cb41">
+        https://qiita.com/drken/items/23a4f604fa3f505dd5ad
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="..\..\..\..\..\images\top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
