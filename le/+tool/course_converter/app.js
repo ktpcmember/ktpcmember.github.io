@@ -625,10 +625,10 @@ ${right_base}
 		let ex = function () {
 			let res = /attribute\s+(.+?);/msg.exec(req);
 			return res[1] || "";
-		}
+		}();
 
 		if (str.endsWith("\n")) {
-			str.pop();
+			str.slice(0, -1);
 		}
 
 		return `     <article ${ex}>
