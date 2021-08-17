@@ -9,7 +9,7 @@ name = "C++ on MSVC講習"
 top = "le\_cps\_cps.html"
 index = "le\_cps\m\i_dx\i_dx.html"
 before = "le\_cps\ktpcmd\m\wfor\wfor.html"
-next = ""
+next = "le\_cps\ktpcmd\m\ptr\ptr.html"
 </header>
 
 <main>
@@ -500,11 +500,11 @@ long long : 0
 double    : 2.222
 
 Nの階乗（0 <= N <= 20）を求めます
-1
+$ 1
 1
 
 フィボナッチ数列の第N項（0 <= N <= 93）を求めます
-50
+$ 50
 12586269025
 計算に36550msかかりました。
 ```
@@ -515,11 +515,11 @@ long long : 0
 double    : 2.222
 
 Nの階乗（0 <= N <= 20）を求めます
-20
+$ 20
 2432902008176640000
 
 フィボナッチ数列の第N項（0 <= N <= 93）を求めます
-60
+$ 60
 1548008755920
 計算に4488028msかかりました。
 ```
