@@ -342,8 +342,24 @@
 				<article class="cb21 fxlr">
 					<div class="cb31">
 						<span class="cb41">
-							このように対応付けられます（下位ビットから数えることに注意です）。そのため、ポートA側としては、RA5のみが入力端子で、その他は出力端子として設定されます。
+							このように対応付けられます（下位ビットから数えることに注意です）。そのため、ポートA側としては、RA5のみが入力端子で、その他は出力端子として設定されます。<br>
+							今回は、LEDを接続する端子を出力に設定します。また、この時ピンがたくさん余ると思いますが、この端子にも「出力/入力」を割り当てなくてはいけません。その時は「出力」に設定しましょう。ここでもし「入力」にしてしまうと、無駄なノイズを拾ってしまい、PICに悪影響を及ぼす可能性があります（デジタル編Part2）。「出力」にすることで意図しない読み取りをなくします。よって以下のようになります。
 						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('ansel')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="ansel" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">TRISA <span class="wdsl">=</span> <span class="wdnr">0x20</span><span class="wdsl">;</span>
+TRISB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
 					</div>
 				</article>
 				<article class="cb21 fxlr">
@@ -439,9 +455,61 @@ RB7 <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;<
 					<div class="cb31">
 						<span class="cb41">
 							などとすることで、ビット単位での書き込み、すなわち、他の端子の出力をそのままにその端子の電位のみを変化させることができます（正確には端子の状態を読み取ってそれとマージする）。この例だと、RA2、RB4がHになり、RB7がLになります。<br>
+							ここで、最初に各出力端子の電位を決定しておかないと、出力端子の電位が不安定になってしまいます。そのため、最初に決めておく必要があります。使わない端子もあるため、HとLのどちらでもいいのですが、とりあえずすべてLにしておきましょう。以下のようになります。
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('portEx')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="portEx" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">PORTA <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+PORTB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
 
 						</span>
 					</div>
+				</article>
+				<article class="cb21 fxtb">
+					<h2 class="cb33">while文</h2>
+					<span class="cb34">
+						さて、ここまではPICの初期設定について見ていきましたが、ここからはメインの部分に入っていきます。PC上で動かすプログラムでは、処理が終わると終了するのが一般的です。対してPICのプログラムでは、電源が入ってからプログラムが開始し、電源が切れるまで処理を実行し続けます。そのため電源が供給されている間、処理は終わることなく常に何らかの処理をしています。では、何もせずこのままmain関数を終了したらどうなるでしょうか。これはマイコンの仕様によりますが、本来プログラムとして実行すべきでない所をプログラムだと解釈して実行する可能性があり、危険です。そのため、処理を終えさせないようにする必要があります。以下のコードを見てください。
+					</span>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('foreverLoop')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="foreverLoop" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">処理A<span class="wdsl">;</span>
+<span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    処理B<span class="wdsl">;</span>
+    処理C<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxtb">
+					<span class="cb34">
+						プログラムは原則として上から順番に実行される、と言いましたが、ここでこの原則に反する挙動をします。このプログラムは、処理A→処理B→処理C→処理B→処理C→...のように実行されます。すなわち、<code class="paghco"><span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span></code>のブロック<code class="paghco"><span class="wdsl">{</span> <span class="wdsl">}</span></code>の終わりに到達すると、ブロックの先頭に戻るというわけです。言い方を変えると、ブロック内の処理を無限に繰り返すということです。また、ブロック内の文が一つしかない場合、<code class="paghco"><span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span> 処理A<span class="wdsl">;</span> <span class="wdsl">}</span></code>を<code class="paghco"><span class="wdkywd">while</span> <span class="wdsl">(</span><span class="wdnr">1</span><span class="wdsl">)</span> 処理A<span class="wdsl">;</span></code>と書くことができます。while文に関しては後章で詳しく解説するので、ここでは無限ループをする際の記述であることを知って入れば十分です。<br>
+
+					</span>
 				</article>
 				<article class="cb21 fxtb">
 					<h2 class="cb33">練習問題 Task1</h2>
