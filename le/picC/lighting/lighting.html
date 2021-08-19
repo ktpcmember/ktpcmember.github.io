@@ -88,8 +88,6 @@
 						<span class="cb41">プログラムはここから始まる</span>
 						<h4 class="cb45">文</h4>
 						<span class="cb41">1つの処理単位</span>
-						<h4 class="cb45">レジスタ</h4>
-						<span class="cb41">値を記憶する、PICのメモリの一つ</span>
 					</div>
 					<div class="cb36 debr">
 						<h4 class="cb44">必要語</h4>
@@ -266,17 +264,189 @@
 				<article class="cb21 fxrl">
 					<img class="cb32" src="autoFormat.png">
 				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+
+						</span>
+					</div>
+				</article>
 				<article class="cb21 fxtb">
 					<h2 class="cb33">レジスタ</h2>
 					<span class="cb34">
-						under preparation<br>
-
+						前に説明したように、PICのピンには様々な機能があります。ここでは、その機能をどのように制御するのかを見ていきます。PICには、レジスタというメモリがあります。レジスタに値を書き込んだり、レジスタの値を読み込んだりすることによって、外部の部品を制御したり、外部の状況を取得したりすることができます。
 					</span>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">値の書き込み</h3>
+						<span class="cb41">
+							レジスタに値を書き込むためには、以下のような構文を使います。
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('assReg')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="assReg" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">レジスタ名 <span class="wdsl">=</span> 数値<span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							数値のところには、<code class="paghco"><span class="wdnr">30</span></code>などとそのまま書けば、十進数として解釈されますし、前に文字をつけることで、別の位取り記数法で表すこともできます。前につける文字が、<code class="paghco"><span class="wdnr">0b</span></code>なら二進数、<code class="paghco"><span class="wdnr">0</span></code>なら八進数、<code class="paghco"><span class="wdnr">0x</span></code>なら十六進数として解釈されます。そのため、<code class="paghco"><span class="wdnr">0b11110</span></code>、<code class="paghco"><span class="wdnr">30</span></code>、<code class="paghco"><span class="wdnr">036</span></code>、<code class="paghco"><span class="wdnr">0x1E</span></code>はすべて十進数の30を表します。また、<code class="paghco"><span class="wdnr">0b00011110</span></code>のようにゼロパディング（先頭に余分に0をつけて桁をそろえること）をしてもいいです。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">入力と出力</h3>
+						<span class="cb41">
+							PICの端子は、その端子の電圧を読み取ることができる入力、もしくは、その端子を指定の電圧にできる出力の、どちらかを行うことができます。基本的にすべての端子は、入力端子と出力端子のどちらにも設定できるのですが、16F1827の場合、RA5のみは入力端子にしか設定できないので、注意してください。<br>
+							TRISAとTRISBというレジスタによって操作することができます。TRISAでポートA側を、TRISBでポートB側を設定します。<code class="paghco"><span class="wdnr">0</span></code>で出力、<code class="paghco"><span class="wdnr">1</span></code>で入力です。例えば、
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('trisa')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="trisa" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">TRISA <span class="wdsl">=</span> <span class="wdnr">0x20</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							と書いたら、
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="ansel.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							このように対応付けられます（下位ビットから数えることに注意です）。そのため、ポートA側としては、RA5のみが入力端子で、その他は出力端子として設定されます。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">デジタルとアナログ</h3>
+						<span class="cb41">
+							PICの端子は、その端子の電位を0か1かの二値で表すデジタル端子と、連続的な（といっても精度に限界はありますが）値で表すアナログ端子の、どちらかを割り当てることができます。ほとんどの端子は、デジタル端子とアナログ端子のどちらにも設定できるのですが、16F1827の場合、RA5～7とRB0はデジタル端子にしか設定できないので注意してください（アナログ端子の場合はRA0などではなくAN0などと呼びます）。<br>
+							ANSELAとANSELBというレジスタによって操作することができます。ANSELはANalog SELectの略です。ANSELAでポートA側を、ANSELBでポートB側を設定します。<code class="paghco"><span class="wdnr">0</span></code>でデジタル、<code class="paghco"><span class="wdnr">1</span></code>でアナログです。今回はすべてデジタルにするので<code class="paghco"><span class="wdnr">0x00</span></code>を代入しています。
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('ansel')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="ansel" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">ANSELA <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+ANSELB <span class="wdsl">=</span> <span class="wdnr">0x00</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							「入力/出力」と「デジタル/アナログ」、PICの端子はおもにこの2つの組み合わせによってその役割が決まります。以下の表をイメージするとよいでしょう。
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="IOandAD.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<h3 class="cb40">電位を変化させる</h3>
+						<span class="cb41">
+							さて、端子をデジタル出力端子に設定したところで、この出力を変化させられなければPICの意味がありません。そこで、この出力を変化させてみます。そのためには、PORTAとPORTBというレジスタを使います。このレジスタのbitに<code class="paghco"><span class="wdnr">0</span></code>を書き込むとL（ロー）、<code class="paghco"><span class="wdnr">1</span></code>を書き込むとH（ハイ）になります。例えば
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('port')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="port" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">PORTA <span class="wdsl">=</span> <span class="wdnr">0b00010100</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							とすると、この対応は、ANSELのときと同様に、
+						</span>
+					</div>
+				</article>
+				<article class="cb21 fxrl">
+					<img class="cb32" src="port.png">
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							このようになっています（PORTBも同様）から、RA2、RA4がHになり、RA0、RA1、RA3、RA6、RA7がLになります。RA5は入力端子なので、出力は設定されませんが、このように書き込んでも問題ありません（無視されるだけです）。また、レジスタ単位での書き込みは少々面倒なこともあるので、
+						</span>
+					</div>
+				</article>
+				<article class="cb21">
+					<div class="cb37">
+						<div class="cb46">
+							<button type="button" class="cb53" onclick="copy('portBit')">
+								<span class="cb61">COPY</span>
+							</button>
+						</div>
+						<code class="cb47">
+<pre id="portBit" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco">RA2 <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+RB4 <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+RB7 <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+</span></span></pre>
+						</code>
+					</div>
+				</article>
+				<article class="cb21 fxlr">
+					<div class="cb31">
+						<span class="cb41">
+							などとすることで、ビット単位での書き込み、すなわち、他の端子の出力をそのままにその端子の電位のみを変化させることができます（正確には端子の状態を読み取ってそれとマージする）。この例だと、RA2、RB4がHになり、RB7がLになります。<br>
+
+						</span>
+					</div>
 				</article>
 				<article class="cb21 fxtb">
 					<h2 class="cb33">練習問題 Task1</h2>
 					<span class="cb34">
-						図のように、RB0~RB3にLEDを4つつけましょう。それぞれ、LED1~LED4と呼ぶことにします。 ここで、LED1,2,4が点灯し、LED3のみが消灯するようにしてください。すなわち、oxoo（o:点灯,x:消灯）のようにしてください。
+						図のように、RB0~RB3にLEDを4つつけましょう。それぞれ、LED1~LED4と呼ぶことにします。 ここで、LED1、2、4が点灯し、LED3のみが消灯するようにしてください。すなわち、oxoo（o:点灯、x:消灯）のようにしてください。
 					</span>
 				</article>
 				<article class="cb21 fxrl">
