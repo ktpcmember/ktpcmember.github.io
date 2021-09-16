@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPICマイコン講習（C言語）の資料です。二分探索について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>二分探索 - 競技プログラミング講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133906591-2');
+  </script>
+</head>
+
+<body>
+  <header class="ch00">
+    <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+    <div class="ch01">
+      <div class="ch10">
+        <div class="ch21">
+          <button type="button" class="ch31" onclick="ck()">
+            <img class="ch42" src="../../../images/menu.png">
+          </button>
+        </div>
+        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">駒場東邦物理部</span>
+            </span>
+            <a class="ch41" href="../../../index.html">
+              <span class="ch50">トップページ</span>
+            </a>
+            <a class="ch41" href="../../le.html">
+              <span class="ch50">講習トップ</span>
+            </a>
+          </div>
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">PIC講習（C言語）</span>
+            </span>
+            <a class="ch41" href="../bitSearch/bitSearch.html">
+              <span class="ch50">前回</span>
+            </a>
+            <a class="ch41" href="../none.html">
+              <span class="ch50">索引</span>
+            </a>
+            <a class="ch41" href="../next/next.html">
+              <span class="ch50">次回</span>
+            </a>
+            <a class="ch41" href="../k_c_pej_p_gm.html">
+              <span class="ch50">目次</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cb00">
+      <div class="cb10">
+        <article class="cb20">
+          <h1>競技プログラミング講習/二分探索</h1>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">概要</h2>
+          <span class="cb34">
+            今回は、二分探索について解説します。今まではどのように探索するかを解説してきましたが、今回は探索を高速化する方法です。計算量を見積もってみて、愚直にやると間に合わないが、二分探索を使うと計算量が削減できて間に合う場合があります。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb36 debr">
+            <h4 class="cb44">重要語</h4>
+            <h4 class="cb45">二分探索</h4>
+            <span class="cb41">（広義）単調増加の配列の中からある特定の値を探索する</span>
+            <h4 class="cb45">log<sub>a</sub>N</h4>
+            <span class="cb41">Nがaの何乗かを表す</span>
+          </div>
+          <div class="cb36 debr">
+            <h4 class="cb44">必要語</h4>
+            <span class="cb41">今回の必要語はありません。</span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">二分探索</h2>
+          <span class="cb34">
+            二分探索は、「要素数Nの配列Aの中に、K以下の数は何個あるか」といった問題の時に役立ちます。具体的には、Q個のクエリが投げられて、各クエリは、「K<sub>i</sub>以下の数は、配列Aの中に何個あるか」というもので、制約は以下の通りです。<br>
+            <ul>
+              <li>1 &le; N, Q &le; 2&times;10<sup>5</sup></li>
+              <li>0 &le; K &le; 10<sup>9</sup></li>
+              <li>0 &le; A<sub>i</sub> &le; 10<sup>9</sup></li>
+              <li>i &ne; jのときA<sub>i</sub> &ne; A<sub>j</sub></li>
+              <li>入力はすべて整数</li>
+            </ul>
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">愚直にやってみる</h3>
+            <span class="cb41">
+              まずは素直に、N個すべての要素をチェックして求めてみましょう。この時の計算量はO(QN)です。しかし、制約を見ると、N及びQが最大で2&times;10<sup>5</sup>となるため、これではTLEです。 そこで活躍するのが、二分探索です。ここから、二分探索のやり方を見ていきましょう。
+            </span>
+          </div>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">愚直解</span>
+              <button type="button" class="cb53" onclick="copy('greedy')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+<pre id="greedy" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">,</span> q<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> n <span class="wdsl">&gt;&gt;</span> q<span class="wdsl">;</span>
+    vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> a<span class="wdsl">(</span>n<span class="wdsl">);</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+    <span class="wdc_mt">// ここでQ回
+</span>    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> q<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">int</span> k<span class="wdsl">;</span>
+        cin <span class="wdsl">&gt;&gt;</span> k<span class="wdsl">;</span>
+        <span class="wdkywd">int</span> ans <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+        <span class="wdc_mt">// ここでN回
+</span>        <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> j <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> j <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> j<span class="wdsl">++)</span> <span class="wdsl">{</span>
+            <span class="wdkywd">if</span> <span class="wdsl">(</span>a<span class="wdsl">[</span>j<span class="wdsl">]</span> <span class="wdsl">&lt;=</span> k<span class="wdsl">)</span> <span class="wdsl">{</span>
+                ans<span class="wdsl">++;</span>
+            <span class="wdsl">}</span>
+        <span class="wdsl">}</span>
+        cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">ソート</h3>
+            <span class="cb41">
+              ここで、例として下図のような配列Aを考えてみます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="orginal.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              ここで突然ですが、Aを昇順（小さい順）にソートします。ソートすることによって答えが変わることはありませんので、この操作は問題ありません。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="sorted.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">言い換えを考える</h3>
+            <span class="cb41">
+              では、ソートされたこの状態で、K以下の数がいくつあるかが知りたいわけですが、例えばKが2のときを考えてましょう。 2以下の数というのは、図の青い矢印の部分です。また、5の時も考えてみると、図の赤い矢印の部分です。 ここで、ソートした重要性が見えてきたでしょうか。K以下の数は必ず、0から「ぎりぎりKを超えないところ」までにあるのです。 では、この「ぎりぎりKを超えないところ」はどのように見つければよいでしょうか。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="range.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">具体的に考える</h3>
+            <span class="cb41">
+              Kが5の時を考えてみます。この時、Aをグラフにすると以下のようになります。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="graph.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">右端と左端を近づける</h3>
+            <span class="cb41">
+              左端を<code class="paghco">l</code>右端を<code class="paghco">r</code>として、これを徐々に近づけていくことにします。 まず、<code class="paghco">l</code>と<code class="paghco">r</code>の中間すなわち<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>の部分を見ます。そして、ここが条件を満たしているかどうかを判定します。 まず、<code class="paghco">l</code>の初期値は必ず条件を満たしていないように、<code class="paghco">r</code>の初期値は必ず条件を満たすようにする必要があります。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">under preparation</h3>
+            <span class="cb41">
+
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">練習問題</h2>
+          <span class="cb34">
+            理解できたか確認するために、練習問題があります。以下の問題を解いてみてください。<br>
+            under preparation
+          </span>
+        </article>
+      </div>
+    </div>
+    <footer class="cf00">
+      <div class="cf10">
+        <button class="cf21" onclick="tp()">
+          <img class="cf30" src="../../../images/top.png">
+        </button>
+        <span class="cf20">
+          (C) 2020 駒場東邦物理部[KTPC]
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
