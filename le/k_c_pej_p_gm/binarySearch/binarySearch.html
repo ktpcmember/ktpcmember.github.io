@@ -95,7 +95,7 @@
         <article class="cb21 fxtb">
           <h2 class="cb33">二分探索</h2>
           <span class="cb34">
-            二分探索は、「要素数Nの配列Aの中に、K以下の数は何個あるか」といった問題の時に役立ちます。具体的には、Q個のクエリが投げられて、各クエリは、「K<sub>i</sub>以下の数は、配列Aの中に何個あるか」というもので、制約は以下の通りです。<br>
+            二分探索は、「要素数Nの配列Aの中に、K以下の数は何個あるか」といった問題の時に役立ちます。具体的には、Q個のクエリが投げられて、各クエリは、「K<sub>i</sub>以下の数は、配列Aの中に何個あるか」という問題を考えてみます。制約は以下の通りです。<br>
             <ul>
               <li>1 &le; N, Q &le; 2&times;10<sup>5</sup></li>
               <li>0 &le; K &le; 10<sup>9</sup></li>
@@ -129,9 +129,7 @@
     <span class="wdkywd">int</span> n<span class="wdsl">,</span> q<span class="wdsl">;</span>
     cin <span class="wdsl">&gt;&gt;</span> n <span class="wdsl">&gt;&gt;</span> q<span class="wdsl">;</span>
     vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> a<span class="wdsl">(</span>n<span class="wdsl">);</span>
-    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
-        cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
-    <span class="wdsl">}</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
     <span class="wdc_mt">// ここでQ回
 </span>    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> q<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
         <span class="wdkywd">int</span> k<span class="wdsl">;</span>
@@ -187,7 +185,7 @@
           <div class="cb31">
             <h3 class="cb40">具体的に考える</h3>
             <span class="cb41">
-              Kが5の時を考えてみます。この時、Aをグラフにすると以下のようになります。
+              Kが4の時を考えてみます。この時、Aをグラフにすると以下のようになります。
             </span>
           </div>
         </article>
@@ -196,17 +194,133 @@
         </article>
         <article class="cb21 fxlr">
           <div class="cb31">
-            <h3 class="cb40">右端と左端を近づける</h3>
             <span class="cb41">
-              左端を<code class="paghco">l</code>右端を<code class="paghco">r</code>として、これを徐々に近づけていくことにします。 まず、<code class="paghco">l</code>と<code class="paghco">r</code>の中間すなわち<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>の部分を見ます。そして、ここが条件を満たしているかどうかを判定します。 まず、<code class="paghco">l</code>の初期値は必ず条件を満たしていないように、<code class="paghco">r</code>の初期値は必ず条件を満たすようにする必要があります。
+              この時、探索領域の左端を<code class="paghco">l</code>、右端を<code class="paghco">r</code>として、<code class="paghco">l</code>の指す値は必ず5以下になっているように、<code class="paghco">r</code>の指す値は必ず4より大きくなっているように維持しながら、探索領域を狭めていくことを考えます。<br>
+              まず、<code class="paghco">l</code>を0、<code class="paghco">r</code>を9とすると、条件を満たします。次に、<code class="paghco">l</code>と<code class="paghco">r</code>の（相加）平均値（の切り捨て）を見ます。すなわち、4（=floor((0+9)/2)）を見ます。<code class="paghco">A<span class="wdsl">[</span><span class="wdnr">4</span><span class="wdsl">]</span></code>は3、すなわち4以下なので、<code class="paghco">l</code>を4にします。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="step1.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              次に、再び<code class="paghco">l</code>と<code class="paghco">r</code>の平均値を見ます。floor((4+9)/2)=6で、<code class="paghco">A<span class="wdsl">[</span><span class="wdnr">6</span><span class="wdsl">]</span></code>は5、すなわち4より大きいので、<code class="paghco">r</code>を6にします。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="step2.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              さらに、<code class="paghco">l</code>と<code class="paghco">r</code>の平均値を見ます。floor((4+6)/2)=5で、<code class="paghco">A<span class="wdsl">[</span><span class="wdnr">5</span><span class="wdsl">]</span></code>は4、すなわち4以下なので、<code class="paghco">l</code>を5にします。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="step3.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              ここで、<code class="paghco">l</code>と<code class="paghco">r</code>の差が1になったので、探索を終了します。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="step4.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              この時、<code class="paghco">A<span class="wdsl">[</span>l<span class="wdsl">]</span></code>は必ず4以下、<code class="paghco">A<span class="wdsl">[</span>r<span class="wdsl">]</span></code>は必ず4より大きいという状態が保たれるように、<code class="paghco">l</code>と<code class="paghco">r</code>を近づけていったので、<code class="paghco">l</code>は4以下の中で最も左端、<code class="paghco">r</code>は4より大きい中でももっとも右端にあります。したがって、4以下の数は添え字が0からlまでの区間（両端含む）にあり、それ以外にはありません。よって、この時の答えは<code class="paghco">l<span class="wdsl">+</span><span class="wdnr">1</span></code>個（＝<code class="paghco">r</code>個）です。
             </span>
           </div>
         </article>
         <article class="cb21 fxlr">
           <div class="cb31">
-            <h3 class="cb40">under preparation</h3>
+            <h3 class="cb40">もう少し一般化</h3>
+            <span class="cb41">
+              <code class="paghco">A<span class="wdsl">[</span>l<span class="wdsl">]</span></code>は必ずK以下、<code class="paghco">A<span class="wdsl">[</span>r<span class="wdsl">]</span></code>は必ずKより大きいという条件を保ったまま探索していきます。ここで、先ほどは<code class="paghco">l</code>を0、<code class="paghco">r</code>をN-1としてきましたが、これでは最初から条件を満たさない場合があります（先ほどの例でK=100の時など）。そこで、<code class="paghco">l</code>を-1、<code class="paghco">r</code>をNとします。一見、範囲外アクセスをしそうですが、実はそのようなことは起こりません。なぜなら、実際に配列の値を見るのは<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>です。<code class="paghco">l</code>と<code class="paghco">r</code>の差が1の時は探索を終了しますから、最も近くても<code class="paghco"><span class="wdsl">(-</span><span class="wdnr">1</span><span class="wdsl">+</span><span class="wdnr">1</span><span class="wdsl">)/</span><span class="wdnr">2</span></code>で0になり、<code class="paghco"><span class="wdsl">(</span>N<span class="wdsl">-</span><span class="wdnr">2</span><span class="wdsl">+</span>N<span class="wdsl">)/</span><span class="wdnr">2</span></code>でN-1となります。よって、これでも範囲外アクセスを起こすことなく、番兵の存在を仮定して考えることができます。これで<code class="paghco">l</code>と<code class="paghco">r</code>の初期値が決まりました。ここから、<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>を見て、<code class="paghco">A<span class="wdsl">[(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span><span class="wdsl">]</span></code>がK以下なら、<code class="paghco">l</code>を<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>に、そうでなければ<code class="paghco">r</code>を<code class="paghco"><span class="wdsl">(</span>l<span class="wdsl">+</span>r<span class="wdsl">)/</span><span class="wdnr">2</span></code>にします。最終的に<code class="paghco">l</code>と<code class="paghco">r</code>の差が1になったら探索を終了します。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">計算量</h3>
+            <span class="cb41">
+              では、この時の計算量はどうなるでしょうか。一回の探索ごとに、探索領域はおよそ二分の一になっています。例えば先ほどの例だと、10->6->3->2と、確かにおよそ二分の一ずつ減っています。Nの時は、N->N/2->N/4->...くらいとなることが予想されます。ここで、logという対数関数を考えます。一般に、1でない正の実数aと正の実数Nに対し、N=a<sup>p</sup>となる実数pはただ1つに定まるので、これをlog<sub>a</sub>Nと表します。平たく言えば、これは、「Nはaの何乗か」です。例えば、log<sub>2</sub>8=3、log<sub>3</sub>9=2です。よって、この対数関数を使って表すと、探索回数はおよそlog<sub>2</sub>N回と言うことができます。よって、1回あたりの計算量はO(log N)です。O記法では、底（前述の例のaをこう言い、「てい」と読みます）の違いは定数倍だとみなされるので、省略することが多いです。<br>
+              さて、具体的にO(log N)はどれほど高速なのでしょうか。今回はNは最大で2&times;10<sup>5</sup>なので、log<sub>2</sub>2&times;10<sup>5</sup>=17.6...となり、およそ18回くらいの探索で終了するということがわかります。愚直に探索するとそのまま2&times;10<sup>5</sup>回の探索が必要でしたから、劇的な高速化に成功しました。全体としての計算量はO(Q log N)となり、十分高速です。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">実装例</h3>
             <span class="cb41">
 
+            </span>
+          </div>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">実装例</span>
+              <button type="button" class="cb53" onclick="copy('binSer')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+<pre id="binSer" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">,</span> q<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> n <span class="wdsl">&gt;&gt;</span> q<span class="wdsl">;</span>
+    vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> a<span class="wdsl">(</span>n<span class="wdsl">);</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> n<span class="wdsl">;</span> i<span class="wdsl">++)</span> cin <span class="wdsl">&gt;&gt;</span> a<span class="wdsl">[</span>i<span class="wdsl">];</span>
+
+    <span class="wdc_mt">// aをソート
+</span>    sort<span class="wdsl">(</span>a.begin<span class="wdsl">(),</span> a.end<span class="wdsl">());</span>
+
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> qi <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> qi <span class="wdsl">&lt;</span> q<span class="wdsl">;</span> qi<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        <span class="wdkywd">int</span> k<span class="wdsl">;</span>
+        cin <span class="wdsl">&gt;&gt;</span> k<span class="wdsl">;</span>
+        <span class="wdc_mt">// l,rと平均用のmidを宣言
+</span>        <span class="wdkywd">int</span> l <span class="wdsl">=</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">,</span> r <span class="wdsl">=</span> n<span class="wdsl">,</span> mid<span class="wdsl">;</span>
+        <span class="wdc_mt">// r-lでもいいが、lとrが入れ替わった時などにバグらせづらくなるのでabsをつけた方がおすすめ
+</span>        <span class="wdkywd">while</span> <span class="wdsl">(</span>abs<span class="wdsl">(</span>l <span class="wdsl">-</span> r<span class="wdsl">)</span> <span class="wdsl">&gt;</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+            <span class="wdc_mt">// midをl,rの平均に
+</span>            mid <span class="wdsl">=</span> <span class="wdsl">(</span>l <span class="wdsl">+</span> r<span class="wdsl">)</span> <span class="wdsl">/</span> <span class="wdnr">2</span><span class="wdsl">;</span>
+            <span class="wdc_mt">// a[mid]がk以下かどうか見る
+</span>            <span class="wdkywd">if</span> <span class="wdsl">(</span>a<span class="wdsl">[</span>mid<span class="wdsl">]</span> <span class="wdsl">&lt;=</span> k<span class="wdsl">)</span> <span class="wdsl">{</span>
+                l <span class="wdsl">=</span> mid<span class="wdsl">;</span>
+            <span class="wdsl">}</span> <span class="wdkywd">else</span> <span class="wdsl">{</span>
+                r <span class="wdsl">=</span> mid<span class="wdsl">;</span>
+            <span class="wdsl">}</span>
+        <span class="wdsl">}</span>
+        cout <span class="wdsl">&lt;&lt;</span> l <span class="wdsl">+</span> <span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">一般化</h2>
+          <span class="cb34">
+            under preparation
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">under preparation</h3>
+            <span class="cb41">
+              under preparation
             </span>
           </div>
         </article>
