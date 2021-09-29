@@ -1,0 +1,44 @@
+
+{.; ; (c.convertSbS8 (' "<!DOCTYPE html><html>" (hh.content) (hb.content) "</html>"))}
+
+[Html header]
+{hh.content; ;
+  ('
+    "<head>"
+    "<meta charset=\"UTF-8\">"
+    "<meta name=\"keywords\" content=\"駒場東邦物理部,駒場東邦,駒東,KTPC,物理部," (hh.keyword) "\">"
+    "<meta name=\"description\" content=\"" (hh.description) "\">"
+    "<meta name=\"author\" content=\"駒場東邦物理部\">"
+    "<meta http-equiv=\"content-language\" content=\"ja\">"
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">"
+    "<title>" (hh.title) "</title>"
+    "<link rel=\"icon\" type=\"image/jpeg\" href=\"../../images/logo.jpg\">"
+    "<link rel=\"stylesheet\" type=\"text/css\" href=\"default.css\">"
+    "<link rel=\"stylesheet\" type=\"text/css\" media=\"(max-width:800px)\" href=\"narrow.css\">"
+    "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133906591-2\"></script>"
+    "<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2');</script>"
+    "</head>"
+  )
+}
+
+{hb.content; ;
+  (hb.tagE "body"
+    (hb.tagCE "header" "hHeader"
+       (hb.image "hBanner" "../../images/br.jpg")
+    )
+  )
+}
+
+{hb.attribute Name Value; ; (' " " Name "=\"" Value "\"")}
+{hb.tag Tag; ; (' "<" Tag ">")}
+{hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">")}
+{hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">" Content "</" Tag ">")}
+{hb.tagE Tag Content; ; (hb.tagAE Tag "" Content)}
+{hb.tagAC Tag Class Attribute; ; (hb.tagA Tag (' (hb.attribute "class" Class) Attribute))}
+{hb.tagACE Tag Class Attribute Content; ; (hb.tagAE Tag (' (hb.attribute "class" Class) Attribute) Content)}
+{hb.tagCE Tag Class Content; ; (hb.tagACE Tag Class "" Content)}
+
+{hb.image Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
+
+
+
