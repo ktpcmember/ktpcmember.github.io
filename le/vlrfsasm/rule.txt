@@ -22,9 +22,25 @@
 }
 
 {hb.content; ;
-  (hb.tagE "body"
+  (hb.tagCE "body" "hBody"
     (hb.tagCE "header" "hHeader"
-       (hb.image "hBanner" "../../images/br.jpg")
+       (hb.imageC "hBanner" "../../images/br.jpg")
+    )
+    (hb.tagCE "div" "hUnderside"
+      (hb.tagCE "div" "hMenuBack"
+        (hb.tagCE "div" "hMenuButtonBack"
+          (hb.tagACE "button" "hMenuButton"
+            (hb.attribute "onclick" "ck()")
+            (hb.imageC "hMenuButtonImage" "../../images/menu.jpg")
+          )
+        )
+      )
+      (hb.tagCE "div" "hFieldBack"
+        (c.empty)
+      )
+      (hb.tagCE "div" "hFooterBack"
+        (c.empty)
+      )
     )
   )
 }
@@ -32,13 +48,14 @@
 {hb.attribute Name Value; ; (' " " Name "=\"" Value "\"")}
 {hb.tag Tag; ; (' "<" Tag ">")}
 {hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">")}
+{hb.tagC Tag Class; ; (hb.tagA Tag (hb.attribute "class" Class))}
 {hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">" Content "</" Tag ">")}
 {hb.tagE Tag Content; ; (hb.tagAE Tag "" Content)}
 {hb.tagAC Tag Class Attribute; ; (hb.tagA Tag (' (hb.attribute "class" Class) Attribute))}
 {hb.tagACE Tag Class Attribute Content; ; (hb.tagAE Tag (' (hb.attribute "class" Class) Attribute) Content)}
 {hb.tagCE Tag Class Content; ; (hb.tagACE Tag Class "" Content)}
 
-{hb.image Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
+{hb.imageC Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
 
 
 
