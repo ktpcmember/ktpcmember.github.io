@@ -1,6 +1,10 @@
 
 {.; ; (c.convertSbS8 (' "<!DOCTYPE html><html>" (hh.content) (hb.content) "</html>"))}
 
+[Html File Path]
+{hp.rootPath; ; (c.repeat "../" (hp.depth))}
+{hp.getRelativePath AbsolutePath; ; (' (hp.rootPath) AbsolutePath)}
+
 [Html header]
 {hh.content; ;
   ('
@@ -12,7 +16,7 @@
     "<meta http-equiv=\"content-language\" content=\"ja\">"
     "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">"
     "<title>" (hh.title) "</title>"
-    "<link rel=\"icon\" type=\"image/jpeg\" href=\"../../images/logo.jpg\">"
+    "<link rel=\"icon\" type=\"image/jpeg\" href=\"" (hp.getRelativePath "images/logo.jpg") "\">"
     "<link rel=\"stylesheet\" type=\"text/css\" href=\"default.css\">"
     "<link rel=\"stylesheet\" type=\"text/css\" media=\"(max-width:800px)\" href=\"narrow.css\">"
     "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133906591-2\"></script>"
@@ -21,25 +25,29 @@
   )
 }
 
+[Html Body]
+
 {hb.content; ;
   (hb.tagCE "body" "hBody"
-    (hb.tagCE "header" "hHeader"
-       (hb.imageC "hBanner" "../../images/br.jpg")
-    )
-    (hb.tagCE "div" "hUnderside"
-      (hb.tagCE "div" "hMenuBack"
-        (hb.tagCE "div" "hMenuButtonBack"
-          (hb.tagACE "button" "hMenuButton"
-            (hb.attribute "onclick" "ck()")
-            (hb.imageC "hMenuButtonImage" "../../images/menu.jpg")
+    ('
+      (hb.tagCE "header" "hHeader"
+        (hb.image "hBanner" (hp.getRelativePath "images/br.jpg"))
+      )
+      (hb.tagCE "div" "hBeneathHeader"
+        (hb.tagCE "div" "hMenuSide"
+          (hb.tagCE "div" "hMenuBack"
+            ('
+              (hb.tagCE "div" "hMenuButtonBack"
+                (hb.tagACE "button" "hMenuButton" (hb.attribute "onclick" "ck()")
+                  (hb.image "hMenuButtonImage" (hp.getRelativePath "images/menu.png"))
+                )
+              )
+              (hb.tagACE "div" "hMenuLink" (hb.attribute "style" "display: none; pointer-events:none;")
+                (hm.contentOfMenuLink)
+              )
+            )
           )
         )
-      )
-      (hb.tagCE "div" "hFieldBack"
-        (c.empty)
-      )
-      (hb.tagCE "div" "hFooterBack"
-        (c.empty)
       )
     )
   )
@@ -48,14 +56,39 @@
 {hb.attribute Name Value; ; (' " " Name "=\"" Value "\"")}
 {hb.tag Tag; ; (' "<" Tag ">")}
 {hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">")}
-{hb.tagC Tag Class; ; (hb.tagA Tag (hb.attribute "class" Class))}
 {hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">" Content "</" Tag ">")}
 {hb.tagE Tag Content; ; (hb.tagAE Tag "" Content)}
 {hb.tagAC Tag Class Attribute; ; (hb.tagA Tag (' (hb.attribute "class" Class) Attribute))}
 {hb.tagACE Tag Class Attribute Content; ; (hb.tagAE Tag (' (hb.attribute "class" Class) Attribute) Content)}
 {hb.tagCE Tag Class Content; ; (hb.tagACE Tag Class "" Content)}
 
-{hb.imageC Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
+{hb.image Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
 
+[Html Menu]
 
+{hm.contentOfMenuLink; ;
+  (?
+    (== (hm.linkType) (hm.linkType.lectureIndex))
+    (hm.lectureIndex)
+    (c.empty) [WIP]
+  )
+}
+{hm.lectureIndex; ;
+  ('
+    (hb.tagCE "div" "hMenuLinkGroup"
+      ('
+        (hb.tagCE "div" "hMenuLinkTitle"
+          (hb.tagCE "span" "hMenuLinkText" "駒場東邦物理部")
+        )
+        (hb.tagCE "a" "hMenuLinkElement"
+          (hb.tagCE "span" "hMenuLinkText" "トップページ")
+        )
+      )
+    )
+  )
+}
+
+{hm.linkType.top; ; 0}
+{hm.linkType.lectureIndex; ; 1}
+{hm.linkType.lectureElement; ; 2}
 

@@ -1,8 +1,10 @@
 
+{hp.depth; ; 2} [Root:0]
+
 {hh.keyword; ; "プログラミング,講習"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
 {hh.title; ; "Vlrfsasm講習 - 駒場東邦物理部"}
 
-{hl.type; ; (hl.type.lectureIndex)}
+{hm.linkType; ; (hm.linkType.lectureIndex)}
 
 {hb.title; ; "Vlrfsasm講習"}
