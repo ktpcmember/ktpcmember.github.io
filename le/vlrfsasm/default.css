@@ -94,9 +94,9 @@
 }
 
 .hMenuLinkTitle, .hMenuLinkElement {
-    height: 2em;
-    display: flex;
-    flex-direction: column;
+  height: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .hMenuLinkTitle {
@@ -119,4 +119,46 @@
 
 .hMenuLinkText {
   margin: auto;
+}
+
+.hFooterSide {
+  width: 100%;
+  height: 6ex;
+  background-color: #1B366C;
+}
+
+.hFooter {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #1C3870;
+}
+
+.hFooterButton {
+  margin: 0 0 0 auto;
+  flex-basis: 8em;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: none;
+  background-color: #1C3870;
+}
+
+.hFooterButton:hover, .hFooterButton:active {
+  background-color: #204080;
+}
+
+.hFooterButtonImage {
+  margin: auto;
+  padding: 0;
+  height: 3em;
+}
+
+.hFooterText {
+  margin: auto;
+  color: #E0E0E0;
 }
