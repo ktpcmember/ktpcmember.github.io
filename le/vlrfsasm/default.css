@@ -67,13 +67,56 @@
 }
 
 .hMenuButton:hover, .hMenuButton:active {
-    background-color: #204080;
+  background-color: #204080;
 }
 
 .hMenuButtonImage {
-    max-height: 64px;
-    margin: 0 auto;
-    padding: 0;
+  max-height: 64px;
+  margin: 0 auto;
+  padding: 0;
 }
 
+.hMenuLink {
+  width: 98%;
+  margin: 0 auto;
+  padding: 0.5%;
+  overflow: hidden;
+  flex-direction: column;
+}
 
+.hMenuLinkGroup {
+  width: 100%;
+  margin: 0.5% 0;
+  padding: 0.5% 0 0;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #3060C0;
+}
+
+.hMenuLinkTitle, .hMenuLinkElement {
+    height: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.hMenuLinkTitle {
+  width: 100%;
+}
+
+.hMenuLinkElement {
+  margin: 1px;
+  padding: 1%;
+  flex-basis: 15em;
+  flex-grow: 1;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #1C3870;
+}
+
+.hMenuLinkElement:hover, .hMenuLinkElement:active {
+  background-color: #204080;
+}
+
+.hMenuLinkText {
+  margin: auto;
+}

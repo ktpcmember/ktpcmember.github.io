@@ -2,7 +2,7 @@
 {.; ; (c.convertSbS8 (' "<!DOCTYPE html><html>" (hh.content) (hb.content) "</html>"))}
 
 [Html File Path]
-{hp.depth; ; (hp.depth.loop (hp.part))}
+{hp.depth; ; (hp.depth.loop (hp.path) (' 0 (c.getLengthSx (hp.path))))}
 {hp.depth.loop Path 16 Count; ;
   (?
     (== (: Count 64) 1)
@@ -11,7 +11,7 @@
       (+ (> Count 64) 1)
       (> Count 64)
     )
-    (v.empty)
+    (c.empty)
   );
   ('
     (+ (> Count 64) (== Path "/"))
@@ -35,7 +35,7 @@
     "<link rel=\"icon\" type=\"image/jpeg\" href=\"" (hp.getRelativePath "images/logo.jpg") "\">"
     "<link rel=\"stylesheet\" type=\"text/css\" href=\"default.css\">"
     "<link rel=\"stylesheet\" type=\"text/css\" media=\"(max-width:800px)\" href=\"narrow.css\">"
-    "<script src=\"search.js\""
+    "<script src=\"search.js\"></script>"
     "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133906591-2\"></script>"
     "<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2');</script>"
     "</head>"
@@ -87,9 +87,9 @@
 }
 
 {hb.attribute Name Value; ; (' " " Name "=\"" Value "\"")}
-{hb.tag Tag; ; (' "<" Tag ">")}
-{hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">")}
-{hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">" Content "</" Tag ">")}
+{hb.tag Tag; ; (' "<" Tag ">\r\n")}
+{hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">\r\n")}
+{hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">\r\n" Content "</" Tag ">\r\n")}
 {hb.tagE Tag Content; ; (hb.tagAE Tag "" Content)}
 {hb.tagAC Tag Class Attribute; ; (hb.tagA Tag (' (hb.attribute "class" Class) Attribute))}
 {hb.tagACE Tag Class Attribute Content; ; (hb.tagAE Tag (' (hb.attribute "class" Class) Attribute) Content)}
@@ -110,8 +110,8 @@
   ('
     (hm.linkGroup "駒場東邦物理部"
       ('
-        (hm.linkElement "トップページ")
-        (hm.linkElement "講習一覧")
+        (hm.linkElement "トップページ" (hp.getRelativePath "index.html"))
+        (hm.linkElement "講習一覧" (hp.getRelativePath "le/le.html"))
       )
     )
     (hm.lectureList)
@@ -150,3 +150,6 @@
     (hm.linkElement Text Path)
   )
 }
+
+[Html Content]
+{hc.title Title; ; (hb.tagCE "h1" "hPageTItle" Title)}
