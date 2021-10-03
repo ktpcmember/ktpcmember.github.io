@@ -1,0 +1,29 @@
+[講習一覧
+ パスはle/から指定すること]
+{hm.lectureList; ;
+  ('
+    (hm.linkGroup "プログラミング班"
+      ('
+        (hm.linkElementOut "PC基礎" "le/_pc_ba/_pc_ba.html")
+        (hm.linkElementOut "C++" "le/_cps/_cps.html")
+        (hm.linkElementOut "WinAPI" "le/y_wwai/y_wwai.html")
+        (hm.linkElementOut "C++" "le/_cps/_cps.html")
+        (hm.linkElementOut "Unity" "le/uy/uy.html")
+        (hm.linkElementOut "コンピュータ基礎" "le/q_c_puba/q_c_puba.html")
+        (hm.linkElementOut "競技プログラミング" "le/k_c_pej_p_gm/k_c_pej_p_gm.html")
+      )
+    )
+    (hm.linkGroup "電子工作班"
+      ('
+        (hm.linkElementOut "電工基礎" "le/k_enba/k_enba.html")
+        (hm.linkElementOut "PIC（アセンブリ言語）" "le/_pic/_pic.html")
+        (hm.linkElementOut "PIC（C言語）" "le/picC/picC.html")
+      )
+    )
+    (hm.linkGroup "ピタゴラ班"
+      ('
+        (hm.linkElementOut "ピタゴラ" "le/psk_ep/psk_ep.html")
+      )
+    )
+  )
+}

@@ -2,6 +2,22 @@
 {.; ; (c.convertSbS8 (' "<!DOCTYPE html><html>" (hh.content) (hb.content) "</html>"))}
 
 [Html File Path]
+{hp.depth; ; (hp.depth.loop (hp.part))}
+{hp.depth.loop Path 16 Count; ;
+  (?
+    (== (: Count 64) 1)
+    (?
+      (== Path "/")
+      (+ (> Count 64) 1)
+      (> Count 64)
+    )
+    (v.empty)
+  );
+  ('
+    (+ (> Count 64) (== Path "/"))
+    (- (: Count 64) 1)
+  )
+}
 {hp.rootPath; ; (c.repeat "../" (hp.depth))}
 {hp.getRelativePath AbsolutePath; ; (' (hp.rootPath) AbsolutePath)}
 
@@ -19,6 +35,7 @@
     "<link rel=\"icon\" type=\"image/jpeg\" href=\"" (hp.getRelativePath "images/logo.jpg") "\">"
     "<link rel=\"stylesheet\" type=\"text/css\" href=\"default.css\">"
     "<link rel=\"stylesheet\" type=\"text/css\" media=\"(max-width:800px)\" href=\"narrow.css\">"
+    "<script src=\"search.js\""
     "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133906591-2\"></script>"
     "<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2');</script>"
     "</head>"
@@ -34,18 +51,34 @@
         (hb.image "hBanner" (hp.getRelativePath "images/br.jpg"))
       )
       (hb.tagCE "div" "hBeneathHeader"
-        (hb.tagCE "div" "hMenuSide"
-          (hb.tagCE "div" "hMenuBack"
-            ('
-              (hb.tagCE "div" "hMenuButtonBack"
-                (hb.tagACE "button" "hMenuButton" (hb.attribute "onclick" "ck()")
-                  (hb.image "hMenuButtonImage" (hp.getRelativePath "images/menu.png"))
+        ('
+          (hb.tagCE "div" "hMenuSide"
+            (hb.tagCE "div" "hMenuBack"
+              ('
+                (hb.tagCE "div" "hMenuButtonBack"
+                  (hb.tagACE "button" "hMenuButton" (hb.attribute "onclick" "menu()")
+                    (hb.image "hMenuButtonImage" (hp.getRelativePath "images/menu.png"))
+                  )
+                )
+                (hb.tagACE "div" "hMenuLink"
+                  ('
+                    (hb.attribute "style" "display: none; pointer-events: none;")
+                    (hb.attribute "id" "menuLink")
+                  )
+                  (hm.contentOfMenuLink)
+                )
+                (hb.tagACE "div" "hMenuWord"
+                  ('
+                    (hb.attribute "style" "display: none; pointer-events: none;")
+                    (hb.attribute "id" "menuWord")
+                  )
+                  (c.empty)
                 )
               )
-              (hb.tagACE "div" "hMenuLink" (hb.attribute "style" "display: none; pointer-events:none;")
-                (hm.contentOfMenuLink)
-              )
             )
+          )
+          (hb.tagCE "div" "hContentSide"
+            (hb.tagCE "div" "hContentBack" (hc.content))
           )
         )
       )
@@ -75,20 +108,45 @@
 }
 {hm.lectureIndex; ;
   ('
-    (hb.tagCE "div" "hMenuLinkGroup"
+    (hm.linkGroup "駒場東邦物理部"
       ('
-        (hb.tagCE "div" "hMenuLinkTitle"
-          (hb.tagCE "span" "hMenuLinkText" "駒場東邦物理部")
-        )
-        (hb.tagCE "a" "hMenuLinkElement"
-          (hb.tagCE "span" "hMenuLinkText" "トップページ")
-        )
+        (hm.linkElement "トップページ")
+        (hm.linkElement "講習一覧")
       )
     )
+    (hm.lectureList)
   )
 }
 
+[Type of page for link]
 {hm.linkType.top; ; 0}
 {hm.linkType.lectureIndex; ; 1}
 {hm.linkType.lectureElement; ; 2}
 
+[Link Element]
+{hm.linkGroup Title Array; ;
+  (?
+    (c.getLengthSx Array)
+    (hb.tagCE "div" "hMenuLinkGroup"
+      ('
+        (hb.tagCE "div" "hMenuLinkTitle"
+          (hb.tagCE "span" "hMenuLinkText" Title)
+        )
+        Array
+      )
+    )
+    (c.empty)
+  )
+}
+{hm.linkElement Text Path; ;
+  (hb.tagACE "a" "hMenuLinkElement" (hb.attribute "href" Path)
+    (hb.tagCE "span" "hMenuLinkText" Text)
+  )
+}
+{hm.linkElementOut Text Path; ;
+  (?
+    (c.compareStrict Path (hp.path))
+    (c.empty)
+    (hm.linkElement Text Path)
+  )
+}

@@ -1,5 +1,5 @@
 
-{hp.depth; ; 2} [Root:0]
+{hp.path; ; "le/vlrfsasm/test.html"}
 
 {hh.keyword; ; "プログラミング,講習"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
@@ -7,4 +7,8 @@
 
 {hm.linkType; ; (hm.linkType.lectureIndex)}
 
-{hb.title; ; "Vlrfsasm講習"}
+{hc.content; ;
+  ('
+    (hc.title "Vlrfsasm講習")
+  )
+}
