@@ -14,5 +14,5 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Run bat
-        run: le/vlrfsasm/q.bat
+        run echo "Hello world!"
         shell: cmd
