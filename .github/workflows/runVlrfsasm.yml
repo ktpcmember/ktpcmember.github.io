@@ -7,12 +7,12 @@ on:
       batPath:
         description: 'path of target bat file'
         required: true
-        default: 'le/vlrfsasm/q.bat'
+        default: 'le\vlrfsasm\q.bat'
 
 jobs:
   convert:
     runs-on: windows-latest
     steps:
       - name: Run bat
-        run: "le/vlrfsasm/q.bat"
+        run: "le\vlrfsasm\q.bat"
         shell: cmd
