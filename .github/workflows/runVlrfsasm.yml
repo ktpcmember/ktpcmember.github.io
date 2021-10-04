@@ -1,0 +1,18 @@
+
+name: Run vlrfsasm
+
+on:
+  workflow-dispatch:
+    input:
+      batPath:
+        description: 'path of target bat file'
+        required: true
+        default: 'le/vlrfsasm/q.bat'
+
+jobs:
+  convert:
+    runs-on: windows-latest
+    steps:
+      - name: Run bat
+        run: {{ github.event.inputs.batPath }}
+        shell: cmd
