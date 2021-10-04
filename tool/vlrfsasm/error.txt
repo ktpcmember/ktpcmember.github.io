@@ -1,0 +1,25 @@
+wp/error.txt
+Copyright 2021 vlrfsg
+
+{$00 Not found or unopenable source file}
+{$01 Too big source file}
+{$02 Unwritable destination file}
+{$03 Undefined function}
+{$04 Unassigned label address}
+{$05 Twice-defined function}
+{$06 Twice-assigned label address}
+{$07 Wrong number of argument}
+{$08 Unpaired bracket}
+
+{$0A Too long value}
+{$0B Overflowed stack}
+{$0C Wrong type of argument}
+{$0D Error in script}
+{$0E Undefined argument}
+{$0F Complete}
+
+{$10 Unspecified source file path}
+{$11 Undefined result function(.)}
+{$12 Too much step}
+{$13 Changed number of local label}
+{$14 Wrong number of result value}

@@ -10,5 +10,17 @@
 {hc.content; ;
   ('
     (hc.title "Vlrfsasm講習")
+    (hc.boxLR
+      ('
+        (hc.Heading "概要")
+        (hc.captionShort "内容"
+          (hc.text "Vlrfsasmというプログラムの使い方を学びます。")
+        )
+        (hc.captionShort "環境"
+          (hc.text "Windows-x64")
+        )
+        (hc.captionShort "")
+      )
+    )
   )
 }
