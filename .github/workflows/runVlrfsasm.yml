@@ -2,7 +2,7 @@
 name: Run vlrfsasm
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
     input:
       batPath:
         description: 'path of target bat file'
