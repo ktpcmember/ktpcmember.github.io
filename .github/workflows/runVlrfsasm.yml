@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Hello
-        run: echo "Hello"
+        run: echo "Hello!"
             |cd
         shell: cmd
       #- name: Run bat
