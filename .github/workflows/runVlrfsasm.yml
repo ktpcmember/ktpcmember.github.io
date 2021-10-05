@@ -7,10 +7,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Move directory
+        run: pushd tool\vlrfsasm
+        shell: cmd
       - name: Run bat
-        run: |
-            @pushd tool\vlrfsasm
-            vlrfsasm ..\..\le\vlrfsasm\test.html ..\..\le\vlrfsasm\test.txt ..\..\le\vlrfsasm\rule.txt ..\..\le\vlrfsasm\lectureList.txt def\common.txt
-             @popd
-
+        run: vlrfsasm ..\..\le\vlrfsasm\test.html ..\..\le\vlrfsasm\test.txt ..\..\le\vlrfsasm\rule.txt ..\..\le\vlrfsasm\lectureList.txt def\common.txt
+        shell: cmd
+      - name: Return directory
+        run: popd
         shell: cmd
