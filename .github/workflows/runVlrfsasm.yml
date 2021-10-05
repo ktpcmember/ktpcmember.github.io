@@ -10,6 +10,6 @@ jobs:
       - name: Move directory
         run: |
             pushd tool\vlrfsasm
-            systeminfo
+            vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.txt ../../le/vlrfsasm/rule.txt ../../le/vlrfsasm/lectureList.txt def/common.txt
             popd
         shell: cmd
