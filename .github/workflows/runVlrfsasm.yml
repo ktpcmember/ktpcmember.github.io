@@ -6,7 +6,7 @@ jobs:
   convert:
     runs-on: windows-latest
     steps:
-      - use: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Show File
         run: dir
         shell: cmd
