@@ -6,8 +6,8 @@ jobs:
   convert:
     runs-on: windows-latest
     steps:
-      - name: Show Content
-        run: type "robots.txt"
+      - name: Show File
+        run: dir
         shell: cmd
       #- name: Run bat
        # run: "le\\vlrfsasm\\q.bat"
