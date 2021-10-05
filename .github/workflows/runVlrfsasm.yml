@@ -7,9 +7,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Show File
-        run: dir
+      - name: Run bat
+        run: "le\\vlrfsasm\\q.bat"
         shell: cmd
-      #- name: Run bat
-       # run: "le\\vlrfsasm\\q.bat"
-      #  shell: cmd
