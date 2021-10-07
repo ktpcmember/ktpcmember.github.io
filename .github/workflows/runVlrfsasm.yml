@@ -9,10 +9,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Convert
         run: |
-            pushd le\vlrfsasm
-            pushd ..\..\tool\vlrfsasm
-            vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.log ../../le/vlrfsasm/test.vlra ../../le/vlrfsasm/rule.vlra ../../le/vlrfsasm/lectureList.vlra def/common.vlra
-            popd
+            set repoRoot=%CD%
+            ser targetDir=%CD%\le\vlrfsasm
+            pushd %TEMP%
+            md vlrfsasm
+            cd vlrfsasm
+            curl -O "https://github.com/vlrfsg/vlrfsasm/releases/download/v0.5/Vlrfsasm_v0.5.zip"
+            7z x Vlrfsasm_v0.5.zip
+            %targetDir%\q.bat
+            cd ../
+            rmdir /s vlrfsasm
             popd
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
