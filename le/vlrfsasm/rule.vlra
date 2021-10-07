@@ -162,4 +162,4 @@
 }
 
 [Html Content]
-{hc.title Title; ; (hb.tagCE "h1" "hPageTItle" Title)}
+{hc.title Title; ; (hb.tagCE "h1" "hPageTitle" Title)}
