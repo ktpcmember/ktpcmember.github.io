@@ -7,13 +7,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Move directory
+      - name: Convert
         run: |
             pushd le\vlrfsasm
-            z.bat
             pushd ..\..\tool\vlrfsasm
             vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.log ../../le/vlrfsasm/test.vlra ../../le/vlrfsasm/rule.vlra ../../le/vlrfsasm/lectureList.vlra def/common.vlra
             popd
+            z.bat
             popd
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
