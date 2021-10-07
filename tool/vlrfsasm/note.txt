@@ -1,6 +1,0 @@
-
-Github actionsを利用できるかもしれないので、以下のファイルを転がしておきます。
- vlrfsasm.exe
- error.txt
- def/common.txt
-変換器完成後にはそのファイルもここに来る予定です。
