@@ -9,8 +9,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Move directory
         run: |
-            pushd le/vlrfsasm
-            q
+            pushd le\vlrfsasm
+            q.bat
             popd
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
