@@ -10,15 +10,15 @@ jobs:
       - name: Convert
         run: |
             set repoRoot=%CD%
-            ser targetDir=%CD%\le\vlrfsasm
-            pushd %TEMP%
+            set targetDir=%CD%\le\vlrfsasm
+            pushd ${{ runner.temp }}
             md vlrfsasm
             cd vlrfsasm
             curl -O "https://github.com/vlrfsg/vlrfsasm/releases/download/v0.5/Vlrfsasm_v0.5.zip"
             7z x Vlrfsasm_v0.5.zip
             %targetDir%\q.bat
             cd ../
-            rmdir /s vlrfsasm
+            rmdir /s /q vlrfsasm
             popd
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
