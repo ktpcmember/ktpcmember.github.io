@@ -10,7 +10,9 @@ jobs:
       - name: Move directory
         run: |
             pushd le\vlrfsasm
-            q.bat
+            pushd ..\..\tool\vlrfsasm
+            vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.log ../../le/vlrfsasm/test.vlra ../../le/vlrfsasm/rule.vlra ../../le/vlrfsasm/lectureList.vlra def/common.vlra
+            popd
             popd
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
