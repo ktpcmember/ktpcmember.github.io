@@ -23,3 +23,6 @@ Copyright 2021 vlrfsg
 {$12 Too much step}
 {$13 Changed number of local label}
 {$14 Wrong number of result value}
+
+{$20 Unable to export to log file}
+{$21 Exported to log file}

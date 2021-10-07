@@ -1,4 +1,4 @@
-[def/common.txt
+[def/common.vlra
  Copyright 2021 vlrfsg]
 
 [S8:utf-8, Sx:utf-16, Sb:utf-16BE, Sl:utf-16LE, C:codepoint]

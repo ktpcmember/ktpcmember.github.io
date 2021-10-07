@@ -11,7 +11,7 @@ jobs:
         run: |
             pushd tool\vlrfsasm
             echo "before"
-            vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.txt ../../le/vlrfsasm/rule.txt ../../le/vlrfsasm/lectureList.txt def/common.txt
+            vlrfsasm ../../le/vlrfsasm/test.html ../../le/vlrfsasm/test.log ../../le/vlrfsasm/test.txt ../../le/vlrfsasm/rule.txt ../../le/vlrfsasm/lectureList.txt def/common.txt
             echo "after"
             popd
         shell: cmd
