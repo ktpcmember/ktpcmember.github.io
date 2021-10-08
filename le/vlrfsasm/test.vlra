@@ -30,5 +30,5 @@
   )
 }
 {hu.sectionElement Title Text; ;
-  (hc.boxH (hc.text Title) (hc.text Text))
+  (hc.boxH (' (hc.text Title) (hc.text Text)))
 }
