@@ -10,18 +10,25 @@
 {hc.content; ;
   ('
     (hc.title "Vlrfsasm講習")
-    (hc.title "Something")
-    [(hc.boxLR
+    (hu.section "概要"
       ('
-        (hc.Heading "概要")
-        (hc.captionShort "内容"
-          (hc.text "Vlrfsasmというプログラムの使い方を学びます。")
-        )
-        (hc.captionShort "環境"
-          (hc.text "Windows-x64")
-        )
-        (hc.captionShort "")
+        (hu.sectionElement "内容" "Vlrfsasmというプログラムの使い方を学びます。")
+        (hu.sectionElement "環境" "Windows-x64")
       )
-    )]
+    )
   )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; "le/vlrfsasm/vlrfsasm.css"}
+{hu.section Title Content; ;
+  (hc.boxCV "uSectionBox"
+    ('
+      (hc.headingLM Title)
+      (hc.boxV Content)
+    )
+  )
+}
+{hu.sectionElement Title Text; ;
+  (hc.boxH (hc.text Title) (hc.text Text))
 }

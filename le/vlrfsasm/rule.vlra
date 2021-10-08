@@ -162,4 +162,14 @@
 }
 
 [Html Content]
-{hc.title Title; ; (hb.tagCE "h1" "hPageTitle" Title)}
+{hc.title Title; ; (hb.tagCE "h1" "cPageTitle" Title)}
+{hc.headingLM Title; ;
+  (hb.tagCE "h2" "cHeading" Title)
+}
+
+{hc.boxCV Class Content; ; (hb.tagCE "div" (' "cBoxV " Class) Content)}
+{hc.boxV Content; ; (hb.tagCE "div" "cBoxV" Content)}
+{hc.boxCH Class Content; ; (hb.tagCE "div" (' "cBoxH " Class) Content)}
+{hc.boxH Content; ; (hb.tagCE "div" "cBoxH" Content)}
+
+{hc.text Content; ; (hb.tagCE "span" "cText")}
