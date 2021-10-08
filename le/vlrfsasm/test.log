@@ -1,3 +1,8 @@
-Vlrfsasm v0.5 2021-10-07 13:33
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm/test.html
+Vlrfsasm v0.5 2021-10-08 11:27
+  7:Wrong number of argument
+  hb.tagCE D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :175
+  hc.text D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :33
+  hu.sectionElement D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :15
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :81
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+  
