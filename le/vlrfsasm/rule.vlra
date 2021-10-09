@@ -104,7 +104,7 @@
       )
       (hb.tagAE "script" (hb.attribute "src" "search.js") "")
       (hb.tagAE "script" (hb.attribute "src" "https://www.googletagmanager.com/gtag/js?id=UA-133906591-2") "")
-      (hb.tagE "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2')")
+      (hb.tagE "script" "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2')")
     )
   )
 }
