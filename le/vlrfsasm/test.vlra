@@ -20,15 +20,21 @@
 }
 
 [User-defined style]
-{hu.extraCssPath; ; "le/vlrfsasm/vlrfsasm.css"}
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
 {hu.section Title Content; ;
   (hc.boxCV "uSectionBox"
     ('
-      (hc.headingLM Title)
+      (hc.heading Title)
       (hc.boxV Content)
     )
   )
 }
 {hu.sectionElement Title Text; ;
-  (hc.boxH (' (hc.text Title) (hc.text Text)))
+  (hc.boxH
+    ('
+      (hc.text Title)
+      (hc.text Text)
+    )
+  )
 }

@@ -23,22 +23,89 @@
 
 [Html header]
 {hh.content; ;
-  ('
-    "<head>"
-    "<meta charset=\"UTF-8\">"
-    "<meta name=\"keywords\" content=\"駒場東邦物理部,駒場東邦,駒東,KTPC,物理部," (hh.keyword) "\">"
-    "<meta name=\"description\" content=\"" (hh.description) "\">"
-    "<meta name=\"author\" content=\"駒場東邦物理部\">"
-    "<meta http-equiv=\"content-language\" content=\"ja\">"
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">"
-    "<title>" (hh.title) "</title>"
-    "<link rel=\"icon\" type=\"image/jpeg\" href=\"" (hp.getRelativePath "images/logo.jpg") "\">"
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"default.css\">"
-    "<link rel=\"stylesheet\" type=\"text/css\" media=\"(max-width:800px)\" href=\"narrow.css\">"
-    "<script src=\"search.js\"></script>"
-    "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-133906591-2\"></script>"
-    "<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2');</script>"
-    "</head>"
+  (hb.tagE "head"
+    ('
+      (hb.tagA "meta" (hb.attribute "charset" "UTF-8"))
+      (hb.tagA "meta"
+        ('
+          (hb.attribute "name" "keywords")
+          (hb.attribute "content" (' "駒場東邦物理部,駒場東邦,駒東,KTPC,物理部," (hh.keyword)))
+        )
+      )
+      (hb.tagA "meta"
+        ('
+          (hb.attribute "name" "description")
+          (hb.attribute "content" (hh.description))
+        )
+      )
+      (hb.tagA "meta"
+        ('
+          (hb.attribute "name" "author")
+          (hb.attribute "content" "駒場東邦物理部")
+        )
+      )
+      (hb.tagA "meta"
+        ('
+          (hb.attribute "http-equiv" "content-language")
+          (hb.attribute "content" "ja")
+        )
+      )
+      (hb.tagA "meta"
+        ('
+          (hb.attribute "name" "viewport")
+          (hb.attribute "content" "width=device-width, initial-scale=1, maximum-scale=1")
+        )
+      )
+      (hb.tagE "title" (hh.title))
+      (hb.tagA "link"
+        ('
+          (hb.attribute "rel" "icon")
+          (hb.attribute "type" "image/jpeg")
+          (hb.attribute "href" (hp.getRelativePath "images/logo.jpg"))
+        )
+      )
+      (hb.tagA "link"
+        ('
+          (hb.attribute "rel" "stylesheet")
+          (hb.attribute "type" "text/css")
+          (hb.attribute "href" "style.css")
+        )
+      )
+      (hb.tagA "link"
+        ('
+          (hb.attribute "rel" "stylesheet")
+          (hb.attribute "type" "text/css")
+          (hb.attribute "media" "(max-width:800px)")
+          (hb.attribute "href" (hu.extraCssPath))
+        )
+      )
+      (?
+        (c.getLengthSx (hu.extraNarrowCssPath))
+        (hb.tagA "link"
+          ('
+            (hb.attribute "rel" "stylesheet")
+            (hb.attribute "type" "text/css")
+            (hb.attribute "media" "(max-width:800px)")
+            (hb.attribute "href" (hu.extraNarrowCssPath))
+          )
+        )
+        (c.empty)
+      )
+      (?
+        (c.getLengthSx (hu.extraCssPath))
+        (hb.tagA "link"
+          ('
+            (hb.attribute "rel" "stylesheet")
+            (hb.attribute "type" "text/css")
+            (hb.attribute "href" "style.css")
+          )
+        )
+        (c.empty)
+      )
+      (hb.tagAE "script" (hb.attribute "src" "search.js") "")
+      (hb.tagAE "script" (hb.attribute "src" "https://www.googletagmanager.com/gtag/js?id=UA-133906591-2") "")
+      (hb.tagE "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2')")
+    )
   )
 }
 
@@ -163,7 +230,7 @@
 
 [Html Content]
 {hc.title Title; ; (hb.tagCE "h1" "cPageTitle" Title)}
-{hc.headingLM Title; ;
+{hc.heading Title; ;
   (hb.tagCE "h2" "cHeading" Title)
 }
 
