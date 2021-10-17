@@ -1,8 +1,9 @@
-Vlrfsasm v0.5 2021-10-17 10:08
+Vlrfsasm v0.5 2021-10-17 10:12
   3:Undefined function
-  hb.article D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :256
-  hc.titleC D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :260
-  hc.title D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :12
+  tb.tagCE D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :334
+  hc.tableRowS.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :310
+  hc.tableRowCBS D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :318
+  hc.tableRowBS D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :16
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
   
