@@ -121,6 +121,24 @@
   margin: auto;
 }
 
+/*Body*/
+
+.hContentSide {
+  width: 100%;
+  height: 100%;
+  z-index: 100%;
+}
+
+.hContentBack {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1024px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF8F8;
+}
+
 /*Footer*/
 
 .hFooterSide {
@@ -167,10 +185,21 @@
 
 /*Content*/
 
-.cPageTitle {
-  margin: 2ex auto;
+.cArticle {
+  margin: 1ex 1%;
+  padding: 0;
 }
+
+.cPageTitle {
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+
 
 .cHeading {
   border-bottom: solid 1px #000000;
 }
+
+
