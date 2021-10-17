@@ -253,7 +253,7 @@
 }
 {hc.article Content; ; (hc.articleC "" Content)}
 {hc.titleC Class Title; ;
-  (hb.article
+  (hc.article
     (hb.tagCE "h1" (hb.concatenateClass "cPageTitle" Class) Title)
   )
 }
