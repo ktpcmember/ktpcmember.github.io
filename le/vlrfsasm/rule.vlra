@@ -248,12 +248,17 @@
 {hc.text Content; ; (hb.tagCE "span" "cText" Content)}
 [^^]
 
-{hc.articleC Class Content; ;
-  (hb.tagCE "article" (hb.concatenateClass "cArticle" Class) Content)
+{hc.articleC Class TitleClass Title Content; ;
+  (hb.tagCE "article" (hb.concatenateClass "cArticle" Class)
+    ('
+      (hb.tagCE "h2" "cArticleTitle" Title)
+      Content
+    )
+  )
 }
-{hc.article Content; ; (hc.articleC "" Content)}
+{hc.article Title Content; ; (hc.articleC "" "" Title Content)}
 {hc.titleC Class Title; ;
-  (hc.article
+  (hb.tagCE "article" "cPageTitleBack"
     (hb.tagCE "h1" (hb.concatenateClass "cPageTitle" Class) Title)
   )
 }
@@ -284,7 +289,7 @@
   )
 }
 {hc.table Head Body Foot; ; (hc.tableC "" "" Head "" Body "" Foot)}
-{hc.tableRowC Class Content; ; (hb.tagCE "tr" (hh.concatenateClass "cTr" Class) Content)}
+{hc.tableRowC Class Content; ; (hb.tagCE "tr" (hb.concatenateClass "cTr" Class) Content)}
 {hc.tableRow Content; ; (hc.tableRowC "" Content)}
 {hc.tableCellCH Class Content; ; (hb.tagCE "th" (hb.concatenateClass "cTh" Class) Content)}
 {hc.tableCellH Content; ; (hc.tableCellCH "" Content)}
@@ -330,13 +335,17 @@
 {hc.tableRowFS Content; ; (hc.tableRowCFS "" "" Content)}
 {hc.tableRowS.loop Character 16 Tag Class Count; ;
   (?
-    (| (== Character ";") (== (: Count 64) 1))
-    (tb.tagCE Tag Class (> Count 64))
-    (c.empty)
+    (== Character ";")
+    (hb.tagCE Tag Class (> Count 64))
+    (?
+      (== (: Count 64) 1)
+      (hb.tagCE Tag Class (' (> Count 64) Character))
+      (c.empty)
+    )
   );
   ('
     (?
-      (== Character ";")
+      (!= Character ";")
       (' (> Count 64) Character)
       (c.empty)
     )

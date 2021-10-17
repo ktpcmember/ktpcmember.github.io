@@ -13,8 +13,10 @@
     (hc.article "概要"
       (hc.table
         ""
-        (hc.tableRowBS "内容;Vlrfsasmというプログラムの使い方を学びます。")
-        (hc.tableRowBS "環境;Windows-x64")
+        ('
+          (hc.tableRowBS "内容;Vlrfsasmというプログラムの使い方を学びます。")
+          (hc.tableRowBS "環境;Windows-x64")
+        )
         ""
       )
     )
