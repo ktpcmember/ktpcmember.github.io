@@ -337,7 +337,7 @@
   ('
     (?
       (== Character ";")
-      (' (> Count 64)) Character)
+      (' (> Count 64) Character)
       (c.empty)
     )
     (- (: Count 64) 1)
