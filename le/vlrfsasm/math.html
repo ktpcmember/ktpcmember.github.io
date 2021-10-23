@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <script type="text/javascript">
+   window.onload = function(e) {
+    var fieldList = document.querySelectorAll(".mField");
+    fieldList.forEach(function(l){
+     l.appendChild(convertTSv(l.convertee));
+    });
+   }
+   function createSvg(name){
+    return document.createElementNS("http://www.w3.org/2000/svg",name);
+   }
+   function setAttributeList(svg, attributeList){
+    for(l in attributeList){
+     svg.setAttribute(l, attributeList[l]);
+    }
+    return;
+   }
+   function convertTSv(textInput){
+    var stack = new Array(),l;
+    stack.push({t:false, v:"", f:0});
+    for(var i = 0; i < textInput.length; i++){
+     var c = textInput.charAt(i);
+     switch(c){
+      case ",":
+       stack.push({t:false, v:"", f:0});
+       break;
+      case "]":
+       l = stack.pop();
+       l = concatenateBB(stack.pop(), l);
+       stack.push(s);
+       break;
+      default:
+       l = concatenateBB(stack.pop(), {t:false, v:c, f:0});
+       stack.push(l);
+       break;
+     }
+    }
+    return convertBSv(stack.pop()).v;
+   }
+   function convertBSv(a){
+    if(a.t){
+     return a;
+    }
+    return convertSSv(a.v);
+   }
+   function convertSSv(a){
+    var svg = createSvg("text");
+    svg.textContent = a;
+    return {t:true, v:svg, f:0};
+   }
+   function concatenateBB(a,b){
+    var r;
+    if(b.t){
+     if(a.t){
+      setAttributeList(b.v, {translate: getSvgWidth(a.v)});
+      a.v.appendChild(b.v);
+      r = {t:true, v:a.v, f:3};
+     }else{
+      var group = createSvg("g");
+      var text = convertSSv(a.v);
+      group.appendChild(text);
+      setAttributeList(b.v, {translate: getSvgWidth(text)});
+      group.appendChild(b.v);
+      r = {t:true, v:group, f:3};
+     }
+    }else{
+     if(a.t){
+      switch(a.f){
+       case 0:
+        a.v.textContent += b.v;
+        r = a;
+        break;
+       case 1:
+        var group = createSvg("g");
+        var text = convertSSv(b.v);
+        group.appendChild(a.v);
+        setAttributeList(text, {translate: getSvgWidth(a.v)});
+        group.appendChild(text);
+        r = {t:true, v:group, f:2};
+        break;
+       case 2:
+        a.v.lastChild.textContent += b.v;
+        r = a;
+        break;
+       case 3:
+        var text = convertSSv(b.v);
+        setAttributeList(text, {translate: getSvgWidth(a.v)});
+        a.v.appendChild(text);
+        r = {t:true, v:a.v, f:2};
+        break;
+      }
+     }else{
+      r = {t:false, v:a.v+b.v, f:0};
+     }
+    }
+    return r;
+   }
+   function getSvgWidth(a){
+    return a.getBoundingClientRect().width;
+   }
+  </script>
+  <style type="text/css">
+   @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital@1&display=swap');
+   .mField {font-family: 'STIX Two Text', serif;}
+  </style>
+ </head>
+ <body>
+  <svg class="mField" convertee="x=1" width="100" height="100"></svg>
+ </body>
+</html>
