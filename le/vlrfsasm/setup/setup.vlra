@@ -1,0 +1,98 @@
+
+{hc.content; ;
+  ('
+    (hc.articleCo
+      "概要"
+      (ht.summary.caption)
+      (c.empty)
+    )
+    (hc.articleCo
+      "フォルダ"
+      (ht.folder.caption)
+      ('
+        (hc.sectionCoP "基点フォルダ作成" (ht.folder.createBaseFolder))
+        (hc.sectionCoP "作業フォルダ" (ht.folder.workingFolder))
+      )
+    )
+    (hc.articleCo
+      "ツール"
+      (ht.tool.caption)
+      ('
+        (hc.sectionCoP "ダウンロード" (ht.tool.download))
+        (hc.sectionCo "バッチファイル" (ht.tool.batFile))
+        (hc.sectionCoP "バイナリエディタ" (ht.tool.binaryEditor))
+        (hc.sectionCoP "テキストエディタ" (ht.tool.textEditor))
+      )
+    )
+    (hc.articleCo
+      "Hello world"
+      (ht.helloWorld.caption)
+      ('
+        (hc.sectionCo "ソースコード" (ht.helloWorld.source))
+        (hx.sectionCo "実行" (ht.helloWorld.run))
+        (hx.sectionCo "終了" (ht.helloWorld.exit))
+      )
+    )
+  )
+}
+
+{ht.summary.caption; ;
+  "本章では、必要なツールを導入する方法と、動かし方とを学びます。"
+}
+
+{ht.folder.caption; ;
+  "まずは、ファイルを配置するフォルダを作ります。"
+}
+{ht.folder.createBaseFolder; ;
+  "ファイルがあちこちに散らばっていては、作業に不便です。そこで、1つフォルダを作り、ここに全てのファイルやフォルダを入れることにします。今後、このフォルダを「基点フォルダ」と呼びます。基点フォルダはわかりやすい位置にあるのが好ましいので、迷ったらとりあえずデスクトップに置いてしまいましょう。名前は[pa;vlrfsasm]"とします。
+}
+{ht.folder.workingFolder; ;
+  "さて、基点フォルダの中も散らかしたくはありません。新しいことを始めるときや、構造が混迷してしまい、刷新したいときには、必ず新しいフォルダを作ります。これは、Vlrfsasmに限らず、何にでも適用して損はないことですから、癖にしましょう。本講習では、この新しいフォルダを「作業フォルダ」と呼び、毎章ごとに作ってもらいます。"
+}
+
+{ht.tool.caption; ;
+  "必要なアプリと、その導入方法とを紹介します。"
+}
+{ht.tool.download; ;
+  "まず、Vlrfsasmを導入します。[l;https://github.com/vlrfsg/vlrfsasm;Githubで公開]しているので、[l;https://github.com/vlrfsg/vlrfsasm/releases/download/v0.5/Vlrfsasm_v0.5.zip;このリンク]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[pa;Vlrfsasm_v0.5]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[pa;assembler]と改名しておいてください。"
+}
+{ht.tool.batFile; ;
+  ('
+    (hx.p "次に、バッチファイルを作ります。メモ帳などのテキストエディタを起動し、以下の内容をコピーして貼り付けてください。")
+    (hx.p (hx.batM "batファイルの内容" (hi.assemble.bat)))
+    (hx.p "そして、基点フォルダ内に、[pa;assemble.bat]という名前で、保存してください。文字コードはUTF-8にしましょう。このバッチファイルは、各章で使い回します。")
+  )
+}
+{ht.tool.binaryEditor; ;
+  "本講習では次の章のみで使いますが、vlrfsasmはもともとバイナリファイルを扱うために作ったので、使う機会はあると思います。データを読み出すだけですので、何でも構いません。使い慣れているものがあればそれを使ってください。参考までに、Vlrfsasmの作者は[l;http://www.vector.co.jp/soft/dl/winnt/util/se504539.html;FavBinEdit]を使っています。いずれにせよ、各ソフトウェアの指示に従ってインストールしてください。"
+}
+{ht.tool.textEditor; ;
+  "メモ帳で構いませんが、これも使い慣れているものを使ってください。ただし、表示の拡張などのファイルは提供していません。また、スタートメニューにショートカットを貼っておくと便利でしょう。"
+}
+
+{ht.helloWorld.caption; ;
+  "それでは、動作確認を兼ねて、少し動かしてみましょう。"
+}
+{ht.helloWorld.source; ;
+  ('
+    (hx.p "基点フォルダ内に[pa;hello]というフォルダを作り、さきほど作ったバッチファイルをコピーして入れてください。また以下のソースコードを、[pa;source.vlra]という名前でこのフォルダに保存してください。Vlrfsasmのソースコードは、常に[pa;.vlra]という拡張子を付け、文字コードはUTF-8で保存してください。")
+    (hx.p (hx.vlraM "ソースコード" (hi.source.vlra)))
+  )
+}
+{ht.helloWorld.run; ;
+  "バッチファイルをダブルクリックして実行すると、Vlrfsasmが実行されます。うまくいけば、[pa;hello]フォルダ内に、[pa;result.txt]と[pa;message.log]が出力されているはずです。上手く行かないときは、ファイル名や文字コードなどを確認しましょう。メモ帳では、ファイルメニューの「名前を付けて保存」から、文字コードを設定して上書き保存できます。"
+}
+{ht.helloWorld.result; ;
+  ('
+    (hx.p "さて、生成された2つのファイルを開き、中身が以下のようになっていれば成功です。ただし、[pa;message.log]の赤下線部には、実行日時が書かれています。これはコンピュータの現地時刻なので、時差を含みます。また、その下に出力ファイルのパスなどが表示されますが、青下線部のように個人情報を含むことがあるので、誤って公開しないよう注意しましょう。")
+    (hx.p
+      ('
+        (hx.mtM (hx.pa "result.txt") "Hello world!")
+        (hx.mtM (hx.pa "message.log") (hi.message.log))
+      )
+    )
+  )
+}
+{ht.helloWorld.exit; ;
+  "本章の内容は以上です。Vlrfsasmは勝手に終了していますから、開いたテキストエディタなどを閉じれば片付けも終わりです。"
+}
