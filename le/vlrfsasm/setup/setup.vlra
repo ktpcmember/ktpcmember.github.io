@@ -1,4 +1,8 @@
 
+{hi.assemble.bat; ; (c.convertS8Sx (assemble.bat))}
+{hi.source.vlra; ; (c.convertS8Sx (source.vlra))}
+{hi.message.log; ; (c.convertS8Sx (message.log))}
+
 {hc.content; ;
   ('
     (hc.articleCo
@@ -64,7 +68,7 @@
   )
 }
 {ht.tool.binaryEditor; ;
-  "本講習では次の章のみで使いますが、vlrfsasmはもともとバイナリファイルを扱うために作ったので、使う機会はあると思います。データを読み出すだけですので、何でも構いません。使い慣れているものがあればそれを使ってください。参考までに、Vlrfsasmの作者は[l;http://www.vector.co.jp/soft/dl/winnt/util/se504539.html;FavBinEdit]を使っています。いずれにせよ、各ソフトウェアの指示に従ってインストールしてください。"
+  "本講習では少ししか使いませんが、vlrfsasmはもともとバイナリファイルを扱うために作ったので、使う機会はあると思います。データを読み出すだけですので、何でも構いません。使い慣れているものがあればそれを使ってください。参考までに、Vlrfsasmの作者は[l;http://www.vector.co.jp/soft/dl/winnt/util/se504539.html;FavBinEdit]を使っています。いずれにせよ、各ソフトウェアの指示に従ってインストールしてください。"
 }
 {ht.tool.textEditor; ;
   "メモ帳で構いませんが、これも使い慣れているものを使ってください。ただし、表示の拡張などのファイルは提供していません。また、スタートメニューにショートカットを貼っておくと便利でしょう。"

@@ -1,0 +1,66 @@
+
+{hc.content; ;
+  ('
+    (hc.articleCo
+      "概要"
+      (ht.summary.caption)
+      (hc.sectionCoHP "前章の内容について" (ht.summary.previousChapter)) [Convert/Hide/P]
+    )
+    (hc.articleCo
+      "値"
+      (ht.value.caption)
+      ('
+        (hc.sectionCoP "値の実体" (ht.value.body))
+        (hc.sectionCoP "値の幅" (ht.value.width))
+      )
+    )
+    (hc.articleCo
+      "構文"
+      (ht.syntax.caption)
+      ('
+        (hc.sectionCoP "文字" (ht.syntax.character))
+        (hc.sectionCoP "符" (ht.syntax.token))
+        (hc.sectionCoP "コメント" (ht.syntax.comment))
+      )
+    )
+    (hc.articleCo
+      "リテラル"
+      (ht.literal.caption)
+      ('
+        (hc.sectionCoP "数値リテラル" (ht.literal.numeral))
+        (hc.sectionCoP "基数接頭辞" (ht.literal.prefix))
+        (hc.sectionCoP "文字列リテラル".(ht.literal.string))
+        (hc.sectionCoP "エスケープシーケンス" (ht.literal.escape))
+      )
+    )
+  )
+}
+
+{ht.summary.caption; ;
+  "本章では、Vlrfsasmの文法について解説します。"
+}
+{ht.summary.previousChapter; ;
+  "前章の最後で「Hello world!」を出力しましたが、実のところあれはかなり高度な内容を含むので、解説は後の章で行います。"
+}
+
+{ht.value.caption; ;
+  "Vlrfsasmでは、データのことを「値」と呼びます。"
+}
+{ht.value.body; ;
+  "値は、方向と順序のある1次元のビット列で表現されます。値には、型などの情報を分けて付加することはできません。全てこのビット列に埋めこむ必要があるので、利用する構造体には、判別できる情報を予め加えましょう。"
+}
+{ht.value.width; ;
+  "値に含まれるビットの数を、「幅」と言います。「長さ」や「大きさ」も、Vlrfsasmにおいては同義語です。値は、0以上524288以下の個数のビットを含むことができますが、この範囲外の幅をもつ値は処理できず、エラーとなります。なお、この上限は、65536バイトや64KBとも言い換えられます。"
+}
+
+{ht.literal.caption; ;
+  "Vlrfsasmはデータを変換して出力するプログラムです。変換対象のデータを入力する方法は2つあります。一方がソースファイル内に記述するもので、リテラルと呼ばれます。もう一方の生ファイルについては、後の章で説明します。"
+}
+{ht.literal.numeral; ;
+  ('
+    (hx.p "リテラルはさらに2種類に分けられます。片方は数値をそのまま記述する「数値リテラル」です。Vlrfsasmのコード中で、[uc;red;数字]または後述の[uc;blue;基数接頭辞]から始まる単語は、数値リテラルとして認識されます。")
+    (hx.vlraM "数値リテラルの始めの文字" "[?u;red]0123456789[?e][?u;blue]$%[?e]")
+    (hx.p "数値リテラルによる値の幅は、リテラルの桁数などに関わらず、64ビットになります。これを超える長さの値を表したいときは、後述の結合関数や、生ファイルを使うことになります。")
+  )
+}
+
