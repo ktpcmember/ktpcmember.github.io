@@ -1,0 +1,165 @@
+
+[Type of character
+ 字種
+ id=0はqc.Defaultとして定義済み]
+{qcv.Number; ; (qc.const 1)}
+{qcv.Symbol; ; (qc.const 2)}
+{qcv.Builtin; ; (qc.const 3)}
+{qcv.Label; ; (qc.const 4)}
+{qcv.String; ; (qc.const 5)}
+{qcv.CommentBegin; ; (qc.const 6)}
+{qcv.Split; ; (qc.const 7)}
+{qcv.Escape; ; (qc.const 8)}
+{qcv.CommentEnd; ; (qc.const 9)}
+{qcv.MetaStart; ; (qc.const 10)}
+
+[list of specific character
+ 未定義の字はqc.Default]
+{qcv.list; ;
+  ('
+    (qc.list.element $09 (qcv.Split))
+    (qc.list.element "\n" (qcv.Split))
+    (qc.list.element "\r" (qcv.Split))
+    (qc.list.element " " (qcv.Split))
+    (qc.list.element "!" (qcv.Builtin))
+    (qc.list.element "\"" (qcv.String))
+    (qc.list.element "#" (qcv.Builtin))
+    (qc.list.element "$" (qcv.Number))
+    (qc.list.element "%" (qcv.Number))
+    (qc.list.element "&" (qcv.Builtin))
+    (qc.list.element "'" (qcv.Builtin))
+    (qc.list.element "(" (qcv.Symbol))
+    (qc.list.element ")" (qcv.Symbol))
+    (qc.list.element "+" (qcv.Builtin))
+    (qc.list.element "." (qcv.Builtin))
+    (qc.list.element "0" (qcv.Number))
+    (qc.list.element "1" (qcv.Number))
+    (qc.list.element "2" (qcv.Number))
+    (qc.list.element "3" (qcv.Number))
+    (qc.list.element "4" (qcv.Number))
+    (qc.list.element "5" (qcv.Number))
+    (qc.list.element "6" (qcv.Number))
+    (qc.list.element "7" (qcv.Number))
+    (qc.list.element "8" (qcv.Number))
+    (qc.list.element "9" (qcv.Number))
+    (qc.list.element ":" (qcv.Builtin))
+    (qc.list.element ";" (qcv.Symbol))
+    (qc.list.element "<" (qcv.MetaStart))
+    (qc.list.element ">" (qcv.Builtin))
+    (qc.list.element "?" (qcv.Builtin))
+    (qc.list.element "@" (qcv.Label))
+    (qc.list.element "[" (qcv.CommentBegin))
+    (qc.list.element "\\" (qcv.Escape))
+    (qc.list.element "]" (qcv.CommentEnd))
+    (qc.list.element "^" (qcv.Builtin))
+    (qc.list.element "`" (qcv.Builtin))
+    (qc.list.element "{" (qcv.Symbol))
+    (qc.list.element "|" (qcv.Builtin))
+    (qc.list.element "}" (qcv.Symbol))
+    (qc.list.element "~" (qcv.Builtin))
+  )
+}
+
+[Type of token
+ 符種
+ id=0はqt.Empty、id=255はqt.Metaとして定義済み]
+{qtv.Name; ; (qt.const 1)}
+{qtv.Number; ; (qt.const 2)}
+{qtv.Symbol; ; (qt.const 3)}
+{qtv.String; ; (qt.const 4)}
+{qtv.Builtin; ; (qt.const 5)}
+{qtv.Comment; ; (qt.const 6)}
+{qtv.Split; ; (qt.const 7)}
+{qtv.Label; ; (qt.const 8)}
+{qtv.EscapedString; ; (qt.const 9)}
+
+[Addtion rule
+ 付加規則など
+ 開始規則:(qr.begin 入力字種 符種)
+ 付加規則:(qr.add 符種 字種)
+ 変化規則:(qr.change 今の符種 入力字種 次の符種)
+ 終了規則:(qr.end 今の符種 入力字種)
+ 付加/変化/終了規則がなければそこで切断
+ ただし開始規則がないとエラー]
+{qrv.list; ;
+  ('
+    (qr.begin (qc.Default) (qtv.Name))
+    (qr.begin (qcv.Number) (qtv.Number))
+    (qr.begin (qcv.Symbol) (qtv.Symbol))
+    (qr.begin (qcv.Builtin) (qtv.Builtin))
+    (qr.begin (qcv.Label) (qtv.Label))
+    (qr.begin (qcv.String) (qtv.String))
+    (qr.begin (qcv.CommentBegin) (qtv.Comment))
+    (qr.begin (qcv.Split) (qtv.Split))
+    (qr.begin (qcv.MetaStart) (qtv.Builtin))
+    (qr.add (qtv.Name) (qc.Default))
+    (qr.add (qtv.Name) (qcv.Number))
+    (qr.add (qtv.Name) (qcv.Builtin))
+    (qr.add (qtv.Name) (qcv.MetaStart))
+    (qr.add (qtv.Number) (qcv.Number))
+    (qr.add (qtv.Number) (qc.Default))
+    (qr.add (qtv.Label) (qc.Default))
+    (qr.add (qtv.Label) (qcv.Number))
+    (qr.add (qtv.Label) (qcv.Builtin))
+    (qr.add (qtv.String) (qc.Default))
+    (qr.add (qtv.String) (qcv.Number))
+    (qr.add (qtv.String) (qcv.Symbol))
+    (qr.add (qtv.String) (qcv.Builtin))
+    (qr.add (qtv.String) (qcv.Label))
+    (qr.add (qtv.String) (qcv.CommentBegin))
+    (qr.add (qtv.String) (qcv.Split))
+    (qr.add (qtv.String) (qcv.CommentEnd))
+    (qr.add (qtv.String) (qcv.MetaStart))
+    (qr.end (qtv.String) (qcv.String))
+    (qr.change (qtv.String) (qcv.Escape) (qtv.EscapedString))
+    (qr.change (qtv.EscapedString) (qc.Default) (qtv.String))
+    (qr.change (qtv.EscapedString) (qcv.String) (qtv.String))
+    (qr.change (qtv.EscapedString) (qcv.Escape) (qtv.String))
+    (qr.change (qtv.Builtin) (qc.Default) (qtv.Name))
+    (qr.change (qtv.Builtin) (qcv.Number) (qtv.Name))
+    (qr.change (qtv.Builtin) (qcv.Builtin) (qtv.Name))
+    (qr.add (qtv.Comment) (qc.Default))
+    (qr.add (qtv.Comment) (qcv.Number))
+    (qr.add (qtv.Comment) (qcv.Symbol))
+    (qr.add (qtv.Comment) (qcv.Builtin))
+    (qr.add (qtv.Comment) (qcv.Label))
+    (qr.add (qtv.Comment) (qcv.String))
+    (qr.add (qtv.Comment) (qcv.CommentBegin))
+    (qr.add (qtv.Comment) (qcv.Split))
+    (qr.add (qtv.Comment) (qcv.Escape))
+    (qr.end (qtv.Comment) (qcv.CommentEnd))
+    (qr.change (qtv.Comment) (qcv.MetaStart) (qt.Meta))
+    (qr.add (qt.Meta) (qc.Default))
+    (qr.add (qt.Meta) (qcv.Number))
+    (qr.add (qt.Meta) (qcv.Symbol))
+    (qr.add (qt.Meta) (qcv.Label))
+    (qr.add (qt.Meta) (qcv.String))
+    (qr.add (qt.Meta) (qcv.CommentBegin))
+    (qr.add (qt.Meta) (qcv.Split))
+    (qr.add (qt.Meta) (qcv.Escape))
+    (qr.add (qt.Meta) (qcv.MetaStart))
+    (qr.end (qt.Meta) (qcv.CommentEnd))
+  )
+}
+
+[Meta]
+{qmv.symbol; ; "<"}
+{qmv.comment A; ; (' "[" A "]")}
+
+[Style]
+{qsv.list; ;
+  ('
+    (qs.list.element (qtv.Name) "qVlrName")
+    (qs.list.element (qtv.Number) "qVlrNumber")
+    (qs.list.element (qtv.Symbol) "qVlrSymbol")
+    (qs.list.element (qtv.String) "qVlrString")
+    (qs.list.element (qtv.Builtin) "qVlrBuiltin")
+    (qs.list.element (qtv.Comment) "qVlrComment")
+    (qs.list.element (qtv.Split) "qVlrSplit")
+    (qs.list.element (qtv.Label) "qVlrLabel")
+  )
+}
+
+[Background]
+{qbv.list; ; (qb.defaultList)}
+

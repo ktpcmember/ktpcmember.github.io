@@ -1,0 +1,131 @@
+
+[External definition]
+{qc.list A; ;
+  (? (c.compareStrict A "v") (qcv.list) (qe.language A))
+}
+{qr.list A; ;
+  (? (c.compareStrict A "v") (qrv.list) (qe.language A))
+}
+{qm.symbol A; ;
+  (? (c.compareStrict A "v") (qmv.symbol) (qe.language A))
+}
+{qm.comment A B; ;
+  (? (c.compareStrict A "v") (qmv.comment B) (qe.language A))
+}
+{qs.list A; ;
+  (? (c.compareStrict A "v") (qsv.list) (qe.language A))
+}
+{qb.list A; ;
+  (? (c.compareStrict A "v") (qbv.list) (qe.language A))
+}
+
+[Error]
+{qe.language A; ; (c.errorSb (' "Language \"" (c.convertISb A 10) "\" not defined."))}
+
+[Character]
+{qc.const A; ; (: A 8)}
+{qc.Default; ; (qc.const 0)}
+{qc.list.element A B; ;
+  (' B (: A 16))
+}
+{qc.searchAll L A; ; (qc.searchAll.loop (qc.list L) A)}
+{qc.searchAll.loop A 24 B; ;
+  (? (== (: A 16) B) (> A 16) (c.empty))
+}
+{qc.isSpecific L A; ; (!= (# (qc.searchAll L A)) 0)}
+{qc.search L A; ;
+  (?
+    (qc.isSpecific L A)
+    (: (qc.searchAll L A) 8)
+    (qc.Default)
+  )
+}
+
+[Token]
+{qt.const A; ; (: A 8)}
+{qt.Empty; ; (qt.const 0)}
+{qt.Meta; ; (qt.const 255)}
+
+[Addition rule]
+{qr.change A B C; ; (' (: C 8) (: B 8) (: A 8))}
+{qr.begin A B; ; (qr.change (qt.Empty) A B)}
+{qr.add A B; ; (qr.change A B A)}
+{qr.end A B; ; (qr.change A B (qt.Empty))}
+{qr.searchAll L A; ;
+  (qr.searchAll.loop (qr.list L) A)
+}
+{qr.searchAll.loop A 24 B; ;
+  (? (== (: A 16) B) (> A 16) (c.empty))
+}
+{qr.isDefined L A; ; (!= (# (qr.searchAll L A)) 0)}
+{qr.search L A; ; (: (qr.searchAll L A) 8)}
+
+[Style]
+{qs.list.element A B; ;
+  (' (: B 496) (: (c.getLengthSx B) 8) (: A 8))
+}
+{qs.search L A; ;
+  (?
+    (# (qs.search.loop (qs.list L) A))
+    (c.getRange
+      (qs.search.loop (qs.list L) A)
+      16
+      (< (c.getRange (qs.search.loop (qs.list L) A) 8 8) 4)
+    )
+    (c.errorSb
+      ('
+        "Style for token type "
+        (c.convertISb A 10)
+        " not found"
+      )
+    )
+  )
+}
+{qs.search.loop A 512 B; ;
+  (? (== (: A 8) B) A (c.empty))
+}
+
+[Background]
+{qb.list.element A B; ;
+  ('
+    (: B 512)
+    (: A 496)
+    (: (c.getLengthSx B) 8)
+    (: (c.getLengthSx A) 8)
+  )
+}
+{qb.defaultList; ;
+  ('
+    (qb.const "default" "eComDefault")
+    (qb.const "new" "eComNew")
+    (qb.const "")
+  )
+}
+{qb.searchAll L A; ; (qb.searchAll.loop (qb.list L) A)}
+{qb.searchAll.loop A 1024 B; ;
+  (?
+    (&
+      (== (: A 8) (c.getLengthSx B))
+      (== (c.getRange A 16 (< (: A 8) 4)) B)
+    )
+    (' (> A 512) (c.getRange A 8 8))
+    (c.empty)
+  )
+}
+{qb.search L A; ;
+  (?
+    (# (qb.searchAll L A))
+    (c.getRange
+      (qb.searchAll L A)
+      512
+      (c.getRange (qb.searchAll L A) 8 8)
+    )
+    (c.errorSb
+      ('
+        "Style class for background \""
+        A
+        "\"not found"
+      )
+    )
+  )
+}
