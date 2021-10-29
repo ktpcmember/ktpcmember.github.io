@@ -1,0 +1,84 @@
+
+{qh.convert Language Code; ;
+  ('
+    (qh.generate
+      Code
+      Language
+      ('
+        [Region data:{8:background color, 8:offset}]
+        (: 0 8) [Region count]
+        (qt.Empty) [Current token type]
+        (: 0 16) [Codepoint count from last new line]
+        (c.getLengthSx Code) [Count]
+      )
+    )
+  )
+}
+
+{qh.generate A 16 L B; ;
+  (?
+    (>! (: B 64) 1)
+    (?
+      (qr.isDefined
+        L
+        (' (qc.search L A) (c.getRange B 80 8))
+      )
+      (?
+        (==
+          (qr.search
+            L
+            (' (qc.search L A) (c.getRange B 80 8))
+          )
+          (qt.Empty)
+        )
+        (qh.encode L A B)
+        (c.empty)
+      )
+      (qh.encode L "" B)
+    )
+    (?
+      (qr.isDefined
+        L
+        (' (qc.search L A) (c.getRange B 80 8))
+      )
+      (qh.encode L (' (qh.getToken B) A) B
+        (qr.search
+          L
+          (' (qc.search L A) (c.getRange B 80 8))
+        )
+      )
+      ('
+        (qh.encode L (qh.getToken B) B (c.getRange B 80 B))
+        (qh.encode L A B (qr.search L (' (qc.search L A) (qt.Empty))))
+      )
+    )
+  );
+  ('
+    (c.getRange B 88 8)
+    (?
+      (qr.isDefined
+        L
+        (' (qc.search L A) (c.getRange B 80 8))
+      )
+      (qr.search
+        L
+        (' (qc.search L A) (c.getRange B 80 8))
+      )
+      (qt.Empty)
+    )
+    (? (== A "\r") 0 (+ (c.getRange B 64 16) 1))
+    (- (: B 64) 1)
+  )
+}
+
+{qh.getToken A; ;
+  (> A (+ 96 (< (c.getRange A 88 8) 4)))
+}
+
+{qh.encode L A B C; ;
+  (?
+    (c.getLengthSx A)
+    (hb.tagCE "span" (qs.search L C) (' (qh.getToken B) (he.escape A)))
+    (c.empty)
+  )
+}

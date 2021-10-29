@@ -1,3 +1,8 @@
-Vlrfsasm v0.5 2021-10-17 19:56
-  15:Complete
-  [Privacy]\github\ktpcmember.github.io\le\vlrfsasm\test.html
+Vlrfsasm v0.6 2021-10-29 16:24
+  7:Wrong number of argument
+  qh.encode C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :37
+  qh.generate C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :4
+  qh.convert C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\test.vlra :24
+  hc.content C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+  
