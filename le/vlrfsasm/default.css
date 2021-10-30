@@ -203,3 +203,43 @@
 }
 
 
+
+/*Code*/
+
+code {
+  font-family: 'Inconsolata', monospace;
+  background-color: #F4F4F4;
+}
+
+/*Vlrfsasm*/
+
+
+.qVlrName {
+  color: #000000;
+}
+
+.qVlrBuiltin {
+  color: #204060;
+}
+
+.qVlrNumber {
+  color: #206040;
+}
+
+.qVlrSymbol {
+  color: #A08040;
+}
+
+.qVlrString {
+  color: #408020;
+}
+
+.qVlrComment {
+  color: #808080;
+}
+
+  /*.qVlrSplit {}*/
+
+.qVlrLabel {
+  color: #802000;
+}

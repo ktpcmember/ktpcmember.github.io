@@ -21,7 +21,9 @@
       )
     )
     (hc.article "テスト"
-      (qh.convert "v" "$0()")
+      (hb.tagE "code"
+        (qh.convert "v" "(0123)")
+      )
     )
   )
 }

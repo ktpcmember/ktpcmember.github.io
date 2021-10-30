@@ -5,6 +5,7 @@
       Code
       Language
       ('
+        [Token string]
         [Region data:{8:background color, 8:offset}]
         (: 0 8) [Region count]
         (qt.Empty) [Current token type]
@@ -21,48 +22,66 @@
     (?
       (qr.isDefined
         L
-        (' (qc.search L A) (c.getRange B 80 8))
+        (' (qc.search L A) (qh.getCurrentType B))
       )
       (?
         (==
           (qr.search
             L
-            (' (qc.search L A) (c.getRange B 80 8))
+            (' (qc.search L A) (qh.getCurrentType B))
           )
           (qt.Empty)
         )
-        (qh.encode L A B)
+        (qh.encode L (' (qh.getToken B) A) B (qh.getCurrentType B))
         (c.empty)
       )
-      (qh.encode L "" B)
+      (qh.encode L (qh.getToken B) B (qt.Empty))
     )
     (?
       (qr.isDefined
         L
-        (' (qc.search L A) (c.getRange B 80 8))
+        (' (qc.search L A) (qh.getCurrentType B))
       )
       (qh.encode L (' (qh.getToken B) A) B
         (qr.search
           L
-          (' (qc.search L A) (c.getRange B 80 8))
+          (' (qc.search L A) (qh.getCurrentType B))
         )
       )
       ('
-        (qh.encode L (qh.getToken B) B (c.getRange B 80 B))
+        (qh.encode L (c.getToken B) B (qh.getCurrentType B))
         (qh.encode L A B (qr.search L (' (qc.search L A) (qt.Empty))))
       )
     )
   );
   ('
+    (?
+      (qr.isDefined
+        L
+        (' (qc.search L A) (qh.getToken A))
+      )
+      (?
+        (==
+          (qr.search
+            L
+            (' (qc.search L A) (qh.getCurrentType B))
+          )
+          (qt.Empty)
+        )
+        (c.empty)
+        (' (qh.getToken B) A)
+      )
+      (A)
+    )
     (c.getRange B 88 8)
     (?
       (qr.isDefined
         L
-        (' (qc.search L A) (c.getRange B 80 8))
+        (' (qc.search L A) (qh.getToken A))
       )
       (qr.search
         L
-        (' (qc.search L A) (c.getRange B 80 8))
+        (' (qc.search L A) (c.getCurrentType B))
       )
       (qt.Empty)
     )
@@ -70,15 +89,16 @@
     (- (: B 64) 1)
   )
 }
-
 {qh.getToken A; ;
   (> A (+ 96 (< (c.getRange A 88 8) 4)))
 }
-
+{qh.getCurrentType A; ;
+  (c.getRange A 80 8)
+}
 {qh.encode L A B C; ;
   (?
     (c.getLengthSx A)
-    (hb.tagCE "span" (qs.search L C) (' (qh.getToken B) (he.escape A)))
+    (hb.tagCE "span" (qs.search L C) A)
     (c.empty)
   )
 }
