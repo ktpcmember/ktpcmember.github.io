@@ -13,6 +13,7 @@
         (c.getLengthSx Code) [Count]
       )
     )
+    (+ "0" (qr.isDefined "v" (' (qcv.Builtin) (qtv.Symbol))))
   )
 }
 
@@ -85,7 +86,7 @@
       )
       (qt.Empty)
     )
-    (? (== A "\r") 0 (+ (c.getRange B 64 16) 1))
+    (: (? (== A "\r") 0 (+ (c.getRange B 64 16) 1)) 16)
     (- (: B 64) 1)
   )
 }
@@ -101,4 +102,21 @@
     (hb.tagCE "span" (qs.search L C) A)
     (c.empty)
   )
+}
+
+
+{qh.regularizeNewLineSb A B; ;
+  (qh.regularizeNewLineSbL A B (: 0 1))
+}
+{qh.regularizeNewLineSbL A 16 B C; ;
+  (?
+    (== A "\r")
+    B
+    (?
+      (== A "\n")
+      (? C (c.empty) B)
+      A
+    )
+  );
+  (== A "\r")
 }

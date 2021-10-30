@@ -21,8 +21,10 @@
       )
     )
     (hc.article "テスト"
-      (hb.tagE "code"
-        (qh.convert "v" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
+      (hb.tagE "pre"
+        (hb.tagE "code"
+          (qh.convert "v" (qh.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
+        )
       )
     )
   )
