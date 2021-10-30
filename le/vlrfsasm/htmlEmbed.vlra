@@ -58,7 +58,7 @@
     (?
       (qr.isDefined
         L
-        (' (qc.search L A) (qh.getToken A))
+        (' (qc.search L A) (qh.getCurrentType B))
       )
       (?
         (==
