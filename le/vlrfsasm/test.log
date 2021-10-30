@@ -1,8 +1,12 @@
-Vlrfsasm v0.6 2021-10-30 00:26
-  3:Undefined function
-  c.getCurrentType D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :84
+Vlrfsasm v0.6 2021-10-30 00:34
+  13:Error in script
+  ~ def\common.vlra :404
+  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\commonRule.vlra :75
+  qs.search D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :101
+  qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :38
   qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :4
   qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :25
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
   
+  Style for token type 0 not found
