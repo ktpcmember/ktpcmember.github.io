@@ -81,7 +81,7 @@
       )
       (qr.search
         L
-        (' (qc.search L A) (c.getCurrentType B))
+        (' (qc.search L A) (qh.getCurrentType B))
       )
       (qt.Empty)
     )
