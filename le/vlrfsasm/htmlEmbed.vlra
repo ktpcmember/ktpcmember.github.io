@@ -35,7 +35,7 @@
         (qh.encode L (' (qh.getToken B) A) B (qh.getCurrentType B))
         (c.empty)
       )
-      (qh.encode L (qh.getToken B) B (qt.Empty))
+      (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
     )
     (?
       (qr.isDefined
@@ -71,7 +71,7 @@
         (c.empty)
         (' (qh.getToken B) A)
       )
-      (A)
+      A
     )
     (c.getRange B 88 8)
     (?
