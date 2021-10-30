@@ -49,7 +49,7 @@
         )
       )
       ('
-        (qh.encode L (c.getToken B) B (qh.getCurrentType B))
+        (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
         (qh.encode L A B (qr.search L (' (qc.search L A) (qt.Empty))))
       )
     )
