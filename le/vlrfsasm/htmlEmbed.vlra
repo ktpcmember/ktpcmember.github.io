@@ -80,9 +80,22 @@
         L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qr.search
-        L
-        (' (qc.search L A) (qh.getCurrentType B))
+      (?
+        (==
+          (qr.search
+            L
+            (' (qc.search L A) (qh.getCurrentType B))
+          )
+          (qt.Empty)
+        )
+        (qr.search
+          L
+          (' (qc.search L A) (qt.Empty))
+        )
+        (qr.search
+          L
+          (' (qc.search L A) (qh.getCurrentType B))
+        )
       )
       (qt.Empty)
     )
