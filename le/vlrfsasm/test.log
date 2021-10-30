@@ -1,8 +1,8 @@
-Vlrfsasm v0.6 2021-10-29 16:24
-  7:Wrong number of argument
-  qh.encode C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :37
-  qh.generate C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :4
-  qh.convert C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\test.vlra :24
-  hc.content C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
-  hb.content C:\Users\[Privacy]\Desktop\github\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+Vlrfsasm v0.6 2021-10-30 00:26
+  3:Undefined function
+  c.getCurrentType D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :84
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :4
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :25
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
   
