@@ -80,24 +80,11 @@
         L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (?
-        (==
-          (qr.search
-            L
-            (' (qc.search L A) (qh.getCurrentType B))
-          )
-          (qt.Empty)
-        )
-        (qr.search
-          L
-          (' (qc.search L A) (qt.Empty))
-        )
-        (qr.search
-          L
-          (' (qc.search L A) (qh.getCurrentType B))
-        )
+      (qr.search
+        L
+        (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qt.Empty)
+      (qr.search L (' (qc.search L A) (qt.Empty)))
     )
     (: (? (== A "\r") 0 (+ (c.getRange B 64 16) 1)) 16)
     (- (: B 64) 1)
