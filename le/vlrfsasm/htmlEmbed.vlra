@@ -32,7 +32,7 @@
           )
           (qt.Empty)
         )
-        (qh.encode L (' (qh.getToken B) A) B (qh.getCurrentType B))
+        (qh.encode L (' (qh.getToken B) (he.escape A)) B (qh.getCurrentType B))
         (c.empty)
       )
       (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
@@ -42,7 +42,7 @@
         L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qh.encode L (' (qh.getToken B) A) B
+      (qh.encode L (' (qh.getToken B) (he.escape A)) B
         (qr.search
           L
           (' (qc.search L A) (qh.getCurrentType B))
@@ -50,7 +50,7 @@
       )
       ('
         (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
-        (qh.encode L A B (qr.search L (' (qc.search L A) (qt.Empty))))
+        (qh.encode L (he.escape A) B (qr.search L (' (qc.search L A) (qt.Empty))))
       )
     )
   );
@@ -69,9 +69,9 @@
           (qt.Empty)
         )
         (c.empty)
-        (' (qh.getToken B) A)
+        (' (qh.getToken B) (he.escape A))
       )
-      A
+      (he.escape A)
     )
     (c.getRange B 88 8)
     (?

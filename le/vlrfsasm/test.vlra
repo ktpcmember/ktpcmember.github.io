@@ -22,7 +22,7 @@
     )
     (hc.article "テスト"
       (hb.tagE "code"
-        (qh.convert "v" "(0123)")
+        (qh.convert "v" "{.; ; (' "Hello" (exclamation "world"))} [Comment]\r\n{exclamation A; ; (' A "!")}")
       )
     )
   )
