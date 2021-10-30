@@ -1,3 +1,6 @@
-Vlrfsasm v0.6 2021-10-30 01:46
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.html
+Vlrfsasm v0.6 2021-10-30 03:16
+  3:Undefined function
+  c.regularizeNewLine D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :25
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+  
