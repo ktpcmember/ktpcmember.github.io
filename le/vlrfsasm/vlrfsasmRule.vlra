@@ -143,7 +143,9 @@
 }
 
 [Meta]
-{qmv.symbol; ; "<"}
+{qmv.getString A B; ;
+  (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) "!" B)
+}
 {qmv.comment A; ; (' "[" A "]")}
 
 [Style]
@@ -163,3 +165,5 @@
 [Background]
 {qbv.list; ; (qb.defaultList)}
 
+[Reserved word]
+{qwv.list; ; (c.empty)}

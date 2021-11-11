@@ -9,11 +9,11 @@
         [Region data:{8:background color, 8:offset}]
         (: 0 8) [Region count]
         (qt.Empty) [Current token type]
-        (: 0 16) [Codepoint count from last new line]
+        (: 0 8) [Codepoint count in line at initial point in token]
+        (: 0 8) [Codepoint count in line]
         (c.getLengthSx Code) [Count]
       )
     )
-    (+ "0" (qr.isDefined "v" (' (qcv.Builtin) (qtv.Symbol))))
   )
 }
 
@@ -33,7 +33,7 @@
           )
           (qt.Empty)
         )
-        (qh.encode L (' (qh.getToken B) (he.escape A)) B (qh.getCurrentType B))
+        (qh.encode L (' (qh.getToken B) (qh.extend A B)) B (qh.getCurrentType B))
         (c.empty)
       )
       (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
@@ -43,7 +43,7 @@
         L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qh.encode L (' (qh.getToken B) (he.escape A)) B
+      (qh.encode L (' (qh.getToken B) (qh.extend A B)) B
         (qr.search
           L
           (' (qc.search L A) (qh.getCurrentType B))
@@ -51,7 +51,7 @@
       )
       ('
         (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
-        (qh.encode L (he.escape A) B (qr.search L (' (qc.search L A) (qt.Empty))))
+        (qh.encode L (qh.extend A B) B (qr.search L (' (qc.search L A) (qt.Empty))))
       )
     )
   );
@@ -65,28 +65,74 @@
         (==
           (qr.search
             L
-            (' (qc.search L A) (qh.getCurrentType B))
+            ('
+              (qc.search L A)
+              (qh.getCurrentType B)
+            )
           )
           (qt.Empty)
         )
-        (c.empty)
-        (' (qh.getToken B) (he.escape A))
+        ('
+          (qh.metaStack
+            L
+            (' (qh.getToken B) (qh.extend A B))
+            B
+            (qh.getCurrentType B)
+          )
+          (qr.search
+            L
+            ('
+              (qc.search L A)
+              (qh.getCurrentType B)
+            )
+          )
+          (:
+            (?
+              (== A "\r")
+              1
+              (+ (c.getRange B 64 8) 2)
+            )
+            8
+          )
+        )
+        ('
+          (qh.getToken B)
+          (qh.extend A B)
+          (c.getRange 96 (< (c.getRange B 88 8) 4))
+          (c.getRange 88 8)
+          (qr.search
+            L
+            ('
+              (qc.search L A)
+              (qh.getCurrentType B)
+            )
+          )
+          (c.getRange B 72 8)
+        )
       )
-      (he.escape A)
+      ('
+        (qh.extend A B)
+        (qh.metaStack
+          L
+          (' (qh.getToken B) (qh.extend A B))
+          B
+          (qh.getCurrentType B)
+        )
+        (qr.search
+          L
+          (' (qc.search L A) (qt.Empty))
+        )
+        (:
+          (?
+            (== A "\r")
+            0
+            (+ (c.getRange B 64 8) 1)
+          )
+          8
+        )
+      )
     )
-    (c.getRange B 88 8)
-    (?
-      (qr.isDefined
-        L
-        (' (qc.search L A) (qh.getCurrentType B))
-      )
-      (qr.search
-        L
-        (' (qc.search L A) (qh.getCurrentType B))
-      )
-      (qr.search L (' (qc.search L A) (qt.Empty)))
-    )
-    (: (? (== A "\r") 0 (+ (c.getRange B 64 16) 1)) 16)
+    (: (? (== A "\r") 0 (+ (c.getRange B 64 8) 1)) 8)
     (- (: B 64) 1)
   )
 }
@@ -99,11 +145,130 @@
 {qh.encode L A B C; ;
   (?
     (c.getLengthSx A)
-    (hb.tagCE "span" (qs.search L C) A)
+    (?
+      (== C (qt.Meta))
+      (qh.meta
+        L
+        (qm.getString L A 0)
+        (qm.getString L A 1)
+        (qm.getString L A 2)
+        (qm.getString L A 3)
+      )
+      (hb.tagCE
+        "span"
+        (qs.search
+          L 
+          (?
+            (qw.isDefined L (qh.excludeTag A) C)
+            (qw.search L (qh.excludeTag A) C)
+            C
+          )
+        )
+        A
+      )
+    )
     (c.empty)
   )
 }
-
+{qh.meta L A B C D; ;
+  ('
+    (?
+      (c.compareStrict A "e")
+      "</span>"
+      (?
+        (c.compareStrict A "u")
+        ('
+          "<span class=\"" (qb.search L B) "\">"
+        )
+        (?
+          (c.compareStrict A "r")
+          (hb.tagCE "span" "qComMetaComment" C)
+          (c.errorSb
+            ('
+              "Meta command \"" A "\" not defined"
+            )
+          )
+        )
+      )
+    )
+    (?
+      (c.getLengthSx D)
+      (hb.tagCE "span" "qComMetaHidden" (qm.comment D))
+      (c.empty)
+    )
+  )
+}
+{qh.excludeTag A; ; (qh.excludeTag.loop A (: 0 1))}
+{qh.excludeTag.loop A 16 B; ;
+  (?
+    (| B (== A ">"))
+    (c.empty)
+    A
+  );
+  (& (| B (== A "<")) (!= A ">"))
+}
+{qh.metaStack L A B C; ;
+  (?
+    (== C (qt.Meta))
+    (?
+      (|
+        (c.compareStrict (qm.getString L A 0) "r")
+        (c.compareStrict (qm.getString L A 0) "u")
+      )
+      ('
+        (c.getRange B 96 (< (c.getRange B 88 8) 4))
+        (c.getRange B 72 8)
+        (?
+          (== (qm.getString L A 0) "r")
+          C
+          (: $FF 8)
+        )
+        (+ (c.getRange B 88 8) 1)
+      )
+      ('
+        (c.getRange B 112 (- (< (c.getRange B 88 8) 4) 16))
+        (c.getRange B 72 8)
+        (?
+          (c.getRange B 88 8)
+          (- (c.getRange B 88 8) 1)
+          (c.errorSb "Closing unopened region")
+        )
+      )
+    )
+    ('
+      (c.getRange B 96 (< (c.getRange B 88 8) 4))
+      (c.getRange B 88 8)
+    )
+  )
+}
+{qh.extend A B; ;
+  (?
+    (# (qh.search A B))
+    (tb.tagCE
+      "span"
+      (qb.get (: (qh.search A B) 8))
+      (he.escape A)
+    )
+    (he.escape A)
+  )
+}
+{qh.search A B; ;
+  (qh.search.loop
+    (c.getRange B 96 (< (c.getRange 88 8) 4))
+    (?
+      (== A "\n")
+      (: 0 8)
+      (c.getRange B 72 8)
+    )
+  )
+}
+{qh.search.loop A 16 B; ;
+  (?
+    (== (: A 8) B)
+    (> A 8)
+    (c.empty)
+  )
+}
 
 {qh.regularizeNewLineSb A B; ;
   (qh.regularizeNewLineSbL A B (: 0 1))

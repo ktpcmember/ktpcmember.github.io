@@ -1,6 +1,6 @@
 
 {hi.assemble.bat; ; (c.convertS8Sx (assemble.bat))}
-{hi.source.vlra; ; (c.convertS8Sx (source.vlra))}
+{hi.source.vlra; ; (c.convertS8Sx (source.vlra.txt))}
 {hi.message.log; ; (c.convertS8Sx (message.log))}
 
 {hc.content; ;
@@ -58,7 +58,7 @@
   "必要なアプリと、その導入方法とを紹介します。"
 }
 {ht.tool.download; ;
-  "まず、Vlrfsasmを導入します。[l;https://github.com/vlrfsg/vlrfsasm;Githubで公開]しているので、[l;https://github.com/vlrfsg/vlrfsasm/releases/download/v0.5/Vlrfsasm_v0.5.zip;このリンク]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[pa;Vlrfsasm_v0.5]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[pa;assembler]と改名しておいてください。"
+  "まず、Vlrfsasmを導入します。[l;https://github.com/vlrfsg/vlrfsasm;Githubで公開]しているので、[l;https://github.com/vlrfsg/vlrfsasm/releases/download/v0.6/Vlrfsasm_v0.6.zip;このリンク]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[pa;Vlrfsasm_v0.6]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[pa;assembler]と改名しておいてください。"
 }
 {ht.tool.batFile; ;
   ('

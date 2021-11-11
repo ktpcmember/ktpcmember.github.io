@@ -1,22 +1,81 @@
 
 [External definition]
 {qc.list A; ;
-  (? (c.compareStrict A "v") (qcv.list) (qe.language A))
+  (?
+    (c.compareStrict A "v")
+    (qcv.list)
+    (?
+      (c.compareStrict A "pa")
+      (qcpa.list)
+      (qe.language A)
+    )
+  )
 }
 {qr.list A; ;
-  (? (c.compareStrict A "v") (qrv.list) (qe.language A))
+  (?
+    (c.compareStrict A "v")
+    (qrv.list)
+    (?
+      (c.compareStrict A "pa")
+      (qrpa.list)
+      (qe.language A)
+    )
+  )
 }
-{qm.symbol A; ;
-  (? (c.compareStrict A "v") (qmv.symbol) (qe.language A))
+{qm.getString A B C; ;
+  (?
+    (c.compareStrict A "v")
+    (qmv.getString B C)
+    (?
+      (c.compareStrict A "pa")
+      (qmpa.getString B C)
+      (qe.language A)
+    )
+  )
 }
 {qm.comment A B; ;
-  (? (c.compareStrict A "v") (qmv.comment B) (qe.language A))
+  (?
+    (c.compareStrict A "v")
+    (qmv.comment B)
+    (?
+      (c.compareStrict A "pa")
+      (qmpa.comment B)
+      (qe.language A)
+    )
+  )
 }
 {qs.list A; ;
-  (? (c.compareStrict A "v") (qsv.list) (qe.language A))
+  (?
+    (c.compareStrict A "v")
+    (qsv.list)
+    (?
+      (c.compareStrict A "pa")
+      (qspa.list)
+      (qe.language A)
+    )
+  )
 }
 {qb.list A; ;
-  (? (c.compareStrict A "v") (qbv.list) (qe.language A))
+  (?
+    (c.compareStrict A "v")
+    (qbv.list)
+    (?
+      (c.compareStrict A "pa")
+      (qbpa.list)
+      (qe.language A)
+    )
+  )
+}
+{qw.list A; ;
+  (?
+    (c.compareStrict A "v")
+    (qwv.list)
+    (?
+      (c.compareStrict A "pa")
+      (qwpa.list)
+      (qe.language A)
+    )
+  )
 }
 
 [Error]
@@ -96,30 +155,37 @@
 }
 {qb.defaultList; ;
   ('
-    (qb.const "default" "eComDefault")
-    (qb.const "new" "eComNew")
-    (qb.const "")
+    (qb.const "uBlack" "eComUBlack")
+    (qb.const "uRed" "eComURed")
+    (qb.const "uBlue" "eComUBlue")
+    (qb.const "uGreen" "eComUGreen")
+    (qb.const "bBlack" "eComBBlack")
+    (qb.const "bRed" "eComBRed")
+    (qb.const "bBlue" "eComBBlue")
+    (qb.const "bGreen" "eComBGreen")
+    (qb.const "bPurple" "eComBPurple")
+    (qb.const "rBlack" "eComRBlack")
+    (qb.const "rRed" "eComRRed")
+    (qb.const "rBlue" "eComRBlue")
+    (qb.const "rGreen" "eComRGreen")
   )
 }
-{qb.searchAll L A; ; (qb.searchAll.loop (qb.list L) A)}
-{qb.searchAll.loop A 1024 B; ;
+{qb.searchAll L A; ; (qb.searchAll.loop (qb.list L) A 0)}
+{qb.searchAll.loop A 1024 B C; ;
   (?
     (&
       (== (: A 8) (c.getLengthSx B))
-      (== (c.getRange A 16 (< (: A 8) 4)) B)
+      (c.compareStrict (c.getRange A 16 (< (: A 8) 4)) B)
     )
-    (' (> A 512) (c.getRange A 8 8))
+    (: C 8)
     (c.empty)
-  )
+  );
+  (+ C 1)
 }
 {qb.search L A; ;
   (?
     (# (qb.searchAll L A))
-    (c.getRange
-      (qb.searchAll L A)
-      512
-      (c.getRange (qb.searchAll L A) 8 8)
-    )
+    (: (qb.searchAll L A) 8)
     (c.errorSb
       ('
         "Style class for background \""
@@ -129,3 +195,36 @@
     )
   )
 }
+{qb.get L A; ;
+  (c.getRange
+    (qb.list L)
+    (+ (< A 10) 512)
+    (c.getRange (qb.list L) (+ (< A 10) 8) 8)
+  )
+}
+
+[Reserved word]
+{qw.list.element A B C; ;
+  ('
+    (: (he.escape A) 480)
+    (: (c.getLengthSx A) 16)
+    (: B 8)
+    (: C 8)
+  )
+}
+{qw.searchAll L A B; ; (qw.searchAll.loop (qw.list L) A B)}
+{qw.searchAll.loop A 512 B C; ;
+  (?
+    (&
+      (== (c.getRange A 8 8) C)
+      (c.compareStrict
+        (c.getRange A 32 (< (c.getRange A 16 16) 4))
+        B
+      )
+    )
+    (: A 8)
+    (c.empty)
+  )
+}
+{qw.isDefined L A B; ; (!= (# (qw.searchAll L A B)) 0)}
+{qw.search L A B; ; (: (qw.searchAll L A B) 8)}
