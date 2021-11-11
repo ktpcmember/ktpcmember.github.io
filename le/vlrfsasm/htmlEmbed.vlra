@@ -6,7 +6,7 @@
       Language
       ('
         [Token string]
-        [Region data:{8:background color, 8:offset}]
+        [Region data:{8:background style, 8:offset}]
         (: 0 8) [Region count]
         (qt.Empty) [Current token type]
         (: 0 8) [Codepoint count in line at initial point in token]
@@ -79,13 +79,7 @@
             B
             (qh.getCurrentType B)
           )
-          (qr.search
-            L
-            ('
-              (qc.search L A)
-              (qh.getCurrentType B)
-            )
-          )
+          (qt.Empty)
           (:
             (?
               (== A "\r")
@@ -149,15 +143,15 @@
       (== C (qt.Meta))
       (qh.meta
         L
-        (qm.getString L A 0)
-        (qm.getString L A 1)
-        (qm.getString L A 2)
-        (qm.getString L A 3)
+        (qm.getString L (qh.excludeTag A) 0)
+        (qm.getString L (qh.excludeTag A) 1)
+        (qm.getString L (qh.excludeTag A) 2)
+        (qm.getString L (qh.excludeTag A) 3)
       )
       (hb.tagCE
         "span"
         (qs.search
-          L 
+          L
           (?
             (qw.isDefined L (qh.excludeTag A) C)
             (qw.search L (qh.excludeTag A) C)
@@ -201,7 +195,7 @@
 {qh.excludeTag A; ; (qh.excludeTag.loop A (: 0 1))}
 {qh.excludeTag.loop A 16 B; ;
   (?
-    (| B (== A ">"))
+    (| B (== A "<"))
     (c.empty)
     A
   );
@@ -231,7 +225,7 @@
         (?
           (c.getRange B 88 8)
           (- (c.getRange B 88 8) 1)
-          (c.errorSb "Closing unopened region")
+          (c.errorSb "Unpaired region end")
         )
       )
     )
