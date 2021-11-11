@@ -254,7 +254,7 @@
 }
 {qh.search A B; ;
   (qh.search.loop
-    (c.getRange B 96 (< (c.getRange 88 8) 4))
+    (c.getRange B 96 (< (c.getRange B 88 8) 4))
     (?
       (== A "\n")
       (: 0 8)
