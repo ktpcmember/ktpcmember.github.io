@@ -98,8 +98,8 @@
         ('
           (qh.getToken B)
           (qh.extend A B)
-          (c.getRange 96 (< (c.getRange B 88 8) 4))
-          (c.getRange 88 8)
+          (c.getRange B 96 (< (c.getRange B 88 8) 4))
+          (c.getRange B 88 8)
           (qr.search
             L
             ('
