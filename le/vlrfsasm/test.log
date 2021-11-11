@@ -1,3 +1,10 @@
-Vlrfsasm v0.6 2021-10-30 12:26
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.html
+Vlrfsasm v0.6 2021-11-11 10:57
+  7:Wrong number of argument
+  c.getRange D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :257
+  qh.search D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :246
+  qh.extend D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :100
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :4
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :26
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+  
