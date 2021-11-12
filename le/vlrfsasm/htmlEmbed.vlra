@@ -33,7 +33,7 @@
           )
           (qt.Empty)
         )
-        (qh.encode L (' (qh.getToken B) (qh.extend A B)) B (qh.getCurrentType B))
+        (qh.encode L (' (qh.getToken B) (qh.extend L A B)) B (qh.getCurrentType B))
         (c.empty)
       )
       (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
@@ -43,7 +43,7 @@
         L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qh.encode L (' (qh.getToken B) (qh.extend A B)) B
+      (qh.encode L (' (qh.getToken B) (qh.extend L A B)) B
         (qr.search
           L
           (' (qc.search L A) (qh.getCurrentType B))
@@ -51,7 +51,7 @@
       )
       ('
         (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
-        (qh.encode L (qh.extend A B) B (qr.search L (' (qc.search L A) (qt.Empty))))
+        (qh.encode L (qh.extend L A B) B (qr.search L (' (qc.search L A) (qt.Empty))))
       )
     )
   );
@@ -75,7 +75,7 @@
         ('
           (qh.metaStack
             L
-            (' (qh.getToken B) (qh.extend A B))
+            (' (qh.getToken B) (qh.extend L A B))
             B
             (qh.getCurrentType B)
           )
@@ -91,7 +91,7 @@
         )
         ('
           (qh.getToken B)
-          (qh.extend A B)
+          (qh.extend L A B)
           (c.getRange B 96 (< (qh.getRegionDepth B) 4))
           (qh.getRegionDepth B)
           (qr.search
@@ -105,10 +105,10 @@
         )
       )
       ('
-        (qh.extend A B)
+        (qh.extend L A B)
         (qh.metaStack
           L
-          (' (qh.getToken B) (qh.extend A B))
+          (' (qh.getToken B) (qh.extend L A B))
           B
           (qh.getCurrentType B)
         )
@@ -238,7 +238,7 @@
     )
   )
 }
-{qh.extend A B; ;
+{qh.extend L A B; ;
   (?
     (# (qh.search A B))
     (tb.tagCE
