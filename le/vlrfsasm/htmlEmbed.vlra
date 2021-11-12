@@ -131,7 +131,7 @@
   )
 }
 {qh.getToken A; ;
-  (> A (+ 96 (< (qh.getRegionDepth B) 4)))
+  (> A (+ 96 (< (qh.getRegionDepth A) 4)))
 }
 {qh.getCurrentType A; ;
   (c.getRange A 80 8)
