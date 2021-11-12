@@ -1,4 +1,6 @@
-Vlrfsasm v0.6 2021-11-12 00:34
-  14:Undefined argument
-  L D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :246
+Vlrfsasm v0.6 2021-11-12 00:42
+  7:Wrong number of argument
+  c.convertISb D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :27
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
   
