@@ -92,8 +92,8 @@
         ('
           (qh.getToken B)
           (qh.extend A B)
-          (c.getRange B 96 (< (c.getRange B 88 8) 4))
-          (c.getRange B 88 8)
+          (c.getRange B 96 (< (qh.getRegionDepth B) 4))
+          (qh.getRegionDepth B)
           (qr.search
             L
             ('
@@ -131,10 +131,13 @@
   )
 }
 {qh.getToken A; ;
-  (> A (+ 96 (< (c.getRange A 88 8) 4)))
+  (> A (+ 96 (< (qh.getRegionDepth B) 4)))
 }
 {qh.getCurrentType A; ;
   (c.getRange A 80 8)
+}
+{qh.getRegionDepth A; ;
+  (c.getRange A 88 8)
 }
 {qh.encode L A B C; ;
   (?
@@ -210,28 +213,28 @@
         (c.compareStrict (qm.getString L A 0) "u")
       )
       ('
-        (c.getRange B 96 (< (c.getRange B 88 8) 4))
+        (c.getRange B 96 (< (qh.getRegionDepth B) 4))
         (c.getRange B 72 8)
         (?
           (== (qm.getString L A 0) "r")
           C
           (: $FF 8)
         )
-        (+ (c.getRange B 88 8) 1)
+        (+ (qh.getRegionDepth B) 1)
       )
       ('
-        (c.getRange B 112 (- (< (c.getRange B 88 8) 4) 16))
+        (c.getRange B 112 (- (< (qh.getRegionDepth B) 4) 16))
         (c.getRange B 72 8)
         (?
-          (c.getRange B 88 8)
-          (- (c.getRange B 88 8) 1)
+          (qh.getRegionDepth B)
+          (- (qh.getRegionDepth B) 1)
           (c.errorSb "Unpaired region end")
         )
       )
     )
     ('
-      (c.getRange B 96 (< (c.getRange B 88 8) 4))
-      (c.getRange B 88 8)
+      (c.getRange B 96 (< (qh.getRegionDepth B) 4))
+      (qh.getRegionDepth B)
     )
   )
 }
@@ -240,7 +243,7 @@
     (# (qh.search A B))
     (tb.tagCE
       "span"
-      (qb.get (: (qh.search A B) 8))
+      (qb.get L (: (qh.search A B) 8))
       (he.escape A)
     )
     (he.escape A)
@@ -248,9 +251,9 @@
 }
 {qh.search A B; ;
   (qh.search.loop
-    (c.getRange B 96 (< (c.getRange B 88 8) 4))
+    (c.getRange B 96 (< (qh.getRegionDepth B) 4))
     (?
-      (== A "\n")
+      (== A "\r")
       (: 0 8)
       (c.getRange B 72 8)
     )

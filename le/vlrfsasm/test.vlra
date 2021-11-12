@@ -23,11 +23,18 @@
     (hc.article "テスト"
       (hb.tagE "pre"
         (hb.tagE "code"
-          (qh.convert "v" (qh.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
+          ('
+            (c.convertISb (hu.testCode))
+            (hu.testCode)
+          )
         )
       )
     )
   )
+}
+
+{hu.testCode; ;
+  (qh.convert "v" (qh.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
 }
 
 [User-defined style]
