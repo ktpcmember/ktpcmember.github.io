@@ -24,7 +24,7 @@
       (hb.tagE "pre"
         (hb.tagE "code"
           ('
-            (c.convertISb (hu.testCode))
+            (c.convertISb (# (hu.testCode)) 10)
             (hu.testCode)
           )
         )
