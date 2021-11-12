@@ -44,9 +44,9 @@
     (qc.list.element "9" (qcv.Number))
     (qc.list.element ":" (qcv.Builtin))
     (qc.list.element ";" (qcv.Symbol))
-    (qc.list.element "<" (qcv.MetaStart))
+    (qc.list.element "<" (qcv.Builtin))
     (qc.list.element ">" (qcv.Builtin))
-    (qc.list.element "?" (qcv.Builtin))
+    (qc.list.element "?" (qcv.MetaStart))
     (qc.list.element "@" (qcv.Label))
     (qc.list.element "[" (qcv.CommentBegin))
     (qc.list.element "\\" (qcv.Escape))
@@ -144,7 +144,7 @@
 
 [Meta]
 {qmv.getString A B; ;
-  (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) "!" B)
+  (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) ";" B)
 }
 {qmv.comment A; ; (' "[" A "]")}
 

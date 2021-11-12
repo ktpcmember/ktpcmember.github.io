@@ -1,2 +1,1 @@
-{.; ; (' "Hello" (exclamation "world"))} [Comment]
-{exclamation A; ; (' A "!")}
+"Hello"
