@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPICマイコン講習（C言語）の資料です。DPについて解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>DP - 競技プログラミング講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133906591-2');
+  </script>
+</head>
+
+<body>
+  <header class="ch00">
+    <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+    <div class="ch01">
+      <div class="ch10">
+        <div class="ch21">
+          <button type="button" class="ch31" onclick="ck()">
+            <img class="ch42" src="../../../images/menu.png">
+          </button>
+        </div>
+        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">駒場東邦物理部</span>
+            </span>
+            <a class="ch41" href="../../../index.html">
+              <span class="ch50">トップページ</span>
+            </a>
+            <a class="ch41" href="../../le.html">
+              <span class="ch50">講習トップ</span>
+            </a>
+          </div>
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">PIC講習（C言語）</span>
+            </span>
+            <a class="ch41" href="../binarySearch/binarySearch.html">
+              <span class="ch50">前回</span>
+            </a>
+            <a class="ch41" href="../none.html">
+              <span class="ch50">索引</span>
+            </a>
+            <a class="ch41" href="../next/next.html">
+              <span class="ch50">次回</span>
+            </a>
+            <a class="ch41" href="../k_c_pej_p_gm.html">
+              <span class="ch50">目次</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cb00">
+      <div class="cb10">
+        <article class="cb20">
+          <h1>競技プログラミング講習/DP</h1>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">概要</h2>
+          <span class="cb34">
+            今回は、DPについて解説します。今回も、探索を高速化する方法です。状態を上手にまとめて、探索を省ける所は省いて、計算量を落としていきましょう。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb36 debr">
+            <h4 class="cb44">重要語</h4>
+            <h4 class="cb45">DP</h4>
+            <span class="cb41">状態を同一視できるところをまとめ、ある問題をより小さな部分問題に分割して解く手法</span>
+          </div>
+          <div class="cb36 debr">
+            <h4 class="cb44">必要語</h4>
+            <span class="cb41">今回の必要語はありません。</span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">DP</h2>
+          <span class="cb34">
+            次のような問題を考えてみます。<br>
+            N段の階段があり、今0段目（上り口）にいます。ここから1段もしくは2段上ることを繰り返して、最上段のN段目にたどり着く移動方法は何通りありますか。制約は以下の通りです。<br>
+            <ul>
+              <li>1 &le; N &le; 2&times;10<sup>5</sup></li>
+              <li>入力はすべて整数</li>
+            </ul>
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">愚直にやってみる</h3>
+            <span class="cb41">
+              まずは素直に、階段をどう上るかを探索していくことを考えます。単純なfor文などで全探索するのは難しいので、再帰関数を使って考えてみます。DFSのように、今何段目にいるかを増減させながら、探索していくことを考えると、以下のように書けます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">愚直解</span>
+              <button type="button" class="cb53" onclick="copy('greedy')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+<pre id="greedy" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> now <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">,</span> n<span class="wdsl">,</span> ans <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdkywd">void</span> f<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>now <span class="wdsl">&gt;</span> n<span class="wdsl">)</span> <span class="wdkywd">return</span><span class="wdsl">;</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>now <span class="wdsl">==</span> n<span class="wdsl">)</span> <span class="wdsl">{</span>
+        ans<span class="wdsl">++;</span>
+        <span class="wdkywd">return</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> v <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span> v <span class="wdsl">&lt;=</span> <span class="wdnr">2</span><span class="wdsl">;</span> v<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        now <span class="wdsl">+=</span> v<span class="wdsl">;</span>
+        f<span class="wdsl">();</span>
+        now <span class="wdsl">-=</span> v<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+<span class="wdsl">}</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    f<span class="wdsl">();</span>
+    cout <span class="wdsl">&lt;&lt;</span> ans <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              これを実行してみると、n=45ほどでもう実行時間がとても2秒では収まらなくなったと思います。かなり雑に評価すると、1回この関数が呼ばれるたびに1段上る/2段上るの2つの選択肢があり、またこの関数が呼ばれるわけですから、大体2<sup>n</sup>回の計算が必要です。（もう少し厳密に評価すると、O(((1+√5)/2)<sup>n</sup>)です。）これでは到底間に合いません。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">工夫する</h3>
+            <span class="cb41">
+              under preparation
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">練習問題</h2>
+          <span class="cb34">
+            理解できたか確認するために、練習問題があります。以下の問題を解いてみてください。<br>
+            <ul><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/dp/tasks/dp_a">EDPC A - Frog 1</a>（まずはここからです）</li><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/abc129/tasks/abc129_c">ABC129 C - Typical Stairs</a>（遷移をよく考えましょう）</li><br>
+              <li>under preparation</li><br>
+            </ul>
+          </span>
+        </article>
+      </div>
+    </div>
+    <footer class="cf00">
+      <div class="cf10">
+        <button class="cf21" onclick="tp()">
+          <img class="cf30" src="../../../images/top.png">
+        </button>
+        <span class="cf20">
+          (C) 2020 駒場東邦物理部[KTPC]
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
