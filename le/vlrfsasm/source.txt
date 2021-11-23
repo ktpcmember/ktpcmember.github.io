@@ -1,1 +1,4 @@
-"Hello world!"
+{.; ;
+  [?r;rBlue;Comment]
+  (c.convertSbS8 "Hello world!")[?e]
+}

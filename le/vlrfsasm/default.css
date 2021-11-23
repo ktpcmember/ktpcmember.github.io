@@ -206,13 +206,78 @@
 
 /*Code*/
 
-code {
+.cCodeFrame {
+  margin: 0.5em auto auto;
+  padding: 0 0.5em;
+  max-width: calc(100% - 1em);
+  display: flex;
+  flex-direction: column;
+  border-left: solid 1px #000000;
+  border-right: solid 1px #000000;
+}
+
+.cCodeMenu {
+  margin: 0;
+  padding: 0 0.2em;
+  display: flex;
+  flex-direction: row;
+}
+
+.cCodeMenuTitle, .cCodeMenuButton {
+  margin: 0.5em auto;
+  border: none;
+  outline: none;
+  background-color: #FAF8F8;
+}
+
+.cCodeMenuTitle {
+}
+
+.cCodeMenuButton {
+  cursor: pointer;
+  border-bottom: solid 1px #000000;
+}
+
+.cCodeMenuCopy {
+  margin: 0.5em auto;
+}
+
+.cCodeSingle {
+  margin: 0;
+  padding: 0;
+  text-align: left;
   font-family: 'Inconsolata', monospace;
+  width: 100%;
+  border-radius: 0;
+  border-top: solid 1px #000000;
+  border-bottom: solid 1px #000000;
   background-color: #F4F4F4;
 }
 
-/*Vlrfsasm*/
+.cCodePre {
+  margin: 0;
+  padding: 0.5em 0;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
 
+.qLine {
+  margin: 0 auto 0 0;
+}
+
+/*Common*/
+
+.qComUBlue {
+  text-decoration: underline solid blue;
+}
+
+.qComRBlue {
+  border-left: solid 1px blue;
+}
+
+/*Vlrfsasm*/
 
 .qVlrName {
   color: #000000;

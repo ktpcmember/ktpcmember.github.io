@@ -20,21 +20,12 @@
         ""
       )
     )
-    (hc.article "テスト"
-      (hb.tagE "pre"
-        (hb.tagE "code"
-          ('
-            (c.convertISb (# (hu.testCode)) 10)
-            (hu.testCode)
-          )
-        )
-      )
-    )
+    (hc.article "テスト" (hu.testCode))
   )
 }
 
 {hu.testCode; ;
-  (qh.convert "v" (qh.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
+  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
 }
 
 [User-defined style]

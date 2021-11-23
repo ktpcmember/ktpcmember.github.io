@@ -139,6 +139,7 @@
     (qr.add (qt.Meta) (qcv.Escape))
     (qr.add (qt.Meta) (qcv.MetaStart))
     (qr.end (qt.Meta) (qcv.CommentEnd))
+    (qr.add (qtv.Split) (qcv.Split))
   )
 }
 

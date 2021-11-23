@@ -1,6 +1,29 @@
 
+{qh.multi Language Title Code; ;
+  (hb.tagCE
+    "div"
+    "cCodeFrame"
+    ('
+      (hb.tagCE
+        "div"
+        "cCodeMenu"
+        ('
+          (hb.tagCE "span" "cCodeMenuTitle" Title)
+          (hb.tagCE "button" "cCodeMenuButton" (hb.tagCE "span" "cCodeMenuCopy" "COPY"))
+        )
+      )
+      (hb.tagCE
+        "code"
+        "cCodeSingle"
+        (hb.tagCE "pre" "cCodePre" (qh.convert Language Code))
+      )
+    )
+  )
+}
+
 {qh.convert Language Code; ;
   ('
+    "<span class=\"qLine\">"
     (qh.generate
       Code
       Language
@@ -14,6 +37,7 @@
         (c.getLengthSx Code) [Count]
       )
     )
+    "</span>"
   )
 }
 
@@ -150,9 +174,9 @@
         (qm.getString L (qh.excludeTag A) 1)
         (qm.getString L (qh.excludeTag A) 2)
         (qm.getString L (qh.excludeTag A) 3)
+        B
       )
-      (hb.tagCE
-        "span"
+      (qh.splitLine
         (qs.search
           L
           (?
@@ -167,19 +191,26 @@
     (c.empty)
   )
 }
-{qh.meta L A B C D; ;
+{qh.meta L A B C D E; ;
   ('
     (?
       (c.compareStrict A "e")
-      "</span>"
+      (? (== (c.getRange E 104 8) $FF) "</span>" (c.empty))
       (?
         (c.compareStrict A "u")
         ('
-          "<span class=\"" (qb.search L B) "\">"
+          "<span class=\"" (qb.get L (qb.search L B)) "\">"
         )
         (?
           (c.compareStrict A "r")
-          (hb.tagCE "span" "qComMetaComment" C)
+          (hb.tagCE
+            "span"
+            (hb.concatenateClass
+              "qComMetaComment"
+              (qb.get L (qb.search L B))
+            )
+            C
+          )
           (c.errorSb
             ('
               "Meta command \"" A "\" not defined"
@@ -214,17 +245,20 @@
       )
       ('
         (c.getRange B 96 (< (qh.getRegionDepth B) 4))
-        (c.getRange B 72 8)
         (?
           (== (qm.getString L A 0) "r")
-          C
+          (qb.search L (qm.getString L A 1))
           (: $FF 8)
+        )
+        (?
+          (== A "\r")
+          (: 0 8)
+          (c.getRange B 72 8)
         )
         (+ (qh.getRegionDepth B) 1)
       )
       ('
         (c.getRange B 112 (- (< (qh.getRegionDepth B) 4) 16))
-        (c.getRange B 72 8)
         (?
           (qh.getRegionDepth B)
           (- (qh.getRegionDepth B) 1)
@@ -241,7 +275,7 @@
 {qh.extend L A B; ;
   (?
     (# (qh.search A B))
-    (tb.tagCE
+    (hb.tagCE
       "span"
       (qb.get L (: (qh.search A B) 8))
       (he.escape A)
@@ -255,7 +289,7 @@
     (?
       (== A "\r")
       (: 0 8)
-      (c.getRange B 72 8)
+      (+ (c.getRange B 64 8) 1)
     )
   )
 }
@@ -266,19 +300,17 @@
     (c.empty)
   )
 }
-
-{qh.regularizeNewLineSb A B; ;
-  (qh.regularizeNewLineSbL A B (: 0 1))
-}
-{qh.regularizeNewLineSbL A 16 B C; ;
-  (?
-    (== A "\r")
-    B
-    (?
-      (== A "\n")
-      (? C (c.empty) B)
-      A
+{qh.splitLine A B; ;
+  (hb.tagCE
+    "span"
+    A
+    (c.regularizeNewLineSb
+      B
+      ('
+        "</span></span><span class=\"qLine\"><span class=\""
+        A
+        "\">"
+      )
     )
-  );
-  (== A "\r")
+  )
 }

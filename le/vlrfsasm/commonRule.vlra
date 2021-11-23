@@ -155,19 +155,19 @@
 }
 {qb.defaultList; ;
   ('
-    (qb.const "uBlack" "eComUBlack")
-    (qb.const "uRed" "eComURed")
-    (qb.const "uBlue" "eComUBlue")
-    (qb.const "uGreen" "eComUGreen")
-    (qb.const "bBlack" "eComBBlack")
-    (qb.const "bRed" "eComBRed")
-    (qb.const "bBlue" "eComBBlue")
-    (qb.const "bGreen" "eComBGreen")
-    (qb.const "bPurple" "eComBPurple")
-    (qb.const "rBlack" "eComRBlack")
-    (qb.const "rRed" "eComRRed")
-    (qb.const "rBlue" "eComRBlue")
-    (qb.const "rGreen" "eComRGreen")
+    (qb.list.element "uBlack" "qComUBlack")
+    (qb.list.element "uRed" "qComURed")
+    (qb.list.element "uBlue" "qComUBlue")
+    (qb.list.element "uGreen" "qComUGreen")
+    (qb.list.element "bBlack" "qComBBlack")
+    (qb.list.element "bRed" "qComBRed")
+    (qb.list.element "bBlue" "qComBBlue")
+    (qb.list.element "bGreen" "qComBGreen")
+    (qb.list.element "bPurple" "qComBPurple")
+    (qb.list.element "rBlack" "qComRBlack")
+    (qb.list.element "rRed" "qComRRed")
+    (qb.list.element "rBlue" "qComRBlue")
+    (qb.list.element "rGreen" "qComRGreen")
   )
 }
 {qb.searchAll L A; ; (qb.searchAll.loop (qb.list L) A 0)}
@@ -198,10 +198,11 @@
 {qb.get L A; ;
   (c.getRange
     (qb.list L)
-    (+ (< A 10) 512)
-    (c.getRange (qb.list L) (+ (< A 10) 8) 8)
+    (+ (< (qb.get.getIndex L A) 10) 512)
+    (< (c.getRange (qb.list L) (+ (< (qb.get.getIndex L A) 10) 8) 8) 4)
   )
 }
+{qb.get.getIndex L A; ; (- (> (# (qb.list L)) 10) (+ A 1))}
 
 [Reserved word]
 {qw.list.element A B C; ;
