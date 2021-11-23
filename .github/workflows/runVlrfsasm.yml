@@ -14,8 +14,8 @@ jobs:
             pushd ${{ runner.temp }}
             md vlrfsasm
             cd vlrfsasm
-            curl -OL "https://github.com/vlrfsg/vlrfsasm/releases/download/v0.6/Vlrfsasm_v0.6.zip"
-            7z x Vlrfsasm_v0.6.zip
+            curl -OL "https://github.com/vlrfsg/vlrfsasm/releases/download/v0.7/Vlrfsasm_v0.7.zip"
+            7z x Vlrfsasm_v0.7.zip
             call %targetDir%\q.bat
             cd ../
             rmdir /s /q vlrfsasm
