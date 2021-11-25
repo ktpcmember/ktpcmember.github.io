@@ -19,7 +19,8 @@
             "cCodeMenuButton"
             (hb.attribute
               "onclick"
-              (' "copyScript()")
+              "copyScript()"
+            )
             (hb.tagCE "span" "cCodeMenuText" "COPY")
           )
         )
