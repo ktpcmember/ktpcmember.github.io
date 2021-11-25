@@ -9,13 +9,29 @@
         "cCodeMenu"
         ('
           (hb.tagCE "span" "cCodeMenuTitle" Title)
-          (hb.tagCE "button" "cCodeMenuButton" (hb.tagCE "span" "cCodeMenuCopy" "COPY"))
+          (hb.tagCE
+            "button"
+            "cCodeMenuButton"
+            (hb.tagCE "span" "cCodeMenuText" "EXPAND")
+          )
+          (hb.tagACE
+            "button"
+            "cCodeMenuButton"
+            (hb.attribute
+              "onclick"
+              (' "copyScript()")
+            (hb.tagCE "span" "cCodeMenuText" "COPY")
+          )
         )
       )
       (hb.tagCE
         "code"
         "cCodeSingle"
-        (hb.tagCE "pre" "cCodePre" (qh.convert Language Code))
+        (hb.tagCE
+          "pre"
+          "cCodePre"
+          (qh.convert Language Code)
+        )
       )
     )
   )

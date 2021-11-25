@@ -16,8 +16,11 @@ function scrollToTop(){
   return;
 }
 
-function copyScript(id){
-  navigator.clipboard.writeText(excludeComment(document.getElementById(id).textContent));
+function copyScript(){
+  var menuElement = this.parentElement;
+  menuElement.classList.add("cCodeMenuEffectCopy");
+  menuElement.addEventListener("animationend", () => {this.classList.remove("cCodeMenuEffectCopy")});
+  navigator.clipboard.writeText(excludeComment(menuElement.lastChild.textContent));
   return;
 }
 

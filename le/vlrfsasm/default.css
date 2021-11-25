@@ -231,15 +231,22 @@
 }
 
 .cCodeMenuTitle {
+  flex-grow: 1;
 }
 
 .cCodeMenuButton {
+  padding: 0 0.5ex;
   cursor: pointer;
-  border-bottom: solid 1px #000000;
+  border-left: solid 1px #404040;
 }
 
-.cCodeMenuCopy {
-  margin: 0.5em auto;
+.cCodeMenuButton:hover, .cCodeMenuButton:active{
+  border-top: solid 1px #404040;
+  border-bottom: solid 1px #404040;
+}
+
+.cCodeMenuText {
+  margin: 0;
 }
 
 .cCodeSingle {
