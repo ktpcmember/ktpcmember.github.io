@@ -57,10 +57,10 @@
       )
       (hb.tagCE
         "code"
-        "cCodeMulti cCodeContracted"
+        "cCodeMulti"
         (hb.tagCE
           "pre"
-          "cCodePre"
+          "cCodePre cCodeContracted"
           (qh.convert Language Code)
         )
       )
