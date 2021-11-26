@@ -1,3 +1,8 @@
-Vlrfsasm v0.7 2021-11-26 06:26
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.html
+Vlrfsasm v0.7 2021-11-26 10:18
+  3:Undefined function
+  c.concatenateClass D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\htmlEmbed.vlra :25
+  qh.multi D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :28
+  hu.testCode D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\test.vlra :23
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\rule.vlra :2
+  
