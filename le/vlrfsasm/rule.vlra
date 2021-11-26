@@ -115,7 +115,7 @@
   (hb.tagCE "body" "hBody"
     ('
       (hb.tagCE "header" "hHeader"
-        (hb.image "hBanner" (hp.getRelativePath "images/br.jpg"))
+        (hb.imageC "hBanner" (hp.getRelativePath "images/br.jpg"))
       )
       (hb.tagCE "div" "hBeneathHeader"
         ('
@@ -124,7 +124,7 @@
               ('
                 (hb.tagCE "div" "hMenuButtonBack"
                   (hb.tagACE "button" "hMenuButton" (hb.attribute "onclick" "menu()")
-                    (hb.image "hMenuButtonImage" (hp.getRelativePath "images/menu.png"))
+                    (hb.imageC "hMenuButtonImage" (hp.getRelativePath "images/menu.png"))
                   )
                 )
                 (hb.tagACE "div" "hMenuLink"
@@ -151,7 +151,7 @@
             (hb.tagCE "footer" "hFooter"
               ('
                 (hb.tagACE "button" "hFooterButton" (hb.attribute "onclick" "scrollToTop")
-                  (hb.image "hFooterButtonImage" (hp.getRelativePath "images/top.png"))
+                  (hb.imageC "hFooterButtonImage" (hp.getRelativePath "images/top.png"))
                 )
                 (hb.tagCE "span" "hFooterText" "(C) 2020 駒場東邦物理部")
               )
@@ -185,7 +185,7 @@
     B
   )
 }
-{hb.image Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
+{hb.imageC Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
 
 [Html Menu]
 

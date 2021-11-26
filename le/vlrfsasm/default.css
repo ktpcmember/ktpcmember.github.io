@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&display=swap');
 
 /*Header, Banner*/
 
@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   background-color: #F8FAFA;
 }
@@ -223,7 +224,7 @@
   flex-direction: row;
 }
 
-.cCodeMenuTitle, .cCodeMenuButton {
+.cCodeMenuTitle, .cCodeMenuElement {
   margin: 0.5em auto;
   border: none;
   outline: none;
@@ -234,19 +235,56 @@
   flex-grow: 1;
 }
 
-.cCodeMenuButton {
-  padding: 0 0.5ex;
-  cursor: pointer;
+.cCodeMenuElement {
+  box-sizing: content-box;
+  flex-basis: 100px;
+  flex-grow: 0;
+  padding: 0;
   border-left: solid 1px #404040;
+  display: flex;
+  flex-direction: row;
 }
 
-.cCodeMenuButton:hover, .cCodeMenuButton:active{
+.cCodeMenuInvisible {
+  display: none;
+}
+
+.cCodeMenuRight {
+  border-right: solid 1px #404040;
+}
+
+.cCodeMenuButton {
+  cursor: pointer;
+}
+
+.cCodeMenuButton:hover, .cCodeMenuButton:active {
+  background-color: #F4F0F0;
   border-top: solid 1px #404040;
   border-bottom: solid 1px #404040;
 }
 
+.cCodeMenuIcon {
+  margin: auto 0 auto auto;
+  height: 18px;
+}
+
 .cCodeMenuText {
-  margin: 0;
+  margin: auto auto auto 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+}
+
+.cCodeMenuEffectCopy {
+  animation: 1s ease-in 0s 1 normal none running cCodeMenuAnimationFrame;
+}
+
+@keyframes cCodeMenuAnimationFrame {
+  from {
+    background-color: #C0E0F0;
+  }
+  to {
+    background-color: #FAF8F8;
+  }
 }
 
 .cCodeSingle {

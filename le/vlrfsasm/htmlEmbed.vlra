@@ -11,17 +11,39 @@
           (hb.tagCE "span" "cCodeMenuTitle" Title)
           (hb.tagCE
             "button"
-            "cCodeMenuButton"
-            (hb.tagCE "span" "cCodeMenuText" "EXPAND")
+            "cCodeMenuElement cCodeMenuButton"
+            ('
+              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/expand.svg"))
+              (hb.tagCE "span" "cCodeMenuText" "EXPAND")
+            )
+          )
+          (hb.tagCE
+            "button"
+            "cCodeMenuElement cCodeMenuButton cCodeMenuInvisible"
+            ('
+              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/contract.svg"))
+              (hb.tagCE "span" "cCodeMenuText" "CONTRACT")
+            )
           )
           (hb.tagACE
             "button"
-            "cCodeMenuButton"
+            "cCodeMenuElement cCodeMenuButton cCodeMenuRight"
             (hb.attribute
               "onclick"
-              "copyScript()"
+              "copyScript(this)"
             )
-            (hb.tagCE "span" "cCodeMenuText" "COPY")
+            ('
+              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/copy.svg"))
+              (hb.tagCE "span" "cCodeMenuText" "COPY")
+            )
+          )
+          (hb.tagCE
+            "span"
+            "cCodeMenuElement cCodeMenuRight cCodeMenuInvisible"
+            ('
+              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/done.svg"))
+              (hb.tagCE "span" "cCodeMenuText" "COPIED!")
+            )
           )
         )
       )

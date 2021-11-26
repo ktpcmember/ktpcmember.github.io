@@ -16,30 +16,43 @@ function scrollToTop(){
   return;
 }
 
-function copyScript(){
-  var menuElement = this.parentElement;
-  menuElement.classList.add("cCodeMenuEffectCopy");
-  menuElement.addEventListener("animationend", () => {this.classList.remove("cCodeMenuEffectCopy")});
-  navigator.clipboard.writeText(excludeComment(menuElement.lastChild.textContent));
+function copyScript(element){
+  var menuElement = element.parentElement;
+  var titleElement = menuElement.firstChild;
+  navigator.clipboard.writeText(excludeComment(menuElement.parentElement.lastChild)).then(function (){
+    element.classList.add("cCodeMenuInvisible");
+    element.nextElementSibling.classList.remove("cCodeMenuInvisible");
+    titleElement.classList.add("cCodeMenuEffectCopy");
+    titleElement.addEventListener("animationend", () => {
+      titleElement.classList.remove("cCodeMenuEffectCopy");
+      element.classList.remove("cCodeMenuInvisible");
+      element.nextElementSibling.classList.add("cCodeMenuInvisible");
+    });
+  });
   return;
 }
 
 function excludeComment(node){
   var s = "";
-  switch(node.nodeName){
-   case "#text":
-    s = node.data;
-    break;
-   default:
-    for(child of node.childNodes){
-      if(
-        (child.nodeName != "SPAN") ||
-        !(child.classList.contains("qComMetaComment"))
-      ){
-        s += excludeComment(child);
+  if(node.nodeName == "#text"){
+    s = node.data;;
+  }else{
+    var f = false;
+    if(node.childNodes){
+      for(var i = 0; i < node.childNodes.length; i++){
+        var child = node.childNodes[i];
+        if(!child.classList || !child.classList.contains("qComMetaComment")){
+          if(child.classList && child.classList.contains("qLine")){
+            if(f){
+              s += "\n";
+            }else{
+              f = true;
+            }
+          }
+          s += excludeComment(child);
+        }
       }
     }
-    break;
   }
   return s;
 }
