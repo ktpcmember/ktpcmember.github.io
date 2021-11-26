@@ -22,7 +22,7 @@
         "cCodeMulti"
         (hb.tagCE
           "pre"
-          (c.concatenateClass
+          (hb.concatenateClass
             "cCodePre"
             (?
               (>= (c.getNumberOfSx Code "\n") 3)
