@@ -9,17 +9,25 @@
         "cCodeMenu"
         ('
           (hb.tagCE "span" "cCodeMenuTitle" Title)
-          (hb.tagCE
+          (hb.tagACE
             "button"
             "cCodeMenuElement cCodeMenuButton"
+            (hb.attribute
+              "onclick"
+              "expandCode(this)"
+            )
             ('
               (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/expand.svg"))
               (hb.tagCE "span" "cCodeMenuText" "EXPAND")
             )
           )
-          (hb.tagCE
+          (hb.tagACE
             "button"
             "cCodeMenuElement cCodeMenuButton cCodeMenuInvisible"
+            (hb.attribute
+              "onclick"
+              "contractCode(this)"
+            )
             ('
               (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/contract.svg"))
               (hb.tagCE "span" "cCodeMenuText" "CONTRACT")
@@ -49,7 +57,7 @@
       )
       (hb.tagCE
         "code"
-        "cCodeSingle"
+        "cCodeMulti cCodeContracted"
         (hb.tagCE
           "pre"
           "cCodePre"

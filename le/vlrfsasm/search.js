@@ -56,3 +56,18 @@ function excludeComment(node){
   }
   return s;
 }
+
+function expandCode(element){
+  element.parentElement.parentElement.lastChild.classList.remove("cCodeContracted");
+  element.classList.add("cCodeMenuInvisible");
+  element.nextElementSibling.classList.remove("cCodeMenuInvisible");
+  return;
+}
+
+function contractCode(element){
+  element.parentElement.parentElement.lastChild.classList.add("cCodeContracted");
+  element.classList.add("cCodeMenuInvisible");
+  element.previousElementSibling.classList.remove("cCodeMenuInvisible");
+  return;
+}
+
