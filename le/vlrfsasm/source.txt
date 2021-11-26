@@ -1,4 +1,25 @@
-{.; ;
-  [?r;rBlue;Comment]
-  (c.convertSbS8 "Hello world!")[?e]
+
+{qh.copyButton; ;
+  ('
+    (hb.tagACE
+      "button"
+      "cCodeMenuElement cCodeMenuButton cCodeMenuRight"
+      (hb.attribute
+        "onclick"
+        "copyScript(this)"
+      )
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/copy.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "COPY")
+      )
+    )
+    (hb.tagCE
+      "span"
+      "cCodeMenuElement cCodeMenuRight cCodeMenuInvisible"
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/done.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "COPIED!")
+      )
+    )
+  )
 }
