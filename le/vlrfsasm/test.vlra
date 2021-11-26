@@ -20,12 +20,13 @@
         ""
       )
     )
-    (hc.article "テスト" (hu.testCode))
+    (hc.article "テスト1" (hu.testCode 0))
+    (hc.article "テスト2" (hu.testCode 1))
   )
 }
 
-{hu.testCode; ;
-  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n") 1)
+{hu.testCode Colored; ;
+  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n") Colored)
 }
 
 [User-defined style]

@@ -10,7 +10,7 @@
         ('
           (hb.tagCE "span" "cCodeMenuTitle" Title)
           (?
-            (>= (c.getNumberOfSx Code "\n") 3)
+            (>= (c.getNumberOfSx Code "\r") 4)
             (qh.expandButton)
             (c.empty)
           )
@@ -19,17 +19,17 @@
       )
       (hb.tagCE
         "code"
-        "cCodeMulti"
+        (hb.concatenateClass
+          "cCodeMulti"
+          (?
+            (>= (c.getNumberOfSx Code "\r") 4)
+            "cCodeContracted"
+            (c.empty)
+          )
+        )
         (hb.tagCE
           "pre"
-          (hb.concatenateClass
-            "cCodePre"
-            (?
-              (>= (c.getNumberOfSx Code "\n") 3)
-              "cCodeContracted"
-              (c.empty)
-            )
-          )
+          "cCodePre"
           (qh.convert Language Code Colored)
         )
       )

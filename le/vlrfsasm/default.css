@@ -210,6 +210,7 @@
 .cCodeFrame {
   margin: 0.5em auto auto;
   padding: 0 0.5em;
+  width: max-content;
   max-width: calc(100% - 1em);
   display: flex;
   flex-direction: column;
@@ -292,7 +293,9 @@
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
   border-radius: 0;
   border-top: solid 1px #000000;
   border-bottom: solid 1px #000000;
@@ -300,27 +303,26 @@
 }
 
 .cCodeContracted {
-  max-height: 64px;
+  max-height: 80px;
 }
 
 .cCodePre {
   margin: 0;
-  padding: 0.5em 0;
-  width: 100%;
-  overflow: auto;
+  padding: 0;
+  width: max-content;
   display: flex;
   flex-direction: column;
 }
 
 .qLine {
   margin: 0;
-  padding: 0;
+  padding: 0.2ex 0;
   width: 100%;
   text-align: left;
 }
 
 .qLineColored {
-  background-color: #E8E8E8;
+  background-color: #ECEEEC;
 }
 
 /*Common*/
