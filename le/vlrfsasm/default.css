@@ -316,6 +316,10 @@
   margin: 0 auto 0 0;
 }
 
+.qLineColored {
+  background-color: #E8E8E8;
+}
+
 /*Common*/
 
 .qComUBlue {

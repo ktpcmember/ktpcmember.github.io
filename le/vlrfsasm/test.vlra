@@ -25,7 +25,7 @@
 }
 
 {hu.testCode; ;
-  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n"))
+  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n") 1)
 }
 
 [User-defined style]

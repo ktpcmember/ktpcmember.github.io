@@ -1,5 +1,5 @@
 
-{qh.multi Language Title Code; ;
+{qh.multi Language Title Code Colored; ;
   (hb.tagCE
     "div"
     "cCodeFrame"
@@ -9,50 +9,12 @@
         "cCodeMenu"
         ('
           (hb.tagCE "span" "cCodeMenuTitle" Title)
-          (hb.tagACE
-            "button"
-            "cCodeMenuElement cCodeMenuButton"
-            (hb.attribute
-              "onclick"
-              "expandCode(this)"
-            )
-            ('
-              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/expand.svg"))
-              (hb.tagCE "span" "cCodeMenuText" "EXPAND")
-            )
+          (?
+            (>= (c.getNumberOfSx Code "\n") 3)
+            (qh.expandButton)
+            (c.empty)
           )
-          (hb.tagACE
-            "button"
-            "cCodeMenuElement cCodeMenuButton cCodeMenuInvisible"
-            (hb.attribute
-              "onclick"
-              "contractCode(this)"
-            )
-            ('
-              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/contract.svg"))
-              (hb.tagCE "span" "cCodeMenuText" "CONTRACT")
-            )
-          )
-          (hb.tagACE
-            "button"
-            "cCodeMenuElement cCodeMenuButton cCodeMenuRight"
-            (hb.attribute
-              "onclick"
-              "copyScript(this)"
-            )
-            ('
-              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/copy.svg"))
-              (hb.tagCE "span" "cCodeMenuText" "COPY")
-            )
-          )
-          (hb.tagCE
-            "span"
-            "cCodeMenuElement cCodeMenuRight cCodeMenuInvisible"
-            ('
-              (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/done.svg"))
-              (hb.tagCE "span" "cCodeMenuText" "COPIED!")
-            )
-          )
+          (qh.copyButton)
         )
       )
       (hb.tagCE
@@ -60,20 +22,82 @@
         "cCodeMulti"
         (hb.tagCE
           "pre"
-          "cCodePre cCodeContracted"
-          (qh.convert Language Code)
+          (c.concatenateClass
+            "cCodePre"
+            (?
+              (>= (c.getNumberOfSx Code "\n") 3)
+              "cCodeContracted"
+              (c.empty)
+            )
+          )
+          (qh.convert Language Code Colored)
         )
       )
     )
   )
 }
 
-{qh.convert Language Code; ;
+{qh.expandButton; ;
+  ('
+    (hb.tagACE
+      "button"
+      "cCodeMenuElement cCodeMenuButton"
+      (hb.attribute
+        "onclick"
+        "expandCode(this)"
+      )
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/expand.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "EXPAND")
+      )
+    )
+    (hb.tagACE
+      "button"
+      "cCodeMenuElement cCodeMenuButton cCodeMenuInvisible"
+      (hb.attribute
+        "onclick"
+        "contractCode(this)"
+      )
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/contract.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "CONTRACT")
+      )
+    )
+  )
+}
+
+{qh.copyButton; ;
+  ('
+    (hb.tagACE
+      "button"
+      "cCodeMenuElement cCodeMenuButton cCodeMenuRight"
+      (hb.attribute
+        "onclick"
+        "copyScript(this)"
+      )
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/copy.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "COPY")
+      )
+    )
+    (hb.tagCE
+      "span"
+      "cCodeMenuElement cCodeMenuRight cCodeMenuInvisible"
+      ('
+        (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/done.svg"))
+        (hb.tagCE "span" "cCodeMenuText" "COPIED!")
+      )
+    )
+  )
+}
+
+{qh.convert Language Code Colored; ;
   ('
     "<span class=\"qLine\">"
     (qh.generate
       Code
       Language
+      (: Colored 1)
       ('
         [Token string]
         [Region data:{8:background style, 8:offset}]
@@ -81,16 +105,18 @@
         (qt.Empty) [Current token type]
         (: 0 8) [Codepoint count in line at initial point in token]
         (: 0 8) [Codepoint count in line]
-        (c.getLengthSx Code) [Count]
+        (: 0 16) [Line count]
+        (: 0 16) [empty]
+        (: (c.getLengthSx Code) 32) [Count]
       )
     )
     "</span>"
   )
 }
 
-{qh.generate A 16 L B; ;
+{qh.generate A 16 L Co B; ;
   (?
-    (>! (: B 64) 1)
+    (>! (: B 32) 1)
     (?
       (qr.isDefined
         L
@@ -104,10 +130,10 @@
           )
           (qt.Empty)
         )
-        (qh.encode L (' (qh.getToken B) (qh.extend L A B)) B (qh.getCurrentType B))
+        (qh.encode L (' (qh.getToken B) (qh.extend L A B)) B (qh.getCurrentType B) Co)
         (c.empty)
       )
-      (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
+      (qh.encode L (qh.getToken B) B (qh.getCurrentType B) Co)
     )
     (?
       (qr.isDefined
@@ -119,10 +145,11 @@
           L
           (' (qc.search L A) (qh.getCurrentType B))
         )
+        Co
       )
       ('
-        (qh.encode L (qh.getToken B) B (qh.getCurrentType B))
-        (qh.encode L (qh.extend L A B) B (qr.search L (' (qc.search L A) (qt.Empty))))
+        (qh.encode L (qh.getToken B) B (qh.getCurrentType B) Co)
+        (qh.encode L (qh.extend L A B) B (qr.search L (' (qc.search L A) (qt.Empty))) Co)
       )
     )
   );
@@ -198,7 +225,9 @@
       )
     )
     (: (? (== A "\r") 0 (+ (c.getRange B 64 8) 1)) 8)
-    (- (: B 64) 1)
+    (+ (c.getRange B 48 16) (== A "\r"))
+    (: 0 16)
+    (- (: B 32) 1)
   )
 }
 {qh.getToken A; ;
@@ -210,7 +239,7 @@
 {qh.getRegionDepth A; ;
   (c.getRange A 88 8)
 }
-{qh.encode L A B C; ;
+{qh.encode L A B C Co; ;
   (?
     (c.getLengthSx A)
     (?
@@ -233,6 +262,7 @@
           )
         )
         A
+        (& (c.getBit B 48) Co)
       )
     )
     (c.empty)
@@ -347,14 +377,19 @@
     (c.empty)
   )
 }
-{qh.splitLine A B; ;
+{qh.splitLine A B C; ;
   (hb.tagCE
     "span"
     A
     (c.regularizeNewLineSb
       B
       ('
-        "</span></span><span class=\"qLine\"><span class=\""
+        "</span></span><span class=\""
+        (hb.concatenateClass
+          "qLine"
+          (? C "qLineColored" (c.empty))
+        )
+        "\"><span class=\""
         A
         "\">"
       )
