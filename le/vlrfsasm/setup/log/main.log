@@ -1,6 +1,15 @@
-Vlrfsasm v0.7 2021-11-28 13:06
-  7:Wrong number of argument
-  hc.article D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :22
+Vlrfsasm v0.7 2021-11-28 21:38
+  3:Undefined function
+  qc.default D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\pathRule.vlra :22
+  qrpa.list D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :20
+  qr.list D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :114
+  qr.searchAll D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :119
+  qr.isDefined D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :137
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :113
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :6
+  qh.single D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :409
+  hx.pa D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :4
+  ht.folder.createBaseFolder D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :31
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
