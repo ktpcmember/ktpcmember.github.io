@@ -1,7 +1,6 @@
-Vlrfsasm v0.7 2021-11-28 21:44
+Vlrfsasm v0.7 2021-11-28 21:47
   3:Undefined function
-  qt.conat D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\pathRule.vlra :19
-  qtpa.Comment D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\pathRule.vlra :24
+  qrpa.Comment D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\pathRule.vlra :33
   qrpa.list D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :20
   qr.list D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :114
   qr.searchAll D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :119
