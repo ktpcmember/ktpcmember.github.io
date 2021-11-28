@@ -46,9 +46,9 @@
 
 {qspa.list; ;
   ('
-    (qs.list.element (qtpa.Name "qPathName"))
-    (qs.list.element (qtpa.Split "qPathSplit"))
-    (qs.list.element (qtpa.Comment "qPathComment"))
+    (qs.list.element (qtpa.Name) "qPathName")
+    (qs.list.element (qtpa.Split) "qPathSplit")
+    (qs.list.element (qtpa.Comment) "qPathComment")
   )
 }
 
