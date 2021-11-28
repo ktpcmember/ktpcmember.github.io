@@ -1,6 +1,4 @@
-Vlrfsasm v0.7 2021-11-28 21:55
-  3:Undefined function
-  hc.section D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :31
-  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
-  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
+Vlrfsasm v0.7 2021-11-28 22:04
+  14:Undefined argument
+  ContentClass D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :302
   
