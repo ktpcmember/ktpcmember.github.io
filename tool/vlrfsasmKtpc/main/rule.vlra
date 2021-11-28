@@ -413,7 +413,7 @@
 }
 
 [extension]
-{hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" A) B)}
+{hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
 {hx.pa A; ; (qh.single "pa" A)}
 {hx.paMT A B; ; (qh.multi "pa" A B 1)}
 {hx.v A; ; (qh.single "v" A)}
