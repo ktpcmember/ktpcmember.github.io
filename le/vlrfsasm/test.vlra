@@ -25,8 +25,8 @@
   )
 }
 
-{hu.testCode Colored; ;
-  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n") Colored)
+{hu.testCode Even; ;
+  (qh.multi "v" "Test" (c.regularizeNewLineSb (c.convertS8Sb (source.txt)) "\r\n") Even)
 }
 
 [User-defined style]

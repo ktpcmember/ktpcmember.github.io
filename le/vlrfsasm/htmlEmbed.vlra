@@ -1,5 +1,5 @@
 
-{qh.multi Language Title Code Colored; ;
+{qh.multi Language Title Code Even; ;
   (hb.tagCE
     "div"
     "cCodeFrame"
@@ -30,7 +30,7 @@
         (hb.tagCE
           "pre"
           "cCodePre"
-          (qh.convert Language Code Colored)
+          (qh.convert Language Code Even)
         )
       )
     )
@@ -91,13 +91,13 @@
   )
 }
 
-{qh.convert Language Code Colored; ;
+{qh.convert Language Code Even; ;
   ('
     "<span class=\"qLine\">"
     (qh.generate
       Code
       Language
-      (: Colored 1)
+      (: Even 1)
       ('
         [Token string]
         [Region data:{8:background style, 8:offset}]
@@ -387,7 +387,7 @@
         "</span></span><span class=\""
         (hb.concatenateClass
           "qLine"
-          (? C "qLineColored" (c.empty))
+          (? C "qLineEven" (c.empty))
         )
         "\"><span class=\""
         A

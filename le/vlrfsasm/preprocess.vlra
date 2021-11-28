@@ -1,0 +1,145 @@
+
+{.; ;
+  (c.convertSbS8
+    (p.convert
+      (c.regularizeNewLineSb
+        (c.convertS8Sb (textContent.txt))
+        "\r"
+      )
+      (: 8 8) [Condition]
+    )
+  )
+}
+
+[
+01
+24(7;34;3,5;3`6`3)3
+]
+{p.convert A 16 B; ;
+  (?
+    (== A "\r")
+    (?
+      (<= (p.getCondition B) 1)
+      (?
+        (p.getCondition B)
+        (' "\r\n{" (p.getToken B) "; ; (' ")
+        (c.empty)
+      )
+      (?
+        (== (p.getCondition B) 2)
+        ")"
+        (?
+          (== (p.getCondition B) 6)
+          (c.empty)
+          (' (p.getTokenE B) "))")
+        )
+      )
+    )
+    ('
+      (?
+        (== (p.getCondition B) 2)
+        "(hc.p ('"
+      )
+      (?
+        (== (p.getCondition B) 6)
+        (c.empty)
+        (?
+          (== A "[")
+          (' (p.getTokenS B) "(")
+          (?
+            (== A ";")
+            ('
+              (?
+                (== (p.getCondition B) 7)
+                (getToken B)
+                ")"
+              )
+              " ('"
+            )
+            (?
+              (== A "]")
+              ")) "
+              (c.empty)
+            )
+          )
+        )
+      )
+    )
+  );
+  ('
+    (?
+      (&
+        (|
+          (&
+            (!= A "\r")
+            (!= A "[")
+            (!= A ";")
+            (!= A "]")
+            (| (!= A ",") (!= (p.getCondition) 3))
+          )
+          (== (p.getCondition B) 6)
+        )
+        (!= A "`")
+      )
+      (' (p.getToken B) A)
+      (c.empty)
+    )
+    (?
+      (== A "\r")
+      (p.select (' 0 2 0 2 2 2 6 0) B)
+      (?
+        (== A "[")
+        (p.select (' 0 0 7 7 7 7 6 0) B)
+        (?
+          (| (== A ";") (== A "]"))
+          (p.select (' 0 0 0 3 3 3 3 3) B)
+          (?
+            (== A "`")
+            (p.select (' 0 0 6 6 6 6 3 0) B)
+            (?
+              (== A ",")
+              (p.select (' 0 0 5 5 4 5 6 0) B)
+              (p.select (' 1 1 4 4 4 5 6 7) B)
+            )
+          )
+        )
+      )
+    )
+  )
+}
+
+{p.getToken A; ; (> A 16)}
+{p.getCondition A ; ; (: A 16)}
+{p.getTokenS A; ;
+  (?
+    (== (p.getCondition A) 5)
+    (p.getToken A)
+    (p.string (p.getToken A))
+  )
+}
+{p.getTokenE A; ;
+  (?
+    (== (p.getCondition A) 5)
+    (p.getToken A)
+    (?
+      (== (# A) 16)
+      (c.empty)
+      (p.string (p.getToken A))
+    )
+  )
+}
+{p.string A; ; (' "\r\n" (p.escape A) "\r\n ")}
+{p.escape A 16; ;
+  (?
+    (== A "\r")
+    "\\r\\n"
+    (?
+      (== A "\"")
+      "\""
+      A
+    )
+  )
+}
+{p.select A B; ;
+  (c.getRange (< (c.getCondition B) 3) 8)
+}
