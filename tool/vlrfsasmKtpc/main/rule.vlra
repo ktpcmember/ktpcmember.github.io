@@ -298,7 +298,7 @@
 {hc.article Title Content; ; (hc.articleC "" Title Content)}
 {hc.articleCCa Class Title Caption Content; ;
   (hc.articleC
-    ContentClass
+    Class
     Title
     (' (hb.tagCE "div" "cArticleCaption" Caption) Content)
   )
