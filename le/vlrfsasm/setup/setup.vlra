@@ -2,9 +2,9 @@
 {hp.path; ; "le/vlrfsasm/setup/setup.html"}
 {p.input; ; (textContent.txt)}
 
-{hi.assemble.bat; ; (c.convertS8Sx (assemble.bat))}
-{hi.source.vlra; ; (c.convertS8Sx (source.vlra.txt))}
-{hi.message.log; ; (c.convertS8Sx (message.log))}
+{hi.assemble.bat; ; (c.convertS8Sb (assemble.bat))}
+{hi.source.vlra; ; (c.convertS8Sb (source.vlra.txt))}
+{hi.message.log; ; (c.convertS8Sb (message.log))}
 
 {hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
