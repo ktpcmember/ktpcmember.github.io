@@ -48,6 +48,7 @@
       ('
         (hc.section "ソースコード" (ht.helloWorld.source))
         (hc.section "実行" (ht.helloWorld.run))
+        (hc.section "結果" (ht.helloWorld.result))
         (hc.section "終了" (ht.helloWorld.exit))
       )
     )
