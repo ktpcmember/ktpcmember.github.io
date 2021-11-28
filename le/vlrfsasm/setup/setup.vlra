@@ -19,12 +19,12 @@
 
 {hc.content; ;
   ('
-    (hc.articleCo
+    (hc.article
       "概要"
       (ht.summary.caption)
       (c.empty)
     )
-    (hc.articleCo
+    (hc.article
       "フォルダ"
       (ht.folder.caption)
       ('
@@ -32,7 +32,7 @@
         (hc.section "作業フォルダ" (ht.folder.workingFolder))
       )
     )
-    (hc.articleCo
+    (hc.article
       "ツール"
       (ht.tool.caption)
       ('
