@@ -302,6 +302,7 @@
   )
 }
 {hc.title Title; ; (hc.titleC "" Title)}
+{hc.p Content; ; (hb.tagCE "cP" Content)}
 {hc.boxCV Class Content; ; (hb.tagCE "div" (hb.concatenateClass "cBoxV" Class) Content)}
 {hc.boxV Content; ; (hc.boxCV "" Content)}
 {hc.boxCH Class Content; ; (hb.tagCE "div" (hb.concatenateClass "cBoxH" Class) Content)}
