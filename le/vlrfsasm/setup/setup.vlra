@@ -19,12 +19,12 @@
 
 {hc.content; ;
   ('
-    (hc.article
+    (hc.articleCa
       "概要"
       (ht.summary.caption)
       (c.empty)
     )
-    (hc.article
+    (hc.articleCa
       "フォルダ"
       (ht.folder.caption)
       ('
@@ -32,7 +32,7 @@
         (hc.section "作業フォルダ" (ht.folder.workingFolder))
       )
     )
-    (hc.article
+    (hc.articleCa
       "ツール"
       (ht.tool.caption)
       ('
@@ -42,7 +42,7 @@
         (hc.section "テキストエディタ" (ht.tool.textEditor))
       )
     )
-    (hc.article
+    (hc.articleCa
       "Hello world"
       (ht.helloWorld.caption)
       ('

@@ -287,7 +287,7 @@
 {hc.text Content; ; (hb.tagCE "span" "cText" Content)}
 [^^]
 
-{hc.articleC Class TitleClass Title Content; ;
+{hc.articleC TitleClass Class Title Content; ;
   (hb.tagCE "article" (hb.concatenateClass "cArticle" Class)
     ('
       (hb.tagCE "h2" "cArticleTitle" Title)
@@ -296,6 +296,17 @@
   )
 }
 {hc.article Title Content; ; (hc.articleC "" "" Title Content)}
+{hc.articleCCa TitleClass CaptionClass ContentClass Title Caption Content; ;
+  (hc.articleC
+    TitleClass
+    ContentClass
+    Title
+    (' (hb.tagCE "div" CaptionClass Caption) Content)
+  )
+}
+{hc.articleCa Title Caption Content; ;
+  (hc.articleCCa "" "" "" Title Caption Content)
+}
 {hc.titleC Class Title; ;
   (hb.tagCE "article" "cPageTitleBack"
     (hb.tagCE "h1" (hb.concatenateClass "cPageTitle" Class) Title)
