@@ -1,5 +1,6 @@
-Vlrfsasm v0.7 2021-11-28 12:53
-  3:Undefined function
+Vlrfsasm v0.7 2021-11-28 12:58
+  7:Wrong number of argument
+  hb.tagCE D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :305
   hc.p D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :2
   ht.summary.caption D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :24
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
