@@ -53,3 +53,7 @@
     )
   )
 }
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
