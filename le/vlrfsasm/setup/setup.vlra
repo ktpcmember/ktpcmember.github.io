@@ -1,4 +1,6 @@
 
+{p.input; ; "textContent.txt"}
+
 {hi.assemble.bat; ; (c.convertS8Sx (assemble.bat))}
 {hi.source.vlra; ; (c.convertS8Sx (source.vlra.txt))}
 {hi.message.log; ; (c.convertS8Sx (message.log))}
