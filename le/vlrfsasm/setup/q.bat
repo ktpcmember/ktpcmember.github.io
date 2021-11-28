@@ -1,4 +1,4 @@
 
-call %toolDir%\bat\pre.bat %CD%\textContent.txt
-call %toolDir%\bat\main.bat %CD%\setup.vlra %CD%\source\source.vlra.txt %CD%\source\assemble.bat %CD%\source\message.log
+call %toolDir%\bat\pre.bat %targetDir%\textContent.txt
+call %toolDir%\bat\main.bat %targetDir%\setup.vlra %targetDir%\source\source.vlra.txt %targetDir%\source\assemble.bat %targetDir%\source\message.log
 exit /b
