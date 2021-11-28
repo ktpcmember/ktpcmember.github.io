@@ -12,8 +12,8 @@ jobs:
             set repoRoot=%CD%
             set toolDir=%repoRoot%\tool\vlrfsasmKtpc
             set targetDir=%repoRoot%\le\vlrfsasm\setup
-            if not exist %targetDir%\log md %target%\log
-            if not exist %targetDir%\temp md %target%\temp
+            if not exist %targetDir%\log md %targetDir%\log
+            if not exist %targetDir%\temp md %targetDir%\temp
             cd ${{ runner.temp }}
             set tempDir=%CD%
             md vlrfsasm
