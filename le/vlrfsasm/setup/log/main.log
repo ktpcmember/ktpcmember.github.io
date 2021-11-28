@@ -1,4 +1,8 @@
-Vlrfsasm v0.7 2021-11-28 22:04
-  14:Undefined argument
-  ContentClass D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :302
+Vlrfsasm v0.7 2021-11-28 22:06
+  3:Undefined function
+  c.convertS8Sx D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :5
+  hi.assemble.bat D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :8
+  ht.tool.batFile D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :40
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
