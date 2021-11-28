@@ -10,16 +10,19 @@ jobs:
       - name: Convert
         run: |
             set repoRoot=%CD%
-            set targetDir=%CD%\le\vlrfsasm
-            pushd ${{ runner.temp }}
+            set toolDir=%repoRoor%\tool\vlrfsasmKtpc
+            set targetDir=%repoRoot%\le\vlrfsasm\setup
+            cd ${{ runner.temp }}
+            set tempDir=%CD%
             md vlrfsasm
             cd vlrfsasm
             curl -OL "https://github.com/vlrfsg/vlrfsasm/files/7589990/Vlrfsasm_v0.7.zip"
             7z x Vlrfsasm_v0.7.zip
-            call %targetDir%\q.bat
-            cd ../
+            cd %targetDir%
+            call q.bat
+            cd %tempDir%
             rmdir /s /q vlrfsasm
-            popd
+            cd %repoRoot%
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
             git add .

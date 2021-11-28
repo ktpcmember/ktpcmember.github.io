@@ -68,7 +68,7 @@
         ('
           (hb.attribute "rel" "stylesheet")
           (hb.attribute "type" "text/css")
-          (hb.attribute "href" "default.css")
+          (hb.attribute "href" (hp.getRelativePath "tool/vlrfsasmKtpc/style/default.css"))
         )
       )
       (hb.tagA "link"
@@ -76,7 +76,7 @@
           (hb.attribute "rel" "stylesheet")
           (hb.attribute "type" "text/css")
           (hb.attribute "media" "(max-width:800px)")
-          (hb.attribute "href" "narrow.css")
+          (hb.attribute "href" (hp.getRelativePath "tool/vlrfsasmKtpc/style/narrow.css"))
         )
       )
       (?
@@ -102,7 +102,7 @@
         )
         (c.empty)
       )
-      (hb.tagAE "script" (hb.attribute "src" "search.js") "")
+      (hb.tagAE "script" (hb.attribute "src" (hp.getRelativePath "tool/vlrfsasmKtpc/js/search.js")) "")
       (hb.tagAE "script" (hb.attribute "src" "https://www.googletagmanager.com/gtag/js?id=UA-133906591-2") "")
       (hb.tagE "script" "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2')")
     )
@@ -353,20 +353,11 @@
   )
 }
 
-[html symbol escape]
-{he.escape A 16; ;
-  (?
-    (== A "<")
-    "&lt;"
-    (?
-      (== A ">")
-      "&gt;"
-      (?
-        (== A "&")
-        "&amp;"
-        A
-      )
-    )
-  )
-}
-
+[extension]
+{hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" A) B)}
+{hx.pa A; ; (qh.single "pa" A}
+{hx.paMT A B; ; (qh.multi "pa" A B 1)}
+{hx.v A; ; (qh.single "v" A}
+{hx.vMT A B; ; (qh.multi "v" A B 1)}
+{hx.batMT A B; ; (hx.paMT A B)} [For the time being]
+{hx.msMT A B; ; (hx.paMT A B)} [For the time being]

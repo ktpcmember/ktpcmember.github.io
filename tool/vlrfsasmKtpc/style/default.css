@@ -203,7 +203,13 @@
   border-bottom: solid 1px #000000;
 }
 
+.cLink {
+  color: #000000;
+}
 
+.cLink:hover, .cLink:active {
+  background-color: #FFFCFC;
+}
 
 /*Code*/
 
@@ -286,6 +292,13 @@
   to {
     background-color: #FAF8F8;
   }
+}
+
+.cCodeSingle {
+  padding: 0 0.2em;
+  border-radius: 20%;
+  font-family: 'Inconsolata', monospace;
+  background-color: #E0E0E4;
 }
 
 .cCodeMulti {

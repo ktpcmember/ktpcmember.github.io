@@ -1,0 +1,17 @@
+
+[html symbol escape]
+{he.escape A 16; ;
+  (?
+    (== A "<")
+    "&lt;"
+    (?
+      (== A ">")
+      "&gt;"
+      (?
+        (== A "&")
+        "&amp;"
+        A
+      )
+    )
+  )
+}

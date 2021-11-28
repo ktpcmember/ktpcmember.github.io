@@ -14,11 +14,11 @@ ht.tool.caption
 必要なアプリと、その導入方法とを紹介します。
 
 ht.tool.download
-まず、Vlrfsasmを導入します。[l;https://github.com/vlrfsg/vlrfsasm;Githubで公開]しているので、[l;https://github.com/vlrfsg/vlrfsasm/files/7589990/Vlrfsasm_v0.7.zip;このリンク]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[pa;Vlrfsasm_v0.7]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[pa;assembler]と改名しておいてください。
+まず、Vlrfsasmを導入します。[l;Githubで公開;https://github.com/vlrfsg/vlrfsasm]しているので、[l;このリンク;https://github.com/vlrfsg/vlrfsasm/files/7589990/Vlrfsasm_v0.7.zip]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[pa;Vlrfsasm_v0.7]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[pa;assembler]と改名しておいてください。
 
 ht.tool.batFile
 次に、バッチファイルを作ります。メモ帳などのテキストエディタを起動し、以下の内容をコピーして貼り付けてください。
-[batM;batファイルの内容;,(hi.assemble.bat)]
+[batMT;batファイルの内容;,(hi.assemble.bat)]
 そして、基点フォルダ内に、[pa;assemble.bat]という名前で、保存してください。文字コードはUTF-8にしましょう。このバッチファイルは、各章で使い回します。
 
 ht.tool.binaryEditor
@@ -32,14 +32,14 @@ ht.helloWorld.caption
 
 ht.helloWorld.source
 基点フォルダ内に[pa;hello]というフォルダを作り、さきほど作ったバッチファイルをコピーして入れてください。また以下のソースコードを、[pa;source.vlra]という名前でこのフォルダに保存してください。Vlrfsasmのソースコードは、常に[pa;.vlra]という拡張子を付け、文字コードはUTF-8で保存してください。
-[vM;ソースコード;,(hi.source.vlra)]
+[vMT;ソースコード;,(hi.source.vlra)]
 
 ht.helloWorld.run
 バッチファイルをダブルクリックして実行すると、Vlrfsasmが実行されます。うまくいけば、[pa;hello]フォルダ内に、[pa;result.txt]と[pa;message.log]が出力されているはずです。上手く行かないときは、ファイル名や文字コードなどを確認しましょう。メモ帳では、ファイルメニューの「名前を付けて保存」から、文字コードを設定して上書き保存できます。
 
 ht.helloWorld.result
 さて、生成された2つのファイルを開き、中身が以下のようになっていれば成功です。ただし、[pa;message.log]の赤下線部には、実行日時が書かれています。これはコンピュータの現地時刻なので、時差を含みます。また、その下に出力ファイルのパスなどが表示されますが、青下線部のように個人情報を含むことがあるので、誤って公開しないよう注意しましょう。
-[msM;[pa;result.txt];Hello world!][msM;[pa;message.log];,(hi.message.log))]
+[msMT;[pa;result.txt];Hello world!][msMT;[pa;message.log];,(hi.message.log))]
 なお、青下線部は架空のものです。
 
 ht.helloWorld.exit

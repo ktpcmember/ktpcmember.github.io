@@ -1,4 +1,16 @@
 
+{qh.single Language Code; ;
+  (hb.tagCE
+    "span"
+    "cCodeSingle"
+    (qh.convert
+      Language
+      (c.regularizeNewLineSb Code "\r\n")
+      0
+    )
+  )
+}
+
 {qh.multi Language Title Code Even; ;
   (hb.tagCE
     "div"
@@ -30,7 +42,11 @@
         (hb.tagCE
           "pre"
           "cCodePre"
-          (qh.convert Language Code Even)
+          (qh.convert
+            Language
+            (c.regularizeNewLineSb Code "\r\n")
+            Even
+          )
         )
       )
     )
