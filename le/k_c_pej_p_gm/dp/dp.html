@@ -94,7 +94,7 @@
           <h2 class="cb33">DP</h2>
           <span class="cb34">
             次のような問題を考えてみます。<br>
-            N段の階段があり、今0段目（上り口）にいます。ここから1段もしくは2段上ることを繰り返して、最上段のN段目にたどり着く移動方法は何通りありますか。制約は以下の通りです。<br>
+            N段の階段があり、今0段目（上り口）にいます。ここから1段もしくは2段上ることを繰り返して、最上段のN段目にたどり着く移動方法は何通りありますか。ただし、答えが非常に大きくなることがあるので、答えを998244353で割ったあまりを求めてください。また、制約は以下の通りです。<br>
             <ul>
               <li>1 &le; N &le; 2&times;10<sup>5</sup></li>
               <li>入力はすべて整数</li>
@@ -105,7 +105,7 @@
           <div class="cb31">
             <h3 class="cb40">愚直にやってみる</h3>
             <span class="cb41">
-              まずは素直に、階段をどう上るかを探索していくことを考えます。単純なfor文などで全探索するのは難しいので、再帰関数を使って考えてみます。DFSのように、今何段目にいるかを増減させながら、探索していくことを考えると、以下のように書けます。
+              まずは素直に、階段をどう上るかを探索していくことを考えます。最初の方は、998244353で割ったあまりは考えないことにします。単純なfor文などで全探索するのは難しいので、再帰関数を使って考えてみます。DFSのように、今何段目にいるかを増減させながら、探索していくことを考えると、以下のように書けます。
             </span>
           </div>
         </article>
@@ -153,7 +153,120 @@
         </article>
         <article class="cb21 fxlr">
           <div class="cb31">
-            <h3 class="cb40">工夫する</h3>
+            <h3 class="cb40">工夫して再帰</h3>
+            <span class="cb41">
+              いきなりN段目までの移動方法を計算しようとするのは少し難しいので、この問題を分割できないか考えてみます。N段目にたどり着くためには、N-1段目から1段上がってくる、もしくは、N-2段目から2段上がってくる、この2パターンしかありません。ここで、N段目にたどり着く移動方法か何通りあるかは何がわかればよいかというと、N-1段目にたどり着く移動方法が何通りあるかと、N-2段目にたどり着く移動方法が何通りあるか、がわかればよいです。すなわち、i段目までの移動方法が何通りあるかさえ分かってしまえば、どのような経路で移動してきたかというのは無視してよいということです。また、N-1段目にたどり着く移動方法か何通りあるかは何がわかればよいかというと、N-2段目にたどり着く移動方法が何通りあるかと、N-3段目にたどり着く移動方法が何通りあるか、が分かればよいです。このように、i段目の答えは、前の2つの答えのみを使って計算することができます。ただし、このままでは前の2つ、前の2つ...と見ていく過程で終わらなくなってしまうので、何か自明な終了条件を与えます。それは、0段目にたどり着く移動方法、および1段目にたどり着く移動方法は、1通りであるということです。そのため、以下のような再帰関数で書くことができます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">まとめた解</span>
+              <button type="button" class="cb53" onclick="copy('fixGreedy')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+<pre id="fixGreedy" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">int</span> f<span class="wdsl">(</span><span class="wdkywd">int</span> i<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">==</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdkywd">return</span> f<span class="wdsl">(</span>i <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">+</span> f<span class="wdsl">(</span>i <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">);</span>
+<span class="wdsl">}</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    cout <span class="wdsl">&lt;&lt;</span> f<span class="wdsl">(</span>n<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              しかし、残念ながらこの解法でも先ほどとほとんど実行時間に差がなく、n=50ほどでもう実行時間がとても2秒では収まらなくなったと思います。それは、例えば、f(5)などが計算される過程を見ると分かります。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="recursiveFunction.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              このように、何度も何度も同じ計算を繰り返しています。例えば、これが左側から計算されていくとすると、f(5)のすぐ下のf(3)は、すでにf(4)を計算したときに計算されていますから、この値を再度利用することによりここはカットすることができます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">メモ化再帰</h3>
+            <span class="cb41">
+              それでは、計算結果を再利用することを考えてみます。配列を用意し、計算するごとに結果を書き込んでいくことにして、もし計算済みであれば再帰をせずにその配列を参照するというようにします。なお、ここから998244353で割ったあまりを考えることにします。と言っても実装に大差はなく、足し算をするときに998244353で割ったあまりをとって計算しています。
+            </span>
+          </div>
+        </article>
+        <article class="cb21">
+          <div class="cb37">
+            <div class="cb46">
+              <span class="cb54">メモ化再帰</span>
+              <button type="button" class="cb53" onclick="copy('memo')">
+                <span class="cb61">COPY</span>
+              </button>
+            </div>
+            <code class="cb47">
+<pre id="memo" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">const</span> <span class="wdkywd">int</span> MOD <span class="wdsl">=</span> <span class="wdnr">998244353</span><span class="wdsl">;</span>
+vector<span class="wdsl">&lt;</span><span class="wdkywd">int</span><span class="wdsl">&gt;</span> memo<span class="wdsl">;</span>
+<span class="wdkywd">int</span> f<span class="wdsl">(</span><span class="wdkywd">int</span> i<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>i <span class="wdsl">==</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdkywd">return</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+    <span class="wdkywd">int</span> res <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+    res <span class="wdsl">+=</span> <span class="wdsl">(</span>memo<span class="wdsl">[</span>i <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">]</span> <span class="wdsl">==</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">?</span> f<span class="wdsl">(</span>i <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">:</span> memo<span class="wdsl">[</span>i <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">];</span>
+    res <span class="wdsl">+=</span> <span class="wdsl">(</span>memo<span class="wdsl">[</span>i <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">]</span> <span class="wdsl">==</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">?</span> f<span class="wdsl">(</span>i <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">)</span> <span class="wdsl">:</span> memo<span class="wdsl">[</span>i <span class="wdsl">-</span> <span class="wdnr">2</span><span class="wdsl">];</span>
+    res <span class="wdsl">%=</span> MOD<span class="wdsl">;</span>
+    memo<span class="wdsl">[</span>i<span class="wdsl">]</span> <span class="wdsl">=</span> res<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> res<span class="wdsl">;</span>
+<span class="wdsl">}</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> n<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> n<span class="wdsl">;</span>
+    memo.resize<span class="wdsl">(</span>n <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">,</span> <span class="wdsl">-</span><span class="wdnr">1</span><span class="wdsl">);</span> <span class="wdc_mt">// 長さn+1 すべて-1で初期化
+</span>    cout <span class="wdsl">&lt;&lt;</span> f<span class="wdsl">(</span>n<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</span></span></pre>
+						</code>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              このようにすることで、呼び出しに無駄がなくなりました。例えば、f(5)の呼び出しでは、以下の通りです。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxrl">
+          <img class="cb32" src="memo.png">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <span class="cb41">
+              このように、再度計算されることがなく、とても効率がよくなりました。計算量は、配列memoは高々1回しか書き換えられず、一度計算するのにかかる時間はO(1)であるので、この図からも分かるように全体としての計算量はO(N)です。よって、制約の2&times;10<sup>5</sup>以下には余裕をもって間に合います。<br>
+              なお場合によっては、再帰が深くなりすぎることによって、Nが大きいときにスタックオーバーフローを起こしてしまう可能性があります。AtCoderのコードテスト上では問題なく動作します。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">ループによる計算</h3>
             <span class="cb41">
               under preparation
             </span>
