@@ -16,7 +16,7 @@
 
 {qtpa.Name; ; (qt.const 1)}
 {qtpa.Split; ; (qt.const 2)}
-{qtpa.Comment; ; (qt.conat 3)}
+{qtpa.Comment; ; (qt.const 3)}
 {qrpa.list; ;
   ('
     (qr.begin (qc.Default) (qtpa.Name))
