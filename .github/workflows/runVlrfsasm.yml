@@ -10,7 +10,7 @@ jobs:
       - name: Convert
         run: |
             set repoRoot=%CD%
-            set toolDir=%repoRoor%\tool\vlrfsasmKtpc
+            set toolDir=%repoRoot%\tool\vlrfsasmKtpc
             set targetDir=%repoRoot%\le\vlrfsasm\setup
             cd ${{ runner.temp }}
             set tempDir=%CD%
