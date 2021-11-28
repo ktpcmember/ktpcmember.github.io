@@ -193,7 +193,11 @@
   (?
     (== (hm.linkType) (hm.linkType.lectureIndex))
     (hm.lectureIndex)
-    (c.empty) [WIP]
+    (?
+      (== (hm.linkType) (hm.linkType.lectureSection))
+      (hm.lectureSection)
+      (c.empty) [WIP]
+    )
   )
 }
 {hm.lectureIndex; ;
@@ -207,11 +211,46 @@
     (hm.lectureList)
   )
 }
+{hm.lectureSection; ;
+  ('
+    (hm.linkGroup "駒場東邦物理部"
+      ('
+        (hm.linkElement "トップページ" (hp.getRelativePath "index.html"))
+        (hm.linkElement "講習トップ" (hp.getRelativePath "le/le.html"))
+      )
+    )
+    (hm.linkGroup
+      (hm.lectureName)
+      ('
+        (?
+          (# (hm.previousSectionPath))
+          (hm.linkElement
+            (hm.previousSectionName)
+            (hm.previousSectionPath)
+          )
+          (c.empty)
+        )
+        (hm.linkElement
+          "講習トップ"
+          (hm.lectureTopPath)
+        )
+        (?
+          (# (hm.nextSectionPath))
+          (hm.linkElement
+            (hm.nextSectionName)
+            (hm.nextSectionPath)
+          )
+          (c.empty)
+        )
+      )
+    )
+  )
+}
 
 [Type of page for link]
 {hm.linkType.top; ; 0}
 {hm.linkType.lectureIndex; ; 1}
-{hm.linkType.lectureElement; ; 2}
+{hm.linkType.lectureSection; ; 2}
 
 [Link Element]
 {hm.linkGroup Title Array; ;

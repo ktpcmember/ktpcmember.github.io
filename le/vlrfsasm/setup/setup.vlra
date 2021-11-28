@@ -1,9 +1,21 @@
 
+{hp.path; ; "le/vlrfsasm/setup/setup.html"}
 {p.input; ; (textContent.txt)}
 
 {hi.assemble.bat; ; (c.convertS8Sx (assemble.bat))}
 {hi.source.vlra; ; (c.convertS8Sx (source.vlra.txt))}
 {hi.message.log; ; (c.convertS8Sx (message.log))}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "準備 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; (hp.getRelativePath "/vlrfsasm.html")}
+{hm.previousPath; ; ""}
+{hm.nextPath; ; "../syntax/syntax.html"}
+{hm.nextName; ; "構文"}
 
 {hc.content; ;
   ('

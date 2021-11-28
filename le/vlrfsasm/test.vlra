@@ -1,6 +1,6 @@
 
 {hp.path; ; "le/vlrfsasm/test.html"}
-{p.input; ; "textContent.txt"}
+{p.input; ; (textContent.txt)}
 
 {hh.keyword; ; "プログラミング,講習"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
