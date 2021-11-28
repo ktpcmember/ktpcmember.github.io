@@ -30,7 +30,7 @@
     (qr.add (qtpa.Comment) (qcpa.Split))
     (qr.add (qtpa.Comment) (qcpa.CommentBegin))
     (qr.end (qtpa.Comment) (qcpa.CommentEnd))
-    (qr.change (qrpa.Comment) (qcpa.MetaBegin) (qt.Meta))
+    (qr.change (qtpa.Comment) (qcpa.MetaBegin) (qt.Meta))
     (qr.add (qt.Meta) (qc.Default))
     (qr.add (qt.Meta) (qcpa.Split))
     (qr.add (qt.Meta) (qcpa.CommentBegin))
