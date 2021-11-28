@@ -19,19 +19,19 @@
 {qtpa.Comment; ; (qt.conat 3)}
 {qrpa.list; ;
   ('
-    (qr.begin (qc.default) (qtpa.Name))
+    (qr.begin (qc.Default) (qtpa.Name))
     (qr.begin (qcpa.Split) (qtpa.Split))
     (qr.begin (qcpa.CommentBegin) (qtpa.Comment))
     (qr.begin (qcpa.MetaBegin) (qtpa.Name))
-    (qr.add (qtpa.Name) (qcpa.Default))
+    (qr.add (qtpa.Name) (qc.Default))
     (qr.add (qtpa.Name) (qcpa.MetaBegin))
     (qr.add (qtpa.Split) (qcpa.Split))
-    (qr.add (qtpa.Comment) (qcpa.Default))
+    (qr.add (qtpa.Comment) (qc.Default))
     (qr.add (qtpa.Comment) (qcpa.Split))
     (qr.add (qtpa.Comment) (qcpa.CommentBegin))
     (qr.end (qtpa.Comment) (qcpa.CommentEnd))
     (qr.change (qrpa.Comment) (qcpa.MetaBegin) (qt.Meta))
-    (qr.add (qt.Meta) (qcpa.Default))
+    (qr.add (qt.Meta) (qc.Default))
     (qr.add (qt.Meta) (qcpa.Split))
     (qr.add (qt.Meta) (qcpa.CommentBegin))
     (qr.end (qt.Meta) (qcpa.CommentEnd))
@@ -40,7 +40,7 @@
 }
 
 {qmpa.getString A B; ;
-  (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) "!" B)
+  (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) ";" B)
 }
 {qmpa.comment A; ; (' "<" A ">")}
 
