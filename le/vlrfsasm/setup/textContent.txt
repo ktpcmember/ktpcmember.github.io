@@ -22,7 +22,7 @@ ht.tool.batFile
 そして、基点フォルダ内に、[pa;assemble.bat]という名前で、保存してください。文字コードはUTF-8にしましょう。このバッチファイルは、各章で使い回します。
 
 ht.tool.binaryEditor
-本講習では少ししか使いませんが、vlrfsasmはもともとバイナリファイルを扱うために作ったので、使う機会はあると思います。データを読み出すだけですので、何でも構いません。使い慣れているものがあればそれを使ってください。参考までに、Vlrfsasmの作者は[l;http://www.vector.co.jp/soft/dl/winnt/util/se504539.html;FavBinEdit]を使っています。いずれにせよ、各ソフトウェアの指示に従ってインストールしてください。
+本講習では少ししか使いませんが、vlrfsasmはもともとバイナリファイルを扱うために作ったので、使う機会はあると思います。データを読み出すだけですので、何でも構いません。使い慣れているものがあればそれを使ってください。参考までに、Vlrfsasmの作者は[l;FavBinEdit;http://www.vector.co.jp/soft/dl/winnt/util/se504539.html]を使っています。いずれにせよ、各ソフトウェアの指示に従ってインストールしてください。
 
 ht.tool.textEditor
 メモ帳で構いませんが、これも使い慣れているものを使ってください。ただし、拡張表示機能などのファイルは提供していません。また、スタートメニューにショートカットを貼っておくと便利でしょう。
@@ -39,7 +39,7 @@ ht.helloWorld.run
 
 ht.helloWorld.result
 さて、生成された2つのファイルを開き、中身が以下のようになっていれば成功です。ただし、[pa;message.log]の赤下線部には、実行日時が書かれています。これはコンピュータの現地時刻なので、時差を含みます。また、その下に出力ファイルのパスなどが表示されますが、青下線部のように個人情報を含むことがあるので、誤って公開しないよう注意しましょう。
-[msMT;[pa;result.txt];Hello world!][msMT;[pa;message.log];,(hi.message.log)]
+[msMT;[pa;result.txt];Hello world!]
 なお、青下線部は架空のものです。
 
 ht.helloWorld.exit
