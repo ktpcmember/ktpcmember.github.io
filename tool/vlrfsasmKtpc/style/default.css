@@ -379,3 +379,16 @@
 .qVlrLabel {
   color: #802000;
 }
+
+/*Path*/
+.qPathName {
+  color: #000000;
+}
+
+.qPathSplit {
+  color: A08040;
+}
+
+.qPathComment {
+  color: #808080;
+}
