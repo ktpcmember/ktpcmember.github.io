@@ -40,7 +40,7 @@
 }
 
 {qmpa.getString A B; ;
-  (' (c.splitSx (c.getRangeSx A 2 (- (c.getLengthSx A) 3)) ";" B) (c.errorSb (' "Caught: " A)))
+  (' (c.splitSx (c.getRangeSx A 5 (- (c.getLengthSx A) 9)) ";" B) (c.errorSb (' "Caught: " A)))
 }
 {qmpa.comment A; ; (' "<" A ">")}
 

@@ -344,8 +344,16 @@
   text-decoration: underline solid blue;
 }
 
+.qComURed {
+  text-decoration: underline solid red;
+}
+
 .qComRBlue {
   border-left: solid 1px blue;
+}
+
+.qComRBlue {
+  border-left: solid 1px red;
 }
 
 /*Vlrfsasm*/
