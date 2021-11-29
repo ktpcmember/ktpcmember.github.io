@@ -1,3 +1,17 @@
-Vlrfsasm v0.7 2021-11-29 07:50
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.html
+Vlrfsasm v0.7 2021-11-29 07:59
+  13:Error in script
+  ~ def\common.vlra :414
+  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\pathRule.vlra :43
+  qmpa.getString D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\commonRule.vlra :31
+  qm.getString D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :265
+  qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :149
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :113
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\code\htmlEmbed.vlra :45
+  qh.multi D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :418
+  hx.paMT D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :422
+  hx.msMT D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :14
+  ht.helloWorld.result D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :51
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
+  
+  Caught: &lt;?u;uRed&gt;
