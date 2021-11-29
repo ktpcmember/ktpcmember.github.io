@@ -39,7 +39,7 @@ ht.helloWorld.run
 
 ht.helloWorld.result
 さて、生成された2つのファイルを開き、中身が以下のようになっていれば成功です。ただし、[pa;message.log]の赤下線部には、実行日時が書かれています。これはコンピュータの現地時刻なので、時差を含みます。また、その下に出力ファイルのパスなどが表示されますが、青下線部のように個人情報を含むことがあるので、誤って公開しないよう注意しましょう。
-[msMT;[pa;result.txt];Hello world!]
+[msMT;[pa;result.txt];Hello world!][msMT;[pa;message.log];,(hi.message.log)]
 なお、青下線部は架空のものです。
 
 ht.helloWorld.exit
