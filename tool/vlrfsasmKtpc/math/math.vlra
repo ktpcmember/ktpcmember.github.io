@@ -1,0 +1,40 @@
+
+
+{ma.encode Content Opcode Size; ;
+  ('
+    (: $0001 16)
+    (: (> (> (# Content) 4) 3) 16)
+    Opcode
+    Size
+  )
+}
+
+{ms.imm X Y; ; (' (ms.immX X) (ms.immY Y))}
+{ms.immX A; ; (: (< A 4) 20)}
+{ms.immX A; ; (: (< A 4) 12)}
+{ms.getX A; ; (> A 12)}
+{ms.getY A; ; (: A 12)}
+{ms.add A B; ;
+  ('
+    (+ (ms.getX A) (ms.getX B))
+    (+ (ms.getY A) (ms.getY B))
+  )
+}
+{ms.addX A B; ;
+  ('
+    (+ (ms.getX A) B)
+    (ms.getY A)
+  )
+}
+{ms.addY A B; ;
+  ('
+    (ms.getX A)
+    (+ (ms.getY A) B)
+  )
+}
+{ms.mul A B; ;
+  ('
+    (: (> (*- (ms.getX A) (ms.getX B)) 4) 20)
+    (: (> (*- (ms.getY A) (ms.getY B)) 4) 12)
+  )
+}
