@@ -1,11 +1,56 @@
 
+[Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
-{ma.encode Content Opcode Size; ;
+{mh.over Content; ; }
+
+{mc.generalize Content; ;
+  (mc.generalize.loop
+    Content
+    ('
+      (: 0 16) [0:Raw, 1:ContainerBegin, 2:Container]
+      (: 0 16)
+      (: (> (# Content) 4) 16)
+    )
+  )
+}
+{mc.generalize.loop Content 16 Condition; ;
+  (?
+    (== (: Condition 16) 1)
+    (?
+      (c.getRange Condition 32 16)
+    )
+  );
+  ('
+    ()
+    (?
+      (== (c.getRange Condition 32 16) 1)
+      (- (c.getRange Condition 16 16) 1)
+      Content
+    )
+    (- (: Condition 16) 1)
+  )
+}
+{mc.encode Content Opcode Size; ;
   ('
     (: $0001 16)
-    (: (> (> (# Content) 4) 3) 16)
-    Opcode
-    Size
+    (: (+ (> (# Content) 4) 5) 16)
+    (: Opcode 16)
+    (: Size 32)
+  )
+}
+{mc.decode Container; ;
+  (c.getRange Container 48 (- (# Container) 80))
+}
+{mc.getFirstElement List; ;
+  (>
+    List
+    (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
+  )
+}
+{mc.getRestElementList List; ;
+  (:
+    List
+    (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
   )
 }
 
