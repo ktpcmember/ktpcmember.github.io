@@ -1,8 +1,39 @@
 
+{mi.sizeList; ; (sizeList.bin)}
+
 [Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
 {mh.overline Content; ;
   (mc.encode Content 4 (mc.getSize Content))
+}
+
+{mh.math Content; ;
+  (hb.tagACE
+    "svg"
+    "cSvg"
+    ('
+      (hb.attribute
+        "width"
+        (c.ConvertISb (ms.getIX (mc.getSize Content)) 10)
+      )
+      (hb.attribute
+        "height"
+        (c.ConvertISb (ms.getIY (mc.getSize Content)) 10)
+      )
+      (hb.attribute "viewBox"
+        ('
+          "0 0 "
+          (c.ConvertISb (ms.getIX (mc.getSize Content)) 10)
+          " "
+          (c.ConvertISb (ms.getIY (mc.getSize Content)) 10)
+        )
+      )
+      (hb.attribute "xmlns" "http://www.w3.org/2000/svg")
+      (hb.attribute "stroke" "none")
+      (hb.attribute "fill" "black")
+    )
+    (mr.render Content (: 0 32) (: 0 8))
+  )
 }
 
 {mc.generalize Content; ;
@@ -113,9 +144,11 @@
 
 {ms.imm X Y; ; (' (ms.immX X) (ms.immY Y))}
 {ms.immX A; ; (: (< A 4) 20)}
-{ms.immX A; ; (: (< A 4) 12)}
+{ms.immY A; ; (: (< A 4) 12)}
 {ms.getX A; ; (> A 12)}
 {ms.getY A; ; (: A 12)}
+{ms.getIX A ; ; (> (+ (ms.getX A) 1) 4)}
+{ms.getIY A ; ; (> (+ (ms.getY A) 1) 4)}
 {ms.add A B; ;
   ('
     (+ (ms.getX A) (ms.getX B))
@@ -141,12 +174,15 @@
   )
 }
 {ms.getSizeSb Content; ;
-  (ms.getSizeSb.loop
-    Content
-    ('
-      (: 0 32)
-      (: (c.getLengthSx Content) 16)
+  (ms.addY
+    (ms.getSizeSb.loop
+      Content
+      ('
+        (: 0 32)
+        (: (c.getLengthSx Content) 16)
+      )
     )
+    16
   )
 }
 {ms.getSizeSb.loop Content 16 Condition; ;
@@ -188,5 +224,8 @@
   )
 }
 {ms.getSizeCharacter Character; ;
-  0
+  (: (ms.getSizeCharcter.loop (mi.sizeList) Character) 32)
+}
+{ms.getSizeCharacter List 64 Character; ;
+  (? (== (> List 32) Character) (: (< (c.getRange 19 13) 12) 32) (c.empty))
 }
