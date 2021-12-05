@@ -1,7 +1,9 @@
 
 [Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
-{mh.over Content; ; }
+{mh.overline Content; ;
+  (mc.encode Content 4 (mc.getSize Content))
+}
 
 {mc.generalize Content; ;
   (mc.generalize.loop
@@ -18,10 +20,64 @@
     (== (: Condition 16) 1)
     (?
       (c.getRange Condition 32 16)
+      ('
+        (?
+          (== (c.getRange Condition 32 16) 1)
+          (: 0 16)
+          (c.empty)
+        )
+        Content
+      )
+      (?
+        Content
+        (c.empty)
+        (?
+          (== (# Condition) 48)
+          (c.empty)
+          (mc.encode
+            (> Condition 48)
+            0
+            (ms.getSizeSb (> Condition 48))
+          )
+        )
+      )
+    )
+    (?
+      (c.getRange Condition 32 16)
+      Content
+      (mc.encode
+        (' (> Condition 48) Content)
+        0
+        (ms.getSizeSb (' (> Condition 48) Content))
+      )
     )
   );
   ('
-    ()
+    (?
+      (c.getRange Condition 32 16)
+      (' (> Condition 48) Content)
+      (c.empty)
+    )
+    (:
+      (?
+        (c.getRange Condition 32 16)
+        (?
+          (== (c.getRange Condition 32 16) 1)
+          2
+          (?
+            (== (c.getRange Condition 16 16) 3)
+            0
+            2
+          )
+        )
+        (?
+          Content
+          0
+          1
+        )
+      )
+      16
+    )
     (?
       (== (c.getRange Condition 32 16) 1)
       (- (c.getRange Condition 16 16) 1)
@@ -53,6 +109,7 @@
     (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
   )
 }
+{mc.getSize Container; ; (: Container 32)}
 
 {ms.imm X Y; ; (' (ms.immX X) (ms.immY Y))}
 {ms.immX A; ; (: (< A 4) 20)}
@@ -82,4 +139,54 @@
     (: (> (*- (ms.getX A) (ms.getX B)) 4) 20)
     (: (> (*- (ms.getY A) (ms.getY B)) 4) 12)
   )
+}
+{ms.getSizeSb Content; ;
+  (ms.getSizeSb.loop
+    Content
+    ('
+      (: 0 32)
+      (: (c.getLengthSx Content) 16)
+    )
+  )
+}
+{ms.getSizeSb.loop Content 16 Condition; ;
+  (?
+    (== (: Condition 16) 1)
+    (ms.addX
+      (c.getRange 16 32)
+      (ms.getSizeCharacter
+        (?
+          (== (c.getRange Content 10 6) %110111)
+          (' (> Condition 48) (: Content 10))
+          Content
+        )
+      )
+    )
+    (c.empty)
+  );
+  ('
+    (?
+      (== (c.getRange Content 10 6) %110110)
+      (: Content 10)
+      (c.empty)
+    )
+    (ms.add
+      (c.getRange 16 32)
+      (?
+        (== (c.getRange Content 10 6) %110110)
+        0
+        (ms.getSizeCharacter
+          (?
+            (== (c.getRange Content 10 6) %110111)
+            (' (> Condition 48) (: Content 10))
+            Content
+          )
+        )
+      )
+    )
+    (- (: Condition 16) 1)
+  )
+}
+{ms.getSizeCharacter Character; ;
+  0
 }
