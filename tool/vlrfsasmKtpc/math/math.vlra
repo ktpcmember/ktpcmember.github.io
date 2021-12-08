@@ -315,7 +315,7 @@
   (c.getRange Container 48 16)
 }
 
-{mf.immI A; ; (ms.immF (< A 7))}
+{mf.immI A; ; (mf.immF (< A 7))}
 {mf.immF A; ; (: A 1)}
 {mf.mul A B; ;
   (: (> (*- (:- A 32) (:- B 32)) 7) 16)
