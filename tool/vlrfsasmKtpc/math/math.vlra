@@ -316,7 +316,7 @@
 }
 {mf.ceil A; ; (> (+ A 1) 7)}
 {mf.ceilISb A; ;
-  (c.convertISb (ms.ceil A) 10)
+  (c.convertISb (mf.ceil A) 10)
 }
 
 {ms.getSizeSb Content; ;
