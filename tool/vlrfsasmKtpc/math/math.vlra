@@ -219,7 +219,7 @@
         )
         (+
           (c.getRange Condition 80 16)
-          (ms.getSizeSb
+          (ms.getSizeXSb
             ('
               (> Condition 96)
               Content
@@ -230,10 +230,7 @@
           (c.getRange Condition 64 16)
           (mf.immI 16)
         )
-        (c.max
-          (c.getRange Condition 48 16)
-          (mf.immI 16)
-        )
+        (c.getRange Condition 48 16)
       )
     )
   );
@@ -252,16 +249,13 @@
       ('
         (+
           (c.getRange Condition 80 16)
-          (ms.getSizeSb (> Condition 96))
+          (ms.getSizeXSb (> Condition 96))
         )
         (c.max
           (c.getRange Condition 64 16)
           (mf.immI 16)
         )
-        (c.max
-          (c.getRange Condition 48 16)
-          (mf.immI 16)
-        )
+        (c.getRange Condition 48 16)
       )
       (?
         (&
@@ -377,15 +371,18 @@
 
 {ms.getSizeSb Content; ;
   ('
-    (ms.getSizeSb.loop
-      Content
-      ('
-        (mf.immI 0)
-        (: (c.getLengthSx Content) 16)
-      )
-    )
+    (ms.getSizeXSb Content)
     (mf.immI 16)
     (mf.immI 0)
+  )
+}
+{ms.getSizeXSb Content; ;
+  (ms.getSizeSb.loop
+    Content
+    ('
+      (mf.immI 0)
+      (: (c.getLengthSx Content) 16)
+    )
   )
 }
 {ms.getSizeSb.loop Content 16 Condition; ;
