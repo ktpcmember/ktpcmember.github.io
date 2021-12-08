@@ -299,7 +299,7 @@
 }
 {mc.encode Content Opcode Size; ;
   ('
-    (: $0001 16)
+    (: $0000 16)
     (: (+ (> (# Content) 4) 6) 16)
     Content
     (: Opcode 16)
