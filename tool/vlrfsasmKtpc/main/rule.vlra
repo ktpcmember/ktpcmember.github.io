@@ -420,3 +420,4 @@
 {hx.vMT A B; ; (qh.multi "v" A B 1)}
 {hx.batMT A B; ; (hx.paMT A B)} [For the time being]
 {hx.msMT A B; ; (hx.paMT A B)} [For the time being]
+{hx.m A; ; (mh.math A)}

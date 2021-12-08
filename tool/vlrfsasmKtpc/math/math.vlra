@@ -4,7 +4,15 @@
 [Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
 {mh.overline Content; ;
-  (mc.encode Content 4 (mc.getSize Content))
+  (mc.encode
+    Content
+    4
+    ('
+      (mc.getSizeX Content)
+      (+ (mc.getSizeH Content) (mf.immI 2))
+      (mc.getSizeL Content)
+    )
+  )
 }
 
 {mh.math Content; ;
@@ -32,18 +40,87 @@
       (hb.attribute "stroke" "none")
       (hb.attribute "fill" "black")
     )
-    (mr.render Content (: 0 32) (: 0 8))
+    (mr.render
+      (mc.generalize Content)
+      (: 0 32)
+      (: 0 8)
+    )
+  )
+}
+
+{mr.render Content Base Scale; ;
+  (?
+    (# Content)
+    (?
+      (<= (mc.getOpcode Content) 7)
+      (?
+        (<= (mc.getOpcode Content) 3)
+        (?
+          (<= (mc.getOpcode Content) 1)
+          (?
+            (== (mc.getOpcode Content) 0)
+            (mr.string Content Base Scale)
+            (mr.text Content Base Scale)
+          )
+          (?
+            (== (mc.getOpcode Content) 2)
+            (mr.concatenate Content Base Scale)
+            (mr.attachment Content Base Scale)
+          )
+        )
+        (?
+          (<= (mc.getOpcode Content) 5)
+          (?
+            (== (mc.getOpcode Content) 4)
+            (mr.overline Content Base Scale)
+            (mr.underline Content Base Scale)
+          )
+          (?
+            (== (mc.getOpcode Content) 6)
+            (mr.sqrt Content Base Scale)
+            (mr.root Content Base Scale)
+          )
+        )
+      )
+      (?
+        (== (mc.getOpcode Content) 8)
+        (mr.fraction Content Base Scale)
+        (mr.smallFraction Content Base Scale)
+      )
+    )
+    (c.empty)
+  )
+}
+{mr.string Content Base Scale; ;
+  (hb.tagAE "text"
+    ('
+      (hb.attribute "x" (> Base 16))
+      (hb.attribute "y"
+        (+
+          (: Base 16)
+          (ms.scale (mc.getSizeH Content) Scale)
+        )
+      )
+      (hb.attribute "font-size"
+        (ms.scale (mf.immI 16) Scale)
+      )
+    )
+    Content
   )
 }
 
 {mc.generalize Content; ;
-  (mc.generalize.loop
-    Content
-    ('
-      (: 0 16) [0:Raw, 1:ContainerBegin, 2:Container]
-      (: 0 16)
-      (: (> (# Content) 4) 16)
+  (mc.encodeS
+    (mc.generalize.loop
+      Content
+      ('
+        (: 0 48)
+        (: 0 16) [0:Raw, 1:ContainerBegin, 2:Container]
+        (: 0 16)
+        (: (> (# Content) 4) 16)
+      )
     )
+    2
   )
 }
 {mc.generalize.loop Content 16 Condition; ;
@@ -63,31 +140,103 @@
         Content
         (c.empty)
         (?
-          (== (# Condition) 48)
+          (== (# Condition) 96)
           (c.empty)
           (mc.encode
-            (> Condition 48)
+            (> Condition 96)
             0
-            (ms.getSizeSb (> Condition 48))
+            (ms.getSizeSb (> Condition 96))
           )
         )
       )
     )
     (?
       (c.getRange Condition 32 16)
-      Content
-      (mc.encode
-        (' (> Condition 48) Content)
-        0
-        (ms.getSizeSb (' (> Condition 48) Content))
+      ('
+        Content
+        (c.getRange 64 32)
+        (c.max (c.getRange 48 16) Content)
+      )
+      ('
+        (mc.encode
+          (' (> Condition 96) Content)
+          0
+          (ms.getSizeSb
+            (' (> Condition 96) Content)
+          )
+        )
+        (+
+          (c.getRange Condition 80 16)
+          (ms.getSizeSb
+            ('
+              (> Condition 96)
+              Content
+            )
+          )
+        )
+        (c.max
+          (c.getRange Condition 64 16)
+          (mf.immI 16)
+        )
+        (c.max
+          (c.getRange Condition 48 16)
+          (mf.immI 16)
+        )
       )
     )
   );
   ('
     (?
       (c.getRange Condition 32 16)
-      (' (> Condition 48) Content)
+      (' (> Condition 96) Content)
       (c.empty)
+    )
+    (?
+      (&
+        (== (c.getRange Condition 32 16) 0)
+        (== Content 0)
+        (!= (# Condition) 96)
+      )
+      ('
+        (+
+          (c.getRange Condition 80 16)
+          (ms.getSizeSb (> Condition 96))
+        )
+        (c.max
+          (c.getRange Condition 64 16)
+          (mf.immI 16)
+        )
+        (c.max
+          (c.getRange Condition 48 16)
+          (mf.immI 16)
+        )
+      )
+      (?
+        (&
+          (== (c.getRange 32 16) 2)
+          (<= (c.getRange 16 16) 5)
+        )
+        (?
+          (== (c.getRange 16 16) 5)
+          ('
+            (+ (c.getRange 80 16) Condition)
+            (c.getRange 48 32)
+          )
+          (?
+            (== (c.getRange 16 16) 4)
+            ('
+              (c.getRange 80 16)
+              (c.max (c.getRange 64 16) Condition)
+              (c.getRange 48 16)
+            )
+            ('
+              (c.getRange 64 32)
+              (c.max (c.getRange 48 16) Condition)
+            )
+          )
+        )
+        (c.getRange 48 48)
+      )
     )
     (:
       (?
@@ -101,11 +250,7 @@
             2
           )
         )
-        (?
-          Content
-          0
-          1
-        )
+        (? Content 0 1)
       )
       16
     )
@@ -120,13 +265,21 @@
 {mc.encode Content Opcode Size; ;
   ('
     (: $0001 16)
-    (: (+ (> (# Content) 4) 5) 16)
+    (: (+ (> (# Content) 4) 6) 16)
+    Content
     (: Opcode 16)
-    (: Size 32)
+    (: Size 48)
+  )
+}
+{mc.encodeS Content Opcode; ;
+  (mc.encode
+    (> Content 48)
+    Opcode
+    (: Content 48)
   )
 }
 {mc.decode Container; ;
-  (c.getRange Container 48 (- (# Container) 80))
+  (c.getRange Container 64 (- (# Container) 96))
 }
 {mc.getFirstElement List; ;
   (>
@@ -140,60 +293,48 @@
     (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
   )
 }
-{mc.getSize Container; ; (: Container 32)}
+{mc.getSize Container; ; (: Container 48)}
+{mc.getSizeX Container; ;
+  (> (mc.getSize Container) 32)
+}
+{mc.getSizeH Container; ;
+  (c.getRange (mc.getSize Container) 16 16)
+}
+{mc.getSizeL Container; ;
+  (: Container 16)
+}
+{mc.getOpcode Container; ;
+  (c.getRange Container 48 16)
+}
 
-{ms.imm X Y; ; (' (ms.immX X) (ms.immY Y))}
-{ms.immX A; ; (: (< A 4) 20)}
-{ms.immY A; ; (: (< A 4) 12)}
-{ms.getX A; ; (> A 12)}
-{ms.getY A; ; (: A 12)}
-{ms.getIX A ; ; (> (+ (ms.getX A) 1) 4)}
-{ms.getIY A ; ; (> (+ (ms.getY A) 1) 4)}
-{ms.add A B; ;
-  ('
-    (+ (ms.getX A) (ms.getX B))
-    (+ (ms.getY A) (ms.getY B))
-  )
+{mf.immI A; ; (ms.immF (< A 7))}
+{mf.immF A; ; (: A 1)}
+{mf.mul A B; ;
+  (: (> (*- (:- A 32) (:- B 32)) 7) 16)
 }
-{ms.addX A B; ;
-  ('
-    (+ (ms.getX A) B)
-    (ms.getY A)
-  )
-}
-{ms.addY A B; ;
-  ('
-    (ms.getX A)
-    (+ (ms.getY A) B)
-  )
-}
-{ms.mul A B; ;
-  ('
-    (: (> (*- (ms.getX A) (ms.getX B)) 4) 20)
-    (: (> (*- (ms.getY A) (ms.getY B)) 4) 12)
-  )
-}
+
 {ms.getSizeSb Content; ;
-  (ms.addY
+  ('
     (ms.getSizeSb.loop
       Content
       ('
-        (: 0 32)
+        (mf.immI 0)
         (: (c.getLengthSx Content) 16)
       )
     )
-    16
+    (mf.immI 16)
+    (mf.immI 0)
   )
 }
 {ms.getSizeSb.loop Content 16 Condition; ;
   (?
     (== (: Condition 16) 1)
     (ms.addX
-      (c.getRange 16 32)
+      (c.getRange 16 16)
       (ms.getSizeCharacter
         (?
           (== (c.getRange Content 10 6) %110111)
-          (' (> Condition 48) (: Content 10))
+          (' (> Condition 32) (: Content 10))
           Content
         )
       )
@@ -207,14 +348,14 @@
       (c.empty)
     )
     (ms.add
-      (c.getRange 16 32)
+      (c.getRange 16 16)
       (?
         (== (c.getRange Content 10 6) %110110)
         0
         (ms.getSizeCharacter
           (?
             (== (c.getRange Content 10 6) %110111)
-            (' (> Condition 48) (: Content 10))
+            (' (> Condition 32) (: Content 10))
             Content
           )
         )
@@ -224,8 +365,26 @@
   )
 }
 {ms.getSizeCharacter Character; ;
-  (: (ms.getSizeCharcter.loop (mi.sizeList) Character) 32)
+  (: (ms.getSizeCharcter.loop (mi.sizeList) Character) 16)
 }
-{ms.getSizeCharacter List 64 Character; ;
-  (? (== (> List 32) Character) (: (< (c.getRange 19 13) 12) 32) (c.empty))
+{ms.getSizeCharacter.loop List 64 Character; ;
+  (? (== (> List 32) Character) (c.getRange List 16 16) (c.empty))
+}
+{ms.scale Size 16 Scale; ;
+  (*- Size (ms.coefficient Scale))
+}
+{ms.coefficient Scale; ;
+  (c.getRange
+    (ms.coefficient.list)
+    (< Scale 4)
+    16
+  )
+}
+{ms.coefficient.list; ;
+  ('
+    (mf.immF $36)
+    (mf.immF $48)
+    (mf.immF $60)
+    (mf.immF $80)
+  )
 }
