@@ -46,13 +46,19 @@
       (hb.attribute "stroke" "none")
       (hb.attribute "fill" "black")
     )
-    (mr.render
-      (mc.generalize Content)
-      (: 0 32)
-      (: 0 8)
+    ('
+      (mr.render
+        (mc.generalize Content)
+        (: 0 32)
+        (: 0 8)
+      )
+      "[" (c.convertISb (# (mc.generalize Content)) 16) "]"
+      (mt.convertASb (mc.generalize Content))
     )
   )
 }
+
+{mt.convertASb A 16; ; (' (c.convertISb A 16) " ")}
 
 {mr.render Content Base Scale; ;
   (?
@@ -427,14 +433,7 @@
   (? (== (> List 32) Character) (c.getRange List 16 16) (c.empty))
 }
 {ms.scale Size 16 Scale; ;
-  (c.getRange
-    (*-
-      (:- Size 32)
-      (ms.coefficient Scale)
-    )
-    7
-    16
-  )
+  (mf.mul Size (ms.coefficient Scale))
 }
 {ms.coefficient Scale; ;
   (c.getRange
