@@ -22,18 +22,30 @@
     ('
       (hb.attribute
         "width"
-        (c.ConvertISb (ms.getIX (mc.getSize Content)) 10)
+        (c.convertISb
+          (ms.ceil (mc.getSizeX Content))
+          10
+        )
       )
       (hb.attribute
         "height"
-        (c.ConvertISb (ms.getIY (mc.getSize Content)) 10)
+        (c.convertISb
+          (ms.ceil (mc.getSizeY Content))
+          10
+        )
       )
       (hb.attribute "viewBox"
         ('
           "0 0 "
-          (c.ConvertISb (ms.getIX (mc.getSize Content)) 10)
+          (c.convertISb
+            (ms.ceil (mc.getSizeX Content))
+            10
+          )
           " "
-          (c.ConvertISb (ms.getIY (mc.getSize Content)) 10)
+          (c.convertISb
+            (ms.ceil (mc.getSizeY Content))
+            10
+          )
         )
       )
       (hb.attribute "xmlns" "http://www.w3.org/2000/svg")
@@ -388,3 +400,4 @@
     (mf.immF $80)
   )
 }
+{ms.ceil Size; ; (> (+ Size 1) 7)}
