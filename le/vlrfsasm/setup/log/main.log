@@ -1,8 +1,6 @@
-Vlrfsasm v0.7 2021-12-08 10:45
-  3:Undefined function
-  ms.add D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :362
-  ms.getSizeSb.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :330
-  ms.getSizeSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :166
+Vlrfsasm v0.7 2021-12-08 10:47
+  7:Wrong number of argument
+  c.getRange D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :218
   mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :116
   mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :44
   mh.math D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :423
