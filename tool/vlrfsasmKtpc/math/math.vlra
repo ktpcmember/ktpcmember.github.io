@@ -22,11 +22,17 @@
     ('
       (hb.attribute
         "width"
-        (mf.ceilISb (mc.getSizeX Content))
+        ('
+          (mf.ceilISb (mc.getSizeX Content))
+          "px"
+        )
       )
       (hb.attribute
         "height"
-        (mf.ceilISb (mc.getSizeY Content))
+        ('
+          (mf.ceilISb (mc.getSizeY Content))
+          "px"
+        )
       )
       (hb.attribute "viewBox"
         ('
@@ -108,7 +114,12 @@
         )
       )
       (hb.attribute "font-size"
-        (mf.ceilISb (ms.scale (mf.immI 16) Scale))
+        ('
+          (mf.ceilISb
+            (ms.scale (mf.immI 16) Scale)
+          )
+          "px"
+        )
       )
     )
     Content
@@ -417,7 +428,10 @@
 }
 {ms.scale Size 16 Scale; ;
   (c.getRange
-    (*- Size (ms.coefficient Scale))
+    (*-
+      (:- Size 32)
+      (ms.coefficient Scale)
+    )
     7
     16
   )
