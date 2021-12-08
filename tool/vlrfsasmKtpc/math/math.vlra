@@ -22,30 +22,18 @@
     ('
       (hb.attribute
         "width"
-        (c.convertISb
-          (ms.ceil (mc.getSizeX Content))
-          10
-        )
+        (mf.ceilISb (mc.getSizeX Content))
       )
       (hb.attribute
         "height"
-        (c.convertISb
-          (ms.ceil (mc.getSizeY Content))
-          10
-        )
+        (mf.ceilISb (mc.getSizeY Content))
       )
       (hb.attribute "viewBox"
         ('
           "0 0 "
-          (c.convertISb
-            (ms.ceil (mc.getSizeX Content))
-            10
-          )
+          (mf.ceilISb (mc.getSizeX Content))
           " "
-          (c.convertISb
-            (ms.ceil (mc.getSizeY Content))
-            10
-          )
+          (mf.ceilISb (mc.getSizeY Content))
         )
       )
       (hb.attribute "xmlns" "http://www.w3.org/2000/svg")
@@ -106,15 +94,17 @@
 {mr.string Content Base Scale; ;
   (hb.tagAE "text"
     ('
-      (hb.attribute "x" (> Base 16))
+      (hb.attribute "x" (mf.ceilISb (> Base 16)))
       (hb.attribute "y"
-        (+
-          (: Base 16)
-          (ms.scale (mc.getSizeH Content) Scale)
+        (mf.ceilISb
+          (+
+            (: Base 16)
+            (ms.scale (mc.getSizeH Content) Scale)
+          )
         )
       )
       (hb.attribute "font-size"
-        (ms.scale (mf.immI 16) Scale)
+        (mf.ceilISb (ms.scale (mf.immI 16) Scale))
       )
     )
     Content
@@ -324,6 +314,10 @@
 {mf.mul A B; ;
   (: (> (*- (:- A 32) (:- B 32)) 7) 16)
 }
+{mf.ceil A; ; (> (+ A 1) 7)}
+{mf.ceilISb A; ;
+  (c.convertISb (ms.ceil A) 10)
+}
 
 {ms.getSizeSb Content; ;
   ('
@@ -400,4 +394,3 @@
     (mf.immF $80)
   )
 }
-{ms.ceil Size; ; (> (+ Size 1) 7)}
