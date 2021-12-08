@@ -1,7 +1,7 @@
-Vlrfsasm v0.7 2021-12-08 07:28
-  3:Undefined function
-  ms.immF D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :318
-  mf.immI D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :333
+Vlrfsasm v0.7 2021-12-08 07:31
+  7:Wrong number of argument
+  c.getRange D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :345
+  ms.getSizeSb.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :330
   ms.getSizeSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :166
   mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :116
   mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :44
