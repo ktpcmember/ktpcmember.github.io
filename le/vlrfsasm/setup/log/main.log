@@ -1,7 +1,6 @@
-Vlrfsasm v0.7 2021-12-08 10:36
+Vlrfsasm v0.7 2021-12-08 10:38
   3:Undefined function
-  ms.getSizeCharcter.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :380
-  ms.getSizeCharacter D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :346
+  ms.addX D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :344
   ms.getSizeSb.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :330
   ms.getSizeSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :166
   mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :116
