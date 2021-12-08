@@ -240,8 +240,8 @@
   ('
     (?
       (c.getRange Condition 32 16)
-      (' (> Condition 96) Content)
       (c.empty)
+      (' (> Condition 96) Content)
     )
     (?
       (&
