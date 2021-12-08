@@ -128,7 +128,7 @@
         )
       )
     )
-    Content
+    (mc.decode Content)
   )
 }
 {mr.concatenate Content Base Scale; ;
@@ -396,7 +396,10 @@
       (ms.getSizeCharacter
         (?
           (== (c.getRange Content 10 6) %110111)
-          (' (> Condition 32) (: Content 10))
+          (|
+            (' (> Condition 32) (: Content 10))
+            $10000
+          )
           Content
         )
       )
@@ -417,7 +420,10 @@
         (ms.getSizeCharacter
           (?
             (== (c.getRange Content 10 6) %110111)
-            (' (> Condition 32) (: Content 10))
+            (|
+              (' (> Condition 32) (: Content 10))
+              $10000
+            )
             Content
           )
         )
