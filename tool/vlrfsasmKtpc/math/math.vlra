@@ -156,8 +156,8 @@
       (c.getRange Condition 32 16)
       ('
         Content
-        (c.getRange 64 32)
-        (c.max (c.getRange 48 16) Content)
+        (c.getRange Condition 64 32)
+        (c.max (c.getRange Condition 48 16) Content)
       )
       ('
         (mc.encode
@@ -215,29 +215,29 @@
       )
       (?
         (&
-          (== (c.getRange 32 16) 2)
-          (<= (c.getRange 16 16) 5)
+          (== (c.getRange Condition 32 16) 2)
+          (<= (c.getRange Condition 16 16) 5)
         )
         (?
-          (== (c.getRange 16 16) 5)
+          (== (c.getRange Condition 16 16) 5)
           ('
-            (+ (c.getRange 80 16) Condition)
-            (c.getRange 48 32)
+            (+ (c.getRange Condition 80 16) Condition)
+            (c.getRange Condition 48 32)
           )
           (?
-            (== (c.getRange 16 16) 4)
+            (== (c.getRange Condition 16 16) 4)
             ('
-              (c.getRange 80 16)
-              (c.max (c.getRange 64 16) Condition)
-              (c.getRange 48 16)
+              (c.getRange Condition 80 16)
+              (c.max (c.getRange Condition 64 16) Condition)
+              (c.getRange Condition 48 16)
             )
             ('
-              (c.getRange 64 32)
-              (c.max (c.getRange 48 16) Condition)
+              (c.getRange Condition 64 32)
+              (c.max (c.getRange Condition 48 16) Condition)
             )
           )
         )
-        (c.getRange 48 48)
+        (c.getRange Condition 48 48)
       )
     )
     (:
