@@ -177,7 +177,7 @@
 }
 {mc.generalize.loop Content 16 Condition; ;
   (?
-    (== (: Condition 16) 1)
+    (!= (: Condition 16) 1)
     (?
       (c.getRange Condition 32 16)
       ('
