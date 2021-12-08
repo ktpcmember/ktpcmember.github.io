@@ -342,7 +342,7 @@
   (?
     (== (: Condition 16) 1)
     (ms.addX
-      (c.getRange 16 16)
+      (c.getRange Condition 16 16)
       (ms.getSizeCharacter
         (?
           (== (c.getRange Content 10 6) %110111)
