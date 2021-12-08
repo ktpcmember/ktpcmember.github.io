@@ -416,7 +416,11 @@
   (? (== (> List 32) Character) (c.getRange List 16 16) (c.empty))
 }
 {ms.scale Size 16 Scale; ;
-  (*- Size (ms.coefficient Scale))
+  (c.getRange
+    (*- Size (ms.coefficient Scale))
+    7
+    16
+  )
 }
 {ms.coefficient Scale; ;
   (c.getRange
