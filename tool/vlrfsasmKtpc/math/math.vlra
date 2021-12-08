@@ -377,7 +377,7 @@
   )
 }
 {ms.getSizeCharacter Character; ;
-  (: (ms.getSizeCharcter.loop (mi.sizeList) Character) 16)
+  (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 16)
 }
 {ms.getSizeCharacter.loop List 64 Character; ;
   (? (== (> List 32) Character) (c.getRange List 16 16) (c.empty))
