@@ -359,7 +359,7 @@
       (: Content 10)
       (c.empty)
     )
-    (ms.add
+    (+
       (c.getRange Condition 16 16)
       (?
         (== (c.getRange Content 10 6) %110110)
