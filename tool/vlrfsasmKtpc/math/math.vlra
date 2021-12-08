@@ -360,7 +360,7 @@
       (c.empty)
     )
     (ms.add
-      (c.getRange 16 16)
+      (c.getRange Condition 16 16)
       (?
         (== (c.getRange Content 10 6) %110110)
         0
