@@ -305,6 +305,12 @@
 {mc.getSizeL Container; ;
   (: Container 16)
 }
+{mc.getSizeY Container; ;
+  (+
+    (mc.getSizeH Container)
+    (mc.getSizeL Container)
+  )
+}
 {mc.getOpcode Container; ;
   (c.getRange Container 48 16)
 }
