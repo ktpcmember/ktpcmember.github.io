@@ -341,7 +341,7 @@
 {ms.getSizeSb.loop Content 16 Condition; ;
   (?
     (== (: Condition 16) 1)
-    (ms.addX
+    (+
       (c.getRange Condition 16 16)
       (ms.getSizeCharacter
         (?
