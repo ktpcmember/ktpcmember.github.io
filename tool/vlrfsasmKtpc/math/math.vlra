@@ -64,7 +64,11 @@
           )
           (?
             (== (mc.getOpcode Content) 2)
-            (mr.concatenate Content Base Scale)
+            (mr.concatenate
+              (mc.decode Content)
+              Base
+              Scale
+            )
             (mr.attachment Content Base Scale)
           )
         )
@@ -108,6 +112,35 @@
       )
     )
     Content
+  )
+}
+{mr.concatenate Content Base Scale; ;
+  (?
+    (# Content)
+    ('
+      (mr.render
+        (mc.getFirstElement Content)
+        Base
+        Scale
+      )
+      (mr.concatenate
+        (mc.getRestElementList Content)
+        ('
+          (+
+            (> Base 16)
+            (ms.scale
+              (mc.getSizeX
+                (mc.getFirstElement Content)
+              )
+              Scale
+            )
+          )
+          (: Base 16)
+        )
+        Scale
+      )
+    )
+    (c.empty)
   )
 }
 
