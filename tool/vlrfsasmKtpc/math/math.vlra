@@ -349,7 +349,7 @@
 }
 
 {mf.immI A; ; (mf.immF (< A 7))}
-{mf.immF A; ; (: A 1)}
+{mf.immF A; ; (: A 16)}
 {mf.mul A B; ;
   (: (> (*- (:- A 32) (:- B 32)) 7) 16)
 }
