@@ -170,7 +170,7 @@
           (mf.truncateISb
             (+
               (> Base 16)
-              (mf.scale
+              (ms.scale
                 (mc.getSizeX Content)
                 Scale
               )
