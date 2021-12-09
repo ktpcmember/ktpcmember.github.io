@@ -188,7 +188,7 @@
 {hb.imageC Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
 
 [Xml Tag]
-{hb.xmlTag; ; (' "<" Tag "/>")}
+{hb.xmlTag Tag; ; (' "<" Tag "/>")}
 {hb.xmlTagA Tag Attribute; ; (' "<" Tag Attribute "/>")}
 
 [Html Menu]
