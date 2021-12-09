@@ -5,6 +5,11 @@
 [Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
 {mh.overline Content; ;
+  (mh.overline.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.overline.generalized Content; ;
   (mc.encode
     Content
     4
@@ -152,6 +157,46 @@
       )
     )
     (c.empty)
+  )
+}
+{mr.overline Content Base Scale; ;
+  ('
+    (hb.xmlTagA "line"
+      ('
+        (hb.attribute "x1"
+          (mf.truncateISb (> Base 16))
+        )
+        (hb.attribute "x2"
+          (mf.truncateISb
+            (+
+              (> Base 16)
+              (mf.scale
+                (mc.getSizeX Content)
+                Scale
+              )
+            )
+          )
+        )
+        (hb.attribute "y1"
+          (mf.truncateISb
+            (+ (: Base 16) (mf.immI 1))
+          )
+        )
+        (hb.attribute "y2"
+          (mf.truncateISb
+            (+ (: Base 16) (mf.immI 1))
+          )
+        )
+        (hb.attribute "stroke" "black")
+      )
+    )
+    (mr.render
+      (mc.decode Content)
+      ('
+        (> Base 16)
+        (+ (: Base 16) (mf.immI 2))
+      )
+    )
   )
 }
 
@@ -361,6 +406,10 @@
 {mf.ceil A; ; (> (+ A $7F) 7)}
 {mf.ceilISb A; ;
   (c.convertISb (mf.ceil A) 10)
+}
+{mf.truncate A; ; (> (+ A $40) 7)}
+{mf.truncateISb A; ;
+  (c.convertISb (mf.truncate A) 10)
 }
 
 {ms.getSizeSb Content; ;

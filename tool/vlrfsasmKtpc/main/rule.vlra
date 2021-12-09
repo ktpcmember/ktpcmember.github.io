@@ -187,6 +187,10 @@
 }
 {hb.imageC Class Path; ; (hb.tagAC "image" Class (hb.attribute "src" Path))}
 
+[Xml Tag]
+{hb.xmlTag; ; (' "<" Tag "/>")}
+{hb.xmlTagA Tag Attribute; ; (' "<" Tag Attribute "/>")}
+
 [Html Menu]
 
 {hm.contentOfMenuLink; ;
@@ -421,3 +425,4 @@
 {hx.batMT A B; ; (hx.paMT A B)} [For the time being]
 {hx.msMT A B; ; (hx.paMT A B)} [For the time being]
 {hx.m A; ; (mh.math A)}
+{hx.mo A; ; (mh.overline A)}
