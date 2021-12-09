@@ -1,5 +1,6 @@
 
 {mi.sizeList; ; (sizeList.bin)}
+{mi.replaceList; ; (replaceList.bin)}
 
 [Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
 
@@ -204,10 +205,10 @@
       )
       ('
         (mc.encode
-          (' (> Condition 96) Content)
+          (' (> Condition 96) (me.replace Content))
           0
           (ms.getSizeSb
-            (' (> Condition 96) Content)
+            (' (> Condition 96) (me.replace Content))
           )
         )
         (+
@@ -215,7 +216,7 @@
           (ms.getSizeXSb
             ('
               (> Condition 96)
-              Content
+              (me.replace Content)
             )
           )
         )
@@ -231,7 +232,7 @@
     (?
       (c.getRange Condition 32 16)
       (c.empty)
-      (' (> Condition 96) Content)
+      (' (> Condition 96) (me.replace Content))
     )
     (?
       (&
@@ -357,7 +358,7 @@
 {mf.mul A B; ;
   (: (> (*- (:- A 32) (:- B 32)) 7) 16)
 }
-{mf.ceil A; ; (> (+ A 1) 7)}
+{mf.ceil A; ; (> (+ A $7F) 7)}
 {mf.ceilISb A; ;
   (c.convertISb (mf.ceil A) 10)
 }
@@ -447,5 +448,25 @@
     (mf.immF $48)
     (mf.immF $60)
     (mf.immF $80)
+  )
+}
+
+{me.replace Character; ;
+  (me.replace.loop (mi.replaceList) Character)
+}
+{me.replace.loop List 48 Character; ;
+  (?
+    (== (> List 32) Character)
+    (?
+      (c.getRange List 16 16)
+      ('
+        (: %110110 6)
+        (- (c.getRange List 10 10) $40)
+        (: %110111 6)
+        (: List 10)
+      )
+      (: List 16)
+    )
+    (c.empty)
   )
 }
