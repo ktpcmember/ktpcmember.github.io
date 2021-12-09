@@ -452,7 +452,10 @@
 }
 
 {me.replace Character; ;
-  (me.replace.loop (mi.replaceList) Character)
+  (me.replace.select
+    (me.replace.loop (mi.replaceList) Character)
+    Character
+  )
 }
 {me.replace.loop List 48 Character; ;
   (?
@@ -469,4 +472,7 @@
     )
     (c.empty)
   )
+}
+{me.replace.select Result Original; ;
+  (? (# Result) Result Original)
 }
