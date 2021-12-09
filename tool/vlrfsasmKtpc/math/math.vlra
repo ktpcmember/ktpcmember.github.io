@@ -423,7 +423,10 @@
   )
 }
 {ms.getSizeCharacter Character; ;
-  (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 16)
+  (mf.mul
+    (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 16)
+    (mf.immF $0106)
+  )
 }
 {ms.getSizeCharacter.loop List 64 Character; ;
   (? (== (> List 32) Character) (c.getRange List 16 16) (c.empty))
