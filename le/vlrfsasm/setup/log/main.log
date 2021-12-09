@@ -1,4 +1,15 @@
-Vlrfsasm v0.7 2021-12-09 14:16
-  14:Undefined argument
-  Tag D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :191
+Vlrfsasm v0.7 2021-12-09 14:20
+  3:Undefined function
+  mf.scale D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :173
+  mr.overline D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :90
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :137
+  mr.concatenate D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :142
+  mr.concatenate D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :78
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :58
+  mh.svg D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :25
+  mh.math D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :427
+  hx.m D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :53
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
