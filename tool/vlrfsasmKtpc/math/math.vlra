@@ -256,6 +256,7 @@
         (c.max (c.getRange Condition 48 16) Content)
       )
       ('
+        (c.errorSb (c.convertISb (# Condition)))
         (mc.encode
           (' (> Condition 96) (me.replace Content))
           0
