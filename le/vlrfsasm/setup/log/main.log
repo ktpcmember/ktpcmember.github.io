@@ -1,4 +1,4 @@
-Vlrfsasm v0.7 2021-12-10 02:18
+Vlrfsasm v0.7 2021-12-10 02:50
   13:Error in script
   ~ def\common.vlra :414
   c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :259
@@ -10,4 +10,4 @@ Vlrfsasm v0.7 2021-12-10 02:18
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
-  128
+  D835 DC4F 0 0 0 0 FFFF 1 
