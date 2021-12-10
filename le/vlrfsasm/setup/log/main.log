@@ -1,7 +1,7 @@
-Vlrfsasm v0.7 2021-12-10 04:33
+Vlrfsasm v0.7 2021-12-10 04:41
   13:Error in script
   ~ def\common.vlra :414
-  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :233
+  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :225
   mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :212
   mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :25
   mh.math D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :427
@@ -10,4 +10,4 @@ Vlrfsasm v0.7 2021-12-10 04:33
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
-  411 800 0 2 16 15 
+  415 800 415 800 0 2 3 2 0 2 1 
