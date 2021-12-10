@@ -55,7 +55,14 @@
       (hb.attribute "stroke" "none")
       (hb.attribute "fill" "black")
     )
-    (mr.render Content (: 0 32) (: 0 8))
+    (mr.render
+      Content
+      ('
+        (mf.immI 0)
+        (mc.getSizeH Content)
+      )
+      (: 0 8)
+    )
   )
 }
 
@@ -113,12 +120,7 @@
     ('
       (hb.attribute "x" (mf.ceilISb (> Base 16)))
       (hb.attribute "y"
-        (mf.ceilISb
-          (+
-            (: Base 16)
-            (ms.scale (mc.getSizeH Content) Scale)
-          )
-        )
+        (mf.ceilISb (: Base 16))
       )
       (hb.attribute "font-size"
         ('
@@ -181,12 +183,18 @@
         )
         (hb.attribute "y1"
           (mf.truncateISb
-            (+ (: Base 16) (mf.immI 1))
+            (-
+              (: Base 16)
+              (mc.getSizeH (mc.decode Content))
+            )
           )
         )
         (hb.attribute "y2"
           (mf.truncateISb
-            (+ (: Base 16) (mf.immI 1))
+            (-
+              (: Base 16)
+              (mc.getSizeH (mc.decode Content))
+            )
           )
         )
         (hb.attribute "stroke" "black")
@@ -194,10 +202,7 @@
     )
     (mr.render
       (mc.decode Content)
-      ('
-        (> Base 16)
-        (+ (: Base 16) (mf.immI 2))
-      )
+      Base
       Scale
     )
   )
