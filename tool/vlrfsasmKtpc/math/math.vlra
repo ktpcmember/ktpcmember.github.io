@@ -55,11 +55,7 @@
       (hb.attribute "stroke" "none")
       (hb.attribute "fill" "black")
     )
-    [(mr.render Content (: 0 32) (: 0 8))]
-    ('
-      "[" (c.convertISb (# (mc.generalize Content)) 16) "]"
-      (mt.convertASb (mc.generalize Content))
-    )
+    (mr.render Content (: 0 32) (: 0 8))
   )
 }
 
