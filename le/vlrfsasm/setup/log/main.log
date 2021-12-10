@@ -1,6 +1,7 @@
-Vlrfsasm v0.7 2021-12-10 02:14
-  7:Wrong number of argument
-  c.convertISb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :259
+Vlrfsasm v0.7 2021-12-10 02:18
+  13:Error in script
+  ~ def\common.vlra :414
+  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :259
   mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :212
   mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\math\math.vlra :9
   mh.overline D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :428
@@ -9,3 +10,4 @@ Vlrfsasm v0.7 2021-12-10 02:14
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io\tool\vlrfsasmKtpc\main\rule.vlra :2
   
+  128
