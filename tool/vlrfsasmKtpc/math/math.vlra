@@ -252,7 +252,7 @@
             )
           )
         )
-        (hb.attribute "y1"
+        (hb.attribute "y2"
           (mf.fraction2
             (+
               (: Base 16)
@@ -340,9 +340,12 @@
         )
         (c.max
           (c.getRange Condition 64 16)
-          (mf.immI 16)
+          (ms.stringH)
         )
-        (c.getRange Condition 48 16)
+        (c.max
+          (c.getRange Condition 48 16)
+          (ms.stringL)
+        )
       )
     )
   );[ );]
@@ -365,9 +368,12 @@
         )
         (c.max
           (c.getRange Condition 64 16)
-          (mf.immI 16)
+          (ms.stringH)
         )
-        (c.getRange Condition 48 16)
+        (c.max
+          (c.getRange Condition 48 16)
+          (ms.stringL)
+        )
       )
       (?
         (&
@@ -500,8 +506,8 @@
 {ms.getSizeSb Content; ;
   ('
     (ms.getSizeXSb Content)
-    (mf.immI 16)
-    (mf.immI 0)
+    (ms.stringH)
+    (ms.stringL)
   )
 }
 {ms.getSizeXSb Content; ;
@@ -584,6 +590,8 @@
     (mf.immF $80)
   )
 }
+{ms.stringH; ; (mf.immI 15)}
+{ms.stringL; ; (mf.immI 2)}
 
 {me.replace Character; ;
   (me.replace.select
