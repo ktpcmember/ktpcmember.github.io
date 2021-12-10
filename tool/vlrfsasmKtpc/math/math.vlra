@@ -348,8 +348,8 @@
     )
     (?
       (== (c.getRange Condition 32 16) 1)
-      (- (c.getRange Condition 16 16) 1)
       Content
+      (- (c.getRange Condition 16 16) 1)
     )
     (- (: Condition 16) 1)
   )
