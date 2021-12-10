@@ -222,6 +222,7 @@
   )
 }
 {mc.generalize.loop Content 16 Condition; ;
+(' (? (== Content "d") (c.errorSb (mt.convertASb Condition)) (c.empty))
   (?
     (!= (: Condition 16) 1)
     (?
@@ -230,7 +231,7 @@
         (?
           (== (c.getRange Condition 32 16) 1)
           (: 0 16)
-          (c.errorSb (mt.convertASb Condition))
+          (c.empty)
         )
         Content
       )
@@ -279,7 +280,7 @@
         (c.getRange Condition 48 16)
       )
     )
-  );
+  ) );
   ('
     (?
       (c.getRange Condition 32 16)
