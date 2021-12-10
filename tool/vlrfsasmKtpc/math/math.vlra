@@ -20,6 +20,22 @@
     )
   )
 }
+{mh.underline Content; ;
+  (mh.underline.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.underline.generalized Content; ;
+  (mc.encode
+    Content
+    5
+    ('
+      (mc.getSizeX Content)
+      (mc.getSizeL Content)
+      (+ (mc.getSizeL Content) (mf.immI 2))
+    )
+  )
+}
 
 {mh.math Content; ;
   (mh.svg (mc.generalize Content))
@@ -196,6 +212,52 @@
             (-
               (: Base 16)
               (mc.getSizeH (mc.decode Content))
+            )
+          )
+        )
+        (hb.attribute "stroke" "black")
+      )
+    )
+    (mr.render
+      (mc.decode Content)
+      Base
+      Scale
+    )
+  )
+}
+{mr.underline Content Base Scale; ;
+  ('
+    (hb.xmlTagA "line"
+      ('
+        (hb.attribute "x1"
+          (mf.fraction2 (> Base 16))
+        )
+        (hb.attribute "x2"
+          (mf.fraction2
+            (+
+              (> Base 16)
+              (ms.scale
+                (mc.getSizeX Content)
+                Scale
+              )
+            )
+          )
+        )
+        (hb.attribute "y1"
+          (mf.fraction2
+            (+
+              (: Base 16)
+              (mc.getSizeL (mc.decode Content))
+              (mf.immI 1)
+            )
+          )
+        )
+        (hb.attribute "y1"
+          (mf.fraction2
+            (+
+              (: Base 16)
+              (mc.getSizeL (mc.decode Content))
+              (mf.immI 1)
             )
           )
         )
