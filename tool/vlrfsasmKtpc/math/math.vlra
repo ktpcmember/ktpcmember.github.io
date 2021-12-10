@@ -230,7 +230,7 @@
         (?
           (== (c.getRange Condition 32 16) 1)
           (: 0 16)
-          (c.empty)
+          (c.errorSb (mt.convertASb Condition))
         )
         Content
       )
