@@ -118,13 +118,15 @@
 {mr.string Content Base Scale; ;
   (hb.tagAE "text"
     ('
-      (hb.attribute "x" (mf.ceilISb (> Base 16)))
+      (hb.attribute "x"
+        (mf.fraction2 (> Base 16))
+      )
       (hb.attribute "y"
-        (mf.ceilISb (: Base 16))
+        (mf.fraction2 (: Base 16))
       )
       (hb.attribute "font-size"
         ('
-          (mf.ceilISb
+          (mf.fraction2
             (ms.scale (mf.immI 16) Scale)
           )
           "px"
@@ -168,10 +170,10 @@
     (hb.xmlTagA "line"
       ('
         (hb.attribute "x1"
-          (mf.truncateISb (> Base 16))
+          (mf.fraction2 (> Base 16))
         )
         (hb.attribute "x2"
-          (mf.truncateISb
+          (mf.fraction2
             (+
               (> Base 16)
               (ms.scale
@@ -182,7 +184,7 @@
           )
         )
         (hb.attribute "y1"
-          (mf.truncateISb
+          (mf.fraction2
             (-
               (: Base 16)
               (mc.getSizeH (mc.decode Content))
@@ -190,7 +192,7 @@
           )
         )
         (hb.attribute "y2"
-          (mf.truncateISb
+          (mf.fraction2
             (-
               (: Base 16)
               (mc.getSizeH (mc.decode Content))
@@ -410,7 +412,7 @@
 {mf.immI A; ; (mf.immF (< A 7))}
 {mf.immF A; ; (: A 16)}
 {mf.mul A B; ;
-  (: (> (*- (:- A 32) (:- B 32)) 7) 16)
+  (: (> (* (:- A 32) (:- B 32)) 7) 16)
 }
 {mf.ceil A; ; (> (+ A $7F) 7)}
 {mf.ceilISb A; ;
@@ -420,6 +422,17 @@
 {mf.truncateISb A; ;
   (c.convertISb (mf.truncate A) 10)
 }
+{mf.fraction2 A; ;
+  ('
+    (c.convertISb (> A 7))
+    "."
+    (c.convertISb (> (mf.mul10 A) 7))
+    (c.convertISb
+      (> (mf.mul10 (: (mf.mul10 A) 7)) 7)
+    )
+  )
+}
+{mf.mul10 A; ; (< (+ A (< A 2)) 1)}
 
 {ms.getSizeSb Content; ;
   ('
