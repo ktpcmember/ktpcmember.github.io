@@ -424,11 +424,12 @@
 }
 {mf.fraction2 A; ;
   ('
-    (c.convertISb (> A 7))
+    (c.convertISb (> A 7) 10)
     "."
-    (c.convertISb (> (mf.mul10 A) 7))
+    (c.convertISb (> (mf.mul10 A) 7) 10)
     (c.convertISb
       (> (mf.mul10 (: (mf.mul10 A) 7)) 7)
+      10
     )
   )
 }
