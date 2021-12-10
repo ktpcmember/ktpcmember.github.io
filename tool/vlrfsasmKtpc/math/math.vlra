@@ -222,7 +222,7 @@
   )
 }
 {mc.generalize.loop Content 16 Condition; ;
-(' (? (== Content $0900) (c.errorSb (mt.convertASb Condition)) (c.empty))
+(' (? (== Content 4) (c.errorSb (mt.convertASb Condition)) (c.empty))
   (?
     (!= (: Condition 16) 1)
     (?
