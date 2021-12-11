@@ -590,8 +590,8 @@
     (mf.immF $80)
   )
 }
-{ms.stringH; ; (mf.immI 15)}
-{ms.stringL; ; (mf.immI 2)}
+{ms.stringH; ; (mf.immI 14)}
+{ms.stringL; ; (mf.immI 3)}
 
 {me.replace Character; ;
   (me.replace.select
