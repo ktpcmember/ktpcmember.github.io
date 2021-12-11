@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&family=Noto+Sans+Math&display=swap');
 
 /*Header, Banner*/
 
@@ -209,6 +209,10 @@
 
 .cLink:hover, .cLink:active {
   background-color: #FFFCFC;
+}
+
+.cSvg {
+  font-family: 'Noto Sans Math', sans-serif;
 }
 
 /*Code*/
