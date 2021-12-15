@@ -36,6 +36,22 @@
     )
   )
 }
+{mh.sqrt Content; ;
+  (mh.sqrt.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.sqrt.generalized Content; ;
+  (mc.encode
+    Content
+    6
+    ('
+      (+ (mc.getSizeX Content) (mf.immI 4))
+      (+ (mc.getSizeH Content) (mf.immI 2))
+      (mc.getSizeL Content)
+    )
+  )
+}
 
 {mh.math Content; ;
   (mh.svg (mc.generalize Content))
@@ -183,35 +199,28 @@
 }
 {mr.overline Content Base Scale; ;
   ('
-    (hb.xmlTagA "line"
+    (hb.xmlTagA "path"
       ('
-        (hb.attribute "x1"
-          (mf.fraction2 (> Base 16))
-        )
-        (hb.attribute "x2"
-          (mf.fraction2
-            (+
-              (> Base 16)
+        (hb.attribute "d"
+          ('
+            "M "
+            (mf.fraction2 (> Base 16)) " "
+            (mf.fraction2
+              (-
+                (: Base 16)
+                (ms.scale
+                  (mc.getSizeH
+                    (mc.decode Content)
+                  )
+                  Scale
+                )
+              )
+            ) " h "
+            (mf.fraction2
               (ms.scale
                 (mc.getSizeX Content)
                 Scale
               )
-            )
-          )
-        )
-        (hb.attribute "y1"
-          (mf.fraction2
-            (-
-              (: Base 16)
-              (mc.getSizeH (mc.decode Content))
-            )
-          )
-        )
-        (hb.attribute "y2"
-          (mf.fraction2
-            (-
-              (: Base 16)
-              (mc.getSizeH (mc.decode Content))
             )
           )
         )
@@ -227,15 +236,25 @@
 }
 {mr.underline Content Base Scale; ;
   ('
-    (hb.xmlTagA "line"
+    (hb.xmlTagA "path"
       ('
-        (hb.attribute "x1"
-          (mf.fraction2 (> Base 16))
-        )
-        (hb.attribute "x2"
-          (mf.fraction2
-            (+
-              (> Base 16)
+        (hb.attribute "d"
+          ('
+            "M "
+            (mf.fraction2 (> Base 16)) " "
+            (mf.fraction2
+              (+
+                (: Base 16)
+                (ms.scale
+                  (mc.getSizeL
+                    (mc.decode Content)
+                  )
+                  Scale
+                )
+                (mf.immI 1)
+              )
+            ) " h "
+            (mf.fraction2
               (ms.scale
                 (mc.getSizeX Content)
                 Scale
@@ -243,21 +262,40 @@
             )
           )
         )
-        (hb.attribute "y1"
-          (mf.fraction2
-            (+
-              (: Base 16)
-              (mc.getSizeL (mc.decode Content))
-              (mf.immI 1)
-            )
-          )
-        )
-        (hb.attribute "y2"
-          (mf.fraction2
-            (+
-              (: Base 16)
-              (mc.getSizeL (mc.decode Content))
-              (mf.immI 1)
+        (hb.attribute "stroke" "black")
+      )
+    )
+    (mr.render
+      (mc.decode Content)
+      Base
+      Scale
+    )
+  )
+}
+{mr.sqrt Content Base Scale; ;
+  ('
+    (hb.xmlTagA "path"
+      ('
+        (hb.attribute "d"
+          ('
+            "M "
+            (mf.fraction2 (> Base 16)) " "
+            (mf.fraction2
+              (-
+                (: Base 16)
+                (ms.scale
+                  (mc.getSizeH
+                    (mc.decode Content)
+                  )
+                  Scale
+                )
+              )
+            ) " h "
+            (mf.fraction2
+              (ms.scale
+                (mc.getSizeX Content)
+                Scale
+              )
             )
           )
         )
