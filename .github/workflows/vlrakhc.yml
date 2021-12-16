@@ -19,16 +19,20 @@ jobs:
             cd vlrfsasm
             curl -OL "https://github.com/vlrfsg/vlrfsasm/files/7589990/Vlrfsasm_v0.7.zip"
             7z x Vlrfsasm_v0.7.zip
+            set commitBefore=${{ github.event.before }}
+            set commitAfter=${{ github.event.after }}
             for /f "usebackq delims=" %%A in (
-              `git diff --name-only ${{ github.event.before }}..${{ github.event.after }}`
+              `git diff --name-only %commitBefore:0,6%..%commitAfter:0,6%`
             ) do (
-              set targetDir=%repoRoot%/%%~pA
-              set targetDir=%targetDir:0,-1%
-              cd %targetDir%
-              if exist %targetDir%/vc.bat (
-                if not exist log md log
-                if not exist temp md temp
-                call vc.bat
+              if %%~nxA==vkhc.txt (
+                set targetDir=%repoRoot%/%%~pA
+                set targetDir=%targetDir:0,-1%
+                cd %targetDir%
+                if exist %targetDir%/vc.bat (
+                  if not exist log md log
+                  if not exist temp md temp
+                  call vc.bat
+                )
               )
             )
             cd %tempDir%
