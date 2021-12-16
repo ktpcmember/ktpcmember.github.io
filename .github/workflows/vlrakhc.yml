@@ -31,7 +31,8 @@ jobs:
               `git diff %commitBefore:~0,6%..%commitAfter:~0,6% --name-only`
             ) do (
               echo %%A
-              if %%~nxA==vkhc.txt (
+              echo %%~nxA
+              if %%~nxA == vkhc.txt (
                 set targetDir=%repoRoot%/%%~pA
                 set targetDir=%targetDir:~0,-1%
                 cd %targetDir%
@@ -40,6 +41,7 @@ jobs:
                   if not exist temp md temp
                   call vc.bat
                 )
+                echo %targetDir%
               )
             )
             cd %tempDir%
