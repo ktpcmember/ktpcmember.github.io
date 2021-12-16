@@ -27,16 +27,17 @@ jobs:
             cd %repoRoot%
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
+            setlocal ENABLEDELAYEDEXPANSION
             for /f "usebackq delims=" %%A in (
               `git diff %commitBefore:~0,6%..%commitAfter:~0,6% --name-only`
             ) do (
               cd %repoRoot%
               set targetPath=%%~dpA
               if %%~nxA == vkhc.txt (
-                echo %targetPath%
-                echo "%targetPath:~0,-1%"
-                set targetDir=%targetPath:~0,-1%
-                cd %targetPath:~0,-1%
+                echo !targetPath!
+                echo !targetPath:~0,-1!
+                set targetDir=!targetPath:~0,-1!
+                cd !targetDir!
                 if exist vc.bat (
                   if not exist log md log
                   if not exist temp md temp
