@@ -28,7 +28,7 @@ jobs:
             git config user.name "Komaba-Touhou-Physics-Club"
             git config user.email "63183749+Komaba-Touhou-Physics-Club@users.noreply.github.com"
             for /f "usebackq delims=" %%A in (
-              `git diff %commitBefore~:0,6%..%commitAfter:~0,6% --name-only`
+              `git diff %commitBefore:~0,6%..%commitAfter:~0,6% --name-only`
             ) do (
               if %%~nxA==vkhc.txt (
                 set targetDir=%repoRoot%/%%~pA
