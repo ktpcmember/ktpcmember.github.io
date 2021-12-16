@@ -38,6 +38,7 @@ jobs:
                 if exist vc.bat (
                   if not exist log md log
                   if not exist temp md temp
+                  echo "%targetDir%"
                   call vc.bat
                 )
               )
