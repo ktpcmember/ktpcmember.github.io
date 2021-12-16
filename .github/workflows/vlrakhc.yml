@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**/vkhc.txt'
+      - 'vkhc.txt'
 jobs:
   convert:
     runs-on: windows-latest
