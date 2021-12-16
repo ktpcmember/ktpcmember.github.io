@@ -30,20 +30,16 @@ jobs:
             for /f "usebackq delims=" %%A in (
               `git diff %commitBefore:~0,6%..%commitAfter:~0,6% --name-only`
             ) do (
-              echo %%A
-              echo %%~nxA
-              echo %%~pA
+              cd %repoRoot%
+              set targetPath=%%~dpA
               if %%~nxA == vkhc.txt (
-                set targetPath=%repoRoot%/%%~pA
                 set targetDir=%targetPath:~0,-1%
-                cd %targetDir%
-                if exist %targetDir%/vc.bat (
+                cd %targetPath:~0,-1%
+                if exist vc.bat (
                   if not exist log md log
                   if not exist temp md temp
                   call vc.bat
                 )
-                echo %targetPath%
-                echo %targetDir%
               )
             )
             cd %tempDir%
