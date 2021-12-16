@@ -33,7 +33,8 @@ jobs:
               cd %repoRoot%
               set targetPath=%%~dpA
               if %%~nxA == vkhc.txt (
-                echo %targetPath:~0,-1%
+                echo %targetPath%
+                echo "%targetPath:~0,-1%"
                 set targetDir=%targetPath:~0,-1%
                 cd %targetPath:~0,-1%
                 if exist vc.bat (
