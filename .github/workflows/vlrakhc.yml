@@ -10,7 +10,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-        with: fetch-depth: 0
+        with:
+          fetch-depth: 0
       - name: Convert
         run: |
             set repoRoot=%CD%
