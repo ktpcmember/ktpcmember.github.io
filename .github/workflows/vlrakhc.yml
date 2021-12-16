@@ -22,11 +22,11 @@ jobs:
             set commitBefore=${{ github.event.before }}
             set commitAfter=${{ github.event.after }}
             for /f "usebackq delims=" %%A in (
-              `git diff --name-only %commitBefore:0,6%..%commitAfter:0,6%`
+              `git diff %commitBefore~:0,6%..%commitAfter:~0,6% --name-only`
             ) do (
               if %%~nxA==vkhc.txt (
                 set targetDir=%repoRoot%/%%~pA
-                set targetDir=%targetDir:0,-1%
+                set targetDir=%targetDir:~0,-1%
                 cd %targetDir%
                 if exist %targetDir%/vc.bat (
                   if not exist log md log
