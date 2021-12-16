@@ -1,6 +1,5 @@
 
 {hp.path; ; "le/vlrfsasm/setup/setup.html"}
-{p.input; ; (textContent.txt)}
 
 {hi.assemble.bat; ; (c.convertS8Sb (assemble.bat))}
 {hi.source.vlra; ; (c.convertS8Sb (source.vlra.txt))}
