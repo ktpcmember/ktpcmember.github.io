@@ -30,6 +30,7 @@ jobs:
             for /f "usebackq delims=" %%A in (
               `git diff %commitBefore:~0,6%..%commitAfter:~0,6% --name-only`
             ) do (
+              echo %%A
               if %%~nxA==vkhc.txt (
                 set targetDir=%repoRoot%/%%~pA
                 set targetDir=%targetDir:~0,-1%
