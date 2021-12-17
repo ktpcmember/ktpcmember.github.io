@@ -376,7 +376,7 @@
             (mf.fraction2
               (- (: Base 16) (ms.basic 4 0))
             ) " h "
-            (mf.fraction (mc.getSizeX Content))
+            (mf.fraction2 (mc.getSizeX Content))
           )
         )
         (hb.attribute "stroke" "black")
