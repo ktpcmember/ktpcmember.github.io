@@ -52,6 +52,35 @@
     )
   )
 }
+{mh.fraction Numerator Denominator; ;
+  (mh.fraction.generalized
+    (mc.generalize Numerator)
+    (mc.generalize Denominator)
+  )
+}
+{mh.fraction.generalized Numerator Denominator; ;
+  (mc.encode
+    (' Numerator Denominator)
+    8
+    ('
+      (+
+        (c.max
+          (mc.getSizeX Numerator)
+          (mc.getSizeX Denominator)
+        )
+        (ms.basic 2 0)
+      )
+      (+
+        (mc.getSizeY Numerator)
+        (ms.basic 5 0)
+      )
+      (-
+        (mc.getSizeY Denominator)
+        (ms.basic 3 0)
+      )
+    )
+  )
+}
 
 {mh.math Content; ;
   (mh.svg (mc.generalize Content))
@@ -337,6 +366,90 @@
     (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
   )
 }
+{mr.fraction Content Base Scale; ;
+  ('
+    (hb.xmlTagA "path"
+      ('
+        (hb.attribute "d"
+          ('
+            "M " (mf.fraction2 (> Base 16)) " "
+            (mf.fraction2
+              (- (: Base 16) (ms.basic 4 0))
+            ) " h "
+            (mf.fraction (mc.getSizeX Content))
+          )
+        )
+        (hb.attribute "stroke" "black")
+      )
+    )
+    (mr.render
+      (mc.getFirstChild Content)
+      ('
+        (+
+          (> Base 16)
+          (mf.mul
+            (ms.scale
+              (-
+                (mc.getSizeX Content)
+                (mc.getSizeX
+                  (mc.getFirstChild Content)
+                )
+              )
+              Scale
+            )
+            (mf.immF $40)
+          )
+        )
+        (-
+          (: Base 16)
+          (+
+            (ms.scale
+              (mc.getSizeL
+                (mc.getFirstChild Content)
+              )
+              Scale
+            )
+            (ms.basic 5 Scale)
+          )
+        )
+      )
+      Scale
+    )
+    (mr.render
+      (mc.getRestChildList Content)
+      ('
+        (+
+          (> Base 16)
+          (mf.mul
+            (ms.scale
+              (-
+                (mc.getSizeX Content)
+                (mc.getSizeX
+                  (mc.getRestChildList Content)
+                )
+              )
+              Scale
+            )
+            (mf.immF $40)
+          )
+        )
+        (+
+          (: Base 16)
+          (-
+            (ms.scale
+              (mc.getSizeH
+                (mc.getRestChildList Content)
+              )
+              Scale
+            )
+            (ms.basic 3 Scale)
+          )
+        )
+      )
+      Scale
+    )
+  )
+}
 
 {mc.generalize Content; ;
   (mc.encodeS
@@ -504,6 +617,12 @@
     List
     (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
   )
+}
+{mc.getFirstChild Container; ;
+  (mc.getFirstElement (mc.decode Container))
+}
+{mc.getRestChildList Container; ;
+  (mc.getRestElementList (mc.decode Container))
 }
 {mc.getSize Container; ; (: Container 48)}
 {mc.getSizeX Container; ;
