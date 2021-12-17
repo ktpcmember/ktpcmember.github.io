@@ -589,8 +589,8 @@
     (== (> List 96) Character)
     ('
       (c.getRange List 80 16)
-      (c.getRange List 32 16)
-      (c.negate (: List 16))
+      (: List 16)
+      (c.negate (c.getRange List 32 16))
     )
     (c.empty)
   )
