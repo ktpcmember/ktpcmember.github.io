@@ -1,3 +1,14 @@
-Vlrfsasm v0.7 2021-12-17 08:48
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.html
+Vlrfsasm v0.7 2021-12-17 09:43
+  3:Undefined function
+  mf.fraction D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :379
+  mr.fraction D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :172
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :204
+  mr.concatenate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :148
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :119
+  mh.svg D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :86
+  mh.math D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :427
+  hx.m D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
+  
