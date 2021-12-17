@@ -46,4 +46,4 @@ ht.helloWorld.exit
 本章の内容は以上です。Vlrfsasmは勝手に終了していますから、開いたテキストエディタなどを閉じれば片付けも終わりです。
 
 ht.helloWorld.test
-[m;[s;a]]
+[m;[s;ab]]

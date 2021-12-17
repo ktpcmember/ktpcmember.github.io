@@ -299,6 +299,7 @@
           )
         )
         (hb.attribute "stroke" "black")
+        (hb.attribute "fill" "none")
       )
     )
     (mr.render
@@ -330,7 +331,9 @@
     (mf.fraction2 (mf.mul SizeY (mf.immF $004B)))
     " l "
     (mf.fraction2 (ms.basic 3 Scale)) " "
-    (mf.fraction2 (c.negate SizeY)) " h "
+    (mf.fraction2
+      (c.negate (+ SizeY (ms.basic 1 Scale)))
+    ) " h "
     (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
   )
 }
