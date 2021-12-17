@@ -626,7 +626,7 @@
 {ms.getX A; ; (c.getRange A 32 16)}
 {ms.getH A; ; (c.getRange A 16 16)}
 {ms.getL A; ; (: A 16)}
-{ms.getY A; : (+ (ms.getH A) (ms.getL A))}
+{ms.getY A; ; (+ (ms.getH A) (ms.getL A))}
 
 {me.replace Character; ;
   (me.replace.select
