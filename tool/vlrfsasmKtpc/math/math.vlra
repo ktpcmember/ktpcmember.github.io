@@ -15,7 +15,7 @@
     4
     ('
       (mc.getSizeX Content)
-      (+ (mc.getSizeH Content) (mf.immI 2))
+      (+ (mc.getSizeH Content) (ms.basic 2 0))
       (mc.getSizeL Content)
     )
   )
@@ -32,7 +32,7 @@
     ('
       (mc.getSizeX Content)
       (mc.getSizeL Content)
-      (+ (mc.getSizeL Content) (mf.immI 2))
+      (+ (mc.getSizeL Content) (ms.basic 2 0))
     )
   )
 }
@@ -46,8 +46,8 @@
     Content
     6
     ('
-      (+ (mc.getSizeX Content) (mf.immI 4))
-      (+ (mc.getSizeH Content) (mf.immI 2))
+      (+ (mc.getSizeX Content) (ms.basic 4 0))
+      (+ (mc.getSizeH Content) (ms.basic 2 0))
       (mc.getSizeL Content)
     )
   )
@@ -213,7 +213,7 @@
                     (mc.getSizeH
                       (mc.decode Content)
                     )
-                    (mf.immI 1)
+                    (ms.basic 1 0)
                   )
                   Scale
                 )
@@ -249,14 +249,12 @@
               (+
                 (: Base 16)
                 (ms.scale
-                  (+
-                    (mc.getSizeL
-                      (mc.decode Content)
-                    )
-                    (mf.immI 1)
+                  (mc.getSizeL
+                    (mc.decode Content)
                   )
                   Scale
                 )
+                (ms.basic 1 Scale)
               )
             ) " h "
             (mf.fraction2
@@ -282,26 +280,22 @@
     (hb.xmlTagA "path"
       ('
         (hb.attribute "d"
-          ('
-            "M "
-            (mf.fraction2 (> Base 16)) " "
-            (mf.fraction2
-              (-
-                (: Base 16)
-                (ms.scale
-                  (mc.getSizeH
-                    (mc.decode Content)
-                  )
-                  Scale
-                )
-              )
-            ) " h "
-            (mf.fraction2
-              (ms.scale
-                (mc.getSizeX Content)
-                Scale
-              )
+          (mr.sqrt.path
+            (> Base 16)
+            (: Base 16)
+            (ms.scale
+              (mc.getSizeX (mc.decode Content))
+              Scale
             )
+            (ms.scale
+              (mc.getSizeL (mc.decode Content))
+              Scale
+            )
+            (ms.scale
+              (mc.getSizeY (mc.decode Content))
+              Scale
+            )
+            Scale
           )
         )
         (hb.attribute "stroke" "black")
@@ -309,9 +303,35 @@
     )
     (mr.render
       (mc.decode Content)
-      Base
+      ('
+        (+
+          (> Base 16)
+          (ms.basic 4 Scale)
+        )
+        (: Base 16)
+      )
       Scale
     )
+  )
+}
+{mr.sqrt.path
+  BaseX BaseY SizeX SizeL SizeY Scale; ;
+  ('
+    "M " (mf.fraction2 BaseX) " "
+    (mf.fraction2
+      (+
+        BaseY
+        SizeL
+        (mf.mul SizeY (mf.immF $FFD5)) [-0.336]
+      )
+    ) " h "
+    (mf.fraction2 (ms.basic 1 Scale)) " l "
+    (mf.fraction2 (ms.basic 1 Scale)) " "
+    (mf.fraction2 (mf.mul SizeY (mf.immF $FFD5)))
+    " l "
+    (mf.fraction2 (ms.basic 3 Scale)) " "
+    (mf.fraction2 sizeY) " h "
+    (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
   )
 }
 
@@ -505,7 +525,7 @@
 {mf.immI A; ; (mf.immF (< A 7))}
 {mf.immF A; ; (: A 16)}
 {mf.mul A B; ;
-  (: (> (* (:- A 32) (:- B 32)) 7) 16)
+  (: (> (*- (:- A 32) (:- B 32)) 7) 16)
 }
 {mf.ceil A; ; (> (+ A $7F) 7)}
 {mf.ceilISb A; ;
@@ -632,6 +652,9 @@
 {ms.getH A; ; (c.getRange A 16 16)}
 {ms.getL A; ; (: A 16)}
 {ms.getY A; ; (+ (ms.getH A) (ms.getL A))}
+{ms.basic Coefficient Scale; ;
+  (ms.scale (mf.immI (< Coefficient 1)) Scale)
+}
 
 {me.replace Character; ;
   (me.replace.select
