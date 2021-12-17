@@ -1,0 +1,123 @@
+
+{mh.overline Content; ;
+  (mh.overline.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.overline.generalized Content; ;
+  (mc.encode
+    Content
+    4
+    ('
+      (mc.getSizeX Content)
+      (+ (mc.getSizeH Content) (ms.basic 2 0))
+      (mc.getSizeL Content)
+    )
+  )
+}
+{mh.underline Content; ;
+  (mh.underline.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.underline.generalized Content; ;
+  (mc.encode
+    Content
+    5
+    ('
+      (mc.getSizeX Content)
+      (mc.getSizeL Content)
+      (+ (mc.getSizeL Content) (ms.basic 2 0))
+    )
+  )
+}
+{mh.sqrt Content; ;
+  (mh.sqrt.generalized
+    (mc.generalize Content)
+  )
+}
+{mh.sqrt.generalized Content; ;
+  (mc.encode
+    Content
+    6
+    ('
+      (+ (mc.getSizeX Content) (ms.basic 4 0))
+      (+ (mc.getSizeH Content) (ms.basic 2 0))
+      (mc.getSizeL Content)
+    )
+  )
+}
+{mh.fraction Numerator Denominator; ;
+  (mh.fraction.generalized
+    (mc.generalize Numerator)
+    (mc.generalize Denominator)
+  )
+}
+{mh.fraction.generalized Numerator Denominator; ;
+  (mc.encode
+    (' Numerator Denominator)
+    8
+    ('
+      (+
+        (c.max
+          (mc.getSizeX Numerator)
+          (mc.getSizeX Denominator)
+        )
+        (ms.basic 2 0)
+      )
+      (+
+        (mc.getSizeY Numerator)
+        (ms.basic 5 0)
+      )
+      (-
+        (mc.getSizeY Denominator)
+        (ms.basic 3 0)
+      )
+    )
+  )
+}
+
+{mh.math Content; ;
+  (mh.svg (mc.generalize Content))
+}
+{mh.svg Content; ;
+  (hb.tagACE
+    "svg"
+    "cSvg"
+    ('
+      (hb.attribute
+        "width"
+        ('
+          (mf.ceilISb (mc.getSizeX Content))
+          "px"
+        )
+      )
+      (hb.attribute
+        "height"
+        ('
+          (mf.ceilISb (mc.getSizeY Content))
+          "px"
+        )
+      )
+      (hb.attribute "viewBox"
+        ('
+          "0 0 "
+          (mf.ceilISb (mc.getSizeX Content))
+          " "
+          (mf.ceilISb (mc.getSizeY Content))
+        )
+      )
+      (hb.attribute "xmlns" "http://www.w3.org/2000/svg")
+      (hb.attribute "stroke" "none")
+      (hb.attribute "fill" "black")
+    )
+    (mr.render
+      Content
+      ('
+        (mf.immI 0)
+        (mc.getSizeH Content)
+      )
+      (: 0 8)
+    )
+  )
+}
