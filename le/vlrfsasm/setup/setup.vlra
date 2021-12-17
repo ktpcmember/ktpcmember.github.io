@@ -11,7 +11,7 @@
 
 {hm.linkType; ; (hm.linkType.lectureSection)}
 {hm.lectureName; ; "Vlrfsasm講習"}
-{hm.lectureTopPath; ; (hp.getRelativePath "/vlrfsasm.html")}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
 {hm.previousSectionPath; ; ""}
 {hm.nextSectionPath; ; "../syntax/syntax.html"}
 {hm.nextSectionName; ; "構文"}
