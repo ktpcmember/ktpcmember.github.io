@@ -327,10 +327,10 @@
     ) " h "
     (mf.fraction2 (ms.basic 1 Scale)) " l "
     (mf.fraction2 (ms.basic 1 Scale)) " "
-    (mf.fraction2 (mf.mul SizeY (mf.immF $FFD5)))
+    (mf.fraction2 (mf.mul SizeY (mf.immF $004B)))
     " l "
     (mf.fraction2 (ms.basic 3 Scale)) " "
-    (mf.fraction2 SizeY) " h "
+    (mf.fraction2 (c.negate SizeY)) " h "
     (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
   )
 }
@@ -536,6 +536,13 @@
   (c.convertISb (mf.truncate A) 10)
 }
 {mf.fraction2 A; ;
+  (?
+    (c.getSign A)
+    (' "-" (mf.fraction2.number (c.negate A)))
+    (mf.fraction2.number A)
+  )
+}
+{mf.fraction2.number A; ;
   ('
     (c.convertISb (> A 7) 10)
     "."
