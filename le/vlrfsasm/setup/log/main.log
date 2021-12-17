@@ -1,17 +1,3 @@
-Vlrfsasm v0.7 2021-12-17 01:02
-  7:Wrong number of argument
-  ! def\common.vlra :34
-  :- D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :503
-  mf.mul D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :609
-  ms.mul D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :582
-  ms.getSizeCharacter D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :566
-  ms.getSizeSb.loop D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :527
-  ms.getSizeSb D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :366
-  mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :315
-  mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :25
-  mh.underline D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :429
-  hx.mu D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
-  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
-  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
-  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
-  
+Vlrfsasm v0.7 2021-12-17 03:15
+  15:Complete
+  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.html
