@@ -328,7 +328,7 @@
     ) " h "
     (mf.fraction2 (ms.basic 1 Scale)) " l "
     (mf.fraction2 (ms.basic 1 Scale)) " "
-    (mf.fraction2 (mf.mul SizeY (mf.immF $004B)))
+    (mf.fraction2 (mf.mul SizeY (mf.immF $002B)))
     " l "
     (mf.fraction2 (ms.basic 3 Scale)) " "
     (mf.fraction2
