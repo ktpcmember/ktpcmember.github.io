@@ -330,7 +330,7 @@
     (mf.fraction2 (mf.mul SizeY (mf.immF $FFD5)))
     " l "
     (mf.fraction2 (ms.basic 3 Scale)) " "
-    (mf.fraction2 sizeY) " h "
+    (mf.fraction2 SizeY) " h "
     (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
   )
 }
