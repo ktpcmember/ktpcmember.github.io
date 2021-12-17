@@ -543,7 +543,7 @@
         (?
           (== (c.getRange Content 10 6) %110111)
           (|
-            (' (> Condition 32) (: Content 10))
+            (' (> Condition 64) (: Content 10))
             $10000
           )
           Content
@@ -567,7 +567,7 @@
           (?
             (== (c.getRange Content 10 6) %110111)
             (|
-              (' (> Condition 32) (: Content 10))
+              (' (> Condition 64) (: Content 10))
               $10000
             )
             Content
