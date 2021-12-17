@@ -209,8 +209,11 @@
               (-
                 (: Base 16)
                 (ms.scale
-                  (mc.getSizeH
-                    (mc.decode Content)
+                  (+
+                    (mc.getSizeH
+                      (mc.decode Content)
+                    )
+                    (mf.immI 1)
                   )
                   Scale
                 )
@@ -246,12 +249,14 @@
               (+
                 (: Base 16)
                 (ms.scale
-                  (mc.getSizeL
-                    (mc.decode Content)
+                  (+
+                    (mc.getSizeL
+                      (mc.decode Content)
+                    )
+                    (mf.immI 1)
                   )
                   Scale
                 )
-                (mf.immI 1)
               )
             ) " h "
             (mf.fraction2
@@ -521,7 +526,7 @@
     )
   )
 }
-{mf.mul10 A; ; (< (+ A (< A 2)) 1)}
+{mf.mul10 A; ; (< (+ (: A 10) (< A 2)) 1)}
 
 {ms.getSizeSb Content; ;
   (ms.getSizeSb.loop
