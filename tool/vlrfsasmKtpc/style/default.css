@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&family=Noto+Sans+Math&display=swap');
 @font-face {
   font-family: "Computer Modern";
-  src: url(../math/cmunsi.ttf) format("truetype");
+  src: url(../math/cmunti.ttf) format("truetype");
 }
 
 /*Header, Banner*/
