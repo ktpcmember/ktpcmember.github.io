@@ -408,3 +408,23 @@
 .qPathComment {
   color: #808080;
 }
+
+/*text decoration*/
+
+.tBold {
+  font-weight: bold;
+}
+
+.tItalic {
+  font-style: italic;
+}
+
+.tOverline {
+  text-decoration: overline solid #000000;
+}
+
+.tUnderline {
+  text-decoration: underline solid #000000;
+}
+
+

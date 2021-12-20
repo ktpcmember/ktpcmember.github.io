@@ -418,14 +418,37 @@
 
 [extension]
 {hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
-{hx.pa A; ; (qh.single "pa" A)}
-{hx.paMT A B; ; (qh.multi "pa" A B 1)}
+{hx.S A B; ; (hb.tagCE "span" A B)}
+{hx.b A; ; (hx.S "tBold" A)}
+{hc.i A; ; (hx.S "tItalic" A)}
+{hc.o A; ; (hx.S "tOverline" A)}
+{hc.u A; ; (hx.S "tUnderline")}
+
+{hx.P A; ; (qh.single "pa" A)}
+{hx.PMT A B; ; (qh.multi "pa" A B 1)}
 {hx.v A; ; (qh.single "v" A)}
 {hx.vMT A B; ; (qh.multi "v" A B 1)}
-{hx.batMT A B; ; (hx.paMT A B)} [For the time being]
-{hx.msMT A B; ; (hx.paMT A B)} [For the time being]
+{hx.qBatMT A B; ; (hx.paMT A B)} [For the time being]
+{hx.TMT A B; ; (hx.paMT A B)} [For the time being]
+
 {hx.m A; ; (mh.math A)}
 {hx.mo A; ; (mh.overline A)}
 {hx.mu A; ; (mh.underline A)}
 {hx.s A; ; (mh.sqrt A)}
+{hx.mr A B; ; (mh.root A B)}
 {hx.f A B; ; (mh.fraction A B)}
+{hx.mf A B; ; (mh.smallFraction A B)}
+{hx.0 A B; ; (mh.attachment1 "0" A B)}
+{hx.1 A B; ; (mh.attachment1 "1" A B)}
+{hx.2 A B; ; (mh.attachment1 "2" A B)}
+{hx.3 A B; ; (mh.attachment1 "3" A B)}
+{hx.4 A B; ; (mh.attachment1 "4" A B)}
+{hx.5 A B; ; (mh.attachment1 "5" A B)}
+{hx.6 A B; ; (mh.attachment1 "6" A B)}
+{hx.7 A B; ; (mh.attachment1 "7" A B)}
+{hx.8 A B; ; (mh.attachment1 "8" A B)}
+{hx.9 A B; ; (mh.attachment1 "9" A B)}
+{hx.z A B C D; ; (mh.attachment2 B A C D)}
+{hx.d A B C D E; ; (mh.attachment3 B A C D E)}
+{hx.v A B C D E F; ; (mh.attachment4 B A C D E F)}
+
