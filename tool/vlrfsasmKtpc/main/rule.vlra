@@ -428,8 +428,8 @@
 {hx.PMT A B; ; (qh.multi "pa" A B 1)}
 {hx.v A; ; (qh.single "v" A)}
 {hx.vMT A B; ; (qh.multi "v" A B 1)}
-{hx.qBatMT A B; ; (hx.paMT A B)} [For the time being]
-{hx.TMT A B; ; (hx.paMT A B)} [For the time being]
+{hx.qBatMT A B; ; (hx.PMT A B)} [For the time being]
+{hx.TMT A B; ; (hx.PMT A B)} [For the time being]
 
 {hx.m A; ; (mh.math A)}
 {hx.mo A; ; (mh.overline A)}
