@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&family=Noto+Sans+Math&display=swap');
 @font-face {
   font-family: "Computer Modern";
-  src: url(../math/cmunrm.ttf) format("truetype");
+  src: url(../math/sourceV.ttf) format("truetype");
 }
 @font-face {
   font-family: "Computer Modern Italic";
-  src: url(../math/sourceV.ttf) format("truetype");
+  src: url(../math/cmunti.ttf) format("truetype");
   unicode-range: U+41-5A, U+61-7A;
 }
 

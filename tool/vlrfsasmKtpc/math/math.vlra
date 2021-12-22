@@ -288,10 +288,7 @@
   )
 }
 {ms.getSizeCharacter Character; ;
-  (ms.mul
-    (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 48)
-    (mf.immF $0106)
-  )
+  (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 48)
 }
 {ms.getSizeCharacter.loop List 128 Character; ;
   (?
