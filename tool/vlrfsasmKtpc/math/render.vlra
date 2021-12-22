@@ -206,7 +206,7 @@
       ('
         (+
           (> Base 16)
-          (ms.basic 4 Scale)
+          (ms.basic 5 Scale)
         )
         (: Base 16)
       )
@@ -233,7 +233,7 @@
     (mf.fraction2
       (c.negate (+ SizeY (ms.basic 1 Scale)))
     ) " h "
-    (mf.fraction2 (- SizeX (ms.basic 1 Scale)))
+    (mf.fraction2 SizeX)
   )
 }
 {mr.fraction Content Base Scale; ;

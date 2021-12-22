@@ -41,7 +41,7 @@
     Content
     6
     ('
-      (+ (mc.getSizeX Content) (ms.basic 4 0))
+      (+ (mc.getSizeX Content) (ms.basic 5 0))
       (+ (mc.getSizeH Content) (ms.basic 2 0))
       (mc.getSizeL Content)
     )
