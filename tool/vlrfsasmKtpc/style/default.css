@@ -5,7 +5,7 @@
 }
 @font-face {
   font-family: "Computer Modern Italic";
-  src: url(../math/cmunti.ttf) format("truetype");
+  src: url(../math/sourceV.ttf) format("truetype");
   unicode-range: U+41-5A, U+61-7A;
 }
 
@@ -221,11 +221,7 @@
 }
 
 .cSvg {
-  font-family: 'Computer Modern', serif;
-}
-
-.cSvgItalic {
-  font-family: 'Computer Modern Italic', serif;
+  font-family: 'Computer Modern Italic', 'Computer Modern', serif;
 }
 
 /*Code*/
