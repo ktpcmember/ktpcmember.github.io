@@ -385,7 +385,7 @@
     (mc.getSizeL Center)
   )
 }
-{mp.calculate.recursion Position List CenterX CenterH CenterL WidthLeft WidthRight HeightH HeightL; ;
+{mp.calculate.recursion Position List CenterX CenterH CenterL WidthL WidthR HeightH HeightL; ;
   (?
     Position
     (mp.calculate
@@ -399,7 +399,7 @@
         )
         (c.max
           (mc.getSizeX (mc.getFirstElement List))
-          WidthLeft
+          widthL
         )
         (?
           (|
@@ -414,9 +414,9 @@
               )
               (mf.immF $0060)
             )
-            WidthLeft
+            widthL
           )
-          WidthLeft
+          widthL
         )
       )
       (?
@@ -428,7 +428,7 @@
         )
         (c.max
           (mc.getSizeX (mc.getFirstElement List))
-          WidthRight
+          widthR
         )
         (?
           (|
@@ -443,9 +443,9 @@
               )
               (mf.immF $0060)
             )
-            WidthRight
+            widthR
           )
-          WidthRight
+          widthR
         )
       )
       (?
