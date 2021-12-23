@@ -41,9 +41,11 @@
           (== (# Condition) 96)
           (c.empty)
           (mc.encode
-            (> Condition 96)
+            (he.compile (> Condition 96))
             0
-            (ms.getSizeSb (> Condition 96))
+            (ms.getSizeSb
+              (he.compile (> Condition 96))
+            )
           )
         )
       )
@@ -57,7 +59,12 @@
       )
       ('
         (mc.encode
-          (' (> Condition 96) (me.replace Content))
+          (he.compile
+            ('
+              (> Condition 96)
+              (me.replace Content)
+            )
+          )
           0
           (ms.getSizeSb
             (' (> Condition 96) (me.replace Content))
@@ -66,9 +73,11 @@
         (ms.horizontal
           (c.getRange Condition 48 48)
           (ms.getSizeSb
-            ('
-              (> Condition 96)
-              (me.replace Content)
+            (he.compile
+              ('
+                (> Condition 96)
+                (me.replace Content)
+              )
             )
           )
         )
@@ -89,7 +98,9 @@
       )
       (ms.horizontal
         (c.getRange Condition 48 48)
-        (ms.getSizeSb (> Condition 96))
+        (ms.getSizeSb
+          (he.compile (> Condition 96))
+        )
       )
       (?
         (&

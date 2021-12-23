@@ -68,7 +68,7 @@
         )
       )
     )
-    (mc.decode (he.escape Content))
+    (he.escape (mc.decode Content))
   )
 }
 {mr.concatenate Content Base Scale; ;
@@ -361,8 +361,8 @@
         ('
           (?
             (&
-              (<= (: Position 4) 4)
-              (>= (: Position 4) 7)
+              (>= (: Position 4) 4)
+              (<= (: Position 4) 7)
             )
             (-
               BaseX

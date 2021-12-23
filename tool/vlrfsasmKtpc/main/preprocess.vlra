@@ -51,7 +51,14 @@
         (c.empty)
         (?
           (== A "[")
-          (' (p.getTokenS B) " (hx.")
+          ('
+            (?
+              (>! (# B) 16)
+              (p.getTokenS B)
+              (c.empty)
+            )
+            " (hx."
+          )
           (?
             (== A ";")
             ('
@@ -114,13 +121,13 @@
   )
 }
 
-{p.getToken A; ; (he.escape (> A 16))}
+{p.getToken A; ; (> A 16)}
 {p.getCondition A ; ; (: A 16)}
 {p.getTokenS A; ;
   (?
     (== (p.getCondition A) 5)
     (' " " (p.getToken A))
-    (p.string (p.getToken A))
+    (p.string (he.escape (p.getToken A)))
   )
 }
 {p.getTokenE A; ;
@@ -141,7 +148,7 @@
     "\\r\\n"
     (?
       (== A "\"")
-      "\""
+      "\\\""
       A
     )
   )
