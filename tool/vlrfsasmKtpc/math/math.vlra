@@ -385,10 +385,7 @@
     (mc.getSizeL Center)
   )
 }
-{mp.calculate.recursion
-  Position List
-  CenterX CenterH CenterL
-  WidthLeft WidthRight HeightH HeightL; ;
+{mp.calculate.recursion Position List CenterX CenterH CenterL WidthLeft WidthRight HeightH HeightL; ;
   (?
     Position
     (mp.calculate
