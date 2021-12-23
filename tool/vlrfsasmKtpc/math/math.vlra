@@ -399,7 +399,7 @@
         )
         (c.max
           (mc.getSizeX (mc.getFirstElement List))
-          widthL
+          WidthL
         )
         (?
           (|
@@ -414,9 +414,9 @@
               )
               (mf.immF $0060)
             )
-            widthL
+            WidthL
           )
-          widthL
+          WidthL
         )
       )
       (?
@@ -428,7 +428,7 @@
         )
         (c.max
           (mc.getSizeX (mc.getFirstElement List))
-          widthR
+          WidthR
         )
         (?
           (|
@@ -443,9 +443,9 @@
               )
               (mf.immF $0060)
             )
-            widthR
+            WidthR
           )
-          widthR
+          WidthR
         )
       )
       (?
