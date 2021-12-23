@@ -16,7 +16,7 @@
   )
 }
 {he.compile A; ; (he.compile.loop A (: 0 1))}
-{he.compile.loop A 16 B;
+{he.compile.loop A 16 B; ;
   (?
     B
     (?
