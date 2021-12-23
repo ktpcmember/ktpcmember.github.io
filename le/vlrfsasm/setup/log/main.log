@@ -1,6 +1,9 @@
-Vlrfsasm v0.7 2021-12-23 05:51
-  3:Undefined function
-  mh.attachment1.genaralized D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :80
+Vlrfsasm v0.7 2021-12-23 05:54
+  7:Wrong number of argument
+  mp.calculate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :391
+  mp.calculate.recursion D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :376
+  mp.calculate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :90
+  mh.attachment1.generalized D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :80
   mh.attachment1 D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :442
   hx.1 D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
   ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
