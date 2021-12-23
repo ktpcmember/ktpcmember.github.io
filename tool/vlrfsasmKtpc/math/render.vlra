@@ -320,3 +320,184 @@
     )
   )
 }
+{mr.attachment Content Base Scale; ;
+  ('
+    (mr.render
+      (mc.getFirstChild Content)
+      ('
+        (+
+          (> Base 16)
+          (c.getRange Content 112 16)
+        )
+        (: Base 16)
+      )
+      Scale
+    )
+    (mr.attachment.recursion
+      (> (mc.getRestElementList Content) 128)
+      (+ (> Base 16) (c.getRange Content 112 16))
+      (: Base 16) Scale (: Content 16)
+      (ms.scale (c.getRange Content 96 16) Scale)
+      (ms.scale (c.getRange Content 80 16) Scale)
+      (ms.scale (c.getRange Content 64 16) Scale)
+    )
+  )
+}
+{mr.attachment.recursion
+  Content BaseX BaseY Scale Position
+  CenterX CenterH CenterL; ;
+  (?
+    Position
+    ('
+      (mr.attachment.recursion
+        (mc.getRestElementList Content)
+        BaseX BaseY Scale (> Position 4)
+        CenterX CenterH CenterL
+      )
+      (mr.render
+        (mc.getFirstElement Content)
+        ('
+          (?
+            (&
+              (<= (: Position 4) 4)
+              (>= (: Position 4) 7)
+            )
+            (-
+              BaseX
+              (mr.attachment.scaleX Content Scale)
+            )
+            (?
+              (|
+                (== (: Position 4) 3)
+                (== (: Position 4) 8)
+              )
+              (+
+                BaseX
+                (mf.mul
+                  (-
+                    CenterX
+                    (mr.attachment.scaleX
+                      Content
+                      Scale
+                    )
+                  )
+                  (mf.immF $40)
+                )
+              )
+              (+ BaseX CenterX)
+            )
+          )
+          (?
+            (<= (: Position 4) 5)
+            (?
+              (== (: Position 4) 3)
+              (-
+                BaseY
+                (+
+                  CenterH
+                  (mr.attachment.scaleL Content)
+                )
+              )
+              (?
+                (|
+                  (== (: Position 4) 2)
+                  (== (: Position 4) 4)
+                )
+                (-
+                  BaseY
+                  (c.max-
+                    CenterH
+                    (+
+                      (mf.mul
+                        (- CenterH CenterL)
+                        (mf.immF $40)
+                      )
+                      (mr.attachment.scaleL
+                        Content
+                        Scale
+                      )
+                      (ms.scale 1 Scale)
+                    )
+                  )
+                )
+                (-
+                  BaseY
+                  (+
+                    (mf.mul
+                      (- CenterH CenterL)
+                      (mf.immF $40)
+                    )
+                    (mr.attachment.scaleL
+                      Content
+                      Scale
+                    )
+                    (ms.basic 1 Scale)
+                  )
+                )
+              )
+            )
+            (?
+              (== (: Position 4) 8)
+              (+
+                BaseY
+                CenterL
+                (mr.attachment.scaleH Content)
+              )
+              (?
+                (|
+                  (== (: Position 4) 7)
+                  (== (: Position 4) 9)
+                )
+                (+
+                  (mr.attachment.scaleH
+                    Content
+                    Scale
+                  )
+                  BaseY
+                )
+                (+
+                  (mf.mul
+                    (- CenterL CenterH)
+                    (mf.immF $40)
+                  )
+                  (mr.attachment.scaleH
+                    Content
+                    Scale
+                  )
+                  (ms.basic 1 Scale)
+                  BaseY
+                )
+              )
+            )
+          )
+        )
+        (+ Scale 1)
+      )
+    )
+    (c.empty)
+  )
+}
+{mr.attachment.scaleX List Scale; ;
+  (ms.scale
+    (mc.getSizeX (mc.getFirstElement List))
+    (+ Scale 1)
+  )
+}
+{mr.attachment.scaleH List Scale; ;
+  (ms.scale
+    (mc.getSizeH (mc.getFirstElement List))
+    (+ Scale 1)
+  )
+}
+{mr.attachment.scaleL List Scale; ;
+  (ms.scale
+    (mc.getSizeL (mc.getFirstElement List))
+    (+ Scale 1)
+  )
+}
+{mr.attachment.scaleY List Scale; ;
+  (ms.scale
+    (mc.getSizeY (mc.getFirstElement List))
+    (+ Scale 1)
+  )
+}

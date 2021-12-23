@@ -362,3 +362,211 @@
 {me.replace.select Result Original; ;
   (? (# Result) Result Original)
 }
+
+{mp.convert Position ; ;
+  (:
+    (mp.convert.loop Position)
+    16
+  )
+}
+{mp.convert.loop Position 16; ;
+  (+ (: Position 4) 1)
+}
+{mp.calculate Position Center List; ;
+  (mp.calculate.recursion
+    Position
+    List
+    (mc.getSizeX Center)
+    (mc.getSizeH Center)
+    (mc.getSizeL Center)
+    (mf.immI 0)
+    (mf.immI 0)
+    (mc.getSizeH Center)
+    (mc.getSizeL Center)
+  )
+}
+{mp.calculate.recursion
+  Position List
+  CenterX CenterH CenterL
+  WidthLeft WidthRight HeightH HeightL; ;
+  (?
+    Position
+    (mp.calculate
+      (> Position 4)
+      (mc.getRestElementList List)
+      CenterX CenterH CenterL
+      (?
+        (&
+          (>= (: Position 4) 4)
+          (<= (: Position 4) 7)
+        )
+        (c.max
+          (mc.getSizeX (mc.getFirstElement List))
+          WidthLeft
+        )
+        (?
+          (|
+            (== (: Position 4) 3)
+            (== (: Position 4) 8)
+          )
+          (c.max-
+            (mf.mul
+              (-
+                CenterX
+                (mp.calculate.scaleX List)
+              )
+              (mf.immF $0060)
+            )
+            WidthLeft
+          )
+          WidthLeft
+        )
+      )
+      (?
+        (|
+          (== (: Position 4) 1)
+          (== (: Position 4) 2)
+          (== (: Position 4) 9)
+          (== (: Position 4) 10)
+        )
+        (c.max
+          (mc.getSizeX (mc.getFirstElement List))
+          WidthRight
+        )
+        (?
+          (|
+            (== (: Position 4) 3)
+            (== (: Position 4) 8)
+          )
+          (c.max-
+            (mf.mul
+              (-
+                CenterX
+                (mp.calculate.scaleX List)
+              )
+              (mf.immF $0060)
+            )
+            WidthRight
+          )
+          WidthRight
+        )
+      )
+      (?
+        (<= (: Position 4) 5)
+        (?
+          (== (: Position 4) 3)
+          (c.max-
+            (+
+              (mp.calculate.scaleY List)
+              CenterH
+            )
+            HeightH
+          )
+          (?
+            (|
+              (== (: Position 4) 2)
+              (== (: Position 4) 4)
+            )
+            (c.max-
+              (c.max-
+                (+
+                  (mf.mul
+                    (- CenterH CenterL)
+                    (mf.immF $40)
+                  )
+                  (mp.calculate.scaleY List)
+                  (ms.basic 1 0)
+                )
+                (+
+                  CenterH
+                  (mp.calculate.scaleH List)
+                )
+              )
+              HeightH
+            )
+            (c.max-
+              (+
+                (mf.mul
+                  (- CenterH CenterL)
+                  (mf.immF $40)
+                )
+                (mp.calculate.scaleY List)
+                (ms.basic 1 0)
+              )
+              HeightH
+            )
+          )
+        )
+        HeightH
+      )
+      (?
+        (>= (: Position 4) 6)
+        (?
+          (== (: Position 4) 8)
+          (c.max-
+            (+
+              (mp.calculate.scaleY List)
+              CenterL
+            )
+            HeightL
+          )
+          (?
+            (|
+              (== (: Position 4) 7)
+              (== (: Position 4) 9)
+            )
+            (c.max-
+              (mp.calculate.scaleY List)
+              HeightL
+            )
+            (c.max-
+              (+
+                (mf.mul
+                  (- CenterL CenterH)
+                  (mf.immF $40)
+                )
+                (mp.calculate.scaleY List)
+                (ms.basic 1 0)
+              )
+              HeightL
+            )
+          )
+        )
+        HeightL
+      )
+    )
+    ('
+      WidthL
+      CenterX
+      CenterH
+      CenterL
+      (+ WidthL CenterX WidthR)
+      HeightH
+      HeightL
+    )
+  )
+}
+{mp.calculate.scaleX List; ;
+  (ms.scale
+    (mc.getSizeX (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleH List; ;
+  (ms.scale
+    (mc.getSizeH (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleL List; ;
+  (ms.scale
+    (mc.getSizeL (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleY List; ;
+  (ms.scale
+    (mc.getSizeY (mc.getFirstElement List))
+    1
+  )
+}

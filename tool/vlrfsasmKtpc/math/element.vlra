@@ -76,6 +76,28 @@
     )
   )
 }
+{mh.attachment1 Position Center First; ;
+  (mh.attachment1.genaralized
+    (mp.convert Position)
+    (mc.generalize Center)
+    (mc.generalize First)
+  )
+}
+{mh.attachment1.generalized
+  Position Center First; ;
+  (mh.attachment1.calculated
+    Position Center First
+    (mp.calculate Position Center First)
+  )
+}
+{mh.attachment1.calculated
+  Position Center First Size; ;
+  (mc.encode
+    (' Center First Size (: Position 16))
+    3
+    (: Size 48)
+  )
+}
 
 {mh.math Content; ;
   (mh.svg (mc.generalize Content))
