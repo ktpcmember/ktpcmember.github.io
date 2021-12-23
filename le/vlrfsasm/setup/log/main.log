@@ -1,4 +1,9 @@
-Vlrfsasm v0.7 2021-12-23 05:48
-  14:Undefined argument
-  widthL D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :403
+Vlrfsasm v0.7 2021-12-23 05:51
+  3:Undefined function
+  mh.attachment1.genaralized D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :80
+  mh.attachment1 D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :442
+  hx.1 D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
