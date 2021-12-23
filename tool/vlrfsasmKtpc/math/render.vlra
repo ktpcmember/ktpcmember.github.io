@@ -68,7 +68,7 @@
         )
       )
     )
-    (mc.decode Content)
+    (mc.decode (he.escape Content))
   )
 }
 {mr.concatenate Content Base Scale; ;
@@ -397,7 +397,10 @@
                 BaseY
                 (+
                   CenterH
-                  (mr.attachment.scaleL Content)
+                  (mr.attachment.scaleL
+                    Content
+                    Scale
+                  )
                 )
               )
               (?
@@ -443,7 +446,10 @@
               (+
                 BaseY
                 CenterL
-                (mr.attachment.scaleH Content)
+                (mr.attachment.scaleH
+                  Content
+                  Scale
+                )
               )
               (?
                 (|
