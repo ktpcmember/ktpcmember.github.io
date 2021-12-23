@@ -77,7 +77,7 @@
   )
 }
 {mh.attachment1 Position Center First; ;
-  (mh.attachment1.genaralized
+  (mh.attachment1.generalized
     (mp.convert Position)
     (mc.generalize Center)
     (mc.generalize First)
