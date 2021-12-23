@@ -334,7 +334,7 @@
       Scale
     )
     (mr.attachment.recursion
-      (> (mc.getRestElementList Content) 128)
+      (mc.getRestChildList (> Content 128))
       (+ (> Base 16) (c.getRange Content 112 16))
       (: Base 16) Scale (: Content 16)
       (ms.scale (c.getRange Content 96 16) Scale)
