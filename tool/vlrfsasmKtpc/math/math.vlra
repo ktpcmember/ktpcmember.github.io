@@ -420,10 +420,10 @@
           (mz.max-
             (mf.mul
               (-
-                CenterX
                 (mp.calculate.scaleX List)
+                CenterX
               )
-              (mf.immF $0060)
+              (mf.immF $0040)
             )
             WidthL
           )
