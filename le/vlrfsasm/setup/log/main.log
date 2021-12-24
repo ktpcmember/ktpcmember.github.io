@@ -1,6 +1,13 @@
-Vlrfsasm v0.7 2021-12-24 10:20
-  3:Undefined function
-  hx.r D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+Vlrfsasm v0.7 2021-12-24 10:23
+  7:Wrong number of argument
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\render.vlra :303
+  mr.root D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\render.vlra :40
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\render.vlra :78
+  mr.concatenate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\render.vlra :18
+  mr.render D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :207
+  mh.svg D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :174
+  mh.math D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :434
+  hx.m D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
   ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
