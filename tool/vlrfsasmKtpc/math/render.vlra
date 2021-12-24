@@ -198,6 +198,7 @@
               (mc.getSizeY (mc.decode Content))
               Scale
             )
+            (mf.immI 0)
             Scale
           )
         )
@@ -219,7 +220,7 @@
   )
 }
 {mr.sqrt.path
-  BaseX BaseY SizeX SizeL SizeY Scale; ;
+  BaseX BaseY SizeX SizeL SizeY ExponentWidth Scale; ;
   ('
     "M " (mf.fraction2 BaseX) " "
     (mf.fraction2
@@ -229,7 +230,15 @@
         (mf.mul SizeY (mf.immF $FFD5)) [-0.336]
       )
     ) " h "
-    (mf.fraction2 (ms.basic 1 Scale)) " l "
+    (mf.fraction2
+      (mz.max-
+        (ms.basic 1 Scale)
+        (-
+          (ms.scale ExponentWidth (+ Scale 1))
+          (ms.basic 2 Scale)
+        )
+      )
+    ) " l "
     (mf.fraction2 (ms.basic 1 Scale)) " "
     (mf.fraction2 (mf.mul SizeY (mf.immF $002B)))
     " l "
@@ -238,6 +247,101 @@
       (c.negate (+ SizeY (ms.basic 1 Scale)))
     ) " h "
     (mf.fraction2 SizeX)
+  )
+}
+{mr.root Content Base Scale; ;
+  ('
+    (hb.xmlTagA "path"
+      ('
+        (hb.attribute "d"
+          (mr.sqrt.path
+            (> Base 16)
+            (: Base 16)
+            (ms.scale
+              (mc.getSizeX (mc.decode Content))
+              Scale
+            )
+            (ms.scale
+              (mc.getSizeL (mc.decode Content))
+              Scale
+            )
+            (ms.scale
+              (mc.getSizeY (mc.decode Content))
+              Scale
+            )
+            (mc.getSizeX
+              (mc.getRestChildList Content)
+            )
+            Scale
+          )
+        )
+        (hb.attribute "stroke" "black")
+        (hb.attribute "fill" "none")
+      )
+    )
+    ('
+      (mr.render
+        (mc.getFirstChild Content)
+        ('
+          (+
+            (> Base 16)
+            (ms.basic 2 Scale)
+            (c.max
+              (ms.basic 3 Scale)
+              (ms.scale
+                (mc.getSizeX
+                  (mc.getRestChildList Content)
+                )
+                (+ Scale 1)
+              )
+            )
+          )
+          (: Base 16)
+        )
+        Scale
+      )
+      (mr.render
+        (mc.getRestChildList Content)
+        ('
+          (+
+            (> Base 16)
+            (mz.max-
+              (mf.immI 0)
+              (-
+                (ms.basic 3 Scale)
+                (ms.scale
+                  (mc.getSizeX
+                    (mc.getRestChildList Content)
+                  )
+                  (+ Scale 1)
+                )
+              )
+            )
+          )
+          (-
+            (: Base 16)
+            (ms.scale
+              (+
+                (mf.mul
+                  (mc.getSizeH Base)
+                  (mf.immF $002B)
+                )
+                (mf.mul
+                  (mc.getSizeL Base)
+                  (mf.immF $FFAB)
+                )
+                (ms.basic 1 0)
+                (ms.scale
+                  (mc.getSizeY Exponent)
+                  1
+                )
+              )
+              Scale
+            )
+          )
+        )
+      )
+    )
   )
 }
 {mr.fraction Content Base Scale; ;

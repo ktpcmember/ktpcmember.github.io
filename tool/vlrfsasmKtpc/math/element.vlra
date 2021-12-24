@@ -77,25 +77,96 @@
   )
 }
 {mh.attachment1 Position Center First; ;
-  (mh.attachment1.generalized
+  (mh.attachment.generalized
     (mp.convert Position)
     (mc.generalize Center)
     (mc.generalize First)
   )
 }
-{mh.attachment1.generalized
-  Position Center First; ;
-  (mh.attachment1.calculated
-    Position Center First
-    (mp.calculate Position Center First)
+{mh.attachment2 Position Center First Second; ;
+  (mh.attachment.generalized
+    (mp.convert Position)
+    (mc.generalize Center)
+    ('
+      (mc.generalize Second)
+      (mc.generalize First)
+    )
   )
 }
-{mh.attachment1.calculated
-  Position Center First Size; ;
+{mh.attachment3 Position Center First Second Third; ;
+  (mh.attachment.generalized
+    (mp.convert Position)
+    (mc.generalize Center)
+    ('
+      (mc.generalize Third)
+      (mc.generalize Second)
+      (mc.generalize First)
+    )
+  )
+}
+{mh.attachment4 Position Center First Second Third Fourth; ;
+  (mh.attachment.generalized
+    (mp.convert Position)
+    (mc.generalize Center)
+    ('
+      (mc.generalize Fourth)
+      (mc.generalize Third)
+      (mc.generalize Second)
+      (mc.generalize First)
+    )
+  )
+}
+{mh.attachment.generalized
+  Position Center List; ;
+  (mh.attachment.calculated
+    Position Center List
+    (mp.calculate Position Center List)
+  )
+}
+{mh.attachment.calculated
+  Position Center List Size; ;
   (mc.encode
-    (' Center First Size Position)
+    (' Center List Size Position)
     3
     (: Size 48)
+  )
+}
+{mh.root Base Exponent; ;
+  (mh.root.generalized
+    (mc.generalize Base)
+    (mc.generalize Exponent)
+  )
+}
+{mh.root Base Exponent; ;
+  (mc.encode
+    (' Base Exponent)
+    7
+    ('
+      (+
+        (mc.getSizeX Base)
+        (ms.basic 2 0)
+        (c.max
+          (ms.scale (mc.getSizeX Exponent) 1)
+          (ms.basic 3 0)
+        )
+      )
+      (c.max
+        (+ (mc.getSizeH Base) (ms.basic 2 0))
+        (+
+          (mf.mul
+            (mc.getSizeH Base)
+            (mf.immF $002B)
+          )
+          (mf.mul
+            (mc.getSizeL Base)
+            (mf.immF $FFAB)
+          )
+          (ms.basic 1 0)
+          (ms.scale (mc.getSizeY Exponent) 1)
+        )
+      )
+      (mc.getSizeL Base)
+    )
   )
 }
 
