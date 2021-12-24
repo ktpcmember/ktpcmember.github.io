@@ -431,7 +431,7 @@
                         Content
                         Scale
                       )
-                      (ms.scale 1 Scale)
+                      (' (ms.basic 1 Scale) (c.errorSb (' "E2,4" (c.convertISb CenterH))))
                     )
                   )
                 )
