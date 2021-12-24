@@ -150,7 +150,7 @@
           (hb.tagCE "div" "hFooterSide"
             (hb.tagCE "footer" "hFooter"
               ('
-                (hb.tagACE "button" "hFooterButton" (hb.attribute "onclick" "scrollToTop")
+                (hb.tagACE "button" "hFooterButton" (hb.attribute "onclick" "scrollToTop()")
                   (hb.imageC "hFooterButtonImage" (hp.getRelativePath "images/top.png"))
                 )
                 (hb.tagCE "span" "hFooterText" "(C) 2020 駒場東邦物理部")

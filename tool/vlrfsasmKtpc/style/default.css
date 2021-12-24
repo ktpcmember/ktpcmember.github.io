@@ -120,11 +120,12 @@
   flex-grow: 1;
   color: #FFFFFF;
   text-decoration: none;
-  background-color: #1C3870;
+  background-color: #402080;
+  border-radius: 0.5em;
 }
 
 .hMenuLinkElement:hover, .hMenuLinkElement:active {
-  background-color: #204080;
+  background-color: #482490;
 }
 
 .hMenuLinkText {
@@ -146,7 +147,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #FAF8F8;
+  background-color: #E0E2E0;
+  text-align: left;
 }
 
 /*Footer*/
@@ -198,18 +200,32 @@
 .cArticle {
   margin: 1ex 1%;
   padding: 0;
+  background-color: #FAF8F8;
+  border-radius: 0.5em;
 }
 
 .cPageTitle {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 
+.cArticleTitle {
+  margin: 0;
+  padding: 0.2em;
+  border-left: solid 4px #4080FF;
+  border-bottom: solid 1px #4080FF;
+}
 
+.cSectionTitle {
+  margin: 0;
+  padding: 0.2em;
+  border-left: solid 1px #4080FF;
+}
 
-
-.cHeading {
-  border-bottom: solid 1px #000000;
+.cP {
+  margin: 0.5em 0;
+  line-height: 1.5em;
+  color: #081020;
 }
 
 .cLink {
