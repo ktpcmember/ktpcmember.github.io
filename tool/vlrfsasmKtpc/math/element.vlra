@@ -137,7 +137,7 @@
     (mc.generalize Exponent)
   )
 }
-{mh.root Base Exponent; ;
+{mh.root.generalized Base Exponent; ;
   (mc.encode
     (' Base Exponent)
     7
