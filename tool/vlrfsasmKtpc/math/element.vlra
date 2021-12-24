@@ -67,11 +67,11 @@
       )
       (+
         (mc.getSizeY Numerator)
-        (ms.basic 5 0)
+        (ms.basic 4 0)
       )
       (-
         (mc.getSizeY Denominator)
-        (ms.basic 3 0)
+        (ms.basic 2 0)
       )
     )
   )

@@ -258,15 +258,21 @@
             (> Base 16)
             (: Base 16)
             (ms.scale
-              (mc.getSizeX (mc.decode Content))
+              (mc.getSizeX
+                (mc.getFirstChild Content)
+              )
               Scale
             )
             (ms.scale
-              (mc.getSizeL (mc.decode Content))
+              (mc.getSizeL
+                (mc.getFirstChild Content)
+              )
               Scale
             )
             (ms.scale
-              (mc.getSizeY (mc.decode Content))
+              (mc.getSizeY
+                (mc.getFirstChild Content)
+              )
               Scale
             )
             (mc.getSizeX
@@ -323,11 +329,15 @@
             (ms.scale
               (+
                 (mf.mul
-                  (mc.getSizeH Base)
+                  (mc.getSizeH
+                    (mc.getFirstChild Content)
+                  )
                   (mf.immF $002B)
                 )
                 (mf.mul
-                  (mc.getSizeL Base)
+                  (mc.getSizeL
+                    (mc.getFirstChild Content)
+                  )
                   (mf.immF $FFAB)
                 )
                 (ms.basic 1 0)
@@ -355,7 +365,7 @@
           ('
             "M " (mf.fraction2 (> Base 16)) " "
             (mf.fraction2
-              (- (: Base 16) (ms.basic 4 0))
+              (- (: Base 16) (ms.basic 3 0))
             ) " h "
             (mf.fraction2 (mc.getSizeX Content))
           )
@@ -390,7 +400,7 @@
               )
               Scale
             )
-            (ms.basic 5 Scale)
+            (ms.basic 4 Scale)
           )
         )
       )
@@ -423,7 +433,7 @@
               )
               Scale
             )
-            (ms.basic 3 Scale)
+            (ms.basic 2 Scale)
           )
         )
       )
