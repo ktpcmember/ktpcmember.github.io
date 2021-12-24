@@ -375,10 +375,7 @@
 }
 
 {mp.convert Position ; ;
-  (:
-    (mp.convert.loop Position)
-    16
-  )
+  (: (mp.convert.loop Position) 16)
 }
 {mp.convert.loop Position 16; ;
   (+ (: Position 4) 1)

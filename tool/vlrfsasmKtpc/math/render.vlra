@@ -354,6 +354,7 @@
       (ms.scale (c.getRange Content 80 16) Scale)
       (ms.scale (c.getRange Content 64 16) Scale)
     )
+    (mt.convertASb Content)
   )
 }
 {mr.attachment.recursion Content BaseX BaseY Scale Position CenterX CenterH CenterL; ;
@@ -420,8 +421,8 @@
                 )
                 (-
                   BaseY
-                  (c.errorSb [(mz.max-] ('
-                    (mf.fraction2 CenterH) ", " (mf.fraction2
+                  (mz.max-
+                    CenterH
                     (+
                       (mf.mul
                         (- CenterH CenterL)
@@ -432,7 +433,7 @@
                         Scale
                       )
                       (ms.basic 1 Scale)
-                    )))
+                    )
                   )
                 )
                 (-

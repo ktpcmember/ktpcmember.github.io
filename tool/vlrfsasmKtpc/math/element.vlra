@@ -93,7 +93,7 @@
 {mh.attachment1.calculated
   Position Center First Size; ;
   (mc.encode
-    (' Center First Size (: Position 16))
+    (' Center First Size Position)
     3
     (: Size 48)
   )
