@@ -332,7 +332,9 @@
                 )
                 (ms.basic 1 0)
                 (ms.scale
-                  (mc.getSizeY Exponent)
+                  (mc.getSizeL
+                    (mc.getRestChildList Content)
+                  )
                   1
                 )
               )
