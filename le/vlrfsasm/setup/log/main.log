@@ -1,3 +1,15 @@
-Vlrfsasm v0.7 2021-12-23 23:37
-  15:Complete
-  D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.html
+Vlrfsasm v0.7 2021-12-24 02:11
+  7:Wrong number of argument
+  >=- D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :584
+  mz.max- D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :318
+  ms.horizontal D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :260
+  ms.getSizeSb.loop D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :247
+  ms.getSizeSb D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :69
+  mc.generalize.loop D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\math.vlra :11
+  mc.generalize D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\math\element.vlra :82
+  mh.attachment1 D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :441
+  hx.0 D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :52
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
+  
