@@ -420,8 +420,8 @@
                 )
                 (-
                   BaseY
-                  (mz.max-
-                    CenterH
+                  (c.errorSb [(mz.max-] ('
+                    (mf.fraction2 CenterH) ", " (mf.fraction2
                     (+
                       (mf.mul
                         (- CenterH CenterL)
@@ -431,8 +431,8 @@
                         Content
                         Scale
                       )
-                      (' (ms.basic 1 Scale) (c.errorSb (' "E2,4" (c.convertISb CenterH))))
-                    )
+                      (ms.basic 1 Scale)
+                    )))
                   )
                 )
                 (-
