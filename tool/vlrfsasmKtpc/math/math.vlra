@@ -315,8 +315,8 @@
 {ms.horizontal A B; ;
   ('
     (+ (ms.getX A) (ms.getX B))
-    (c.max- (ms.getH A) (ms.getH B))
-    (c.max- (ms.getL A) (ms.getL B))
+    (mz.max- (ms.getH A) (ms.getH B))
+    (mz.max- (ms.getL A) (ms.getL B))
   )
 }
 {ms.scale Size Scale; ;
@@ -417,7 +417,7 @@
             (== (: Position 4) 3)
             (== (: Position 4) 8)
           )
-          (c.max-
+          (mz.max-
             (mf.mul
               (-
                 CenterX
@@ -446,7 +446,7 @@
             (== (: Position 4) 3)
             (== (: Position 4) 8)
           )
-          (c.max-
+          (mz.max-
             (mf.mul
               (-
                 CenterX
@@ -463,10 +463,11 @@
         (<= (: Position 4) 5)
         (?
           (== (: Position 4) 3)
-          (c.max-
+          (mz.max-
             (+
               (mp.calculate.scaleY List)
               CenterH
+              (ms.basic 1 0)
             )
             HeightH
           )
@@ -475,8 +476,8 @@
               (== (: Position 4) 2)
               (== (: Position 4) 4)
             )
-            (c.max-
-              (c.max-
+            (mz.max-
+              (mz.max-
                 (+
                   (mf.mul
                     (- CenterH CenterL)
@@ -492,7 +493,7 @@
               )
               HeightH
             )
-            (c.max-
+            (mz.max-
               (+
                 (mf.mul
                   (- CenterH CenterL)
@@ -511,10 +512,11 @@
         (>= (: Position 4) 6)
         (?
           (== (: Position 4) 8)
-          (c.max-
+          (mz.max-
             (+
               (mp.calculate.scaleY List)
               CenterL
+              (ms.basic 1 0)
             )
             HeightL
           )
@@ -523,11 +525,11 @@
               (== (: Position 4) 7)
               (== (: Position 4) 9)
             )
-            (c.max-
+            (mz.max-
               (mp.calculate.scaleY List)
               HeightL
             )
-            (c.max-
+            (mz.max-
               (+
                 (mf.mul
                   (- CenterL CenterH)
@@ -578,3 +580,5 @@
     1
   )
 }
+
+{mz.max- A B; ; (? (>=- (:- A (+ (# A) 1))) A B)}

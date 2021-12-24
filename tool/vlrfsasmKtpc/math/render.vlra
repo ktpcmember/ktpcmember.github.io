@@ -331,7 +331,10 @@
       ('
         (+
           (> Base 16)
-          (c.getRange Content 112 16)
+          (ms.scale
+            (c.getRange Content 112 16)
+            Scale
+          )
         )
         (: Base 16)
       )
@@ -339,7 +342,13 @@
     )
     (mr.attachment.recursion
       (mc.getRestElementList (> Content 128))
-      (+ (> Base 16) (c.getRange Content 112 16))
+      (+
+        (> Base 16)
+        (ms.scale
+          (c.getRange Content 112 16)
+          Scale
+        )
+      )
       (: Base 16) Scale (: Content 16)
       (ms.scale (c.getRange Content 96 16) Scale)
       (ms.scale (c.getRange Content 80 16) Scale)
@@ -401,6 +410,7 @@
                     Content
                     Scale
                   )
+                  (ms.basic 1 0)
                 )
               )
               (?
@@ -410,7 +420,7 @@
                 )
                 (-
                   BaseY
-                  (c.max-
+                  (mz.max-
                     CenterH
                     (+
                       (mf.mul
@@ -450,6 +460,7 @@
                   Content
                   Scale
                 )
+                (ms.basic 1 0)
               )
               (?
                 (|
