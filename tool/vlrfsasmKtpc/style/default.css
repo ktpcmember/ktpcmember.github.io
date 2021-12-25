@@ -101,7 +101,7 @@
   padding: 0.5% 0 0;
   display: flex;
   flex-flow: row wrap;
-  background-color: #404060;
+  background-color: #204060;
   border-radius: 0.5em;
 }
 
@@ -220,12 +220,16 @@
 
 .cSectionTitle {
   margin: 0;
-  padding: 0.2em;
+  padding: 0.1em;
   border-left: solid 4px #4080FF;
 }
 
+.cSection {
+  margin: 1em 0;
+}
+
 .cP {
-  margin: 0.5em 0;
+  margin: 0.5em 0 0.5em 0.5em;
   line-height: 1.5em;
   color: #081020;
 }
@@ -258,6 +262,7 @@
 .cCodeMenu {
   margin: 0;
   padding: 0 0.2em;
+  text-align: center;
   display: flex;
   flex-direction: row;
 }
