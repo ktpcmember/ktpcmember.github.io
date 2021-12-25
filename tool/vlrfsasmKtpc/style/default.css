@@ -19,6 +19,7 @@
   font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   background-color: #F8FAFA;
+  color: #081010;
 }
 
 .hHeader {
@@ -100,7 +101,8 @@
   padding: 0.5% 0 0;
   display: flex;
   flex-flow: row wrap;
-  background-color: #3060C0;
+  background-color: #404060;
+  border-radius: 0.5em;
 }
 
 .hMenuLinkTitle, .hMenuLinkElement {
@@ -120,12 +122,12 @@
   flex-grow: 1;
   color: #FFFFFF;
   text-decoration: none;
-  background-color: #402080;
+  background-color: #3060C0;
   border-radius: 0.5em;
 }
 
 .hMenuLinkElement:hover, .hMenuLinkElement:active {
-  background-color: #482490;
+  background-color: #244890;
 }
 
 .hMenuLinkText {
@@ -199,7 +201,7 @@
 
 .cArticle {
   margin: 1ex 1%;
-  padding: 0;
+  padding: 0.2em;
   background-color: #FAF8F8;
   border-radius: 0.5em;
 }
@@ -219,7 +221,7 @@
 .cSectionTitle {
   margin: 0;
   padding: 0.2em;
-  border-left: solid 1px #4080FF;
+  border-left: solid 4px #4080FF;
 }
 
 .cP {
@@ -243,7 +245,7 @@
 /*Code*/
 
 .cCodeFrame {
-  margin: 0.5em auto auto;
+  margin: 0.5em auto 0 0;
   padding: 0 0.5em;
   width: max-content;
   max-width: calc(100% - 1em);
