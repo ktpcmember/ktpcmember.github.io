@@ -5,7 +5,10 @@
     "cCodeSingle"
     (qh.convert
       Language
-      (c.regularizeNewLineSb Code "\r\n")
+      (c.regularizeNewLineSb
+        (he.compile Code)
+        "\r\n"
+      )
       0
     )
   )
@@ -44,7 +47,10 @@
           "cCodePre"
           (qh.convert
             Language
-            (c.regularizeNewLineSb Code "\r\n")
+            (c.regularizeNewLineSb
+              (he.compile Code)
+              "\r\n"
+            )
             Even
           )
         )

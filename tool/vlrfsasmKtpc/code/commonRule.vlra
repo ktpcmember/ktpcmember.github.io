@@ -7,7 +7,11 @@
     (?
       (c.compareStrict A "pa")
       (qcpa.list)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qcc.list)
+        (qe.language A)
+      )
     )
   )
 }
@@ -18,7 +22,11 @@
     (?
       (c.compareStrict A "pa")
       (qrpa.list)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qrc.list)
+        (qe.language A)
+      )
     )
   )
 }
@@ -29,7 +37,11 @@
     (?
       (c.compareStrict A "pa")
       (qmpa.getString B C)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qmc.getString B C)
+        (qe.language A)
+      )
     )
   )
 }
@@ -40,7 +52,11 @@
     (?
       (c.compareStrict A "pa")
       (qmpa.comment B)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qmc.comment B)
+        (qe.language A)
+      )
     )
   )
 }
@@ -51,7 +67,11 @@
     (?
       (c.compareStrict A "pa")
       (qspa.list)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qsc.list)
+        (qe.language A)
+      )
     )
   )
 }
@@ -62,7 +82,11 @@
     (?
       (c.compareStrict A "pa")
       (qbpa.list)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qbc.list)
+        (qe.language A)
+      )
     )
   )
 }
@@ -73,7 +97,11 @@
     (?
       (c.compareStrict A "pa")
       (qwpa.list)
-      (qe.language A)
+      (?
+        (c.compareStrict A "c")
+        (qwc.list)
+        (qe.language A)
+      )
     )
   )
 }

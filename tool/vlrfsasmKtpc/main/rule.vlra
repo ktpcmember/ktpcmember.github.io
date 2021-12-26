@@ -424,6 +424,8 @@
 {hc.o A; ; (hx.S "tOverline" A)}
 {hc.u A; ; (hx.S "tUnderline")}
 
+{hx.c A; ; (qh.single "c" A)}
+{hx.cMT A B; ; (qh.multi "c" A B 1)}
 {hx.P A; ; (qh.single "pa" A)}
 {hx.PMT A B; ; (qh.multi "pa" A B 1)}
 {hx.v A; ; (qh.single "v" A)}
