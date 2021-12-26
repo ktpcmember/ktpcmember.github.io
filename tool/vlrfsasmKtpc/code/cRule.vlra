@@ -263,7 +263,7 @@
     (qr.change (qtc.Meta1) (qcc.Escape) (qt.Meta))
     (qr.change (qtc.Meta1) (qcc.Asterisk) (qtc.Meta1))
     (qr.end (qtc.Meta1) (qcc.Slash))
-    (qr.change (qtc.Meta1) (qcc.Meta) (qc.Meta))
+    (qr.change (qtc.Meta1) (qcc.Meta) (qt.Meta))
     (qr.change (qtc.Meta1) (qcc.Period) (qt.Meta))
     (qr.change (qtc.Meta1) (qcc.Hash) (qt.Meta))
     (qr.change (qtc.Meta1) (qcc.Quotation) (qt.Meta))
