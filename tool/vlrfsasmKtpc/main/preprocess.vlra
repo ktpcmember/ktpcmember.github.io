@@ -81,20 +81,17 @@
   );
   ('
     (?
-      (&
-        (|
-          (&
-            (!= A "\r")
-            (!= A "[")
-            (!= A ";")
-            (!= A "]")
-            (| (!= A ",") (!= (p.getCondition B) 3))
-          )
-          (== (p.getCondition B) 6)
+      (|
+        (&
+          (!= A "\r")
+          (!= A "[")
+          (!= A ";")
+          (!= A "]")
+          (| (!= A ",") (!= (p.getCondition B) 3))
         )
-        (| (!= A "`") (== (p.getCondition B) 6))
+        (== (p.getCondition B) 6)
       )
-      (' (p.getToken B) A)
+      (' (p.getToken B) (? (!= "`" A (c.empty))))
       (c.empty)
     )
     (?
