@@ -1,10 +1,11 @@
-Vlrfsasm v0.7 2021-12-26 02:50
+Vlrfsasm v0.7 2021-12-26 02:53
   3:Undefined function
-  qc.Meta D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\cRule.vlra :266
-  qrc.list D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :27
-  qr.list D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :142
-  qr.searchAll D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :147
-  qr.isDefined D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :143
+  qtc.Reserved D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\cRule.vlra :311
+  qwc.list D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :102
+  qw.list D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :244
+  qw.searchAll D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :258
+  qw.isDefined D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :281
+  qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :158
   qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :119
   qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :48
   qh.multi D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :428
