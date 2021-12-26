@@ -212,7 +212,7 @@
     (qr.change (qtc.CommentB3) (qcc.NewLine) (qtc.CommentB2))
     (qr.change (qtc.CommentB3) (qcc.Asterisk) (qtc.CommentB3))
     (qr.end (qtc.CommentB3) (qcc.Slash))
-    (qr.change (qtc.CommentB3) (qcc.Meta) (qc.Meta))
+    (qr.change (qtc.CommentB3) (qcc.Meta) (qtc.CommentB2))
     (qr.change (qtc.CommentB3) (qcc.Period) (qtc.CommentB2))
     (qr.change (qtc.CommentB3) (qcc.Hash) (qtc.CommentB2))
     (qr.change (qtc.CommentB3) (qcc.Quotation) (qtc.CommentB2))
