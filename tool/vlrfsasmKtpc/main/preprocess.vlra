@@ -92,7 +92,7 @@
           )
           (== (p.getCondition B) 6)
         )
-        (!= A "`")
+        (| (!= A "`") (== (p.getCondition B) 6))
       )
       (' (p.getToken B) A)
       (c.empty)
