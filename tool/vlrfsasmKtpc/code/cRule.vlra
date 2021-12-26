@@ -250,7 +250,7 @@
     B
   )
 }
-{qmv.comment A; ; (' "/*" A "*/")}
+{qmc.comment A; ; (' "/*" A "*/")}
 
 {qsc.list; ;
   ('
