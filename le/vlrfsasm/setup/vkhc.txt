@@ -48,4 +48,4 @@ ht.helloWorld.exit
 ht.helloWorld.test
 [m;[f;[1;2;10];5]+1.7=206.5]
 [m;[mr;625;4]=5]
-[cMT;C;`int main(){char s[12]; s[0] = 'a';}`]
+[cMT;C;`int main(){char s[12]; s[0] = 'b';}`]

@@ -84,6 +84,7 @@
 {qtc.Preprocess; ; (qt.const 17)}
 {qtc.Character; ; (qt.const 18)}
 {qtc.EscapedC; ; (qt.const 19)}
+{qtc.Meta1; ; (qt.const 20)}
 
 {qrc.list; ;
   ('
@@ -148,7 +149,7 @@
     (qr.change (qtc.CommentA1) (qcc.Escape) (qtc.CommentA2))
     (qr.change (qtc.CommentA1) (qcc.Asterisk) (qtc.CommentA2))
     (qr.change (qtc.CommentA1) (qcc.Slash) (qtc.CommentA2))
-    (qr.change (qtc.CommentA1) (qcc.Meta) (qc.Meta))
+    (qr.change (qtc.CommentA1) (qcc.Meta) (qt.Meta))
     (qr.change (qtc.CommentA1) (qcc.Period) (qtc.CommentA2))
     (qr.change (qtc.CommentA1) (qcc.Hash) (qtc.CommentA2))
     (qr.change (qtc.CommentA1) (qcc.Quotation) (qtc.CommentA2))
@@ -179,7 +180,7 @@
     (qr.change (qtc.CommentB1) (qcc.NewLine) (qtc.CommentB2))
     (qr.change (qtc.CommentB1) (qcc.Asterisk) (qtc.CommentB3))
     (qr.change (qtc.CommentB1) (qcc.Slash) (qtc.CommentB2))
-    (qr.change (qtc.CommentB1) (qcc.Meta) (qc.Meta))
+    (qr.change (qtc.CommentB1) (qcc.Meta) (qt.Meta))
     (qr.change (qtc.CommentB1) (qcc.Period) (qtc.CommentB2))
     (qr.change (qtc.CommentB1) (qcc.Hash) (qtc.CommentB2))
     (qr.change (qtc.CommentB1) (qcc.Quotation) (qtc.CommentB2))
@@ -236,6 +237,36 @@
     (qr.change (qtc.EscapedC) (qc.Default) (qtc.Character))
     (qr.change (qtc.EscapedC) (qcc.Escape) (qtc.Character))
     (qr.change (qtc.EscapedC) (qcc.Quotation) (qtc.Character))
+    (qr.add (qt.Meta) (qc.Default))
+    (qr.add (qt.Meta) (qcc.Split))
+    (qr.add (qt.Meta) (qcc.Number))
+    (qr.add (qt.Meta) (qcc.Symbol))
+    (qr.add (qt.Meta) (qcc.Round))
+    (qr.add (qt.Meta) (qcc.Curly))
+    (qr.add (qt.Meta) (qcc.Square))
+    (qr.add (qt.Meta) (qcc.String))
+    (qr.add (qt.Meta) (qcc.Escape))
+    (qr.change (qt.Meta) (qcc.Asterisk) (qtc.Meta1))
+    (qr.add (qt.Meta) (qcc.Slash))
+    (qr.add (qt.Meta) (qcc.Meta))
+    (qr.add (qt.Meta) (qcc.Hash))
+    (qr.add (qt.Meta) (qcc.Period))
+    (qr.add (qt.Meta) (qcc.Quotation))
+    (qr.change (qtc.Meta1) (qc.Default) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Split) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Number) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Symbol) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Round) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Curly) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Square) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.String) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Escape) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Asterisk) (qtc.Meta1))
+    (qr.end (qtc.Meta1) (qcc.Slash))
+    (qr.change (qtc.Meta1) (qcc.Meta) (qc.Meta))
+    (qr.change (qtc.Meta1) (qcc.Period) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Hash) (qt.Meta))
+    (qr.change (qtc.Meta1) (qcc.Quotation) (qt.Meta))
   )
 }
 
