@@ -4,7 +4,7 @@
 {hi.assemble.bat; ; (c.convertS8Sb (assemble.bat))}
 {hi.source.vlra; ; (c.convertS8Sb (source.vlra.txt))}
 {hi.message.log; ; (c.convertS8Sb (message.log))}
-{hi.le.c; ; (c.convertS8Sb (le.c))}
+{hi.le.c; ; (he.escape (c.convertS8Sb (le.c)))}
 
 {hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
