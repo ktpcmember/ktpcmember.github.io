@@ -251,8 +251,7 @@
 .cCodeFrame {
   margin: 0.5em auto 0 0;
   padding: 0 0.5em;
-  width: max-content;
-  max-width: calc(100% - 1em);
+  width: calc(100% - 1em);
   display: flex;
   flex-direction: column;
   border-left: solid 1px #000000;
@@ -332,7 +331,7 @@
 
 .cCodeSingle {
   padding: 0 0.2em;
-  border-radius: 20%;
+  border-radius: 0.5em;
   font-family: 'Inconsolata', monospace;
   background-color: #E0E0E4;
 }
@@ -450,7 +449,7 @@
 }
 
 .qCSy {
-  color: #C04080;
+  color: #804060;
 }
 
 .qCRo {
