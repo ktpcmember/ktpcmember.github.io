@@ -48,4 +48,4 @@ ht.helloWorld.exit
 ht.helloWorld.test
 [m;[f;[1;2;10];5]+1.7=206.5]
 [m;[mr;625;4]=5]
-[cMT;C;,(le.c)]
+[cMT;講習の一部;,(le.c)]
