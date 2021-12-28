@@ -9,6 +9,20 @@
   unicode-range: U+41-5A, U+61-7A;
 }
 
+/*Style for tag*/
+
+table {
+  padding: 0;
+  border-left: solid 1px #808080;
+  border-top: solid 1px #808080;
+}
+
+td {
+  margin: 0;
+  border-right: solid 1px #808080;
+  border-bottom: solid 1px #808080;
+}
+
 /*Header, Banner*/
 
 .hBody {
@@ -244,6 +258,18 @@
 
 .cSvg {
   font-family: 'Computer Modern Italic', 'Computer Modern', serif;
+}
+
+.cTAL {
+  text-align: left;
+}
+
+.cTAC {
+  text-align: center;
+}
+
+.cTAR {
+  text-align: right;
 }
 
 /*Code*/
