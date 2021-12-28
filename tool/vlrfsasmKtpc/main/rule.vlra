@@ -365,7 +365,7 @@
     Content
   )
 }
-{hb.td.loop Style 16 Condition; ;
+{hc.td.loop Style 16 Condition; ;
   (?
     (== Style ",")
     (c.empty)
