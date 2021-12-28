@@ -50,7 +50,7 @@
           (?
             (p.getIfTable B)
             ('
-              (p.getTokenS)
+              (p.getTokenS B)
               ")"
               (?
                 (p.getIfAttribute B)
@@ -90,7 +90,7 @@
           (?
             (== A ";")
             (?
-              (p.getCount)
+              (p.getCount B)
               ('
                 (?
                   (== (p.getCondition B) 7)
@@ -133,7 +133,7 @@
                 (p.getCount B)
                 (' (p.getTokenS B) "))")
                 (?
-                  (== (p.getCondition) 2)
+                  (== (p.getCondition B) 2)
                   " (hx.table ('"
                   (p.getTokenS B)
                 )
