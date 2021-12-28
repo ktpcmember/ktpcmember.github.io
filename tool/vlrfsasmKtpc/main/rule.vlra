@@ -368,7 +368,6 @@
 {hc.td.loop Style 16 Condition; ;
   (?
     (== Style ",")
-    (c.empty)
     (?
       (== (c.getRangeSx Condition 0 1) "#")
       (hb.attribute "style"
@@ -376,6 +375,7 @@
       )
       (hb.attribute "class" Condition)
     )
+    (c.empty)
   );
   (? (== Style ",") (c.empty) (' Condition Style))
 }
