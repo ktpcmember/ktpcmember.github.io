@@ -1,0 +1,7 @@
+
+{ht.summary.caption; ; (' (hc.p (' "プログラミング言語「Vlrfsasm」の講習資料です。")))}
+{ht.summary.detail; ; (' (hc.p (' "Vlrfsasmは、物理部を引退したはずの部員が作ったプログラミング言語です。簡単なバイナリ構造の処理に特化しており、アセンブラの作成を目的としています。Vlrfsasmのインタプリタもアセンブリより少し低水準な言語で書かれています。言語的には、S式の採用が大きな特徴です。")))}
+{ht.content.target; ; (' (hc.p (' "基本的には、バイナリデータを扱う人を対象としています。ただし、本HPの編集のみであれば、深い知識は必要ありません。わからなければ他の部員に聞きましょう。")))}
+{ht.content.environment; ; (' (hc.table (' "Vlrfsasmの要件") (' "cTAC") (' (hc.tr (' (hc.td (' "OS") "") (hc.td (' "Windows10/11 x64") ""))) (hc.tr (' (hc.td (' "メモリ") "") (hc.td (' "16MB以上") ""))))) (hc.table (' "HP編集の要件") (' "cTAC") (' (hc.tr (' (hc.td (' (hx.l (' "GitHub") (' "https://github.com/")) "のアカウント") ""))) (hc.tr (' (hc.td (' "GitかGitHubが使える環境") ""))))))}
+{ht.content.book; ; (' (hc.p (' "本編では、Vlrfsasmの機能や使い方を詳しく学習します。HPの編集のみが目的の人も、途中までは読んでください。")) (hc.p (' "HP編では、Vlrfsasmを用いて本HPを記述する方法を学びます。")))}
+{ht.content.chapter; ; (' (hc.p (' "本講習では、章ごとにまとめて読み、作業することを想定しています。各章15分くらいでできるとよいですね。")))}
