@@ -100,31 +100,29 @@
                 " ('"
               )
               (?
+                (== (p.getCondition B) 2)
+                " (hc.tr (' (hc.td ('"
                 (?
-                  (== (p.getCondition B) 2)
-                  " (hc.tr (' (hc.td ('"
-                  (?
-                    (== (p.getCondition B) 7)
-                    ('
-                      (p.getTokenS B)
-                      ")"
-                      (?
-                        (p.getIfAttribute B)
-                        (c.empty)
-                        " \"\""
-                      )
-                      " (' (hc.tr (' (hc.td ('"
+                  (== (p.getCondition B) 7)
+                  ('
+                    (p.getTokenS B)
+                    ")"
+                    (?
+                      (p.getIfAttribute B)
+                      (c.empty)
+                      " \"\""
                     )
-                    ('
-                      (p.getTokenS B)
-                      ")"
-                      (?
-                        (p.getIfAttribute B)
-                        (c.empty)
-                        " \"\""
-                      )
-                      ") (hc.td ('"
+                    " (' (hc.tr (' (hc.td ('"
+                  )
+                  ('
+                    (p.getTokenS B)
+                    ")"
+                    (?
+                      (p.getIfAttribute B)
+                      (c.empty)
+                      " \"\""
                     )
+                    ") (hc.td ('"
                   )
                 )
               )
