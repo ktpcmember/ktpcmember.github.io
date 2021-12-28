@@ -15,6 +15,7 @@ table {
   padding: 0;
   border-left: solid 1px #808080;
   border-top: solid 1px #808080;
+  border-collapse: collapse;
 }
 
 td {
