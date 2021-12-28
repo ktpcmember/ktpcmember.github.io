@@ -11,6 +11,7 @@
         (hm.linkElementOut "Unity" "le/uy/uy.html")
         (hm.linkElementOut "コンピュータ基礎" "le/q_c_puba/q_c_puba.html")
         (hm.linkElementOut "競技プログラミング" "le/k_c_pej_p_gm/k_c_pej_p_gm.html")
+        (hm.linkElementOut "Vlrfsasm" "le/vlrfsasm/vlrfsasm.html")
       )
     )
     (hm.linkGroup "電子工作班"

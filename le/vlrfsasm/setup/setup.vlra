@@ -19,6 +19,7 @@
 
 {hc.content; ;
   ('
+    (hc.title "Vlrfsasm講習/準備")
     (hc.articleCa
       "概要"
       (ht.summary.caption)

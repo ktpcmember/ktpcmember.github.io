@@ -214,7 +214,7 @@ td {
 
 /*Content*/
 
-.cArticle {
+.cArticle, .cPageTitleBack{
   margin: 1ex 1%;
   padding: 0.2em;
   background-color: #FAFAF8;
@@ -222,8 +222,9 @@ td {
 }
 
 .cPageTitle {
-  margin: 0;
-  padding: 0;
+  margin: 1em;
+  text-align: center;
+  border-bottom: solid 2px;
 }
 
 .cArticleTitle {
