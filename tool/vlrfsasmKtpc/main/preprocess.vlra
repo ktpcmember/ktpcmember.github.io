@@ -79,6 +79,7 @@
             (c.empty)
           )
         )
+        (c.empty)
       )
       (?
         (== (p.getCondition B) 6)
