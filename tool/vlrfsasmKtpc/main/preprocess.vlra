@@ -134,7 +134,7 @@
                 (' (p.getTokenS B) "))")
                 (?
                   (== (p.getCondition B) 2)
-                  " (hx.table ('"
+                  " (hc.table ('"
                   (p.getTokenS B)
                 )
               )
