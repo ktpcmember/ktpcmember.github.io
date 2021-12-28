@@ -163,7 +163,13 @@
   )
 }
 
-{hb.attribute Name Value; ; (' " " Name "=\"" Value "\"")}
+{hb.attribute Name Value; ;
+  (?
+    (# Value)
+    (' " " Name "=\"" Value "\"")
+    (c.empty)
+  )
+}
 {hb.tag Tag; ; (' "<" Tag ">")}
 {hb.tagA Tag Attribute; ; (' "<" Tag Attribute ">")}
 {hb.tagAE Tag Attribute Content; ; (' "<" Tag Attribute ">" Content "</" Tag ">")}
@@ -334,86 +340,44 @@
 {hc.list Content; ; (hc.listC "" Content)}
 {hc.listElementC Class Content; ; (hb.tagCE "li" (hb.concatenateClass "cListElement" Class) Content)}
 {hc.listElement Content; ; (hc.listElementC "" Content)}
-{hc.tableC Class HeadClass Head BodyClass Body FootClass Foot; ;
-  (hb.tagCE "table" (hb.concatenateClass "cTable" Class)
-    ('
-      (?
-        (c.getLengthSx Head)
-        (hb.tagCE "thead" (hb.concatenateClass "cThead" HeadClass) Head)
-        (c.empty)
+{hc.table Caption Class Content; ;
+  (hb.tagCE "table" Class
+    (' (hb.tagE "caption" Caption) Content)
+  )
+}
+{hc.tr Content; ; (hb.tagE "tr" Content)}
+{hc.td Content Style; ;
+  (hb.tagAE "td"
+    (hc.td.loop
+      ('
+        Style
+        (?
+          (&
+            (!= (# Style) 0)
+            (!= (: Style 16) ",")
+          )
+          ","
+          (c.empty)
+        )
       )
-      (hb.tagCE "tbody" (hb.concatenateClass "cTbody" BodyClass) Body)
-      (?
-        (c.getLengthSx Foot)
-        (hb.tagCE "tfoot" (hb.concatenateClass "cFoot" FootClass) Foot)
-        (c.empty)
-      )
+      ""
     )
+    Content
   )
 }
-{hc.table Head Body Foot; ; (hc.tableC "" "" Head "" Body "" Foot)}
-{hc.tableRowC Class Content; ; (hb.tagCE "tr" (hb.concatenateClass "cTr" Class) Content)}
-{hc.tableRow Content; ; (hc.tableRowC "" Content)}
-{hc.tableCellCH Class Content; ; (hb.tagCE "th" (hb.concatenateClass "cTh" Class) Content)}
-{hc.tableCellH Content; ; (hc.tableCellCH "" Content)}
-{hc.tableCellCB Class Content; ; (hb.tagCE "td" (hb.concatenateClass "cTd" Class) Content)}
-{hc.tableCellB Content; ; (hc.tableCellCB "" Content)}
-{hc.tableCellCF Class Content; ; (hb.tagCE "tf" (hb.concatenateClass "cTf" Class) Content)}
-{hc.tableCellF Content; ; (hc.tableCellCF "" Content)}
-{hc.tableRowCHS Class CellClass Content; ;
-  (hc.tableRowC
-    Class
-    (hc.tableRowS.loop
-      Content
-      "th"
-      (hb.concatenateClass "cTh" CellClass)
-      (c.getLengthSx Content)
-    )
-  )
-}
-{hc.tableRowHS Content; ; (hc.tableRowCHS "" "" Content)}
-{hc.tableRowCBS Class CellClass Content; ;
-  (hc.tableRowC
-    Class
-    (hc.tableRowS.loop
-      Content
-      "td"
-      (hb.concatenateClass "cTd" CellClass)
-      (c.getLengthSx Content)
-    )
-  )
-}
-{hc.tableRowBS Content; ; (hc.tableRowCBS "" "" Content)}
-{hc.tableRowCFS Class CellClass Content; ;
-  (hc.tableRowC
-    Class
-    (hc.tableRowS.loop
-      Content
-      "tf"
-      (hb.concatenateClass "cTf" CellClass)
-      (c.getLengthSx Content)
-    )
-  )
-}
-{hc.tableRowFS Content; ; (hc.tableRowCFS "" "" Content)}
-{hc.tableRowS.loop Character 16 Tag Class Count; ;
+{hb.td.loop Style 16 Condition; ;
   (?
-    (== Character ";")
-    (hb.tagCE Tag Class (> Count 64))
+    (== Style ",")
+    (c.empty)
     (?
-      (== (: Count 64) 1)
-      (hb.tagCE Tag Class (' (> Count 64) Character))
-      (c.empty)
+      (== (c.getRangeSx Condition 0 1) "#")
+      (hb.attribute "style"
+        (' "background-color: " Condition ";")
+      )
+      (hb.attribute "class" Condition)
     )
   );
-  ('
-    (?
-      (!= Character ";")
-      (' (> Count 64) Character)
-      (c.empty)
-    )
-    (- (: Count 64) 1)
-  )
+  (? (== Style ",") (c.empty) (' Condition Style))
 }
 
 [extension]

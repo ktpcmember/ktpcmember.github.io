@@ -139,7 +139,7 @@
 .hContentSide {
   width: 100%;
   height: 100%;
-  z-index: 100%;
+  z-index: 5;
 }
 
 .hContentBack {
@@ -202,7 +202,7 @@
 .cArticle {
   margin: 1ex 1%;
   padding: 0.2em;
-  background-color: #FAF8F8;
+  background-color: #FAFAF8;
   border-radius: 0.5em;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .cCodeMulti {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
@@ -449,7 +449,7 @@
 }
 
 .qCSy {
-  color: #804060;
+  color: #604080;
 }
 
 .qCRo {
@@ -457,7 +457,7 @@
 }
 
 .qCCu {
-  color: #602060;
+  color: #602040;
 }
 
 .qCSq {
