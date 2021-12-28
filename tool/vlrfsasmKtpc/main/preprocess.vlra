@@ -135,7 +135,7 @@
                 (?
                   (== (p.getCondition B) 2)
                   " (hc.table ('"
-                  (p.getTokenS B)
+                  (' (p.getTokenS B) ") ('")
                 )
               )
               (c.empty)
@@ -202,7 +202,12 @@
         (?
           (| (== A ";") (== A "]"))
           (p.select
-            (' 0 0 (| (& A 4) 3) 3 3 3 6 3)
+            (' 0 0 (| (& A 4) 3) 3 3 3 6
+              (|
+                (& (< (== (p.getCount B) 0) 2) A)
+                3
+              )
+            )
             B
           )
           (?
