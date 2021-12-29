@@ -158,16 +158,34 @@
       (qh.encode L (qh.getToken B) B (qh.getCurrentType B) Co)
     )
     (?
-      (qr.isDefined
-        L
+      (qr.isDefined L
         (' (qc.search L A) (qh.getCurrentType B))
       )
-      (qh.encode L (' (qh.getToken B) (qh.extend L A B)) B
-        (qr.search
-          L
-          (' (qc.search L A) (qh.getCurrentType B))
+      (?
+        (==
+          (qr.search L
+            ('
+              (qc.search L A)
+              (qh.getCurrentType B)
+            )
+          )
+          (qt.Empty)
         )
-        Co
+        (qh.encode L
+          (' (qh.getToken B) (qh.extend L A B))
+          B (qh.getCurrentType B) Co
+        )
+        (qh.encode L
+          (' (qh.getToken B) (qh.extend L A B))
+          B
+          (qr.search L
+            ('
+              (qc.search L A)
+              (qh.getCurrentType B)
+            )
+          )
+          Co
+        )
       )
       ('
         (qh.encode L (qh.getToken B) B (qh.getCurrentType B) Co)
