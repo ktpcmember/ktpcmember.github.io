@@ -14,8 +14,8 @@
 {hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}
 {hm.previousSectionPath; ; ""}
-{hm.nextSectionPath; ; "../syntax/syntax.html"}
-{hm.nextSectionName; ; "構文"}
+{hm.nextSectionPath; ; "../grammar/grammar.html"}
+{hm.nextSectionName; ; "文法"}
 
 {hc.content; ;
   ('

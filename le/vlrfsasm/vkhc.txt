@@ -19,4 +19,8 @@ ht.content.book
 HP編では、Vlrfsasmを用いて本HPを記述する方法を学びます。
 
 ht.content.chapter
-本講習では、章ごとにまとめて読み、作業することを想定しています。各章15分くらいでできるとよいですね。
+本講習では、章ごとに読み、作業することを想定しています。
+
+ht.main.list
+]章一覧;[l;準備;setup/setup.html]
+;[l;文法;grammar/grammar.html]

@@ -36,7 +36,7 @@ X;;
 Y;;
 Z;;
 a;;
-b;text.bold;
+b;text.bold;text.background.colored
 c;code.c;code.c
 d;math.attachment3;
 e;text.extention;
@@ -47,15 +47,15 @@ i;text.italic;
 j;code.javascript;code.javascript
 k;;
 l;text.link;
-m;;math
+m;math;math
 n;;
-o;text.overline;
+o;text.overline;text.overline.colored
 p;code.python;code.python
 q;;code
 r;math.root;
 s;math.sqrt;
 t;math.text;text
-u;text.underline;
+u;text.underline;text.underline.colored
 v;math.attachment4;
 w;;
 x;;

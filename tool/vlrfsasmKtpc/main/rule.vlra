@@ -383,10 +383,13 @@
 [extension]
 {hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
 {hx.S A B; ; (hb.tagCE "span" A B)}
-{hx.b A; ; (hx.S "tBold" A)}
-{hc.i A; ; (hx.S "tItalic" A)}
-{hc.o A; ; (hx.S "tOverline" A)}
-{hc.u A; ; (hx.S "tUnderline")}
+{hx.b A; ; (hx.S "xBold" A)}
+{hc.i A; ; (hx.S "xItalic" A)}
+{hc.o A; ; (hx.S "xOverline" A)}
+{hc.u A; ; (hx.S "xUnderline")}
+{hc.uRed; ; (hx.S "xUnderlineRed")}
+{hc.uBlue; ; (hx.S "xUnderlineBlue")}
+{hc.uGreen; ; (hx.S "xUnderlineGreen")}
 
 {hx.c A; ; (qh.single "c" A)}
 {hx.cMT A B; ; (qh.multi "c" A B 1)}
@@ -395,6 +398,7 @@
 {hx.v A; ; (qh.single "v" A)}
 {hx.vMT A B; ; (qh.multi "v" A B 1)}
 {hx.qBatMT A B; ; (hx.PMT A B)} [For the time being]
+{hx.T A; ; (hx.P A)}
 {hx.TMT A B; ; (hx.PMT A B)} [For the time being]
 
 {hx.m A; ; (mh.math A)}

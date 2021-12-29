@@ -1,4 +1,20 @@
 
+{hp.path; ; "le/vlrfsasm/grammar/grammar.html"}
+
+{hi.character.txt; ; (c.convertS8Sb (character.txt))}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "文法 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousSectionPath; ; "../setup/setup.html"}
+{hm.previousSectionName; ; "準備"}
+{hm.nextSectionPath; ; "../function/function.html"}
+{hm.nextSectionName; ; "関数"}
+
 {hc.content; ;
   ('
     (hc.articleCa
@@ -35,3 +51,6 @@
     )
   )
 }
+
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}

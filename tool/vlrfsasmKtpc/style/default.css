@@ -411,12 +411,20 @@ td {
   text-decoration: underline solid red;
 }
 
+.qComUGreen {
+  text-decoration: underline solid green;
+}
+
 .qComRBlue {
   border-left: solid 1px blue;
 }
 
-.qComRBlue {
+.qComRRed {
   border-left: solid 1px red;
+}
+
+.qComRGreen {
+  border-left: solid 1px green;
 }
 
 /*Vlrfsasm*/
@@ -518,20 +526,30 @@ td {
 
 /*text decoration*/
 
-.tBold {
+.xBold {
   font-weight: bold;
 }
 
-.tItalic {
+.xItalic {
   font-style: italic;
 }
 
-.tOverline {
-  text-decoration: overline solid #000000;
+.xOverline {
+  text-decoration: overline solid #081010;
 }
 
-.tUnderline {
-  text-decoration: underline solid #000000;
+.xUnderline {
+  text-decoration: underline solid #081010;
 }
 
+.xUnderlineRed {
+  text-decoration: underline solid red;
+}
 
+.xUnderlineBlue {
+  text-decoration: underline solid blue;
+}
+
+.xUnderlineGreen {
+  text-decoration: underline solid green;
+}
