@@ -4,4 +4,5 @@
 {ht.content.target; ; (' (hc.p (' "基本的には、バイナリデータを扱う人を対象としています。ただし、本HPの編集のみであれば、深い知識は必要ありません。わからなければ他の部員に聞きましょう。")))}
 {ht.content.environment; ; (' (hc.table (' "Vlrfsasmの要件") (' "cTAC") (' (hc.tr (' (hc.td (' "OS") "") (hc.td (' "Windows10/11 x64") ""))) (hc.tr (' (hc.td (' "メモリ") "") (hc.td (' "16MB以上") ""))))) (hc.table (' "HP編集の要件") (' "cTAC") (' (hc.tr (' (hc.td (' (hx.l (' "GitHub") (' "https://github.com/")) "のアカウント") ""))) (hc.tr (' (hc.td (' "GitかGitHubが使える環境") ""))))))}
 {ht.content.book; ; (' (hc.p (' "本編では、Vlrfsasmの機能や使い方を詳しく学習します。HPの編集のみが目的の人も、途中までは読んでください。")) (hc.p (' "HP編では、Vlrfsasmを用いて本HPを記述する方法を学びます。")))}
-{ht.content.chapter; ; (' (hc.p (' "本講習では、章ごとにまとめて読み、作業することを想定しています。各章15分くらいでできるとよいですね。")))}
+{ht.content.chapter; ; (' (hc.p (' "本講習では、章ごとに読み、作業することを想定しています。")))}
+{ht.main.list; ; (' (hc.table (' "章一覧") "" (' (hc.tr (' (hc.td (' (hx.l (' "準備") (' "setup/setup.html")) "") ""))) (hc.tr (' (hc.td (' (hx.l (' "文法") (' "grammar/grammar.html")) "") ""))))))}
