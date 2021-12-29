@@ -384,12 +384,12 @@
 {hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
 {hx.S A B; ; (hb.tagCE "span" A B)}
 {hx.b A; ; (hx.S "xBold" A)}
-{hc.i A; ; (hx.S "xItalic" A)}
-{hc.o A; ; (hx.S "xOverline" A)}
-{hc.u A; ; (hx.S "xUnderline")}
-{hc.uRed; ; (hx.S "xUnderlineRed")}
-{hc.uBlue; ; (hx.S "xUnderlineBlue")}
-{hc.uGreen; ; (hx.S "xUnderlineGreen")}
+{hx.i A; ; (hx.S "xItalic" A)}
+{hx.o A; ; (hx.S "xOverline" A)}
+{hx.u A; ; (hx.S "xUnderline")}
+{hx.uRed; ; (hx.S "xUnderlineRed")}
+{hx.uBlue; ; (hx.S "xUnderlineBlue")}
+{hx.uGreen; ; (hx.S "xUnderlineGreen")}
 
 {hx.c A; ; (qh.single "c" A)}
 {hx.cMT A B; ; (qh.multi "c" A B 1)}
