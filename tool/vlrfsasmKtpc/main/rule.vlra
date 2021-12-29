@@ -380,8 +380,12 @@
   (? (== Style ",") (c.empty) (' Condition Style))
 }
 
+[Alias]
+{ha.replace A; ; (ha.select (ha.find (aliasList.txt) A))}
+
 [extension]
 {hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
+{hx.a A; ; (ha.replace A)}
 {hx.S A B; ; (hb.tagCE "span" A B)}
 {hx.b A; ; (hx.S "xBold" A)}
 {hx.i A; ; (hx.S "xItalic" A)}

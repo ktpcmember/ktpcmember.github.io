@@ -22,6 +22,11 @@
         (hc.section "章" (ht.content.chapter))
       )
     )
+    (hc.article "本編"
+      ('
+        (hc.section "一覧" (ht.main.list))
+      )
+    )
   )
 }
 

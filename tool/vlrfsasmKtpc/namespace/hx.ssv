@@ -35,11 +35,11 @@ W;;
 X;;
 Y;;
 Z;;
-a;;
+a;text.alias;
 b;text.bold;text.background.colored
 c;code.c;code.c
 d;math.attachment3;
-e;text.extention;
+e;;
 f;math.fraction;
 g;;
 h;code.html;code.html

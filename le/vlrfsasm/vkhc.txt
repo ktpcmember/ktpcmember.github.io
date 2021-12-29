@@ -25,3 +25,4 @@ ht.main.list
 ]章一覧;[l;準備;setup/setup.html]
 ;[l;文法;grammar/grammar.html]
 ;[l;関数;function/function.html]
+
