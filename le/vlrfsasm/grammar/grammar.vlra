@@ -45,7 +45,7 @@
       ('
         (hc.section "数値リテラル" (ht.literal.numeral))
         (hc.section "基数接頭辞" (ht.literal.prefix))
-        (hc.section "文字列リテラル".(ht.literal.string))
+        (hc.section "文字列リテラル" (ht.literal.string))
         (hc.section "エスケープシーケンス" (ht.literal.escape))
       )
     )
