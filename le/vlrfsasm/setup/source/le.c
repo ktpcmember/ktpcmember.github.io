@@ -17,7 +17,7 @@ int main() {
         }
         if (sum == k) ok = true;
     }
-    //@e;ビット全探索終了
+    //@e;;;ビット全探索終了
     if (ok) cout << "Yes" << endl;
     else cout << "No" << endl;
     return 0;

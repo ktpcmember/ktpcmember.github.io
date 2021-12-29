@@ -403,6 +403,14 @@ td {
 
 /*Common*/
 
+.qComMetaHidden {
+  display: none;
+}
+
+.qComMetaComment {
+  color: #808080;
+}
+
 .qComUBlue {
   text-decoration: underline solid blue;
 }
