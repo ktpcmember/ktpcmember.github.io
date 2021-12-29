@@ -386,10 +386,10 @@
 {hx.b A; ; (hx.S "xBold" A)}
 {hx.i A; ; (hx.S "xItalic" A)}
 {hx.o A; ; (hx.S "xOverline" A)}
-{hx.u A; ; (hx.S "xUnderline")}
-{hx.uRed; ; (hx.S "xUnderlineRed")}
-{hx.uBlue; ; (hx.S "xUnderlineBlue")}
-{hx.uGreen; ; (hx.S "xUnderlineGreen")}
+{hx.u A; ; (hx.S "xUnderline" A)}
+{hx.uRed A; ; (hx.S "xUnderlineRed" A)}
+{hx.uBlue A; ; (hx.S "xUnderlineBlue" A)}
+{hx.uGreen A; ; (hx.S "xUnderlineGreen" A)}
 
 {hx.c A; ; (qh.single "c" A)}
 {hx.cMT A B; ; (qh.multi "c" A B 1)}
