@@ -1,5 +1,5 @@
-Vlrfsasm v0.7 2021-12-29 02:11
-  3:Undefined function
+Vlrfsasm v0.7 2021-12-29 02:16
+  7:Wrong number of argument
   hx.uRed D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\grammar\temp\textContent.vlra :12
   ht.literal.numeral D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\grammar\grammar.vlra :46
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
