@@ -152,6 +152,7 @@
 [Style]
 {qsv.list; ;
   ('
+    (qs.list.element (qt.Empty) "qComEmpty")
     (qs.list.element (qtv.Name) "qVlrName")
     (qs.list.element (qtv.Number) "qVlrNumber")
     (qs.list.element (qtv.Symbol) "qVlrSymbol")
