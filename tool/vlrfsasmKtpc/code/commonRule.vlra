@@ -131,6 +131,7 @@
 [Token]
 {qt.const A; ; (: A 8)}
 {qt.Empty; ; (qt.const 0)}
+{qt.MetaMinimum; ; (qt.const 252)}
 {qt.Meta; ; (qt.const 255)}
 
 [Addition rule]

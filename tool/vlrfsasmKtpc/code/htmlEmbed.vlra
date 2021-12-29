@@ -283,7 +283,7 @@
   (?
     (c.getLengthSx A)
     (?
-      (== C (qt.Meta))
+      (>= C (qt.MetaMinimum))
       (qh.meta
         L
         (qm.getString L (qh.excludeTag A) 0)
@@ -354,7 +354,7 @@
 }
 {qh.metaStack L A B C; ;
   (?
-    (== C (qt.Meta))
+    (>= C (qt.MetaMinimum))
     (?
       (|
         (c.compareStrict (qm.getString L A 0) "r")

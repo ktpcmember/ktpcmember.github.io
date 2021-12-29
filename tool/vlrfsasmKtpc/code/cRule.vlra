@@ -84,8 +84,8 @@
 {qtc.Preprocess; ; (qt.const 17)}
 {qtc.Character; ; (qt.const 18)}
 {qtc.EscapedC; ; (qt.const 19)}
-{qtc.Meta1; ; (qt.const 20)}
-{qtc.Reserved; ; (qt.const 21)}
+{qtc.Reserved; ; (qt.const 20)}
+{qtc.Meta1; ; (qt.const 254)}
 
 {qrc.list; ;
   ('
