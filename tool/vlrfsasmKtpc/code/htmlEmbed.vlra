@@ -320,7 +320,7 @@
     )
     (?
       (c.getLengthSx D)
-      (hb.tagCE "span" "qComMetaHidden" (qm.comment D))
+      (hb.tagCE "span" "qComMetaHidden" (qm.comment L D))
       (c.empty)
     )
   )
