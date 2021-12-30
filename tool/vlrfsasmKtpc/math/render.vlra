@@ -363,11 +363,22 @@
       ('
         (hb.attribute "d"
           ('
-            "M " (mf.fraction2 (> Base 16)) " "
+            "M "
             (mf.fraction2
-              (- (: Base 16) (ms.basic 3 0))
+              (+
+                (> Base 16)
+                (ms.basic 1 Scale)
+              )
+            ) " "
+            (mf.fraction2
+              (- (: Base 16) (ms.basic 3 Scale))
             ) " h "
-            (mf.fraction2 (mc.getSizeX Content))
+            (mf.fraction2
+              (-
+                (mc.getSizeX Content)
+                (ms.basic 2 Scale)
+              )
+            )
           )
         )
         (hb.attribute "stroke" "black")
@@ -378,6 +389,7 @@
       ('
         (+
           (> Base 16)
+          (ms.basic 1 Scale)
           (mf.mul
             (ms.scale
               (-
@@ -411,6 +423,7 @@
       ('
         (+
           (> Base 16)
+          (ms.basic 1 Scale)
           (mf.mul
             (ms.scale
               (-

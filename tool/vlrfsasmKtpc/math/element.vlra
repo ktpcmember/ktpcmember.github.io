@@ -63,7 +63,7 @@
           (mc.getSizeX Numerator)
           (mc.getSizeX Denominator)
         )
-        (ms.basic 2 0)
+        (ms.basic 4 0)
       )
       (+
         (mc.getSizeY Numerator)
