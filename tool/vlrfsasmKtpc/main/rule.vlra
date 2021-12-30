@@ -381,7 +381,44 @@
 }
 
 [Alias]
-{ha.replace A; ; (ha.select (ha.find (aliasList.txt) A))}
+{ha.aliasList; ;
+  (c.regularizeNewline
+    (c.convertS8Sb (aliasList.txt))
+    "\r"
+  )
+}
+{ha.replace A; ;
+  (ha.select
+    (ha.find (ha.aliasList) A (: 0 1))
+    A
+  )
+}
+{ha.select A B; ;
+  (?
+    (# A)
+    A
+    (c.errorSb (' "Alias \"" "\" not defined"))
+  )
+}
+{ha.find A 16 B C; ;
+  (?
+    (& (== A "\r") C)
+    (> C 1)
+    (c.empty)
+  );
+  ('
+    (?
+      (| (== A " ") (== A "\r"))
+      (c.empty)
+      (' (> C 1) A)
+    )
+    (?
+      (== A " ")
+      (c.compareStrict B (> C 1))
+      (: C 1)
+    )
+  )
+}
 
 [extension]
 {hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
