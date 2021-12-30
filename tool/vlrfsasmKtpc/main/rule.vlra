@@ -382,7 +382,7 @@
 
 [Alias]
 {ha.aliasList; ;
-  (c.regularizeNewline
+  (c.regularizeNewLineSb
     (c.convertS8Sb (aliasList.txt))
     "\r"
   )
