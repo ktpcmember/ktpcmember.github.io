@@ -29,6 +29,7 @@ ht.list.main
 ;[l;ライブラリ;library/library.html]
 ;[l;ループ;loop/loop.html]
 ;[l;常用関数一覧;common/common.html]
+;[l;エラー;error/error.html]
 
 ht.list.hp
 ]]tXC;[l;仕組み;system/system.html]
