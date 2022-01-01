@@ -262,18 +262,6 @@ td {
   font-family: 'Computer Modern Italic', 'Computer Modern', serif;
 }
 
-.cTAL {
-  text-align: left;
-}
-
-.cTAC {
-  text-align: center;
-}
-
-.cTAR {
-  text-align: right;
-}
-
 /*Code*/
 
 .cCodeFrame {
@@ -560,4 +548,114 @@ td {
 
 .xUnderlineGreen {
   text-decoration: underline solid green;
+}
+
+/*table*/
+
+.tXL {
+  text-align: left;
+}
+
+.tXC {
+  text-align: center;
+}
+
+.tXR {
+  text-align: right;
+}
+
+.tTS {
+  border-top: solid 1px #081010;
+}
+
+.tTSB {
+  border-top: solid 2px #081010;
+}
+
+.tTD {
+  border-top: dotted 1px #081010;
+}
+
+.tTDB {
+  border-top: dotted 2px #081010;
+}
+
+.tTW {
+  border-top: double 1px #081010;
+}
+
+.tTWB {
+  border-top: double 2px #081010;
+}
+
+.tLS {
+  border-left: solid 1px #081010;
+}
+
+.tLSB {
+  border-left: solid 2px #081010;
+}
+
+.tLD {
+  border-left: dotted 1px #081010;
+}
+
+.tLDB {
+  border-left: dotted 2px #081010;
+}
+
+.tLW {
+  border-left: double 1px #081010;
+}
+
+.tLWB {
+  border-left: double 2px #081010;
+}
+
+.tBS, table.tBS>tr>td {
+  border-bottom: solid 1px #081010;
+}
+
+.tBSB, table.tBSB>tr>td {
+  border-bottom: solid 2px #081010;
+}
+
+.tBD, table.tBD>tr>td {
+  border-bottom: dotted 1px #081010;
+}
+
+.tBDB, table.tBDB>tr>td {
+  border-bottom: dotted 2px #081010;
+}
+
+.tBW, table.tBW>tr>td {
+  border-bottom: double 1px #081010;
+}
+
+.tBWB, table.tBWB>tr>td {
+  border-bottom: double 2px #081010;
+}
+
+.tRS, table.tRS>tr>td {
+  border-bottom: solid 1px #081010;
+}
+
+.tRSB, table.tRSB>tr>td {
+  border-bottom: solid 2px #081010;
+}
+
+.tRD, table.tRD>tr>td {
+  border-bottom: dotted 1px #081010;
+}
+
+.tRDB, table.tRDB>tr>td {
+  border-bottom: dotted 2px #081010;
+}
+
+.tRW, table.tRW>tr>td {
+  border-bottom: double 1px #081010;
+}
+
+.tRWB, table.tRWB>tr>td {
+  border-bottom: double 2px #081010;
 }

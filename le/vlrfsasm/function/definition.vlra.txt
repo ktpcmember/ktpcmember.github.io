@@ -1,0 +1,6 @@
+[?r;rRed;引数をもつ定数関数]
+{[?u;uRed]constA[?e] [?u;uGreen]Dummy[?e]; ; [?u;uBlue]10[?e]}[?e]
+[?r;rGreen;引数を省略した定数関数]
+{[?u;uRed]constB[?e]; ; [?u;uBlue]"Hello!"[?e]}[?e]
+[?r;rRed;第一引数の値を返す関数]
+{[?u;uBlue]functionA[?e] [?u;uGreen]Argument[?e] [?u;uGreen]Dummy[?e]; ; [?u;uBlue]Argument[?e]}[?e]

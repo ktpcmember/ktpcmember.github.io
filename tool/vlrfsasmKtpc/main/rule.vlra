@@ -342,7 +342,14 @@
 {hc.listElement Content; ; (hc.listElementC "" Content)}
 {hc.table Caption Class Content; ;
   (hb.tagCE "table" Class
-    (' (hb.tagE "caption" Caption) Content)
+    ('
+      (?
+        (# Caption)
+        (hb.tagE "caption" Caption)
+        (c.empty)
+      )
+      Content
+    )
   )
 }
 {hc.tr Content; ; (hb.tagE "tr" Content)}
