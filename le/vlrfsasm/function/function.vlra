@@ -33,6 +33,14 @@
         (hc.section "定義位置" (ht.definition.position))
       )
     )
+    (hc.articleCa
+      "出力関数"
+      (ht.output.caption)
+      ('
+        (hc.section "名前" (ht.output.name))
+        (hc.section "用法" (ht.output.usage))
+      )
+    )
   )
 }
 
