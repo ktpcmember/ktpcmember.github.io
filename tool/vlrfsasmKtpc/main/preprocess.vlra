@@ -1,0 +1,265 @@
+
+{.; ;
+  (c.convertSbS8
+    (p.convert
+      ('
+        (c.regularizeNewLineSb
+          (c.convertS8Sb (p.input))
+          "\r"
+        )
+        "\r\r"
+      )
+      ('
+        (: 0 6) [Empty]
+        (: 0 5) [Count]
+        (: 0 2) [0:Normal, 2:Table, 3:TableA]
+        (: 0 3) [Condition]
+      )
+    )
+  )
+}
+
+{p.input; ; (vkhc.txt)}
+
+[
+01
+24(7;34;3,5;3`6`3)3
+2)7;+3)3;3
+2;34;
+2-
+]
+{p.convert A 16 B; ;
+  (?
+    (== A "\r")
+    (?
+      (<= (p.getCondition B) 1)
+      (?
+        (p.getCondition B)
+        (' "\r\n{" (p.getToken B) "; ; ('")
+        (c.empty)
+      )
+      (?
+        (== (p.getCondition B) 2)
+        ('
+          (? (p.getIfTable B) "))" (c.empty))
+          ")}"
+        )
+        (?
+          (== (p.getCondition B) 6)
+          (c.empty)
+          (?
+            (p.getIfTable B)
+            ('
+              (p.getTokenS B)
+              ")"
+              (?
+                (p.getIfAttribute B)
+                (c.empty)
+                " \"\""
+              )
+              ")))"
+            )
+            (' (p.getTokenE B) "))")
+          )
+        )
+      )
+    )
+    ('
+      (?
+        (== (p.getCondition B) 2)
+        ('
+          (?
+            (& (p.getIfTable B) (!= A ";"))
+            "))"
+            (c.empty)
+          )
+          (?
+            (& (!= A "]") (!= A ";"))
+            " (hc.p ('"
+            (c.empty)
+          )
+        )
+        (c.empty)
+      )
+      (?
+        (== (p.getCondition B) 6)
+        (c.empty)
+        (?
+          (== A "[")
+          (' (p.getTokenE B) " (hx.")
+          (?
+            (== A ";")
+            (?
+              (p.getCount B)
+              ('
+                (?
+                  (== (p.getCondition B) 7)
+                  (p.getToken B)
+                  (' (p.getTokenS B) ")")
+                )
+                " ('"
+              )
+              (?
+                (== (p.getCondition B) 2)
+                " (hc.tr (' (hc.td ('"
+                (?
+                  (== (p.getCondition B) 7)
+                  ('
+                    (p.getTokenS B)
+                    ")"
+                    (?
+                      (p.getIfAttribute B)
+                      (c.empty)
+                      " \"\""
+                    )
+                    " (' (hc.tr (' (hc.td ('"
+                  )
+                  ('
+                    (p.getTokenS B)
+                    ")"
+                    (?
+                      (p.getIfAttribute B)
+                      (c.empty)
+                      " \"\""
+                    )
+                    ") (hc.td ('"
+                  )
+                )
+              )
+            )
+            (?
+              (== A "]")
+              (?
+                (p.getCount B)
+                (' (p.getTokenS B) "))")
+                (?
+                  (== (p.getCondition B) 2)
+                  " (hc.table ('"
+                  (' (p.getTokenS B) ") ('")
+                )
+              )
+              (c.empty)
+            )
+          )
+        )
+      )
+    )
+  );
+  ('
+    (?
+      (|
+        (&
+          (!= A "\r")
+          (!= A "[")
+          (!= A ";")
+          (!= A "]")
+          (| (!= A ",") (!= (p.getCondition B) 3))
+        )
+        (== (p.getCondition B) 6)
+      )
+      ('
+        (p.getToken B)
+        (? (!= A "`") A (c.empty))
+      )
+      (c.empty)
+    )
+    (: 0 6)
+    (?
+      (== (p.getCondition B) 6)
+      (p.getCount B)
+      (?
+        (== A "[")
+        (+ (p.getCount B) 1)
+        (-
+          (p.getCount B)
+          (& (== A "]") (!= (p.getCount B) 0))
+        )
+      )
+    )
+    (?
+      (== (p.getCondition B) 2)
+      (| (== A "]") (== A ";"))
+      (p.getIfTable B)
+    )
+    (?
+      (>= 2 (p.getCondition B))
+      (: 0 1)
+      (?
+        (p.getCount B)
+        (p.getIfAttribute B)
+        (|
+          (== A "]")
+          (& (!= A ";") (p.getIfAttribute B))
+        )
+      )
+    )
+    (?
+      (== A "\r")
+      (p.select (' 0 2 0 2 2 2 6 0) B)
+      (?
+        (== A "[")
+        (p.select (' 0 0 7 7 7 7 6 0) B)
+        (?
+          (| (== A ";") (== A "]"))
+          (p.select
+            (' 0 0 (| 3 (& A 4)) 3 3 3 6
+              (|
+                3
+                (& (< (== (p.getCount B) 0) 2) A)
+              )
+            )
+            B
+          )
+          (?
+            (== A "`")
+            (p.select (' 0 0 6 6 6 6 3 0) B)
+            (?
+              (== A ",")
+              (p.select (' 0 0 5 5 4 5 6 0) B)
+              (p.select (' 1 1 4 4 4 5 6 7) B)
+            )
+          )
+        )
+      )
+    )
+  )
+}
+
+{p.getToken A; ; (> A 16)}
+{p.getCount A; ; (c.getRange A 5 5)}
+{p.getIfTable A; ; (c.getBit A 4)}
+{p.getIfAttribute A; ; (c.getBit A 3)}
+{p.getCondition A ; ; (: A 3)}
+{p.getTokenS A; ;
+  (?
+    (== (p.getCondition A) 5)
+    (' " " (p.getToken A))
+    (p.string (he.escape (p.getToken A)))
+  )
+}
+{p.getTokenE A; ;
+  (?
+    (== (p.getCondition A) 5)
+    (' " " (p.getToken A))
+    (?
+      (== (# A) 16)
+      (c.empty)
+      (p.string (p.getToken A))
+    )
+  )
+}
+{p.string A; ; (' " \"" (p.escape A) "\"")}
+{p.escape A 16; ;
+  (?
+    (== A "\r")
+    "\\r\\n"
+    (?
+      (== A "\"")
+      "\\\""
+      (? (== A "\\") "\\\\" A)
+    )
+  )
+}
+{p.select A B; ;
+  (c.getRange A (< (- 7 (p.getCondition B)) 6) 3)
+}

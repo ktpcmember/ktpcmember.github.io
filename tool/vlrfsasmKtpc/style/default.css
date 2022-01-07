@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans&family=Noto+Sans+Math&display=swap');
+@font-face {
+  font-family: "Computer Modern";
+  src: url(../math/sourceV.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Computer Modern Italic";
+  src: url(../math/cmunti.ttf) format("truetype");
+  unicode-range: U+41-5A, U+61-7A;
+}
+
+/*Style for tag*/
+
+table {
+  padding: 0;
+  border-left: solid 1px #808080;
+  border-top: solid 1px #808080;
+  border-collapse: collapse;
+}
+
+td {
+  margin: 0;
+  border-right: solid 1px #808080;
+  border-bottom: solid 1px #808080;
+}
+
+/*Header, Banner*/
+
+.hBody {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  background-color: #F8FAFA;
+  color: #081010;
+}
+
+.hHeader {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #C0BEBE;
+}
+
+.hBanner {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+  min-height: auto;
+  max-height: 25vw;
+}
+
+/*Beneath Header*/
+
+.hBeneathHeader {
+  width: 100%;
+  z-index: 4;
+}
+
+/*Menu, Result of Search*/
+
+.hMenuSide {
+  width: 100%;
+  top: 0;
+  position: sticky;
+  background-color: #1B366C;
+  z-index: 6;
+}
+
+.hMenuBack {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1024px;
+  height: 100%;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  background-color: #1C3870;
+}
+
+.hMenuButton {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1% 0;
+  background-color: #1C3870;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hMenuButton:hover, .hMenuButton:active {
+  background-color: #204080;
+}
+
+.hMenuButtonImage {
+  max-height: 64px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hMenuLink {
+  width: 98%;
+  margin: 0 auto;
+  padding: 0.5%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.hMenuLinkGroup {
+  width: 100%;
+  margin: 0.5% 0;
+  padding: 0.5% 0 0;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #204060;
+  border-radius: 0.5em;
+}
+
+.hMenuLinkTitle, .hMenuLinkElement {
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.hMenuLinkTitle {
+  width: 100%;
+}
+
+.hMenuLinkElement {
+  margin: 1px;
+  padding: 1%;
+  flex-basis: 15em;
+  flex-grow: 1;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #3060C0;
+  border-radius: 0.5em;
+}
+
+.hMenuLinkElement:hover, .hMenuLinkElement:active {
+  background-color: #244890;
+}
+
+.hMenuLinkText {
+  margin: auto;
+}
+
+/*Body*/
+
+.hContentSide {
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.hContentBack {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1024px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #E0E2E0;
+  text-align: left;
+}
+
+/*Footer*/
+
+.hFooterSide {
+  width: 100%;
+  height: 6ex;
+  background-color: #1B366C;
+}
+
+.hFooter {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #1C3870;
+}
+
+.hFooterButton {
+  margin: 0 0 0 auto;
+  flex-basis: 8em;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: none;
+  background-color: #1C3870;
+}
+
+.hFooterButton:hover, .hFooterButton:active {
+  background-color: #204080;
+}
+
+.hFooterButtonImage {
+  margin: auto;
+  padding: 0;
+  height: 3em;
+}
+
+.hFooterText {
+  margin: auto;
+  color: #E0E0E0;
+}
+
+/*Content*/
+
+.cArticle, .cPageTitleBack{
+  margin: 1ex 1%;
+  padding: 0.2em;
+  background-color: #FAFAF8;
+  border-radius: 0.5em;
+}
+
+.cPageTitle {
+  margin: 1em;
+  text-align: center;
+  border-bottom: solid 2px;
+}
+
+.cArticleTitle {
+  margin: 0;
+  padding: 0.2em;
+  border-left: solid 4px #4080FF;
+  border-bottom: solid 1px #4080FF;
+}
+
+.cSectionTitle {
+  margin: 0;
+  padding: 0.1em;
+  border-left: solid 4px #4080FF;
+}
+
+.cSection {
+  margin: 1em 0;
+}
+
+.cP {
+  margin: 0.5em 0 0.5em 0.5em;
+  line-height: 1.5em;
+  color: #081020;
+}
+
+.cLink {
+  color: #000000;
+}
+
+.cLink:hover, .cLink:active {
+  background-color: #FFFCFC;
+}
+
+.cSvg {
+  font-family: 'Computer Modern Italic', 'Computer Modern', serif;
+}
+
+.cTableBack {
+  width: calc(100% - 1em);
+  overflow: auto;
+}
+
+/*Code*/
+
+.cCodeFrame {
+  margin: 0.5em auto 0 0;
+  padding: 0 0.5em;
+  width: calc(100% - 1em);
+  display: flex;
+  flex-direction: column;
+  border-left: solid 1px #000000;
+  border-right: solid 1px #000000;
+}
+
+.cCodeMenu {
+  margin: 0;
+  padding: 0 0.2em;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.cCodeMenuTitle, .cCodeMenuElement {
+  margin: 0.5em auto;
+  border: none;
+  outline: none;
+  background-color: #FAF8F8;
+}
+
+.cCodeMenuTitle {
+  flex-grow: 1;
+}
+
+.cCodeMenuElement {
+  box-sizing: content-box;
+  flex-basis: 100px;
+  flex-grow: 0;
+  padding: 0;
+  border-left: solid 1px #404040;
+  display: flex;
+  flex-direction: row;
+}
+
+.cCodeMenuInvisible {
+  display: none;
+}
+
+.cCodeMenuRight {
+  border-right: solid 1px #404040;
+}
+
+.cCodeMenuButton {
+  cursor: pointer;
+}
+
+.cCodeMenuButton:hover, .cCodeMenuButton:active {
+  background-color: #F4F0F0;
+  border-top: solid 1px #404040;
+  border-bottom: solid 1px #404040;
+}
+
+.cCodeMenuIcon {
+  margin: auto 0 auto auto;
+  height: 18px;
+}
+
+.cCodeMenuText {
+  margin: auto auto auto 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+}
+
+.cCodeMenuEffectCopy {
+  animation: 1s ease-in 0s 1 normal none running cCodeMenuAnimationFrame;
+}
+
+@keyframes cCodeMenuAnimationFrame {
+  from {
+    background-color: #C0E0F0;
+  }
+  to {
+    background-color: #FAF8F8;
+  }
+}
+
+.cCodeSingle {
+  padding: 0 0.2em;
+  border-radius: 0.5em;
+  font-family: 'Inconsolata', monospace;
+  background-color: #E0E0E4;
+}
+
+.cCodeMulti {
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  font-family: 'Inconsolata', monospace;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  border-radius: 0;
+  border-top: solid 1px #000000;
+  border-bottom: solid 1px #000000;
+  background-color: #F4F4F4;
+}
+
+.cCodeContracted {
+  max-height: 80px;
+}
+
+.cCodePre {
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.qLine {
+  margin: 0;
+  padding: 0.2ex 0;
+  width: 100%;
+  text-align: left;
+}
+
+.qLineEven {
+  background-color: #ECEEEC;
+}
+
+/*Common*/
+
+.qComMetaHidden {
+  display: none;
+}
+
+.qComMetaComment {
+  color: #808080;
+}
+
+.qComUBlue {
+  text-decoration: underline solid blue;
+}
+
+.qComURed {
+  text-decoration: underline solid red;
+}
+
+.qComUGreen {
+  text-decoration: underline solid green;
+}
+
+.qComRBlue {
+  border-left: solid 1px blue;
+}
+
+.qComRRed {
+  border-left: solid 1px red;
+}
+
+.qComRGreen {
+  border-left: solid 1px green;
+}
+
+/*Vlrfsasm*/
+
+.qVlrName {
+  color: #000000;
+}
+
+.qVlrBuiltin {
+  color: #204060;
+}
+
+.qVlrNumber {
+  color: #206040;
+}
+
+.qVlrSymbol {
+  color: #A08040;
+}
+
+.qVlrString {
+  color: #408020;
+}
+
+.qVlrComment {
+  color: #808080;
+}
+
+  /*.qVlrSplit {}*/
+
+.qVlrLabel {
+  color: #802000;
+}
+
+/*Path*/
+.qPathName {
+  color: #000000;
+}
+
+.qPathSplit {
+  color: #A08040;
+}
+
+.qPathComment {
+  color: #808080;
+}
+
+/*C*/
+
+.qCNa {
+  color: #101010;
+}
+
+ /*.qCSp {}*/
+
+.qCNu {
+  color: #206040;
+}
+
+.qCSy {
+  color: #604080;
+}
+
+.qCRo {
+  color: #A08040;
+}
+
+.qCCu {
+  color: #602040;
+}
+
+.qCSq {
+  color: #C0A040;
+}
+
+.qCSt {
+  color: #408020;
+}
+
+.qCCo {
+  color: #808080;
+}
+
+.qCPe {
+  color: #102040;
+}
+
+.qCPr {
+  color: #800000;
+}
+
+.qCCh {
+  color: #A04040;
+}
+
+.qCRe {
+  color: #2040C0;
+}
+
+/*text decoration*/
+
+.xBold {
+  font-weight: bold;
+}
+
+.xItalic {
+  font-style: italic;
+}
+
+.xOverline {
+  text-decoration: overline solid #081010;
+}
+
+.xUnderline {
+  text-decoration: underline solid #081010;
+}
+
+.xUnderlineRed {
+  text-decoration: underline solid red;
+}
+
+.xUnderlineBlue {
+  text-decoration: underline solid blue;
+}
+
+.xUnderlineGreen {
+  text-decoration: underline solid green;
+}
+
+/*table*/
+
+.tXL {
+  text-align: left;
+}
+
+.tXC {
+  text-align: center;
+}
+
+.tXR {
+  text-align: right;
+}
+
+.tTS {
+  border-top: solid 1px #081010;
+}
+
+.tTSB {
+  border-top: solid 2px #081010;
+}
+
+.tTD {
+  border-top: dotted 1px #081010;
+}
+
+.tTDB {
+  border-top: dotted 2px #081010;
+}
+
+.tTW {
+  border-top: double 1px #081010;
+}
+
+.tTWB {
+  border-top: double 2px #081010;
+}
+
+.tLS {
+  border-left: solid 1px #081010;
+}
+
+.tLSB {
+  border-left: solid 2px #081010;
+}
+
+.tLD {
+  border-left: dotted 1px #081010;
+}
+
+.tLDB {
+  border-left: dotted 2px #081010;
+}
+
+.tLW {
+  border-left: double 1px #081010;
+}
+
+.tLWB {
+  border-left: double 2px #081010;
+}
+
+.tBS, table.tBS>tr>td {
+  border-bottom: solid 1px #081010;
+}
+
+.tBSB, table.tBSB>tr>td {
+  border-bottom: solid 2px #081010;
+}
+
+.tBD, table.tBD>tr>td {
+  border-bottom: dotted 1px #081010;
+}
+
+.tBDB, table.tBDB>tr>td {
+  border-bottom: dotted 2px #081010;
+}
+
+.tBW, table.tBW>tr>td {
+  border-bottom: double 1px #081010;
+}
+
+.tBWB, table.tBWB>tr>td {
+  border-bottom: double 2px #081010;
+}
+
+.tRS, table.tRS>tr>td {
+  border-bottom: solid 1px #081010;
+}
+
+.tRSB, table.tRSB>tr>td {
+  border-bottom: solid 2px #081010;
+}
+
+.tRD, table.tRD>tr>td {
+  border-bottom: dotted 1px #081010;
+}
+
+.tRDB, table.tRDB>tr>td {
+  border-bottom: dotted 2px #081010;
+}
+
+.tRW, table.tRW>tr>td {
+  border-bottom: double 1px #081010;
+}
+
+.tRWB, table.tRWB>tr>td {
+  border-bottom: double 2px #081010;
+}

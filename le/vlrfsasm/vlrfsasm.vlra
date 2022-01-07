@@ -1,0 +1,36 @@
+
+{hp.path; ; "le/vlrfsasm/vlrfsasm.html"}
+
+{hh.keyword; ; "プログラミング,講習"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureIndex)}
+
+{hc.content; ;
+  ('
+    (hc.title "Vlrfsasm講習")
+    (hc.articleCa "概要"
+      (ht.summary.caption)
+      (hc.section "Vlrfsasmとは？" (ht.summary.detail))
+    )
+    (hc.article "内容"
+      ('
+        (hc.section "対象" (ht.content.target))
+        (hc.section "環境" (ht.content.environment))
+        (hc.section "編" (ht.content.book))
+        (hc.section "章" (ht.content.chapter))
+      )
+    )
+    (hc.article "一覧"
+      ('
+        (hc.section "本編" (ht.list.main))
+        (hc.section "HP編" (ht.list.hp))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}

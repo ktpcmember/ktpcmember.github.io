@@ -58,7 +58,7 @@
             <a class="ch41" href="../none.html">
               <span class="ch50">索引</span>
             </a>
-            <a class="ch41" href="../next/next.html">
+            <a class="ch41" href="../dp/dp.html">
               <span class="ch50">次回</span>
             </a>
             <a class="ch41" href="../k_c_pej_p_gm.html">
@@ -253,7 +253,7 @@
             <h3 class="cb40">計算量</h3>
             <span class="cb41">
               では、この時の計算量はどうなるでしょうか。一回の探索ごとに、探索領域はおよそ二分の一になっています。例えば先ほどの例だと、10->6->3->2と、確かにおよそ二分の一ずつ減っています。Nの時は、N->N/2->N/4->...くらいとなることが予想されます。ここで、logという対数関数を考えます。一般に、1でない正の実数aと正の実数Nに対し、N=a<sup>p</sup>となる実数pはただ1つに定まるので、これをlog<sub>a</sub>Nと表します。平たく言えば、これは、「Nはaの何乗か」です。例えば、log<sub>2</sub>8=3、log<sub>3</sub>9=2です。よって、この対数関数を使って表すと、探索回数はおよそlog<sub>2</sub>N回と言うことができます。よって、1回あたりの計算量はO(log N)です。O記法では、底（前述の例のaをこう言い、「てい」と読みます）の違いは定数倍だとみなされるので、省略することが多いです。<br>
-              さて、具体的にO(log N)はどれほど高速なのでしょうか。今回はNは最大で2&times;10<sup>5</sup>なので、log<sub>2</sub>2&times;10<sup>5</sup>=17.6...となり、およそ18回くらいの探索で終了するということがわかります。愚直に探索するとそのまま2&times;10<sup>5</sup>回の探索が必要でしたから、劇的な高速化に成功しました。全体としての計算量はO(Q log N)となり、十分高速です。
+              さて、具体的にO(log N)はどれほど高速なのでしょうか。今回はNは最大で2&times;10<sup>5</sup>なので、log<sub>2</sub>(2&times;10<sup>5</sup>)=17.6...となり、およそ18回くらいの探索で終了するということがわかります。愚直に探索するとそのまま2&times;10<sup>5</sup>回の探索が必要でしたから、劇的な高速化に成功しました。全体としての計算量はO(Q log N)となり、十分高速です。
             </span>
           </div>
         </article>
@@ -313,14 +313,31 @@
         <article class="cb21 fxtb">
           <h2 class="cb33">一般化</h2>
           <span class="cb34">
-            under preparation
+            今まではソートされた配列を考えてきましたが、さらに一般化して関数f(x)と条件Cを考えます。
           </span>
         </article>
         <article class="cb21 fxlr">
           <div class="cb31">
-            <h3 class="cb40">under preparation</h3>
+            <h3 class="cb40">二分探索を適用しやすいとき</h3>
             <span class="cb41">
-              under preparation
+              ここで、条件Cが単調であるときは二分探索が適用できます。例えば、ある値rで条件Cを満たすならばr以上の値ではすべて条件Cを満たす、ある値rで条件Cを満たすならばr以下の値ではすべて条件Cを満たす、などです。平たく言えば、xを小さい方から大きい方に動かしていった時、条件Cのtrueとfalseが切り替わるところが1箇所しかないような場合です。このような場合、二分探索が適用できます。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">f(x)が連続なとき</h3>
+            <span class="cb41">
+              今までは、xを離散的に捉えていましたが、実数でも可能です。例えばa&le;x&le;bで定義される広義単調増加な関数f(x)を考え、f(x)=tとなるxの値を求めることを考えます。この場合、ジャッジでは絶対誤差および相対誤差が許容されることが普通です。AtCoderの場合は大抵10<sup>-6</sup>のことが多いです。右端と左端をこの許容誤差の程度まで近づけることによって、ほとんど厳密解に等しい結果を得ることができます。二分探索の終了条件は、<code class="paghco"><span class="wdkywd">while</span> <span class="wdsl">(</span>abs<span class="wdsl">(</span>l <span class="wdsl">-</span> r<span class="wdsl">)</span> <span class="wdsl">&gt;</span> <span class="wdnr">1e</span><span class="wdsl">-</span><span class="wdnr">6</span><span class="wdsl">)</span></code>などと書いてもいいですが、あまり小数による計算や比較をしたくないため（<code class="paghco">cout <span class="wdsl">&lt;&lt;</span> <span class="wdnr">1e20</span> <span class="wdsl">+</span> <span class="wdnr">1</span> <span class="wdsl">-</span> <span class="wdnr">1e20</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span></code>などを実行してみることで確認できます）、回数によって打ち切ることをお勧めします。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">最大値の最小化/最小値の最大化</h3>
+            <span class="cb41">
+              このような問題設定のとき、二分探索を適用できることが多いです。最大値の最小化を例にとると、この多くの問題において、最大値を小さい方から徐々に大きくしていくことを考えると、徐々にシビアになってきて、最終的には条件Cを満たさなくなってくる、といった単調性があります。また、最大値がXであるとすると、これは条件を満たすかといった判定問題に帰着することができます。すると、各要素では最大値がXと固定されましたので、判定問題が解きやすくなることが多いです。<br>
+              このように、直接の値を決めるのは難しくても、最大値/最小値をXと決め打ってやると、簡単な判定問題に帰着することができ、さらには単調性が見られる、となることが多いです。
             </span>
           </div>
         </article>
@@ -328,7 +345,12 @@
           <h2 class="cb33">練習問題</h2>
           <span class="cb34">
             理解できたか確認するために、練習問題があります。以下の問題を解いてみてください。<br>
-            under preparation
+            <ul><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/abc146/tasks/abc146_c">ABC146 C - Buy an Integer</a>（単調性に注目です）</li><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/abc077/tasks/arc084_a">ABC077 C - Snuke Festival</a>（どれを決めれば楽でしょうか）</li><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/abc023/tasks/abc023_d">ABC023 D - 射撃王</a>（判定問題にします）</li><br>
+              <li><a class="cb51" href="https://atcoder.jp/contests/abc026/tasks/abc026_d">ABC026 D - 高橋君ボール1号</a>（連続なことを利用します）</li><br>
+            </ul>
           </span>
         </article>
       </div>

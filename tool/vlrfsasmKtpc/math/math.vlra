@@ -1,0 +1,583 @@
+
+{mi.sizeList; ; (sizeList.bin)}
+{mi.replaceList; ; (replaceList.bin)}
+
+[Opcode:{0:String, 1:Text, 2:Concatenate, 3:Attachment, 4:Overline, 5:Underline, 6:Sqrt, 7:Root, 8:Fraction, 9:SmallFraction}]
+
+{mt.convertASb A 16; ; (' (c.convertISb A 16) " ")}
+
+{mc.generalize Content; ;
+  (mc.encodeS
+    (mc.generalize.loop
+      Content
+      ('
+        (: 0 48)
+        (: 0 16) [0:Raw, 1:ContainerBegin, 2:Container]
+        (: 0 16)
+        (: (> (# Content) 4) 16)
+      )
+    )
+    2
+  )
+}
+{mc.generalize.loop Content 16 Condition; ;
+[(' (? (== Content 4) (c.errorSb (mt.convertASb Condition)) (c.empty))]
+  (?
+    (!= (: Condition 16) 1)
+    (?
+      (c.getRange Condition 32 16)
+      ('
+        (?
+          (== (c.getRange Condition 32 16) 1)
+          (: 0 16)
+          (c.empty)
+        )
+        Content
+      )
+      (?
+        Content
+        (c.empty)
+        (?
+          (== (# Condition) 96)
+          (c.empty)
+          (mc.encode
+            (he.compile (> Condition 96))
+            0
+            (ms.getSizeSb
+              (he.compile (> Condition 96))
+            )
+          )
+        )
+      )
+    )
+    (?
+      (c.getRange Condition 32 16)
+      ('
+        Content
+        (c.getRange Condition 64 32)
+        (c.max (c.getRange Condition 48 16) Content)
+      )
+      ('
+        (mc.encode
+          (he.compile
+            ('
+              (> Condition 96)
+              (me.replace Content)
+            )
+          )
+          0
+          (ms.getSizeSb
+            (' (> Condition 96) (me.replace Content))
+          )
+        )
+        (ms.horizontal
+          (c.getRange Condition 48 48)
+          (ms.getSizeSb
+            (he.compile
+              ('
+                (> Condition 96)
+                (me.replace Content)
+              )
+            )
+          )
+        )
+      )
+    )
+  );[ );]
+  ('
+    (?
+      (c.getRange Condition 32 16)
+      (c.empty)
+      (' (> Condition 96) (me.replace Content))
+    )
+    (?
+      (&
+        (== (c.getRange Condition 32 16) 0)
+        (== Content 0)
+        (!= (# Condition) 96)
+      )
+      (ms.horizontal
+        (c.getRange Condition 48 48)
+        (ms.getSizeSb
+          (he.compile (> Condition 96))
+        )
+      )
+      (?
+        (&
+          (== (c.getRange Condition 32 16) 2)
+          (<= (c.getRange Condition 16 16) 5)
+        )
+        (?
+          (== (c.getRange Condition 16 16) 5)
+          ('
+            (+ (c.getRange Condition 80 16) Content)
+            (c.getRange Condition 48 32)
+          )
+          (?
+            (== (c.getRange Condition 16 16) 4)
+            ('
+              (c.getRange Condition 80 16)
+              (c.max (c.getRange Condition 64 16) Content)
+              (c.getRange Condition 48 16)
+            )
+            ('
+              (c.getRange Condition 64 32)
+              (c.max (c.getRange Condition 48 16) Content)
+            )
+          )
+        )
+        (c.getRange Condition 48 48)
+      )
+    )
+    (:
+      (?
+        (c.getRange Condition 32 16)
+        (?
+          (== (c.getRange Condition 32 16) 1)
+          2
+          (?
+            (== (c.getRange Condition 16 16) 3)
+            0
+            2
+          )
+        )
+        (? Content 0 1)
+      )
+      16
+    )
+    (?
+      (== (c.getRange Condition 32 16) 1)
+      Content
+      (- (c.getRange Condition 16 16) 1)
+    )
+    (- (: Condition 16) 1)
+  )
+}
+{mc.encode Content Opcode Size; ;
+  ('
+    (: $0000 16)
+    (: (+ (> (# Content) 4) 6) 16)
+    Content
+    (: Opcode 16)
+    (: Size 48)
+  )
+}
+{mc.encodeS Content Opcode; ;
+  (mc.encode
+    (> Content 48)
+    Opcode
+    (: Content 48)
+  )
+}
+{mc.decode Container; ;
+  (c.getRange Container 64 (- (# Container) 96))
+}
+{mc.getFirstElement List; ;
+  (>
+    List
+    (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
+  )
+}
+{mc.getRestElementList List; ;
+  (:
+    List
+    (- (# List) (< (c.getRange List (- (# List) 32) 16) 4))
+  )
+}
+{mc.getFirstChild Container; ;
+  (mc.getFirstElement (mc.decode Container))
+}
+{mc.getRestChildList Container; ;
+  (mc.getRestElementList (mc.decode Container))
+}
+{mc.getSize Container; ; (: Container 48)}
+{mc.getSizeX Container; ;
+  (> (mc.getSize Container) 32)
+}
+{mc.getSizeH Container; ;
+  (c.getRange (mc.getSize Container) 16 16)
+}
+{mc.getSizeL Container; ;
+  (: Container 16)
+}
+{mc.getSizeY Container; ;
+  (+
+    (mc.getSizeH Container)
+    (mc.getSizeL Container)
+  )
+}
+{mc.getOpcode Container; ;
+  (c.getRange Container 48 16)
+}
+
+{mf.immI A; ; (mf.immF (< A 7))}
+{mf.immF A; ; (: A 16)}
+{mf.mul A B; ;
+  (: (> (*- (:- A 32) (:- B 32)) 7) 16)
+}
+{mf.ceil A; ; (> (+ A $7F) 7)}
+{mf.ceilISb A; ;
+  (c.convertISb (mf.ceil A) 10)
+}
+{mf.truncate A; ; (> (+ A $40) 7)}
+{mf.truncateISb A; ;
+  (c.convertISb (mf.truncate A) 10)
+}
+{mf.fraction2 A; ;
+  (?
+    (c.getSign A)
+    (' "-" (mf.fraction2.number (c.negate A)))
+    (mf.fraction2.number A)
+  )
+}
+{mf.fraction2.number A; ;
+  ('
+    (c.convertISb (> A 7) 10)
+    "."
+    (c.convertISb (> (mf.mul10 (: A 7)) 7) 10)
+    (c.convertISb
+      (> (mf.mul10 (: (mf.mul10 (: A 7)) 7)) 7)
+      10
+    )
+  )
+}
+{mf.mul10 A; ; (< (+ (: A 10) (< A 2)) 1)}
+
+{ms.getSizeSb Content; ;
+  (ms.getSizeSb.loop
+    Content
+    ('
+      (mf.immI 0)
+      (mf.immI 0)
+      (mf.immI 0)
+      (: (c.getLengthSx Content) 16)
+    )
+  )
+}
+{ms.getSizeSb.loop Content 16 Condition; ;
+  (?
+    (== (: Condition 16) 1)
+    (ms.horizontal
+      (c.getRange Condition 16 48)
+      (ms.getSizeCharacter
+        (?
+          (== (c.getRange Content 10 6) %110111)
+          (|
+            (' (> Condition 64) (: Content 10))
+            $10000
+          )
+          Content
+        )
+      )
+    )
+    (c.empty)
+  );
+  ('
+    (?
+      (== (c.getRange Content 10 6) %110110)
+      (: Content 10)
+      (c.empty)
+    )
+    (ms.horizontal
+      (c.getRange Condition 16 48)
+      (?
+        (== (c.getRange Content 10 6) %110110)
+        0
+        (ms.getSizeCharacter
+          (?
+            (== (c.getRange Content 10 6) %110111)
+            (|
+              (' (> Condition 64) (: Content 10))
+              $10000
+            )
+            Content
+          )
+        )
+      )
+    )
+    (- (: Condition 16) 1)
+  )
+}
+{ms.getSizeCharacter Character; ;
+  (: (ms.getSizeCharacter.loop (mi.sizeList) Character) 48)
+}
+{ms.getSizeCharacter.loop List 128 Character; ;
+  (?
+    (== (> List 96) Character)
+    ('
+      (c.getRange List 80 16)
+      (: List 16)
+      (c.negate (c.getRange List 32 16))
+    )
+    (c.empty)
+  )
+}
+{ms.horizontal A B; ;
+  ('
+    (+ (ms.getX A) (ms.getX B))
+    (mz.max- (ms.getH A) (ms.getH B))
+    (mz.max- (ms.getL A) (ms.getL B))
+  )
+}
+{ms.scale Size Scale; ;
+  (ms.mul Size (ms.coefficient Scale))
+}
+{ms.mul Size 16 Coefficient; ;
+  (mf.mul Size Coefficient)
+}
+{ms.coefficient Scale; ;
+  (c.getRange
+    (ms.coefficient.list)
+    (< Scale 4)
+    16
+  )
+}
+{ms.coefficient.list; ;
+  ('
+    (mf.immF $36)
+    (mf.immF $48)
+    (mf.immF $60)
+    (mf.immF $80)
+  )
+}
+{ms.getX A; ; (c.getRange A 32 16)}
+{ms.getH A; ; (c.getRange A 16 16)}
+{ms.getL A; ; (: A 16)}
+{ms.getY A; ; (+ (ms.getH A) (ms.getL A))}
+{ms.basic Coefficient Scale; ;
+  (ms.scale (mf.immI (< Coefficient 1)) Scale)
+}
+
+{me.replace Character; ;
+  (me.replace.select
+    (me.replace.loop (mi.replaceList) Character)
+    Character
+  )
+}
+{me.replace.loop List 48 Character; ;
+  (?
+    (== (> List 32) Character)
+    (?
+      (c.getRange List 16 16)
+      ('
+        (: %110110 6)
+        (- (c.getRange List 10 10) $40)
+        (: %110111 6)
+        (: List 10)
+      )
+      (: List 16)
+    )
+    (c.empty)
+  )
+}
+{me.replace.select Result Original; ;
+  (? (# Result) Result Original)
+}
+
+{mp.convert Position ; ;
+  (: (mp.convert.loop Position) 16)
+}
+{mp.convert.loop Position 16; ;
+  (+ (: Position 4) 1)
+}
+{mp.calculate Position Center List; ;
+  (mp.calculate.recursion
+    Position
+    List
+    (mc.getSizeX Center)
+    (mc.getSizeH Center)
+    (mc.getSizeL Center)
+    (mf.immI 0)
+    (mf.immI 0)
+    (mc.getSizeH Center)
+    (mc.getSizeL Center)
+  )
+}
+{mp.calculate.recursion Position List CenterX CenterH CenterL WidthL WidthR HeightH HeightL; ;
+  (?
+    Position
+    (mp.calculate.recursion
+      (> Position 4)
+      (mc.getRestElementList List)
+      CenterX CenterH CenterL
+      (?
+        (&
+          (>= (: Position 4) 4)
+          (<= (: Position 4) 7)
+        )
+        (c.max
+          (mc.getSizeX (mc.getFirstElement List))
+          WidthL
+        )
+        (?
+          (|
+            (== (: Position 4) 3)
+            (== (: Position 4) 8)
+          )
+          (mz.max-
+            (mf.mul
+              (-
+                (mp.calculate.scaleX List)
+                CenterX
+              )
+              (mf.immF $0040)
+            )
+            WidthL
+          )
+          WidthL
+        )
+      )
+      (?
+        (|
+          (== (: Position 4) 1)
+          (== (: Position 4) 2)
+          (== (: Position 4) 9)
+          (== (: Position 4) 10)
+        )
+        (c.max
+          (mc.getSizeX (mc.getFirstElement List))
+          WidthR
+        )
+        (?
+          (|
+            (== (: Position 4) 3)
+            (== (: Position 4) 8)
+          )
+          (mz.max-
+            (mf.mul
+              (-
+                CenterX
+                (mp.calculate.scaleX List)
+              )
+              (mf.immF $0060)
+            )
+            WidthR
+          )
+          WidthR
+        )
+      )
+      (?
+        (<= (: Position 4) 5)
+        (?
+          (== (: Position 4) 3)
+          (mz.max-
+            (+
+              (mp.calculate.scaleY List)
+              CenterH
+              (ms.basic 1 0)
+            )
+            HeightH
+          )
+          (?
+            (|
+              (== (: Position 4) 2)
+              (== (: Position 4) 4)
+            )
+            (mz.max-
+              (mz.max-
+                (+
+                  (mf.mul
+                    (- CenterH CenterL)
+                    (mf.immF $40)
+                  )
+                  (mp.calculate.scaleY List)
+                  (ms.basic 1 0)
+                )
+                (+
+                  CenterH
+                  (mp.calculate.scaleH List)
+                )
+              )
+              HeightH
+            )
+            (mz.max-
+              (+
+                (mf.mul
+                  (- CenterH CenterL)
+                  (mf.immF $40)
+                )
+                (mp.calculate.scaleY List)
+                (ms.basic 1 0)
+              )
+              HeightH
+            )
+          )
+        )
+        HeightH
+      )
+      (?
+        (>= (: Position 4) 6)
+        (?
+          (== (: Position 4) 8)
+          (mz.max-
+            (+
+              (mp.calculate.scaleY List)
+              CenterL
+              (ms.basic 1 0)
+            )
+            HeightL
+          )
+          (?
+            (|
+              (== (: Position 4) 7)
+              (== (: Position 4) 9)
+            )
+            (mz.max-
+              (mp.calculate.scaleY List)
+              HeightL
+            )
+            (mz.max-
+              (+
+                (mf.mul
+                  (- CenterL CenterH)
+                  (mf.immF $40)
+                )
+                (mp.calculate.scaleY List)
+                (ms.basic 1 0)
+              )
+              HeightL
+            )
+          )
+        )
+        HeightL
+      )
+    )
+    ('
+      WidthL
+      CenterX
+      CenterH
+      CenterL
+      (+ WidthL CenterX WidthR)
+      HeightH
+      HeightL
+    )
+  )
+}
+{mp.calculate.scaleX List; ;
+  (ms.scale
+    (mc.getSizeX (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleH List; ;
+  (ms.scale
+    (mc.getSizeH (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleL List; ;
+  (ms.scale
+    (mc.getSizeL (mc.getFirstElement List))
+    1
+  )
+}
+{mp.calculate.scaleY List; ;
+  (ms.scale
+    (mc.getSizeY (mc.getFirstElement List))
+    1
+  )
+}
+
+{mz.max- A B; ;
+  (? (>=- (:- A (+ (# A) 1)) B) A B)
+}

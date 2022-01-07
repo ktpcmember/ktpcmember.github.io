@@ -1,0 +1,48 @@
+
+{hp.path; ; "le/vlrfsasm/function/function.html"}
+
+{hi.definition.vlra.txt; ; (he.escape (c.convertS8Sb (definition.vlra.txt)))}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "関数 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousSectionPath; ; "../grammar/grammar.html"}
+{hm.previousSectionName; ; "文法"}
+{hm.nextSectionPath; ; "../builtin/builtin.html"}
+{hm.nextSectionName; ; "組み込み関数"}
+
+{hc.content; ;
+  ('
+    (hc.articleCa
+      "概要"
+      (ht.summary.caption)
+      (hc.section "エラーについて" (ht.summary.error))
+    )
+    (hc.articleCa
+      "定義"
+      (ht.definition.caption)
+      ('
+        (hc.section "名前" (ht.definition.name))
+        (hc.section "引数" (ht.definition.argument))
+        (hc.section "返り値" (ht.definition.return))
+        (hc.section "構文" (ht.definition.syntax))
+        (hc.section "定義位置" (ht.definition.position))
+      )
+    )
+    (hc.articleCa
+      "出力関数"
+      (ht.output.caption)
+      ('
+        (hc.section "名前" (ht.output.name))
+        (hc.section "用法" (ht.output.usage))
+      )
+    )
+  )
+}
+
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}

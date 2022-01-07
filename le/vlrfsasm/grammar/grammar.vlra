@@ -1,0 +1,56 @@
+
+{hp.path; ; "le/vlrfsasm/grammar/grammar.html"}
+
+{hi.character.txt; ; (c.convertS8Sb (character.txt))}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "文法 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousSectionPath; ; "../setup/setup.html"}
+{hm.previousSectionName; ; "準備"}
+{hm.nextSectionPath; ; "../function/function.html"}
+{hm.nextSectionName; ; "関数"}
+
+{hc.content; ;
+  ('
+    (hc.articleCa
+      "概要"
+      (ht.summary.caption)
+      (hc.section "前章の内容について" (ht.summary.previousChapter))
+    )
+    (hc.articleCa
+      "値"
+      (ht.value.caption)
+      ('
+        (hc.section "値の実体" (ht.value.body))
+        (hc.section "値の幅" (ht.value.width))
+      )
+    )
+    (hc.articleCa
+      "構文"
+      (ht.syntax.caption)
+      ('
+        (hc.section "文字" (ht.syntax.character))
+        (hc.section "符" (ht.syntax.token))
+        (hc.section "コメント" (ht.syntax.comment))
+      )
+    )
+    (hc.articleCa
+      "リテラル"
+      (ht.literal.caption)
+      ('
+        (hc.section "数値リテラル" (ht.literal.numeral))
+        (hc.section "基数接頭辞" (ht.literal.prefix))
+        (hc.section "文字列リテラル" (ht.literal.string))
+        (hc.section "エスケープシーケンス" (ht.literal.escape))
+      )
+    )
+  )
+}
+
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
