@@ -1,0 +1,6 @@
+
+{.; ; (funcA)}
+
+{funcA; ; (funcB 1234)}
+
+{funcB X: ; (c.convertSbS8 (c.convertISb X 10))}
