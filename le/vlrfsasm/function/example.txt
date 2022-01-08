@@ -1,6 +1,9 @@
-
 {.; ; (funcA)}
-
 {funcA; ; (funcB 1234)}
-
-{funcB X: ; (c.convertSbS8 (c.convertISb X 10))}
+{funcB X; ;
+  [?r;rRed;UTF-16BEからUTF-8への変換;UTF-8への変換関数]
+  (c.convertSbS8
+    [?r;rBlue;非負整数を10進文字列に変換;文字列への変換関数]
+    (c.convertISb X 10)[?e]
+  )[?e]
+}
