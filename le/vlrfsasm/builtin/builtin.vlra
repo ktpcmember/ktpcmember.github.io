@@ -1,0 +1,80 @@
+
+{hp.path; ; "le/vlrfsasm/builtin/builtin.html"}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "組み込み関数 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousSectionPath; ; "../function/function.html"}
+{hm.previousSectionName; ; "関数"}
+{hm.nextSectionPath; ; "../library/library.html"}
+{hm.nextSectionName; ; "ライブラリ"}
+
+{hc.content; ;
+  ('
+    (hc.articleCa
+      "概要"
+      (ht.summary.caption)
+    )
+    (hc.articleCa
+      "幅取得関数"
+      (ht.size.caption)
+      ('
+        (hc.section "引数" (ht.size.argument))
+        (hc.section "返り値" (ht.size.return))
+      )
+    )
+    (hc.articleCa
+      "連接関数"
+      (ht.concatenate.caption)
+      ('
+        (hc.section "用法" (ht.concatenate.usage))
+      )
+    )
+    (hc.articleCa
+      "範囲操作関数群"
+      (ht.range.caption)
+      ('
+        (hc.section "引数" (ht.range.argument))
+        (hc.section "幅変更関数" (ht.range.resize))
+        (hc.section "左シフト関数" (ht.range.leftShift))
+        (hc.section "右シフト関数" (ht.range.rightShift))
+      )
+    )
+    (hc.articleCa
+      "演算関数群"
+      (ht.calculate.caption)
+      ('
+        (hc.section "ビット否定関数" (ht.calculate.not))
+        (hc.section "加算関数" (ht.calculate.add))
+        (hc.section "ビット積関数" (ht.calculate.and))
+        (hc.section "ビット和関数" (ht.calculate.or))
+        (hc.section "排他的ビット和関数" (ht.calculate.xor))
+      )
+    )
+    (hc.articleCa
+      "選択関数"
+      (ht.select.caption)
+      ('
+        (hc.section "引数" (ht.select.argument))
+        (hc.section "動作" (ht.select.action))
+      )
+    )
+    (hc.articleCa
+      "エラー関数"
+      (ht.error.caption)
+      (hc.section "文字コード" (ht.error.code))
+    )
+    (ht.articleCa
+      "その他"
+      (ht.other.caption)
+      (ht.section "理由" (ht.other.reason))
+    )
+  )
+}
+
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
