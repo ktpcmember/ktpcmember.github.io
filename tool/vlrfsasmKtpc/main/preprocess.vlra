@@ -159,7 +159,14 @@
       )
       ('
         (p.getToken B)
-        (? (!= A "`") A (c.empty))
+        (?
+          (|
+            (!= A "`")
+            (== (p.getCondition B) 5)
+          )
+          A
+          (c.empty)
+        )
       )
       (c.empty)
     )

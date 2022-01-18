@@ -18,6 +18,7 @@
     (hc.articleCa
       "概要"
       (ht.summary.caption)
+      (c.empty)
     )
     (hc.articleCa
       "幅取得関数"
