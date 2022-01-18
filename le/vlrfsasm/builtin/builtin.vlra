@@ -72,7 +72,7 @@
     (ht.articleCa
       "その他"
       (ht.other.caption)
-      (ht.section "理由" (ht.other.reason))
+      (hc.section "理由" (ht.other.reason))
     )
   )
 }
