@@ -69,7 +69,7 @@
       (ht.error.caption)
       (hc.section "文字コード" (ht.error.code))
     )
-    (ht.articleCa
+    (hc.articleCa
       "その他"
       (ht.other.caption)
       (hc.section "理由" (ht.other.reason))
