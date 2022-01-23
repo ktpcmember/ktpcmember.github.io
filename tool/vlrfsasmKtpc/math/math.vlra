@@ -435,7 +435,7 @@
           (== (: Position 4) 10)
         )
         (c.max
-          (mc.getSizeX (mc.getFirstElement List))
+          (mp.calculate.scaleX List)
           WidthR
         )
         (?
