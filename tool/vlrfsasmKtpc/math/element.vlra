@@ -188,7 +188,9 @@
       (hb.attribute
         "height"
         ('
-          (mf.ceilISb (mc.getSizeY Content))
+          (mf.ceilISb
+            (+ (mc.getSizeY Content) (mf.immI 1))
+          )
           "px"
         )
       )
@@ -197,7 +199,9 @@
           "0 0 "
           (mf.ceilISb (mc.getSizeX Content))
           " "
-          (mf.ceilISb (mc.getSizeY Content))
+          (mf.ceilISb
+            (+ (mc.getSizeY Content) (mf.immI 1))
+          )
         )
       )
       (hb.attribute "xmlns" "http://www.w3.org/2000/svg")
@@ -208,7 +212,7 @@
       Content
       ('
         (mf.immI 0)
-        (mc.getSizeH Content)
+        (+ (mc.getSizeH Content) (mf.immI 1))
       )
       (: 0 8)
     )

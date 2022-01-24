@@ -1,0 +1,38 @@
+
+{hp.path; ; "le/vlrfsasm/library/library.html"}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "ライブラリ - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousSectionPath; ; "../builtin/builtin.html"}
+{hm.previousSectionName; ; "組み込み関数"}
+{hm.nextSectionPath; ; "../loop/loop.html"}
+{hm.nextSectionName; ; "ループ"}
+
+{hc.content; ;
+  ('
+    (hc.title "Vlrfsasm講習/ライブラリ")
+    (hc.articleCa
+      "概要"
+      (ht.summary.caption)
+      (c.empty)
+    )
+    (hc.articleCa
+      "ライブラリ"
+      (ht.library.caption)
+      ('
+        (hc.section "読み込み" (ht.library.include))
+        (hc.section "目的" (ht.library.purpose))
+        (hc.section "接頭辞" (ht.library.prefix))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
