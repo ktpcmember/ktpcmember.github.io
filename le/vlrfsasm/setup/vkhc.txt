@@ -14,7 +14,7 @@ ht.tool.caption
 必要なアプリと、その導入方法とを紹介します。
 
 ht.tool.download
-まず、Vlrfsasmを導入します。[l;Githubで公開;https://github.com/vlrfsg/vlrfsasm]しているので、[l;このリンク;https://github.com/vlrfsg/vlrfsasm/releases/download/v0.7.1/Vlrfsasm_v0.7.1.zip]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[P;Vlrfsasm_v0.7]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[P;assembler]と改名しておいてください。
+まず、Vlrfsasmを導入します。[l;Githubで公開;https://github.com/vlrfsg/vlrfsasm]しているので、[l;このリンク;https://github.com/vlrfsg/vlrfsasm/releases/download/v1.0/Vlrfsasm_v1.0.zip]からダウンロードし、zipファイルを基点フォルダ内に解凍してください。解凍されたフォルダは[P;Vlrfsasm_v1.0]という名前になりますが、このままではアップデート毎に変えなくてはならないので、[P;assembler]と改名しておいてください。
 
 ht.tool.batFile
 次に、バッチファイルを作ります。メモ帳などのテキストエディタを起動し、以下の内容をコピーして貼り付けてください。
