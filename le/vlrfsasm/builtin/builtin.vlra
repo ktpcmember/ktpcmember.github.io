@@ -72,11 +72,13 @@
     (hc.articleCa
       "ラベル関数群"
       (ht.label.caption)
-      (hc.section "種類" (ht.label.kind))
-      (hc.section "制限" (ht.label.restriction))
-      (hc.section "ステップ" (ht.label.step))
-      (hc.section "ラベル貼付関数" (ht.label.attach))
-      (hc.section "アドレス取得関数" (ht.label.getAddress))
+      ('
+        (hc.section "種類" (ht.label.kind))
+        (hc.section "制限" (ht.label.restriction))
+        (hc.section "ステップ" (ht.label.step))
+        (hc.section "ラベル貼付関数" (ht.label.attach))
+        (hc.section "アドレス取得関数" (ht.label.getAddress))
+      )
     )
   )
 }
