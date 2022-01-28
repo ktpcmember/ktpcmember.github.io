@@ -21,6 +21,11 @@
       (c.empty)
     )
     (hc.articleCa
+      "各部の作用"
+      (ht.part.caption)
+      (c.empty)
+    )
+    (hc.articleCa
       "経緯"
       (ht.background.caption)
       ('
