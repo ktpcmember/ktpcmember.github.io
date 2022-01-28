@@ -32,7 +32,7 @@ ht.list.main
 ;[l;エラー;error/error.html]
 
 ht.list.hp
-]]tXC;[l;仕組み;system/system.html]
+]]tXC;[l;仕組み;structure/structure.html]
 ;[l;設定;configuration/configuration.html]
 ;[l;本文;body/body.html]
 ;[l;表;table/table.html]
