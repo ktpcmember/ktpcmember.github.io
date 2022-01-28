@@ -13,6 +13,7 @@
 
 table {
   padding: 0;
+  width: max-content;
   border-left: solid 1px #808080;
   border-top: solid 1px #808080;
   border-collapse: collapse;
@@ -264,7 +265,7 @@ td {
 }
 
 .cTableBack {
-  width: calc(100% - 1em);
+  max-width: calc(100% - 1em);
   overflow: auto;
 }
 
@@ -292,7 +293,7 @@ td {
   margin: 0.5em auto;
   border: none;
   outline: none;
-  background-color: #FAF8F8;
+  background-color: #F8FAFC;
 }
 
 .cCodeMenuTitle {
@@ -322,7 +323,7 @@ td {
 }
 
 .cCodeMenuButton:hover, .cCodeMenuButton:active {
-  background-color: #F4F0F0;
+  background-color: #F0F2F4;
   border-top: solid 1px #404040;
   border-bottom: solid 1px #404040;
 }
@@ -347,7 +348,7 @@ td {
     background-color: #C0E0F0;
   }
   to {
-    background-color: #FAF8F8;
+    background-color: #F8FAFC;
   }
 }
 
