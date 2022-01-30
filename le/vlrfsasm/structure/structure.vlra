@@ -23,7 +23,13 @@
     (hc.articleCa
       "各部の作用"
       (ht.part.caption)
-      (c.empty)
+      ('
+        (hc.section "実行" (ht.part.run))
+        (hc.section "前処理" (ht.part.preprocess))
+        (hc.section "HTML" (ht.part.html))
+        (hc.section "コード彩色" (ht.part.code))
+        (hc.section "数式" (ht.part.math))
+      )
     )
     (hc.articleCa
       "経緯"
