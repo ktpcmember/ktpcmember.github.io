@@ -1,0 +1,26 @@
+
+{.; ;
+  (c.convertSbS8
+    ('
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
+      (out
+        (c.convertS8Sb (sitemap.xml))
+        (c.empty)
+      )
+      "</urlset>"
+    )
+  )
+}
+
+{out A 16 B; ;
+  (?
+    (& (== A ",") (!= "404.html" B))
+    ('
+      "<url><loc>https://www.ktpc.tokyo/"
+      B
+      "</loc></url>"
+    )
+    (c.empty)
+  );
+  (? (== A ",") (c.empty) (' B A))
+}

@@ -38,6 +38,7 @@ ht.list.hp
 ;[l;表;table/table.html]
 ;[l;数式;math/math.html]
 ;[l;コード;code/code.html]
+;[l;GitHub actions;actions/actions.html]
 ;[l;前処理;preprocess/preprocess.html]
 ;[l;数式変換;mathConversion/mathConversion.html]
 ;[l;コード変換;codeConversion/codeConversion.html]
