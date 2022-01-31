@@ -47,8 +47,8 @@ jobs:
             )
             cd %repoRoot%
             set htmlList=
-            forfile /S /M *.html /C "set htmlList=%htmlList%,@relpath"
-            set sitemapPath=%toolPath%/sitemap
+            forfiles /S /M *.html /C "set htmlList=%htmlList%,@relpath"
+            set sitemapPath=%toolDir%/sitemap
             echo %htmlList%>%sitemapPath%/sitemap.txt
             call %sitemapPath%/sitemap.bat
             cd %tempDir%
