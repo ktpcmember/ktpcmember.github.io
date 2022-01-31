@@ -8,7 +8,7 @@ jobs:
     - name: update
       run: |
           set text=^<?xml version=^"1.0^" encoding=^"UTF-8^"?^>^<urlset xmlns=^"http://www.sitemaps.org/schemas/sitemap/0.9^"^>
-          forfiles /S /M *.html /C "if not @relpath == 404.html (set text=%text%^<url^>^<loc^>https://www.ktpc.tokyo/@relpath^</loc^>^</url^>)"
+          forfiles /S /M *.html /C "if not @relpath == 404.html (set text=%text%^^<url^^>^^<loc^^>https://www.ktpc.tokyo/@relpath^^</loc^^>^^</url^^>)"
           echo %text%
           echo %text:\=/%^<urlset^>>sitemap.xml
           git add .
