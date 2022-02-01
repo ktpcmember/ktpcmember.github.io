@@ -29,6 +29,7 @@
       ('
         (hc.section "フォルダ" (ht.file.folder))
         (hc.section "batファイル" (ht.file.bat))
+        (hc.section "本文ファイル" (ht.file.body))
       )
     )
   )
