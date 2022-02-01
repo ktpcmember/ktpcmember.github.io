@@ -47,7 +47,7 @@ jobs:
             )
             cd %repoRoot%
             set sitemapPath=%toolDir%/sitemap
-            (forfiles /S /M *.html /C "cmd /c @relpath#")>%sitemapPath%/sitemap.txt
+            (forfiles /S /M *.html /C "cmd /c echo @relpath")>%sitemapPath%/sitemap.txt
             call %sitemapPath%/sitemap.bat
             cd %tempDir%
             rmdir /s /q vlrfsasm
