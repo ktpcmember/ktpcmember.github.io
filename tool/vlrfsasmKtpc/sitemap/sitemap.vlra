@@ -17,7 +17,7 @@
 
 {out A 16 B; ;
   (?
-    (& (== A "\r") (!= "404.html" B))
+    (& (== A "\r") (!= "404.html" B) (!= (# B) 0))
     ('
       "<url><loc>https://www.ktpc.tokyo"
       (c.getRangeSx B 2 (- (c.getLengthSx B) 3))
