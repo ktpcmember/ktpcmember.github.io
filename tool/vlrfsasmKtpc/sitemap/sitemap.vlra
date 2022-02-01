@@ -14,7 +14,7 @@
 
 {out A 16 B; ;
   (?
-    (& (== A ",") (!= "404.html" B))
+    (& (== A "#") (!= "404.html" B))
     ('
       "<url><loc>https://www.ktpc.tokyo/"
       B
@@ -22,5 +22,5 @@
     )
     (c.empty)
   );
-  (? (== A ",") (c.empty) (' B A))
+  (? (== A "#") (c.empty) (' B A))
 }
