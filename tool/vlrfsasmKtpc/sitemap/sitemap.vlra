@@ -5,7 +5,7 @@
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
       (out
         (c.regularizeNewLine
-          (c.convertS8Sb (sitemap.txt)
+          (c.convertS8Sb (sitemap.txt))
           "\r"
         )
         (c.empty)
@@ -19,11 +19,15 @@
   (?
     (& (== A "\r") (!= "404.html" B))
     ('
-      "<url><loc>https://www.ktpc.tokyo/"
-      B
+      "<url><loc>https://www.ktpc.tokyo"
+      (c.getRangeSx B 2 (- (c.getLengthSx B) 3))
       "</loc></url>"
     )
     (c.empty)
   );
-  (? (== A "\r") (c.empty) (' B A))
+  (?
+    (== A "\r")
+    (c.empty)
+    (' B (? (== A "\\") "/" A))
+  )
 }

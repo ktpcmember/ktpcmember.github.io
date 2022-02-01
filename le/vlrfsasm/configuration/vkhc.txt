@@ -5,3 +5,6 @@ ht.summary.caption
 ht.file.caption
 まずは、必要なファイルを準備しましょう。
 
+ht.file.folder
+フォルダーは、必ずページごとに作りましょう。ページのhtmlと同名がいいでしょう。
+例えば、[P;start/start.html]のようにします。
