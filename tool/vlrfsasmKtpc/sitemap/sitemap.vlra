@@ -4,7 +4,7 @@
     ('
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
       (out
-        (c.convertS8Sb (sitemap.xml))
+        (c.convertS8Sb (sitemap.txt))
         (c.empty)
       )
       "</urlset>"
