@@ -8,3 +8,8 @@ ht.file.caption
 ht.file.folder
 フォルダーは、必ずページごとに作りましょう。ページのhtmlと同名がいいでしょう。
 例えば、[P;start/start.html]のようにします。
+
+ht.file.bat
+作ったバッチフォルダ内に、[P;vc.bat]を作りましょう。中身は以下です。
+
+
