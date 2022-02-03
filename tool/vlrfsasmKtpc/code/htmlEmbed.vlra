@@ -49,7 +49,7 @@
             Language
             (c.regularizeNewLineSb
               (he.compile Code)
-              "\r\n"
+              "\r"
             )
             Even
           )
