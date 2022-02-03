@@ -9,7 +9,7 @@
 
 .cTableBack {
   margin: 0.5em;
-  width: calc(100% - 1em);
+  max-width: calc(100% - 1em);
 }
 
 .cCodeFrame {
