@@ -278,7 +278,8 @@
   )
 }
 {hm.linkElement Text Path; ;
-  (hb.tagACE "a" "hMenuLinkElement" (hb.attribute "href" Path)
+  (hb.tagACE "a" "hMenuLinkElement"
+    (hb.attribute "href" (hp.getRelativePath Path))
     (hb.tagCE "span" "hMenuLinkText" Text)
   )
 }

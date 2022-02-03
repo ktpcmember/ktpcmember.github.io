@@ -12,15 +12,18 @@
 /*Style for tag*/
 
 table {
+  margin: 0.5em;
   padding: 0;
   width: max-content;
   border-left: solid 1px #808080;
   border-top: solid 1px #808080;
   border-collapse: collapse;
+  background-color: #F4FAFF;
 }
 
 td {
   margin: 0;
+  padding: 0.2em;
   border-right: solid 1px #808080;
   border-bottom: solid 1px #808080;
 }
@@ -35,7 +38,7 @@ td {
   font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   background-color: #F8FAFA;
-  color: #081010;
+  color: #202020;
 }
 
 .hHeader {
@@ -43,7 +46,7 @@ td {
   margin: 0;
   padding: 0;
   display: flex;
-  background-color: #C0BEBE;
+  background-color: #F0F8F0;
 }
 
 .hBanner {
@@ -67,7 +70,7 @@ td {
   width: 100%;
   top: 0;
   position: sticky;
-  background-color: #1B366C;
+  background-color: #304050;
   z-index: 6;
 }
 
@@ -79,7 +82,7 @@ td {
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  background-color: #1C3870;
+  background-color: #203040;
 }
 
 .hMenuButton {
@@ -87,14 +90,14 @@ td {
   height: 100%;
   margin: 0;
   padding: 1% 0;
-  background-color: #1C3870;
+  background-color: #405060;
   border: none;
   outline: none;
   cursor: pointer;
 }
 
 .hMenuButton:hover, .hMenuButton:active {
-  background-color: #204080;
+  background-color: #182C30;
 }
 
 .hMenuButtonImage {
@@ -117,7 +120,7 @@ td {
   padding: 0.5% 0 0;
   display: flex;
   flex-flow: row wrap;
-  background-color: #405050;
+  background-color: #304050;
   border-radius: 0.5em;
 }
 
@@ -138,12 +141,12 @@ td {
   flex-grow: 1;
   color: #FFFFFF;
   text-decoration: none;
-  background-color: #3060C0;
+  background-color: #506070;
   border-radius: 0.5em;
 }
 
 .hMenuLinkElement:hover, .hMenuLinkElement:active {
-  background-color: #244890;
+  background-color: #203840;
 }
 
 .hMenuLinkText {
@@ -156,7 +159,7 @@ td {
   width: 100%;
   height: 100%;
   z-index: 5;
-  background-color: #102040;
+  background-color: #E1E4E0;
 }
 
 .hContentBack {
@@ -166,7 +169,7 @@ td {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #80B0D0;
+  background-color: #DCE0E0;/*#80B0D0;*/
   text-align: left;
 }
 
@@ -175,7 +178,7 @@ td {
 .hFooterSide {
   width: 100%;
   height: 6ex;
-  background-color: #1B366C;
+  background-color: #304050;
 }
 
 .hFooter {
@@ -185,7 +188,7 @@ td {
   padding: 0;
   display: flex;
   flex-direction: row;
-  background-color: #1C3870;
+  background-color: #405060;
 }
 
 .hFooterButton {
@@ -196,11 +199,11 @@ td {
   outline: none;
   cursor: pointer;
   display: none;
-  background-color: #1C3870;
+  background-color: #405060;
 }
 
 .hFooterButton:hover, .hFooterButton:active {
-  background-color: #204080;
+  background-color: #182C30;
 }
 
 .hFooterButtonImage {
@@ -219,7 +222,7 @@ td {
 .cArticle, .cPageTitleBack{
   margin: 1ex 1%;
   padding: 0.2em;
-  background-color: #F8FAFC;
+  background-color: #F8FCFC;
   border-radius: 0.5em;
 }
 
@@ -231,25 +234,25 @@ td {
 
 .cArticleTitle {
   margin: 0;
-  padding: 0.2em;
-  border-left: solid 4px #4080FF;
-  border-bottom: solid 1px #4080FF;
+  padding: 0.2em 0.5em;
+  border-left: solid 4px #607080;
+  border-bottom: solid 1px #607080;
 }
 
 .cSectionTitle {
   margin: 0;
-  padding: 0.1em;
-  border-left: solid 4px #4080FF;
+  padding: 0.1em 0.5em;
+  border-left: solid 4px #607080;
 }
 
 .cSection {
-  margin: 1em 0;
+  margin: 4ex 0;
 }
 
 .cP {
-  margin: 0.5em 0 0.5em 0.5em;
-  line-height: 1.5em;
-  color: #081020;
+  margin: 0.5em 2.0em;
+  line-height: 3ex;
+  color: #202020;
 }
 
 .cLink {
@@ -257,7 +260,7 @@ td {
 }
 
 .cLink:hover, .cLink:active {
-  background-color: #FFFCFC;
+  background-color: #F0F8FF;
 }
 
 .cSvg {
@@ -265,20 +268,26 @@ td {
 }
 
 .cTableBack {
-  max-width: calc(100% - 1em);
+  margin: 0.5em 2em;
+  max-width: calc(100% - 4em);
   overflow: auto;
+  border-radius: 0.3em;
+  background-color: #E8F0F8;
 }
 
 /*Code*/
 
 .cCodeFrame {
-  margin: 0.5em auto 0 0;
-  padding: 0 0.5em;
-  width: calc(100% - 1em);
+  margin: 0.5em 2em;
+  padding: 0 0.5em 0.5ex;
+  min-width: 50%;
+  max-width: calc(100% - 4em);
   display: flex;
   flex-direction: column;
-  border-left: solid 1px #000000;
-  border-right: solid 1px #000000;
+  /*border-left: solid 1px #202020;
+  border-right: solid 1px #202020;*/
+  border-radius: 0.3em;
+  background-color: #E0E8F0;
 }
 
 .cCodeMenu {
@@ -293,7 +302,7 @@ td {
   margin: 0.5em auto;
   border: none;
   outline: none;
-  background-color: #F8FAFC;
+  background-color: #F4FAFF;
 }
 
 .cCodeMenuTitle {
@@ -348,7 +357,7 @@ td {
     background-color: #C0E0F0;
   }
   to {
-    background-color: #F8FAFC;
+    background-color: #F2F2F2;
   }
 }
 
@@ -360,7 +369,7 @@ td {
 }
 
 .cCodeMulti {
-  margin: 0 auto;
+  margin: 0 auto 0 0;
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
@@ -370,7 +379,7 @@ td {
   border-radius: 0;
   border-top: solid 1px #000000;
   border-bottom: solid 1px #000000;
-  background-color: #F4F4F4;
+  background-color: #F8FAFE;
 }
 
 .cCodeContracted {
@@ -387,13 +396,13 @@ td {
 
 .qLine {
   margin: 0;
-  padding: 0.2ex 0;
+  padding: 0.3ex 0;
   width: 100%;
   text-align: left;
 }
 
 .qLineEven {
-  background-color: #ECEEEC;
+  background-color: #E8EAEE;
 }
 
 /*Common*/
@@ -419,15 +428,27 @@ td {
 }
 
 .qComRBlue {
-  border-left: solid 1px blue;
+  border-left: dotted 2px #40A0E0;
+}
+
+.qComMetaComment.qComRBlue {
+  background-color: #E8F8FF;
 }
 
 .qComRRed {
-  border-left: solid 1px red;
+  border-left: dotted 2px #E08080;
+}
+
+.qComMetaComment.qComRRed {
+  background-color: #FFF0F0;
 }
 
 .qComRGreen {
-  border-left: solid 1px green;
+  border-left: dotted 2px #60E040;
+}
+
+.qComMetaComment.qComRGreen {
+  background-color: #F8FFE8;
 }
 
 /*Vlrfsasm*/

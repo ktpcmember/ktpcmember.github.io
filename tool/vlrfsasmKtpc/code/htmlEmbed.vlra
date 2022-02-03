@@ -125,8 +125,8 @@
         [Region data:{8:background style, 8:offset}]
         (: 0 8) [Region count]
         (qt.Empty) [Current token type]
-        (: 0 8) [Codepoint count in line at initial point in token]
-        (: 0 8) [Codepoint count in line]
+        (: 1 8) [Codepoint count in line at initial point in token]
+        (: 1 8) [Codepoint count in line]
         (: 0 16) [Line count]
         (: 0 16) [empty]
         (: (c.getLengthSx Code) 32) [Count]
@@ -280,8 +280,8 @@
   (c.getRange A 88 8)
 }
 {qh.encode L A B C Co; ;
-  (?
-    (c.getLengthSx A)
+  [(?
+    (c.getLengthSx A)]
     (?
       (>= C (qt.MetaMinimum))
       (qh.meta
@@ -305,8 +305,8 @@
         (& (c.getBit B 48) Co)
       )
     )
-    (c.empty)
-  )
+  [  (c.empty)
+  )]
 }
 {qh.meta L A B C D E; ;
   ('

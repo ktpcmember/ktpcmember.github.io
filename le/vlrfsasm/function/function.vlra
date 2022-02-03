@@ -2,7 +2,7 @@
 {hp.path; ; "le/vlrfsasm/function/function.html"}
 
 {hi.definition.vlra.txt; ; (he.escape (c.convertS8Sb (definition.vlra.txt)))}
-{hi.example.txt; ; (he.escape (c.convertS8Sb (example.txt)))}
+{hi.example.vlra.txt; ; (he.escape (c.convertS8Sb (example.vlra.txt)))}
 
 {hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
