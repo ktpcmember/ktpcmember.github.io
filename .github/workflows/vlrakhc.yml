@@ -44,6 +44,7 @@ jobs:
                   call vc.bat
                 )
               )
+              cd %repoRoot%
             )
             cd %repoRoot%
             set sitemapPath=%toolDir%/sitemap
