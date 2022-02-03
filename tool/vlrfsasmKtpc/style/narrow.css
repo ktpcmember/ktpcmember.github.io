@@ -4,5 +4,15 @@
 }
 
 .cP {
-  margin: 0.5em 0 0.5em 0.5em;
+  margin: 0.5em;
+}
+
+.cTableBack {
+  margin: 0.5em;
+  width: calc(100% - 1em);
+}
+
+.cCodeFrame {
+  margin: 0.5em;
+  max-width: calc(100% - 1em);
 }
