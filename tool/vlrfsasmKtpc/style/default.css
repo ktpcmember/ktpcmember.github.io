@@ -373,7 +373,7 @@ td {
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
-  width: calc(100% - 1em);
+  width: 100%;
   display: flex;
 }
 
@@ -401,7 +401,7 @@ td {
 }
 
 .cCodeOlNumber {
-  padding-left: 2em;
+  padding-left: 3em;
   list-style-type: decimal;
 }
 
