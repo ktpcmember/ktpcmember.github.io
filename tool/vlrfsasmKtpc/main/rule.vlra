@@ -443,11 +443,11 @@
 {hx.uGreen A; ; (hx.S "xUnderlineGreen" A)}
 
 {hx.c A; ; (qh.single "c" A)}
-{hx.cMT A B; ; (qh.multi "c" A B 1)}
+{hx.cMT A B; ; (qh.multi "c" A B 7)}
 {hx.P A; ; (qh.single "pa" A)}
-{hx.PMT A B; ; (qh.multi "pa" A B 1)}
+{hx.PMT A B; ; (qh.multi "pa" A B 7)}
 {hx.v A; ; (qh.single "v" A)}
-{hx.vMT A B; ; (qh.multi "v" A B 1)}
+{hx.vMT A B; ; (qh.multi "v" A B 7)}
 {hx.qBatMT A B; ; (hx.PMT A B)} [For the time being]
 {hx.T A; ; (hx.P A)}
 {hx.TMT A B; ; (hx.PMT A B)} [For the time being]
