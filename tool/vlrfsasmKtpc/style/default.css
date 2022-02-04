@@ -390,24 +390,25 @@ td {
 }
 
 .cCodeContracted {
-  max-height: 8ex;
+  max-height: 100px;
 }
 
 .cCodeOl {
   margin: 0;
   padding: 0;
   width: 100%;
+  box-sizing: border-box;
   min-width: max-content;
 }
 
 .cCodeOlNumber {
-  padding-left: 3em;
+  padding-left: 2.8em;
   list-style-type: decimal;
 }
 
 .qLine {
   margin: 0;
-  padding: 0.3ex 0;
+  padding: 2px 0;
   width: 100%;
   min-height: 2ex;
   text-align: left;
