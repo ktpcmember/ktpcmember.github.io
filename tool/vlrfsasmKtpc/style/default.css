@@ -373,8 +373,14 @@ td {
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
+  display: flex;
+}
+
+.cCodePre {
+  margin: 0;
   width: max-content;
   max-width: 100%;
+  flex-grow: 1;
   overflow: auto;
   border-radius: 0;
   border-top: solid 1px #000000;
@@ -383,21 +389,25 @@ td {
 }
 
 .cCodeContracted {
-  max-height: 80px;
+  max-height: 8ex;
 }
 
-.cCodePre {
+.cCodeOl {
   margin: 0;
   padding: 0;
-  width: max-content;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  min-width: max-content;
+}
+
+.cCodeOlNumber {
+  list-style-type: decimal;
 }
 
 .qLine {
   margin: 0;
   padding: 0.3ex 0;
   width: 100%;
+  min-height: 2ex;
   text-align: left;
 }
 

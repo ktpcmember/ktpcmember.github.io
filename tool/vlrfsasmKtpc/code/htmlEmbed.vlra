@@ -14,7 +14,7 @@
   )
 }
 
-{qh.multi Language Title Code Even; ;
+{qh.multi Language Title Code Extension; ;
   (hb.tagCE
     "div"
     "cCodeFrame"
@@ -25,7 +25,12 @@
         ('
           (hb.tagCE "span" "cCodeMenuTitle" Title)
           (?
-            (>= (c.getNumberOfSx Code "\r") 4)
+            (&
+              (>= (c.getNumberOfSx Code "\r") 4)
+              (qh.multi.getFlag
+                Extension
+                (qh.multi.contract)
+              )
             (qh.expandButton)
             (c.empty)
           )
@@ -37,7 +42,13 @@
         (hb.concatenateClass
           "cCodeMulti"
           (?
-            (>= (c.getNumberOfSx Code "\r") 4)
+            (&
+              (>= (c.getNumberOfSx Code "\r") 4)
+              (qh.multi.getFlag
+                Extension
+                (qh.multi.contract)
+              )
+            )
             "cCodeContracted"
             (c.empty)
           )
@@ -45,19 +56,41 @@
         (hb.tagCE
           "pre"
           "cCodePre"
-          (qh.convert
-            Language
-            (c.regularizeNewLineSb
-              (he.compile Code)
-              "\r"
+          (hb.tagCE
+            "ol"
+            (hb.concatenateClass
+              "cCodeOl"
+              (?
+                (qh.multi.getFlag
+                  Extension
+                  (qh.multi.number)
+                )
+                "cCodeOlNumber"
+                (c.empty)
+              )
             )
-            Even
+            (qh.convert
+              Language
+              (c.regularizeNewLineSb
+                (he.compile Code)
+                "\r"
+              )
+              (qh.multi.getFlag
+                Extension
+                (qh.multi.color)
+              )
+            )
           )
         )
       )
     )
   )
 }
+{qh.multi.none; ; 0}
+{qh.multi.color; ; 1}
+{qh.multi.number; ; 2}
+{qh.multi.contract; ; 4}
+{qh.multi.getFlag A B; ; (!= (& A B) 0)}
 
 {qh.expandButton; ;
   ('
@@ -115,7 +148,7 @@
 
 {qh.convert Language Code Even; ;
   ('
-    "<span class=\"qLine\">"
+    "<li class=\"qLine\">"
     (qh.generate
       Code
       Language
@@ -132,7 +165,7 @@
         (: (c.getLengthSx Code) 32) [Count]
       )
     )
-    "</span>"
+    "</li>"
   )
 }
 
@@ -302,7 +335,14 @@
           )
         )
         A
-        (& (c.getBit B 48) Co)
+        (&
+          (^
+            (c.getBit B 48)
+            (c.getNumberOfSx A "\r")
+            1
+          )
+          Co
+        )
       )
     )
   [  (c.empty)
@@ -421,10 +461,11 @@
   (hb.tagCE
     "span"
     A
+    (qh.splitLine B C)
     (c.regularizeNewLineSb
       B
       ('
-        "</span></span><span class=\""
+        "</span></li><li class=\""
         (hb.concatenateClass
           "qLine"
           (? C "qLineEven" (c.empty))
@@ -435,4 +476,21 @@
       )
     )
   )
+}
+{qh.splitLine.loop A 16 B; ;
+  (?
+    (== A "\r")
+    ('
+      "</span></li><li class=\""
+      (hb.concatenateClass
+        "qLine"
+        (? B "qLineEven" (c.empty))
+      )
+      "\"><span class=\""
+      A
+      "\">"
+    )
+    A
+  );
+  (^ B (== A "\r"))
 }
