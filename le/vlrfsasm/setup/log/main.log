@@ -1,4 +1,13 @@
-Vlrfsasm v1.0 2022-02-04 00:28
+Vlrfsasm v1.0 2022-02-04 00:37
   7:Wrong number of argument
-   D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :27
+  qh.splitLine D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :465
+  qh.splitLine D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :329
+  qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :212
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :153
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :6
+  qh.single D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :447
+  hx.P D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :4
+  ht.folder.createBaseFolder D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :32
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
