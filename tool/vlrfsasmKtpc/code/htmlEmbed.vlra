@@ -462,7 +462,7 @@
   (hb.tagCE
     "span"
     A
-    (qh.splitLine B C)
+    (qh.splitLine.loop B C)
     (c.regularizeNewLineSb
       B
       ('
