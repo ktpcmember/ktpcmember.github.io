@@ -25,7 +25,7 @@
     (hc.articleCa
       "概要"
       (ht.summary.caption)
-      (ht.loop (: (qwc.list) 1024))
+      (ht.loop (c.convertISb (# (qwc.list)) 16))
     )
     (hc.articleCa
       "フォルダ"
