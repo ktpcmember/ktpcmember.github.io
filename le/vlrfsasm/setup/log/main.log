@@ -1,6 +1,6 @@
-Vlrfsasm v1.0 2022-02-04 00:37
+Vlrfsasm v1.0 2022-02-04 00:44
   7:Wrong number of argument
-  qh.splitLine D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :465
+  hb.tagCE D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :462
   qh.splitLine D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :329
   qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :212
   qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :153
