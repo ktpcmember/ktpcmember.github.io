@@ -1,4 +1,15 @@
-Vlrfsasm v1.0 2022-02-04 13:36
-  8:Unpaired bracket
-   D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :23
+Vlrfsasm v1.0 2022-02-04 13:41
+  13:Error in script
+  ~ def\common.vlra :414
+  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\commonRule.vlra :163
+  qs.search D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :337
+  qh.encode D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :199
+  qh.generate D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :160
+  qh.convert D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\code\htmlEmbed.vlra :73
+  qh.multi D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :446
+  hx.cMT D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\temp\textContent.vlra :16
+  ht.helloWorld.test D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\setup\setup.vlra :59
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
+  Style for token type 0 not found
