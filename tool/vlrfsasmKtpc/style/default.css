@@ -373,6 +373,7 @@ td {
   padding: 0;
   text-align: left;
   font-family: 'Inconsolata', monospace;
+  width: calc(100% - 1em);
   display: flex;
 }
 

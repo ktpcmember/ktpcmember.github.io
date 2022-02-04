@@ -76,9 +76,12 @@
                 (he.compile Code)
                 "\r"
               )
-              (qh.multi.getFlag
-                Extension
-                (qh.multi.color)
+              (|
+                2
+                (qh.multi.getFlag
+                  Extension
+                  (qh.multi.color)
+                )
               )
             )
           )
@@ -147,13 +150,17 @@
   )
 }
 
-{qh.convert Language Code Even; ;
+{qh.convert Language Code Co; ;
   ('
-    "<li class=\"qLine\">"
+    (?
+      (c.getBit Co 1)
+      "<li class=\"qLine\">"
+      (c.empty)
+    )
     (qh.generate
       Code
       Language
-      (: Even 1)
+      (: Co 2)
       ('
         [Token string]
         [Region data:{8:background style, 8:offset}]
@@ -166,7 +173,7 @@
         (: (c.getLengthSx Code) 32) [Count]
       )
     )
-    "</li>"
+    (? (c.getBit Co 1) "</li>" (c.empty))
   )
 }
 
@@ -344,6 +351,7 @@
           )
           Co
         )
+        (c.getBit Co 1)
       )
     )
   [  (c.empty)
@@ -458,18 +466,22 @@
     (c.empty)
   )
 }
-{qh.splitLine A B C; ;
+{qh.splitLine A B C D; ;
   (hb.tagCE
     "span"
     A
-    (qh.splitLine.loop B C)
+    (qh.splitLine.loop B C D)
   )
 }
-{qh.splitLine.loop A 16 B; ;
+{qh.splitLine.loop A 16 B C; ;
   (?
     (== A "\r")
     ('
-      "</span></li><li class=\""
+      (?
+        C
+        "</span></li><li class=\""
+        "</span></span><span class=\""
+      )
       (hb.concatenateClass
         "qLine"
         (? B "qLineEven" (c.empty))
