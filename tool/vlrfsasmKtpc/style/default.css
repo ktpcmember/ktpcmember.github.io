@@ -401,6 +401,7 @@ td {
 }
 
 .cCodeOlNumber {
+  padding-left: 2em;
   list-style-type: decimal;
 }
 
