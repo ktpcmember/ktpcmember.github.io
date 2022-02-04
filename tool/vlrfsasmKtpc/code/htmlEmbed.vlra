@@ -463,19 +463,6 @@
     "span"
     A
     (qh.splitLine.loop B C)
-    (c.regularizeNewLineSb
-      B
-      ('
-        "</span></li><li class=\""
-        (hb.concatenateClass
-          "qLine"
-          (? C "qLineEven" (c.empty))
-        )
-        "\"><span class=\""
-        A
-        "\">"
-      )
-    )
   )
 }
 {qh.splitLine.loop A 16 B; ;
