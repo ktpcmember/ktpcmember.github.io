@@ -173,6 +173,7 @@
         (: (c.getLengthSx Code) 32) [Count]
       )
     )
+    (+ "A" (qw.isDefined "c" "int" (qtc.Name)))
     (? (c.getBit Co 1) "</li>" (c.empty))
   )
 }
