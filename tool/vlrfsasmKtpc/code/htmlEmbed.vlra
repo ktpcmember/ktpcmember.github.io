@@ -31,6 +31,7 @@
                 Extension
                 (qh.multi.contract)
               )
+            )
             (qh.expandButton)
             (c.empty)
           )
