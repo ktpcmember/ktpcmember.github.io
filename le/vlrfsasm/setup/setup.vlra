@@ -17,13 +17,15 @@
 {hm.nextSectionPath; ; "../grammar/grammar.html"}
 {hm.nextSectionName; ; "文法"}
 
+{ht.loop A 512; ; (c.getRange A 32 (< (c.getRange A 16 16) 4))}
+
 {hc.content; ;
   ('
     (hc.title "Vlrfsasm講習/準備")
     (hc.articleCa
       "概要"
       (ht.summary.caption)
-      (c.empty)
+      (ht.loop (qwc.list))
     )
     (hc.articleCa
       "フォルダ"
