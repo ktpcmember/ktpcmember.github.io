@@ -61,12 +61,12 @@ ht.menu.caption
 
 ht.menu.lectureIndex
 テンプレートの1つめは、講習資料の目次向けです。
-[vMT;講習資料目次;{hm.linkType; ; (hm.linkType.lectureIndex)}]
+[vMT;講習資料目次;`{hm.linkType; ; (hm.linkType.lectureIndex)}`]
 このように定義すると、メニューが自動で生成されます。先ほどの[v;hp.path]できちんと指定しないと、ここで自身へのリンクが含まれてしまうので、注意してください。講習の一覧は、[P;tool/vlrfsasmKtpc/le/lectureList.vlra]で定義されています。新しい講習を追加する際には、ここを更新し、他の講習者にも目次ページの更新を依頼してください。
 
 ht.menu.lectureChapter
 テンプレートの2つ目は、講習資料の各章のページを想定しています。
-[vMT;講習資料目次;{hm.linkType; ; (hm.linkType.lectureChapter)}]
+[vMT;講習資料目次;`{hm.linkType; ; (hm.linkType.lectureChapter)}`]
 このテンプレートでは、これに加えて4から6個の定数関数を定義する必要があります。
 [vMT;講習名と目次パス;`{hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}`]
