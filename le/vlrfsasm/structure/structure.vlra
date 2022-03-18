@@ -5,12 +5,12 @@
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
 {hh.title; ; "仕組み - Vlrfsasm講習 - 駒場東邦物理部"}
 
-{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.linkType; ; (hm.linkType.lectureChapter)}
 {hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}
-{hm.previousSectionPath; ; ""}
-{hm.nextSectionPath; ; "../configuration/configuration.html"}
-{hm.nextSectionName; ; "設定"}
+{hm.previousChapterPath; ; ""}
+{hm.nextChapterPath; ; "../configuration/configuration.html"}
+{hm.nextChapterName; ; "設定"}
 
 {hc.content; ;
   ('

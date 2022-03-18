@@ -10,12 +10,12 @@
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
 {hh.title; ; "準備 - Vlrfsasm講習 - 駒場東邦物理部"}
 
-{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.linkType; ; (hm.linkType.lectureChapter)}
 {hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}
-{hm.previousSectionPath; ; ""}
-{hm.nextSectionPath; ; "../grammar/grammar.html"}
-{hm.nextSectionName; ; "文法"}
+{hm.previousChapterPath; ; ""}
+{hm.nextChapterPath; ; "../grammar/grammar.html"}
+{hm.nextChapterName; ; "文法"}
 
 {ht.loop A 512; ; (c.getRange A 32 (< (c.getRange A 16 16) 4))}
 

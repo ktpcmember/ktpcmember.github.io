@@ -7,13 +7,13 @@
 {hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
 {hh.title; ; "設定 - Vlrfsasm講習 - 駒場東邦物理部"}
 
-{hm.linkType; ; (hm.linkType.lectureSection)}
+{hm.linkType; ; (hm.linkType.lectureChapter)}
 {hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}
-{hm.previousSectionPath; ; "../structure/structure.html"}
-{hm.previousSectionName; ; "仕組み"}
-{hm.nextSectionPath; ; "../body/body.html"}
-{hm.nextSectionName; ; "本文"}
+{hm.previousChapterPath; ; "../structure/structure.html"}
+{hm.previousChapterName; ; "仕組み"}
+{hm.nextChapterPath; ; "../body/body.html"}
+{hm.nextChapterName; ; "本文"}
 
 {hc.content; ;
   ('
@@ -31,6 +31,34 @@
         (hc.section "batファイル" (ht.file.bat))
         (hc.section "本文ファイル" (ht.file.body))
         (hc.section "vlraファイル" (ht.file.vlra))
+      )
+    )
+    (hc.articleCa
+      "設定"
+      (ht.configuration.caption)
+      ('
+        (hc.section "パス" (ht.configuration.path))
+        (hc.section "HTML" (ht.configuration.html))
+        (hc.section "CSS" (ht.configuration.css))
+      )
+    )
+    (hc.articleCa
+      "メニュー"
+      (ht.menu.caption)
+      ('
+        (hc.section "講習目次" (ht.menu.lectureIndex))
+        (hc.section "講習各章" (ht.menu.lectureChapter))
+      )
+    )
+    (hc.articleCa
+      "本文構造"
+      (ht.body.caption)
+      ('
+        (hc.section "題" (ht.body.title))
+        (hc.section "節" (ht.body.article))
+        (hc.section "項" (ht.body.section))
+        (hc.section "段落群" (ht.body.division))
+        (hc.section "例" (ht.body.example))
       )
     )
   )

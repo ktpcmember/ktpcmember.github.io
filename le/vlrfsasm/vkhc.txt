@@ -21,6 +21,18 @@ HP編では、Vlrfsasmを用いて本HPを記述する方法を学びます。
 ht.content.chapter
 本講習では、章ごとに読み、作業することを想定しています。
 
+ht.content.hierarchy
+この名前は製作者が決めたものです。一般的な用法ではないことに注意してください。また、設計が不十分なまま実装を始めたため、これに則らない箇所があるかもしれません。
+]階層名;日本語;英語
+;講習;Lecture
+;編;Part
+;章;Chapter
+;節;Article
+;項;Section
+;段落群;Division
+;段落;Paragraph
+みなさんも命名規則は先に定めましょう。
+
 ht.list.main
 ]]tXC;[l;準備;setup/setup.html]
 ;[l;文法;grammar/grammar.html]

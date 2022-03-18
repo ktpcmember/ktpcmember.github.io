@@ -204,7 +204,7 @@
     (== (hm.linkType) (hm.linkType.lectureIndex))
     (hm.lectureIndex)
     (?
-      (== (hm.linkType) (hm.linkType.lectureSection))
+      (== (hm.linkType) (hm.linkType.lectureChapter))
       (hm.lectureSection)
       (c.empty) [WIP]
     )
@@ -233,10 +233,10 @@
       (hm.lectureName)
       ('
         (?
-          (# (hm.previousSectionPath))
+          (# (hm.previousChapterPath))
           (hm.linkElement
-            (hm.previousSectionName)
-            (hm.previousSectionPath)
+            (hm.previousChapterName)
+            (hm.previousChapterPath)
           )
           (c.empty)
         )
@@ -245,10 +245,10 @@
           (hm.lectureTopPath)
         )
         (?
-          (# (hm.nextSectionPath))
+          (# (hm.nextChapterPath))
           (hm.linkElement
-            (hm.nextSectionName)
-            (hm.nextSectionPath)
+            (hm.nextChapterName)
+            (hm.nextChapterPath)
           )
           (c.empty)
         )
@@ -260,7 +260,7 @@
 [Type of page for link]
 {hm.linkType.top; ; 0}
 {hm.linkType.lectureIndex; ; 1}
-{hm.linkType.lectureSection; ; 2}
+{hm.linkType.lectureChapter; ; 2}
 
 [Link Element]
 {hm.linkGroup Title Array; ;

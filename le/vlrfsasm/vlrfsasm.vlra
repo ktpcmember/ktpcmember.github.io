@@ -20,6 +20,7 @@
         (hc.section "環境" (ht.content.environment))
         (hc.section "編" (ht.content.book))
         (hc.section "章" (ht.content.chapter))
+        (hc.section "階層" (ht.content.hierarchy))
       )
     )
     (hc.article "一覧"
