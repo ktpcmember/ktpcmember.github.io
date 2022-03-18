@@ -365,7 +365,8 @@ td {
   padding: 0 0.2em;
   border-radius: 0.5em;
   font-family: 'Inconsolata', monospace;
-  background-color: #E0E0E4;
+  background-color: #E8E8EC;
+  max-width: 90%;
 }
 
 .cCodeMulti {
