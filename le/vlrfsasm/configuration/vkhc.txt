@@ -44,7 +44,7 @@ HTMLには、文章の記述以外にも、検索という用途があります�
 ;キーワード;hh.keyword;[T;プログラミング,講習, Vlrfsasm]
 ;説明;hh.description;[T;駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。]
 ;題;hh.title;[T;設定 - Vlrfsasm講習 - 駒場東邦物理部]
-キーワードは[T;,]区切りで複数指定できます。
+キーワードは[T;`,`]区切りで複数指定できます。
 なお、例は本章のページのものです。
 
 ht.configuration.css

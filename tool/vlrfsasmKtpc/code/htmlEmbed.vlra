@@ -2,14 +2,18 @@
 {qh.single Language Code; ;
   (hb.tagCE
     "span"
-    "cCodeSingle"
-    (qh.convert
-      Language
-      (c.regularizeNewLineSb
-        (he.compile Code)
-        "\r\n"
+    "cCodeSingleFrame"
+    (hb.tagCE
+      "span"
+      "cCodeSingle"
+      (qh.convert
+        Language
+        (c.regularizeNewLineSb
+          (he.compile Code)
+          "\r\n"
+        )
+        0
       )
-      0
     )
   )
 }

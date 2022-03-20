@@ -361,12 +361,16 @@ td {
   }
 }
 
+.cCodeSingleFrame {
+  max-width: 95%;
+  overflow: auto;
+}
+
 .cCodeSingle {
   padding: 0 0.2em;
   border-radius: 0.5em;
   font-family: 'Inconsolata', monospace;
   background-color: #E8E8EC;
-  max-width: 90%;
 }
 
 .cCodeMulti {
