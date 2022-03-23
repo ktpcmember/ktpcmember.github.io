@@ -362,7 +362,8 @@ td {
 }
 
 .cCodeSingleFrame {
-  max-width: 95%;
+  max-width: calc(100% - 1em);
+  word-break: break-all;
   overflow: auto;
 }
 
