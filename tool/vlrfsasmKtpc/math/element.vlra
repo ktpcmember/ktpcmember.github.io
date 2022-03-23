@@ -1,4 +1,11 @@
 
+{mh.text Content; ;
+  (mc.encode
+    Content
+    1
+    (mc.getSize (mc.generalize Content))
+  )
+}
 {mh.overline Content; ;
   (mh.overline.generalized
     (mc.generalize Content)

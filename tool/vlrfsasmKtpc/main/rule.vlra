@@ -453,6 +453,7 @@
 {hx.TMT A B; ; (hx.PMT A B)} [For the time being]
 
 {hx.m A; ; (mh.math A)}
+{hx.t A; ; (mh.text A)}
 {hx.mo A; ; (mh.overline A)}
 {hx.mu A; ; (mh.underline A)}
 {hx.s A; ; (mh.sqrt A)}

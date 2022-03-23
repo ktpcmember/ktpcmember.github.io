@@ -71,6 +71,30 @@
     (he.escape (mc.decode Content))
   )
 }
+{mr.text Content Base Scale; ;
+  (hb.tagAE "text"
+    ('
+      (hb.attribute "x"
+        (mf.fraction2 (> Base 16))
+      )
+      (hb.attribute "y"
+        (mf.fraction2 (: Base 16))
+      )
+      (hb.attribute "font-size"
+        ('
+          (mf.fraction2
+            (ms.scale (mf.immI 16) Scale)
+          )
+          "px"
+        )
+      )
+      (hb.attribute "font-family"
+        "'Computer Modern', serif"
+      )
+    )
+    (he.escape (mc.decode Content))
+  )
+}
 {mr.concatenate Content Base Scale; ;
   (?
     (# Content)
