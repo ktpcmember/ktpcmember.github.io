@@ -25,10 +25,7 @@
     (hc.articleCa
       "概要"
       (ht.summary.caption)
-      ('
-        (c.convertISb (# (qwc.list)) 16) ", "
-        (mt.convertASb (: (qwc.list) 512))
-      )
+      (c.empty)
     )
     (hc.articleCa
       "フォルダ"

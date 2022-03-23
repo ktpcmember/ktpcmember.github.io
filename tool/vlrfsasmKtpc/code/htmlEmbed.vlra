@@ -123,7 +123,7 @@
       )
       ('
         (hb.imageC "cCodeMenuIcon" (hp.getRelativePath "images/icon/contract.svg"))
-        (hb.tagCE "span" "cCodeMenuText" "CONTRACT")
+        (hb.tagCE "span" "cCodeMenuText" "COLLAPSE")
       )
     )
   )
