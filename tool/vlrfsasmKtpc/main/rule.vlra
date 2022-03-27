@@ -205,7 +205,7 @@
     (hm.lectureIndex)
     (?
       (== (hm.linkType) (hm.linkType.lectureChapter))
-      (hm.lectureSection)
+      (hm.lectureChapter)
       (c.empty) [WIP]
     )
   )
@@ -221,12 +221,12 @@
     (hm.lectureList)
   )
 }
-{hm.lectureSection; ;
+{hm.lectureChapter; ;
   ('
     (hm.linkGroup "駒場東邦物理部"
       ('
-        (hm.linkElement "トップページ" (hp.getRelativePath "index.html"))
-        (hm.linkElement "講習一覧" (hp.getRelativePath "le/le.html"))
+        (hm.linkElementRel "トップページ" (hp.getRelativePath "index.html"))
+        (hm.linkElementRel "講習一覧" (hp.getRelativePath "le/le.html"))
       )
     )
     (hm.linkGroup
@@ -279,6 +279,12 @@
 }
 {hm.linkElement Text Path; ;
   (hb.tagACE "a" "hMenuLinkElement"
+    (hb.attribute "href" Path)
+    (hb.tagCE "span" "hMenuLinkText" Text)
+  )
+}
+{hm.linkElementRel Text Path; ;
+  (hb.tagACE "a" "hMenuLinkElement"
     (hb.attribute "href" (hp.getRelativePath Path))
     (hb.tagCE "span" "hMenuLinkText" Text)
   )
@@ -287,7 +293,7 @@
   (?
     (c.compareStrict Path (hp.path))
     (c.empty)
-    (hm.linkElement Text Path)
+    (hm.linkElementRel Text Path)
   )
 }
 
