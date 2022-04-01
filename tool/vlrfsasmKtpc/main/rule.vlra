@@ -103,8 +103,8 @@
         (c.empty)
       )
       (hb.tagAE "script" (hb.attribute "src" (hp.getRelativePath "tool/vlrfsasmKtpc/js/search.js")) "")
-      (hb.tagAE "script" (hb.attribute "src" "https://www.googletagmanager.com/gtag/js?id=UA-133906591-2") "")
-      (hb.tagE "script" "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-133906591-2')")
+      (hb.tagAE "script async" (hb.attribute "src" "https://www.googletagmanager.com/gtag/js?id=G-NYLVKLP28G") "")
+      (hb.tagE "script" "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-NYLVKLP28G')")
     )
   )
 }
