@@ -10,7 +10,8 @@
         "\r\r"
       )
       ('
-        (: 0 6) [Empty]
+        (: 0 5)
+        (: 0 1) [FirstLine]
         (: 0 5) [Count]
         (: 0 2) [0:Normal, 2:Table, 3:TableA]
         (: 0 3) [Condition]
@@ -40,10 +41,7 @@
       )
       (?
         (== (p.getCondition B) 2)
-        ('
-          (? (p.getIfTable B) "))" (c.empty))
-          ")}"
-        )
+        ")))}"
         (?
           (== (p.getCondition B) 6)
           (c.empty)
@@ -57,9 +55,9 @@
                 (c.empty)
                 " \"\""
               )
-              ")))"
+              ")"
             )
-            (' (p.getTokenE B) "))")
+            (p.getTokenE B)
           )
         )
       )
@@ -75,7 +73,11 @@
           )
           (?
             (& (!= A "]") (!= A ";"))
-            " (hc.p ('"
+            (?
+              (== A " ")
+              ""
+              (' (p.getEnd B) "(hc.p ('")
+            )
             (c.empty)
           )
         )
@@ -134,7 +136,10 @@
                 (' (p.getTokenS B) "))")
                 (?
                   (== (p.getCondition B) 2)
-                  " (hc.table ('"
+                  ('
+                    (p.getEnd B)
+                    "(hc.table ('"
+                  )
                   (' (p.getTokenS B) ") ('")
                 )
               )
@@ -153,6 +158,7 @@
           (!= A "[")
           (!= A ";")
           (!= A "]")
+          (| (!= A " ") (!= (p.getCondition B) 2))
           (| (!= A ",") (!= (p.getCondition B) 3))
         )
         (== (p.getCondition B) 6)
@@ -170,7 +176,12 @@
       )
       (c.empty)
     )
-    (: 0 6)
+    (: 0 5)
+    (?
+      (!= A "\r")
+      (p.getFirstLine B)
+      (== (p.getCondition) 1)
+    )
     (?
       (== (p.getCondition B) 6)
       (p.getCount B)
@@ -233,6 +244,7 @@
 }
 
 {p.getToken A; ; (> A 16)}
+{p.getFirstLine A; ; (c.getBit A 10)}
 {p.getCount A; ; (c.getRange A 5 5)}
 {p.getIfTable A; ; (c.getBit A 4)}
 {p.getIfAttribute A; ; (c.getBit A 3)}
@@ -253,6 +265,13 @@
       (c.empty)
       (p.string (p.getToken A))
     )
+  )
+}
+{p.getEnd A; ;
+  (?
+    (| (! (p.getFirstLine A)) (p.getIfTable A))
+    ")) "
+    ""
   )
 }
 {p.string A; ; (' " \"" (p.escape A) "\"")}
