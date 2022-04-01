@@ -41,7 +41,10 @@
       )
       (?
         (== (p.getCondition B) 2)
-        ")))}"
+        ('
+          (? (p.getIfTable B) "))" "")
+          ")))}"
+        )
         (?
           (== (p.getCondition B) 6)
           (c.empty)
@@ -55,7 +58,7 @@
                 (c.empty)
                 " \"\""
               )
-              ")))"
+              ")"
             )
             (p.getTokenE B)
           )
@@ -103,7 +106,10 @@
               )
               (?
                 (== (p.getCondition B) 2)
-                " (hc.tr (' (hc.td ('"
+                ('
+                  (p.getEnd B)
+                  "(hc.tr (' (hc.td ('"
+                )
                 (?
                   (== (p.getCondition B) 7)
                   ('
@@ -267,13 +273,7 @@
     )
   )
 }
-{p.getEnd A; ;
-  (?
-    (| (! (p.getFirstLine A)) (p.getIfTable A))
-    ")) "
-    ""
-  )
-}
+{p.getEnd A; ; (? (p.getFirstLine A) "" ")) ")}
 {p.string A; ; (' " \"" (p.escape A) "\"")}
 {p.escape A 16; ;
   (?

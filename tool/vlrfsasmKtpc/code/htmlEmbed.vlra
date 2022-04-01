@@ -474,7 +474,7 @@
   (hb.tagCE
     "span"
     A
-    (qh.splitLine.loop B A C D)
+    (qh.splitLine.loop B A D C)
   )
 }
 {qh.splitLine.loop A 16 Style B C; ;
@@ -482,13 +482,13 @@
     (== A "\r")
     ('
       (?
-        C
+        B
         "</span></li><li class=\""
         "</span></span><span class=\""
       )
       (hb.concatenateClass
         "qLine"
-        (? B "qLineEven" (c.empty))
+        (? C "qLineEven" (c.empty))
       )
       "\"><span class=\""
       Style
@@ -496,5 +496,5 @@
     )
     A
   );
-  (^ B (== A "\r"))
+  (^ C (== A "\r"))
 }

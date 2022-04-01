@@ -16,7 +16,7 @@ something節の概説です。<?e>
 <?r;rRed;第一項の段落群>
 ht.something.first
 something節の第一項の内容です。
-ここは上と独立した段落になります。<?e>
+この行は上と独立した段落になります。<?e>
 
 <?r;rGreen;第二項の段落群>
 ht.something.second
