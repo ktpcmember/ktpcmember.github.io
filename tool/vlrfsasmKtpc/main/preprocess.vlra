@@ -180,7 +180,7 @@
     (?
       (!= A "\r")
       (p.getFirstLine B)
-      (== (p.getCondition) 1)
+      (== (p.getCondition B) 1)
     )
     (?
       (== (p.getCondition B) 6)

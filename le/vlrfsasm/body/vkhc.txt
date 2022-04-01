@@ -9,18 +9,20 @@ ht.division.syntax
 ht.division.paragraph
 段落群の内容は、[P;vkhc.txt]の1行が、HTMLの1段落として扱われます。
 ただし、2行目以降について、半角スペース1字[T; ]から始まる行は、前の行と同じ段落となります。最初の行をスペースから始めることは禁止します。
-[vMT;段落群の例;`ht.something.caption
-something節の概説です。
+[TMT;段落群の例;`<?r;rBlue;概説段落群>
+ht.something.caption
+something節の概説です。<?e>
 
+<?r;rRed;第一項の段落群>
 ht.something.first
 something節の第一項の内容です。
-ここは上と独立した段落になります。
+ここは上と独立した段落になります。<?e>
 
+<?r;rGreen;第二項の段落群>
 ht.something.second
 ただし、この第二項には段落が2つしか含まれません。
  ここは上の段落に含まれます。
  複数行でも同じです。
-ここは別の段落となります。`]
-
+ここは別の段落となります。<?e>`]
 
 
