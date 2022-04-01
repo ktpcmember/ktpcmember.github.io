@@ -26,6 +26,7 @@
 ".\le\uy\uy.html"
 ".\le\uy\WebVersion\index.html"
 ".\le\vlrfsasm\vlrfsasm.html"
+".\le\vlrfsasm\body\body.html"
 ".\le\vlrfsasm\builtin\builtin.html"
 ".\le\vlrfsasm\configuration\configuration.html"
 ".\le\vlrfsasm\function\function.html"
