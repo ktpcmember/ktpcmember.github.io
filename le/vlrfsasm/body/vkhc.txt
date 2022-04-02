@@ -24,3 +24,33 @@ ht.something.second
  ここは上の段落に含まれます。
  複数行でも同じです。
 ここは別の段落となります。<?e>`]
+
+ht.extension.caption
+さて、HTMLを扱うからには、単なるテキストファイルより高度な内容を記述したいものです。
+
+ht.extension.syntax
+拡張記法の構文は、vlrfsasmの関数と似ています。実は、内部で呼び出しているのです。
+基本的な構文は、[T;`[識別子;第一引数;第二引数]`]です。スペースは区切り文字ではありません。
+識別子は、機能ごとに指定されます。vlrfsasmと同様に、大小文字の区別があります。
+特殊な場合を除き、入れ子にすることもできます。
+引数は多くも少なくもなく、ちょうど決められた数にしてください。
+
+ht.extension.decoration
+全て引数は1つで、装飾対象の文字列を入れます。
+]装飾記法一覧;識別子;効果;例;表示
+;b;太字;`[b;A]`;[b;A]
+;i;斜体;`[i;B]`;[i;B]
+;o;上付き線;`[o;C]`;[o;C]
+;u;下付き線;`[u;D]`;[u;D]
+
+ht.extension.link
+識別子[T;l]は、引数を2つとります。
+第一引数が表示され、クリックすると第二引数のurlを開きます。
+[TMT;トップページへのリンク;`[l;トップページ;https://www.ktpc.tokyo/index.html]`]
+なお、第一引数を空文字列にすることができ、このとき第二引数のurlがそのまま表示されます。
+
+ht.extension.substitution
+数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。識別子[T;a]は、引数を1つとり、対応する1文字を返します。
+対応表は、[l;aliasList.txt;https://github.com/ktpcmember/ktpcmember.github.io/blob/master/tool/vlrfsasmKtpc/main/aliasList.txt]にあります。必要ならば、衝突に気をつけて追加してください。
+なお、ギリシャ文字や記号が2文字以上必要な場合には、スペース[T; ]区切りで指定すればよいです。
+]例;`[a;Th h t a]`;[a;Th h t a]

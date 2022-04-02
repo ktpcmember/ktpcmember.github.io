@@ -20,11 +20,20 @@
       "段落群"
       (ht.division.caption)
       ('
-        (hc.section "文法" (ht.division.syntax))
+        (hc.section "構文" (ht.division.syntax))
         (hc.section "段落" (ht.division.paragraph))
       )
     )
-    
+    (hc.articleCa
+      "拡張記法"
+      (ht.extension.caption)
+      ('
+        (hc.section "構文" (ht.extension.syntax))
+        (hc.section "装飾" (ht.extension.decoration))
+        (hc.section "リンク" (ht.extension.link))
+        (hc.section "代用記法" (ht.extension.substitution))
+      )
+    )
   )
 }
 

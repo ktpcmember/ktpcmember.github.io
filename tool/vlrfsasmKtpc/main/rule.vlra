@@ -403,6 +403,18 @@
     "\r"
   )
 }
+{ha.split A 16 B; ;
+  (?
+    (& (== A " ") (!= B ""))
+    (ha.replace B)
+    (c.empty)
+  );
+  (?
+    (== A " ")
+    (c.empty)
+    (' B A)
+  )
+}
 {ha.replace A; ;
   (ha.select
     (ha.find (ha.aliasList) A (: 0 1))
@@ -437,8 +449,15 @@
 }
 
 [extension]
-{hx.l A B; ; (hb.tagACE "a" "cLink" (hb.attribute "href" B) A)}
-{hx.a A; ; (ha.replace A)}
+{hx.l A B; ;
+  (hb.tagACE
+    "a"
+    "cLink"
+    (hb.attribute "href" B)
+    (? (# A) A B)
+  )
+}
+{hx.a A; ; (ha.split A (c.empty))}
 {hx.S A B; ; (hb.tagCE "span" A B)}
 {hx.b A; ; (hx.S "xBold" A)}
 {hx.i A; ; (hx.S "xItalic" A)}
