@@ -37,7 +37,7 @@ ht.extension.syntax
 
 ht.extension.decoration
 全て引数は1つで、装飾対象の文字列を入れます。
-]装飾記法一覧;識別子;効果;例;表示
+]装飾記法一覧]tXC;識別子;効果;例;表示
 ;b;太字;[T;`[b;A]`];[b;A]
 ;i;斜体;[T;`[i;B]`];[i;B]
 ;o;上付き線;[T;`[o;C]`];[o;C]
