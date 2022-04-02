@@ -38,10 +38,13 @@ ht.extension.syntax
 ht.extension.decoration
 全て引数は1つで、装飾対象の文字列を入れます。
 ]装飾記法一覧;識別子;効果;例;表示
-;b;太字;`[b;A]`;[b;A]
-;i;斜体;`[i;B]`;[i;B]
-;o;上付き線;`[o;C]`;[o;C]
-;u;下付き線;`[u;D]`;[u;D]
+;b;太字;[T;`[b;A]`];[b;A]
+;i;斜体;[T;`[i;B]`];[i;B]
+;o;上付き線;[T;`[o;C]`];[o;C]
+;u;下付き線;[T;`[u;D]`];[u;D]
+;uRed;赤下付き線;[T;`[uRed;E]`];[uRed;E]
+;uBlue;青下付き線;[T;`[uBlue;F]`];[uBlue;F]
+;uGreen;緑下付き線;[T;`[uGreen;G]`];[uGreen;G]
 
 ht.extension.link
 識別子[T;l]は、引数を2つとります。
@@ -50,7 +53,8 @@ ht.extension.link
 なお、第一引数を空文字列にすることができ、このとき第二引数のurlがそのまま表示されます。
 
 ht.extension.substitution
-数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。識別子[T;a]は、引数を1つとり、対応する1文字を返します。数学の記号なども利用できます。
+数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。
+ 識別子[T;a]は、引数を1つとり、対応する1文字を返します。数学の記号なども利用できます。
 対応表は、[l;aliasList.txt;https://github.com/ktpcmember/ktpcmember.github.io/blob/master/tool/vlrfsasmKtpc/main/aliasList.txt]にあります。必要ならば、衝突に気をつけて追加してください。
 なお、ギリシャ文字や記号が2文字以上必要な場合には、スペース[T; ]区切りで指定すればよいです。
-]例;`[a;Th h t a]`;[a;Th h t a]
+]例]tXC;[T;`[a;Th h t a]`];[a;Th h t a]

@@ -457,7 +457,7 @@
     (? (# A) A B)
   )
 }
-{hx.a A; ; (ha.split A (c.empty))}
+{hx.a A; ; (ha.split (' A " ") (c.empty))}
 {hx.S A B; ; (hb.tagCE "span" A B)}
 {hx.b A; ; (hx.S "xBold" A)}
 {hx.i A; ; (hx.S "xItalic" A)}
