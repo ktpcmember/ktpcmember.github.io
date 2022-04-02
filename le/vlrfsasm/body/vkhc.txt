@@ -50,7 +50,7 @@ ht.extension.link
 なお、第一引数を空文字列にすることができ、このとき第二引数のurlがそのまま表示されます。
 
 ht.extension.substitution
-数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。識別子[T;a]は、引数を1つとり、対応する1文字を返します。
+数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。識別子[T;a]は、引数を1つとり、対応する1文字を返します。数学の記号なども利用できます。
 対応表は、[l;aliasList.txt;https://github.com/ktpcmember/ktpcmember.github.io/blob/master/tool/vlrfsasmKtpc/main/aliasList.txt]にあります。必要ならば、衝突に気をつけて追加してください。
 なお、ギリシャ文字や記号が2文字以上必要な場合には、スペース[T; ]区切りで指定すればよいです。
 ]例;`[a;Th h t a]`;[a;Th h t a]

@@ -209,7 +209,10 @@
       (>= 2 (p.getCondition B))
       (: 0 1)
       (?
-        (p.getCount B)
+        (|
+          (p.getCount B)
+          (== (p.getCondition B) 6)
+        )
         (p.getIfAttribute B)
         (|
           (== A "]")
