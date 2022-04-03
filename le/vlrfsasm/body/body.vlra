@@ -34,6 +34,14 @@
         (hc.section "代用記法" (ht.extension.substitution))
       )
     )
+    (hc.articleCa
+      "回避記法"
+      (ht.escapement.caption)
+      ('
+        (hc.section "生vlrfsasm" (ht.escapement.raw))
+        (hc.section "コードブロック" (ht.escapement.codeBlock))
+      )
+    )
   )
 }
 

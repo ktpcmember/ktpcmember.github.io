@@ -45,6 +45,8 @@ ht.extension.decoration
 ;uRed;赤下付き線;[T;`[uRed;E]`];[uRed;E]
 ;uBlue;青下付き線;[T;`[uBlue;F]`];[uBlue;F]
 ;uGreen;緑下付き線;[T;`[uGreen;G]`];[uGreen;G]
+;id;何もしない;[T;`[id;H]`];[id;H]
+[T;id]は、次節で使います。
 
 ht.extension.link
 識別子[T;l]は、引数を2つとります。
@@ -55,6 +57,26 @@ ht.extension.link
 ht.extension.substitution
 数学などでギリシャ文字を使うとき、ASCIIのみで表記出来ると楽です。
  識別子[T;a]は、引数を1つとり、対応する1文字を返します。数学の記号なども利用できます。
-対応表は、[l;aliasList.txt;https://github.com/ktpcmember/ktpcmember.github.io/blob/master/tool/vlrfsasmKtpc/main/aliasList.txt]にあります。必要ならば、衝突に気をつけて追加してください。
+対応表は、[l;aliasList.txt;https://github.com/ktpcmember/ktpcmember.github.io/blob/master/tool/vlrfsasmKtpc/main/aliasList.txt]にあります。必要ならば、衝突に気をつけつつ追加してください。
 なお、ギリシャ文字や記号が2文字以上必要な場合には、スペース[T; ]区切りで指定すればよいです。
 ]例]tXC;[T;`[a;Th h t a]`];[a;Th h t a]
+
+ht.escapement.caption
+[P;vkhc.txt]は一度vlrfsasmに変換されますが、直接vlrfsasmを書いて、変換しないようにすることもできます。
+また、前節の拡張記法で使う3記号[T;`[;]`]を、文章で用いる方法もあります。
+本節では、これらを解説します。
+
+ht.escapement.raw
+拡張記法の引数を、コンマ[T;`,`]から始めると、vlrfsasmのソースコードとして解釈されます。
+]等価な表現;[T;`[id;,(c.convertISb (1+2))]`]
+;[T;3]
+なお、次にセミコロン[T;`;`]が現れるまでがvlrfsasmと認識されます。このため、二重引用符の有無に関わらず、セミコロンを含んではいけません。当然、関数を定義することもできません。
+]悪い例;[T;`,`[v;`";"`]];[T;`,`[v;`{func; ; "Hello"}`]]
+面倒でしょうが、[v;`";"`]と等価な表現[v;(: $3B 16)]で我慢してください。
+
+ht.escapement.codeBlock
+さて、本節では拡張記法の例をいくつか載せてきました。しかし、そのまま書いては表示されないことに気づいてください。
+[T;[a;ga]]に囲まれた部分は、拡張記法の記号が含まれていても、解釈されません。書いたままの文字列が出てきます。この部分をコードブロックと呼ぶことにします。
+コードブロックは複数行に渡ってもよいです。コードブロック内の改行は、段落や段落群の区切りとしての意味をもちません。
+一般的なマークアップと違い、囲んだだけでは等幅フォントにはなりません。次々章を読んでください。
+なお、グレーヴアクセント記号[T;[a;ga]]を文字として使う場合は、[T;`[a;ga]`]と書いてください。もちろん、コードブロックは一度終了しておく必要があります。
