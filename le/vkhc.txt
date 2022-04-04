@@ -25,6 +25,11 @@ C++で競技プログラミングをやってみましょう。
 C++講習で学んだことを生かしましょう。
 目次は、[l;競技プログラミング講習目次;k_c_pej_p_gm/k_c_pej_p_gm.html]です。
 
+ht.programming.vlrfsasm
+Vlrfsasmは、バイナリの処理に特化した単純な言語です。
+本HP向けの変換器に使っているので、HPの編集者も読んでみてください。
+目次は[l;Vlrfsasm講習目次;vlrfsasm/vlrfsasm.html]です。
+
 ht.electronics.caption
 電子工作・マイコン班の講習は、学校での活動が中心となります。
 
