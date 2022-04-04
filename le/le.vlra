@@ -20,8 +20,8 @@
         (hc.section "PC基礎講習" (ht.programming.pcBasic))
         (hc.section "C++講習" (ht.programming.c++))
         (hc.section "Unity講習" (ht.programming.unity))
-        (hc.section "競技プログラミング講習" (ht.programming.competitionProgramming)
-        (hc.section "Vlrfsasm講習" (ht.programming.vlrfsasm)))
+        (hc.section "競技プログラミング講習" (ht.programming.competitionProgramming))
+        (hc.section "Vlrfsasm講習" (ht.programming.vlrfsasm))
       )
     )
     (hc.articleCa "電子工作・マイコン班"
