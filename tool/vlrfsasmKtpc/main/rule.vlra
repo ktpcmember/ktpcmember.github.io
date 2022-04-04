@@ -215,7 +215,11 @@
     (hm.linkGroup "駒場東邦物理部"
       ('
         (hm.linkElement "トップページ" (hp.getRelativePath "index.html"))
-        (hm.linkElement "講習一覧" (hp.getRelativePath "le/le.html"))
+        (?
+          (c.compareStrict (hp.path) "le/le.html")
+          (c.empty)
+          (hm.linkElement "講習一覧" (hp.getRelativePath "le/le.html"))
+        )
       )
     )
     (hm.lectureList)

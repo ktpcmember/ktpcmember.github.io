@@ -1,0 +1,46 @@
+
+{hp.path; ; "le/le.html"}
+
+{hh.keyword; ; "駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,講習"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けの講習資料の一覧です。"}
+{hh.title; ; "講習資料 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureIndex)}
+
+{hc.content; ;
+  ('
+    (hc.title "講習資料")
+    (hc.articleCa "概要"
+      (ht.summary.caption)
+      (c.empty)
+    )
+    (hc.articleCa "プログラミング班"
+      (ht.programming.caption)
+      ('
+        (hc.section "PC基礎講習" (ht.programming.pcBasic))
+        (hc.section "C++講習" (ht.programming.c++))
+        (hc.section "Unity講習" (ht.programming.unity))
+        (hc.section "競技プログラミング講習" (ht.programming.competitionProgramming)
+        (hc.section "Vlrfsasm講習" (ht.programming.vlrfsasm)))
+      )
+    )
+    (hc.articleCa "電子工作・マイコン班"
+      (ht.electronics.caption)
+      ('
+        (hc.section "電工基礎講習" (ht.electronics.electronicsBasic))
+        (hc.section "PICマイコン講習（アセンブリ言語）" (ht.electronics.picAssembly))
+        (hc.section "PICマイコン講習（C言語）" (ht.electronics.picC))
+      )
+    )
+    (hc.articleCa "ピタゴラ装置製作班"
+      (ht.pythagora.caption)
+      ('
+        (hc.section "ピタゴラ講習" (ht.pythagora.pythagora))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
