@@ -26,7 +26,7 @@ C++講習で学んだことを生かしましょう。
 目次は、[l;競技プログラミング講習目次;k_c_pej_p_gm/k_c_pej_p_gm.html]です。
 
 ht.programming.vlrfsasm
-Vlrfsasmは、バイナリの処理に特化した単純な言語です。
+Vlrfsasmは、バイナリデータの処理をするための単純な言語です。
 本HP向けの変換器に使っているので、HPの編集者も読んでみてください。
 目次は[l;Vlrfsasm講習目次;vlrfsasm/vlrfsasm.html]です。
 
