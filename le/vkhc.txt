@@ -40,7 +40,7 @@ ht.electronics.picAssembly
 本講習の前に、電工基礎講習を修了してください。
 目次は、[l;PICマイコン講習（アセンブリ言語）目次;_pic/_pic.html]です。
 
-ht.electronics.picAssembly
+ht.electronics.picC
 この講習では、PICマイコンを使い、C言語で電子工作にプログラムを組み込みます。
 汎用ICだけでは難しい、LCDやロボットなどの複雑な制御ができるようになります。
 本講習の前に、電工基礎講習を修了してください。
