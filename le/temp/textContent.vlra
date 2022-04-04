@@ -5,6 +5,7 @@
 {ht.programming.c++; ; ('(hc.p (' "C++は、低レベルな動作から高レベルな処理までを実現できる言語です。")) (hc.p (' "学ぶべきことも多いですが、新入生にはUnityとどちらかの講習を受けてもらいます。")) (hc.p (' "目次は、" (hx.l (' "C++講習目次") (' "_cps/_cps.html")) "です。")))}
 {ht.programming.unity; ; ('(hc.p (' "UnityとC#言語のグループは、主にゲームを制作しています。<br>")) (hc.p (' "目次は、" (hx.l (' "Unity講習目次") (' "uy/uy.html")) "です。")))}
 {ht.programming.competitionProgramming; ; ('(hc.p (' "C++で競技プログラミングをやってみましょう。")) (hc.p (' "C++講習で学んだことを生かしましょう。")) (hc.p (' "目次は、" (hx.l (' "競技プログラミング講習目次") (' "k_c_pej_p_gm/k_c_pej_p_gm.html")) "です。")))}
+{ht.programming.vlrfsasm; ; ('(hc.p (' "Vlrfsasmは、バイナリの処理に特化した単純な言語です。")) (hc.p (' "本HP向けの変換器に使っているので、HPの編集者も読んでみてください。")) (hc.p (' "目次は" (hx.l (' "Vlrfsasm講習目次") (' "vlrfsasm/vlrfsasm.html")) "です。")))}
 {ht.electronics.caption; ; ('(hc.p (' "電子工作・マイコン班の講習は、学校での活動が中心となります。")))}
 {ht.electronics.electronicsBasic; ; ('(hc.p (' "この講習では、ブレッドボードを使った回路を組みます。")) (hc.p (' "実際に動作を確認し、電圧や電流を測定することによって理解を深めます。")) (hc.p (' "各部品の役割や電気の三要素についても知ることで、電子回路を理解することを目指します。")) (hc.p (' "目次は、" (hx.l (' "電工基礎講習目次") (' "k_enba/k_enba.html")) "です。")))}
 {ht.electronics.picAssembly; ; ('(hc.p (' "この講習では、PICマイコンを使い、アセンブリ言語で電子工作にプログラムを組み込みます。")) (hc.p (' "汎用ICだけでは難しい、LCDやロボットなどの複雑な制御ができるようになります。")) (hc.p (' "本講習の前に、電工基礎講習を修了してください。")) (hc.p (' "目次は、" (hx.l (' "PICマイコン講習（アセンブリ言語）目次") (' "_pic/_pic.html")) "です。")))}
