@@ -42,6 +42,15 @@
         (hc.section "コードブロック" (ht.escapement.codeBlock))
       )
     )
+    (hc.articleCa
+      "変換"
+      (ht.conversion.caption)
+      ('
+        (hc.section "条件" (ht.conversion.condition))
+        (hc.section "結果" (ht.conversion.result))
+        (hc.section "sitemap" (ht.conversion.sitemap))
+      )
+    )
   )
 }
 
