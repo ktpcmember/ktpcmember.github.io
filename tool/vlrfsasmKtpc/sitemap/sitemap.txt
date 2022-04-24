@@ -34,6 +34,7 @@
 ".\le\vlrfsasm\library\library.html"
 ".\le\vlrfsasm\setup\setup.html"
 ".\le\vlrfsasm\structure\structure.html"
+".\le\vlrfsasm\table\table.html"
 ".\le\y_wwai\y_wwai.html"
 ".\le\y_wwai\first_window\first_window.html"
 ".\le\y_wwai\i_dx\i_dx.html"
