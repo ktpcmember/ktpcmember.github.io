@@ -1,0 +1,41 @@
+{hp.path; ; "le/vlrfsasm/table/table.html"}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "表 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureChapter)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousChapterPath; ; "../body/body.html"}
+{hm.previousChapterName; ; "設定"}
+{hm.nextChapterPath; ; "../math/math.html"}
+{hm.nextChapterName; ; "数式"}
+
+{hc.content; ;
+  ('
+    (hc.title "Vlrfsasm講習/表")
+    (hc.articleCa
+      "構文"
+      (ht.syntax.caption)
+      ('
+        (hc.section "開始記号" (ht.syntax.symbolBegin))
+        (hc.section "列区切り" (ht.syntax.splitColumn))
+        (hc.section "題" (ht.syntax.title))
+      )
+    )
+    (hc.articleCa
+      "スタイル"
+      (ht.style.caption)
+      (' ""[
+        (hc.section "背景色" (ht.style.backgroundColor))
+        (hc.section "枠線" (ht.style.border))
+        (hc.section "セル結合" (ht.style.concatenateCell))
+      ])
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
