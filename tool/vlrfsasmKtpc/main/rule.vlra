@@ -394,7 +394,10 @@
     (== Style ",")
     (?
       (== (c.getRangeSx Condition 0 1) "#")
-      (hc.td.color (' Condition " ") (c.empty))
+      (hb.attribute
+        "style"
+        (hc.td.color (' Condition " ") (c.empty))
+      )
       (?
         (== (c.getRangeSx Condition 0 1) "+")
         ('
@@ -403,7 +406,7 @@
             (c.getRangeSx
               Condition
               1
-              (- (c.getIndexSx Condition ":" 1) 1)
+              (- (c.getIndexSx Condition ":" 1) 2)
             )
           )
           (hc.td.attribute
@@ -425,7 +428,7 @@
     (hb.attribute A B)
   )
 }
-{hc.td.color A B; ;
+{hc.td.color A 16 B; ;
   (?
     (== " " A)
     (?
