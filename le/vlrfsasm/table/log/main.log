@@ -1,4 +1,7 @@
-Vlrfsasm v1.1 2022-05-09 10:40
+Vlrfsasm v1.1 2022-05-09 10:47
   7:Wrong number of argument
-   D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :450
+  hx.TMT D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\table\temp\textContent.vlra :9
+  ht.style.concatenateCell D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\table\table.vlra :33
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
