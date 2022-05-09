@@ -367,22 +367,26 @@
 }
 {hc.tr Content; ; (hb.tagE "tr" Content)}
 {hc.td Content Style; ;
-  (hb.tagAE "td"
-    (hc.td.loop
-      ('
-        Style
-        (?
-          (&
-            (!= (# Style) 0)
-            (!= (: Style 16) ",")
+  (?
+    (c.getNumberOfSx Style "*")
+    (c.empty)
+    (hb.tagAE "td"
+      (hc.td.loop
+        ('
+          Style
+          (?
+            (&
+              (!= (# Style) 0)
+              (!= (: Style 16) ",")
+            )
+            ","
+            (c.empty)
           )
-          ","
-          (c.empty)
         )
+        ""
       )
-      ""
+      Content
     )
-    Content
   )
 }
 {hc.td.loop Style 16 Condition; ;
@@ -390,14 +394,60 @@
     (== Style ",")
     (?
       (== (c.getRangeSx Condition 0 1) "#")
-      (hb.attribute "style"
-        (' "background-color: " Condition ";")
+      (hc.td.color (' Condition " ") (c.empty))
+      (?
+        (== (c.getRangeSx Condition 0 1) "+")
+        ('
+          (hc.td.attribute
+            "colSpan"
+            (c.getRangeSx
+              Condition
+              1
+              (- (c.getIndexSx Condition ":" 1) 1)
+            )
+          )
+          (hc.td.attribute
+            "rowspan"
+            (c.splitSx Condition ":" 1)
+          )
+        )
+        (hb.attribute "class" Condition)
       )
-      (hb.attribute "class" Condition)
     )
     (c.empty)
   );
   (? (== Style ",") (c.empty) (' Condition Style))
+}
+{hc.td.attribute A B; ;
+  (?
+    (c.compareStrict B "1")
+    (c.empty)
+    (hb.attribute A B)
+  )
+}
+{hc.td.color A B; ;
+  (?
+    (== " " A)
+    (?
+      (>! (c.getLengthSx B) 6)
+      (?
+        (<= (: B 16) "F")
+        (' "background-color: " B ";")
+        ('
+          "border-"
+          (?
+            (<= (: B 16) "l")
+            (? (== (: B 16) "b") "bottom" "left")
+            (? (== (: B 16) "r") "right" "top")
+          )
+          "-color: " (c.getRangeSx B 0 7) ";"
+        )
+      )
+      (c.empty)
+    )
+    (c.empty)
+  );
+  (? (== " " A (c.empty) (' B A)))
 }
 
 [Alias]

@@ -27,11 +27,11 @@
     (hc.articleCa
       "スタイル"
       (ht.style.caption)
-      (' ""[
+      ('
         (hc.section "背景色" (ht.style.backgroundColor))
         (hc.section "枠線" (ht.style.border))
         (hc.section "セル結合" (ht.style.concatenateCell))
-      ])
+      )
     )
   )
 }
