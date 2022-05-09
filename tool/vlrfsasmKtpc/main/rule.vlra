@@ -447,7 +447,7 @@
     )
     (c.empty)
   );
-  (? (== " " A (c.empty) (' B A)))
+  (? (== " " A) (c.empty) (' B A))
 }
 
 [Alias]
