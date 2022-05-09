@@ -39,8 +39,8 @@ ht.style.caption
 
 ht.style.backgroundColor
 背景色は、[T;#]から始まる6桁の16進数で指定します。もちろん、RGBの順に2桁ずつです。
-[TMT;例;`]日本における虹の7色]#FFFFFF;赤]#FF8080;橙]#FFFF00;黄]#C0C080;緑]#80FF80;青]#40C0FF;藍]#8080FF;紫]#FF00FF`]
-]日本における虹の7色]#FFFFFF;赤]#FF8080;橙]#FFFF00;黄]#C0C080;緑]#80FF80;青]#40C0FF;藍]#8080FF;紫]#FF00FF
+[TMT;例;`]日本における虹の7色]#FFFFFF;赤]#FF8080;橙]#FFC040;黄]#FFFF00;緑]#80FF80;青]#40C0FF;藍]#8080FF;紫]#FF00FF`]
+]日本における虹の7色]#FFFFFF;赤]#FF8080;橙]#FFC040;黄]#FFFF00;緑]#80FF80;青]#40C0FF;藍]#8080FF;紫]#FF00FF
 
 ht.style.border
 枠線の形は、予め定められたクラスを用いて指定します。
