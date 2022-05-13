@@ -351,9 +351,23 @@
 {hc.list Content; ; (hc.listC "" Content)}
 {hc.listElementC Class Content; ; (hb.tagCE "li" (hb.concatenateClass "cListElement" Class) Content)}
 {hc.listElement Content; ; (hc.listElementC "" Content)}
-{hc.table Caption Class Content; ;
+{hc.table Caption Style Content; ;
   (hb.tagCE "div" "cTableBack"
-    (hb.tagCE "table" Class
+    (hb.tagAE "table"
+      (hc.td.loop
+        ('
+          Style
+          (?
+            (&
+              (!= (# Style) 0)
+              (!= (: Style 16) ",")
+            )
+            ","
+            (c.empty)
+          )
+        )
+        ""
+      )
       ('
         (?
           (# Caption)

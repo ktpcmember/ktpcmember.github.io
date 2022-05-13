@@ -76,3 +76,4 @@ ht.style.example
 ht.tool.caption
 ここまで読んできて、わかりにくいと思った人は多いでしょう。
 そこで、後輩が表を生成するアプリを作ってくれました。感謝して使いましょう。詳しい説明は、[l;GitHubのページ;https://github.com/tkukt/table-editor]を参照してください。
+生成される文字列をそのまま[P;vkhc.txt]に貼り付ければ、表になります。

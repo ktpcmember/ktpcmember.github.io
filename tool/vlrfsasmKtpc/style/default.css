@@ -684,25 +684,25 @@ td {
 }
 
 .tRS, table.tRS>tr>td {
-  border-bottom: solid 1px #081010;
+  border-right: solid 1px #081010;
 }
 
 .tRSB, table.tRSB>tr>td {
-  border-bottom: solid 2px #081010;
+  border-right: solid 2px #081010;
 }
 
 .tRD, table.tRD>tr>td {
-  border-bottom: dotted 1px #081010;
+  border-right: dotted 1px #081010;
 }
 
 .tRDB, table.tRDB>tr>td {
-  border-bottom: dotted 2px #081010;
+  border-right: dotted 2px #081010;
 }
 
 .tRW, table.tRW>tr>td {
-  border-bottom: double 1px #081010;
+  border-right: double 1px #081010;
 }
 
 .tRWB, table.tRWB>tr>td {
-  border-bottom: double 2px #081010;
+  border-right: double 2px #081010;
 }
