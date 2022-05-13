@@ -434,7 +434,7 @@
     (?
       (>! (c.getLengthSx B) 6)
       (?
-        (<= (: B 16) "F")
+        (== (c.getLengthSx B) 7)
         (' "background-color: " B ";")
         ('
           "border-"
