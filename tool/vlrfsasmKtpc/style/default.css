@@ -17,8 +17,13 @@ table {
   width: max-content;
   border-left: solid 1px #808080;
   border-top: solid 1px #808080;
+  border-color: #808080;
   border-collapse: collapse;
   background-color: #F4FAFF;
+}
+
+tr {
+  border-color: inherit;
 }
 
 td {
@@ -26,6 +31,7 @@ td {
   padding: 0.2em;
   border-right: solid 1px #808080;
   border-bottom: solid 1px #808080;
+  border-color: inherit;
 }
 
 /*Header, Banner*/
