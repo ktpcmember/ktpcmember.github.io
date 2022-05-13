@@ -618,97 +618,121 @@ td {
 }
 
 .tTS {
-  border-top: solid 1px #081010;
+  border-top-style: solid;
+  border-top-width: 1px;
 }
 
 .tTSB {
-  border-top: solid 2px #081010;
+  border-top-style: solid;
+  border-top-width: 2px;
 }
 
 .tTD {
-  border-top: dotted 1px #081010;
+  border-top-style: dotted;
+  border-top-width: 1px;
 }
 
 .tTDB {
-  border-top: dotted 2px #081010;
+  border-top-style: dotted;
+  border-top-width: 2px;
 }
 
 .tTW {
-  border-top: double 1px #081010;
+  border-top-style: double;
+  border-top-width: 1px;
 }
 
 .tTWB {
-  border-top: double 2px #081010;
+  border-top-style: double;
+  border-top-width: 2px;
 }
 
 .tLS {
-  border-left: solid 1px #081010;
+  border-left-style: solid;
+  border-left-width: 1px;
 }
 
 .tLSB {
-  border-left: solid 2px #081010;
+  border-left-style: solid;
+  border-left-width: 2px;
 }
 
 .tLD {
-  border-left: dotted 1px #081010;
+  border-left-style: dotted;
+  border-left-width: 1px;
 }
 
 .tLDB {
-  border-left: dotted 2px #081010;
+  border-left-style: dotted;
+  border-left-width: 2px;
 }
 
 .tLW {
-  border-left: double 1px #081010;
+  border-left-style: double;
+  border-left-width: 1px;
 }
 
 .tLWB {
-  border-left: double 2px #081010;
+  border-left-style: double;
+  border-left-width: 2px;
 }
 
 .tBS, table.tBS>tr>td {
-  border-bottom: solid 1px #081010;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .tBSB, table.tBSB>tr>td {
-  border-bottom: solid 2px #081010;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
 }
 
 .tBD, table.tBD>tr>td {
-  border-bottom: dotted 1px #081010;
+  border-bottom-style: dotted;
+  border-bottom-width: 1px;
 }
 
 .tBDB, table.tBDB>tr>td {
-  border-bottom: dotted 2px #081010;
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
 }
 
 .tBW, table.tBW>tr>td {
-  border-bottom: double 1px #081010;
+  border-bottom-style: double;
+  border-bottom-width: 1px;
 }
 
 .tBWB, table.tBWB>tr>td {
-  border-bottom: double 2px #081010;
+  border-bottom-style: double;
+  border-bottom-width: 2px;
 }
 
 .tRS, table.tRS>tr>td {
-  border-right: solid 1px #081010;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 
 .tRSB, table.tRSB>tr>td {
-  border-right: solid 2px #081010;
+  border-right-style: solid;
+  border-right-width: 2px;
 }
 
 .tRD, table.tRD>tr>td {
-  border-right: dotted 1px #081010;
+  border-right-style: dotted;
+  border-right-width: 1px;
 }
 
 .tRDB, table.tRDB>tr>td {
-  border-right: dotted 2px #081010;
+  border-right-style: dotted;
+  border-right-width: 2px;
 }
 
 .tRW, table.tRW>tr>td {
-  border-right: double 1px #081010;
+  border-right-style: double;
+  border-right-width: 1px;
 }
 
 .tRWB, table.tRWB>tr>td {
-  border-right: double 2px #081010;
+  border-right-style: double;
+  border-right-width: 2px;
 }
