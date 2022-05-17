@@ -1,4 +1,8 @@
-Vlrfsasm v1.1 2022-05-17 08:24
-  8:Unpaired bracket
-   D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\temp\textContent.vlra :6
+Vlrfsasm v1.1 2022-05-17 08:30
+  3:Undefined function
+  mh.smallFraction D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :559
+  hx.fs D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\temp\textContent.vlra :11
+  ht.fraction.small D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\math.vlra :45
+  hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
+  hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
