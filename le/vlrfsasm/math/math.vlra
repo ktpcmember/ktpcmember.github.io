@@ -1,0 +1,62 @@
+{hp.path; ; "le/vlrfsasm/math/math.html"}
+
+{hh.keyword; ; "プログラミング,講習,Vlrfsasm"}
+{hh.description; ; "駒場東邦物理部(KTPC)部員向けVlrfsasm講習の資料です。"}
+{hh.title; ; "数式 - Vlrfsasm講習 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.lectureChapter)}
+{hm.lectureName; ; "Vlrfsasm講習"}
+{hm.lectureTopPath; ; "../vlrfsasm.html"}
+{hm.previousChapterPath; ; "../table/table.html"}
+{hm.previousChapterName; ; "表"}
+{hm.nextChapterPath; ; "../code/code.html"}
+{hm.nextChapterName; ; "コード"}
+
+{hc.content; ;
+  ('
+    (hc.title "Vlrfsasm講習/数式")
+    (hc.articleCa
+      "構文"
+      (ht.syntax.caption)
+      ('
+        (hc.section "変換" (ht.syntax.convert))
+        (hc.section "フォント" (ht.syntax.font))
+        (hc.section "拡張記法" (ht.syntax.extension))
+      )
+    )
+    (hc.article
+      "上下付き線"
+      ('
+        (hc.section "上付き線" (ht.line.over))
+        (hc.section "下付き線" (ht.line.under))
+      )
+    )
+    (hc.article
+      "根号"
+      ('
+        (hc.section "平方根" (ht.root.square))
+        (hc.section "n乗根" (ht.root.nth))
+      )
+    )
+    (hc.article
+      "分数"
+      ('
+        (hc.section "通常サイズ" (ht.fraction.normal))
+        (hc.section "小書き" (ht.fraction.small))
+      )
+    )
+    (hc.articleCa
+      "周辺付き文字"
+      (ht.attachment.caption)
+      ('
+        (hc.section "位置" (ht.attachment.position))
+        (hc.section "単独" (ht.attachment.single))
+        (hc.section "複数" (ht.attachment.multiple))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}

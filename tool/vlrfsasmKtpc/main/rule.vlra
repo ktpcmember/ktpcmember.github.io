@@ -528,7 +528,7 @@
     (? (# A) A B)
   )
 }
-{hx.a A; ; (ha.split (' A " ") (c.empty))}
+{hx.a A; ; (ha.split (' (he.compile A) " ") (c.empty))}
 {hx.S A B; ; (hb.tagCE "span" A B)}
 {hx.b A; ; (hx.S "xBold" A)}
 {hx.i A; ; (hx.S "xItalic" A)}
@@ -554,9 +554,9 @@
 {hx.mo A; ; (mh.overline A)}
 {hx.mu A; ; (mh.underline A)}
 {hx.s A; ; (mh.sqrt A)}
-{hx.mr A B; ; (mh.root A B)}
+{hx.r A B; ; (mh.root A B)}
 {hx.f A B; ; (mh.fraction A B)}
-{hx.mf A B; ; (mh.smallFraction A B)}
+{hx.fs A B; ; (mh.smallFraction A B)}
 {hx.0 A B; ; (mh.attachment1 "0" A B)}
 {hx.1 A B; ; (mh.attachment1 "1" A B)}
 {hx.2 A B; ; (mh.attachment1 "2" A B)}

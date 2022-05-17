@@ -8,7 +8,7 @@
 {hm.lectureName; ; "Vlrfsasm講習"}
 {hm.lectureTopPath; ; "../vlrfsasm.html"}
 {hm.previousChapterPath; ; "../body/body.html"}
-{hm.previousChapterName; ; "設定"}
+{hm.previousChapterName; ; "本文"}
 {hm.nextChapterPath; ; "../math/math.html"}
 {hm.nextChapterName; ; "数式"}
 
