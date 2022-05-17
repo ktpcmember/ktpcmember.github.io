@@ -83,6 +83,38 @@
     )
   )
 }
+{mh.smallFraction Numerator Denominator; ;
+  (mh.fraction.generalized
+    (mc.generalize Numerator)
+    (mc.generalize Denominator)
+  )
+}
+{mh.smallFraction.generalized Numerator Denominator; ;
+  (mc.encode
+    (' Numerator Denominator)
+    9
+    (ms.scale
+      ('
+        (+
+          (c.max
+            (mc.getSizeX Numerator)
+            (mc.getSizeX Denominator)
+          )
+          (ms.basic 4 0)
+        )
+        (+
+          (mc.getSizeY Numerator)
+          (ms.basic 4 0)
+        )
+        (-
+          (mc.getSizeY Denominator)
+          (ms.basic 2 0)
+        )
+      )
+      1
+    )
+  )
+}
 {mh.attachment1 Position Center First; ;
   (mh.attachment.generalized
     (mp.convert Position)

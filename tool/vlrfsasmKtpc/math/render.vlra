@@ -476,6 +476,107 @@
     )
   )
 }
+{mr.smallFraction Content Base Scale; ;
+  ('
+    (hb.xmlTagA "path"
+      ('
+        (hb.attribute "d"
+          ('
+            "M "
+            (mf.fraction2
+              (+
+                (> Base 16)
+                (ms.basic 1 Scale)
+              )
+            ) " "
+            (mf.fraction2
+              (- (: Base 16) (ms.basic 3 Scale))
+            ) " h "
+            (mf.fraction2
+              (-
+                (mc.getSizeX Content)
+                (ms.basic 2 Scale)
+              )
+            )
+          )
+        )
+        (hb.attribute "stroke" "black")
+      )
+    )
+    (mr.render
+      (mc.getFirstChild Content)
+      ('
+        (+
+          (> Base 16)
+          (mf.mul
+            (ms.scale
+              (-
+                (mc.getSizeX Content)
+                (ms.scale
+                  (mc.getSizeX
+                    (mc.getFirstChild Content)
+                  )
+                  1
+                )
+              )
+              Scale
+            )
+            (mf.immF $40)
+          )
+        )
+        (-
+          (: Base 16)
+          (+
+            (ms.scale
+              (mc.getSizeL
+                (mc.getFirstChild Content)
+              )
+              (+ Scale 1)
+            )
+            (ms.basic 4 (+ Scale 1))
+          )
+        )
+      )
+      (+ Scale 1)
+    )
+    (mr.render
+      (mc.getRestChildList Content)
+      ('
+        (+
+          (> Base 16)
+          (mf.mul
+            (ms.scale
+              (-
+                (mc.getSizeX Content)
+                (ms.scale
+                  (mc.getSizeX
+                    (mc.getRestChildList Content)
+                  )
+                  1
+                )
+              )
+              Scale
+            )
+            (mf.immF $40)
+          )
+        )
+        (+
+          (: Base 16)
+          (-
+            (ms.scale
+              (mc.getSizeH
+                (mc.getRestChildList Content)
+              )
+              (+ Scale 1)
+            )
+            (ms.basic 2 (+ Scale 1))
+          )
+        )
+      )
+      (+ Scale 1)
+    )
+  )
+}
 {mr.attachment Content Base Scale; ;
   ('
     (mr.render
