@@ -496,7 +496,7 @@
   (?
     (# A)
     A
-    (c.errorSb (' "Alias \"" "\" not defined"))
+    (c.errorSb (' "Alias \"" A "\" not defined"))
   )
 }
 {ha.find A 16 B C; ;

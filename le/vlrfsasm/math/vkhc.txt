@@ -62,7 +62,7 @@ ht.attachment.position
 ;5;[m;[5;Cl;17]];陽子の数、組み合わせ
 ;6;[m;[6;B;6]];
 ;7;[m;[7;[a;S];1[a;le]k[a;le]10]];総和や総乗の範囲、limit
-;8;[m;[8;[a;log];8]x];数列の添字、対数の基数
+;8;[m;[8;[t;log];8]x];数列の添字、対数の基数
 ;9;[m;[9;C;k]];組み合わせ
 
 ht.attachment.single
