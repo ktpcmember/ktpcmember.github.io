@@ -32,6 +32,7 @@
 ".\le\vlrfsasm\function\function.html"
 ".\le\vlrfsasm\grammar\grammar.html"
 ".\le\vlrfsasm\library\library.html"
+".\le\vlrfsasm\math\math.html"
 ".\le\vlrfsasm\setup\setup.html"
 ".\le\vlrfsasm\structure\structure.html"
 ".\le\vlrfsasm\table\table.html"
