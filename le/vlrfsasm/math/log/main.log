@@ -1,13 +1,6 @@
-Vlrfsasm v1.1 2022-05-17 08:55
-  13:Error in script
-  ~ def\common.vlra :414
-  c.errorSb D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :499
-  ha.select D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :490
-  ha.replace D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :480
-  ha.split D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :531
-  hx.a D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\temp\textContent.vlra :13
-  ht.attachment.position D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\math.vlra :52
+Vlrfsasm v1.1 2022-05-17 09:00
+  3:Undefined function
+  ht.attachment.multiple D:\a\ktpcmember.github.io\ktpcmember.github.io\le\vlrfsasm\math\math.vlra :54
   hc.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :148
   hb.content D:\a\ktpcmember.github.io\ktpcmember.github.io/tool/vlrfsasmKtpc\main\rule.vlra :2
   
-  Alias "" not defined
