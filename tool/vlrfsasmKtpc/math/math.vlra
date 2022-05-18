@@ -449,7 +449,7 @@
                 CenterX
                 (mp.calculate.scaleX List)
               )
-              (mf.immF $0060)
+              (mf.immF $0040)
             )
             WidthR
           )
