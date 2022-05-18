@@ -399,7 +399,7 @@
             ) " h "
             (mf.fraction2
               (-
-                (mc.getSizeX Content)
+                (ms.scale (mc.getSizeX Content) Scale)
                 (ms.basic 2 Scale)
               )
             )
@@ -494,7 +494,7 @@
             ) " h "
             (mf.fraction2
               (-
-                (mc.getSizeX Content)
+                (ms.scale (mc.getSizeX Content) Scale)
                 (ms.basic 2 Scale)
               )
             )

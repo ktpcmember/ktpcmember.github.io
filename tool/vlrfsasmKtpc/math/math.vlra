@@ -446,8 +446,8 @@
           (mz.max-
             (mf.mul
               (-
-                CenterX
                 (mp.calculate.scaleX List)
+                CenterX
               )
               (mf.immF $0040)
             )
