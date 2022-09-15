@@ -13,9 +13,9 @@
     (hc.articleCa "概要"
       (ht.summary.caption)
       ('
-        (ht.section "展示場所" (ht.summary.location))
-        (ht.section "展示場所" (ht.summary.member))
-        (ht.section "注意" (ht.summary.caution))
+        (hc.section "展示場所" (ht.summary.location))
+        (hc.section "展示場所" (ht.summary.member))
+        (hc.section "注意" (ht.summary.caution))
       )
     )
     (hc.articleCa "展示"
