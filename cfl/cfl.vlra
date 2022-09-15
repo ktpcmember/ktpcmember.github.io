@@ -14,7 +14,7 @@
       (ht.summary.caption)
       ('
         (hc.section "展示場所" (ht.summary.location))
-        (hc.section "展示場所" (ht.summary.member))
+        (hc.section "部員" (ht.summary.member))
         (hc.section "注意" (ht.summary.caution))
       )
     )
