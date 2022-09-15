@@ -1,0 +1,37 @@
+
+{hp.path; ; "cfl/cfl.html"}
+
+{hh.keyword; ; "駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,文化祭"}
+{hh.description; ; "駒場東邦物理部(KTPC)の、文化祭における展示の紹介です。"}
+{hh.title; ; "文化祭 - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.externalPage)}
+
+{hc.content; ;
+  ('
+    (hc.title "文化祭")
+    (hc.articleCa "概要"
+      (ht.summary.caption)
+      ('
+        (ht.section "展示場所" (ht.summary.location))
+        (ht.section "展示場所" (ht.summary.member))
+        (ht.section "注意" (ht.summary.caution))
+      )
+    )
+    (hc.articleCa "展示"
+      (ht.exhibition.caption)
+      ('
+        (hc.section "実験演示" (ht.exhibition.experiment))
+        (hc.section "ピタゴラ装置" (ht.exhibition.pt))
+        (hc.section "PCゲーム" (ht.exhibition.game))
+        (hc.section "ロボット" (ht.exhibition.robot))
+        (hc.section "電子工作" (ht.exhibition.el))
+        (hc.section "UFO" (ht.exhibition.ufo))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}

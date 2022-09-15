@@ -201,12 +201,16 @@
 
 {hm.contentOfMenuLink; ;
   (?
-    (== (hm.linkType) (hm.linkType.lectureIndex))
-    (hm.lectureIndex)
+    (== (hm.linkType) (hm.linkType.externalPage))
+    (hm.externalPage)
     (?
-      (== (hm.linkType) (hm.linkType.lectureChapter))
-      (hm.lectureChapter)
-      (c.empty) [WIP]
+      (== (hm.linkType) (hm.linkType.lectureIndex))
+      (hm.lectureIndex)
+      (?
+        (== (hm.linkType) (hm.linkType.lectureChapter))
+        (hm.lectureChapter)
+        (c.empty) [WIP]
+      )
     )
   )
 }
@@ -262,7 +266,7 @@
 }
 
 [Type of page for link]
-{hm.linkType.top; ; 0}
+{hm.linkType.externalPage; ; 0}
 {hm.linkType.lectureIndex; ; 1}
 {hm.linkType.lectureChapter; ; 2}
 

@@ -1,0 +1,64 @@
+[講習一覧
+ パスはle/から指定すること]
+{hm.lectureList; ;
+  ('
+    (hm.linkGroup "プログラミング班"
+      ('
+        (hm.linkElementOut "PC基礎" "le/_pc_ba/_pc_ba.html")
+        (hm.linkElementOut "C++" "le/_cps/_cps.html")
+        (hm.linkElementOut "WinAPI" "le/y_wwai/y_wwai.html")
+        (hm.linkElementOut "C++" "le/_cps/_cps.html")
+        (hm.linkElementOut "Unity" "le/uy/uy.html")
+        (hm.linkElementOut "コンピュータ基礎" "le/q_c_puba/q_c_puba.html")
+        (hm.linkElementOut "競技プログラミング" "le/k_c_pej_p_gm/k_c_pej_p_gm.html")
+        (hm.linkElementOut "Vlrfsasm" "le/vlrfsasm/vlrfsasm.html")
+      )
+    )
+    (hm.linkGroup "電子工作班"
+      ('
+        (hm.linkElementOut "電工基礎" "le/k_enba/k_enba.html")
+        (hm.linkElementOut "PIC（アセンブリ言語）" "le/_pic/_pic.html")
+        (hm.linkElementOut "PIC（C言語）" "le/picC/picC.html")
+      )
+    )
+    (hm.linkGroup "ピタゴラ班"
+      ('
+        (hm.linkElementOut "ピタゴラ" "le/psk_ep/psk_ep.html")
+      )
+    )
+  )
+}
+
+[HP外部向けページ一覧]
+{hm.externalPage; ;
+  ('
+    (hm.linkGroup "駒場東邦物理部"
+      (hm.linkElementRel "トップページ" "index.html")
+    )
+    (hm.linkGroup "通常活動"
+      ('
+        (hm.linkElementRel "プログラミング班" "pr/pr.html")
+        (hm.linkElementRel "電子工作・マイコン班" "el/el.html")
+        (hm.linkElementRel "ピタゴラ班" "pt/pt.html")
+        (hm.linkElementRel "装飾部門" "de/de.html")
+        (hm.linkElementRel "実験部門" "et/et.html")
+        (hm.linkElementRel "無線部門" "ra/ra.html")
+      )
+    )
+    (hm.linkGroup "イベント"
+      ('
+        (hm.linkElementRel "文化祭" "cfl/cfl.html")
+        (hm.linkElementRel "合宿" "tcp/tcp.html")
+        (hm.linkElementRel "エッグドロップ" "edp/edp.html")
+        (hm.linkElementRel "コンテスト" "oet/oet.html")
+      )
+    )
+    (hm.linkGroup "その他"
+      ('
+        (hm.linkElementRel "問い合わせ" "inquiry/inquiry.html")
+        (hm.linkElement "Twitter" "https://twitter.com/KT_Physics")
+        (hm.linkElement "駒東HP" "https://www.komabajh.toho-u.ac.jp/")
+      )
+    )
+  )
+}
