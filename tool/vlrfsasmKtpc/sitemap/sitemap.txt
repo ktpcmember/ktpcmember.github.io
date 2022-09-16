@@ -6,6 +6,7 @@
 ".\edp\edp.html"
 ".\el\el.html"
 ".\et\et.html"
+".\inquiry\inquiry.html"
 ".\le\le.html"
 ".\le\+tool\coq_ge\coq_ge.html"
 ".\le\k_c_pej_p_gm\k_c_pej_p_gm.html"
