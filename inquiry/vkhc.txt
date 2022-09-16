@@ -1,0 +1,6 @@
+ht.summary.caption
+物理部に対する問い合わせ、要望、提案などを受け付けています。
+
+ht.summary.form
+[l;Google Form;https://docs.google.com/forms/d/e/1FAIpQLSfzlamhKVhUQ-M7zmtVSQhJkRd3p4W5Y5iKYpa51wEZTnLzSQ/viewform]を開き、必要事項を記入してください。
+

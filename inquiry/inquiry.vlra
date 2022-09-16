@@ -1,0 +1,24 @@
+
+{hp.path; ; "inquiry/inquiry.html"}
+
+{hh.keyword; ; "駒場東邦物理部,駒場東邦,駒東,KTPC,物理部"}
+{hh.description; ; "駒場東邦物理部(KTPC)の、問い合わせ案内です。"}
+{hh.title; ; "問い合わせ - 駒場東邦物理部"}
+
+{hm.linkType; ; (hm.linkType.externalPage)}
+
+{hc.content; ;
+  ('
+    (hc.title "問い合わせ")
+    (hc.articleCa "概要"
+      (ht.summary.caption)
+      ('
+        (hc.section "フォーム" (ht.summary.form))
+      )
+    )
+  )
+}
+
+[User-defined style]
+{hu.extraCssPath; ; ""}
+{hu.extraNarrowCssPath; ; ""}
