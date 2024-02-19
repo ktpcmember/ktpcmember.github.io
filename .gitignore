@@ -3,3 +3,4 @@ __pycache__
 # for generator in math
 /tool/vlrfsasmKtpc/math/generator/hash.py
 /tool/vlrfsasmKtpc/math/generator/sizeList.bin
+.DS_Store
