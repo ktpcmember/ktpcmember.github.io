@@ -1,28 +1,45 @@
 ﻿<!DOCTYPE html>
 <html>
- <head>
-  <script type="text/javascript" src="c_vt.js"></script>
-  <meta charset="UTF-8">
-  <meta name="author" content="vlrfs">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>HP用コード変換器 - 駒場東邦物理部</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
- </head>
- <body class="by">
-  <textarea id="i_pt" class="ttaa" placeholder="Write here something to convert.
+  <head>
+    <script type="text/javascript" src="c_vt.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="author" content="vlrfs" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>HP用コード変換器 - 駒場東邦物理部</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body class="by">
+    <textarea
+      id="i_pt"
+      class="ttaa"
+      placeholder="Write here something to convert.
 Paragraphs will be rendered with following sentence:
-{{<color tag> <code in the paragraph>}}<title of the paragraph>"></textarea>
-  <div class="cdtp">
-   <button class="bn" onclick="push(0)">Convert for multi-line</button>
-   <button class="bn" onclick="push(1)">Convert for single-line</button>
-   <div class="cdit">
-    <select id="la" class="csla">
-     <option value="_cps">C++</option>
-     <option value="ktpcpicasm">KTPCPICASM</option>
-    </select>
-    <input type="number" class="cinr" id="nrofsp" placeholder="TAB変換後のSPACE字数、0or空欄で変換なし">
-   </div>
-  </div>
-  <textarea id="o_pt" class="ttaa" placeholder="Results are put out here." readonly></textarea>
- </body>
+{{<color tag> <code in the paragraph>}}<title of the paragraph>"
+    ></textarea>
+    <div class="cdtp">
+      <button class="bn" onclick="push(0)">Convert for multi-line</button>
+      <button class="bn" onclick="push(1)">Convert for single-line</button>
+      <div class="cdit">
+        <select id="la" class="csla">
+          <option value="_cps">C++</option>
+          <option value="ktpcpicasm">KTPCPICASM</option>
+        </select>
+        <input
+          type="number"
+          class="cinr"
+          id="nrofsp"
+          placeholder="TAB変換後のSPACE字数、0or空欄で変換なし"
+        />
+      </div>
+    </div>
+    <textarea
+      id="o_pt"
+      class="ttaa"
+      placeholder="Results are put out here."
+      readonly
+    ></textarea>
+  </body>
 </html>
