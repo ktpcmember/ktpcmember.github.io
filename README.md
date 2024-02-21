@@ -20,4 +20,4 @@ Node.jsをインストールしていない方はgoogleでNode.js LTSで検索�
 これで一旦環境構築は終了です。
 
 ### 開発を始める前に
-```npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch```を実行してください。コードを書いている間は実行したままにしておくのを推奨します。(これをすることでCSSファイルがビルドされます)
+作業フォルダーで```npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch```を実行してください。コードを書いている間は実行したままにしておくのを推奨します。(これをすることでCSSファイルがビルドされます)
