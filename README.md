@@ -19,5 +19,5 @@ Node.jsをインストールしていない方はgoogleでNode.js LTSで検索�
 5.```npm install```を実行(そのプロジェクトで使用する様々なファイルをインストールします。詳しくはpackage.jsonを見てください。)  
 これで一旦環境構築は終了です。
 
-###　開発を始める前に
+### 開発を始める前に
 ```npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch```を実行してください。コードを書いている間は実行したままにしておくのを推奨します。(これをすることでCSSファイルがビルドされます)
