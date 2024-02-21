@@ -4,3 +4,6 @@ __pycache__
 /tool/vlrfsasmKtpc/math/generator/hash.py
 /tool/vlrfsasmKtpc/math/generator/sizeList.bin
 .DS_Store
+
+/node_modules
+```
