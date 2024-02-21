@@ -9,4 +9,4 @@ tailwindCSSを仮導入したのでcloneしたら ```npm install```をしてダ�
 参考: [tailwindInstall](https://tailwindcss.com/docs/installation)
 
 ### 開発するとき
-開発する前に ```npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch```
+開発する前に ```npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch```を実行してね
