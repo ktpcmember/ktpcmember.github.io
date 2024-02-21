@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++ on MSVC講習の資料です。コンソールプログラムでのHello, world!について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Hello World! - C++ on MSVC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../../static.css">
+  <script type="text/javascript" src="../../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="../../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="./min_world.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="./another_world.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+    <div class="cb00">
+     <div class="cb10">
+      <article class="cb20">
+       <h1>C++ on MSVC講習/Hello World!</h1>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">概要</h2>
+       <span class="cb34">
+        C++では、初めてのプログラムはHello, world!のような文字列を出力するのが慣習です。<br>
+        既に初めてではないですが、標準出力にHello, world!と出力するコードを学びます。
+       </span>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb36 debr">
+        <h4 class="cb44">
+         重要語
+        </h4>
+        <h4 class="cb45">コンソール</h4>
+        <span class="cb41">ディスプレイに表示させる黒い画面</span>
+        <h4 class="cb45">標準出力</h4>
+        <span class="cb41">通常コンソールに紐づけられている出力先</span>
+        <h4 class="cb45">リテラル</h4>
+        <span class="cb41">コード上に直接書かれた数値や文字列</span>
+        <h4 class="cb45">std::cout</h4>
+        <span class="cb41">標準出力に出力するオブジェクト</span>
+        <h4 class="cb45">&lt;&lt;</h4>
+        <span class="cb41">std::coutに出力するのに使う演算子</span>
+       </div>
+       <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">今回はありません。</span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">初期生成コードのHello World!</h2>
+      <span class="cb34">
+       それでは、Visual Studioでプロジェクトを作成して、初期生成のコードを実行してみましょう。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">初期生成コード</span>
+         <button type="button" class="cb53" onclick="copy('saco_1')">
+          <span class="cb61">COPY</span>
+         </button>
+        </div>
+        <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+ // example.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
+ //
+ 
+ #include <iostream>
+ 
+ int main()
+ {
+     std::cout << "Hello World!\n";
+ }
+ 
+ // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
+ // プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
+ 
+ // 作業を開始するためのヒント: 
+ //    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
+ //   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
+ //   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
+ //   4. エラー一覧ウィンドウを使用してエラーを表示します
+ //   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
+ //   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します 
+
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21 fxlr">
+       <div class="cb31">
+        <h3 class="cb40">実行結果</h3>
+        <span class="cb41">
+         黒い画面、コンソールが表示され、そこに「Hello World!」と表示されます。<br>
+         これからは、出力は<code>&gt; something</code>という形式で記載することにします。<br>
+         なお、Visual Studioが実行結果の後に続けてメッセージを表示することがあります。
+        </span>
+       </div>
+       <div class="cb37">
+        <div class="cb46">
+         <span class="cb54">実行結果</span>
+        </div>
+        <code class="cb47">
+<pre class="cb55 bkgdbl">
+&gt; Hello World!
+&gt;
+</pre>
+        </code>
+       </div>
+      </article>
+      <article class="cb21 fxtb">
+       <h2 class="cb33">初期生成コードのHello, world!</h2>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">リテラル</h3>
+        <span class="cb41">
+         リテラルはコード上に直接書かれている値で、整数、小数、文字、文字列の4種類があります。<br>
+         言い換えると、リテラルはコード上に埋め込まれているデータのことになります。<br>
+         整数/小数リテラルは、普通にコード上に書くことが出来ます。<br>
+         なお、整数はアポストロフィで桁区切りを、小数は<code>e</code>を用いた指数表記も利用出来ます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">文字/文字列リテラル</h3>
+        <span class="cb41">
+         文字リテラルと文字列リテラルには、対応している文字全てを自由に使用することが出来ます。<br>
+         そして、文字リテラルはシングルクオーテーションで囲うことで作られます。<br>
+         対して、文字列リテラルはダブルクオーテーションで囲うことで作られます。<br>
+         これらはリテラルとコードを区別し、リテラルがコードと間違われないために必要です。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">エスケープシーケンス</h3>
+        <span class="cb41">
+         文字/文字列リテラルでは、円記号と特定のアルファベット1字の組を1文字として認識します。<br>
+         これをエスケープシーケンスと呼びます。例えば、改行は<code>\n</code>Tab文字は<code>\t</code>になります。<br>
+         なお、円記号そのものを表わす際には<code>\\</code>と、円記号を2つ並べて表します。<br>
+         ただし、円記号は環境によってはバックスラッシュとして表示されることに留意しましょう。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">標準出力とstd::cout</h3>
+        <span class="cb41">
+         標準出力は、その名の通りプログラムの標準での出力先のことになります。<br>
+         コンソールプログラムであると、大抵はコンソール画面に繋がっています。<br>
+         そして、std::coutを用いると、標準出力へ出力することが出来ます。<br>
+         std::coutは、通常「すたんだーどしーあうと」か「stdしーあうと」と読みます。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40">std::coutの使い方</h3>
+        <span class="cb41">
+         std::coutは、標準出力と繋がっているオブジェクトです。<br>
+         これに&lt;&lt;を用いて<code>std::cout &lt;&lt; 値</code>とすると、std::coutに値を渡すことが出来ます。<br>
+         <code>値</code>にリテラルは含まれ、<code>std::cout &lt;&lt; リテラル</code>でリテラルを出力出来ます。<br>
+         なお、値を渡されたstd::coutは標準出力へとその受け取った値を送ります。
+        </span>
+       </div>
+      </article>
+      <article class="cb21">
+       <div class="cb31">
+        <h3 class="cb40"><code>#include &lt;iostream&gt;</code></h3>
+        <span class="cb41">
+         ここでは、「std::coutを使うのに必要であるので書いている」ということで覚えてください。<br>
+         ちなみに、iostreamというのは、inputとoutputのstreamという意味です。<br>
+         また、これは必ずmain関数よりも上に書く必要があることに注意してください。
+        </span>
+       </div>
+      </article>
+
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習</h2>
+      <span class="cb34">
+       表示する内容を変えてみましょう。<br>
+       また、整数/小数/文字リテラルも使ってみましょう。
+      </span>
+     </article>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">練習例</summary>
+       <div class="cb46">
+        <span class="cb54">練習例</span>
+        <button type="button" class="cb53" onclick="copy('ar_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="ar_1" class="cb55 bkgdbl">
+#include <iostream>
+
+int main() {
+ std::cout << "こんにちは\n";
+ std::cout << 2 << '*' << 2 <<' は' << 4;
+}
+</pre>
+       </code>
+      </details>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

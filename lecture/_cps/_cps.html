@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+ <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。">
+ <meta name="author" content="駒場東邦物理部">
+ <meta http-equiv="content-language" content="ja">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <title>C++講習 - 駒場東邦物理部</title>
+ <link rel="icon" type="image/jpeg" href="../../images/logo.jpg">
+ <link rel="stylesheet" type="text/css" href="../../style.css">
+ <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../static.css">
+ <script type="text/javascript" src="../../header.js"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133906591-2');
+ </script>
+</head>
+
+<body>
+ <header class="ch00">
+  <img class="ch11" src="../../images/br.jpg">
+ </header>
+ <div class="chb">
+  <div class="ch01">
+   <div class="ch10">
+    <div class="ch21">
+     <button type="button" class="ch31" onclick="ck()">
+      <img class="ch42" src="../../images/menu.png">
+     </button>
+    </div>
+    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">駒場東邦物理部</span>
+      </span>
+      <a class="ch41" href="../../index.html">
+       <span class="ch50">トップページ</span>
+      </a>
+      <a class="ch41" href="../le.html">
+       <span class="ch50">講習トップ</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">プログラミング班</span>
+      </span>
+      <a class="ch41" href="../_p_cba/_p_cba.html">
+       <span class="ch50">PC基礎</span>
+      </a>
+      <a class="ch41" href="../_cps/_cps.html">
+       <span class="ch50">C++</span>
+      </a>
+      <a class="ch41" href="../y_wwai/y_wwai.html">
+       <span class="ch50">WinAPI</span>
+      </a>
+      <a class="ch41" href="../uy/uy.html">
+       <span class="ch50">Unity</span>
+      </a>
+      <a class="ch41" href="../q_c_puba/q_c_puba.html">
+       <span class="ch50">コンピュータ基礎</span>
+      </a>
+      <a class="ch41" href="../k_c_pej_p_gm/k_c_pej_p_gm.html">
+       <span class="ch50">競技プログラミング</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">電子工作・マイコン班</span>
+      </span>
+      <a class="ch41" href="../k_enba/k_enba.html">
+       <span class="ch50">電工基礎</span>
+      </a>
+      <a class="ch41" href="../_pic/_pic.html">
+       <span class="ch50">PICマイコン（アセンブリ言語）</span>
+      </a>
+      <a class="ch41" href="../picC/picC.html">
+       <span class="ch50">PICマイコン（C言語）</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">ピタゴラ班</span>
+      </span>
+      <a class="ch41" href="../psk_ep/psk_ep.html">
+       <span class="ch50">ピタゴラ</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="cb00">
+   <div class="cb10">
+    <article class="cb20">
+     <h1>C++講習</h1>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">概要</h3>
+      <span class="cb41">
+       本講習では、プログラミング言語C++について学びます。<br>
+       本講習を受ける前に、PC基礎講習を受けてください。<br>
+       また、WindowsのPCとマウスを用意してください。
+      </span>
+     </div>
+     <img class="cb30" src="_cps.jpg">
+    </article>
+    <article class="cb21 fxlr">
+     <div class="cb31">
+      <h3 class="cb40">内容</h3>
+      <span class="cb41">
+       各章は、あらすじ/重要語/必要語/解説/記述例/練習問題、という構成になっています。<br>
+       その章を読む前に、必要語を学んでおいてください。<br>
+       学んでいれば、解説を読み、記述例を実行してみましょう。<br>
+       動作などを理解できた、と思ったら、練習問題に挑戦してみましょう。<br>
+       考えても分からなければ、解答例をみることもできます。
+      </span>
+     </div>
+     <img class="cb30" src="../../images/rray.jpg">
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">目次 - C++ on MSVC - 導入</h2>
+     <span class="cb34">
+      C++講習です。
+     </span>
+    </article>
+    <article class="cb21 fxtb">
+     <div class="cb35">
+      <a class="cb42" href="i/k_e_vn/k_e_vn.html">環境構築<span class="lepy_a">A</span></a>
+      <span class="cb43">Visual Studioとプロジェクト</span>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/hello/hello.html">Hello world!<span class="lepy_a">A</span></a>
+      <sapn class="cb43">Hello world!</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/var/var.html">変数基礎<span class="lepy_a">A</span></a>
+      <sapn class="cb43">整数/小数/文字列/入力</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/i&d/i&d.html">整数と小数<span class="lepy_a">A</span></a>
+      <sapn class="cb43">整数と小数の内部表現/四則演算</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/if/if.html">条件分岐1 - if文<span class="lepy_a">A</span></a>
+      <sapn class="cb43">複合文/bool/if文</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/switch/switch.html">条件分岐2 - switch文<span class="lepy_a">A</span></a>
+      <sapn class="cb43">列挙型/switch文/属性</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/wfor/wfor.html">反復 - while/for文<span class="lepy_a">A</span></a>
+      <sapn class="cb43">goto文/while文/for文</sapn>
+     </div>
+     <div class="cb35">
+      <a class="cb42" href="ktpcmd/m/wfor/wfor.html">関数基礎<span class="lepy_a">A</span></a>
+      <sapn class="cb43">関数の宣言・定義とODR/オーバーロード/再帰</sapn>
+     </div>
+    </article>
+    <!--
+     <article class="cb21 fxtb">
+      <h2 class="cb33">目次 - C++ - 導入</h2>
+      <span class="cb34">
+       C++講習を受けるに当たって、最低限必要な内容です。<br>
+       C++講習の形態などの話もここに含まれます。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <div class="cb35">
+       <a class="cb42" href="i/overview/overview.html">概要<span class="lepy_a">A</span></a>
+       <span class="cb43">C++ on MSVC講習/C++ with Windows API講習/Windows API講習</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="i/history/history.html">歴史<span class="lepy_a">A</span></a>
+       <span class="cb43">C++とWindowsの簡単な歴史</span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">目次 - C++ on MSVC - 入門</h2>
+      <span class="cb34">
+       C++の非常に基幹的な言語規格の部分についての内容です。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <div class="cb35">
+       <a class="cb42" href="m/hello/hello_world.html">Hello World!<span class="lepy_a">A</span></a>
+       <span class="cb43">コード/コメントとmain関数、リテラルと標準出力</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="m/hello/another_world.html">Another World!<span class="lepy_b">B</span></a>
+       <span class="cb43">#include/スコープ/名前空間など詳細</span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">[[maybe_unused]] 目次 - C++ with Windows API - 入門</h2>
+      <span class="cb34">
+       C++とWindows APIでプログラムを動かす最低限必要な要素です。<br>
+       C++基礎講習やWindows API講習を受ける前に、修了しておいてください。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <div class="cb35">
+       <a class="cb42" href="w/howd/howd.html">Hello, world!<span class="lepy_a">A</span></a>
+       <span class="cb43">コード/関数/引数/定数</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/a_dradsg/a_dradsg.html">アドレスと文字列<span class="lepy_b">B</span></a>
+       <span class="cb43">メモリ/アドレス/NULL</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/l_vyadsg/l_vyadsg.html">変数と文字列<span class="lepy_a">A</span></a>
+       <span class="cb43">変数/変数の宣言と代入/初期化/連結</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/i_traddo/i_traddo.html">整数と実数<span class="lepy_a">A</span></a>
+       <span class="cb43">組み込み型/ユーザー定義型/算術演算/キャスト</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/q_pt/q_pt.html">ポインタ<span class="lepy_a">A</span></a>
+       <span class="cb43">ポインタ/間接参照/値渡し/ポインタ渡し</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/k_t_fcba/k_t_fcba.html">関数基本<span class="lepy_a">A</span></a>
+       <span class="cb43">関数の宣言と定義/値渡し/ポインタ渡し/型</span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">[[maybe_unused]] 目次 - C++ with Windows API - 基礎</h2>
+      <span class="cb34">
+       C言語から受け継いだ機能を中心とした要素です。<br>
+       現在、C++講習の導入を更新中です。そのため更新はお休みしています。<br>
+       ここからはWindows API講習と同時進行で学習してください。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <div class="cb35">
+       <a class="cb42" href="w/k_st/k_st.html">構造体<span class="lepy_a">A</span></a>
+       <span class="cb43">構造体の宣言と定義/構造体変数/ドット・アロー演算子/エイリアス</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/ifadsh/ifadsh.html">if文とswitch文<span class="lepy_a">A</span></a>
+       <span class="cb43">式/文/複合文/bool/関係・論理演算子/条件演算子/if文/switch文</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/whadfr/whadfr.html">while文とfor文<span class="lepy_a">A</span></a>
+       <span class="cb43">input_int.hpp/while文/インデックスループ/for文/continue文</span>
+      </div>
+      <div class="cb35">
+       <a class="cb42" href="w/c_array/c_array.html">C言語配列<span class="lepy_a">A</span></a>
+       <span class="cb43">C言語配列/1次元配列/2次元配列/1次元配列のポインタへの降格</span>
+      </div>
+     </article>
+    -->
+   </div>
+  </div>
+  <footer class="cf00">
+   <div class="cf10">
+    <button class="cf21" onclick="tp()">
+     <img class="cf30" src="../../images/top.png">
+    </button>
+    <span class="cf20">
+     (C) 2020 駒場東邦物理部[KTPC]
+    </span>
+   </div>
+  </footer>
+ </div>
+</body>
+
+</html>

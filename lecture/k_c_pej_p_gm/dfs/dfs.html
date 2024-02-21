@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+ <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。DFSについて解説しています。">
+ <meta name="author" content="駒場東邦物理部">
+ <meta http-equiv="content-language" content="ja">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <title>DFS - 競技プログラミング講習 - 駒場東邦物理部</title>
+ <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+ <link rel="stylesheet" type="text/css" href="../../../style.css">
+ <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+ <script type="text/javascript" src="../../../header.js"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133906591-2');
+ </script>
+</head>
+
+<body>
+ <header class="ch00">
+  <img class="ch11" src="../../../images/br.jpg">
+ </header>
+ <div class="chb">
+  <div class="ch01">
+   <div class="ch10">
+    <div class="ch21">
+     <button type="button" class="ch31" onclick="ck()">
+      <img class="ch42" src="../../../images/menu.png">
+     </button>
+    </div>
+    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">駒場東邦物理部</span>
+      </span>
+      <a class="ch41" href="../../../index.html">
+       <span class="ch50">トップページ</span>
+      </a>
+      <a class="ch41" href="../../le.html">
+       <span class="ch50">講習トップ</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">競技プログラミング講習</span>
+      </span>
+      <a class="ch41" href="../k_c_pej_p_gm.html">
+       <span class="ch50">目次</span>
+      </a>
+      <a class="ch41" href="../none/none.html">
+       <span class="ch50">索引</span>
+      </a>
+      <a class="ch41" href="../search/search.html">
+       <span class="ch50">前回</span>
+      </a>
+      <a class="ch41" href="../bfs/bfs.html">
+       <span class="ch50">次回</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="cb00">
+   <div class="cb10">
+    <article class="cb20">
+     <h1>競技プログラミング講習/DFS</h1>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">概要</h2>
+     <span class="cb34">
+      今回は、DFSについて解説します。迷路の探索を取り扱っていきますが、実際はグラフの問題で多く使います。
+      グラフへの応用はグラフの章を読んでください。
+     </span>
+    </article>
+    <article class="cb21 fxlr">
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       重要語
+      </h4>
+      <h4 class="cb45">
+       DFS
+      </h4>
+      <span class="cb41">
+       深さ優先探索。ある地点とある地点が連結であるかを調べることができる。
+      </span>
+      <h4 class="cb45">
+       再帰関数
+      </h4>
+      <span class="cb41">
+       自分自身を呼び出す関数のこと。
+      </span>
+     </div>
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       必要語
+      </h4>
+      <span class="cb41">
+       今回の必要語はありません。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">DFS</h2>
+     <span class="cb34">
+      DFS(depth first search, 深さ優先探索)を用いると、迷路のスタートからゴールまでがつながっているかを調べることなどができます。
+      スタートからゴールまで到達可能かということは、<a class="cb51" href="../bfs/bfs.html">BFS</a>(次章)を使っても調べることができますが、DFSはグラフの探索において非常に有効です。
+      DFSは、とにかく進めるところまで進んで進めなくなったら戻る、といったイメージです。
+     </span>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">探索する迷路</h3>
+      <span class="cb41">
+       ここでは、例として図のような迷路の探索を考えてみましょう。
+       白いマスが通行可能な空きマス、黒いマスが通行不可能な壁マス、sがスタート、gがゴールを表しています。
+       通行可能なマスからは、上下左右に隣接する通行可能なマスに移動することができます。
+       迷路の外に移動することや、壁マスへ移動すること、斜めに移動することはできません。
+       スタートからゴールまで到達可能かを判定してみましょう。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Set.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step1</h3>
+      <span class="cb41">
+       まず、スタートを探索済みにします。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Step1.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step2</h3>
+      <span class="cb41">
+       右左上下の順で探索することにして、分かれ道を気にせず右にどんどん進め、そこを探索済みにしていきます。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Step2.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step3</h3>
+      <span class="cb41">
+       ここで右に行けなくなってしまったため、次は左を見ますが、ここはすでに探索済みであるためパスし、
+       次に上を見てここはまだ探索していないためそこを探索済みにします。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Step3.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step4</h3>
+      <span class="cb41">
+       ここで上下左右どこにも行けなくなってしまったためひとつ前の地点に戻り、そこから新たに行けるところがないかを探します。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Step4.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Step5</h3>
+      <span class="cb41">
+       もし探索できるところがあればそこを起点に同様に探索していきます。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Step5.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">Finish</h3>
+      <span class="cb41">
+       後は同じように探索をしていき、スタートに帰ってきたら終了です。
+      </span>
+     </div>
+     <img class="cb30" src="DFS-Finish.png">
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb31">
+      <h3 class="cb40">実装例</h3>
+      <span class="cb41">
+       それでは、実装例を見ていきます。DFSの実装は再帰関数を使った実装や、スタックを使った実装などがありますが、
+       今回はより簡潔に書ける再帰関数のほうを紹介します。なぜ再帰関数でうまくいくかというと、最初はスタート地点の座標で呼び出され、
+       その後4方向を見るときに、±1で呼び出されさらにそこから...というようにどんどん進んでいき、4方向が終わったらreturnして終了するためです。<br>
+       左上(0,0)をスタート地点として、縦Hマス横WマスのH&times;Wマスからなる迷路を探索し、右下(w-1,h-1)のゴールにたどり着けるかどうかを判定します。<br>
+       入力の形式は、1行目にH,Wが与えられ、2行目からのH行には迷路の各マスの情報が<code>#</code>は壁で<code>.</code>は道として与えられることを想定しています。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxrl">
+     <div class="cb37">
+      <div class="cb46">
+       <span class="cb54">DFS</span>
+       <button type="button" class="cb53" onclick="copy('DFS')">
+        <span class="cb61">COPY</span>
+       </button>
+      </div>
+      <code class="cb47">
+       <pre id="DFS" class="cb55 bkgdgy">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>bits<span class="wdsl">/</span>stdc<span class="wdsl">++</span>.h<span class="wdsl">&gt;</span>
+<span class="wdkywd">using</span> <span class="wdkywd">namespace</span> std<span class="wdsl">;</span>
+<span class="wdkywd">void</span> dfs<span class="wdsl">(</span><span class="wdkywd">int</span> x<span class="wdsl">,</span> <span class="wdkywd">int</span> y<span class="wdsl">,</span> <span class="wdkywd">int</span> h<span class="wdsl">,</span> <span class="wdkywd">int</span> w<span class="wdsl">,</span> vector<span class="wdsl">&lt;</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">bool</span><span class="wdsl">&gt;&gt;</span> <span class="wdsl">&amp;</span>isR<span class="wdsl">,</span> vector<span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span> <span class="wdsl">&amp;</span>s<span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">// 範囲外アクセスしないように迷路の外だったら即return
+</span>    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdnr">0</span> <span class="wdsl">&gt;</span> x <span class="wdsl">||</span> x <span class="wdsl">&gt;=</span> w <span class="wdsl">||</span> <span class="wdnr">0</span> <span class="wdsl">&gt;</span> y <span class="wdsl">||</span> y <span class="wdsl">&gt;=</span> h<span class="wdsl">)</span> <span class="wdkywd">return</span><span class="wdsl">;</span>
+    <span class="wdc_mt">// そのマスが探索済みまたは壁であってもreturn
+</span>    <span class="wdkywd">if</span> <span class="wdsl">(</span>isR<span class="wdsl">[</span>y<span class="wdsl">][</span>x<span class="wdsl">]</span> <span class="wdsl">||</span> s<span class="wdsl">[</span>y<span class="wdsl">][</span>x<span class="wdsl">]</span> <span class="wdsl">==</span> '#'<span class="wdsl">)</span> <span class="wdkywd">return</span><span class="wdsl">;</span>
+    <span class="wdc_mt">// このマスを探索済みにする
+</span>    isR<span class="wdsl">[</span>y<span class="wdsl">][</span>x<span class="wdsl">]</span> <span class="wdsl">=</span> <span class="wdkywd">true</span><span class="wdsl">;</span>
+    <span class="wdc_mt">// 4方向を見る
+</span>    dfs<span class="wdsl">(</span>x <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">,</span> y<span class="wdsl">,</span> h<span class="wdsl">,</span> w<span class="wdsl">,</span> isR<span class="wdsl">,</span> s<span class="wdsl">);</span>
+    dfs<span class="wdsl">(</span>x <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">,</span> y<span class="wdsl">,</span> h<span class="wdsl">,</span> w<span class="wdsl">,</span> isR<span class="wdsl">,</span> s<span class="wdsl">);</span>
+    dfs<span class="wdsl">(</span>x<span class="wdsl">,</span> y <span class="wdsl">+</span> <span class="wdnr">1</span><span class="wdsl">,</span> h<span class="wdsl">,</span> w<span class="wdsl">,</span> isR<span class="wdsl">,</span> s<span class="wdsl">);</span>
+    dfs<span class="wdsl">(</span>x<span class="wdsl">,</span> y <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">,</span> h<span class="wdsl">,</span> w<span class="wdsl">,</span> isR<span class="wdsl">,</span> s<span class="wdsl">);</span>
+    <span class="wdkywd">return</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+<span class="wdkywd">int</span> main<span class="wdsl">()</span> <span class="wdsl">{</span>
+    <span class="wdkywd">int</span> h<span class="wdsl">,</span> w<span class="wdsl">;</span>
+    cin <span class="wdsl">&gt;&gt;</span> h <span class="wdsl">&gt;&gt;</span> w<span class="wdsl">;</span>
+    vector<span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span> s<span class="wdsl">(</span>h<span class="wdsl">);</span>
+    <span class="wdkywd">for</span> <span class="wdsl">(</span><span class="wdkywd">int</span> i <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span> i <span class="wdsl">&lt;</span> h<span class="wdsl">;</span> i<span class="wdsl">++)</span> <span class="wdsl">{</span>
+        cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">[</span>i<span class="wdsl">];</span>
+    <span class="wdsl">}</span>
+    vector<span class="wdsl">&lt;</span>vector<span class="wdsl">&lt;</span><span class="wdkywd">bool</span><span class="wdsl">&gt;&gt;</span> isR<span class="wdsl">(</span>h<span class="wdsl">,</span> vector<span class="wdsl">&lt;</span><span class="wdkywd">bool</span><span class="wdsl">&gt;(</span>w<span class="wdsl">,</span> <span class="wdkywd">false</span><span class="wdsl">));</span>
+    dfs<span class="wdsl">(</span><span class="wdnr">0</span><span class="wdsl">,</span> <span class="wdnr">0</span><span class="wdsl">,</span> h<span class="wdsl">,</span> w<span class="wdsl">,</span> isR<span class="wdsl">,</span> s<span class="wdsl">);</span>
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>isR<span class="wdsl">[</span>h <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">][</span>w <span class="wdsl">-</span> <span class="wdnr">1</span><span class="wdsl">])</span> <span class="wdsl">{</span>
+        cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"Yes"</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdsl">}</span> <span class="wdkywd">else</span> <span class="wdsl">{</span>
+        cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"No"</span> <span class="wdsl">&lt;&lt;</span> endl<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span></span></span></pre>
+      </code>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">計算量</h2>
+     <span class="cb34">
+      では、DFSの計算量はどうなるでしょうか。DFSにおいて、1つのマスにつき1回しか見ることはありません。そのため、計算量はO(HW)になります。
+     </span>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">練習問題</h2>
+     <span class="cb34">
+      理解できたか確認するために、練習問題を解いてもらいます。以下の問題を解いてみてください。<br>
+      (練習問題が少なくてごめんなさい。ほとんどグラフの問題でした...)
+      <ul>
+       <li><a class="cb51" href="https://atcoder.jp/contests/atc001/tasks/dfs_a">
+         ATC001 A - 深さ優先探索</a>　(基本です。講座用問題のため、下にスライドの解説があります)</li>
+      </ul>
+     </span>
+    </article>
+   </div>
+  </div>
+  <footer class="cf00">
+   <div class="cf10">
+    <button class="cf21" onclick="tp()">
+     <img class="cf30" src="../../../images/top.png">
+    </button>
+    <span class="cf20">
+     (C) 2020 駒場東邦物理部[KTPC]
+    </span>
+   </div>
+  </footer>
+ </div>
+</body>
+
+</html>

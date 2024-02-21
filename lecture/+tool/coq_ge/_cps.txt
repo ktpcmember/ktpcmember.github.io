@@ -1,0 +1,214 @@
+﻿+ p wdp_q_p_csc_md
++ k wdkywd
++ n wdnr
++ s wdsl
++ t wdtt
++ ca wdc_mt
++ cae *
++ cb wdc_mt
++ cbe wdc_mt
++ pgs PGS
++ pge PGE
++ e *
++ ? *
+
+& n n
+& s s
+& ? ?
+& e e
+
+& ? n
+& n ?
+
+& t ?
+& t n
+& t s
+& t e
+& t ca
+& t cae
+& t cb
+& t cbe
+| t t
+
+& ca ?
+& ca n
+& ca s
+& ca t
+& ca e
+& ca ca
+& ca cb
+& ca cbe
+| ca cae
+
+& cb ?
+& cb n
+& cb s
+& cb t
+& cb e
+& cb ca
+& cb cae
+& cb cb
+| cb cbe
+
+& pgs ?
+& pgs n
+
+& pge ?
+& pge n
+& pge s
+& pge t
+& pge e
+& pge ca
+& pge cb
+& pge cbe
+
+- " t
+- L" t
+- \" ?
+
+- // ca
+- NL cae
+- /* cb
+- */ cbe
+
+- TAB e
+- SP e
+- EOF eof
+
+- 0 n
+- 1 n
+- 2 n
+- 3 n
+- 4 n
+- 5 n
+- 6 n
+- 7 n
+- 8 n
+- 9 n
+
+- ! s
+- % s
+- & s
+- ( s
+- ) s
+- * s
+- + s
+- , s
+- - s
+- / s
+- : s
+- ; s
+- < s
+- = s
+- > s
+- ? s
+- [ s
+- ] s
+- ^ s
+- { s
+- | s
+- } s
+- ~ s
+
+- {{ pgs
+- }} pge
+
+! ? #include p
+! ? #define p
+! ? #if p
+! ? #ifdef p
+! ? #ifndef p
+! ? #else p
+! ? #endif p
+
+! ? alignas k
+! ? alignof k
+! ? and k
+! ? and_eq k
+! ? asm k
+! ? auto k
+! ? bitand k
+! ? bitor k
+! ? bool k
+! ? break k
+! ? case k
+! ? catch k
+! ? char k
+! ? char8_t k
+! ? char16_t k
+! ? char32_t k
+! ? class k
+! ? compl k
+! ? concept k
+! ? const k
+! ? consteval k
+! ? constexpr k
+! ? constinit k
+! ? continue k
+! ? co_await k
+! ? co_return k
+! ? co_yield k
+! ? decltype k
+! ? default k
+! ? delete k
+! ? do k
+! ? double k
+! ? dynamic_cast k
+! ? else k
+! ? enum k
+! ? explicit k
+! ? export k
+! ? extern k
+! ? false k
+! ? float k
+! ? for k
+! ? friend k
+! ? goto k
+! ? if k
+! ? inline k
+! ? int k
+! ? long k
+! ? mutable k
+! ? namespace k
+! ? new k
+! ? noexcept k
+! ? not k
+! ? not_eq k
+! ? nullptr k
+! ? operator k
+! ? or k
+! ? or_eq k
+! ? private k
+! ? protected k
+! ? public k
+! ? register k
+! ? reinterpret_cast k
+! ? requires k
+! ? return k
+! ? short k
+! ? signed k
+! ? sizeof k
+! ? static k
+! ? static_assert k
+! ? static_cast k
+! ? struct k
+! ? switch k
+! ? template k
+! ? this k
+! ? thread_local k
+! ? throw k
+! ? true k
+! ? try k
+! ? typedef k
+! ? typeid k
+! ? typename k
+! ? union k
+! ? unsigned k
+! ? using k
+! ? virtual k
+! ? void k
+! ? volatile k
+! ? wchar_t k
+! ? while k
+! ? xor k
+! ? xor_eq k

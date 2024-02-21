@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+ <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++講習の資料です。C++講習の形態などの概要について説明しています。">
+ <meta name="author" content="駒場東邦物理部">
+ <meta http-equiv="content-language" content="ja">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <title>C++講習概要 - C++講習 - 駒場東邦物理部</title>
+ <link rel="icon" type="image/jpeg" href="../../../../images/logo.jpg">
+ <link rel="stylesheet" type="text/css" href="../../../../style.css">
+ <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../../static.css">
+ <script type="text/javascript" src="../../../../header.js"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133906591-2');
+ </script>
+</head>
+
+<body>
+ <header class="ch00">
+  <img class="ch11" src="../../../../images/br.jpg">
+ </header>
+ <div class="chb">
+  <div class="ch01">
+   <div class="ch10">
+    <div class="ch21">
+     <button type="button" class="ch31" onclick="ck()">
+      <img class="ch42" src="../../../../images/menu.png">
+     </button>
+    </div>
+    <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">駒場東邦物理部</span>
+      </span>
+      <a class="ch41" href="../../../../index.html">
+       <span class="ch50">トップページ</span>
+      </a>
+      <a class="ch41" href="../../../le.html">
+       <span class="ch50">講習トップ</span>
+      </a>
+     </div>
+     <div class="ch32">
+      <span class="ch40">
+       <span class="ch50">C++講習</span>
+      </span>
+      <a class="ch41" href="../../_cps.html">
+       <span class="ch50">目次</span>
+      </a>
+      <a class="ch41" href="../i_dx/i_dx.html">
+       <span class="ch50">索引</span>
+      </a>
+      <a class="ch41" href="../history/history.html">
+       <span class="ch50">次回</span>
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="cb00">
+   <div class="cb10">
+    <article class="cb20">
+     <h1>C++講習/C++講習概要</h1>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">概要</h2>
+     <span class="cb34">
+      C++講習の形態などの概要についてを説明します。
+     </span>
+    </article>
+    <article class="cb21 fxlr">
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       重要語
+      </h4>
+      <h4 class="cb45">C言語</h4>
+      <span class="cb41">C++に大きな影響を与えたプログラミング言語</span>
+      <h4 class="cb45">C++</h4>
+      <span class="cb41">本講習で扱うプログラミング言語</span>
+      <h4 class="cb45">ライブラリ</h4>
+      <span class="cb41">意味を持って集約されたプログラム</span>
+      <h4 class="cb45">C++規格</h4>
+      <span class="cb41">C++の言語機能と標準ライブラリの仕様文書</span>
+      <h4 class="cb45">C++標準ライブラリ</h4>
+      <span class="cb41">C++の言語規格で定められているライブラリ</span>
+      <h4 class="cb45">Windows API</h4>
+      <span class="cb41">Windowsの機能を利用するためのインターフェース</span>
+     </div>
+     <div class="cb36 debr">
+      <h4 class="cb44">
+       必要語
+      </h4>
+      <span class="cb41">今回の重要語はありません。</span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">プログラミング班講習形態</h2>
+     <span class="cb34">
+      プログラミング班の講習の形態についてです。
+     </span>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">Unity講習</h3>
+      <span class="cb41">
+       Unity講習では、ゲームエンジンであるUnityを用いたゲーム開発を行っています。<br>
+       こちらでは、CUIやGUIなどは扱わず、ゲームを開発することに主眼を置いています。<br>
+       C#を用いたプログラミングをすることもありますが、あまり言語仕様には踏み込みません。<br>
+       現在、文化祭展示を行っているのはUnityによるゲームだけです。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">C/C++講習</h3>
+      <span class="cb41">
+       2019年まではC言語を主に扱っていたようです。<br>
+       2019年からは、競技プログラミングや日本情報オリンピックへの参加を推奨しています。<br>
+       講習の特徴は、講習担当者の意向によって内容が大きく変わる、ということがあります。<br>
+       2020年からはC++を主に、Windows APIをも講習として扱うことを試みています。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">HSP講習</h3>
+      <span class="cb41">
+       HSPという、Windowsベッタリのフリーダムな言語を扱っていた講習です。<br>
+       この講習は、2020/21年の講習担当者が知らない程度には昔の講習です。
+      </span>
+     </div>
+    </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">C++講習</h2>
+     <span class="cb34">
+      本講習である、C++講習についてです。
+     </span>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">これまでとこれから</h3>
+      <span class="cb41">
+       先述の通り、これまではC言語を扱っていたようです。<br>
+       2019年から推奨されている、競技プログラミングなどへの参加は継続して推奨します。<br>
+       ただし今年からは本HP制作という契機もあり、C++を主として講習を行います。<br>
+       更にGUI等を扱うことを視野に入れ、手始めにWindows API講習を開設しました。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">Windows API講習について</h3>
+      <span class="cb41">
+       実は、Windows APIを用いて開発を行うことは簡単ではありません。<br>
+       現に、2020/21年度講習担当者はWindows APIに慣れているわけではありません。<br>
+       そのため、GUIは当面の間は諦め、CUIについて扱っていきます。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">C++講習の系統</h3>
+      <span class="cb41">
+       2020年度のC++講習は、始めWindows APIを前提に講習を始めました。<br>
+       しかし、前述のようにCUIへ注力することにしたため、途中で止まってしまいました。<br>
+       そのため、それらをC++ with Windows API講習としました。<br>
+       そして、CUIを扱う講習をC++ on MSVC講習として進めることにしました。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">C++講習</h3>
+      <span class="cb41">
+       結局、当面の所はC++ on MSVC講習をC++講習として行います。<br>
+       C++ with Windows API講習は、今後改修と完成を目指します。
+      </span>
+     </div>
+    </article>
+    <article class="cb21">
+     <div class="cb31">
+      <h3 class="cb40">C++ on MSVC講習</h3>
+      <span class="cb41">
+       C++ on MSVC講習は、C++の言語機能のほとんどを扱うことを考えています。<br>
+       ただし、規格を参照していないので、完全な講習資料には恐らくなりません。<br>
+       C++を書ける/読めることを重点に置いて講習資料を用意することになります。<br>
+       また、「コア言語編」と「標準ライブラリ編」になる予定です。
+      </span>
+     </div>
+    </article>
+
+   </div>
+  </div>
+  <footer class="cf00">
+   <div class="cf10">
+    <button class="cf21" onclick="tp()">
+     <img class="cf30" src="../../../../images/top.png">
+    </button>
+    <span class="cf20">
+     (C) 2020 駒場東邦物理部[KTPC]
+    </span>
+   </div>
+  </footer>
+ </div>
+</body>
+
+</html>

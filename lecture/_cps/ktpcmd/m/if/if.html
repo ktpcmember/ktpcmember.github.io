@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="駒場東邦物理部">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,講習,C++,MSVC,Hello,World">
+  <meta name="description" content="複合文やbool、if文について解説しています。">
+  <title>条件分岐1 - if文 - C++ on MSVC講習</title>
+  <link rel="icon" type="image/jpeg" href="..\..\..\..\..\images\logo.jpg">
+  <link rel="stylesheet" type="text/css" href="..\..\..\..\..\style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="..\..\..\..\..\static.css">
+  <script type="text/javascript" src="..\..\..\..\..\header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="..\..\..\..\..\images\br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="..\..\..\..\..\images\menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="..\..\..\..\..\index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="..\..\..\..\le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ on MSVC講習</span>
+       </span>
+       <a class="ch41" href="..\..\..\_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="..\..\..\m\i_dx\i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="..\i&d\i&d.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="..\switch\switch.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20 fxtb">
+      <h1>C++&nbsp;on&nbsp;MSVC講習/条件分岐1&nbsp;-&nbsp;<ruby><rb>if</rb><rp>（</rp><rt>いふ</rt><rp>）</rp></ruby>文</h1>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">あらすじと概要</h2>
+      <span class="cb34">
+       前回は整数と小数について少し詳細に解説しました。<br>今回はいかにもなプログラミングが出来るようになる、if文について解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        複合文
+       </h4>
+       <span class="cb41">
+        複数の文を1つとして扱うことが出来る文
+       </span>
+       <h4 class="cb45">
+        ネスト
+       </h4>
+       <span class="cb41">
+        ある構造を再帰的に記述すること
+       </span>
+       <h4 class="cb45">
+        スコープ
+       </h4>
+       <span class="cb41">
+        識別子を使用できる範囲についてのコード上での範囲
+       </span>
+       <h4 class="cb45">
+        ライフタイム
+       </h4>
+       <span class="cb41">
+        変数自体が使える範囲
+       </span>
+       <h4 class="cb45">
+        true/false
+       </h4>
+       <span class="cb41">
+        真/偽、あるいは正しい/正しくない
+       </span>
+       <h4 class="cb45">
+        std::<ruby><rb>boolalpha</rb><rp>（</rp><rt>ぶーるあるふぁ</rt><rp>）</rp></ruby>
+       </h4>
+       <span class="cb41">
+        true/falseを文字列として出力するためのマニピュレータ
+       </span>
+       <h4 class="cb45">
+        <code>==</code>
+       </h4>
+       <span class="cb41">
+        いこーる、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>!=</code>
+       </h4>
+       <span class="cb41">
+        のっといこーる、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>&lt;</code>
+       </h4>
+       <span class="cb41">
+        しょうなり、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>&lt;=</code>
+       </h4>
+       <span class="cb41">
+        しょうなりいこーる、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>&gt;</code>
+       </h4>
+       <span class="cb41">
+        だいなり、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>&gt;=</code>
+       </h4>
+       <span class="cb41">
+        だいなりいこーる、比較演算子の1つ
+       </span>
+       <h4 class="cb45">
+        <code>!</code>
+       </h4>
+       <span class="cb41">
+        論理否定演算子
+       </span>
+       <h4 class="cb45">
+        <code>&amp;&amp;</code>
+       </h4>
+       <span class="cb41">
+        論理積演算子
+       </span>
+       <h4 class="cb45">
+        <code>||</code>
+       </h4>
+       <span class="cb41">
+        論理和演算子
+       </span>
+       <h4 class="cb45">
+        短絡評価
+       </h4>
+       <span class="cb41">
+        論理積/論理和演算子で右辺の評価が省略されること
+       </span>
+       <h4 class="cb45">
+        if文
+       </h4>
+       <span class="cb41">
+        条件によって実行する文を選択できる文
+       </span>
+       <h4 class="cb45">
+        <code>,</code>
+       </h4>
+       <span class="cb41">
+        コンマ演算子
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">複合文</h2>
+      <span class="cb34">
+       if文の前にいくらか説明をしたいので、次のサンプルコードを実行してみてください。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">複合文</span>
+          <button type="button" class="cb53" onclick="copy('0')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">1</span><span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"1\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    a "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"2\n"</span>
+            <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    a "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+
+        <span class="wdkywd">int</span> a <span class="wdsl">=</span> <span class="wdnr">2</span><span class="wdsl">;</span>
+        <span class="wdkywd">int</span> b <span class="wdsl">=</span> <span class="wdnr">4</span><span class="wdsl">;</span>
+
+        <span class="wdsl">{</span>
+
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"3\n"</span>
+                <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    a "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+                <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    b "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+
+        <span class="wdsl">}</span>
+
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"4\n"</span>
+            <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    a "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+            <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"    b "</span> <span class="wdsl">&lt;&lt;</span> b <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"5\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"  a "</span> <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('1')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="1" class="cb55 bkgdbl">
+1<br>&nbsp;&nbsp;a&nbsp;1<br><br>2<br>&nbsp;&nbsp;a&nbsp;1<br><br>3<br>&nbsp;&nbsp;a&nbsp;2<br>&nbsp;&nbsp;b&nbsp;4<br><br>4<br>&nbsp;&nbsp;a&nbsp;2<br>&nbsp;&nbsp;b&nbsp;4<br><br>5<br>&nbsp;&nbsp;a&nbsp;1<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       少し出力の量が多いので困惑してしまうかもしれません。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">複合文</h3>
+        <span class="cb41">
+         main関数内の<code>{}</code>が、複数の文を1つとして扱うことが出来る、複合文です。<br>複合文の中に複数文を書くことが出来、それらをまとめて1つの文と扱えるのです。<br>複合文は複文やブロックとも呼ばれますが、文であり、複合文はネスト出来ます。<br>main関数の<code>{}</code>と複合文は別なものですが、どちらもスコープを形成します。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">複合文</span>
+          <button type="button" class="cb53" onclick="copy('2')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="2" class="cb55 bkgdbl">
+<code>{</code>&nbsp;複数の文(opt)&nbsp;<code>}</code><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">ネスト</h3>
+        <span class="cb41">
+         ネストは「入れ子」などとも言われ、ある構造を再帰的に記述することです。<br>あるいは、あるものの中に、それと似たようなものが記述されている状態のことです。<br>複合文なら、<code>{&nbsp;{&nbsp;}&nbsp;}</code>のように、複合文の中に複合文があることを指します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スコープ</h3>
+        <span class="cb41">
+         スコープとは、識別子を使用できる範囲についてのコード上での範囲のことです。<br>スコープは関数や複合文、他にもいくつかの構文で形成され、ネスト出来ます。<br>実は、識別子は宣言をすることで、宣言をしたスコープへ導入されていたのです。<br>そして、導入された識別子は、導入先とネストするスコープで使用できるのです。<br>サンプルコードだと、変数<code>b</code>が分かりやすいかと思います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スコープと識別子</h3>
+        <span class="cb41">
+         識別子について、同じスコープに同じ識別子を複数導入することは出来ないのです。<br>これは、同じスコープに同じ識別子が複数あると、どれがどれだか区別できなくなるからです。<br>ただし、スコープがネストしている場合は、それぞれのスコープで同じ識別子を導入できます。<br>その時、より外側のスコープの識別子は、より内側のスコープの識別子によって隠されます。<br>サンプルコードだと、変数<code>a</code>においてまさにその状態になっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">スコープと変数のライフタイム</h3>
+        <span class="cb41">
+         変数の識別子もやはり識別子なので、変数が使用できる範囲はスコープで制限されます。<br>変数自体が使える範囲のことを変数のライフタイム、あるいは変数のスコープと呼びます。<br>ライフタイムの始まりは、やはり宣言をした後からということになります。<br>一方、ライフタイムの終わりは、変数を宣言したスコープの終わりと一致するのです。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">解説1&nbsp;-&nbsp;スコープを考える</h3>
+        <span class="cb41">
+         以上のことから、今回考えるべきなのは、main関数、main関数の中の複合文、<br>そして、そのmain関数の中の複合文の複合文の、3つが持つスコープになります。<br>これら3つのスコープを、便宜的に<code>A</code>/<code>B</code>/<code>C</code>として表すことにします。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">解説2&nbsp;-&nbsp;変数のライフタイム</h3>
+        <span class="cb41">
+         <code>A</code>と<code>B</code>で、変数<code>a</code>が2つ、<code>B</code>で変数<code>b</code>が宣言されていることがわかるでしょうか。<br><code>b</code>については、<code>B</code>での宣言以降と、<code>C</code>で使用できることになります。<br>そして、<code>A</code>の<code>a</code>は、<code>A</code>での宣言以降、<code>B</code>では<code>B</code>の<code>a</code>が宣言されていない部分で、<br>一方、<code>B</code>の<code>a</code>は、<code>B</code>での宣言以降と<code>C</code>で使用できるということになります。<br>ですから、<code>a</code>の出力は順番に、<code>1,&nbsp;1,&nbsp;2,&nbsp;2,&nbsp;1</code>となるのです。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">真偽値とbool</h2>
+      <span class="cb34">
+       次に、数学でも出てくる真偽の値について解説していきます。
+      </span>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">真偽値とbool</span>
+          <button type="button" class="cb53" onclick="copy('3')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="3" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+
+    std<span class="wdsl">::</span>string s <span class="wdsl">=</span> <span class="wdtt">"string"</span><span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cout
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"1 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdkywd">true</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdkywd">false</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span>
+
+        <span class="wdsl">&lt;&lt;</span> std<span class="wdsl">::</span>boolalpha
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"2 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdkywd">true</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdkywd">false</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"3 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">bool</span><span class="wdsl">)</span><span class="wdnr">1</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">bool</span><span class="wdsl">)</span><span class="wdnr">0</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"4 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span><span class="wdkywd">true</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">int</span><span class="wdsl">)</span><span class="wdkywd">false</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span>
+
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"5 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span>s <span class="wdsl">==</span> s<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span>s <span class="wdsl">!=</span> s<span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"6 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdnr">0</span> <span class="wdsl">&lt;</span> <span class="wdnr">1</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdnr">1</span> <span class="wdsl">&lt;=</span> <span class="wdnr">0</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"7 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">true</span> <span class="wdsl">&gt;</span> <span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">false</span> <span class="wdsl">&gt;=</span> <span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n\n"</span>
+
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"8 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(!</span><span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(!</span><span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"9 : "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">true</span> <span class="wdsl">&amp;&amp;</span> <span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">true</span> <span class="wdsl">&amp;&amp;</span> <span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">false</span> <span class="wdsl">&amp;&amp;</span> <span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">false</span> <span class="wdsl">&amp;&amp;</span> <span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"10: "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">true</span> <span class="wdsl">||</span> <span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">true</span> <span class="wdsl">||</span> <span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">false</span> <span class="wdsl">||</span> <span class="wdkywd">true</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">" "</span> <span class="wdsl">&lt;&lt;</span> <span class="wdsl">(</span><span class="wdkywd">false</span> <span class="wdsl">||</span> <span class="wdkywd">false</span><span class="wdsl">)</span> <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span>
+        <span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果</span>
+          <button type="button" class="cb53" onclick="copy('4')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="4" class="cb55 bkgdbl">
+1&nbsp;:&nbsp;1&nbsp;0<br><br>2&nbsp;:&nbsp;true&nbsp;false<br>3&nbsp;:&nbsp;true&nbsp;false<br>4&nbsp;:&nbsp;1&nbsp;0<br><br>5&nbsp;:&nbsp;true&nbsp;false<br>6&nbsp;:&nbsp;true&nbsp;false<br>7&nbsp;:&nbsp;true&nbsp;false<br><br>8&nbsp;:&nbsp;false&nbsp;true<br>9&nbsp;:&nbsp;true&nbsp;false&nbsp;false&nbsp;false<br>10:&nbsp;true&nbsp;true&nbsp;true&nbsp;false<br><br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       なにやら知らない文字がたくさんありますが、実際は簡単です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">boolとリテラル（1-4,&nbsp;7-10）</h3>
+        <span class="cb41">
+         <code><ruby><rb>bool</rb><rp>（</rp><rt>ぶーる</rt><rp>）</rp></ruby></code>というのは、変数の型です。<code>bool</code>は<code><ruby><rb>true</rb><rp>（</rp><rt>とぅるー</rt><rp>）</rp></ruby></code>と<code><ruby><rb>false</rb><rp>（</rp><rt>ふぉるす</rt><rp>）</rp></ruby></code>という2つの値のみ取ります。<br><code>true</code>が真/<code>false</code>が偽で、平易に言えば、正しい/正しくないという感じです。<br><code>bool</code>は、真偽型ですが、同時に整数型にも分類され、大抵は8bitの整数型です。<br>なお、理論上は1bitでいいのですが、規格の制限で「大抵8bit」になっています。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">bool値と整数小数の関係（1,3-4,7）</h3>
+        <span class="cb41">
+         実は、C++ではbool値と整数小数は、暗黙の型変換が行われる関係にあります。<br>boolから変換される時は、<code>false</code>が<code>0</code>、<code>true</code>が<code>1</code>に変換されます。<br>逆の場合は、<code>0</code>が<code>false</code>、<code>非0</code>が<code>true</code>に変換されます。<br>この規則は、キャストを行ったときも同様の規則で変換されます。<br>一部を除き、bool値は計算されるときは数値に変わってしまうことに注意しましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">boolとstd::coutとstd::<ruby><rb>boolalpha</rb><rp>（</rp><rt>ぶーるあるふぁ</rt><rp>）</rp></ruby>（1-10）</h3>
+        <span class="cb41">
+         std::coutを用いて出力する際、標準だと整数になって出力されてしまいます。<br>当然、整数に変換される際は暗黙の型変換と同様の規則で整数に変換されます。<br><code>true</code>や<code>false</code>という文字列で出力したいときは、<code>std::boolalpha</code>を使います。<br><code>std::boolalpha</code>もマニピュレータで、純粋にこれを出力すればよいです。<br><code>std::boolalpha</code>は、<code>#include&nbsp;&lt;iostream&gt;</code>のみで使用することが出来ます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">等値演算子と比較演算子（5-7）</h3>
+        <span class="cb41">
+         さて、数学でおなじみの<code>＝&nbsp;≠&nbsp;＜&nbsp;≦&nbsp;＞&nbsp;≧</code>は、<code>==&nbsp;!=&nbsp;&lt;&nbsp;&lt;=&nbsp;&gt;&nbsp;&gt;=</code>と対応します。<br>これらの演算子の結果は、boolになり、式が正しければ<code>true</code>、そうでなければ<code>false</code>です。<br>これらの6種類の演算子は、まとめて比較演算子と呼ばれることがあります。<br>また、前者2つを等値演算子、後者4つを比較演算子と呼ぶ場合もあります。<br>それはともかく、代入と<code>==</code>を間違えないように細心の注意を払いましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        比較演算子（上数学記号、読み、下C++記号、意味）
+       </h4>
+       <h4 class="cb45">
+        <code>＝</code>&nbsp;いこーる
+       </h4>
+       <span class="cb41">
+        <code>==</code>&nbsp;両辺が等しいか
+       </span>
+       <h4 class="cb45">
+        <code>≠</code>&nbsp;のっといこーる
+       </h4>
+       <span class="cb41">
+        <code>!=</code>&nbsp;両辺が等しくないか
+       </span>
+       <h4 class="cb45">
+        <code>＜</code>&nbsp;しょうなり
+       </h4>
+       <span class="cb41">
+        <code>&lt;</code>&nbsp;左辺より右辺が大きいか
+       </span>
+       <h4 class="cb45">
+        <code>≦</code>&nbsp;しょうなりいこーる
+       </h4>
+       <span class="cb41">
+        <code>&lt;=</code>&nbsp;左辺より右辺が大きいか、あるいは等しいか
+       </span>
+       <h4 class="cb45">
+        <code>＞</code>&nbsp;だいなり
+       </h4>
+       <span class="cb41">
+        <code>&gt;</code>&nbsp;右辺より左辺が大きいか
+       </span>
+       <h4 class="cb45">
+        <code>≧</code>&nbsp;だいなりいこーる
+       </h4>
+       <span class="cb41">
+        <code>&gt;=</code>&nbsp;右辺より左辺が大きいか、あるいは等しいか
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">文字列に対しての比較演算子（5）</h3>
+        <span class="cb41">
+         サンプルコードでは、<code>std::stirng</code>に対しても比較演算子を適用していますが、<br>実は文字列リテラル同士だと、文字列の内容で比較することは出来ないのです。<br>なので、文字列の内容を比較したい場合には、右辺左辺どちらかを<code>std::stirng</code>にしましょう。<br><code>std::string</code>は文字列リテラルをキャストする形式でも変換できるのでそれでもいいでしょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">論理演算子（8-10）</h3>
+        <span class="cb41">
+         比較演算子で条件式を立てられますが、組み合わせる時には論理演算子を使います。<br>論理演算子は<code>!&nbsp;&amp;&amp;&nbsp;||</code>の3つがあり、それぞれ、論理否定/論理積/論理和演算子と言います。<br>論理否定は前置の単項演算子なので、<code>!&nbsp;bool値に評価される値</code>と使います。<br>論理積と論理和は<code>true</code>と<code>false</code>を<code>1</code>と<code>0</code>の計算だとして考えると理解できるでしょう。<br>なお、その演算結果から、「かつ」/「または」の意味をもち、そう呼ばれることがあります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        論理演算子（上C++記号、意味、下効果）
+       </h4>
+       <h4 class="cb45">
+        <code>!</code>&nbsp;論理否定
+       </h4>
+       <span class="cb41">
+        <code>true</code>と<code>false</code>を否定（反転）&nbsp;<code>!true</code>が<code>false</code>、<code>!false</code>が<code>true</code>
+       </span>
+       <h4 class="cb45">
+        <code>&amp;&amp;</code>&nbsp;論理積&nbsp;「かつ」とも
+       </h4>
+       <span class="cb41">
+        <code>true</code>と<code>true</code>のみ<code>true</code>、それ以外は<code>false</code>
+       </span>
+       <h4 class="cb45">
+        <code>||</code>&nbsp;論理和&nbsp;「または」とも
+       </h4>
+       <span class="cb41">
+        <code>false</code>と<code>false</code>のみ<code>false</code>、それ以外は<code>true</code>
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        論理積の演算結果
+       </h4>
+       <h4 class="cb45">
+        <code>true&nbsp;&amp;&amp;&nbsp;true</code>
+       </h4>
+       <span class="cb41">
+        <code>true</code>
+       </span>
+       <h4 class="cb45">
+        <code>true&nbsp;&amp;&amp;&nbsp;false</code>
+       </h4>
+       <span class="cb41">
+        <code>false</code>
+       </span>
+       <h4 class="cb45">
+        <code>false&nbsp;&amp;&amp;&nbsp;true</code>
+       </h4>
+       <span class="cb41">
+        <code>false</code>
+       </span>
+       <h4 class="cb45">
+        <code>false&nbsp;&amp;&amp;&nbsp;false</code>
+       </h4>
+       <span class="cb41">
+        <code>false</code>
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        論理和の演算結果
+       </h4>
+       <h4 class="cb45">
+        <code>true&nbsp;&amp;&amp;&nbsp;true</code>
+       </h4>
+       <span class="cb41">
+        <code>true</code>
+       </span>
+       <h4 class="cb45">
+        <code>true&nbsp;&amp;&amp;&nbsp;false</code>
+       </h4>
+       <span class="cb41">
+        <code>true</code>
+       </span>
+       <h4 class="cb45">
+        <code>false&nbsp;&amp;&amp;&nbsp;true</code>
+       </h4>
+       <span class="cb41">
+        <code>true</code>
+       </span>
+       <h4 class="cb45">
+        <code>false&nbsp;&amp;&amp;&nbsp;false</code>
+       </h4>
+       <span class="cb41">
+        <code>false</code>
+       </span>
+
+      </div>
+
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">論理積と論理和の短絡評価（9,10）</h3>
+        <span class="cb41">
+         論理積と論理和の演算結果を見て勘の鋭い人がもう気付いたかもしれません。<br>論理和/論理積はそれぞれ、左辺が<code>false</code>/<code>true</code>だと結果は<code>false</code>/<code>true</code>であるのです。<br>右辺に関わらず結果が決まるため、右辺を評価しません。これを短絡評価と言います。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">解説</h3>
+        <span class="cb41">
+         サンプルコードの順に、必要な内容を解説しています。<br>サンプルコードを上から順に確認して暗算して出力と照らし合わせて下さい。<br>なお、タイトルにある番号は、出力の番号と対応しています。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">if文</h2>
+      <span class="cb34">
+       それではif文を扱ってみましょう。<br>注意点があるので、まずそれを確認してからコードを実行してみましょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">言語規格のバージョンについての注意</h3>
+        <span class="cb41">
+         C++の規格もバージョンがあり、現在3年ごとに改訂されています。<br>Visual&nbsp;Studioは2021/7/31現在、C++14/C++17/Working&nbsp;Draftが選べます。<br>そして、標準設定だとC++14になっているので、C++17に変更してください。<br><code>プロジェクト&gt;○○のプロパティ&gt;構成プロパティ&gt;C/C++&gt;言語&gt;C++&nbsp;言語標準</code>を確認して<br><code>ISO&nbsp;C++17&nbsp;標準（/std:c++17）</code>かそれよりも新しいのを選択します。<br>これ以降も上記と同様に、最も新しい完全に実装された言語標準を選択してください。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">少し詳しい人向け</h3>
+        <span class="cb41">
+         Visual&nbsp;Studioの設定をあまり変更してないので、cmd.exeとWindows-31Jを使っています。<br>なので<code>/utf-8</code>付けたり、<code>system(&quot;chcp&nbsp;65001&quot;)</code>したりしないでください。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">if文</span>
+          <button type="button" class="cb53" onclick="copy('5')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="5" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdc_mt">// 常に真文が実行される
+</span>    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">int</span> num<span class="wdsl">{</span> <span class="wdnr">1</span> <span class="wdsl">})</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"数学の定期テスト何点でした？\n"</span><span class="wdsl">;</span> <span class="wdkywd">else</span> <span class="wdkywd">int</span> dummy <span class="wdsl">=</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+
+    <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">int</span> num<span class="wdsl">;</span> <span class="wdsl">(</span>std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> num<span class="wdsl">),</span> num <span class="wdsl">&lt;</span> <span class="wdnr">0</span> <span class="wdsl">||</span> num <span class="wdsl">&gt;</span> <span class="wdnr">100</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"受けていないですね？\n"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">95</span><span class="wdsl">)</span>      <span class="wdc_mt">/*評価 10 */</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"素晴らしい！\n"</span><span class="wdsl">;</span>
+        <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">75</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 9,8*/</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"よくできました。\n"</span><span class="wdsl">;</span>
+        <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">65</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 7  */</span> <span class="wdsl">{</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"よくがんばりました。\n"</span><span class="wdsl">;</span> <span class="wdsl">}</span>
+        <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">55</span><span class="wdsl">)</span> <span class="wdc_mt">/*評価 6  */</span> <span class="wdsl">{</span> std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もうすこしがんばりましょう。\n"</span><span class="wdsl">;</span> <span class="wdsl">}</span>
+        <span class="wdkywd">else</span>
+        <span class="wdsl">{</span>
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"中学生ですか？中学生ならyを入力してください。\n"</span><span class="wdsl">;</span>
+            std<span class="wdsl">::</span>string s<span class="wdsl">;</span> std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> s<span class="wdsl">;</span>
+
+            <span class="wdkywd">if</span> <span class="wdsl">(</span><span class="wdkywd">bool</span> flag<span class="wdsl">{</span> s <span class="wdsl">==</span> <span class="wdtt">"y"</span> <span class="wdsl">})</span>
+            <span class="wdsl">{</span>
+                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 5  */</span>
+                    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ぎりぎりですね。がんばりましょう。\n"</span><span class="wdsl">;</span>
+                <span class="wdsl">}</span>
+                <span class="wdkywd">else</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*赤点    */</span>
+                    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もっとがんばりましょう。\n"</span><span class="wdsl">;</span>
+                <span class="wdsl">}</span>
+            <span class="wdsl">}</span>
+            <span class="wdkywd">else</span>
+            <span class="wdsl">{</span>
+                <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">45</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 5  */</span>
+                    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もうすこしがんばりましょう。\n"</span><span class="wdsl">;</span>
+                <span class="wdsl">}</span>
+                <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>num <span class="wdsl">&gt;=</span> <span class="wdnr">35</span><span class="wdsl">)</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*評価 4  */</span>
+                    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"ぎりぎりですね。がんばりましょう。\n"</span><span class="wdsl">;</span>
+                <span class="wdsl">}</span>
+                <span class="wdkywd">else</span>
+                <span class="wdsl">{</span>   <span class="wdc_mt">/*赤点    */</span>
+                    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"もっとがんばりましょう。\n"</span><span class="wdsl">;</span>
+                <span class="wdsl">}</span>
+            <span class="wdsl">}</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">実行結果について</h3>
+        <span class="cb41">
+         実行例を見ていくのは大変なので、下の表を見て下さい。<br>なお、54点以下で中学生かどうかのチェックが入ります。<br>中学生なら<code>y</code>、高校生ならそれ以外を入力します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr tntwfg">
+<div class="cb36 debr">
+       <h4 class="cb44">
+        点数と出力の関係（中学生）
+       </h4>
+       <h4 class="cb45">
+        100～95,&nbsp;評価&nbsp;10
+       </h4>
+       <span class="cb41">
+        素晴らしい！
+       </span>
+       <h4 class="cb45">
+        94～75,&nbsp;評価&nbsp;9～8
+       </h4>
+       <span class="cb41">
+        よくできました。
+       </span>
+       <h4 class="cb45">
+        74～65,&nbsp;評価&nbsp;7
+       </h4>
+       <span class="cb41">
+        よくがんばりました
+       </span>
+       <h4 class="cb45">
+        64～55,&nbsp;評価&nbsp;6
+       </h4>
+       <span class="cb41">
+        もうすこしがんばりましょう。
+       </span>
+       <h4 class="cb45">
+        54～45,&nbsp;評価&nbsp;5
+       </h4>
+       <span class="cb41">
+        ぎりぎりですね。がんばりましょう。
+       </span>
+       <h4 class="cb45">
+        44～0,&nbsp;評価&nbsp;4～0,&nbsp;赤点
+       </h4>
+       <span class="cb41">
+        もっとがんばりましょう。
+       </span>
+       <h4 class="cb45">
+        上記以外
+       </h4>
+       <span class="cb41">
+        受けていないですね？
+       </span>
+
+      </div>
+
+<div class="cb36 debr">
+       <h4 class="cb44">
+        点数と出力の関係（高校生）
+       </h4>
+       <h4 class="cb45">
+        100～95,&nbsp;評価&nbsp;10
+       </h4>
+       <span class="cb41">
+        素晴らしい！
+       </span>
+       <h4 class="cb45">
+        94～75,&nbsp;評価&nbsp;9～8
+       </h4>
+       <span class="cb41">
+        よくできました。
+       </span>
+       <h4 class="cb45">
+        74～65,&nbsp;評価&nbsp;7
+       </h4>
+       <span class="cb41">
+        よくがんばりました
+       </span>
+       <h4 class="cb45">
+        64～45,&nbsp;評価&nbsp;6～5
+       </h4>
+       <span class="cb41">
+        もうすこしがんばりましょう。
+       </span>
+       <h4 class="cb45">
+        44～35,&nbsp;評価&nbsp;4
+       </h4>
+       <span class="cb41">
+        ぎりぎりですね。がんばりましょう。
+       </span>
+       <h4 class="cb45">
+        34～0,&nbsp;評価&nbsp;3～0,&nbsp;赤点
+       </h4>
+       <span class="cb41">
+        もっとがんばりましょう。
+       </span>
+       <h4 class="cb45">
+        上記以外
+       </h4>
+       <span class="cb41">
+        受けていないですね？
+       </span>
+
+      </div>
+
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例1</span>
+          <button type="button" class="cb53" onclick="copy('6')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="6" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;-1<br>受けていないですね？<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例2</span>
+          <button type="button" class="cb53" onclick="copy('7')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="7" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;100<br>素晴らしい！<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例3</span>
+          <button type="button" class="cb53" onclick="copy('8')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="8" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;80<br>よくできました。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例4</span>
+          <button type="button" class="cb53" onclick="copy('9')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="9" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;70<br>よくがんばりました。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例5</span>
+          <button type="button" class="cb53" onclick="copy('10')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="10" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;60<br>もうすこしがんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例6</span>
+          <button type="button" class="cb53" onclick="copy('11')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="11" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;50<br>中学生ですか？中学生ならyを入力してください。<br>$&nbsp;y<br>ぎりぎりですね。がんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例7</span>
+          <button type="button" class="cb53" onclick="copy('12')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="12" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;50<br>中学生ですか？中学生ならyを入力してください。<br>$&nbsp;n<br>もうすこしがんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例8</span>
+          <button type="button" class="cb53" onclick="copy('13')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="13" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;40<br>中学生ですか？中学生ならyを入力してください。<br>$&nbsp;y<br>もっとがんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例9</span>
+          <button type="button" class="cb53" onclick="copy('14')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="14" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;40<br>中学生ですか？中学生ならyを入力してください。<br>$&nbsp;n<br>ぎりぎりですね。がんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">実行結果例10</span>
+          <button type="button" class="cb53" onclick="copy('15')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="15" class="cb55 bkgdbl">
+数学の定期テスト何点でした？<br>$&nbsp;30<br>中学生ですか？中学生ならyを入力してください。<br>$&nbsp;n<br>もっとがんばりましょう。<br>&nbsp;<br></pre>
+         </code>
+        </div>
+       </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">解説</h2>
+      <span class="cb34">
+       解説行きましょう。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">if文</h3>
+        <span class="cb41">
+         if文は、<code>条件</code>によって、<code>真文</code>と<code>偽文</code>の実行を選ぶことが出来ます。<br>これによって、実行時に実行する内容を変えることが出来るようになります。
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">if</span>
+          <button type="button" class="cb53" onclick="copy('16')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="16" class="cb55 bkgdbl">
+<code>if</code>&nbsp;<code>(</code>&nbsp;初期化文(opt)&nbsp;条件&nbsp;<code>)</code>&nbsp;真文<br><code>if</code>&nbsp;<code>(</code>&nbsp;初期化文(opt)&nbsp;条件&nbsp;<code>)</code>&nbsp;真文&nbsp;<code>else</code>&nbsp;偽文<br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>初期化文</code></h3>
+        <span class="cb41">
+         C++17で追加された初期化文では、<code>;</code>で終わるような1つの文を書くことが出来ます。<br>具体的には、変数宣言や、式文、即ち式に<code>;</code>を付けたもの、などが記述できます。<br>なお、ここで宣言された変数は、if文全体をスコープとして使用することが出来ます。<br>すなわち、else以下が無ければ<code>真文</code>まで、あれば<code>偽文</code>までをスコープに持つことになります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>条件</code></h3>
+        <span class="cb41">
+         <code>条件</code>は、boolに評価される式、又は変数の宣言を書くことが出来ます。<br>宣言の場合、<code>;</code>は必要なく、型は配列ではなく、boolに変換できるものになります。<br>配列は、今後の記事で説明する、変数を複数並べて用意する機能のことです。<br>そして、初期化は<code>=/{}/={}</code>による形式のみで、<code>()</code>の形式は許可されません。<br>なお、ここで宣言された変数も、初期化文の場合と同様、if文全体をスコープに持ちます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">よくある間違い1</h3>
+        <span class="cb41">
+         <code>条件</code>のうち、「boolに評価される式」に間違えやすいところが隠れています。<br>解説したように、intやdoubleなどの値は暗黙のうちにboolに変換されてしまいます。<br>例えば、<code>a</code>をintとした時<code>a&nbsp;==&nbsp;1</code>のつもりが<code>a&nbsp;=&nbsp;1</code>としたとしましょう<br>この時、<code>a&nbsp;=&nbsp;1</code>は<code>1</code>になった<code>a</code>が<code>true</code>になり、エラーは発生しません。<br>このように、意図しない動作になってしまう時があるので注意しましょう。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40"><code>真文</code>と<code>偽文</code></h3>
+        <span class="cb41">
+         <code>真文</code>と<code>偽文</code>は、共に単一の文を必要とし、おおむね複合文を使用します。<br>また、複合文でなくとも、1文で複合文であるようにスコープを持ちます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">if文の実行のされ方</h3>
+        <span class="cb41">
+         if文は<ruby><rb>else</rb><rp>（</rp><rt>えるす</rt><rp>）</rp></ruby>以下があるかで実行のされ方が少しだけ変わります。<br>else以下がが無い場合、<code>条件</code>がtrueの時に<code>真文</code>が、falseの時にはif文は終了します。<br>else以下がある場合は、<code>条件</code>がtrueの時に<code>真文</code>が、falseの時には<code>偽文</code>を実行します。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">よくある間違い2</h3>
+        <span class="cb41">
+         例えば、<code>if(b)&nbsp;a&nbsp;=&nbsp;1;&nbsp;a&nbsp;=&nbsp;2</code>（aはint,&nbsp;bはbool）と書いたとしましょう。<br>この時、if文に含まれるのは<code>a&nbsp;=&nbsp;1;</code>のみで、<code>a&nbsp;=&nbsp;2;</code>は含まれません。<br>つまり、<code>b</code>の真偽によらず、<code>a&nbsp;=&nbsp;2;</code>が実行されてしまうのです。<br>この観点からも<code>真文</code>と<code>偽文</code>には複合文を使用するべきだと言えます。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">else-if文</h3>
+        <span class="cb41">
+         特別に名前を付けるほどではないですが、else-if文という言い方があります。<br>これは、<code>偽文</code>にif文を書き、<code>if(){}&nbsp;else&nbsp;if(){}</code>のような形になる書き方です。<br><code>偽文</code>を複合文にし、その中にif文を書く時であれば、<code>if()&nbsp;{}&nbsp;else&nbsp;{&nbsp;if(){}&nbsp;}</code><br>のようになるので、それに比べてネストしないため、きれいな形になります。
+        </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">コンマ演算子</h3>
+        <span class="cb41">
+         <code>(std::cin&nbsp;&gt;&gt;&nbsp;num),&nbsp;num&nbsp;&lt;&nbsp;0&nbsp;||&nbsp;num&nbsp;&gt;&nbsp;100</code>の<code>,</code>は、コンマ演算子です。<br>これは、左辺を評価し、次に右辺を評価して、右辺の評価結果を、全体の評価結果とします。<br>今回は、入力して、条件式を立てる、という2つのことを<code>条件</code>の中でするために使用しました。
+        </span>
+      </div>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       練習問題になります。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">問題文</h3>
+        <span class="cb41">
+         1行の計算式が与えられるので、その結果を出力してください。<br>与えられる計算式のパターンと対応する出力は以下の表の通りです。（原文ママ）<br>出典：<a href="..\..\..\..\..\https:\atcoder.jp\contests\apg4b\tasks\APG4b_cq">EX6&nbsp;-&nbsp;電卓をつくろう</a>
+        </span>
+      </div>
+     </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">入力</span>
+          <button type="button" class="cb53" onclick="copy('17')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="17" class="cb55 bkgdbl">
+$&nbsp;A&nbsp;op&nbsp;B<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">制約</span>
+          <button type="button" class="cb53" onclick="copy('18')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="18" class="cb55 bkgdbl">
+0&nbsp;&lt;=&nbsp;A,B&nbsp;&lt;=&nbsp;100<br>A,Bは整数<br>opは<code>+</code>,<code>-</code>,<code>*</code>,<code>/</code>,<code>?</code>,<code>=</code>,<code>!</code>のいずれか<br></pre>
+         </code>
+        </div>
+       </article>
+      <article class="cb21 fxrl">
+        <div class="cb37">
+         <div class="cb46">
+          <span class="cb54">出力</span>
+          <button type="button" class="cb53" onclick="copy('19')">
+           <span class="cb61">COPY</span>
+          </button>
+         </div>
+         <code class="cb47">
+<pre id="19" class="cb55 bkgdbl">
+以下の表に従って出力（ただし、出力の最後に改行が必要）<br><br></pre>
+         </code>
+        </div>
+       </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        入力（上）と出力（下）
+       </h4>
+       <h4 class="cb45">
+        A&nbsp;+&nbsp;B
+       </h4>
+       <span class="cb41">
+        A&nbsp;+&nbsp;Bの計算結果を出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;-&nbsp;B
+       </h4>
+       <span class="cb41">
+        A&nbsp;-&nbsp;Bの計算結果を出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;*&nbsp;B
+       </h4>
+       <span class="cb41">
+        A&nbsp;*&nbsp;Bの計算結果を出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;/&nbsp;B
+       </h4>
+       <span class="cb41">
+        A&nbsp;/&nbsp;Bの計算結果を出力、小数点以下切り捨て、ゼロ除算は<code>error</code>と出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;?&nbsp;B
+       </h4>
+       <span class="cb41">
+        <code>error</code>と出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;=&nbsp;B
+       </h4>
+       <span class="cb41">
+        <code>error</code>と出力
+       </span>
+       <h4 class="cb45">
+        A&nbsp;!&nbsp;B
+       </h4>
+       <span class="cb41">
+        <code>error</code>と出力
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <details class="cb37">
+        <summary class="cb48">回答例</summary>
+        <div class="cb46">
+        <span class="cb54">回答例</span>
+        <button type="button" class="cb53" onclick="copy('20')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="20" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco">#include <span class="wdsl">&lt;</span>iostream<span class="wdsl">&gt;</span>
+#include <span class="wdsl">&lt;</span>string<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> main<span class="wdsl">()</span>
+<span class="wdsl">{</span>
+    <span class="wdkywd">int</span> a<span class="wdsl">,</span> b<span class="wdsl">;</span>
+    std<span class="wdsl">::</span>string op<span class="wdsl">;</span>
+
+    std<span class="wdsl">::</span>cin <span class="wdsl">&gt;&gt;</span> a <span class="wdsl">&gt;&gt;</span> op <span class="wdsl">&gt;&gt;</span> b<span class="wdsl">;</span>
+
+    <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"+"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">+</span> b<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"-"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">-</span> b<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"*"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">*</span> b<span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span> <span class="wdkywd">if</span> <span class="wdsl">(</span>op <span class="wdsl">==</span> <span class="wdtt">"/"</span><span class="wdsl">)</span>
+    <span class="wdsl">{</span>
+        <span class="wdkywd">if</span> <span class="wdsl">(</span>b <span class="wdsl">==</span> <span class="wdnr">0</span><span class="wdsl">)</span>
+        <span class="wdsl">{</span>
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"error"</span><span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+        <span class="wdkywd">else</span>
+        <span class="wdsl">{</span>
+            std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> a <span class="wdsl">/</span> b<span class="wdsl">;</span>
+        <span class="wdsl">}</span>
+    <span class="wdsl">}</span>
+    <span class="wdkywd">else</span>
+    <span class="wdsl">{</span>
+        std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"error"</span><span class="wdsl">;</span>
+    <span class="wdsl">}</span>
+
+    std<span class="wdsl">::</span>cout <span class="wdsl">&lt;&lt;</span> <span class="wdtt">"\n"</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+
+</span></span></pre>
+       </code>
+       </details>
+     </article>
+    <article class="cb21 fxtb">
+     <h2 class="cb33">参照、出典</h2>
+      <span class="cb34">
+       参照や出典です
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+<div class="tnonfg debr">
+       <h4 class="cb44">
+        参照
+       </h4>
+       <h4 class="cb45">
+        [stmt.pre]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/stmt.pre
+       </span>
+       <h4 class="cb45">
+        [stmt.select]
+       </h4>
+       <span class="cb41">
+        https://timsong-cpp.github.io/cppwp/n4861/stmt.select#stmt.if
+       </span>
+       <h4 class="cb45">
+        文&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/statements
+       </span>
+       <h4 class="cb45">
+        スコープ&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/scope
+       </span>
+       <h4 class="cb45">
+        基本型&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/types
+       </span>
+       <h4 class="cb45">
+        暗黙の変換&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/implicit_conversion
+       </span>
+       <h4 class="cb45">
+        比較演算子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_comparison
+       </span>
+       <h4 class="cb45">
+        論理演算子&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/operator_logical
+       </span>
+       <h4 class="cb45">
+        if&nbsp;文&nbsp;-&nbsp;cppreference.com
+       </h4>
+       <span class="cb41">
+        https://ja.cppreference.com/w/cpp/language/if
+       </span>
+       <h4 class="cb45">
+        if文とswitch文の条件式と初期化を分離&nbsp;-&nbsp;cpprefjp&nbsp;C++日本語リファレンス
+       </h4>
+       <span class="cb41">
+        https://cpprefjp.github.io/lang/cpp17/selection_statements_with_initializer.html
+       </span>
+
+      </div>
+
+
+      </div>
+     </article>
+
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="..\..\..\..\..\images\top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

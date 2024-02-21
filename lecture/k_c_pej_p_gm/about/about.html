@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,競プロ,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向け競技プログラミング講習の資料です。AtCoderについて解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>AtCoderとは - 競技プログラミング講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133906591-2');
+  </script>
+</head>
+
+<body>
+  <header class="ch00">
+    <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+    <div class="ch01">
+      <div class="ch10">
+        <div class="ch21">
+          <button type="button" class="ch31" onclick="ck()">
+            <img class="ch42" src="../../../images/menu.png">
+          </button>
+        </div>
+        <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">駒場東邦物理部</span>
+            </span>
+            <a class="ch41" href="../../../index.html">
+              <span class="ch50">トップページ</span>
+            </a>
+            <a class="ch41" href="../../le.html">
+              <span class="ch50">講習トップ</span>
+            </a>
+          </div>
+          <div class="ch32">
+            <span class="ch40">
+              <span class="ch50">競技プログラミング講習</span>
+            </span>
+            <a class="ch41" href="../k_c_pej_p_gm.html">
+              <span class="ch50">目次</span>
+            </a>
+            <a class="ch41" href="../none/none.html">
+              <span class="ch50">索引</span>
+            </a>
+            <a class="ch41" href="../stdio/stdio.html">
+              <span class="ch50">次回</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cb00">
+      <div class="cb10">
+        <article class="cb20">
+          <h1>競技プログラミング講習/AtCoderとは</h1>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">概要</h2>
+          <span class="cb34">
+            AtCoderは競技プログラミングのサイトで、定期的にコンテストを開催しています。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              重要語
+            </h4>
+            <h4 class="cb45">
+              AtCoder
+            </h4>
+            <span class="cb41">
+              競技プログラミングのサイト
+            </span>
+          </div>
+          <div class="cb36 debr">
+            <h4 class="cb44">
+              必要語
+            </h4>
+            <span class="cb41">
+              今回の必要語はありません。
+            </span>
+          </div>
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">登録方法</h2>
+          <span class="cb34">
+            それでは、AtCoderへの登録方法を見ていきましょう。なお、AtCoderのサイトのスクリーンショットを掲載していますが、その文章や画像などについての一切の権利は、AtCoder又は当該権利を有する第三者に帰属しています。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">Step1</h3>
+            <span class="cb41">
+              <a class="cb42" href="https://atcoder.jp/home">AtCoder</a>にアクセスしたら、画面右上の「新規登録」をクリックしてください。
+            </span>
+          </div>
+          <img class="cb30" src="step1.jpg">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">Step2</h3>
+            <span class="cb41">
+              必須事項を入力してください。ユーザー名で「このユーザ名はすでに使用されています」と出ることがありますが、その場合は別の名前に変更してください。入力し終わったら、画面下の青い「新規登録」ボタンを押してください。これで、AtCoderへの登録は完了です。
+            </span>
+          </div>
+          <img class="cb30" src="step2.jpg">
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">コンテストへの参加方法</h2>
+          <span class="cb34">
+            AtCoderには定期的に開催されている4種類のコンテストがあり、それぞれ
+            <ul>
+              <li>AtCoder Beginner Contest(ABC)</li>
+              <li>AtCoder Regular Contest(ARC)</li>
+              <li>AtCoder Grand Contest(AGC)</li>
+              <li>AtCoder Heuristic Contest(AHC)</li>
+            </ul>
+            です。このうち、ABCがほぼ週に1回の頻度で開催されており、比較的易しい問題も出題されますので、<br>
+            まずはABCから参加することをおすすめします。<br>
+            それでは、コンテストへの参加方法を見ていきましょう。
+          </span>
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb31">
+            <h3 class="cb40">コンテストページ</h3>
+            <span class="cb41">
+              <a class="cb42" href="https://atcoder.jp/home">AtCoder</a>の左側に、「予定されたコンテスト」というところがあります。<br>
+              ここに近々開催されるコンテストの日時と名称が記載されています。<br>
+              画像の例だと、ABC230が12/3(金)の21:00から開催される予定です。この回は変則的に金曜日にコンテストがありますが、基本的には土曜日か日曜日のどちらかにあることが多いです。<br>
+              コンテストの詳細はコンテスト名をクリックするとコンテストページに飛ぶのでそこを見るとわかります。<br>
+              ABC230はコンテスト時間100分、問題がA~Hの8問あって、配点は100-200-300-400-500-500-600-600だとわかります。<br>
+              最近のABCはいつもこのような構成です。
+            </span>
+          </div>
+          <img class="cb30" src="upcomingContests.jpg">
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb31">
+            <h3 class="cb40">参加登録</h3>
+            <span class="cb41">
+              では、詳細が確認できたところで、参加登録をしていきます。<br>
+              コンテストページ中央に「参加登録」という青いボタンがあるので、そこをクリックしてください。<br>
+              クリックすると画面上部に「参加登録しました。」と出ますが、まだ参加登録は完全に完了していません。このあとの操作をもって、参加登録が完全に完了します。<br>
+              また、このとき企業コンテストなどの一部コンテストでは、アンケートがある場合もあります。<br>
+            </span>
+          </div>
+          <img class="cb30" src="contestRegister.jpg">
+        </article>
+        <article class="cb21 fxrl">
+          <div class="cb31">
+            <h3 class="cb40">コンテスト開始直前</h3>
+            <span class="cb41">
+              参加登録が一時的に完了すると、画像のように「Rated参加登録」という青いボタンと「Unrated参加登録」という白いボタンが表示されます。<br>
+              「Rated参加登録」を押すと、このコンテストの結果がレートに反映されます。「Unrated参加登録」を押すと、このコンテストの結果がレートに反映されません。<br>
+              どちらかのボタンを押すと、「現在～で参加登録しています」と表示されます。<br>
+              また、コンテスト開始5分以内にこの選択をしないと、Unratedとなるので注意してください。
+              この選択はコンテスト直前でなくても行うことはできますが、Ratedを選択したにもかかわらず寝坊などの何らか理由で参加できなくなった場合に、「参加したが1問も解けなかった」という扱いになってしまいレートが大幅に減少する可能性があるため、コンテスト直前の選択をお勧めします。<br>
+              このRated/Unrated登録機能についての詳細は、ボタンの下にも表示されている通り<a class="cb42" href="https://atcoder.jp/posts/744">Rated/Unrated登録機能追加のお知らせ</a>を見てください。
+            </span>
+          </div>
+          <img class="cb30" src="contestRegisterR.jpg">
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">コンテスト本番</h2>
+          <span class="cb34">
+            できるだけ多くの問題を解くことを目標にしましょう。<br>
+            同じ問題を解いた人でも、早く解いた人のほうが順位が高いため、早く解けるとなおよいです。
+            例えば、
+            <ul>
+              <li>X:A問題とB問題とC問題を50分で解いた</li>
+              <li>Y:A問題とB問題を5分で解いた</li>
+              <li>Z:A問題とB問題を10分で解いた</li>
+            </ul>
+            となった場合、3人の順位は高い方からX、Y、Zとなります。
+          </span>
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">開始</h3>
+            <span class="cb41">
+              開催時間になるとポップアップが出現し、「問題一覧ページへ移動」をクリックすると6問の問題名が並んでいます。<br>
+              この問題名をクリックすると、それぞれの問題文が表示されます。<br>
+              基本的にはA問題が最も易しく、徐々に難しくなっていき、H問題が最も難しくなっています。<br>
+              そのため、A問題から順に解いていくことをお勧めします。<br>
+              しかし、たまに難易度が入れ替わることもあるので、順位表を確認して何人解いているかを参考にするといいかもしれません。
+            </span>
+          </div>
+          <img class="cb30" src="problems.jpg">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">提出</h3>
+            <span class="cb41">
+              問題文を読んで内容が把握出来たらVSCodeやAtom、メモ帳などのお好きなエディタで正解だと思うコードを書きましょう。<br>
+              コードが書けたら、まずはサンプルを試しましょう。実行して試し、出力例と一致しているか確かめましょう。<br>
+              一致していなければ何が間違っているはずなので、バグを取りましょう。<br>
+              「コードテスト」のタブからもテストすることができますが、コンテスト中は大量のコードをジャッジしているので、結果が返ってくるのが少し遅いことがあります。<br>
+              正解だという自信があれば提出しましょう。コードをCtrl+A、Ctrl+Cでコピーしたら、問題ページ下の「ソースコード」欄にCtrl+Vで貼り付けます。<br>
+              言語が<code>C++(GCC 9.2.1)</code>になっているのを確認したら、下の「提出」ボタンで提出できます。
+            </span>
+          </div>
+          <img class="cb30" src="submit.jpg">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">ジャッジ</h3>
+            <span class="cb41">
+              提出をすると、これまでにこのコンテストで提出したコードの一覧が表示されます。<br>
+              「結果」とあるのがジャッジの結果で、提出直後は灰色で「WJ」と表示されていますが、しばらくするとこれが変わります。<br>
+              緑色で「AC」と表示されていれば正解で、この問題に対する得点を得ることができます。<br>
+              正解したら、次の問題に取り組みましょう（ただし、正解しなければ次の問題に進めないというルールはないので、どの順番で解いても構いません）。<br>
+              しかし、黄色で「WA」や「TLE」などと表示されていれば不正解です。もう一度コードを見直し、バグを取りましょう。<br>
+              そのほかのステータスや詳細については<a class="cb42" href="https://atcoder.jp/contests/apg4b/tasks/APG4b_al">提出結果の見方</a>を見てください。
+            </span>
+          </div>
+          <img class="cb30" src="judge.jpg">
+        </article>
+        <article class="cb21 fxlr">
+          <div class="cb31">
+            <h3 class="cb40">終了</h3>
+            <span class="cb41">
+              終了時間になるとポップアップが出現し、コンテストが終了した旨を伝えてくれます。<br>
+              順位表で、最終的に自分が何位であったかを確認できます。<br>
+              また、終了後しばらくすると「解説」タブができ、記事や動画で解説を見ることができます。<br>
+              「公式解説」とあるのが公式が出した解説ですが、問題ごとに「ユーザ解説」がある場合があります。<br>
+              これは、Rated上限を超えたユーザーが投稿したもので、別解やより詳しい解説などが書いてあります。
+              解説を見ることで、解けなかったところや解けたところでもシンプルな解法がわかったりするので、ためになると思います。<br>
+              さらに、Rated対象であればレートが更新されます。ABCはレート1999以下の人が対象です。<br>
+              Rated対象はコンテストページに書いてあります。
+            </span>
+          </div>
+          <img class="cb30" src="editorial.jpg">
+        </article>
+        <article class="cb21 fxtb">
+          <h2 class="cb33">練習問題</h2>
+          <span class="cb34">
+            提出の練習として<a class="cb42" href="https://atcoder.jp/contests/practice">practice
+              contest</a>のA問題Welcome to AtCoderをやってみましょう。<br>
+            B問題はかなり難しい問題なのでやる必要はありません。
+          </span>
+        </article>
+      </div>
+    </div>
+    <footer class="cf00">
+      <div class="cf10">
+        <button class="cf21" onclick="tp()">
+          <img class="cf30" src="../../../images/top.png">
+        </button>
+        <span class="cf20">
+          (C) 2020 駒場東邦物理部[KTPC]
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

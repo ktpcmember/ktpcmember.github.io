@@ -1,0 +1,34 @@
+<meta>
+title += "C++講習概要 - C++ on MSVC講習"
+keywords += ", C++, MSVC"
+description = "C++ on MSVC講習についての説明をしています。"
+</meta>
+
+<header>
+name = "C++ on MSVC講習"
+top = "le\_cps\_cps.html"
+index = "le\_cps\m\i_dx\i_dx.html"
+before = ""
+next = ""
+</header>
+
+<main>
+# C++ on MSVC講習/C++って何？
+
+## 概要
+C++について説明するページです。
+
+*- 重要語
+- C言語 {}
+- C++ {}
+- ライブラリ {}
+- C++標準規格 {}
+- C++標準ライブラリ {}
+- {API（Application Programming Interface）} {}
+- {Windows API（Win32、Win64）} {}
+*+ 必要語
+
+## C++って何？
+C++は、
+
+</main>

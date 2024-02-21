@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。PICの動作の仕組みを解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>PICの仕組み - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../jwRkcI/jwRkcI/.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../j0K3leD/j0K3leD.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/PICの仕組み</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       今回は、PICの動作の仕組みを解説します。<br>
+       用語も増えるので、意味をきちんと覚えてください。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        クロック
+       </h4>
+       <span class="cb41">
+        コンピュータを動作させる同期信号
+       </span>
+       <h4 class="cb45">
+        サイクル
+       </h4>
+       <span class="cb41">
+        命令実行の最小時間単位
+       </span>
+       <h4 class="cb45">
+        命令
+       </h4>
+       <span class="cb41">
+        コンピュータへの指令の最小単位
+       </span>
+       <h4 class="cb45">
+        プログラムメモリ
+       </h4>
+       <span class="cb41">
+        命令列を記憶する回路
+       </span>
+       <h4 class="cb45">
+        プログラムカウンタ
+       </h4>
+       <span class="cb41">
+        次に実行する命令のアドレス
+       </span>
+       <h4 class="cb45">
+        レジスタ
+       </h4>
+       <span class="cb41">
+        数値を一時記憶する回路
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        機械語
+       </h4>
+       <span class="cb41">
+        コンピュータが読む言語
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">クロック</h2>
+      <span class="cb34">
+       多くのコンピュータは、トランジスタを用いた電子回路です。<br>
+       実は、トランジスタを流れる電流は、瞬間的には増えません。<br>
+       徐々に電流量が増加し、他のトランジスタを駆動できるようになるまで、遅延が発生します。<br>
+       これが積み重なると、回路の各部の間で、無視できないずれとなってしまいます。<br>
+       そこで、多くの場合、クロック信号<span class="cb56">clock signal</span>と呼ばれる信号で、同期を取っています。<br>
+       クロック信号が来るまで次の手順に移らないように、回路を組んでおくのです。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">クロック周波数</h3>
+       <span class="cb41">
+        クロック振動の周波数を、クロック周波数といいます。<br>
+        高いほど速く動きますが、高すぎると同期を取れません。<br>
+        速く動くと消費電力も少し増えるので、必要な高さに留めておきましょう。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">サイクル</h3>
+       <span class="cb41">
+        よほど複雑な回路でない限り、1クロックで行える動作には限りがあります。<br>
+        そこで、PICでは、4クロックを1サイクルとしています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">命令</h2>
+      <span class="cb34">
+       機械語やアセンブリ言語は、いくつもの簡単な指令を並べて記述します。<br>
+       この指令1つのことを、命令<span class="cb56">instruction</span>といいます。<br>
+       1命令の実行には、命令の動作によって1~2サイクルを要します。<br>
+       詳しくは、各動作の解説ページや、命令集のページを見てください。
+      </span>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">メモリ</h2>
+      <span class="cb34">
+       通常、メモリには様々な情報を保存できますが、PICのメモリは用途によって細かく分かれています。<br>
+       これ以外にもいくつかのメモリがありますが、使うときに解説します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プログラムメモリ</h3>
+       <span class="cb41">
+        プログラムメモリは、命令の列を記憶する回路です。<br>
+        命令は1語<span class="cb56">word</span>ずつ、オペコード<span class="cb56">op-code</span>として保存されます。<br>
+        オペコードとは、命令の内容を表すビット列のことです。<br>
+        PIC16系列では、1語のオペコードの大きさは14ビットです。<br>
+        なお、プログラム書き込み以外では、このメモリの値を変更できません。<br>
+        また、電源を切っても値は保持されます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">アドレス</h3>
+       <span class="cb41">
+        PICはいくつかのメモリを持ちます。<br>
+        また、それぞれの内部に多くの値を保存できます。
+        PIC16F1827のプログラムメモリであれば、4096ワードのオペコードを保存できます。<br>
+        ここから必要な値を取り出すために、値の位置を指定する必要があります。<br>
+        この位置の番号を、アドレス<span class="cb56">address</span>といいます。<br>
+        アドレスは0から始まり、サイズより1つ小さい番号まで連続します。<br>
+        1827のプログラムメモリなら、0から4095<span class="cb56">16進=FFF</span>までが有効なアドレスです。<br>
+        場合によっては、サイズ内でも無効なアドレスが存在します。<br>
+        無効なアドレスを使ったときの動作は、メモリによって異なります。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">プログラムカウンタ</h3>
+       <span class="cb41">
+        プログラムカウンタは、次に実行する命令のオペコードが保存されているアドレスを示します。<br>
+        起動時とリセット時に、自動的に0になります。<br>
+        また、命令を1つ実行すると、1が足されます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">レジスタ</h3>
+       <span class="cb41">
+        レジスタ<span class="cb56">register</span>とは、計算中の値などを保存するメモリです。<br>
+        PIC16系列では、レジスタ1つの大きさは8ビット、つまり1バイトです。<br>
+        実行中に値を変更できますが、電源を切ると失われてしまいます。<br>
+        PIC16F1827は、384<span class="cb56">16進=180</span>個の汎用レジスタ<span class="cb56">General Purpose Register</span>を持ちます。<br>
+        これらのレジスタは、プログラムが自由に使ってよいです。<br>
+        また、特殊レジスタ<span class="cb56">Special Function Register</span>が100個ほど存在しますが、これらは用途が決められています。<br>
+        プログラムカウンタもここに含まれます。
+       </span>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

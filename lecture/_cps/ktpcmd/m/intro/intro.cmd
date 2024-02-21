@@ -1,0 +1,1 @@
+node "%ktpcmd%" "%ktpc_root%" "%ktpc_root%\le\_cps\ktpcmd\m\intro\intro.ktpcmd" "%ktpc_root%\le\_cps\ktpcmd\m\intro\intro.html"

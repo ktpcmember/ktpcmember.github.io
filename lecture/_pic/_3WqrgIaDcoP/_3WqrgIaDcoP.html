@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,電子工作,PIC,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けPIC講習の資料です。Wレジスタと、値の複写について解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Wレジスタと複写 - PIC講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../static.css">
+  <script type="text/javascript" src="../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">PIC講習</span>
+       </span>
+       <a class="ch41" href="../bTaDqrgI/bTaDqrgI.html">
+        <span class="ch50">前回</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../ipTaDopT/ipTaDopT.html">
+        <span class="ch50">次回</span>
+       </a>
+       <a class="ch41" href="../_pic.html">
+        <span class="ch50">目次</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>PIC講習/Wレジスタと複写</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       本章では、Wレジスタという、PICのプログラムで最も頻繁に操作するレジスタを解説します。<br>
+       また、値を複写して、他のレジスタに保存する命令を解説します。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        Wレジスタ
+       </h4>
+       <span class="cb41">
+        値の転送や演算結果の保存に用いるレジスタ
+       </span>
+       <h4 class="cb45">
+        即値
+       </h4>
+       <span class="cb41">
+        引数のうち演算や転送に直接使う値
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <h4 class="cb45">
+        レジスタ
+       </h4>
+       <span class="cb41">
+        数値を一時記憶する回路
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">Wレジスタ</h2>
+      <span class="cb34">
+       Wレジスタは、値の転送や、演算結果の保存などに用いる基幹レジスタです。<br>
+       アドレスは$09で、全バンクからアクセス可能です。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">Wレジスタの用途</h3>
+       <span class="cb41">
+        今回のPICでは、オペコードの1ワードが14ビットです。<br>
+        そして、レジスタの指定には7ビットを使います。<br>
+        つまり、レジスタを2つ指定すると、命令のスペースはなくなってしまいます。<br>
+        Wレジスタは、このような場合に、暗黙の引数として機能します。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">値の複写</h2>
+      <span class="cb34">
+       レジスタに保存された値は、別のレジスタに複写することができます。<br>
+       この動作について、データシートなどにはmove<span class="cb56">移動</span>という名称が記載されています。<br>
+       命令名もこれによるものですが、動作後における複写元のレジスタの値について誤解を生むので、本講習では複写と呼びます。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">MOV命令</h3>
+       <span class="cb41">
+        値の複写を行う命令は、<code class="wdkywd">MOV</code>命令です。<br>
+        引数の数によって動作が異なりますが、まずは2つの場合を説明します。<br>
+        このとき、1つめの引数にはレジスタのアドレスを指定します。<br>
+        2つめの引数が方向を示し、<code>W</code>であれば、そのレジスタの値をWレジスタに複写します。<br>
+        <code>F</code>であれば、Wレジスタの値をそのレジスタに複写します。<br>
+        2つめの引数は、書き込み先を示すと覚えましょう。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">MOV命令の例</span>
+        <button type="button" class="cb53" onclick="copy('saco_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_0" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>L<span class="wdsl">.</span><span class="wdnr">$2C</span> <span class="wdc_mt">#バンク0とする
+</span><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$3F</span> <span class="wdc_mt">#バンク1とする
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span>L<span class="wdsl">.</span>W   <span class="wdc_mt">#WレジスタにレジスタLの値を複写
+</span>
+<span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">1</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F   <span class="wdc_mt">#レジスタRにWレジスタの値を複写
+</span><span class="wdkywd">MBS</span><span class="wdsl">.</span><span class="wdnr">0</span>
+</span></span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">即値</h2>
+      <span class="cb34">
+       即値<span class="cb56">そくち/Immediate Value</span>とは、引数のうち、計算や転送にそのまま使う値です。<br>
+       引数が2つの<code class="wdkywd">MOV</code>命令の引数は、両方ともレジスタの指定であり、転送元や先を示すだけです。<br>
+       このように、間接的な指定に用いる引数は、即値と呼びません。<br>
+       しかし、<code class="wdkywd">MBS</code>命令の引数は、BSRレジスタに複写する値そのものなので、即値です。<br>
+       この値は後で間接的な指定に用いますが、即値と呼ぶかはその命令のみで判断します。
+      </span>
+     </article>
+     <article class="cb21">
+      <div class="cb31">
+       <h3 class="cb40">即値を用いるMOV命令</h3>
+       <span class="cb41">
+        <code class="wdkywd">MOV</code>命令には、引数が1つのときの動作もあります。<br>
+        この引数は即値で、Wレジスタに複写する、8ビットの値を指定します。
+       </span>
+      </div>
+     </article>
+     <article class="cb21">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">MOV命令</span>
+        <button type="button" class="cb53" onclick="copy('saco_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="saco_1" class="cb55 bkgdbl">
+<span class="cb62"><span class="paghco"><span class="wdp_q_p_csc_md">COL</span><span class="wdsl">.</span>R<span class="wdsl">.</span><span class="wdnr">$20</span>
+
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">$E0</span> <span class="wdc_mt">#Wレジスタに即値$E0を書き込む
+</span>
+<span class="wdkywd">MOV</span><span class="wdsl">.</span><span class="wdnr">123</span> <span class="wdc_mt">#Wレジスタ以外のレジスタに即値を書き込むには
+</span><span class="wdkywd">MOV</span><span class="wdsl">.</span>R<span class="wdsl">.</span>F <span class="wdc_mt">#一度Wレジスタを経由する</span></span></span>
+</pre>
+       </code>
+      </div>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="駒場東邦物理部,駒場東邦,駒東,KTPC,物理部,プログラミング,C++,講習">
+  <meta name="description" content="駒場東邦物理部(KTPC)部員向けC++ with Windows API講習の資料です。Hello, worldの表示を解説しています。">
+  <meta name="author" content="駒場東邦物理部">
+  <meta http-equiv="content-language" content="ja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Hello, world - C++ with Windows API講習 - 駒場東邦物理部</title>
+  <link rel="icon" type="image/jpeg" href="../../../../images/logo.jpg">
+  <link rel="stylesheet" type="text/css" href="../../../../style.css">
+  <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../../../../static.css">
+  <script type="text/javascript" src="../../../../header.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   
+   gtag('config', 'UA-133906591-2');
+  </script>
+ </head>
+ <body>
+  <header class="ch00">
+   <img class="ch11" src="../../../../images/br.jpg">
+  </header>
+  <div class="chb">
+   <div class="ch01">
+    <div class="ch10">
+     <div class="ch21">
+      <button type="button" class="ch31" onclick="ck()">
+       <img class="ch42" src="../../../../images/menu.png">
+      </button>
+     </div>
+     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">駒場東邦物理部</span>
+       </span>
+       <a class="ch41" href="../../../../index.html">
+        <span class="ch50">トップページ</span>
+       </a>
+       <a class="ch41" href="../../../le.html">
+        <span class="ch50">講習トップ</span>
+       </a>
+      </div>
+      <div class="ch32">
+       <span class="ch40">
+        <span class="ch50">C++ with Windows API講習</span>
+       </span>
+       <a class="ch41" href="../../_cps.html">
+        <span class="ch50">目次</span>
+       </a>
+       <a class="ch41" href="../i_dx/i_dx.html">
+        <span class="ch50">索引</span>
+       </a>
+       <a class="ch41" href="../a_dradsg/a_dradsg.html">
+        <span class="ch50">次回</span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cb00">
+    <div class="cb10">
+     <article class="cb20">
+      <h1>C++ with Windows API講習/Hello, world</h1>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">概要</h2>
+      <span class="cb34">
+       プログラミングの世界では、新しい環境を使うとき、簡単なコードを書いてみることが習慣になっています。<br>
+       この目的は、動作させるまでの手順と、きちんとプログラムが動作するかを確かめることです。<br>
+       この講習では、すでに前章で、動作することを確認できていると思います。<br>
+       しかし、あのコードは説明も理解もたいへん長くなりますから、より簡単なコードで始めてみましょう。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        重要語
+       </h4>
+       <h4 class="cb45">
+        コード
+       </h4>
+       <span class="cb41">
+        人が書いた、プログラミング言語の文章
+       </span>
+       <h4 class="cb45">
+        関数
+       </h4>
+       <span class="cb41">
+        結果を返す、動作のまとまり
+       </span>
+       <h4 class="cb45">
+        引数
+       </h4>
+       <span class="cb41">
+        関数に渡す値
+       </span>
+       <h4 class="cb45">
+        定数
+       </h4>
+       <span class="cb41">
+        実行中に変化しない値
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        必要語
+       </h4>
+       <span class="cb41">
+        今回の必要語はありません。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">コードとプログラム</h2>
+      <span class="cb34">
+       この講習では、私たちが書くプログラミング言語による文章を、コードと呼びます。<br>
+       コンピュータが実行するものは、プログラムと呼びます。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+       <h3 class="cb40">コンパイル</h3>
+       <span class="cb41">
+        実は、コンピュータはC++で書かれたコードを実行できません。<br>
+        実行できるのは、機械語という言語のみです。<br>
+        そこで、私たちが書くコードを、機械語に翻訳してもらわなくてはいけません。<br>
+        この作業を、コンパイルといいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">Hello, world</h2>
+      <span class="cb34">
+       まずは、プログラムを実行してみましょう。<br>
+       なお、「Hello, world」には特に意味はありません。<br>
+       しかし、確認などに用いられる簡単なコード例の代表ということができます。<br>
+       今回の講習でも、わかりやすいコードとして採用しました。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">コードの実行</h3>
+       <span class="cb41">
+        前回のコードをCtrl+Aで全選択し、back spaceキーで消してください。<br>
+        そして、以下のコードを、COPYを押してコピーし、空いたファイルに貼り付けてください。<br>
+        ここで、上書き保存しておきます。<br>
+        そして、F5キー、環境によってはFn+F5キーを押して、実行してみましょう。
+       </span>
+      </div>
+      <img class="cb30" src="howd.jpg">
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb37">
+       <div class="cb46">
+        <span class="cb54">Hello, world</span>
+        <button type="button" class="cb53" onclick="copy('howd_0')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="howd_0" class="cb55 bkgdbl">
+<span class="wdc_mt">//Windowsプログラムを作るのに必要です
+</span><span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdc_mt">//エントリーポイント
+</span><span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    <span class="wdc_mt">//メッセージボックスを表示します。
+</span>    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"Hello, world!"</span><span class="wdsl">,</span> <span class="wdtt">L"MessageBoxW"</span><span class="wdsl">,</span> MB_OK<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">コードを読む</h2>
+      <span class="cb34">
+       それでは、コードを読み、意味を知っていきましょう。<br>
+       コードは、プログラムとして実行される順序で読むのが原則です。
+      </span>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">関数/エントリーポイント</h3>
+       <span class="cb41">
+        まず、関数とは、動作のまとまりで、結果を返すものです。<br>
+        また、プログラムの中で、最初に実行される点を、エントリーポイントといいます。<br>
+        Windows APIを用いたプログラムでは、<code>wWinMain</code>関数がエントリーポイントとなります。<br>
+        ここでは説明しませんが、この行は、<code>wWinMain</code>関数の定義をしています。<br>
+        複雑なので、しばらくは写しておけばよいでしょう。<br>
+        今回は、<code>int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)</code>から実行が始まることを覚えてください。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">コメント</h3>
+       <span class="cb41">
+        <code>//</code>から行の終わりまでは、コメントになります。<br>
+        この範囲に書いた文字は、プログラムの実行には影響しません。<br>
+        コメントには、コードの概要や、説明を書きます。<br>
+        後で読んだときや、他の人が読んだときでも、動作を把握しやすくなります。<br>
+        例文では、コメントを使って注釈をつけています。<br>
+        読み進める時の参考にしてください。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">引数</h3>
+       <span class="cb41">
+        関数は、動作のまとまりで、結果を返すものだと書きました。<br>
+        これに加え、多くの関数は、動作の内容を細かく指定できるようになっています。<br>
+        呼び出し時に、指定するための値を渡すことができます。<br>
+        この値を引数<span class="cb56">ひきすう</span>といい、<code>関数名(引数)</code>と書きます。<br>
+        複数の引数があるときは、<code>,</code>で区切ります。<br>
+        また、左のものから順に、<code>(第1引数, 第2引数, 第3引数, ... )</code>と呼びます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">メッセージボックス</h2>
+      <span class="cb34">
+       先ほどの実行時に、通知などでよく見る、小さなウィンドウが現れました。<br>
+       Windowsでは、これをメッセージボックスと呼んでいます。<br>
+       これを表示させたのは<code>MessageBoxW</code>関数です。<br>
+       この関数は、Windowsに用意されている関数で、私たちユーザーが呼び出して使っています。<br>
+       なお、Windowsの関数を使うために、コードの先頭に<code>#include &lt;Windows.h&gt;</code>と書いています。<br>
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+       <h3 class="cb40"><code>MessageBoxW</code>関数の引数</h3>
+       <span class="cb41">
+        この関数は、引数を4つ受け取ります。<br>
+        具体的に今回渡した引数は、表のとおりです。<br>
+        第1引数については、現段階ではまだ解説できません。<br>
+        本講習が終わり、次の講習に入った段階で解説します。<br>
+        一旦、このまま<code>NULL</code>を指定しておきましょう。<br>
+        第2/第3引数にはそれぞれ、本文/タイトルとして表示される文字列を指定します。<br>
+        第4引数は、メッセージボックスのアイコンや選択肢などのスタイルを指定します。
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        今回指定した引数
+       </h4>
+       <h4 class="cb45">
+        第1引数
+       </h4>
+       <span class="cb41">
+        <code>NULL</code>
+       </span>
+       <h4 class="cb45">
+        第2引数
+       </h4>
+       <span class="cb41">
+        <code>L"Hello, world!"</code>
+       </span>
+       <h4 class="cb45">
+        第3引数
+       </h4>
+       <span class="cb41">
+        <code>L"MessageBoxW"</code>
+       </span>
+       <h4 class="cb45">
+        第4引数
+       </h4>
+       <span class="cb41">
+        <code>MB_OK</code>
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxlr">
+      <div class="cb31">
+       <h3 class="cb40">文字列</h3>
+       <span class="cb41">
+        第2/第3引数では、文字列を引数としています。<br>
+        ここで重要なのが、文字の符号化方式、つまり文字コードです。<br>
+        コンピュータは、文字を番号にして保管し、表示するときに番号から戻しています。<br>
+        つまり、2回の変換時の変換方式に違いがあってはいけないのです。<br>
+        今回、私たちはUTF-16LEという方式を使うことにしました。<br>
+        これは、現在のWindowsが標準で採用しているものです。<br>
+        <code>MessageBoxW</code>はUTF-16LE用の関数です。<br>
+        ですから、引数もUTF-16LEにしてやらなければなりません。<br>
+        UTF-16LEの文字列を書くには、<code>L"文字列"</code>と書きます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">デフォルト文字コード</h3>
+       <span class="cb41">
+        個々の関数だけでなく、コード全体にわたって影響するのが、デフォルト文字コードです。<br>
+        Visual Studioでは、UTF-16LEになっています。<br>
+        Visual Studioを使わない場合、コンパイラの実行時にUTF-16LEと指定できます。<br>
+        あるいは、コードの一番上に<code>#define UNICODE</code>と書いてもよいです。<br>
+        これらの方法で指定しなければ、ASCIIとして処理される可能性が高いです。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">定数</h3>
+       <span class="cb41">
+        第4引数には、スタイルを表す、Windowsが決めた整数値を指定する必要があります。<br>
+        しかし、数値を覚えるのは難しいですし、後で読んだときの可読性も低いです。<br>
+        そこで、数値にアルファベットの名前を付け、定数と呼んでいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">スタイル</h3>
+       <span class="cb41">
+        <code>MessageBoxW</code>関数に指定できるスタイルは、表の通りです。<br>
+        この中から<code>定数A | 定数B | 定数C ...</code>と書いて、複数の定数を指定することもできます。
+       </span>
+      </div>
+      <div class="cb36 debr">
+       <h4 class="cb44">
+        スタイル
+       </h4>
+       <h4 class="cb45">
+        MB_OK
+       </h4>
+       <span class="cb41">
+        OKのボタンを表示します。標準のボタンです。
+       </span>
+       <h4 class="cb45">
+        MB_OKCANCEL
+       </h4>
+       <span class="cb41">
+        OK、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ABORTRETRYIGNORE
+       </h4>
+       <span class="cb41">
+        中止、再試行、無視のボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_YESNOCANCEL
+       </h4>
+       <span class="cb41">
+        はい、いいえ、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_YESNO
+       </h4>
+       <span class="cb41">
+        はい、いいえのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_RETRYCANCEL
+       </h4>
+       <span class="cb41">
+        再試行、キャンセルのボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_CANCELTRYCONTINUE
+       </h4>
+       <span class="cb41">
+        キャンセル、再試行、続行のボタンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONERROR
+       </h4>
+       <span class="cb41">
+        一時停止の標識アイコンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONWARNING
+       </h4>
+       <span class="cb41">
+        感嘆符のアイコンを表示します。
+       </span>
+       <h4 class="cb45">
+        MB_ICONINFORMATION
+       </h4>
+       <span class="cb41">
+        小文字のiを丸で囲んだアイコンを表示します。<br>
+        インフォメーションマークともいいます。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxrl">
+      <div class="cb31">
+       <h3 class="cb40">実行結果</h3>
+       <span class="cb41">
+        今回、<code>MessageBoxW</code>関数の実行結果は利用していません。<br>
+        しかし、<code>return 0;</code>の文で、<code>wWinMain</code>関数が正常に終了したことを知らせています。
+       </span>
+      </div>
+     </article>
+     <article class="cb21 fxtb">
+      <h2 class="cb33">練習問題</h2>
+      <span class="cb34">
+       理解できたか確認するために、練習問題を解いてもらいます。<br>
+       メッセージボックスに表示する文字列を変更してみましょう。<br>
+       また、「はい、いいえ」のボタンと、「インフォメーションマーク」を表示させてください。
+      </span>
+     </article>
+     <article class="cb21 fxlr">
+      <details class="cb37">
+       <summary class="cb48">解答</summary>
+       <div class="cb46">
+        <span class="cb54">練習問題解答</span>
+        <button type="button" class="cb53" onclick="copy('howd_1')">
+         <span class="cb61">COPY</span>
+        </button>
+       </div>
+       <code class="cb47">
+<pre id="howd_1" class="cb55 bkgdbl">
+<span class="wdp_q_p_csc_md">#include</span> <span class="wdsl">&lt;</span>Windows.h<span class="wdsl">&gt;</span>
+
+<span class="wdkywd">int</span> WINAPI wWinMain<span class="wdsl">(</span>HINSTANCE<span class="wdsl">,</span> HINSTANCE<span class="wdsl">,</span> LPWSTR<span class="wdsl">,</span> <span class="wdkywd">int</span><span class="wdsl">)</span> <span class="wdsl">{</span>
+    MessageBoxW<span class="wdsl">(</span>NULL<span class="wdsl">,</span> <span class="wdtt">L"Are you a student?"</span><span class="wdsl">,</span> <span class="wdtt">L"Choose"</span><span class="wdsl">,</span> MB_YESNO <span class="wdsl">|</span> MB_ICONINFORMATION<span class="wdsl">);</span>
+    <span class="wdkywd">return</span> <span class="wdnr">0</span><span class="wdsl">;</span>
+<span class="wdsl">}</span>
+</pre>
+       </code>
+      </details>
+     </article>
+    </div>
+   </div>
+   <footer class="cf00">
+    <div class="cf10">
+     <button class="cf21" onclick="tp()">
+      <img class="cf30" src="../../../../images/top.png">
+     </button>
+     <span class="cf20">
+      (C) 2020 駒場東邦物理部[KTPC]
+     </span>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>

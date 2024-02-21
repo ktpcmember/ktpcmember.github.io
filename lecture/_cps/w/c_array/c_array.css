@@ -1,0 +1,39 @@
+/*
+ 勉強のために弄ってるので、実際のページでは使ってない
+*/
+
+.table_up {
+}
+
+.table_down{
+ display: flex;
+}
+
+.table_back {
+ background-color:#FFFEFE;
+ border:solid 1px #000000;
+}
+
+.item {
+ text-align:center;
+ flex-grow: 1;
+ max-width: 50%;
+ margin: 0;
+}
+
+.left{
+ border-right:dashed 1px #000000;
+}
+
+.right{
+ border-left:dashed 1px #000000;
+}
+
+.item_up{
+ padding:  0.2em 0 0 0;
+ margin: 0;
+ 
+ text-align:center;
+ margin-top:0.2em;
+ border-bottom:dashed 1px #000000;
+}

@@ -1,0 +1,54 @@
+
+ .by {
+  width:100%;
+  margin:0;
+  padding:0;
+  text-align:center;
+  font-size:16px;
+  display:flex;
+  flex-direction:column;
+ }
+ 
+ .ttaa {
+  margin:1em auto;
+  width:90%;
+  min-height:20em;
+  font-family:monospace;
+  resize:none;
+ }
+ 
+ .cdtp {
+  margin:0.5em auto;
+  width:90%;
+  height:5em;
+  display:flex;
+  flex-direction:row;
+ }
+ 
+ .bn {
+  margin:auto 1em auto auto;
+  flex-grow:1;
+  min-height:90%;
+ }
+ 
+ .cdit {
+  margin:auto;
+  flex-grow:1;
+  min-height:90%;
+  display:flex;
+  flex-direction:column;
+ }
+ 
+ .csla {
+  margin:auto;
+  min-width:90%;
+  min-height:2em;
+ }
+ 
+ .cinr {
+  margin:auto;
+  min-width:90%;
+  min-height:2em;
+ }
+ 
+ 
