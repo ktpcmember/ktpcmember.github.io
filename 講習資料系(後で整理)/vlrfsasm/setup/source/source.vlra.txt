@@ -1,3 +1,0 @@
-[文字列「Hello world!」を出力します]
-
-{.; ; (c.convertSbS8 "Hello world!")}
