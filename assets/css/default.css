@@ -105,7 +105,6 @@ td {
 .hMenuSide {
   width: 100%;
   top: 0;
-  position: sticky;
   background-color: #304050;
   z-index: 6;
 }
