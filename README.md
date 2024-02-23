@@ -5,7 +5,7 @@
 [ktpc.tokyo](https://www.ktpc.tokyo/)
 
 ## 注意事項
-このプロジェクトでは[TailwindCSS](https://tailwindcss.com)という楽にcssを書ける便利なフレームワークを使用しています。積極的に使用しましょう。
+このプロジェクトでは[TailwindCSS](https://tailwindcss.com)という楽にcssを書ける便利なフレームワークを使用しています。使いたい人は使ってください。
 
 ## ~物理部員でもわかる~手順
 1.自分のPCにフォルダーを作成する。(作業フォルダーになります)  
