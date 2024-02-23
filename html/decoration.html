@@ -10,8 +10,8 @@
   <title>装飾部門 - 駒場東邦物理部</title>
   <link rel="icon" type="image/jpeg" href="../assets/images/icon/logo.jpg">
   <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/default.css">
   <link rel="stylesheet" type="text/css" media="(max-width:800px)" href="../assets/css/static.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/output.css">
   <script type="text/javascript" src="../assets/js/header.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133906591-2"></script>
@@ -24,90 +24,101 @@
   </script>
  </head>
  <body>
-  <header class="ch00">
-   <img class="ch11" src="../assets/images/icon/header.jpg">
-  </header>
-  <div class="chb">
-   <div class="ch01">
-    <div class="ch10">
-     <div class="ch21">
-      <button type="button" class="ch31" onclick="ck()">
-       <img class="ch42" src="../assets/images/icon/menu.png">
-      </button>
-     </div>
-     <div id="hnmu" class="ch22" style="display: none; pointer-events:none;">
-      <div class="ch32">
-       <span class="ch40">
-        <span class="ch50">駒場東邦物理部</span>
-       </span>
-       <a class="ch41" href="../index.html">
-        <span class="ch50">トップページ</span>
-       </a>
-      </div>
-      <div class="ch32">
-       <span class="ch40">
-        <span class="ch50">通常活動</span>
-       </span>
-       <a class="ch41" href="../pr/pr.html">
-        <span class="ch50">プログラミング班</span>
-       </a>
-       <a class="ch41" href="../el/el.html">
-        <span class="ch50">電子工作・マイコン班</span>
-       </a>
-       <a class="ch41" href="../pt/pt.html">
-        <span class="ch50">ピタゴラ装置製作班</span>
-       </a>
-       <a class="ch41" href="../de/de.html">
-        <span class="ch50">装飾部門</span>
-       </a>
-       <a class="ch41" href="../et/et.html">
-        <span class="ch50">実験部門</span>
-       </a>
-       <a class="ch41" href="../ra/ra.html">
-        <span class="ch50">無線部門</span>
-       </a>
-      </div>
-      <div class="ch32">
-       <span class="ch40">
-        <span class="ch50">イベント</span>
-       </span>
-       <a class="ch41" href="../cfl/cfl.html">
-        <span class="ch50">文化祭</span>
-       </a>
-       <a class="ch41" href="../tcp/tcp.html">
-        <span class="ch50">合宿</span>
-       </a>
-       <a class="ch41" href="../edp/edp.html">
-        <span class="ch50">エッグドロップ</span>
-       </a>
-       <a class="ch41" href="../oet/oet.html">
-        <span class="ch50">コンテスト</span>
-       </a>
-      </div>
-      <div class="ch32">
-       <span class="ch40">
-        <span class="ch50">その他</span>
-       </span>
-       <a class="ch41" href="mailto:contact@ktpc.tokyo">
-        <span class="ch50">Eメール:contact@ktpc.tokyo</span>
-       </a>
-       <a class="ch41" href="https://docs.google.com/forms/d/e/1FAIpQLSfzlamhKVhUQ-M7zmtVSQhJkRd3p4W5Y5iKYpa51wEZTnLzSQ/viewform">
-        <span class="ch50">問い合わせフォーム</span>
-       </a>
-       <a class="ch41" href="https://twitter.com/KT_Physics">
-        <span class="ch50">Twitter</span>
-       </a>
-       <a class="ch41" href="https://www.komabajh.toho-u.ac.jp/">
-        <span class="ch50">駒東HP</span>
-       </a>
-      </div>
-     </div>
-    </div>
-   </div>
+    <header class="hHeader">
+        <image class="hBanner" src="../assets/images/icon/header.jpg">
+    </header>
+    <div class="hBeneathHeader">
+        <div class="hMenuSide">
+            <div class="hMenuBack">
+                <div class="hMenuButtonBack">
+                    <button class="hMenuButton" onclick="menu()">
+                        <image class="hMenuButtonImage"
+                            src="../assets/images/icon/menu.png">
+                    </button>
+                </div>
+                <div class="hMenuLink"
+                    style="display: none; pointer-events: none;"
+                    id="menuLink">
+                    <div class="hMenuLinkGroup">
+                        <div class="hMenuLinkTitle">
+                            <span class="hMenuLinkText">駒場東邦物理部</span>
+                        </div>
+                        <a class="hMenuLinkElement" href="../index.html">
+                            <span class="hMenuLinkText">トップページ</span>
+                        </a>
+                    </div>
+                    <div class="hMenuLinkGroup">
+                        <div class="hMenuLinkTitle">
+                            <span class="hMenuLinkText">プログラミング班</span>
+                        </div>
+                        <a class="hMenuLinkElement"
+                            href="../le/_pc_ba/_pc_ba.html">
+                            <span class="hMenuLinkText">PC基礎</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/_cps/_cps.html">
+                            <span class="hMenuLinkText">C++</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/y_wwai/y_wwai.html">
+                            <span class="hMenuLinkText">WinAPI</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/_cps/_cps.html">
+                            <span class="hMenuLinkText">C++</span>
+                        </a>
+                        <a class="hMenuLinkElement" href="../le/uy/uy.html">
+                            <span class="hMenuLinkText">Unity</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/q_c_puba/q_c_puba.html">
+                            <span class="hMenuLinkText">コンピュータ基礎</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/k_c_pej_p_gm/k_c_pej_p_gm.html">
+                            <span class="hMenuLinkText">競技プログラミング</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/vlrfsasm/vlrfsasm.html">
+                            <span class="hMenuLinkText">Vlrfsasm</span>
+                        </a>
+                    </div>
+                    <div class="hMenuLinkGroup">
+                        <div class="hMenuLinkTitle">
+                            <span class="hMenuLinkText">電子工作班</span>
+                        </div>
+                        <a class="hMenuLinkElement"
+                            href="../le/k_enba/k_enba.html">
+                            <span class="hMenuLinkText">電工基礎</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/_pic/_pic.html">
+                            <span class="hMenuLinkText">PIC（アセンブリ言語）</span>
+                        </a>
+                        <a class="hMenuLinkElement"
+                            href="../le/picC/picC.html">
+                            <span class="hMenuLinkText">PIC（C言語）</span>
+                        </a>
+                    </div>
+                    <div class="hMenuLinkGroup">
+                        <div class="hMenuLinkTitle">
+                            <span class="hMenuLinkText">ピタゴラ班</span>
+                        </div>
+                        <a class="hMenuLinkElement"
+                            href="../le/psk_ep/psk_ep.html">
+                            <span class="hMenuLinkText">ピタゴラ</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hMenuWord"
+                    style="display: none; pointer-events: none;"
+                    id="menuWord"></div>
+            </div>
+        </div>
    <div class="cb00">
     <div class="cb10">
      <article class="cb20">
-      <h1>装飾部門</h1>
+      <h1 style="margin-top:8px;">装飾部門</h1>
      </article>
      <article class="cb21 fxrl">
       <div class="cb31">
@@ -117,7 +128,7 @@
         文化祭をより楽しいものにできるよう、試行錯誤しています。
        </span>
       </div>
-      <img class="cb30" src="../images/lo-de.jpg">
+      <img class="cb30" src="../assets/images/decoration/T-shirt_front.jpg">
      </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">Tシャツ</h2>
@@ -134,7 +145,7 @@
         幹部用Tシャツの背中側デザインです。
        </span>
       </div>
-      <img class="cb30" src="bk.jpg">
+      <img class="cb30" src="../assets/images/decoration/T-shirt.jpg">
      </article>
      <article class="cb21 fxtb">
       <h2 class="cb33">看板</h2>
