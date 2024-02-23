@@ -1,20 +1,37 @@
-
 .hFooterButton {
-    display: flex;
-  }
-  
-  .cP {
-    margin: 0.5em;
-  }
-  
-  .cTableBack {
-    margin: 0.5em;
-    max-width: calc(100% - 1em);
-  }
-  
-  .cCodeFrame {
-    margin: 0.5em;
-    max-width: calc(100% - 1em);
-  }
+  display: flex;
+}
 
-  
+.cP {
+  margin: 0.5em;
+}
+
+.cTableBack {
+  margin: 0.5em;
+  max-width: calc(100% - 1em);
+}
+
+.cCodeFrame {
+  margin: 0.5em;
+  max-width: calc(100% - 1em);
+}
+
+.hMenuLinkGroup {
+  width: 100%;
+  margin: 0.8% 0;
+  padding: 0.6% 0 0;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #304050;
+  border-radius: 0.5em;
+}
+.hMenuLinkElement {
+  margin: 0.7%;
+  padding: 2%;
+  flex-basis: 15em;
+  flex-grow: 1;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #506070;
+  border-radius: 0.5em;
+}
