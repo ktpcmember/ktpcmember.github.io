@@ -28,10 +28,28 @@ function menu(){
     return;
   }
   
-  function scrollToTop(){
-    window.scroll(0,0);
-    return;
+  function scrollToTop() {
+    const currentPosition = window.scrollY;
+    const targetPosition = 0;
+    const duration = 500; // アニメーションの時間（ミリ秒）
+  
+    const startTime = performance.now();
+  
+    function animateScroll() {
+      const currentTime = performance.now();
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const easeInOutQuad = progress < 0.5 ? 2 * progress ** 2 : 1 - (-2 * progress + 2) ** 2 / 2;
+  
+      window.scrollTo(0, currentPosition - (currentPosition - targetPosition) * easeInOutQuad);
+  
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    }
+  
+    requestAnimationFrame(animateScroll);
   }
+  
   
   function copyScript(element){
     var menuElement = element.parentElement;
