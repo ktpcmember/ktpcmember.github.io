@@ -11,36 +11,45 @@
 
 *{padding:0;margin:0;}
 
-button {
+.button {
   padding: 0;
   border: none;
   outline: none;
   font: inherit;
   color: inherit;
-  background: none
+  background: none;
 }
-.floatButton_icon{
+
+.floatButton_icon {
   width: 33px;
   height: 33px;
 }
 
-.float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:2.2rem;
-	right:2.2rem;
-	background-color:#2F4050;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 2.2rem;
+  right: 2.2rem;
+  background-color: #2F4050;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  transition: 0.3s;
 }
 
-.my-float{
+.float:hover {
+  width: 68px;
+  height: 68px;
+  transform: translate(4px, 4px); 
+}
+
+.my-float {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 /*Style for tag*/
 
