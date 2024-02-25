@@ -28,8 +28,8 @@ button {
 	position:fixed;
 	width:60px;
 	height:60px;
-	bottom:40px;
-	right:40px;
+	bottom:2.2rem;
+	right:2.2rem;
 	background-color:#2F4050;
 	border-radius:50px;
 	text-align:center;
@@ -294,7 +294,7 @@ td {
 }
 
 .cP {
-  margin: 0.5em 2.0em;
+  margin: 0.7em 2.2em;
   line-height: 3ex;
   color: #202020;
 }
