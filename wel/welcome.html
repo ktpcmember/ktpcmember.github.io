@@ -2,11 +2,112 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <script>
-    window.location.replace("https://www.ktpc.tokyo/index.html");
-  </script>
+  <title>新歓用サイト- 駒場東邦物理部</title>
 </head>
 <body>
+  <header>
+    <div class="headerButton">
+      <a href="#">
+        <p class="text">物理部について <span class="arrow">＞</span></p>
+      </a>
+    </div>
+    <div class="headerButton">
+      <a href="#">
+        <p class="text">活動日について <span class="arrow">＞</span></p>
+      </a>
+    </div>
+
+    <div class="headerButton">
+      <a href="#">
+        <p class="text">活動班について <span class="arrow">＞</span></p>
+      </a>
+    </div>
+    <div class="headerButton">
+      <a href="#">
+        <p class="text">イベントについて <span class="arrow">＞</span></p>
+      </a>
+    </div>
+    <div class="headerButton">
+      <a href="#">
+        <p class="text">新歓でできること <span class="arrow">＞</span></p>
+      </a>
+    </div>
+  </header>
+  <div style="width: 100%; height: 600px;">
+    <img src="https://meshikui.com/wp-content/uploads/2020/03/1200x630.png" alt="仮の画像" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
 </body>
+
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  width: 100%;
+  height: 8000px;
+}
+header {
+  width: 70%;
+  height: 60px;
+  text-align: center;
+  position:fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* ガラス風デザイン */
+  background: rgba(255, 255, 255, 0.7); /* 半透明 */
+  backdrop-filter: blur(12px); /* ぼかし */
+  -webkit-backdrop-filter: blur(12px); /* Safari対応 */
+
+  
+  border-radius: 40px; /* 角丸 */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 30px;
+  
+}
+.text{
+  font-size: 12px;
+  font-weight: bold;
+  color: #0e519d;
+}
+
+.headerButton {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  padding: 4px 14px;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  margin-right: 4px;
+}
+
+.headerButton:hover {
+  background: rgba(19, 73, 159, 0.792);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.headerButton:hover .text {
+  color: #ffffff;
+}
+
+.headerButton a {
+  text-decoration: none;
+}
+
+.arrow {
+  margin-left: 3px;
+  font-size: 12px;
+}
+</style>
 </html>
