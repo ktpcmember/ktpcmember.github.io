@@ -45,20 +45,12 @@
     <div class="m-marker" data-target="section-04">04</div>
   </nav>
 
-<div class="hero">
+<div class="hero" id="section-00">
     <picture>
       <source media="(min-width: 769px)" srcset="./KTPC.png">
       <img src="./KTPC_smartphone.png" alt="メイン画像">
     </picture>
   </div>
-
-  <main class="content-sections">
-    <section id="section-00" class="section">
-      <div class="inner" style="text-align: center;">
-        <h2>00. ホーム</h2>
-        <p>駒場東邦物理部 新歓ページへようこそ！<br>下へスクロールして詳細をご覧ください。</p>
-      </div>
-    </section>
     
     <section id="section-01" class="section">
       <div class="inner">
@@ -252,11 +244,11 @@ body {
   /* メインコンテンツの余白を最適化 */
   .content-sections {
     padding-left: 0;
-    padding-bottom: 100px; /* 下部ナビ分のスペースを確保 */
+    padding-bottom: 120px; /* 下部ナビ分のスペースを確保 */
   }
   .section {
     padding: 20px 15px; /* スマホ画面に合わせた余白 */
-    min-height: calc(100vh - 100px); /* 下部ナビ分を引いた高さ */
+    min-height: calc(100vh - 120px); /* 下部ナビ分を引いた高さ */
   }
   .inner {
     padding: 30px 20px; /* カード内の余白を縮小 */
@@ -277,8 +269,8 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0,0,0,0.1);
     z-index: 1000;
-    justify-content: space-around;
-    padding: 15px 0;
+    justify-content: space-around;;
+    padding: 32px 0;
     padding-bottom: env(safe-area-inset-bottom, 15px); /* iPhoneのホームバー対応 */
   }
   
@@ -291,6 +283,7 @@ body {
     -webkit-text-stroke: 1px #333;
     cursor: pointer;
     transition: all 0.3s;
+    margin-bottom: 16px;
   }
   /* アクティブ時のデザイン */
   .m-marker.active {
