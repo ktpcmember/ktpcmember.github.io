@@ -15,25 +15,34 @@
       <div class="disk" id="disk">
         
         <div class="marker marker-1" data-target="section-01">
-          <div class="number-svg" style="-webkit-mask-image: url('01.svg'); mask-image: url('01.svg');"></div>
+          <svg class="number-svg" viewBox="0 0 60 45">
+            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">01</text>
+          </svg>
           <span class="label">物理部について</span>
         </div>
         
         <div class="marker marker-2" data-target="section-02">
-          <div class="number-svg" style="-webkit-mask-image: url('02.svg'); mask-image: url('02.svg');"></div>
+          <svg class="number-svg" viewBox="0 0 60 45">
+            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">02</text>
+          </svg>
           <span class="label">活動日について</span>
         </div>
         
         <div class="marker marker-3" data-target="section-03">
-          <div class="number-svg" style="-webkit-mask-image: url('03.svg'); mask-image: url('03.svg');"></div>
+          <svg class="number-svg" viewBox="0 0 60 45">
+            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">03</text>
+          </svg>
           <span class="label">活動班について</span>
         </div>
         
         <div class="marker marker-4" data-target="section-04">
-          <div class="number-svg" style="-webkit-mask-image: url('04.svg'); mask-image: url('04.svg');"></div>
+          <svg class="number-svg" viewBox="0 0 60 45">
+            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">04</text>
+          </svg>
           <span class="label">イベントについて</span>
         </div>
-        </div>
+        
+      </div>
     </div>
   </nav>
 
@@ -90,6 +99,7 @@ body {
   object-fit: cover;
 }
 
+/* 各セクション */
 .content-sections {
   padding-left: 100px;
 }
@@ -113,7 +123,7 @@ body {
 .disk-nav {
   position: fixed;
   top: 50%;
-  left: -300px; /* 指定の数値 */
+  left: -300px; 
   transform: translateY(-50%);
   z-index: 1000;
   pointer-events: none; 
@@ -147,6 +157,7 @@ body {
 
 .disk.dragging { cursor: grabbing; transition: none; }
 
+/* マーカーの配置 */
 .marker {
   position: absolute;
   top: 50%;
@@ -165,55 +176,48 @@ body {
 .marker-3 { transform: rotate(15deg); }
 .marker-4 { transform: rotate(45deg); }
 
-/* --- CSSマスクによるSVG配置、色、2px青アウトライン --- */
+/* --- SVGによる美しいアウトライン文字 --- */
 .number-svg {
-  width: 48px;  /* 必要に応じて調整 */
-  height: 28px; /* 必要に応じて調整 */
-  
-  /* 通常時の色（黒など） */
-  background-color: #333; 
-  
-  /* ★2pxの青いアウトラインを追加★ */
-  border: 1.8px solid #0e519d; 
-
-
-  /* マスクの設定（画像がピッタリ収まるように） */
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: right center; /* 右寄せにする場合 */
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: right center;
-  
-  transition: background-color 0.3s;
+  width: 60px;
+  height: 45px;
+  overflow: visible;
 }
 
-/* --- ラベルの位置（円盤の外側に配置） --- */
+.number-svg text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  fill: transparent; /* 中身は透明 */
+  stroke: #333;      /* 枠線の色 */
+  stroke-width: 1px; /* 枠線の太さ */
+  stroke-linejoin: round; /* 交差部分を丸めて綺麗に処理 */
+  transition: all 0.3s;
+}
+
 .label {
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 600;
   font-size: 18px;
+  color: black;
   white-space: nowrap;
   position: absolute;
-  color:black;
-  left: 100%; 
-  margin-left: 40px; /* ここを増やしてさらに外側へ移動 */
+  left: 100%;
+  margin-left: 40px;
   opacity: 0;
   transform: translateX(-15px);
   transition: all 0.4s;
   pointer-events: none;
 }
 
+/* ホバー・アクティブ時の強調 */
+.marker:hover .number-svg text,
+.marker.active .number-svg text {
+  stroke: #0e519d;
+  stroke-width: 1.5px;
+}
 .marker:hover .label {
   opacity: 1;
   transform: translateX(0);
-}
-
-/* ホバー・アクティブ時の強調（青色に変える） */
-.marker:hover .number-svg,
-.marker.active .number-svg {
-  background-color: #0e519d;
-  /* アウトラインは既に青なので、そのまま */
 }
 </style>
 
@@ -226,11 +230,12 @@ body {
   let currentRotation = 45;
   let isDragging = false;
   let isAutoScrolling = false; 
-  let isWheelAnimating = false; 
+  let isWheelAnimating = false; // ホイール操作の制御フラグ
   let previousAngle = 0;
 
-  const snapAngles = [45, 15, -15, -45]; 
+  const snapAngles = [45, 15, -15, -45]; // 各01, 02, 03, 04の角度
 
+  // --- 1. スナップ機能 ---
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     let clampedRotation = Math.max(-45, Math.min(45, currentRotation));
@@ -246,7 +251,7 @@ body {
     });
 
     currentRotation = closestAngle;
-    disk.style.transform = `rotate(${currentRotation}deg)`;
+    disk.style.transform = `rotate(${currentRotation}deg);`;
     updateActiveMarker();
   }
 
@@ -258,6 +263,7 @@ body {
     });
   }
 
+  // --- 2. ドラッグ操作 ---
   function getCenter() {
     const rect = disk.getBoundingClientRect();
     return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
@@ -300,29 +306,40 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
+
+  // --- 3. 【修正】ホイール操作（1セクションずつカチッと進む） ---
   diskWrapper.addEventListener('wheel', (e) => {
     e.preventDefault();
     if (isWheelAnimating || isDragging || isAutoScrolling) return;
 
     isWheelAnimating = true;
+
+    // 現在の角度がどのインデックス(0〜3)にあるか取得
     let currentIndex = snapAngles.indexOf(currentRotation);
     
+    // ホイールの回転方向で次へ進むか戻るか判定
     if (e.deltaY > 0) {
+      // 下スクロール：次のセクションへ
       currentIndex = Math.min(currentIndex + 1, snapAngles.length - 1);
     } else {
+      // 上スクロール：前のセクションへ
       currentIndex = Math.max(currentIndex - 1, 0);
     }
 
+    // 円盤を回転
     currentRotation = snapAngles[currentIndex];
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     disk.style.transform = `rotate(${currentRotation}deg)`;
     updateActiveMarker();
 
+    // 該当のセクションへページも連動してスクロールさせる
     const targetId = markers[currentIndex].getAttribute('data-target');
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
       isAutoScrolling = true;
       window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
+      
+      // スクロール完了後にフラグをリセット（連続発火を防ぐ）
       setTimeout(() => { 
         isAutoScrolling = false; 
         isWheelAnimating = false;
@@ -332,6 +349,8 @@ body {
     }
   }, {passive: false});
 
+
+  // --- 4. クリック操作 ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
       const targetId = marker.getAttribute('data-target');
@@ -347,6 +366,7 @@ body {
     });
   });
 
+  // --- 5. ページスクロールとの連動 ---
   const observerOptions = {
     root: null,
     rootMargin: "-50% 0px -50% 0px", 
@@ -371,6 +391,7 @@ body {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
+
 </script>
 </body>
 </html>
