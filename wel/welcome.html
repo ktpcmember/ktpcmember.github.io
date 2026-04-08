@@ -187,10 +187,10 @@ body {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 36px;
   font-weight: 700;
-  fill: transparent; /* 中身は透明 */
-  stroke: #333;      /* 枠線の色 */
-  stroke-width: 1px; /* 枠線の太さ */
-  stroke-linejoin: round; /* 交差部分を丸めて綺麗に処理 */
+  fill: transparent; 
+  stroke: #333;      
+  stroke-width: 1px; 
+  stroke-linejoin: round; 
   transition: all 0.3s;
 }
 
@@ -230,12 +230,12 @@ body {
   let currentRotation = 45;
   let isDragging = false;
   let isAutoScrolling = false; 
-  let isWheelAnimating = false; // ホイール操作の制御フラグ
+  let isWheelAnimating = false; 
   let previousAngle = 0;
 
-  const snapAngles = [45, 15, -15, -45]; // 各01, 02, 03, 04の角度
+  const snapAngles = [45, 15, -15, -45]; 
 
-  // --- 1. スナップ機能 ---
+  // --- 1. スナップ機能 (修正済) ---
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     let clampedRotation = Math.max(-45, Math.min(45, currentRotation));
@@ -251,8 +251,25 @@ body {
     });
 
     currentRotation = closestAngle;
-    disk.style.transform = `rotate(${currentRotation}deg);`;
+    
+    // 【修正箇所①】 セミコロンをバッククォートの外に出しました（もしくは削除）
+    disk.style.transform = `rotate(${currentRotation}deg)`; 
     updateActiveMarker();
+
+    // 【修正箇所②】 スナップした角度に対応するセクションへページをスクロールさせる処理を追加
+    const index = snapAngles.indexOf(currentRotation);
+    if (index !== -1) {
+      const targetId = markers[index].getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        isAutoScrolling = true;
+        window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
+        
+        setTimeout(() => { 
+          isAutoScrolling = false; 
+        }, 800); // アニメーション終了後にフラグを解除
+      }
+    }
   }
 
   function updateActiveMarker() {
@@ -296,7 +313,7 @@ body {
     isDragging = false;
     disk.classList.remove('dragging');
     diskWrapper.classList.remove('active-drag');
-    snapToNearest();
+    snapToNearest(); // ドラッグ終了時にスナップ＆スクロール処理を呼ぶ
   }
 
   disk.addEventListener('mousedown', handleStart);
@@ -306,40 +323,32 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
-
-  // --- 3. 【修正】ホイール操作（1セクションずつカチッと進む） ---
+  // --- 3. ホイール操作 ---
   diskWrapper.addEventListener('wheel', (e) => {
     e.preventDefault();
     if (isWheelAnimating || isDragging || isAutoScrolling) return;
 
     isWheelAnimating = true;
 
-    // 現在の角度がどのインデックス(0〜3)にあるか取得
     let currentIndex = snapAngles.indexOf(currentRotation);
     
-    // ホイールの回転方向で次へ進むか戻るか判定
     if (e.deltaY > 0) {
-      // 下スクロール：次のセクションへ
       currentIndex = Math.min(currentIndex + 1, snapAngles.length - 1);
     } else {
-      // 上スクロール：前のセクションへ
       currentIndex = Math.max(currentIndex - 1, 0);
     }
 
-    // 円盤を回転
     currentRotation = snapAngles[currentIndex];
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     disk.style.transform = `rotate(${currentRotation}deg)`;
     updateActiveMarker();
 
-    // 該当のセクションへページも連動してスクロールさせる
     const targetId = markers[currentIndex].getAttribute('data-target');
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
       isAutoScrolling = true;
       window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
       
-      // スクロール完了後にフラグをリセット（連続発火を防ぐ）
       setTimeout(() => { 
         isAutoScrolling = false; 
         isWheelAnimating = false;
@@ -348,7 +357,6 @@ body {
       setTimeout(() => { isWheelAnimating = false; }, 600);
     }
   }, {passive: false});
-
 
   // --- 4. クリック操作 ---
   markers.forEach((marker, index) => {
