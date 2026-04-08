@@ -2,112 +2,235 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>新歓用サイト- 駒場東邦物理部</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="headerButton">
-      <a href="#">
-        <p class="text">物理部について <span class="arrow">＞</span></p>
-      </a>
+  <div class="disk-nav" id="diskNav">
+    <div class="disk" id="disk">
+      <div class="marker marker-1" data-section="01">
+        <span class="number">01</span>
+        <span class="label">物理部について</span>
+      </div>
+      <div class="marker marker-2" data-section="02">
+        <span class="number">02</span>
+        <span class="label">活動日について</span>
+      </div>
+      <div class="marker marker-3" data-section="03">
+        <span class="number">03</span>
+        <span class="label">活動班について</span>
+      </div>
+      <div class="marker marker-4" data-section="04">
+        <span class="number">04</span>
+        <span class="label">イベントについて</span>
+      </div>
     </div>
-    <div class="headerButton">
-      <a href="#">
-        <p class="text">活動日について <span class="arrow">＞</span></p>
-      </a>
-    </div>
+  </div>
 
-    <div class="headerButton">
-      <a href="#">
-        <p class="text">活動班について <span class="arrow">＞</span></p>
-      </a>
-    </div>
-    <div class="headerButton">
-      <a href="#">
-        <p class="text">イベントについて <span class="arrow">＞</span></p>
-      </a>
-    </div>
-    <div class="headerButton">
-      <a href="#">
-        <p class="text">新歓でできること <span class="arrow">＞</span></p>
-      </a>
-    </div>
-  </header>
-  <div style="width: 100%; height: 600px;">
+  <div style="width: 100%; height: 600px; padding-left: 100px;">
     <img src="https://meshikui.com/wp-content/uploads/2020/03/1200x630.png" alt="仮の画像" style="width: 100%; height: 100%; object-fit: cover;">
   </div>
 </body>
-
 
 <style>
 body {
   margin: 0;
   padding: 0;
-
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  width: 100%;
-  height: 8000px;
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  height: 8000px; 
+  background-color: #f5f5f5;
+  /* ドラッグ中のテキスト選択を防ぐ */
+  user-select: none; 
+  -webkit-user-select: none;
 }
-header {
-  width: 70%;
-  height: 60px;
-  text-align: center;
-  position:fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
 
-  /* ガラス風デザイン */
-  background: rgba(255, 255, 255, 0.7); /* 半透明 */
-  backdrop-filter: blur(12px); /* ぼかし */
-  -webkit-backdrop-filter: blur(12px); /* Safari対応 */
+/* --- 円盤ナビゲーションのスタイル --- */
+.disk-nav {
+  position: fixed;
+  top: 50%;
+  left: -180px; 
+  transform: translateY(-50%);
+  z-index: 1000;
+}
 
+.disk {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
   
-  border-radius: 40px; /* 角丸 */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 30px;
   
-}
-.text{
-  font-size: 12px;
-  font-weight: bold;
-  color: #0e519d;
+  position: relative;
+  /* ドラッグできることをユーザーに伝えるカーソル */
+  cursor: grab;
+  /* 初期状態は「01」が水平になる角度(45度)にしておく */
+  transform: rotate(45deg); 
+  /* 吸い付くときの滑らかなイージング */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
-.headerButton {
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  padding: 4px 14px;
+/* ドラッグ中のカーソル */
+.disk.dragging {
+  cursor: grabbing;
+}
+
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px; 
+  height: 40px;
+  margin-top: -20px; 
+  transform-origin: left center; 
   display: flex;
   align-items: center;
-  height: 28px;
-  margin-right: 4px;
+  justify-content: flex-end; 
 }
 
-.headerButton:hover {
-  background: rgba(19, 73, 159, 0.792);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-.headerButton:hover .text {
-  color: #ffffff;
+.marker-1 { transform: rotate(-45deg); }
+.marker-2 { transform: rotate(-15deg); }
+.marker-3 { transform: rotate(15deg); }
+.marker-4 { transform: rotate(45deg); }
+
+.number {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: transparent; 
+  -webkit-text-stroke: 1px #333; 
+  transition: all 0.3s ease;
 }
 
-.headerButton a {
-  text-decoration: none;
+.label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  white-space: nowrap;
+  position: absolute;
+  left: 100%; 
+  margin-left: 10px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none; 
 }
 
-.arrow {
-  margin-left: 3px;
-  font-size: 12px;
+.marker:hover .number {
+  -webkit-text-stroke: 1.5px #0e519d;
+}
+
+.marker:hover .label {
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>
+
+<script>
+  const disk = document.getElementById('disk');
+  let isDragging = false;
+  let currentRotation = 45; // 初期状態は01が水平(45度)
+  let previousAngle = 0;
+
+  // 各メニューが水平(0度)になるためのディスクの回転角度
+  // 01(-45度)を水平にするには +45度回す
+  // 04(+45度)を水平にするには -45度回す
+  const snapAngles = [45, 15, -15, -45];
+
+  // 円の中心座標を計算する関数
+  function getCenter() {
+    const rect = disk.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+  }
+
+  // マウス/タッチの座標を取得
+  function getPointerPos(e) {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  // ドラッグ開始
+  function dragStart(e) {
+    isDragging = true;
+    disk.classList.add('dragging');
+    
+    // ドラッグ中は指/マウスにぴったり追従させるため、CSSアニメーションを一時無効化
+    disk.style.transition = 'none'; 
+
+    const pos = getPointerPos(e);
+    const center = getCenter();
+    // アークタンジェントを使って中心からの角度を計算
+    previousAngle = Math.atan2(pos.y - center.y, pos.x - center.x) * 180 / Math.PI;
+  }
+
+  // ドラッグ中（回している最中）
+  function dragMove(e) {
+    if (!isDragging) return;
+    // タッチデバイスでのスクロールを防止
+    if(e.type === 'touchmove') e.preventDefault();
+
+    const pos = getPointerPos(e);
+    const center = getCenter();
+    const angle = Math.atan2(pos.y - center.y, pos.x - center.x) * 180 / Math.PI;
+
+    let delta = angle - previousAngle;
+    
+    // -180度 ⇔ 180度の境界線を跨いだ時の計算ズレを補正
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
+
+    currentRotation += delta;
+    disk.style.transform = `rotate(${currentRotation}deg)`;
+    previousAngle = angle;
+  }
+
+  // ドラッグ終了（手を離した時）
+  function dragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    disk.classList.remove('dragging');
+
+    // 吸い付くアニメーション（イージング）を復活させる
+    disk.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+
+    // ぐるぐる回りすぎないよう、-45度〜45度の範囲に回転を制限（クランプ）
+    let clampedRotation = Math.max(-45, Math.min(45, currentRotation));
+
+    // 現在の角度から一番近い「正解の角度（スナップポイント）」を探す
+    let closestAngle = snapAngles[0];
+    let minDiff = Math.abs(clampedRotation - snapAngles[0]);
+    
+    for (let i = 1; i < snapAngles.length; i++) {
+      let diff = Math.abs(clampedRotation - snapAngles[i]);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestAngle = snapAngles[i];
+      }
+    }
+
+    // 一番近い角度へシュッと回して吸い付かせる
+    currentRotation = closestAngle;
+    disk.style.transform = `rotate(${currentRotation}deg)`;
+  }
+
+  // イベントリスナーの登録 (PC・スマホ両対応)
+  disk.addEventListener('mousedown', dragStart);
+  document.addEventListener('mousemove', dragMove);
+  document.addEventListener('mouseup', dragEnd);
+
+  disk.addEventListener('touchstart', dragStart, { passive: false });
+  document.addEventListener('touchmove', dragMove, { passive: false });
+  document.addEventListener('touchend', dragEnd);
+
+</script>
 </html>
