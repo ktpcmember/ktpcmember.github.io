@@ -45,35 +45,49 @@
     <div class="m-marker" data-target="section-04">04</div>
   </nav>
 
-<div class="hero" id="section-00">
+  <div class="hero section" id="section-00">
     <picture>
       <source media="(min-width: 769px)" srcset="./KTPC.png">
       <img src="./KTPC_smartphone.png" alt="メイン画像">
     </picture>
   </div>
     
+  <main class="content-sections">
     <section id="section-01" class="section">
       <div class="inner">
         <h2>01. 物理部について</h2>
-        <p>ここに物理部の紹介文が入ります。テキストが入ることでスクロールが発生します。文章が長くてもスマホで綺麗に改行されるようになりました。</p>
+        <p>中学棟3階物理第三実験室で活動をしている、プログラミングや電子工作などの、情報・機械工学を中心に活動している部活です！</p>
+        <p>規則・ノルマなどは無く、兼部も歓迎です！<br>先輩後輩の仲もとても良いので、気軽に物理部まで足を運んでください！</p>
       </div>
     </section>
     <section id="section-02" class="section">
       <div class="inner">
         <h2>02. 活動日について</h2>
-        <p>週に数回、物理室で活動しています。実験や制作を行っています。</p>
+        <p>現在、月曜日から土曜日まで、毎日活動しています。<br>毎日参加しなければいけない、というルールはなく、自分の所属する班の活動日の中で来れる時に参加する、という形式なので自分のスケジュールと相談して自由に参加することができます。</p>
       </div>
     </section>
     <section id="section-03" class="section">
       <div class="inner">
         <h2>03. 活動班について</h2>
-        <p>電子工作班、理論物理班、ロケット班など、多様な班に分かれています。</p>
+        <p>通常活動をしている、ピタゴラ班、電子工作班、プログラミング班、ゲーム開発班、と不定期活動をしている、実験班、無線班があります。<br>最低一つの班に所属し、複数の班に所属している部員もいます</p>
+
+        <p><strong>ピタゴラ班</strong><br>ピタゴラ装置を製作し、文化祭などで展示しています。</p>
+        <img src="./pita.jpg" alt="ピタゴラ装置の写真" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+        <p><strong>電子工作班</strong><br>電子工作や、PICマイコンを使ったロボット製作をしています。</p>
+        
+        <p><strong>プログラミング班</strong><br>様々な言語を使用した、WEB開発、アプリ開発などを行っています。</p>
+        
+        <p>このWEBサイト運営もプログラミング班の活動です。<br>以下のような文化祭で展示を行うゲームランチャーの製作も行っています。</p>
+        <img src="./ktpclaun.jpg" alt="ゲームランチャーの写真" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+        <p><strong>ゲーム開発班</strong><br>ゲームの製作に取り組んでいます。<br>Unity・UE5・Blenderを使用した、ゲーム開発や3DCG製作などを行っています。</p>
+        <p><strong>実験班</strong><br>文化祭で演示をするための実験の考案や、練習をしています。<br>人気の真空砲という実験に関しては、部活紹介日でも実演をします！</p>
+        <p><strong>無線班</strong><br>アマチュア無線3級を取得した部員による、無線通信活動を行っています。<br>年に一度の無線大会では学校に泊まって、無線活動をすることができます！</p>
       </div>
     </section>
     <section id="section-04" class="section">
       <div class="inner">
         <h2>04. イベントについて</h2>
-        <p>文化祭での展示や、外部のコンテストへの参加などを行っています。</p>
+        <p>文化祭での展示や、夏合宿、コンテストへの参加などを行っています。</p>
       </div>
     </section>
   </main>
@@ -84,15 +98,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #f0f2f5;
+  background-color: #fff; /* 全体を白背景で統一し、記事のように繋げる */
   color: #333;
   overflow-x: hidden;
-  user-select: none; 
 }
 
 .hero {
   width: 100%;
   margin: 0 auto; 
+  padding: 0 !important; /* sectionの共通余白を無効化して画面いっぱいに */
 }
 .hero img {
   width: 100%;
@@ -105,21 +119,42 @@ body {
   padding-left: 100px;
 }
 .section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+  padding: 80px 40px; /* 上下左右の余白（min-heightを取り払い、間を詰める） */
   box-sizing: border-box;
+  border-bottom: 1px solid #f0f2f5; /* セクション間のさりげない区切り線 */
 }
+.section:last-child {
+  border-bottom: none; /* 最後の線は消す */
+}
+
 .inner {
   width: 100%;
   max-width: 800px;
-  background: white;
-  padding: 60px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  box-sizing: border-box;
+  margin: 0 auto; /* 中央揃え */
+}
+
+/* --- 記事（テキスト）のレスポンシブ・可読性向上 --- */
+.inner h2 {
+  font-size: 28px;
+  color: #0e519d;
+  margin-top: 0;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f2f5; /* 見出しの下にアクセントの線 */
+}
+.inner p {
+  font-size: 16px;
+  line-height: 1.8; /* 行間を広げて読みやすく */
+  color: #444;
+  margin-bottom: 16px;
+}
+/* もし記事内に画像を入れる場合のレスポンシブ対応 */
+.inner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  display: block;
 }
 
 /* --- モバイルナビゲーション（初期状態は非表示） --- */
@@ -231,33 +266,32 @@ body {
   transform: translateX(0);
 }
 
-
 /* =========================================
    スマホ用 レスポンシブ設定 (画面幅768px以下)
    ========================================= */
 @media screen and (max-width: 768px) {
-  /* 円盤ナビを完全に非表示 */
   .disk-nav {
     display: none !important;
   }
   
-  /* メインコンテンツの余白を最適化 */
   .content-sections {
     padding-left: 0;
-    padding-bottom: 120px; /* 下部ナビ分のスペースを確保 */
+    padding-bottom: 120px; 
   }
   .section {
-    padding: 20px 15px; /* スマホ画面に合わせた余白 */
-    min-height: calc(100vh - 120px); /* 下部ナビ分を引いた高さ */
-  }
-  .inner {
-    padding: 30px 20px; /* カード内の余白を縮小 */
-  }
-  .inner h2 {
-    font-size: 22px;
+    padding: 50px 20px; /* スマホ画面に合わせた余白 */
   }
 
-  /* モバイル用 水平下部ナビゲーションを表示 */
+  /* 記事部分のスマホ最適化 */
+  .inner h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .inner p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
   .mobile-nav {
     display: flex;
     position: fixed;
@@ -269,23 +303,23 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(0,0,0,0.1);
     z-index: 1000;
-    justify-content: space-around;;
+    justify-content: space-around;
+    align-items: center; /* 前回の修正を反映（文字を中央に） */
     padding: 32px 0;
-    padding-bottom: env(safe-area-inset-bottom, 15px); /* iPhoneのホームバー対応 */
+    padding-bottom: env(safe-area-inset-bottom, 15px);
   }
   
-  /* モバイルマーカーのデザイン（白抜き文字風） */
   .m-marker {
     font-family: "Noto Sans JP", sans-serif;
     font-size: 22px;
     font-weight: 700;
+    line-height: 1; /* 前回の修正を反映 */
     color: transparent;
     -webkit-text-stroke: 1px #333;
     cursor: pointer;
     transition: all 0.3s;
-    margin-bottom: 16px;
+    margin-bottom: 16px;  
   }
-  /* アクティブ時のデザイン */
   .m-marker.active {
     -webkit-text-stroke: 2px #0e519d;
     transform: scale(1.15);
@@ -297,16 +331,15 @@ body {
   const disk = document.getElementById('disk');
   const diskWrapper = document.getElementById('diskWrapper');
   const markers = document.querySelectorAll('.marker');
-  const mMarkers = document.querySelectorAll('.m-marker'); // モバイルマーカー取得
+  const mMarkers = document.querySelectorAll('.m-marker');
   const sections = document.querySelectorAll('.section');
 
-  let currentRotation = 60; // 初期値
+  let currentRotation = 60;
   let isDragging = false;
   let isAutoScrolling = false; 
-  let isWheelAnimating = false; 
   let previousAngle = 0;
 
-  const snapAngles = [60, 30, 0, -30, -60]; // 00〜04に対応
+  const snapAngles = [60, 30, 0, -30, -60];
 
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -345,13 +378,11 @@ body {
       }
     });
 
-    // PC向けマーカー更新
     markers.forEach((m, i) => {
       if(i === closestIndex) m.classList.add('active');
       else m.classList.remove('active');
     });
     
-    // モバイル向けマーカー更新
     mMarkers.forEach((m, i) => {
       if(i === closestIndex) m.classList.add('active');
       else m.classList.remove('active');
@@ -363,7 +394,9 @@ body {
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
       isAutoScrolling = true;
-      window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
+      // ヘッダー画像(00)の場合は一番上へ、それ以外は要素の位置へ
+      const offset = index === 0 ? 0 : targetEl.offsetTop;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
       setTimeout(() => { isAutoScrolling = false; }, 800);
     }
   }
@@ -409,29 +442,6 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
-  // --- ホイール操作 (PC用) ---
-  diskWrapper.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    if (isWheelAnimating || isDragging || isAutoScrolling) return;
-
-    isWheelAnimating = true;
-    let currentIndex = snapAngles.indexOf(currentRotation);
-    
-    if (e.deltaY > 0) {
-      currentIndex = Math.min(currentIndex + 1, snapAngles.length - 1);
-    } else {
-      currentIndex = Math.max(currentIndex - 1, 0);
-    }
-
-    currentRotation = snapAngles[currentIndex];
-    disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-    disk.style.transform = `rotate(${currentRotation}deg)`;
-    updateActiveMarker();
-    scrollToSection(currentIndex);
-
-    setTimeout(() => { isWheelAnimating = false; }, 800);
-  }, {passive: false});
-
   // --- クリック操作 (PC・モバイル共通) ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
@@ -461,7 +471,7 @@ body {
   };
 
   const observer = new IntersectionObserver((entries) => {
-    if (isDragging || isAutoScrolling || isWheelAnimating) return; 
+    if (isDragging || isAutoScrolling) return; 
 
     entries.forEach(entry => {
       if (entry.isIntersecting) {
