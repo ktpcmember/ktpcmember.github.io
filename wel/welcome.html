@@ -17,39 +17,53 @@
           <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">00</text></svg>
           <span class="label">ホーム</span>
         </div>
-
         <div class="marker marker-1" data-target="section-01">
           <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">01</text></svg>
           <span class="label">物理部について</span>
         </div>
-        
         <div class="marker marker-2" data-target="section-02">
           <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">02</text></svg>
           <span class="label">活動日について</span>
         </div>
-        
         <div class="marker marker-3" data-target="section-03">
           <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">03</text></svg>
           <span class="label">活動班について</span>
         </div>
-        
         <div class="marker marker-4" data-target="section-04">
           <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">04</text></svg>
           <span class="label">イベントについて</span>
         </div>
-        </div>
+      </div>
     </div>
   </nav>
 
-  <div class="hero" id="section-00">
-    <img src="./KTPC.png" alt="メイン画像">
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="m-marker" data-target="section-00">00</div>
+    <div class="m-marker" data-target="section-01">01</div>
+    <div class="m-marker" data-target="section-02">02</div>
+    <div class="m-marker" data-target="section-03">03</div>
+    <div class="m-marker" data-target="section-04">04</div>
+  </nav>
+
+<div class="hero">
+    <picture>
+      <source media="(min-width: 769px)" srcset="./KTPC.png">
+      <img src="./KTPC_smartphone.png" alt="メイン画像">
+    </picture>
   </div>
 
   <main class="content-sections">
+    <section id="section-00" class="section">
+      <div class="inner" style="text-align: center;">
+        <h2>00. ホーム</h2>
+        <p>駒場東邦物理部 新歓ページへようこそ！<br>下へスクロールして詳細をご覧ください。</p>
+      </div>
+    </section>
+    
     <section id="section-01" class="section">
       <div class="inner">
         <h2>01. 物理部について</h2>
-        <p>ここに物理部の紹介文が入ります。テキストが入ることでスクロールが発生します。</p>
+        <p>ここに物理部の紹介文が入ります。テキストが入ることでスクロールが発生します。文章が長くてもスマホで綺麗に改行されるようになりました。</p>
       </div>
     </section>
     <section id="section-02" class="section">
@@ -77,27 +91,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans JP", sans-serif; /* 全体に適用 */
+  font-family: "Noto Sans JP", sans-serif;
   background-color: #f0f2f5;
   color: #333;
   overflow-x: hidden;
-  user-select: none; /* ドラッグ中にテキスト選択を防ぐ */
+  user-select: none; 
 }
-
 
 .hero {
   width: 100%;
-  margin: 0 auto; /* 中央寄せ */
+  margin: 0 auto; 
 }
 .hero img {
   width: 100%;
-  height: auto; /* 縦横比を維持して画像全体を表示 */
-  display: block; /* 画像の下の不要な余白を消す */
+  height: auto; 
+  display: block; 
 }
 
-/* 各セクション */
+/* PC向けコンテンツセクション設定 */
 .content-sections {
-  padding-left: 100px; /* 円盤とはみ出しを考慮 */
+  padding-left: 100px;
 }
 .section {
   min-height: 100vh;
@@ -108,11 +121,18 @@ body {
   box-sizing: border-box;
 }
 .inner {
+  width: 100%;
   max-width: 800px;
   background: white;
   padding: 60px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+/* --- モバイルナビゲーション（初期状態は非表示） --- */
+.mobile-nav {
+  display: none;
 }
 
 /* --- 円盤ナビゲーション --- */
@@ -122,21 +142,17 @@ body {
   left: -300px; 
   transform: translateY(-50%);
   z-index: 1000;
-  pointer-events: none; /* 周辺へのクリックを透過 */
+  pointer-events: none; 
 }
-
 .disk-wrapper {
-  pointer-events: auto; /* 円盤自体は操作可能に */
+  pointer-events: auto; 
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center center;
 }
-
-/* ホバー・アクティブドラッグ時に1.2倍に拡大 */
 .disk-wrapper:hover,
 .disk-wrapper.active-drag {
   transform: scale(1.2);
 }
-
 .disk {
   width: 384px; 
   height: 384px;
@@ -148,10 +164,9 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   position: relative;
   cursor: grab;
-  transform: rotate(60deg); /* ★ここを 45deg から 60deg に変更★ */
+  transform: rotate(60deg); 
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .disk.dragging { cursor: grabbing; transition: none; }
 
 .marker {
@@ -166,68 +181,55 @@ body {
   align-items: center;
   justify-content: flex-end;
 }
-
-/* ★ 5つの要素を30度間隔で綺麗に配置 ★ */
 .marker-0 { transform: rotate(-60deg); }
 .marker-1 { transform: rotate(-30deg); }
 .marker-2 { transform: rotate(0deg); }
 .marker-3 { transform: rotate(30deg); }
 .marker-4 { transform: rotate(60deg); }
 
-/* --- インラインSVGの完璧な制御 (Noto Sans JP, 色, 太さ2px) --- */
 .number-svg {
   width: 60px;
   height: 45px;
-  overflow: visible; /* 2pxの線がはみ出ないように */
+  overflow: visible;
 }
-
 .number-svg text {
-  font-family: "Noto Sans JP", sans-serif; /* Noto Sans JPを適用 */
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 36px;
   font-weight: 700;
-  fill: transparent; /* 中身は透明 */
-  stroke: #333;      /* 枠線の色 (通常時) */
-  
-  /* ★太さ2pxくらいの太さに設定★ */
-  stroke-width: 1.5px;  
-  
-  /* 線が荒くならないように、結合部と先端を丸く処理 */
+  fill: transparent; 
+  stroke: #333;      
+  stroke-width: 2px; 
   stroke-linejoin: round;
   stroke-linecap: round;
-  
   transition: all 0.3s;
 }
 
-/* --- ラベルの位置 (円盤の外側に完璧に配置) --- */
 .label {
-  font-family: "Noto Sans JP", sans-serif; /* Noto Sans JPを適用 */
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: 600;
   font-size: 18px;
   color: black;
   white-space: nowrap;
   position: absolute;
-  left: 100%; /* SVGの右隣に配置 */
-  margin-left: 40px; /* ここを増やしてさらに外側へ移動 */
+  left: 100%;
+  margin-left: 40px;
   opacity: 0;
   transform: translateX(-15px);
   transition: all 0.4s;
   pointer-events: none;
 }
 
-/* --- ホバー・アクティブ時の強調ロジック強化 --- */
-/* 1. マーカー単体をホバーした時 */
 .marker:hover .number-svg text {
-  stroke: #0e519d; /* 青色(#0e519d)に変える */
-  stroke-width: 2.5px; /* 少し太くして強調 */
+  stroke: #0e519d;
+  stroke-width: 2.5px;
 }
 .marker:hover .label {
   opacity: 1;
   transform: translateX(0);
 }
-
-/* 2. 円盤全体がホバー/ドラッグ中、現在アクティブなマーカーを強調＆ラベル表示 */
 .disk-wrapper:hover .marker.active .number-svg text,
-.disk-wrapper.active-drag .marker.active .number-svg text {
+.disk-wrapper.active-drag .marker.active .number-svg text,
+.marker.active .number-svg text {
   stroke: #0e519d;
   stroke-width: 2.5px;
 }
@@ -237,10 +239,64 @@ body {
   transform: translateX(0);
 }
 
-/* Intersection Observerなどで選ばれている状態のスタイル(フォント設定込み) */
-.marker.active .number-svg text {
-  stroke: #0e519d;
-  stroke-width: 2px;
+
+/* =========================================
+   スマホ用 レスポンシブ設定 (画面幅768px以下)
+   ========================================= */
+@media screen and (max-width: 768px) {
+  /* 円盤ナビを完全に非表示 */
+  .disk-nav {
+    display: none !important;
+  }
+  
+  /* メインコンテンツの余白を最適化 */
+  .content-sections {
+    padding-left: 0;
+    padding-bottom: 100px; /* 下部ナビ分のスペースを確保 */
+  }
+  .section {
+    padding: 20px 15px; /* スマホ画面に合わせた余白 */
+    min-height: calc(100vh - 100px); /* 下部ナビ分を引いた高さ */
+  }
+  .inner {
+    padding: 30px 20px; /* カード内の余白を縮小 */
+  }
+  .inner h2 {
+    font-size: 22px;
+  }
+
+  /* モバイル用 水平下部ナビゲーションを表示 */
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    z-index: 1000;
+    justify-content: space-around;
+    padding: 15px 0;
+    padding-bottom: env(safe-area-inset-bottom, 15px); /* iPhoneのホームバー対応 */
+  }
+  
+  /* モバイルマーカーのデザイン（白抜き文字風） */
+  .m-marker {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px #333;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  /* アクティブ時のデザイン */
+  .m-marker.active {
+    -webkit-text-stroke: 2px #0e519d;
+    transform: scale(1.15);
+  }
 }
 </style>
 
@@ -248,21 +304,20 @@ body {
   const disk = document.getElementById('disk');
   const diskWrapper = document.getElementById('diskWrapper');
   const markers = document.querySelectorAll('.marker');
+  const mMarkers = document.querySelectorAll('.m-marker'); // モバイルマーカー取得
   const sections = document.querySelectorAll('.section');
 
-  let currentRotation = 60; // ★初期値を 45 から 60 に変更
+  let currentRotation = 60; // 初期値
   let isDragging = false;
   let isAutoScrolling = false; 
   let isWheelAnimating = false; 
   let previousAngle = 0;
 
-  // ★スナップする角度を5つ分設定 (30度間隔)
-  const snapAngles = [60, 30, 0, -30, -60]; 
+  const snapAngles = [60, 30, 0, -30, -60]; // 00〜04に対応
 
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-    // ★可動範囲を -60 〜 60 に広げる
-    let clampedRotation = Math.max(-60, Math.min(60, currentRotation)); 
+    let clampedRotation = Math.max(-60, Math.min(60, currentRotation));
     let closestAngle = snapAngles[0];
     let minDiff = Infinity;
 
@@ -287,7 +342,6 @@ body {
   function updateActiveMarker() {
     let closestIndex = 0;
     let minDiff = Infinity;
-    // ★可動範囲を -60 〜 60 に広げる
     let clamped = Math.max(-60, Math.min(60, currentRotation));
 
     snapAngles.forEach((angle, i) => {
@@ -298,7 +352,14 @@ body {
       }
     });
 
+    // PC向けマーカー更新
     markers.forEach((m, i) => {
+      if(i === closestIndex) m.classList.add('active');
+      else m.classList.remove('active');
+    });
+    
+    // モバイル向けマーカー更新
+    mMarkers.forEach((m, i) => {
       if(i === closestIndex) m.classList.add('active');
       else m.classList.remove('active');
     });
@@ -310,19 +371,15 @@ body {
     if (targetEl) {
       isAutoScrolling = true;
       window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
-      
-      setTimeout(() => { 
-        isAutoScrolling = false; 
-      }, 800);
+      setTimeout(() => { isAutoScrolling = false; }, 800);
     }
   }
 
-  // --- 2. ドラッグ操作 ---
+  // --- ドラッグ操作 (PC用) ---
   function getCenter() {
     const rect = disk.getBoundingClientRect();
     return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
   }
-
   function handleStart(e) {
     isDragging = true;
     disk.classList.add('dragging');
@@ -331,7 +388,6 @@ body {
     const center = getCenter();
     previousAngle = Math.atan2(pos.clientY - center.y, pos.clientX - center.x) * 180 / Math.PI;
   }
-
   function handleMove(e) {
     if (!isDragging) return;
     const pos = e.touches ? e.touches[0] : e;
@@ -343,17 +399,14 @@ body {
     currentRotation += delta;
     disk.style.transform = `rotate(${currentRotation}deg)`;
     previousAngle = angle;
-    
-    // ドラッグ中もリアルタイムでアクティブ表示を更新 (ラベル表示連動)
     updateActiveMarker();
   }
-
   function handleEnd() {
     if (!isDragging) return;
     isDragging = false;
     disk.classList.remove('dragging');
     diskWrapper.classList.remove('active-drag');
-    snapToNearest(); // ドラッグ終了時にスナップ＆セクション連動処理を呼ぶ
+    snapToNearest(); 
   }
 
   disk.addEventListener('mousedown', handleStart);
@@ -363,8 +416,7 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
-
-  // --- 3. ホイール操作 (1セクションずつカチッと進む＆ページスクロール連動) ---
+  // --- ホイール操作 (PC用) ---
   diskWrapper.addEventListener('wheel', (e) => {
     e.preventDefault();
     if (isWheelAnimating || isDragging || isAutoScrolling) return;
@@ -387,19 +439,28 @@ body {
     setTimeout(() => { isWheelAnimating = false; }, 800);
   }, {passive: false});
 
-
-  // --- 4. クリック操作 ---
+  // --- クリック操作 (PC・モバイル共通) ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
       currentRotation = snapAngles[index];
-      disk.style.disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
       disk.style.transform = `rotate(${currentRotation}deg)`;
       updateActiveMarker();
       scrollToSection(index);
     });
   });
 
-  // --- 5. ページスクロールとの連動 (Intersection Observer) ---
+  mMarkers.forEach((marker, index) => {
+    marker.addEventListener('click', () => {
+      currentRotation = snapAngles[index];
+      disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      disk.style.transform = `rotate(${currentRotation}deg)`;
+      updateActiveMarker();
+      scrollToSection(index);
+    });
+  });
+
+  // --- スクロール連動 (Intersection Observer) ---
   const observerOptions = {
     root: null,
     rootMargin: "-50% 0px -50% 0px", 
@@ -424,7 +485,6 @@ body {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
-
 </script>
 </body>
 </html>
