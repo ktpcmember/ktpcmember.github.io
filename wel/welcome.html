@@ -99,7 +99,6 @@ body {
   object-fit: cover;
 }
 
-/* 各セクション */
 .content-sections {
   padding-left: 100px;
 }
@@ -135,9 +134,10 @@ body {
   transform-origin: center center;
 }
 
+/* ★ 拡大率を1.2倍に変更 ★ */
 .disk-wrapper:hover,
 .disk-wrapper.active-drag {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 .disk {
@@ -157,7 +157,6 @@ body {
 
 .disk.dragging { cursor: grabbing; transition: none; }
 
-/* マーカーの配置 */
 .marker {
   position: absolute;
   top: 50%;
@@ -176,7 +175,6 @@ body {
 .marker-3 { transform: rotate(15deg); }
 .marker-4 { transform: rotate(45deg); }
 
-/* --- SVGによる美しいアウトライン文字 --- */
 .number-svg {
   width: 60px;
   height: 45px;
@@ -209,13 +207,23 @@ body {
   pointer-events: none;
 }
 
-/* ホバー・アクティブ時の強調 */
+/* ★ 強調時の設定（太さを2pxに調整） ★ */
 .marker:hover .number-svg text,
 .marker.active .number-svg text {
   stroke: #0e519d;
-  stroke-width: 1.5px;
+  stroke-width: 2px;
 }
+
+/* ★ ラベル表示のロジックを強化 ★ */
+/* 1. マーカーを直接ホバーした時 */
 .marker:hover .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 2. 円盤全体をホバー中、またはドラッグ中、現在アクティブな項目のラベルを出す */
+.disk-wrapper:hover .marker.active .label,
+.disk-wrapper.active-drag .marker.active .label {
   opacity: 1;
   transform: translateX(0);
 }
@@ -235,7 +243,7 @@ body {
 
   const snapAngles = [45, 15, -15, -45]; 
 
-  // --- 1. スナップ機能 (修正済) ---
+  // --- 1. スナップ機能 & ラベルの更新 ---
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     let clampedRotation = Math.max(-45, Math.min(45, currentRotation));
@@ -251,33 +259,45 @@ body {
     });
 
     currentRotation = closestAngle;
-    
-    // 【修正箇所①】 セミコロンをバッククォートの外に出しました（もしくは削除）
     disk.style.transform = `rotate(${currentRotation}deg)`; 
     updateActiveMarker();
 
-    // 【修正箇所②】 スナップした角度に対応するセクションへページをスクロールさせる処理を追加
+    // 該当セクションへスクロール
     const index = snapAngles.indexOf(currentRotation);
     if (index !== -1) {
-      const targetId = markers[index].getAttribute('data-target');
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        isAutoScrolling = true;
-        window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
-        
-        setTimeout(() => { 
-          isAutoScrolling = false; 
-        }, 800); // アニメーション終了後にフラグを解除
-      }
+      scrollToSection(index);
     }
   }
 
+  // ★ アクティブなマーカーを計算して更新（リアルタイム対応） ★
   function updateActiveMarker() {
-    const index = snapAngles.indexOf(currentRotation);
+    let closestIndex = 0;
+    let minDiff = Infinity;
+    // 現在の回転角に最も近いスナップ角を探す
+    let clamped = Math.max(-45, Math.min(45, currentRotation));
+
+    snapAngles.forEach((angle, i) => {
+      let diff = Math.abs(clamped - angle);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = i;
+      }
+    });
+
     markers.forEach((m, i) => {
-      if(i === index) m.classList.add('active');
+      if(i === closestIndex) m.classList.add('active');
       else m.classList.remove('active');
     });
+  }
+
+  function scrollToSection(index) {
+    const targetId = markers[index].getAttribute('data-target');
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      isAutoScrolling = true;
+      window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
+      setTimeout(() => { isAutoScrolling = false; }, 800);
+    }
   }
 
   // --- 2. ドラッグ操作 ---
@@ -306,6 +326,9 @@ body {
     currentRotation += delta;
     disk.style.transform = `rotate(${currentRotation}deg)`;
     previousAngle = angle;
+    
+    // ドラッグ中もリアルタイムでアクティブ表示を更新
+    updateActiveMarker();
   }
 
   function handleEnd() {
@@ -313,7 +336,7 @@ body {
     isDragging = false;
     disk.classList.remove('dragging');
     diskWrapper.classList.remove('active-drag');
-    snapToNearest(); // ドラッグ終了時にスナップ＆スクロール処理を呼ぶ
+    snapToNearest(); 
   }
 
   disk.addEventListener('mousedown', handleStart);
@@ -329,7 +352,6 @@ body {
     if (isWheelAnimating || isDragging || isAutoScrolling) return;
 
     isWheelAnimating = true;
-
     let currentIndex = snapAngles.indexOf(currentRotation);
     
     if (e.deltaY > 0) {
@@ -342,35 +364,18 @@ body {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     disk.style.transform = `rotate(${currentRotation}deg)`;
     updateActiveMarker();
+    scrollToSection(currentIndex);
 
-    const targetId = markers[currentIndex].getAttribute('data-target');
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      isAutoScrolling = true;
-      window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
-      
-      setTimeout(() => { 
-        isAutoScrolling = false; 
-        isWheelAnimating = false;
-      }, 800);
-    } else {
-      setTimeout(() => { isWheelAnimating = false; }, 600);
-    }
+    setTimeout(() => { isWheelAnimating = false; }, 800);
   }, {passive: false});
 
   // --- 4. クリック操作 ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
-      const targetId = marker.getAttribute('data-target');
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        isAutoScrolling = true; 
-        window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
-        currentRotation = snapAngles[index];
-        disk.style.transform = `rotate(${currentRotation}deg)`;
-        updateActiveMarker();
-        setTimeout(() => { isAutoScrolling = false; }, 800);
-      }
+      currentRotation = snapAngles[index];
+      disk.style.transform = `rotate(${currentRotation}deg)`;
+      updateActiveMarker();
+      scrollToSection(index);
     });
   });
 
@@ -399,7 +404,6 @@ body {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
-
 </script>
 </body>
 </html>
