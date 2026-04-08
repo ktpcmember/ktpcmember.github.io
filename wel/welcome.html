@@ -13,41 +13,36 @@
   <nav class="disk-nav" id="diskNav">
     <div class="disk-wrapper" id="diskWrapper">
       <div class="disk" id="disk">
-        
+        <div class="marker marker-0" data-target="section-00">
+          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">00</text></svg>
+          <span class="label">ホーム</span>
+        </div>
+
         <div class="marker marker-1" data-target="section-01">
-          <svg class="number-svg" viewBox="0 0 60 45">
-            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">01</text>
-          </svg>
+          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">01</text></svg>
           <span class="label">物理部について</span>
         </div>
         
         <div class="marker marker-2" data-target="section-02">
-          <svg class="number-svg" viewBox="0 0 60 45">
-            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">02</text>
-          </svg>
+          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">02</text></svg>
           <span class="label">活動日について</span>
         </div>
         
         <div class="marker marker-3" data-target="section-03">
-          <svg class="number-svg" viewBox="0 0 60 45">
-            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">03</text>
-          </svg>
+          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">03</text></svg>
           <span class="label">活動班について</span>
         </div>
         
         <div class="marker marker-4" data-target="section-04">
-          <svg class="number-svg" viewBox="0 0 60 45">
-            <text x="30" y="24" dominant-baseline="central" text-anchor="middle">04</text>
-          </svg>
+          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">04</text></svg>
           <span class="label">イベントについて</span>
         </div>
-        
-      </div>
+        </div>
     </div>
   </nav>
 
-  <div class="hero">
-    <img src="https://meshikui.com/wp-content/uploads/2020/03/1200x630.png" alt="メイン画像">
+  <div class="hero" id="section-00">
+    <img src="./KTPC.png" alt="メイン画像">
   </div>
 
   <main class="content-sections">
@@ -82,25 +77,27 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", sans-serif; /* 全体に適用 */
   background-color: #f0f2f5;
   color: #333;
   overflow-x: hidden;
-  user-select: none; 
+  user-select: none; /* ドラッグ中にテキスト選択を防ぐ */
 }
+
 
 .hero {
   width: 100%;
-  height: 80vh;
+  margin: 0 auto; /* 中央寄せ */
 }
 .hero img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* 縦横比を維持して画像全体を表示 */
+  display: block; /* 画像の下の不要な余白を消す */
 }
 
+/* 各セクション */
 .content-sections {
-  padding-left: 100px;
+  padding-left: 100px; /* 円盤とはみ出しを考慮 */
 }
 .section {
   min-height: 100vh;
@@ -125,16 +122,16 @@ body {
   left: -300px; 
   transform: translateY(-50%);
   z-index: 1000;
-  pointer-events: none; 
+  pointer-events: none; /* 周辺へのクリックを透過 */
 }
 
 .disk-wrapper {
-  pointer-events: auto; 
+  pointer-events: auto; /* 円盤自体は操作可能に */
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center center;
 }
 
-/* ★ 拡大率を1.2倍に変更 ★ */
+/* ホバー・アクティブドラッグ時に1.2倍に拡大 */
 .disk-wrapper:hover,
 .disk-wrapper.active-drag {
   transform: scale(1.2);
@@ -151,7 +148,7 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   position: relative;
   cursor: grab;
-  transform: rotate(45deg); 
+  transform: rotate(60deg); /* ★ここを 45deg から 60deg に変更★ */
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -170,62 +167,80 @@ body {
   justify-content: flex-end;
 }
 
-.marker-1 { transform: rotate(-45deg); }
-.marker-2 { transform: rotate(-15deg); }
-.marker-3 { transform: rotate(15deg); }
-.marker-4 { transform: rotate(45deg); }
+/* ★ 5つの要素を30度間隔で綺麗に配置 ★ */
+.marker-0 { transform: rotate(-60deg); }
+.marker-1 { transform: rotate(-30deg); }
+.marker-2 { transform: rotate(0deg); }
+.marker-3 { transform: rotate(30deg); }
+.marker-4 { transform: rotate(60deg); }
 
+/* --- インラインSVGの完璧な制御 (Noto Sans JP, 色, 太さ2px) --- */
 .number-svg {
   width: 60px;
   height: 45px;
-  overflow: visible;
+  overflow: visible; /* 2pxの線がはみ出ないように */
 }
 
 .number-svg text {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", sans-serif; /* Noto Sans JPを適用 */
   font-size: 36px;
   font-weight: 700;
-  fill: transparent; 
-  stroke: #333;      
-  stroke-width: 1px; 
-  stroke-linejoin: round; 
+  fill: transparent; /* 中身は透明 */
+  stroke: #333;      /* 枠線の色 (通常時) */
+  
+  /* ★太さ2pxくらいの太さに設定★ */
+  stroke-width: 1.5px;  
+  
+  /* 線が荒くならないように、結合部と先端を丸く処理 */
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  
   transition: all 0.3s;
 }
 
+/* --- ラベルの位置 (円盤の外側に完璧に配置) --- */
 .label {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", sans-serif; /* Noto Sans JPを適用 */
   font-weight: 600;
   font-size: 18px;
   color: black;
   white-space: nowrap;
   position: absolute;
-  left: 100%;
-  margin-left: 40px;
+  left: 100%; /* SVGの右隣に配置 */
+  margin-left: 40px; /* ここを増やしてさらに外側へ移動 */
   opacity: 0;
   transform: translateX(-15px);
   transition: all 0.4s;
   pointer-events: none;
 }
 
-/* ★ 強調時の設定（太さを2pxに調整） ★ */
-.marker:hover .number-svg text,
-.marker.active .number-svg text {
-  stroke: #0e519d;
-  stroke-width: 2px;
+/* --- ホバー・アクティブ時の強調ロジック強化 --- */
+/* 1. マーカー単体をホバーした時 */
+.marker:hover .number-svg text {
+  stroke: #0e519d; /* 青色(#0e519d)に変える */
+  stroke-width: 2.5px; /* 少し太くして強調 */
 }
-
-/* ★ ラベル表示のロジックを強化 ★ */
-/* 1. マーカーを直接ホバーした時 */
 .marker:hover .label {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* 2. 円盤全体をホバー中、またはドラッグ中、現在アクティブな項目のラベルを出す */
+/* 2. 円盤全体がホバー/ドラッグ中、現在アクティブなマーカーを強調＆ラベル表示 */
+.disk-wrapper:hover .marker.active .number-svg text,
+.disk-wrapper.active-drag .marker.active .number-svg text {
+  stroke: #0e519d;
+  stroke-width: 2.5px;
+}
 .disk-wrapper:hover .marker.active .label,
 .disk-wrapper.active-drag .marker.active .label {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Intersection Observerなどで選ばれている状態のスタイル(フォント設定込み) */
+.marker.active .number-svg text {
+  stroke: #0e519d;
+  stroke-width: 2px;
 }
 </style>
 
@@ -235,18 +250,19 @@ body {
   const markers = document.querySelectorAll('.marker');
   const sections = document.querySelectorAll('.section');
 
-  let currentRotation = 45;
+  let currentRotation = 60; // ★初期値を 45 から 60 に変更
   let isDragging = false;
   let isAutoScrolling = false; 
   let isWheelAnimating = false; 
   let previousAngle = 0;
 
-  const snapAngles = [45, 15, -15, -45]; 
+  // ★スナップする角度を5つ分設定 (30度間隔)
+  const snapAngles = [60, 30, 0, -30, -60]; 
 
-  // --- 1. スナップ機能 & ラベルの更新 ---
   function snapToNearest() {
     disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-    let clampedRotation = Math.max(-45, Math.min(45, currentRotation));
+    // ★可動範囲を -60 〜 60 に広げる
+    let clampedRotation = Math.max(-60, Math.min(60, currentRotation)); 
     let closestAngle = snapAngles[0];
     let minDiff = Infinity;
 
@@ -262,19 +278,17 @@ body {
     disk.style.transform = `rotate(${currentRotation}deg)`; 
     updateActiveMarker();
 
-    // 該当セクションへスクロール
     const index = snapAngles.indexOf(currentRotation);
     if (index !== -1) {
       scrollToSection(index);
     }
   }
 
-  // ★ アクティブなマーカーを計算して更新（リアルタイム対応） ★
   function updateActiveMarker() {
     let closestIndex = 0;
     let minDiff = Infinity;
-    // 現在の回転角に最も近いスナップ角を探す
-    let clamped = Math.max(-45, Math.min(45, currentRotation));
+    // ★可動範囲を -60 〜 60 に広げる
+    let clamped = Math.max(-60, Math.min(60, currentRotation));
 
     snapAngles.forEach((angle, i) => {
       let diff = Math.abs(clamped - angle);
@@ -296,7 +310,10 @@ body {
     if (targetEl) {
       isAutoScrolling = true;
       window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
-      setTimeout(() => { isAutoScrolling = false; }, 800);
+      
+      setTimeout(() => { 
+        isAutoScrolling = false; 
+      }, 800);
     }
   }
 
@@ -327,7 +344,7 @@ body {
     disk.style.transform = `rotate(${currentRotation}deg)`;
     previousAngle = angle;
     
-    // ドラッグ中もリアルタイムでアクティブ表示を更新
+    // ドラッグ中もリアルタイムでアクティブ表示を更新 (ラベル表示連動)
     updateActiveMarker();
   }
 
@@ -336,7 +353,7 @@ body {
     isDragging = false;
     disk.classList.remove('dragging');
     diskWrapper.classList.remove('active-drag');
-    snapToNearest(); 
+    snapToNearest(); // ドラッグ終了時にスナップ＆セクション連動処理を呼ぶ
   }
 
   disk.addEventListener('mousedown', handleStart);
@@ -346,7 +363,8 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
-  // --- 3. ホイール操作 ---
+
+  // --- 3. ホイール操作 (1セクションずつカチッと進む＆ページスクロール連動) ---
   diskWrapper.addEventListener('wheel', (e) => {
     e.preventDefault();
     if (isWheelAnimating || isDragging || isAutoScrolling) return;
@@ -369,17 +387,19 @@ body {
     setTimeout(() => { isWheelAnimating = false; }, 800);
   }, {passive: false});
 
+
   // --- 4. クリック操作 ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
       currentRotation = snapAngles[index];
+      disk.style.disk.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
       disk.style.transform = `rotate(${currentRotation}deg)`;
       updateActiveMarker();
       scrollToSection(index);
     });
   });
 
-  // --- 5. ページスクロールとの連動 ---
+  // --- 5. ページスクロールとの連動 (Intersection Observer) ---
   const observerOptions = {
     root: null,
     rootMargin: "-50% 0px -50% 0px", 
@@ -404,6 +424,7 @@ body {
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
+
 </script>
 </body>
 </html>
