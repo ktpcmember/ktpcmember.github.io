@@ -1,104 +1,148 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新歓用サイト- 駒場東邦物理部</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body style="scroll-behavior: smooth;"> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新歓用サイト- 駒場東邦物理部</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+  <body style="scroll-behavior: smooth;">
 
-  <nav class="disk-nav" id="diskNav">
-    <div class="disk-wrapper" id="diskWrapper">
-      <div class="disk" id="disk">
-        <div class="marker marker-0" data-target="section-00">
-          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">00</text></svg>
-          <span class="label">ホーム</span>
-        </div>
-        <div class="marker marker-1" data-target="section-01">
-          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">01</text></svg>
-          <span class="label">物理部について</span>
-        </div>
-        <div class="marker marker-2" data-target="section-02">
-          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">02</text></svg>
-          <span class="label">活動日について</span>
-        </div>
-        <div class="marker marker-3" data-target="section-03">
-          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">03</text></svg>
-          <span class="label">活動班について</span>
-        </div>
-        <div class="marker marker-4" data-target="section-04">
-          <svg class="number-svg" viewBox="0 0 60 45" xmlns="http://www.w3.org/2000/svg"><text x="30" y="24" dominant-baseline="central" text-anchor="middle">04</text></svg>
-          <span class="label">イベントについて</span>
+    <nav class="disk-nav" id="diskNav">
+      <div class="disk-wrapper" id="diskWrapper">
+        <div class="disk" id="disk">
+          <div class="marker marker-0" data-target="section-00">
+            <svg class="number-svg" viewBox="0 0 60 45"
+              xmlns="http://www.w3.org/2000/svg"><text x="30" y="24"
+                dominant-baseline="central" text-anchor="middle">00</text></svg>
+            <span class="label">ホーム</span>
+          </div>
+          <div class="marker marker-1" data-target="section-01">
+            <svg class="number-svg" viewBox="0 0 60 45"
+              xmlns="http://www.w3.org/2000/svg"><text x="30" y="24"
+                dominant-baseline="central" text-anchor="middle">01</text></svg>
+            <span class="label">物理部について</span>
+          </div>
+          <div class="marker marker-2" data-target="section-02">
+            <svg class="number-svg" viewBox="0 0 60 45"
+              xmlns="http://www.w3.org/2000/svg"><text x="30" y="24"
+                dominant-baseline="central" text-anchor="middle">02</text></svg>
+            <span class="label">活動日について</span>
+          </div>
+          <div class="marker marker-3" data-target="section-03">
+            <svg class="number-svg" viewBox="0 0 60 45"
+              xmlns="http://www.w3.org/2000/svg"><text x="30" y="24"
+                dominant-baseline="central" text-anchor="middle">03</text></svg>
+            <span class="label">活動班について</span>
+          </div>
+          <div class="marker marker-4" data-target="section-04">
+            <svg class="number-svg" viewBox="0 0 60 45"
+              xmlns="http://www.w3.org/2000/svg"><text x="30" y="24"
+                dominant-baseline="central" text-anchor="middle">04</text></svg>
+            <span class="label">イベントについて</span>
+          </div>
         </div>
       </div>
+    </nav>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <div class="m-marker" data-target="section-00">00</div>
+      <div class="m-marker" data-target="section-01">01</div>
+      <div class="m-marker" data-target="section-02">02</div>
+      <div class="m-marker" data-target="section-03">03</div>
+      <div class="m-marker" data-target="section-04">04</div>
+    </nav>
+
+    <div class="hero section" id="section-00">
+      <picture>
+        <source media="(min-width: 769px)" srcset="./KTPC.png">
+        <img src="./KTPC_smartphone.png" alt="メイン画像">
+      </picture>
     </div>
-  </nav>
 
-  <nav class="mobile-nav" id="mobileNav">
-    <div class="m-marker" data-target="section-00">00</div>
-    <div class="m-marker" data-target="section-01">01</div>
-    <div class="m-marker" data-target="section-02">02</div>
-    <div class="m-marker" data-target="section-03">03</div>
-    <div class="m-marker" data-target="section-04">04</div>
-  </nav>
+    <main class="content-sections">
+      <section id="section-01" class="section">
+        <div class="inner">
+          <h2>01. 物理部について</h2>
+          <p>中学棟3階物理第三実験室で活動をしている、プログラミングや電子工作などの、情報・機械工学を中心に活動している部活です！</p>
+          <p>規則・ノルマなどは無く、兼部も歓迎です！<br>先輩後輩の仲もとても良いので、気軽に物理部まで足を運んでください！</p>
+        </div>
+      </section>
+      <section id="section-02" class="section">
+        <div class="inner">
+          <h2>02. 活動日について</h2>
+          <p>現在、月曜日から土曜日まで、毎日活動しています。<br>毎日参加しなければいけない、というルールはなく、自分の所属する班の活動日の中で来れる時に参加する、という形式なので自分のスケジュールと相談して自由に参加することができます。</p>
+        </div>
+      </section>
+      <section id="section-03" class="section">
+        <div class="inner">
+          <h2>03. 活動班について</h2>
+          <p>通常活動をしている、ピタゴラ班、電子工作班、プログラミング班、ゲーム開発班、と不定期活動をしている、実験班、無線班があります。<br>最低一つの班に所属し、複数の班に所属している部員もいます</p>
 
-  <div class="hero section" id="section-00">
-    <picture>
-      <source media="(min-width: 769px)" srcset="./KTPC.png">
-      <img src="./KTPC_smartphone.png" alt="メイン画像">
-    </picture>
-  </div>
-    
-  <main class="content-sections">
-    <section id="section-01" class="section">
-      <div class="inner">
-        <h2>01. 物理部について</h2>
-        <p>中学棟3階物理第三実験室で活動をしている、プログラミングや電子工作などの、情報・機械工学を中心に活動している部活です！</p>
-        <p>規則・ノルマなどは無く、兼部も歓迎です！<br>先輩後輩の仲もとても良いので、気軽に物理部まで足を運んでください！</p>
-      </div>
-    </section>
-    <section id="section-02" class="section">
-      <div class="inner">
-        <h2>02. 活動日について</h2>
-        <p>現在、月曜日から土曜日まで、毎日活動しています。<br>毎日参加しなければいけない、というルールはなく、自分の所属する班の活動日の中で来れる時に参加する、という形式なので自分のスケジュールと相談して自由に参加することができます。</p>
-      </div>
-    </section>
-    <section id="section-03" class="section">
-      <div class="inner">
-        <h2>03. 活動班について</h2>
-        <p>通常活動をしている、ピタゴラ班、電子工作班、プログラミング班、ゲーム開発班、と不定期活動をしている、実験班、無線班があります。<br>最低一つの班に所属し、複数の班に所属している部員もいます</p>
+          <h3>ピタゴラ班</h3>
+          <p>ピタゴラ装置を製作し、文化祭などで展示しています。</p>
+          <figure>
+            <img src="./pita.jpg" alt="ピタゴラ装置の写真">
+            <figcaption>▲ 過去の文化祭で展示した大型ピタゴラ装置</figcaption>
+          </figure>
 
-        <p><strong>ピタゴラ班</strong><br>ピタゴラ装置を製作し、文化祭などで展示しています。</p>
-        <img src="./pita.jpg" alt="ピタゴラ装置の写真" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
-        <p><strong>電子工作班</strong><br>電子工作や、PICマイコンを使ったロボット製作をしています。</p>
-        
-        <p><strong>プログラミング班</strong><br>様々な言語を使用した、WEB開発、アプリ開発などを行っています。</p>
-        
-        <p>このWEBサイト運営もプログラミング班の活動です。<br>以下のような文化祭で展示を行うゲームランチャーの製作も行っています。</p>
-        <img src="./ktpclaun.jpg" alt="ゲームランチャーの写真" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
-        <p><strong>ゲーム開発班</strong><br>ゲームの製作に取り組んでいます。<br>Unity・UE5・Blenderを使用した、ゲーム開発や3DCG製作などを行っています。</p>
-        <p><strong>実験班</strong><br>文化祭で演示をするための実験の考案や、練習をしています。<br>人気の真空砲という実験に関しては、部活紹介日でも実演をします！</p>
-        <p><strong>無線班</strong><br>アマチュア無線3級を取得した部員による、無線通信活動を行っています。<br>年に一度の無線大会では学校に泊まって、無線活動をすることができます！</p>
-      </div>
-    </section>
-    <section id="section-04" class="section">
-      <div class="inner">
-        <h2>04. イベントについて</h2>
-        <p>文化祭での展示や、夏合宿、コンテストへの参加などを行っています。</p>
-      </div>
-    </section>
-  </main>
+          <h3>電子工作班</h3>
+          <p>電子工作や、PICマイコンを使ったロボット製作をしています。</p>
 
-<style>
+          <h3>プログラミング班</h3>
+          <p>様々な言語を使用した、WEB開発、アプリ開発などを行っています。</p>
+          <p>このWEBサイト運営もプログラミング班の活動です。<br>以下のような文化祭で展示を行うゲームランチャーの製作も行っています。</p>
+          <figure>
+            <img src="./ktpclaun.jpg" alt="ゲームランチャーの写真">
+            <figcaption>▲ 文化祭のゲーム展示で使用しているゲームランチャー</figcaption>
+          </figure>
+
+          <h3>ゲーム開発班</h3>
+          <p>ゲームの製作に取り組んでいます。<br>Unity・UE5・Blenderを使用した、ゲーム開発や3DCG製作などを行っています。</p>
+          <p>新歓では、以下の体験を用意しています<br>・Blenderを使った月の3Dモデル作成<br>・Blenderを使った自分好みの家を作る体験<br>・Unityを使った簡単な2Dゲーム制作体験<br>・Unityを使った3Dゲーム制作体験<br>・UE5を使った景観製作体験</p>
+
+          <h3>実験班</h3>
+          <p>文化祭で演示をするための実験の考案や、練習をしています。<br>人気の真空砲という実験に関しては、部活紹介日でも実演をします！<br>文化祭では中学生を中心として演示実験を行うので、中１からでも活躍できます！</p>
+          <p>新歓ではティーパックという実験が体験できる予定です！</p>
+          <figure>
+            <img src="./tea.png" alt="ティーパックの写真" id="img-tea">
+            <figcaption>▲ 新歓で体験できるティーパック実験</figcaption>
+          </figure>
+
+          <h3>無線班</h3>
+          <p>アマチュア無線3級を取得した部員による、無線通信活動を行っています。<br>年に一度の無線大会では学校に泊まって、無線活動をすることができます！</p>
+        </div>
+      </section>
+      <section id="section-04" class="section">
+        <div class="inner">
+          <h2>04. イベントについて</h2>
+          <p>文化祭での展示や、夏合宿、コンテストへの参加などを行っています。</p>
+
+          <h3>文化祭</h3>
+          <p>部員が1年掛けて製作した各種展示品やピタゴラ装置を始めとして、物理部の活動の成果を公開しています。</p>
+
+          <h3>夏合宿</h3>
+          <p>毎年夏に開催される合宿では、物理に関係する施設・研究室などを訪問し、様々な体験をさせてもらっています。</p>
+          <p>昨年は、仙台に足を運び、宮城教育大学、東北大学やナノテラスを訪問しました。</p>
+          <figure>
+            <img src="./nano.jpg" alt="ナノテラスの写真" id="img-tea">
+            <figcaption>▲ 昨年訪問したナノテラスの写真</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <style>
 /* 基本設定 */
 body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #fff; /* 全体を白背景で統一し、記事のように繋げる */
+  background-color: #fff;
   color: #333;
   overflow-x: hidden;
 }
@@ -106,7 +150,7 @@ body {
 .hero {
   width: 100%;
   margin: 0 auto; 
-  padding: 0 !important; /* sectionの共通余白を無効化して画面いっぱいに */
+  padding: 0 !important;
 }
 .hero img {
   width: 100%;
@@ -119,18 +163,18 @@ body {
   padding-left: 100px;
 }
 .section {
-  padding: 80px 40px; /* 上下左右の余白（min-heightを取り払い、間を詰める） */
+  padding: 80px 40px;
   box-sizing: border-box;
-  border-bottom: 1px solid #f0f2f5; /* セクション間のさりげない区切り線 */
+  border-bottom: 1px solid #f0f2f5;
 }
 .section:last-child {
-  border-bottom: none; /* 最後の線は消す */
+  border-bottom: none;
 }
 
 .inner {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto; /* 中央揃え */
+  margin: 0 auto;
 }
 
 /* --- 記事（テキスト）のレスポンシブ・可読性向上 --- */
@@ -140,21 +184,63 @@ body {
   margin-top: 0;
   margin-bottom: 24px;
   padding-bottom: 8px;
-  border-bottom: 2px solid #f0f2f5; /* 見出しの下にアクセントの線 */
+  border-bottom: 2px solid #f0f2f5;
 }
+
+/* ▼ 追加: 小見出し（h3）のデザイン ▼ */
+.inner h3 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 40px;      /* 上にしっかり余白を取って区切る */
+  margin-bottom: 12px;   /* 下は少し詰める */
+  padding-left: 12px;    /* 左線の横の余白 */
+  border-left: 5px solid #0e519d; /* 左側に青いアクセントライン */
+  line-height: 1.4;
+}
+
 .inner p {
   font-size: 16px;
-  line-height: 1.8; /* 行間を広げて読みやすく */
+  line-height: 1.8;
   color: #444;
   margin-bottom: 16px;
 }
-/* もし記事内に画像を入れる場合のレスポンシブ対応 */
+
 .inner img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 20px 0;
   display: block;
+}
+
+/* --- 画像とキャプションの設定 --- */
+.inner figure {
+  margin: 24px 0; /* 上下の余白 */
+  padding: 0;
+  text-align: center; /* キャプションを中央揃えにする */
+}
+
+.inner figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto; /* 画像を中央に配置 */
+}
+
+/* ▼ 修正：ティーパック画像専用スタイル (PC) ▼ */
+#img-tea {
+  width: 50%; /* 横幅を50%に */
+  margin-left: auto; /* 中央配置用 */
+  margin-right: auto; /* 中央配置用 */
+  display: block; /* 中央配置用 */
+}
+
+.inner figcaption {
+  font-size: 14px; /* 本文より少し小さくする */
+  color: #666; /* 本文より少し薄い色にして区別する */
+  margin-top: 8px; /* 画像との間の余白 */
+  line-height: 1.5;
 }
 
 /* --- モバイルナビゲーション（初期状態は非表示） --- */
@@ -279,7 +365,7 @@ body {
     padding-bottom: 120px; 
   }
   .section {
-    padding: 50px 20px; /* スマホ画面に合わせた余白 */
+    padding: 50px 20px;
   }
 
   /* 記事部分のスマホ最適化 */
@@ -287,9 +373,23 @@ body {
     font-size: 22px;
     margin-bottom: 16px;
   }
+
+  /* ▼ 追加: スマホ時の小見出し（h3）のサイズ調整 ▼ */
+  .inner h3 {
+    font-size: 18px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    border-left-width: 4px; /* スマホだと少し線を細く */
+  }
+
   .inner p {
     font-size: 15px;
     line-height: 1.7;
+  }
+
+  /* ▼ 修正：スマホ時はティーパック画像のサイズを100%に戻す ▼ */
+  #img-tea {
+    width: 100%;
   }
 
   .mobile-nav {
@@ -327,7 +427,7 @@ body {
 }
 </style>
 
-<script>
+    <script>
   const disk = document.getElementById('disk');
   const diskWrapper = document.getElementById('diskWrapper');
   const markers = document.querySelectorAll('.marker');
@@ -394,14 +494,12 @@ body {
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
       isAutoScrolling = true;
-      // ヘッダー画像(00)の場合は一番上へ、それ以外は要素の位置へ
       const offset = index === 0 ? 0 : targetEl.offsetTop;
       window.scrollTo({ top: offset, behavior: 'smooth' });
       setTimeout(() => { isAutoScrolling = false; }, 800);
     }
   }
 
-  // --- ドラッグ操作 (PC用) ---
   function getCenter() {
     const rect = disk.getBoundingClientRect();
     return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
@@ -442,7 +540,6 @@ body {
   window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); handleMove(e); }, {passive: false});
   window.addEventListener('touchend', handleEnd);
 
-  // --- クリック操作 (PC・モバイル共通) ---
   markers.forEach((marker, index) => {
     marker.addEventListener('click', () => {
       currentRotation = snapAngles[index];
@@ -463,7 +560,6 @@ body {
     });
   });
 
-  // --- スクロール連動 (Intersection Observer) ---
   const observerOptions = {
     root: null,
     rootMargin: "-50% 0px -50% 0px", 
@@ -489,5 +585,5 @@ body {
 
   sections.forEach(section => observer.observe(section));
 </script>
-</body>
+  </body>
 </html>
